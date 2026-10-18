@@ -1,10 +1,10 @@
 # 四份历史 PRD 与新 Brickken 对标项目的差异审查
 
-版本：Review v0.1｜2026-10-16｜状态：**待产品决策，不属于冻结需求**
+版本：Review v0.2｜2026-10-19｜状态：**待产品决策，不属于冻结需求**
 
 ## 1. 审查基准与证据
 
-**新项目已确认**：完全从零建设；以 Brickken 为主要对标；ToB 多资产资产代币化 SaaS；交付 Issuer SaaS、White-label、Open API，并提供客户侧投资者门户及平台运营系统；服务市场优先日本与中东，阿联酋作为中东研究样本；产品/UI 完成规划与冻结后再进入正式研发。暂不设立自营统一零售 RWA 投资/公开交易市场作为核心目标。
+**新项目已确认**：完全从零建设；以 Brickken 为主要对标；面向全球客户的标准化、可配置、多资产 ToB Tokenization SaaS；交付 Issuer SaaS、White-label、Open API，并提供客户侧投资者门户及平台运营系统。遵循 DEC-006，全球客户发现与证据驱动的首批市场选择为已确认原则；日本和阿联酋仅为候选研究市场，不是已确认优先市场，也不构成排他范围。产品/UI 完成规划与冻结后再进入正式研发。暂不设立自营统一零售 RWA 投资/公开交易市场作为核心目标。
 
 **资料**：
 - 四份历史 PRD 原文：[PRD-01](../00-reference-archive/Legacy-RWA-V2-PRD-01-Identity-Primary.md)、[PRD-02](../00-reference-archive/Legacy-RWA-V2-PRD-02-Secondary-Markets.md)、[PRD-03](../00-reference-archive/Legacy-RWA-V2-PRD-03-Contracts.md)、[PRD-04](../00-reference-archive/Legacy-RWA-V2-PRD-04-API-SaaS-WhiteLabel.md)。
@@ -127,7 +127,7 @@
 
 | ID | 待确认点 | 建议默认方向 |
 |---|---|---|
-| D-01 | SaaS 商业运营主体/注册司法管辖区 | 未确定；先把日本与阿联酋作为服务市场，不自动等同牌照地 |
+| D-01 | SaaS 商业运营主体/注册司法管辖区 | 未确定；首批市场按客户证据、商业可行性和具体法律意见选择，不预设日本/阿联酋优先 |
 | D-02 | 第一批支持真实运营的法律金融产品 | 优先选择有合作机构、监管路径清楚的 1–2 类；软件模型保持多资产 |
 | D-03 | White-label 的客户层级 | 支持独立品牌、域名与客户资产可见性；多层转售后置 |
 | D-04 | 投资者身份与 KYC 是否跨客户复用 | 仅在合法、协议/数据共享条件满足时复用 |

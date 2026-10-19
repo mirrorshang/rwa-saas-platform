@@ -11,6 +11,7 @@
 - 当前工作分支：`docs/regulated-activity-boundaries-v01`；[PR #6](https://github.com/mirrorshang/rwa-saas-platform/pull/6) 必须保持 Draft / Open / Unmerged，未经另行明确授权不得合并。
 - [第 02 份战略 v1.0](02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md)：2026-10-19 **有条件冻结**，仅战略原则基线；[冻结复核记录](02-product-strategy/Strategy-Freeze-Readiness-Checklist-v01.md)。
 - [第 03 份总体 PRD v0.1](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)：2026-10-19 **Frozen（总体需求基线）**，冻结提交 `aacbd1c40d8fd41ff8b9e0fc27263b9570048ba3`；“建议纳入 V1”的候选功能不自动成为已批准的 V1 交付承诺。
+- [《产品功能树与模块责任矩阵 v0.1》](03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)：2026-10-20 **Frozen（产品功能架构基线）**，批准六能力域、22 个模块、三级功能范围、责任边界及 PAY-001 稳定币认购支付优先方向；**逐功能 V1 范围、排期、技术/法律和生产启用均尚未冻结**。
 - 项目仍处产品规划阶段；不构成正式开发、生产链上执行、真实资金业务、市场开放或其他受监管金融活动的授权。
 
 ## 十份核心文档登记
@@ -19,7 +20,7 @@
 |---|---|---|
 | 01 | 竞品研究与可追溯证据 | [旧 PRD 适配审查](01-competitor-research/Legacy-PRD-Alignment-Review-v01.md) 为 Review、非冻结。Brickken 第一轮实测报告在独立 [PR #2](https://github.com/mirrorshang/rwa-saas-platform/pull/2)（Open / Unmerged），不在本分支，也未被视为正式冻结或完整实测闭环 |
 | 02 | 产品定位、三条商业产品线、战略原则与未决商业假设 | [v1.0 有条件冻结](02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md)；仅已明确批准的原则作为基线 |
-| 03 | 总体产品需求、详细模块 PRD 和功能验收要求 | [v0.1 Frozen](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)；`03-product-prd/modules/` 详细模块 PRD 尚未规划/创建，功能树与责任矩阵尚未评审 |
+| 03 | 总体产品需求、功能架构、详细模块 PRD 和验收要求 | [总体 PRD v0.1 Frozen](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)；[功能树/责任矩阵 v0.1 Frozen](03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)；模块详细 PRD 尚未编制，逐功能 V1 范围待细化 |
 | 04 | 跨模块流程、状态机、异常与责任 | [目录占位](04-business-workflows/)；尚未编制 |
 | 05 | 多资产、投资者资格、法域规则与配置边界 | [目录占位](05-compliance/)；尚未编制，不代替法律意见 |
 | 06 | 信息架构、页面交互和设计系统 | [目录占位](06-ui-ux/)；尚未编制 |
@@ -55,6 +56,6 @@
 2. 首发 1–2 类资产/金融工具及权利结构；
 3. 许可/法律责任与合格服务商、合同和资金路径；
 4. 具体价格、套餐、额度、SLA 与商业可行性；
-5. V1 功能模块边界、版本优先级、详细权限/流程、技术选型与实际交付计划。
+5. 产品功能架构已冻结，但 V1 **逐功能**范围、交付优先级、详细权限/流程、技术选型与实际交付计划仍待决。
 
-当前建议的下一项产品工作：先审查《产品功能树与模块责任矩阵 v0.1》（尚未批准/冻结），再按模块依赖推进第 04 份状态机、详细模块 PRD 和可提前开展的 UI/UX。不得将现有候选模块数或未评审的功能树当作最终 V1 承诺。
+当前建议的下一项产品工作：以已冻结的《产品功能树与模块责任矩阵 v0.1》为依据，推进第 04 份核心业务流程与状态机及分模块详细 PRD，并在首发资产/市场/合作方决策门下细化 V1 逐功能范围与可提前开展的 UI/UX。**冻结产品架构不等于冻结全部模块的 V1 交付范围或批准生产金融活动。**

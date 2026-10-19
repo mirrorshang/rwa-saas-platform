@@ -18,7 +18,8 @@
 - [第 02 份《产品战略与商业模式》](docs/02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md)：**v1.0 有条件冻结**（2026-10-19），仅已批准的战略原则基线。
 - [第 03 份《总体产品需求 PRD》](docs/03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)：**v0.1 Frozen**（2026-10-19），仅总体产品需求基线；“建议纳入 V1”不代表所有候选功能均已获准交付。
 - [DEC-001 至 DEC-010](decisions/)：各自经批准的产品原则与未决边界。
-- **下一步待评审**：《产品功能树与模块责任矩阵 v0.1》；暂未批准模块数和 V1 详细开发范围。
+- [《产品功能树与模块责任矩阵 v0.1》](docs/03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)：**Frozen（产品功能架构基线，2026-10-20）**；确认六大能力域、22 个逻辑模块、核心责任、PAY-001 稳定币支付方向。**逐功能 V1 范围、排期和开发授权仍待后续确认。**
+- **下一步产品工作**：以已冻结的功能架构为依据，细化第 04 份核心业务流程与状态机及模块详细 PRD，另行评审 V1 逐功能范围。
 - **尚未完成**：第 04～10 份核心规格和各模块详细 PRD。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
 
 详见 **[文档状态与决策索引](docs/Document-Status-Index.md)**，其中包含十份核心文档进度、决策链接、未决事项及研究资料来源。

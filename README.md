@@ -6,7 +6,7 @@
 
 - **Issuer SaaS**：优先规划发行机构工作台及从资产/金融工具准备、Offering、投资者准入和认购到发行后存续期的核心业务能力，配套基础投资者门户。
 - **White-label**：V1 目标模式为一个白标运营商管理多家获授权的发行机构，提供自有品牌门户；不包含多级代理/转售层级。
-- **Open API / SDK**：独立商业交付线，复用必要的核心业务能力，但可单独规划接口、授权、开发者体验和商业化。
+- **Open API / SDK**：独立商业交付线；依据 [ARCH-001](decisions/ARCH-001-api-first-unified-business-core.md)，Issuer SaaS V1 采用 API-First / Contract-First、统一服务端业务核心（API-Ready），让未来 White-label/Open API 复用业务能力；商用 API 对外开放、开发者门户、SDK/Sandbox 与实际交付批次仍须独立批准。
 - **平台级配套**：运营管理端、开发者门户、租户/权限、安全、审计与服务商集成等。
 
 客户独立管理获授权的资产与投资者门户；不默认建设 SaaS 厂商自营的全球投资者聚合市场或公开二级交易市场。投资者原则上由发行方自行拓展，具体受监管活动责任以实际业务、法律意见及合作安排为准。
@@ -22,6 +22,7 @@
 - [第 04 份《核心业务流程与状态机 v0.1》](docs/04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)：**Frozen（跨模块业务流程与状态机原则基线，2026-10-21）**；已确认 WF-01～18、必要状态分离与守卫、权限/额度/异常原则及业务验收目标。**具体状态代码、法域/资产条款、技术实施与完整 V1 逐功能范围未冻结。**
 - [《22 模块逐功能清单与 V1 范围建议 v0.1》](docs/03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)：**Draft（187 项功能建议）**，SCOPE-001～SCOPE-008 范围原则已确认，SCOPE-009～SCOPE-052 已确认全部 187/187 项范围定位（P0 125、P1 21、P2 21、V2 6、批次待定 14），SCOPE-053～SCOPE-058 已确认最小实现原则；V1 真实必交范围仍未冻结，完整 V1 交付范围未冻结，不构成完整 V1 交付承诺。
 - [《V1 最小交付功能建议与未决决策门 v0.1》](docs/03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md)：**Draft（187 项功能的最小实现建议、G-01～G-07 决策门）**；仅建议实施形式及权责边界，尚未通过功能级交付批准。
+- [ARCH-001｜统一业务核心 API-First 架构原则](decisions/ARCH-001-api-first-unified-business-core.md)：**Approved（2026-10-22）**。修订后的 SCOPE-060 确认 Issuer SaaS V1 即 API-Ready、对外 Open API 的商业交付独立排期；SCOPE-059、061、062 **未获连带批准**。本决策不等于第 07 份技术方案冻结或正式研发授权。
 - **下一步产品工作**：审核 V1 最小交付功能清单及未决决策门，评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
 - **尚未完成**：第 05～10 份核心规格、模块详细 PRD、第 04 份具体工具/法域实施细化及 V1 逐功能范围。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
 
@@ -43,7 +44,7 @@
 - `docs/04-business-workflows/`：流程与状态机
 - `docs/05-compliance/`：多资产及合规规则
 - `docs/06-ui-ux/`：UI/UX 与设计系统
-- `docs/07-architecture/`：技术架构、数据、链上与集成
+- `docs/07-architecture/`：后续技术架构、数据、链上与集成；遵循已批准 ARCH-001 原则，具体工程技术栈待定
 - `docs/08-legal/`：法律/许可/责任研究
 - `docs/09-commercial/`：商业化与运营
 - `docs/10-delivery/`：研发、验收与交付计划

@@ -1,6 +1,6 @@
 # RWA SaaS｜样本 A：固定收益到期债权型 Instrument 参数与端到端业务规则审核 v0.1
 
-> **Product Scenario / Draft — 仅产品需求级案例与验证提案；SCOPE-117～125 新建议尚待产品负责人批准；不存在实际链上测试 PASS、法律认可、生产发行或 V1 最终交付冻结。**
+> **Product Scenario / SCOPE-117～125 产品验证原则已批准；具体利息定价、规则深度及实际测试仍 Draft / Not Executed。** 参见[正式决策](../../decisions/SCOPE-117-125-debt-instrument-A-business-validation-principles.md)。不存在链上测试 PASS、法域法律认可、真实发行或 V1 最终范围冻结。
 >
 > 编制：2026-10-22。对应 [SCOPE-096～100：A/B 参考样本选样已批准](../../decisions/SCOPE-096-100-reference-instrument-validation-selection.md)；[第 04 份冻结核心流程](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[187 项五类范围矩阵](RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md)、[A/B 187 功能待验证底表](RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md)、[SCOPE-078～085 条件性 P1](../../decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md)、[SCOPE-071～077 受权外部执行](../../decisions/SCOPE-071-077-external-execution-authority-controls.md)、[ARCH-001](../../decisions/ARCH-001-api-first-unified-business-core.md)。
 >
@@ -142,9 +142,9 @@
 
 **详细 PRD 的候选优先模块**：M04（债权参数/版本）→ M05（Offering 模式/条款）→ M10/M12（报价/预留/配售）→ M11（资金/退款）→ M12/M07（权威登记/Token）→ M13（利息/还本/赎回）；M09/M06/M17/M18/M19/M20/M22 为贯穿核心的合规和外部事实依赖。具体模块 PRD 开写及范围冻结另经产品负责人确认。
 
-## 10. 供产品负责人决定的 9 项产品建议（**SCOPE-117～125 全部待批准**）
+## 10. 已批准的九项产品验证原则（**SCOPE-117～125 Approved**）
 
-| 编号 | 推荐决策（Approval Scope） |
+| 编号 | 已批准原则（具体算法/法域和真实交付仍待定） |
 |---|---|
 | **SCOPE-117** | 将 A 参考 Instrument 定义为**合法债务人承诺固定利息、明确到期还本的债权型工具**，投资者权利按债权合同及权威登记判断；不假定 Token 自动产生债权，不默认有担保或资产所有权 |
 | **SCOPE-118** | 以 **A1 同一 Series/统一到期及付息日**作为首条需求验证路径，并专门审核持续购买后加入者的应计利息、价格、记录日与剩余期限；A2 每笔/批次独立到期作为对照候选，不自动加入 V1 必交。真实发行依法须集中募集则遵守 SCOPE-078 |
@@ -158,9 +158,9 @@
 
 ## 11. 本轮结果与未决门
 
-- **已完成（文档级）**：A 债权工具产品要素字段候选、A1/A2 两种构型风险、11 个主流程节点、16 张业务场景验收设计卡、9 项待批准决策和模块映射。
-- **仍未完成**：对每项真实 Instrument/法域的权利法律判断、实际合同利率/价格/本息法定核算、真实外部执行主体/链协议与适格受托方、逐 187 项 A/B 完整证据验证和工程自动化 E2E、正式产品负责人审批。
-- **下一批若通过的行动**：根据批准的参数/Series 模式将 A-T01～T16 扩展成逐状态场景和条件性 P1 交付门，再对 B 权益型按相同角色/证据体系作差异验证；最终再提交 V1 功能范围冻结评审。
+- **已完成（文档级）**：A 债权工具参数字段候选、A1/A2 两种构型风险、11 个主流程节点、16 张未执行的业务场景验收设计卡；**SCOPE-117～125 产品验证原则已由产品负责人全部批准**，详见[正式决策](../../decisions/SCOPE-117-125-debt-instrument-A-business-validation-principles.md)。
+- **仍未完成**：实际法域下的债权法律判断、债权 Series 定价与本息精确公式的后续具体审核、外部执行主体/链协议与适格受托方选择、187 项 A/B 证据级验证、软件 E2E、**真实 V1 开发交付范围的正式批准**。
+- **下一批行动**：依据已批准 A1 Series 验证方向，进一步编制计息/票息权利、晚入场价格、到期偿付、登记/Token 差异及 Unknown 等的**专项验证 Draft**，之后对 B 权益型作差异验证，最终另审 V1 真实功能范围冻结。
 - **不能直接变更**：第 02～04 份冻结基线、22 模块功能树、原 187 个 Mxx-Fxxx ID、SCOPE/ARCH/DEC 批准历史及独立商业 Open API/White-label 发布计划。
 
-**文档状态：Draft / SCOPE-117～125 待审核；不代表真实债权 Token 已可合法发行或完成代码开发。**
+**文档状态：SCOPE-117～125 产品案例/验证原则 Approved；具体方案、软件测试、真实债权权利法律效力及 V1 功能交付仍 Draft/TBD。**

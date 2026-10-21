@@ -21,7 +21,8 @@
 - [《产品功能树与模块责任矩阵 v0.1》](docs/03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)：**Frozen（产品功能架构基线，2026-10-20）**；确认六大能力域、22 个逻辑模块、核心责任、PAY-001 稳定币支付方向。**逐功能 V1 范围、排期和开发授权仍待后续确认。**
 - [第 04 份《核心业务流程与状态机 v0.1》](docs/04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)：**Frozen（跨模块业务流程与状态机原则基线，2026-10-21）**；已确认 WF-01～18、必要状态分离与守卫、权限/额度/异常原则及业务验收目标。**具体状态代码、法域/资产条款、技术实施与完整 V1 逐功能范围未冻结。**
 - [《22 模块逐功能清单与 V1 范围建议 v0.1》](docs/03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)：**Draft（187 项功能建议）**，SCOPE-001～SCOPE-008 范围原则已确认，SCOPE-009～SCOPE-052 已确认全部 187/187 项范围定位（P0 125、P1 21、P2 21、V2 6、批次待定 14），SCOPE-053～SCOPE-058 已确认最小实现原则；V1 真实必交范围仍未冻结，完整 V1 交付范围未冻结，不构成完整 V1 交付承诺。
-- **下一步产品工作**：依据已批准 SCOPE-053～058 编制 V1 最小交付功能清单及未决决策门，评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
+- [《V1 最小交付功能建议与未决决策门 v0.1》](docs/03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md)：**Draft（187 项功能的最小实现建议、G-01～G-07 决策门）**；仅建议实施形式及权责边界，尚未通过功能级交付批准。
+- **下一步产品工作**：审核 V1 最小交付功能清单及未决决策门，评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
 - **尚未完成**：第 05～10 份核心规格、模块详细 PRD、第 04 份具体工具/法域实施细化及 V1 逐功能范围。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
 
 详见 **[文档状态与决策索引](docs/Document-Status-Index.md)**，其中包含十份核心文档进度、决策链接、未决事项及研究资料来源。

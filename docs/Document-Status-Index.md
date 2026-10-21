@@ -65,9 +65,10 @@
 
 - [《Instrument 权利类型体系与多资产扩展边界 v0.1》](03-product-prd/RWA-SaaS-Instrument-Families-and-Extensibility-Boundaries-v0.1.md)：**SCOPE-101～108 家族体系与边界原则已批准**；A/B 产品样本继续有效，C/D/E 不默认纳入 Issuer V1 专有业务开发；实际法域/资金/登记/托管主体尚待审批。
 - [《C/D/E 扩展类型与现有 187 项功能缺口评估》](03-product-prd/RWA-SaaS-CDE-Instrument-Extension-Gap-Assessment-v0.1.md)：**原始 Audit / Draft**，22 模块交叉映射及 18 条临时 GAP 缺口，不产生正式 Mxx-Fxxx 功能或 V1 研发承诺。
-- [《C/D/E 18 项缺口交叉审核》](03-product-prd/RWA-SaaS-CDE-18-Gaps-Formal-Product-Review-v0.1.md)：**审核已形成 / SCOPE-109～116 待批准**，建议区分 9 项共用配置或集成扩展和 9 项未来专有业务，不代表新增 18 项正式功能或 C/D/E 已具备生产支持。
+- [《C/D/E 18 项缺口交叉审核》](03-product-prd/RWA-SaaS-CDE-18-Gaps-Formal-Product-Review-v0.1.md)：**SCOPE-109～116 审核原则已批准**，18 项按 9 项共享扩展、9 项未来专有能力归档为长期参考基线；没有新增正式 ID、C/D/E 产品生产支持或 V1 研发授权。
 
 | [SCOPE-101～108](../decisions/SCOPE-101-108-instrument-families-and-extensibility.md) | 已批准 A 债权/B 实体权益/C 基金份额/D 合同收入参与/E 特定资产权属五类长期产品能力家族，权利与资产/Offering/Token 分层建模，ARCH-001 共用业务核心 | C/D/E 具体产品化、商用排期、法律分类/服务商责任、真实 V1 必交清单及 18 条 GAP 的实施优先级仍待决定 |
+| [SCOPE-109～116](../decisions/SCOPE-109-116-cde-extension-gap-review.md) | 已批准 18 项 C/D/E 扩展缺口长期参考归档：9 项现有配置/集成复用、9 项未来专有业务，涉及基金 NAV/申赎、收入/版税结算及托管储备/实物交付等 | 不增加正式功能编号或 V1 研发范围；下一阶段回到 A/B 产品需求验证，具体法域及生产责任主体仍未冻结 |
 
 ## 持续开放的决策门
 

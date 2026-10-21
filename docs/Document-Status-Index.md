@@ -8,7 +8,7 @@
 
 - 项目：从零规划、面向全球市场的多资产 RWA Tokenization ToB SaaS；独立于 WDEX，不预设代码或业务系统复用。
 - 商业产品线：Issuer SaaS、White-label、Open API/SDK；配套投资者门户、平台运营端、开发者门户。优先设计 Issuer SaaS 发行工作台及核心流程。
-- **[ARCH-001](../decisions/ARCH-001-api-first-unified-business-core.md)（2026-10-22 已批准）**：Issuer SaaS 首期按 API-First / Contract-First、统一服务端业务核心/API-Ready 设计；White-label 和 M16 商业 Open API 未来复用业务服务，但内部 API 不自动公开。M16 的商业交付批次仍待决定；修订后的 SCOPE-060 架构原则确认，SCOPE-059、061、062 未获连带批准。
+- **[ARCH-001](../decisions/ARCH-001-api-first-unified-business-core.md)（2026-10-22 已批准）**：Issuer SaaS 首期按 API-First / Contract-First、统一服务端业务核心/API-Ready 设计；White-label 和 M16 商业 Open API 未来复用业务服务，但内部 API 不自动公开。M16 的商业交付批次仍待决定；修订后的 SCOPE-060 架构原则已确认；SCOPE-059、061、062 于后续另获明确批准，参见下方决策索引。
 - 当前工作分支：`docs/regulated-activity-boundaries-v01`；[PR #6](https://github.com/mirrorshang/rwa-saas-platform/pull/6) 必须保持 Draft / Open / Unmerged，未经另行明确授权不得合并。
 - [第 02 份战略 v1.0](02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md)：2026-10-19 **有条件冻结**，仅战略原则基线；[冻结复核记录](02-product-strategy/Strategy-Freeze-Readiness-Checklist-v01.md)。
 - [第 03 份总体 PRD v0.1](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)：2026-10-19 **Frozen（总体需求基线）**，冻结提交 `aacbd1c40d8fd41ff8b9e0fc27263b9570048ba3`；“建议纳入 V1”的候选功能不自动成为已批准的 V1 交付承诺。
@@ -23,7 +23,7 @@
 |---|---|---|
 | 01 | 竞品研究与可追溯证据 | [旧 PRD 适配审查](01-competitor-research/Legacy-PRD-Alignment-Review-v01.md) 为 Review、非冻结。Brickken 第一轮实测报告在独立 [PR #2](https://github.com/mirrorshang/rwa-saas-platform/pull/2)（Open / Unmerged），不在本分支，也未被视为正式冻结或完整实测闭环 |
 | 02 | 产品定位、三条商业产品线、战略原则与未决商业假设 | [v1.0 有条件冻结](02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md)；仅已明确批准的原则作为基线 |
-| 03 | 总体产品需求、功能架构、详细模块 PRD 和验收要求 | [总体 PRD v0.1 Frozen](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)；[功能树/责任矩阵 v0.1 Frozen](03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)；[全模块逐功能清单与 V1 范围建议 v0.1](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 为 **Draft**，已分解 22 模块/187 项建议；SCOPE-001～058 已确认：五批 187/187 项范围定位（P0 125、P1 21、P2 21、V2 6、批次待定 14），以及 SCOPE-053～058 的最小实现/条件性 P1 复核原则；V1 真实必交清单仍需另行评审，完整 V1 交付范围未冻结，模块详细 PRD 未编制；[《V1 最小交付功能建议与未决决策门 v0.1》](03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md) 已建立 **Draft**（187 项逐项最小实现提案和 G-01～G-07 未决门），新增实现建议尚未批准；依 ARCH-001 已增加 API-Ready/共用业务核心约束，不等于商业 Open API 同期交付 |
+| 03 | 总体产品需求、功能架构、详细模块 PRD 和验收要求 | [总体 PRD v0.1 Frozen](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)；[功能树/责任矩阵 v0.1 Frozen](03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)；[全模块逐功能清单与 V1 范围建议 v0.1](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 为 **Draft**，已分解 22 模块/187 项建议；SCOPE-001～058 已确认：五批 187/187 项范围定位（P0 125、P1 21、P2 21、V2 6、批次待定 14），以及 SCOPE-053～058 的最小实现/条件性 P1 复核原则；V1 真实必交清单仍需另行评审，完整 V1 交付范围未冻结，模块详细 PRD 未编制；[《V1 最小交付功能建议与未决决策门 v0.1》](03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md) 已建立 **Draft**（187 项逐项最小实现提案和 G-01～G-07 未决门），新增实现建议尚未批准；依 ARCH-001 已增加 API-Ready/共用业务核心约束；SCOPE-059/061/062 已确认 White-label 独立里程碑、持续购买优先、冻结 V1 功能前选 1～2 类参考 Instrument；不等于商业 Open API 同期交付 |
 | 04 | 跨模块流程、状态机、异常与责任 | [《核心业务流程与状态机 v0.1》](04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md) **Frozen（2026-10-21，跨模块流程与状态机原则基线）**；覆盖 WF-01～WF-18、INV-01～03、转换/权限/异常原则和 22 个业务验收场景；具体状态代码、法域/资产、技术及完整 V1 交付未冻结 |
 | 05 | 多资产、投资者资格、法域规则与配置边界 | [目录占位](05-compliance/)；尚未编制，不代替法律意见 |
 | 06 | 信息架构、页面交互和设计系统 | [目录占位](06-ui-ux/)；尚未编制 |
@@ -51,7 +51,8 @@
 | [DEC-009](../decisions/DEC-009-v1-secondary-transfer-boundaries.md) | V1 默认无公开订单簿/撮合市场；优先研究受控转让 | 具体真实转让范围及资金/登记责任 |
 | [DEC-010](../decisions/DEC-010-commercial-packaging-and-pricing-principles.md) | 三条商业线分别包装，以订阅/许可及少量计费维度为原则 | 价格、额度、SLA、实际收费与商业假设 |
 | [DEC-011](../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md) | **V1 一级发行认购优先；V2 才规划受控转让产品**，保留 V1 必要 Token 转让限制。明确取代 DEC-009 中“建议 V1 交付转让工作流”的时间安排 | V2 详细功能/排期、首发工具下 V1 合约限制方案 |
-| [ARCH-001](../decisions/ARCH-001-api-first-unified-business-core.md) | API-First / Contract-First、Issuer SaaS V1 API-Ready、共享业务服务复用于未来 White-label/Open API；修订的 SCOPE-060 架构原则获批准 | 商用 Open API/M16 上线批次，White-label 商用批次，架构实现技术选型；SCOPE-059/061/062 未批准 |
+| [ARCH-001](../decisions/ARCH-001-api-first-unified-business-core.md) | API-First / Contract-First、Issuer SaaS V1 API-Ready、共享业务服务复用于未来 White-label/Open API；修订的 SCOPE-060 架构原则获批准 | 商用 Open API/M16 的具体上线批次、架构实现技术选型 |
+| [SCOPE-059、061、062](../decisions/SCOPE-059-062-issuer-v1-delivery-and-validation-decisions.md) | White-label 完整商业产品独立里程碑（不强制同期、非自动 V2）；Issuer V1 持续购买优先完整支持，集中募集依首发工具；通用 PRD 先行、V1 功能冻结前选 1～2 类参考 Instrument | White-label/API 实际日期、集中募集条件性必需范围、参考 Instrument 具体选择、首发法域/资金/登记责任 |
 
 第 02、03 份冻结正文形成时引用 DEC-001 至 DEC-010，**不因新增 DEC-011 而追溯改写**。DEC-011 作为后续已明确批准的版本范围决策，仅就 V1/V2 受控转让交付安排覆盖 DEC-009 原 V1 建议。第 04 份 v0.1 已经产品负责人选择 A，冻结为跨模块业务流程与状态机**原则基线**；具体实现、法域及产品功能交付范围仍保留后续决策门。**新增 ARCH-001 不追溯改写已冻结文档或原有 DEC**；本索引不替代细化追踪工作。
 
@@ -63,4 +64,4 @@
 4. 具体价格、套餐、额度、SLA 与商业可行性；
 5. 产品功能架构已冻结，但 V1 **逐功能**范围、交付优先级、详细权限/流程、技术选型与实际交付计划仍待决。
 
-当前建议的下一项产品工作：继续对[全模块范围矩阵 Draft](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 分批评审。五批 187/187 项范围定位及 SCOPE-053～058 最小实现原则均已确认，下一步审核已建立的 [《V1 最小交付功能建议与未决决策门 v0.1》](03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md) Draft 的逐项最小实现建议与未决门，重点对接首发 Instrument/法域和 White-label/API 商业批次，再决定 V1 范围冻结并编制 **Issuer SaaS 核心模块详细功能 PRD**；按首发市场、金融工具、服务商及法律条件继续细化 V1 范围与 UI/UX。**第 04 份原则冻结不代表具体状态代码、所有模块 V1 交付或真实业务生产授权。**
+当前建议的下一项产品工作：基于已批准 SCOPE-059～062，继续对[全模块范围矩阵 Draft](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 分批评审。五批 187/187 项范围定位及 SCOPE-053～058 最小实现原则均已确认，下一步审核已建立的 [《V1 最小交付功能建议与未决决策门 v0.1》](03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md) Draft 的逐项最小实现建议与未决门，重点对接首发 Instrument/法域和 White-label/API 商业批次，再决定 V1 范围冻结并编制 **Issuer SaaS 核心模块详细功能 PRD**；按首发市场、金融工具、服务商及法律条件继续细化 V1 范围与 UI/UX。**第 04 份原则冻结不代表具体状态代码、所有模块 V1 交付或真实业务生产授权。**

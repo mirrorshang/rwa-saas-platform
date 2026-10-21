@@ -68,4 +68,6 @@
 4. 具体价格、套餐、额度、SLA 与商业可行性；
 5. 产品功能架构已冻结，但 V1 **逐功能**范围、交付优先级、详细权限/流程、技术选型与实际交付计划仍待决。
 
+[《V1 参考 Instrument 选样与功能验证提案 Draft》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 已编制，建议用债权型+权益型样本验证 187 项最终必要性，SCOPE-096～100 **尚未批准**；不视为选定真实首发 Instrument。
+
 当前建议的下一项产品工作：基于已批准 SCOPE-059～062，继续对[全模块范围矩阵 Draft](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 分批评审。五批 187/187 项范围定位及 SCOPE-053～058 最小实现原则均已确认，下一步审核已建立的 [《V1 最小交付功能建议与未决决策门 v0.1》](03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md) Draft 的逐项最小实现建议与未决门，重点对接首发 Instrument/法域和 White-label/API 商业批次，再决定 V1 范围冻结并编制 **Issuer SaaS 核心模块详细功能 PRD**；按首发市场、金融工具、服务商及法律条件继续细化 V1 范围与 UI/UX。**第 04 份原则冻结不代表具体状态代码、所有模块 V1 交付或真实业务生产授权。**

@@ -38,7 +38,8 @@
 - [《A/B 参考 Instrument 187 项功能验证底表 v0.1》](docs/03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md)：**Draft / 187 项均 Not Tested**；待分别验证 A/B 业务闭环、必要权利、条件性 P1 及独立权威事实。
 - [《Instrument 权利类型体系与多资产扩展边界 v0.1》](docs/03-product-prd/RWA-SaaS-Instrument-Families-and-Extensibility-Boundaries-v0.1.md)：**长期五类家族与扩展原则已批准**；C/D/E 目前仅规划可扩展权利模型，不新增 V1 开发承诺。
 - [SCOPE-101～108｜Instrument 权利类型与扩展边界决策](decisions/SCOPE-101-108-instrument-families-and-extensibility.md)：**Approved（2026-10-22）**；五类产品家族不等于全球法定类别，A/B 验证与 187 项优先级仍有效。
-- [《C/D/E 权利类型扩展与功能缺口评估 v0.1》](docs/03-product-prd/RWA-SaaS-CDE-Instrument-Extension-Gap-Assessment-v0.1.md)：**Audit / Draft**；按 M01～M22 映射现有能力和 18 组未来专有业务缺口，尚不作为正式功能 ID、开发或上市承诺。
+- [《C/D/E 权利类型扩展与功能缺口评估 v0.1》](docs/03-product-prd/RWA-SaaS-CDE-Instrument-Extension-Gap-Assessment-v0.1.md)：**原始 Audit / Draft**；22 模块映射及 18 项候选 GAP，尚不作为正式功能 ID、开发或上市承诺。
+- [《C/D/E 18 项缺口正式交叉审核 v0.1》](docs/03-product-prd/RWA-SaaS-CDE-18-Gaps-Formal-Product-Review-v0.1.md)：**Audit 完成 / 审核建议待批准**；对 18 项逐一判定为 9 项共用配置/适配扩展、9 项未来专有能力，提出 **SCOPE-109～116 待评审**；Issuer V1/A/B 不增加功能开发承诺。
 - **下一步产品工作**：先评审 C/D/E 能力缺口分析作为长期产品参考，再回到已确认的 A/B 参考 Instrument 验证（债权利息/到期/赎回、权益持有人/分配/转让限制），核对全部 187 项的触发条件、权威证据与最低实现路径；评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
 - **尚未完成**：第 05～10 份核心规格、模块详细 PRD、第 04 份具体工具/法域实施细化及 V1 逐功能范围。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
 

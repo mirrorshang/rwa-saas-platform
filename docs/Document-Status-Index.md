@@ -22,7 +22,7 @@
 |---|---|---|
 | 01 | 竞品研究与可追溯证据 | [旧 PRD 适配审查](01-competitor-research/Legacy-PRD-Alignment-Review-v01.md) 为 Review、非冻结。Brickken 第一轮实测报告在独立 [PR #2](https://github.com/mirrorshang/rwa-saas-platform/pull/2)（Open / Unmerged），不在本分支，也未被视为正式冻结或完整实测闭环 |
 | 02 | 产品定位、三条商业产品线、战略原则与未决商业假设 | [v1.0 有条件冻结](02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md)；仅已明确批准的原则作为基线 |
-| 03 | 总体产品需求、功能架构、详细模块 PRD 和验收要求 | [总体 PRD v0.1 Frozen](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)；[功能树/责任矩阵 v0.1 Frozen](03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)；[全模块逐功能清单与 V1 范围建议 v0.1](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 为 **Draft**，已分解 22 模块/187 项建议；SCOPE-001～008 范围规划原则已同意，但逐功能 P0/P1 仍待审，模块详细 PRD 未编制 |
+| 03 | 总体产品需求、功能架构、详细模块 PRD 和验收要求 | [总体 PRD v0.1 Frozen](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)；[功能树/责任矩阵 v0.1 Frozen](03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)；[全模块逐功能清单与 V1 范围建议 v0.1](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 为 **Draft**，已分解 22 模块/187 项建议；SCOPE-001～014 范围评审已依次记录，其中 SCOPE-009～014 确认 M01～M03 共 22 项的 P0/P1/P2 方向；剩余 165 项分级尚待评审，完整 V1 交付范围未冻结，模块详细 PRD 未编制 |
 | 04 | 跨模块流程、状态机、异常与责任 | [《核心业务流程与状态机 v0.1》](04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md) **Frozen（2026-10-21，跨模块流程与状态机原则基线）**；覆盖 WF-01～WF-18、INV-01～03、转换/权限/异常原则和 22 个业务验收场景；具体状态代码、法域/资产、技术及完整 V1 交付未冻结 |
 | 05 | 多资产、投资者资格、法域规则与配置边界 | [目录占位](05-compliance/)；尚未编制，不代替法律意见 |
 | 06 | 信息架构、页面交互和设计系统 | [目录占位](06-ui-ux/)；尚未编制 |

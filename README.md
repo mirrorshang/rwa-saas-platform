@@ -19,9 +19,9 @@
 - [第 03 份《总体产品需求 PRD》](docs/03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)：**v0.1 Frozen**（2026-10-19），仅总体产品需求基线；“建议纳入 V1”不代表所有候选功能均已获准交付。
 - [DEC-001 至 DEC-011](decisions/)：各自经批准的产品原则与未决边界。新增 [DEC-011](decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md) 明确 V1 一级认购优先、V2 规划受控转让；保留 DEC-009 原有安全与法律原则。
 - [《产品功能树与模块责任矩阵 v0.1》](docs/03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)：**Frozen（产品功能架构基线，2026-10-20）**；确认六大能力域、22 个逻辑模块、核心责任、PAY-001 稳定币支付方向。**逐功能 V1 范围、排期和开发授权仍待后续确认。**
-- [第 04 份《核心业务流程与状态机 v0.1》](docs/04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)：**Draft（已完成首版 WF-01～18 及异常/状态规则，待正式评审，尚未冻结）**。
-- **下一步产品工作**：正式评审第 04 份 Draft 的状态转换、角色、异常及跨模块一致性，再决定冻结；功能级 V1 范围与正式开发授权仍需另外批准。
-- **尚未完成**：第 04 份的正式评审与冻结、第 05～10 份核心规格和模块详细 PRD。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
+- [第 04 份《核心业务流程与状态机 v0.1》](docs/04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)：**Frozen（跨模块业务流程与状态机原则基线，2026-10-21）**；已确认 WF-01～18、必要状态分离与守卫、权限/额度/异常原则及业务验收目标。**具体状态代码、法域/资产条款、技术实施与完整 V1 逐功能范围未冻结。**
+- **下一步产品工作**：根据第 02/03/04 份已冻结的产品原则和 22 模块功能树，优先编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确 V1 逐功能范围、字段、页面、状态与验收要求；需要正式开发授权时另行批准。
+- **尚未完成**：第 05～10 份核心规格、模块详细 PRD、第 04 份具体工具/法域实施细化及 V1 逐功能范围。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
 
 详见 **[文档状态与决策索引](docs/Document-Status-Index.md)**，其中包含十份核心文档进度、决策链接、未决事项及研究资料来源。
 

@@ -70,14 +70,18 @@
 | [SCOPE-101～108](../decisions/SCOPE-101-108-instrument-families-and-extensibility.md) | 已批准 A 债权/B 实体权益/C 基金份额/D 合同收入参与/E 特定资产权属五类长期产品能力家族，权利与资产/Offering/Token 分层建模，ARCH-001 共用业务核心 | C/D/E 具体产品化、商用排期、法律分类/服务商责任、真实 V1 必交清单及 18 条 GAP 的实施优先级仍待决定 |
 | [SCOPE-109～116](../decisions/SCOPE-109-116-cde-extension-gap-review.md) | 已批准 18 项 C/D/E 扩展缺口长期参考归档：9 项现有配置/集成复用、9 项未来专有业务，涉及基金 NAV/申赎、收入/版税结算及托管储备/实物交付等 | 不增加正式功能编号或 V1 研发范围；下一阶段回到 A/B 产品需求验证，具体法域及生产责任主体仍未冻结 |
 
+## A/B 参考 Instrument 产品验证（样本选定 Approved / 实际验证 Draft）
+
+- [《样本 A 债权型 Instrument 参数与端到端业务规则审核 v0.1》](03-product-prd/RWA-SaaS-Reference-Instrument-A-Debt-Scenario-and-Product-Rules-Review-v0.1.md)：**Product Scenario / Draft**；A1/A2 债权销售/计息与到期兼容性、Instrument 字段、11 个流程节点、16 个 **Not Executed** 场景审核卡，提出 **SCOPE-117～125（未批准）**。A/B 187 项底表仍全部 Not Tested；没有实际法律效力确认或工程测试报告。
+
 ## 持续开放的决策门
 
 1. 首发市场、司法辖区、经营主体及业务准入；
-2. 首发 1–2 类资产/金融工具及权利结构；
+2. 真实首发资产/金融工具、发行法域及法律权利结构；A/B 两类参考 **产品验证样本已选定**，不等于实际发行工具已确定；
 3. 许可/法律责任与合格服务商、合同和资金路径；
 4. 具体价格、套餐、额度、SLA 与商业可行性；
 5. 产品功能架构已冻结，但 V1 **逐功能**范围、交付优先级、详细权限/流程、技术选型与实际交付计划仍待决。
 
 [《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
-当前建议的下一项产品工作：基于已批准 SCOPE-059～062，继续对[全模块范围矩阵 Draft](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 分批评审。五批 187/187 项范围定位及 SCOPE-053～058 最小实现原则均已确认，下一步审核已建立的 [《V1 最小交付功能建议与未决决策门 v0.1》](03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md) Draft 的逐项最小实现建议与未决门，重点对接首发 Instrument/法域和 White-label/API 商业批次，再决定 V1 范围冻结并编制 **Issuer SaaS 核心模块详细功能 PRD**；按首发市场、金融工具、服务商及法律条件继续细化 V1 范围与 UI/UX。**第 04 份原则冻结不代表具体状态代码、所有模块 V1 交付或真实业务生产授权。**
+当前建议的下一项产品工作：首先评审[《样本 A 债权型 Instrument 参数与端到端业务规则审核 v0.1》](03-product-prd/RWA-SaaS-Reference-Instrument-A-Debt-Scenario-and-Product-Rules-Review-v0.1.md)中的 SCOPE-117～125；随后按照已批准 A/B 选样对 B 权益型差异开展产品级验证。**187 项五类范围分类原则均已批准，实际 V1 逐功能交付清单及详细 PRD 尚未冻结**；具体法域、真实 Instrument、收付/登记/链上责任、开发授权与 PR #6 合并仍须独立批准。

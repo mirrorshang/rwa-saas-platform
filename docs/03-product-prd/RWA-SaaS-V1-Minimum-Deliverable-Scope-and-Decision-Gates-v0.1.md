@@ -431,7 +431,15 @@ C 的 NAV/开放式申赎、D 的外部经营收入核验/收益结算、E 的�
 
 **下一阶段**：重新聚焦已经确认的 A（固定收益到期债权型）和 B（SPV 股份/类似权益型）参考 Instrument，形成**产品需求级案例、角色权限与状态/异常/证据核对**。已有 [A/B 187 项底表](RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md)继续 Not Tested；不能把文档级验证当作工程测试通过。法域、真实资金/Token/登记执行主体及 V1 逐功能冻结须另行批准。
 
-## 十五、下一次评审的工作方法
+## 十五、样本 A 债权型产品规则原则获批（SCOPE-117～125）
+
+产品负责人明确批准[SCOPE-117～125](../../decisions/SCOPE-117-125-debt-instrument-A-business-validation-principles.md)样本 A 债权参数、A1 同 Series 需求验证、合规发行前置 Guard、真实稳定币付款/配售/登记/Token 独立权威及票息、到期还本与异常恢复原则。
+
+根据固定利息与到期本金义务，M13-F004～F006 在**样本 A 业务能力验证层面**构成最小完整生命周期所必需；其他原 P1 包括集中募集、部分认购/配售、赎回/Burn、正式通知与数据报告按具体条款/法域另行判断。**不修改任何原 187 项优先级或默认交付分类，不擅自将 P1 改为 P0**。
+
+[《债权 A1 计息、到期偿付及异常状态专项验证 Draft》](RWA-SaaS-Debt-A1-Coupon-Maturity-and-Exception-Validation-v0.1.md)已建立，含 **SCOPE-126～133 待审**、12 项 **Not Executed** 产品审核卡。A/B 187 功能矩阵仍为 Not Tested。用户未就具体日数基准、clean/dirty 计价、记录日、适格付款方、法律偿付/注销先后或真实 V1 逐功能交付冻结作出授权。
+
+## 十六、下一次评审的工作方法
 
 1. 对每个 P0 核心候选核查最小业务能力、页面是否可合并、审计/风险 Guard 是否保留。
 2. 对全部 P1 单独核查首发 Instrument/法域依赖，允许按具体工具上调为 V1 必需；未经批准不能改写原范围分级。

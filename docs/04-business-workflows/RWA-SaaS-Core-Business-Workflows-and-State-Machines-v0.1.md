@@ -2,7 +2,7 @@
 
 **文档编号：04/10｜版本：v0.1｜编制日期：2026-10-21｜冻结日期：2026-10-21｜状态：Frozen（跨模块业务流程与状态机原则基线；非最终工程实施规格）。不构成研发或真实金融业务授权。**
 
-**已获产品负责人原则确认**：第 04-01～04-42 项（其中 04-13～04-18 使用用户修订确认的版本），WF-01～WF-18 流程范围，优先「一次必要 KYC → 直接购买 → 指定链 USDT/USDC 支付 → 条件满足后自动分配 RWA Token」，INV-01～03 跨模块不变量，V1 只支持一级认购、V2 再规划受控转让。
+**已获产品负责人确认**：第 04-01～04-48 项（其中 04-13～04-18 使用用户修订确认的版本），WF-01～WF-18 流程范围，优先「一次必要 KYC → 直接购买 → 指定链 USDT/USDC 支付 → 条件满足后自动分配 RWA Token」，INV-01～03 跨模块不变量，V1 只支持一级认购、V2 再规划受控转让。
 
 **上游冻结资料**：[第 02 份战略](../02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md)；[第 03 份总体 PRD](../03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)；[产品功能树与模块责任矩阵 v0.1](../03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)。关联 DEC-001～011，重点参见 [DEC-004](../../decisions/DEC-004-regulated-activity-responsibility-boundaries.md)、[DEC-007](../../decisions/DEC-007-investor-identity-and-kyc-data-reuse.md)、[DEC-008](../../decisions/DEC-008-subscription-funds-settlement-and-refund-principles.md)、[DEC-009](../../decisions/DEC-009-v1-secondary-transfer-boundaries.md)、[DEC-011](../../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md)。
 

@@ -395,9 +395,17 @@ SCOPE-071～077 获明确确认，参考[正式决策记录](../../decisions/SCO
 
 产品负责人明确批准 **SCOPE-078～SCOPE-085 全部同意**，正式记录：[16 项 P1 决策](../../decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md)。这些决策对 M05/M07/M08/M10/M11/M12/M13/M18/M19/M20/M21 共 **16 项 P1** 确定必要性判断条件、不可删除的最低金融/安全控制，但未决定全部 16 项同时进入 Issuer V1 自动化开发。持续购买优先、集中募集及部分配售和收益赎回需参考 Instrument 裁决；最低资金差异处理、强制规则优先级及依法/合同必要的数据交接不得省略。
 
-新建 [46 项非默认 Issuer 首期交付候选审核](RWA-SaaS-Issuer-V1-Nondefault-46-Item-Exclusion-and-Roadmap-Audit-v0.1.md) **Audit/Draft**，核对剩余 P1 5/P2 21/V2 6/独立商业批次待定 14，提出 **SCOPE-086～095** 待决策。此审核不取消 White-label/Open API 商业产品，也不将其自动指定为 V2；ARCH-001 API-Ready 仍须在 Issuer V1 满足。冻结真实 V1 交付清单前必须选择 1～2 类参考 Instrument、核验适用法域与外部责任和服务商。
+新建 [46 项非默认 Issuer 首期交付候选审核](RWA-SaaS-Issuer-V1-Nondefault-46-Item-Exclusion-and-Roadmap-Audit-v0.1.md) 已完成，**SCOPE-086～095 的默认交付边界原则获批准**（[正式决策](../../decisions/SCOPE-086-095-nondefault-issuer-v1-scope-and-product-milestones.md)）。覆盖 P1 5/P2 21/V2 6/独立商业批次待定 14；不代表 White-label/API 已定 V2 或已批准具体延期日期。此审核不取消 White-label/Open API 商业产品，也不将其自动指定为 V2；ARCH-001 API-Ready 仍须在 Issuer V1 满足。冻结真实 V1 交付清单前必须选择 1～2 类参考 Instrument、核验适用法域与外部责任和服务商。
 
-## 十一、下一次评审的工作方法
+## 十一、全量 187 项五类交付审核原则完成（SCOPE-086～095）
+
+产品负责人明确 **SCOPE-086～095 全部同意**，见 [46 项非默认候选审核](RWA-SaaS-Issuer-V1-Nondefault-46-Item-Exclusion-and-Roadmap-Audit-v0.1.md)及[正式决策](../../decisions/SCOPE-086-095-nondefault-issuer-v1-scope-and-product-milestones.md)。
+
+**已批准的分类审查原则覆盖**：73 项共享核心、42 项可简化界面、10 项受权外部执行、16 项条件性 P1、46 项非默认 Issuer 核心首期交付候选，合计 **187/187 项**。最后 46 项分类确认只表示其**不计入 Issuer SaaS 核心首期的默认开发承诺**；包括 White-label/Open API 的独立商业产品实际排期仍待单独决策，M14 受控转让按 DEC-011 保留 V2。
+
+**真正可冻结的实际 V1 范围还需**：在 1～2 类具体参考 Instrument 上验证完整的投资者权利/募集模式/部分配售/收益/赎回/登记与 Token 交付；明确支付链路及资金/签名/登记等合法责任主体；形成每项真实必交、允许简化/合法外部执行、异常和验收边界的最终产品级清单，并由产品负责人另行批准。**本文件全部 187 项原始最小实现方式仍是 Draft 建议**，本次没有冻结详细产品功能或授权开发。
+
+## 十二、下一次评审的工作方法
 
 1. 对每个 P0 核心候选核查最小业务能力、页面是否可合并、审计/风险 Guard 是否保留。
 2. 对全部 P1 单独核查首发 Instrument/法域依赖，允许按具体工具上调为 V1 必需；未经批准不能改写原范围分级。

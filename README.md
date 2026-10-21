@@ -36,8 +36,10 @@
 - [《V1 参考 Instrument 选样与功能验证提案 v0.1》](docs/03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md)：**A/B 样本选样已获 SCOPE-096～100 批准**，样本 A 为固定收益到期债权型，B 为 SPV 股份或类似权益型；实际法域/真实发行工具仍待定。
 - [SCOPE-096～100｜参考 Instrument 选样决策](decisions/SCOPE-096-100-reference-instrument-validation-selection.md)：**Approved（2026-10-22）**，两类样本只用于需求验证，不批准真实发行或 V1 最终范围冻结。
 - [《A/B 参考 Instrument 187 项功能验证底表 v0.1》](docs/03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md)：**Draft / 187 项均 Not Tested**；待分别验证 A/B 业务闭环、必要权利、条件性 P1 及独立权威事实。
-- [《Instrument 权利类型体系与多资产扩展边界 v0.1》](docs/03-product-prd/RWA-SaaS-Instrument-Families-and-Extensibility-Boundaries-v0.1.md)：**Draft / 待批准**；保留 A/B 两类已选产品验证样本，提出长期 C 基金份额、D 合同收益权、E 资产权属/托管凭证能力家族和 API-First 扩展边界；**SCOPE-101～108 待评审**，不新增当前 V1 实际开发承诺。
-- **下一步产品工作**：按已批准的 A/B 两类参考 Instrument 开展产品需求验证（债权利息/到期/赎回、权益持有人/分配/转让限制），核对全部 187 项的触发条件、权威证据与最低实现路径；评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
+- [《Instrument 权利类型体系与多资产扩展边界 v0.1》](docs/03-product-prd/RWA-SaaS-Instrument-Families-and-Extensibility-Boundaries-v0.1.md)：**长期五类家族与扩展原则已批准**；C/D/E 目前仅规划可扩展权利模型，不新增 V1 开发承诺。
+- [SCOPE-101～108｜Instrument 权利类型与扩展边界决策](decisions/SCOPE-101-108-instrument-families-and-extensibility.md)：**Approved（2026-10-22）**；五类产品家族不等于全球法定类别，A/B 验证与 187 项优先级仍有效。
+- [《C/D/E 权利类型扩展与功能缺口评估 v0.1》](docs/03-product-prd/RWA-SaaS-CDE-Instrument-Extension-Gap-Assessment-v0.1.md)：**Audit / Draft**；按 M01～M22 映射现有能力和 18 组未来专有业务缺口，尚不作为正式功能 ID、开发或上市承诺。
+- **下一步产品工作**：先评审 C/D/E 能力缺口分析作为长期产品参考，再回到已确认的 A/B 参考 Instrument 验证（债权利息/到期/赎回、权益持有人/分配/转让限制），核对全部 187 项的触发条件、权威证据与最低实现路径；评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
 - **尚未完成**：第 05～10 份核心规格、模块详细 PRD、第 04 份具体工具/法域实施细化及 V1 逐功能范围。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
 
 详见 **[文档状态与决策索引](docs/Document-Status-Index.md)**，其中包含十份核心文档进度、决策链接、未决事项及研究资料来源。

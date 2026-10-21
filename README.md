@@ -20,8 +20,8 @@
 - [DEC-001 至 DEC-011](decisions/)：各自经批准的产品原则与未决边界。新增 [DEC-011](decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md) 明确 V1 一级认购优先、V2 规划受控转让；保留 DEC-009 原有安全与法律原则。
 - [《产品功能树与模块责任矩阵 v0.1》](docs/03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)：**Frozen（产品功能架构基线，2026-10-20）**；确认六大能力域、22 个逻辑模块、核心责任、PAY-001 稳定币支付方向。**逐功能 V1 范围、排期和开发授权仍待后续确认。**
 - [第 04 份《核心业务流程与状态机 v0.1》](docs/04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)：**Frozen（跨模块业务流程与状态机原则基线，2026-10-21）**；已确认 WF-01～18、必要状态分离与守卫、权限/额度/异常原则及业务验收目标。**具体状态代码、法域/资产条款、技术实施与完整 V1 逐功能范围未冻结。**
-- [《22 模块逐功能清单与 V1 范围建议 v0.1》](docs/03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)：**Draft（187 项功能建议）**，SCOPE-001～SCOPE-008 范围原则已确认，SCOPE-009～SCOPE-032 已批准 M01～M12 的 111 项范围定位方向；其余 76 项仍待评审，完整 V1 交付范围未冻结，不构成完整 V1 交付承诺。
-- **下一步产品工作**：继续逐模块评审 V1 范围建议，下一批为 M13、M17～M22；确认后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
+- [《22 模块逐功能清单与 V1 范围建议 v0.1》](docs/03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)：**Draft（187 项功能建议）**，SCOPE-001～SCOPE-008 范围原则已确认，SCOPE-009～SCOPE-046 已批准前四批 164 项的范围定位方向；M14～M16 共 23 项仍待评审，完整 V1 交付范围未冻结，不构成完整 V1 交付承诺。
+- **下一步产品工作**：继续逐模块评审 V1 范围建议，下一批为 M14～M16（V2 转让及 White-label/API 商业产品批次）；确认后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
 - **尚未完成**：第 05～10 份核心规格、模块详细 PRD、第 04 份具体工具/法域实施细化及 V1 逐功能范围。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
 
 详见 **[文档状态与决策索引](docs/Document-Status-Index.md)**，其中包含十份核心文档进度、决策链接、未决事项及研究资料来源。

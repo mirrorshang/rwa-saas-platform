@@ -24,6 +24,7 @@
 - [《V1 最小交付功能建议与未决决策门 v0.1》](docs/03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md)：**Draft（187 项功能的最小实现建议、G-01～G-07 决策门）**；仅建议实施形式及权责边界，尚未通过功能级交付批准。
 - [ARCH-001｜统一业务核心 API-First 架构原则](decisions/ARCH-001-api-first-unified-business-core.md)：**Approved（2026-10-22）**。修订后的 SCOPE-060 确认 Issuer SaaS V1 即 API-Ready、对外 Open API 的商业交付独立排期；SCOPE-059、061、062 已在后续单独确认，参见下列正式决策。本决策不等于第 07 份技术方案冻结或正式研发授权。
 - [SCOPE-059、061、062｜V1 交付与工具验证决策](decisions/SCOPE-059-062-issuer-v1-delivery-and-validation-decisions.md)：**Approved（2026-10-22）**；White-label 不强制与 Issuer V1 同期、独立里程碑；持续购买 V1 优先完整支持；通用 PRD 先行且冻结 V1 功能前选 1～2 类具体参考 Instrument。M15/M16 商业发布时间、真实首发法域仍未确定。
+- [《Issuer SaaS V1 五类交付候选分组 v0.1》](docs/03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md)：**Draft（187 项全覆盖）**，按共享核心开发、共享界面简化、外部受权执行、条件性必需、暂不计入 Issuer 首期五类提出可审查的建议；M15/M16 独立商业产品上线批次仍待定，未获功能级交付批准。
 - **下一步产品工作**：审核 V1 最小交付功能清单及未决决策门，评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
 - **尚未完成**：第 05～10 份核心规格、模块详细 PRD、第 04 份具体工具/法域实施细化及 V1 逐功能范围。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
 

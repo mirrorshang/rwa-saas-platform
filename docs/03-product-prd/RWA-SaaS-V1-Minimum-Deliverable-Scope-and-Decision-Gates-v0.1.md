@@ -415,7 +415,15 @@ SCOPE-071～077 获明确确认，参考[正式决策记录](../../decisions/SCO
 - **[A/B 全部 187 项功能验证底表 Draft](RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md)** 已建立。全部逐行标为 **Not Tested**，仅提供拟验证场景与缺失权威/法域证据清单，**无任何测试 PASS 结论**。
 - **待决策**：实际首发法域、真实 Instrument 合同与权利、收款/登记/签名主体、链/Token 协议、条件性 P1 的实质触发及 White-label/Open API 商业交付具体批次，仍须另审；此批准不能被写成真实 V1 逐功能交付冻结。
 
-## 十三、下一次评审的工作方法
+## 十三、已确认长期 A～E Instrument 家族体系与 V1 范围边界（SCOPE-101～108）
+
+已批准[五类 Instrument 长期产品模型与扩展原则](../../decisions/SCOPE-101-108-instrument-families-and-extensibility.md)：A 债权、B 实体权益、C 基金份额、D 合同收入/版税参与、E 实物权属/托管凭证；法定性质、主体及权利依据依具体 Instrument 和适用法域决定，不得按资产标签直接推断。
+
+**对 Issuer 核心 V1 的范围约束**：仍以已批准 A/B 为完整产品验证样本，C/D/E **仅规划长期可配置权利/权威凭证及 API-First 扩展边界**。基金 NAV/申赎、收入分成结算和实物托管/储备证明/提货等专用业务属于**将来增量 PRD 与独立版本门**，不得纳入本文件 187 项原分级和默认 V1 交付承诺；模型存在不能宣称已可生产发行。
+
+已编制[C/D/E × 22 模块差距审查 Draft](RWA-SaaS-CDE-Instrument-Extension-Gap-Assessment-v0.1.md)，有 18 个候选分析 GAP，但不代表新 Mxx-Fxxx 编号、批准开发或另建权威资金/登记账本。**真实 V1 功能交付仍需单独冻结。**
+
+## 十四、下一次评审的工作方法
 
 1. 对每个 P0 核心候选核查最小业务能力、页面是否可合并、审计/风险 Guard 是否保留。
 2. 对全部 P1 单独核查首发 Instrument/法域依赖，允许按具体工具上调为 V1 必需；未经批准不能改写原范围分级。

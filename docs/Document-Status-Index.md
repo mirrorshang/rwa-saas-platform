@@ -72,7 +72,9 @@
 
 ## A/B 参考 Instrument 产品验证（样本选定 Approved / 实际验证 Draft）
 
-- [《样本 A 债权型 Instrument 参数与端到端业务规则审核 v0.1》](03-product-prd/RWA-SaaS-Reference-Instrument-A-Debt-Scenario-and-Product-Rules-Review-v0.1.md)：**Product Scenario / Draft**；A1/A2 债权销售/计息与到期兼容性、Instrument 字段、11 个流程节点、16 个 **Not Executed** 场景审核卡，提出 **SCOPE-117～125（未批准）**。A/B 187 项底表仍全部 Not Tested；没有实际法律效力确认或工程测试报告。
+- [《样本 A 债权型 Instrument 参数与端到端业务规则审核 v0.1》](03-product-prd/RWA-SaaS-Reference-Instrument-A-Debt-Scenario-and-Product-Rules-Review-v0.1.md)：**SCOPE-117～125 产品验证原则已批准**；A1/A2 债权构型、Instrument 字段、11 个流程节点、16 个 **Not Executed** 审核案例。计息精确规则、真实法律效力及生产测试未完成。
+- [SCOPE-117～125 正式决策记录](../decisions/SCOPE-117-125-debt-instrument-A-business-validation-principles.md)：批准固定收益到期债权的 A1 同 Series 验证、财务/法定登记/Token 分离、票息与还本业务闭环，未批准实际开发与生产。
+- [《债权 A1 计息、偿付及异常状态专项验证 v0.1》](03-product-prd/RWA-SaaS-Debt-A1-Coupon-Maturity-and-Exception-Validation-v0.1.md)：**Draft**，A-D01～D12 全部 Not Executed，**SCOPE-126～133 待产品负责人审核**，未改动 A/B 187 项 Not Tested 底表。
 
 ## 持续开放的决策门
 
@@ -84,4 +86,4 @@
 
 [《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
-当前建议的下一项产品工作：首先评审[《样本 A 债权型 Instrument 参数与端到端业务规则审核 v0.1》](03-product-prd/RWA-SaaS-Reference-Instrument-A-Debt-Scenario-and-Product-Rules-Review-v0.1.md)中的 SCOPE-117～125；随后按照已批准 A/B 选样对 B 权益型差异开展产品级验证。**187 项五类范围分类原则均已批准，实际 V1 逐功能交付清单及详细 PRD 尚未冻结**；具体法域、真实 Instrument、收付/登记/链上责任、开发授权与 PR #6 合并仍须独立批准。
+当前建议的下一项产品工作：优先审核[《债权 A1 计息、到期偿付及异常状态专项验证 v0.1》](03-product-prd/RWA-SaaS-Debt-A1-Coupon-Maturity-and-Exception-Validation-v0.1.md)的 **SCOPE-126～133**，随后开展已选 B（SPV 股份或类似权益）的差异需求验证。A/B 187 项仍 Not Tested，V1 实际逐功能交付清单、金融法律效力、真实执行主体及研发授权尚待决定；第 04 份 Frozen 不等于真实上线许可，PR #6 不合并。

@@ -61,9 +61,12 @@
 
 第 02、03 份冻结正文形成时引用 DEC-001 至 DEC-010，**不因新增 DEC-011 而追溯改写**。DEC-011 作为后续已明确批准的版本范围决策，仅就 V1/V2 受控转让交付安排覆盖 DEC-009 原 V1 建议。第 04 份 v0.1 已经产品负责人选择 A，冻结为跨模块业务流程与状态机**原则基线**；具体实现、法域及产品功能交付范围仍保留后续决策门。**新增 ARCH-001 不追溯改写已冻结文档或原有 DEC**；本索引不替代细化追踪工作。
 
-## Instrument 权利体系扩展草案（Draft / 尚待评审）
+## Instrument 权利体系与长期扩展（家族原则 Approved / 实施 Draft）
 
-- [《Instrument 权利类型体系与多资产扩展边界 v0.1》](03-product-prd/RWA-SaaS-Instrument-Families-and-Extensibility-Boundaries-v0.1.md)：已编制 **Draft**，提出 A/B/C/D/E 五类候选家族的投资者权利区别、M01～M22 影响与 C/D/E 的分阶段实施边界；**SCOPE-101～108 仍待产品负责人批准**。A/B 两类参考样本保留已确认选择，187 项验证继续 Not Tested。C/D/E 不默认纳入 Issuer V1 完整研发，真实法域/资金/登记/托管责任不因模型存在即获批准。
+- [《Instrument 权利类型体系与多资产扩展边界 v0.1》](03-product-prd/RWA-SaaS-Instrument-Families-and-Extensibility-Boundaries-v0.1.md)：**SCOPE-101～108 家族体系与边界原则已批准**；A/B 产品样本继续有效，C/D/E 不默认纳入 Issuer V1 专有业务开发；实际法域/资金/登记/托管主体尚待审批。
+- [《C/D/E 扩展类型与现有 187 项功能缺口评估》](03-product-prd/RWA-SaaS-CDE-Instrument-Extension-Gap-Assessment-v0.1.md)：**Audit / Draft**，22 模块交叉映射及 18 条临时 GAP 缺口，未获独立审核，不产生正式 Mxx-Fxxx 功能或 V1 研发承诺。
+
+| [SCOPE-101～108](../decisions/SCOPE-101-108-instrument-families-and-extensibility.md) | 已批准 A 债权/B 实体权益/C 基金份额/D 合同收入参与/E 特定资产权属五类长期产品能力家族，权利与资产/Offering/Token 分层建模，ARCH-001 共用业务核心 | C/D/E 具体产品化、商用排期、法律分类/服务商责任、真实 V1 必交清单及 18 条 GAP 的实施优先级仍待决定 |
 
 ## 持续开放的决策门
 

@@ -57,6 +57,7 @@
 | [SCOPE-071～077](../decisions/SCOPE-071-077-external-execution-authority-controls.md) | 已批准 10 项 P0 外部部署、Mint、付款事实观察、退款、法定登记与电子签证据的授权/独立核验/Unknown 幂等和审计控制 | 外部执行法律责任主体、服务商/链/接口、安全技术选型及 V1 真实交付清单未冻结 |
 | [SCOPE-078～085](../decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md) | 已批准 16 项 P1 的条件性最低能力规则：连续购买优先、募集/赎回/收益/通知按首发工具判定；基本资金异常调查、强制规则优先级及必要数据交接不得删除 | 1～2 类参考 Instrument/法域/法定权利和真实 V1 实施深度尚待决定 |
 | [SCOPE-086～095](../decisions/SCOPE-086-095-nondefault-issuer-v1-scope-and-product-milestones.md) | 已批准最后 46 项非默认 Issuer 核心首期交付的排除/独立商业里程碑口径（P1 5/P2 21/V2 6/White-label+API 批次待定 14）；五类 187 项均完成审核原则确认 | 真实 V1 交付清单与商业产品线具体交付批次、参考 Instrument/首发法域/适格主体仍未冻结 |
+| [SCOPE-096～100](../decisions/SCOPE-096-100-reference-instrument-validation-selection.md) | 已批准两类产品需求验证样本：A 固定收益到期债权型；B SPV 股份或类似权益型，均遵循 ARCH-001 共享业务核心；187 项 A/B 验证底表已建立 | 全部 187 项仍 Not Tested；真正首发 Instrument/市场与法域法律权利、资金/登记/签名责任、实际 V1 功能交付冻结均待评审 |
 
 第 02、03 份冻结正文形成时引用 DEC-001 至 DEC-010，**不因新增 DEC-011 而追溯改写**。DEC-011 作为后续已明确批准的版本范围决策，仅就 V1/V2 受控转让交付安排覆盖 DEC-009 原 V1 建议。第 04 份 v0.1 已经产品负责人选择 A，冻结为跨模块业务流程与状态机**原则基线**；具体实现、法域及产品功能交付范围仍保留后续决策门。**新增 ARCH-001 不追溯改写已冻结文档或原有 DEC**；本索引不替代细化追踪工作。
 
@@ -68,6 +69,6 @@
 4. 具体价格、套餐、额度、SLA 与商业可行性；
 5. 产品功能架构已冻结，但 V1 **逐功能**范围、交付优先级、详细权限/流程、技术选型与实际交付计划仍待决。
 
-[《V1 参考 Instrument 选样与功能验证提案 Draft》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 已编制，建议用债权型+权益型样本验证 187 项最终必要性，SCOPE-096～100 **尚未批准**；不视为选定真实首发 Instrument。
+[《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
 当前建议的下一项产品工作：基于已批准 SCOPE-059～062，继续对[全模块范围矩阵 Draft](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 分批评审。五批 187/187 项范围定位及 SCOPE-053～058 最小实现原则均已确认，下一步审核已建立的 [《V1 最小交付功能建议与未决决策门 v0.1》](03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md) Draft 的逐项最小实现建议与未决门，重点对接首发 Instrument/法域和 White-label/API 商业批次，再决定 V1 范围冻结并编制 **Issuer SaaS 核心模块详细功能 PRD**；按首发市场、金融工具、服务商及法律条件继续细化 V1 范围与 UI/UX。**第 04 份原则冻结不代表具体状态代码、所有模块 V1 交付或真实业务生产授权。**

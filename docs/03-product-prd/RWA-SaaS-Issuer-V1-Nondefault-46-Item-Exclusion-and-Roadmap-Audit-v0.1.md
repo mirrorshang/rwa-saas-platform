@@ -1,6 +1,6 @@
 # RWA SaaS｜Issuer V1 最后 46 项非默认交付候选范围复核 v0.1
 
-> **Audit / Draft：已完成 46 项候选逐 ID 映射；SCOPE-086～SCOPE-095 均为新推荐、尚未获得产品负责人批准；真实 V1 开发范围没有冻结。**
+> **Audit 完成：SCOPE-086～SCOPE-095 十项默认排除与独立商业产品交付边界已获明确批准；46 项各自研发深度与真实 V1 开发范围仍 Draft/未冻结。**
 >
 > 创建日期：2026-10-22。依据：[187 项交付候选五类矩阵](RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md)、[SCOPE-059～062](../../decisions/SCOPE-059-062-issuer-v1-delivery-and-validation-decisions.md)、[ARCH-001](../../decisions/ARCH-001-api-first-unified-business-core.md)、[DEC-011](../../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md)、[SCOPE-078～085](../../decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md)。
 >
@@ -16,7 +16,7 @@
 | 商业批次待定 | 14 | M15-F001～F007 / M16-F001～F007 归独立商业产品，具体交付里程碑仍待定 |
 | **合计** | **46** | **此表全部为实现和交付建议 Draft** |
 
-## 二、46 项逐 ID 范围审计（尚待产品负责人批准）
+## 二、46 项逐 ID 范围审计（交付分类处理原则 Approved，具体开发承诺仍待决定）
 
 | ID 与功能 | 原范围等级 | 所属审查组 | 对 Issuer 核心 V1 的推荐处理 |
 |---|---|---|---|
@@ -67,7 +67,7 @@
 | M21-F007 BI 预测和复杂分析 | P2 | SCOPE-089 | 在线商业付费自动化、企业 SSO、高级 CRM/营销/个性推荐/BI 均属于增强；暂不承诺 Issuer 核心首期，保持受权账户、计费合同、必要报表/正式通知的基础能力。 |
 | M22-F009 多服务商智能切换市场 | P2 | SCOPE-091 | 低代码流程/规则、增强安全自动化、多服务商市场/智能切换不计默认首期；共享流程、强制规则、安全、最低三方连接和审计仍属于 P0 业务能力。 |
 
-## 三、本批正式产品建议（待评审）
+## 三、已确认的十项产品范围原则（SCOPE-086～SCOPE-095）
 
 | 决策 ID | 功能覆盖 | 建议确认的实现与版本边界 |
 |---|---|---|
@@ -102,4 +102,4 @@
 - **M16 七项“待定”**不等于 Issuer 核心可以不用 API；ARCH-001 的契约化内部 API 与业务核心复用是当前已批准原则，商业开发者门户/外部开放契约与商用版本待审。
 - **SCOPE-078～085 已批准，但 16 项条件性 P1 是否实际触发仍依参考 Instrument**。不允许以“排除最后 46 项”为由跳过此前各业务审核结论。
 
-**治理结论**：46 项全部获得了审计映射，但 SCOPE-086～095 均为**待决策建议**，未获用户本轮确认。不得修改 187 项既定范围等级、冻结文档或原 DEC/ARCH；PR #6 必须保持 Draft / Open / Unmerged。
+**治理结论**：46 项已全部审核，**SCOPE-086～095 均获产品负责人明确批准**，见[正式决策记录](../../decisions/SCOPE-086-095-nondefault-issuer-v1-scope-and-product-milestones.md)。批准的是“不默认纳入 Issuer SaaS 核心首期交付”和独立产品线边界，**不是 V1 逐功能实施深度、参考 Instrument 或开发范围的最终冻结**。187 项原等级、冻结文档与原 DEC/ARCH 均不得修改；PR #6 保持 Draft / Open / Unmerged。

@@ -27,8 +27,10 @@
 - [《Issuer SaaS V1 五类交付候选分组 v0.1》](docs/03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md)：**Draft（187 项全覆盖）**，按共享核心开发、共享界面简化、外部受权执行、条件性必需、暂不计入 Issuer 首期五类提出可审查的建议；M15/M16 独立商业产品上线批次仍待定，未获功能级交付批准。
 - [《Issuer SaaS V1 73+42 项交叉审核 v0.1》](docs/03-product-prd/RWA-SaaS-Issuer-V1-Core-and-Shared-UI-Audit-v0.1.md)：**Audit / Draft**，已审计 115 项 P0 候选、8 类跨模块边界与 15 个逻辑页面群，SCOPE-063～070 **已批准跨模块与共享 UI 规划原则**，但尚未冻结实际 UI 页面、接口或开发清单；没有更改既有范围等级。
 - [SCOPE-063～070｜核心与共享 UI 审核决策](decisions/SCOPE-063-070-core-ui-cross-module-simplification.md)：**Approved**；统一租户、资格、金融权威事实及 API-First 复用；15 个页面群不是页面/路由冻结。
-- [《10 项受权外部执行与权威核验审核 v0.1》](docs/03-product-prd/RWA-SaaS-Issuer-V1-External-Execution-and-Authority-Audit-v0.1.md)：**Audit/Draft**，针对 M07/M11/M12/M22 全部 10 项提出 SCOPE-071～077，尚待产品负责人审核。
-- **下一步产品工作**：先审 10 项外部执行 SCOPE-071～077，接着审 16 项条件性 P1，再完成 V1 最小交付清单与未决门的进一步审核；评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
+- [《10 项受权外部执行与权威核验审核 v0.1》](docs/03-product-prd/RWA-SaaS-Issuer-V1-External-Execution-and-Authority-Audit-v0.1.md)：**Audit/Draft**，针对 M07/M11/M12/M22 全部 10 项，**SCOPE-071～077 安全和权威责任原则已批准**；具体执行主体、外部服务商和实现方案仍待审核。
+- [SCOPE-071～077｜外部执行与权威事实控制决策](decisions/SCOPE-071-077-external-execution-authority-controls.md)：**Approved**。外部合法执行/观察与 SaaS 的受控请求、审计及独立事实核验分离；不可因 API-First 绕开退款、Token、登记的高风险守卫。
+- [《16 项条件性 P1 必需性专项审核 v0.1》](docs/03-product-prd/RWA-SaaS-Issuer-V1-Conditional-P1-Assessment-v0.1.md)：**Audit/Draft**，提出 SCOPE-078～085，待产品负责人审核；最终必要性需要 1～2 类参考 Instrument。
+- **下一步产品工作**：先审 16 项条件性 P1（SCOPE-078～085），再完成 V1 最小交付清单与未决门的进一步审核；评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
 - **尚未完成**：第 05～10 份核心规格、模块详细 PRD、第 04 份具体工具/法域实施细化及 V1 逐功能范围。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
 
 详见 **[文档状态与决策索引](docs/Document-Status-Index.md)**，其中包含十份核心文档进度、决策链接、未决事项及研究资料来源。

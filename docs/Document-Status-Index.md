@@ -13,6 +13,7 @@
 - [第 03 份总体 PRD v0.1](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)：2026-10-19 **Frozen（总体需求基线）**，冻结提交 `aacbd1c40d8fd41ff8b9e0fc27263b9570048ba3`；“建议纳入 V1”的候选功能不自动成为已批准的 V1 交付承诺。
 - [《产品功能树与模块责任矩阵 v0.1》](03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)：2026-10-20 **Frozen（产品功能架构基线）**，批准六能力域、22 个模块、三级功能范围、责任边界及 PAY-001 稳定币认购支付优先方向；**逐功能 V1 范围、排期、技术/法律和生产启用均尚未冻结**。
 - 版本范围补充：依据 [DEC-011](../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md)，V1 交易闭环聚焦一级认购，V2 规划受控转让；DEC-009 的其余安全与法律原则继续有效。
+- [第 04 份流程与状态机 v0.1](04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)：2026-10-21 **Frozen（仅跨模块业务规则和状态机原则基线）**；包含 WF-01～18、INV-01～03、核心守卫及 22 个验收场景；具体枚举、实施设计与 V1 全量范围仍需细化。
 - 项目仍处产品规划阶段；不构成正式开发、生产链上执行、真实资金业务、市场开放或其他受监管金融活动的授权。
 
 ## 十份核心文档登记
@@ -22,7 +23,7 @@
 | 01 | 竞品研究与可追溯证据 | [旧 PRD 适配审查](01-competitor-research/Legacy-PRD-Alignment-Review-v01.md) 为 Review、非冻结。Brickken 第一轮实测报告在独立 [PR #2](https://github.com/mirrorshang/rwa-saas-platform/pull/2)（Open / Unmerged），不在本分支，也未被视为正式冻结或完整实测闭环 |
 | 02 | 产品定位、三条商业产品线、战略原则与未决商业假设 | [v1.0 有条件冻结](02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md)；仅已明确批准的原则作为基线 |
 | 03 | 总体产品需求、功能架构、详细模块 PRD 和验收要求 | [总体 PRD v0.1 Frozen](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)；[功能树/责任矩阵 v0.1 Frozen](03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)；模块详细 PRD 尚未编制，逐功能 V1 范围待细化 |
-| 04 | 跨模块流程、状态机、异常与责任 | [《核心业务流程与状态机 v0.1》](04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md) 已提交 **Draft（待正式评审，未冻结）**，覆盖 WF-01～WF-18、INV-01～03、端到端异常场景与版本范围；不构成开发授权 |
+| 04 | 跨模块流程、状态机、异常与责任 | [《核心业务流程与状态机 v0.1》](04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md) **Frozen（2026-10-21，跨模块流程与状态机原则基线）**；覆盖 WF-01～WF-18、INV-01～03、转换/权限/异常原则和 22 个业务验收场景；具体状态代码、法域/资产、技术及完整 V1 交付未冻结 |
 | 05 | 多资产、投资者资格、法域规则与配置边界 | [目录占位](05-compliance/)；尚未编制，不代替法律意见 |
 | 06 | 信息架构、页面交互和设计系统 | [目录占位](06-ui-ux/)；尚未编制 |
 | 07 | 技术架构、数据、API、链上方案、安全和集成 | [目录占位](07-architecture/)；尚未编制 |
@@ -50,7 +51,7 @@
 | [DEC-010](../decisions/DEC-010-commercial-packaging-and-pricing-principles.md) | 三条商业线分别包装，以订阅/许可及少量计费维度为原则 | 价格、额度、SLA、实际收费与商业假设 |
 | [DEC-011](../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md) | **V1 一级发行认购优先；V2 才规划受控转让产品**，保留 V1 必要 Token 转让限制。明确取代 DEC-009 中“建议 V1 交付转让工作流”的时间安排 | V2 详细功能/排期、首发工具下 V1 合约限制方案 |
 
-第 02、03 份冻结正文形成时引用 DEC-001 至 DEC-010，**不因新增 DEC-011 而追溯改写**。DEC-011 作为后续已明确批准的版本范围决策，仅就 V1/V2 受控转让交付安排覆盖 DEC-009 原 V1 建议。第 04 份 Draft 已建立初步依赖与场景追踪，仍需冻结前正式审查。本索引不替代细化追踪工作。
+第 02、03 份冻结正文形成时引用 DEC-001 至 DEC-010，**不因新增 DEC-011 而追溯改写**。DEC-011 作为后续已明确批准的版本范围决策，仅就 V1/V2 受控转让交付安排覆盖 DEC-009 原 V1 建议。第 04 份 v0.1 已经产品负责人选择 A，冻结为跨模块业务流程与状态机**原则基线**；具体实现、法域及产品功能交付范围仍保留后续决策门。本索引不替代细化追踪工作。
 
 ## 持续开放的决策门
 
@@ -60,4 +61,4 @@
 4. 具体价格、套餐、额度、SLA 与商业可行性；
 5. 产品功能架构已冻结，但 V1 **逐功能**范围、交付优先级、详细权限/流程、技术选型与实际交付计划仍待决。
 
-当前建议的下一项产品工作：对第 04 份《核心业务流程与状态机 v0.1》**Draft** 开展正式文档评审与状态字典/权限/异常的收口，之后再单独决定是否冻结；并按首发市场、金融工具和合作方决策门细化 V1 逐功能范围、模块 PRD 与 UI/UX。**冻结架构不等于冻结全部功能 V1 交付或批准真实生产金融活动。**
+当前建议的下一项产品工作：以已冻结的第 02/03/04 份原则基线及冻结功能树为依据，优先编制 **Issuer SaaS 核心模块详细功能 PRD**，从 M01、M04～M12 的必要闭环开始分批评审，并按首发市场、金融工具、服务商及法律条件细化 V1 逐功能范围与 UI/UX。**第 04 份原则冻结不代表具体状态代码、所有模块 V1 交付或真实业务生产授权。**

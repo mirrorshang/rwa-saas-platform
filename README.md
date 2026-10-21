@@ -29,8 +29,10 @@
 - [SCOPE-063～070｜核心与共享 UI 审核决策](decisions/SCOPE-063-070-core-ui-cross-module-simplification.md)：**Approved**；统一租户、资格、金融权威事实及 API-First 复用；15 个页面群不是页面/路由冻结。
 - [《10 项受权外部执行与权威核验审核 v0.1》](docs/03-product-prd/RWA-SaaS-Issuer-V1-External-Execution-and-Authority-Audit-v0.1.md)：**Audit/Draft**，针对 M07/M11/M12/M22 全部 10 项，**SCOPE-071～077 安全和权威责任原则已批准**；具体执行主体、外部服务商和实现方案仍待审核。
 - [SCOPE-071～077｜外部执行与权威事实控制决策](decisions/SCOPE-071-077-external-execution-authority-controls.md)：**Approved**。外部合法执行/观察与 SaaS 的受控请求、审计及独立事实核验分离；不可因 API-First 绕开退款、Token、登记的高风险守卫。
-- [《16 项条件性 P1 必需性专项审核 v0.1》](docs/03-product-prd/RWA-SaaS-Issuer-V1-Conditional-P1-Assessment-v0.1.md)：**Audit/Draft**，提出 SCOPE-078～085，待产品负责人审核；最终必要性需要 1～2 类参考 Instrument。
-- **下一步产品工作**：先审 16 项条件性 P1（SCOPE-078～085），再完成 V1 最小交付清单与未决门的进一步审核；评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
+- [《16 项条件性 P1 必需性专项审核 v0.1》](docs/03-product-prd/RWA-SaaS-Issuer-V1-Conditional-P1-Assessment-v0.1.md)：**Audit**，**SCOPE-078～085 已批准判断原则**；需通过 1～2 类参考 Instrument 核实实际 V1 必交项目。
+- [SCOPE-078～085｜条件性 P1 最低必要控制决策](decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md)：**Approved**，16 项不自动全量纳入开发；基础资金异常、规则优先级和必要数据移交不能删减。
+- [《最后 46 项非默认 Issuer 首期候选审核 v0.1》](docs/03-product-prd/RWA-SaaS-Issuer-V1-Nondefault-46-Item-Exclusion-and-Roadmap-Audit-v0.1.md)：**Audit/Draft**，覆盖 P1 5/P2 21/V2 6/White-label & Open API 批次待定 14，SCOPE-086～095 尚待产品负责人批准；商业产品的真实上线批次尚未决定。
+- **下一步产品工作**：审核最后 46 项非默认 Issuer 首期候选（SCOPE-086～095），然后根据首发 1～2 类 Instrument 验证真实 V1 必交范围及剩余决策门；评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
 - **尚未完成**：第 05～10 份核心规格、模块详细 PRD、第 04 份具体工具/法域实施细化及 V1 逐功能范围。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
 
 详见 **[文档状态与决策索引](docs/Document-Status-Index.md)**，其中包含十份核心文档进度、决策链接、未决事项及研究资料来源。

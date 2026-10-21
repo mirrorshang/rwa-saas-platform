@@ -245,4 +245,181 @@ INV-01～03 已由用户认可；守卫 A～E 是已确认原则的详细化执�
 
 **修订纪律**：已批准原则与详细 Draft 建议分层存储。本文件暂不冻结、不得并入已冻结第 02/03 份正文；待产品负责人对本 Draft 正式评审后，才作冻结决策。PR #6 必须仍为 Draft / Open / Unmerged。
 
-**本版结论：第 04 份 v0.1 完整 Draft 已编制，待产品负责人正式评审，未冻结，未授权开发或生产发行。**
+## 9. 正式评审补强：04-43～04-48（2026-10-21）
+
+产品负责人已明确认可 04-43～04-48 六项修订要求。以下是依据这些要求形成的**正式评审候选规格**，用于收口跨模块状态、转换、权限、额度和异常；它们尚未被独立逐条确认为最终技术/法域实现，更**不构成第 04 份冻结**。本节的**规范化定义优先于**第 3～5 节出现的状态序列简写；早期简写保留作为可追溯业务意图，不得据此绕过本节守卫条件。
+
+### 9.1 状态字典：每个对象保持独立（04-43）
+
+状态规范：
+- DRAFT/PENDING 是内部工作流；EXTERNAL_UNKNOWN 是外部执行结果未确定；FAILED 是有证据的失败；CONFIRMED 是按该事实源达到规定确认条件。不得以超时把 UNKNOWN 静默改为 FAILED。
+- FINAL/COMPLETED 必须明确是哪个对象的终态，不能跨对象传播。已发生资金、链上和法定登记事实使用事件追加/纠正，不以直接改写历史消除矛盾。
+- 以下为**逻辑英文状态码候选**，具体枚举/转移版本仍需在首发金融工具与技术设计中确定；这份规范定义的是业务意义、转换边界和不可跳过的检查。
+
+| 对象 | 主要状态（简化候选） | 独立事实/边界 | 主责 |
+|---|---|---|---|
+| CustomerApplication | Submitted / Reviewing / NeedsInfo / Approved / Rejected | 批准申请不等于 Tenant 生效 | M01 |
+| Tenant | PendingActivation / Activating / Active / Suspended / Exiting / Terminated / ActivationFailed | SaaS 授权不等于发行许可 | M01 |
+| Membership | Invited / Active / Suspended / Revoked / Expired | 权限事件不覆盖历史审批 | M02 |
+| Asset | Draft / PendingReview / NeedsSupplement / ReviewedForUse / Suspended / Archived | 内部审核不是法定产权结论 | M04 |
+| Instrument | Draft / PendingReview / NeedsRevision / ReviewedForUse / Suspended / Retired | 权利及条款版本独立 | M04 |
+| Project | Draft / Preparing / Active / Suspended / Closing / Closed / Archived | 同时容纳多个 Offering 和存续义务 | M05 |
+| Offering | Draft / SubmittedForReview / NeedsChanges / ApprovedNotPublished / PublishedNotOpen / Open / Paused / ClosedForSubscriptions / SettlementInProgress / Completed / Cancelled | Open 可伴随若干已完成的订单；Cancelled 仍可有未结退款 | M05 |
+| Verification | NotStarted / Collecting / Processing / NeedsInfo / ManualReview / Verified / Failed / Expired / Revoked | KYC 身份结果，不是 Offering 资格 | M09 |
+| Eligibility | NotEvaluated / Evaluating / Eligible / Ineligible / NeedsMoreInfo / ManualReview / Expired / Invalidated | 每个 Offering 独立判断，存规则版本/时点 | M09 |
+| QuoteSnapshot | Created / Offered / Accepted / Expired / Withdrawn | 数量价格、网络、币种合约、条款快照不可静默变更 | M10 |
+| Subscription | Draft / Submitted / Accepted / AwaitingPayment / InProcess / Closed / Rejected / Cancelled / Expired / NeedsReview | Accepted 仅指业务受理，Closed 也不自动等于取得权利 | M10 |
+| Reservation | Active / HeldPendingReconciliation / ConvertedToAllocation / ReleasePending / Released / ExceptionFrozen | 预留、冻结与已分配使用互斥额度核算口径 | M10 请求，M12 额度权威 |
+| PaymentInstruction | PendingSetup / AwaitingPayment / Active / Expired / Cancelled | 支付要求，不构成真实付款事实 | M11 |
+| OnchainTransferReceipt | NotSeen / Detected / Confirming / Confirmed / Unknown / Failed / NeedsReview | 链、合约、事件/交易、最终性和可信收款方事实 | M11 |
+| Reconciliation | NotStarted / Matching / Matched / Mismatch / Investigating / Resolved / Escalated | 匹配结果是规则化决策，与链上事实独立 | M11 |
+| Allocation | NotStarted / RuleCheck / PendingApproval / AutoAuthorized / Allocated / PartiallyAllocated / Rejected / NeedsReview / ControlledCorrection | 批准份额、批准依据及余款处理；不等于 Token 到账 | M12 |
+| RegisterUpdate | NotStarted / Pending / Submitted / Confirmed / Failed / Unknown / NeedsReconciliation | 法定权威由 Instrument/法域确定 | M12 |
+| TokenExecution | NotAuthorized / Ready / Submitted / Confirming / Confirmed / Failed / Unknown / NeedsReconciliation | 单次授权执行、链上结果和交易最终性 | M07 |
+| DeliveryReconciliation | NotStarted / Matching / Matched / Mismatch / Investigating / Resolved | 权利登记及 Token 是否符合各自法律/技术要求 | M12 与 M07 |
+| Refund | Triggered / Requested / PendingApproval / ApprovedPendingExecution / Processing / OnchainConfirming / Confirmed / Failed / Unknown / Returned / Investigating | 独立资金退回事实；不因取消订单自动完成 | M11 |
+| LifecycleEvent | Draft / CalculationPending / Calculated / ReviewPending / Approved / Processing / Completed / Failed / Disputed / Cancelled | 已批收益事件与外部支付结果不得混同 | M13 |
+| ExceptionCase | Detected / Classified / Assigned / Investigating / RemediationApproved / Recovering / Reconciled / Closed / Escalated / Reopened | 仅协调，不能越权改写模块权威事实 | M17 |
+| TransferRequest | Draft / Submitted / UnderReview / Approved / Rejected / Cancelled / Unknown / Completed | **仅 V2 规划，V1 不暴露投资者间转让业务** | M14 |
+| InvestorPurchaseView | KycRequired / QuotePending / AwaitingPayment / Processing / Completed / ActionRequired / RefundProcessing / Refunded / Cancelled | **派生展示**，不是可直接写入的独立金融权威状态 | M08 |
+
+### 9.2 核心状态转换矩阵（04-43、04-44）
+
+下表定义**允许的核心转换**；未列出的直接跳转默认禁止，例外需引用正式批准的特定 Instrument/Offering 流程版本。所有转换需记录事件 ID、前后状态、决策主体、规则版本、业务时间、权威来源及必要审计。
+
+| 转换 ID | 对象：从 → 到 | 触发及必须满足的 Guard | 执行/批准角色（示例） | 不满足时/证据 |
+|---|---|---|---|---|
+| T01 | Tenant PendingActivation → Activating → Active | 合同/产品授权、工作空间隔离、管理员与配置就绪 | M01 受权运营；客户管理员接受授权 | 缺项保持开通中或 ActivationFailed；开通清单与操作日志 |
+| T02 | Tenant Active ↔ Suspended；Suspended/Active → Exiting | 暂停/恢复/终止符合合同和安全规则；未结业务有处理通道 | 受权客户/平台服务管理员，必要合规批准 | 未结事项独立保留；退出及交接证据 |
+| T03 | Asset/Instrument Draft → PendingReview → ReviewedForUse | 适用资料、审核角色、法律权利结构、文件版本满足内部使用要求 | 发行方资料提交人、指定审核人 | 补件/需修订，审核依据；不冒称法定认可 |
+| T04 | Project Draft → Preparing → Active | 有合法组织权限、项目关联对象、有效工作任务 | 发行项目经理；指定审核人（适用时） | 未满足准备条件不启动，项目工作日志 |
+| T05 | Project Active → Closing → Closed | 所有关联轮次及未结资金/登记/Token/存续职责已结清或已完成有效责任移交 | 项目负责人提交、授权关闭人批准 | 有未处理义务则阻断；关闭清单 |
+| T06 | Offering Draft → SubmittedForReview → ApprovedNotPublished | 资产/工具/条款、准入、收款与交付规则和必要审批满足 | 项目经理提交、获授权发行审批人批准 | NeedsChanges/Rejected；批准版本证据 |
+| T07 | Offering ApprovedNotPublished → PublishedNotOpen → Open | 发布许可、法律/服务商、支付配置、风险/执行授权及开放时点均有效 | 授权发布角色；调度器仅按受权版本触发 | 不满足则不得销售；发布门槛清单与版本 |
+| T08 | Offering Open ↔ Paused → ClosedForSubscriptions | 经批准的暂停/恢复/关闭触发；正在途订单有归属规则 | 发行方授权角色/受控自动触发 | 暂停后不新收单，但到账仍必须记录 |
+| T09 | Offering ClosedForSubscriptions → SettlementInProgress → Completed | 不再新建认购，全部适用订单/退款/配售/登记/Token/交割差异按规则结清或合法移交 | 发行方收尾负责人及适用审核 | 缺未结项则不能 Completed；整轮收尾清单 |
+| T10 | Verification Processing → Verified / NeedsInfo / ManualReview / Failed | 有有效核验事实、服务商结果与尽调责任认定 | KYC 服务/获权合规责任方 | 证据不全不可 Verified；保留事实引用 |
+| T11 | Eligibility Evaluating → Eligible / Ineligible / NeedsMoreInfo / ManualReview | 特定 Offering 资格规则、有效 KYC/AML 和适用要求满足 | M09 规则自动判断或获授权审核人 | 失败阻止报价/新不可逆操作；规则版本 |
+| T12 | Quote Offered → Accepted | 报价有效、条款/必要签署确认、投资者关联钱包和额度检查完成 | 投资者确认，M10 原子校验 | 过期则重报；不可静默沿用旧价格 |
+| T13 | Reservation Active → HeldPendingReconciliation / ConvertedToAllocation | 存在有效付款观察/资金对账状态或已批准配售 | M10 发起，M12 额度核算决定 | Unknown 不盲目释放；订单、链上、额度事件 |
+| T14 | Reservation Active → ReleasePending → Released | 到期、取消或规则允许；已按批准方法调查未结支付和重复入账 | M10 触发，M11 核实，M12 原子释放 | 支付可疑→Held；释放/查询证据 |
+| T15 | PaymentInstruction AwaitingPayment → Active / Expired / Cancelled | 按报价/规则安排付款有效期；不修改链上既有事实 | M11 系统或适用责任方 | 到期后实际到账进入独立异常识别 |
+| T16 | Receipt Detected → Confirming → Confirmed | 正确 chain_id、Token 合约/精度、地址、事件、最终性、可信到账证据满足 | M11 + M22 链/付款数据源 | Unknown/NeedsReview，不把广播当完成 |
+| T17 | Reconciliation Matching → Matched / Mismatch / Investigating | 真实到账与订单金额/资产/网络/期限/身份规则可合法匹配 | M11 自动规则或授权财务复核 | 不匹配保留原实收并派生差异 |
+| T18 | Allocation RuleCheck → AutoAuthorized / PendingApproval → Allocated / PartiallyAllocated | 额度仍占用、资金已按必要条件对账、资格与执行许可有效、已批准自动规则，或逐笔批准有效 | M12 规则授权服务 / 配售批准人 | NeedsReview，不以到账直接视为配售 |
+| T19 | Register Pending → Submitted → Confirmed | 经过相关法定登记责任方或获确认的权威记录源 | M12 与授权登记机构 | Unknown/Failed/NeedsReconciliation；外部登记引用 |
+| T20 | Token Ready → Submitted → Confirming → Confirmed | 对应唯一获准配售、有效合约/权限/收款钱包、必要登记时序、链上最终性 | M07 的获授权执行主体/服务商 | Unknown 先查结果再决定补偿；链上凭证 |
+| T21 | DeliveryReconciliation Matching → Matched / Mismatch | 此 Instrument 所需权利登记及 Token 结果均满足且份额/人/钱包一致 | M12 + M07 核验规则 | Mismatch 阻止投资者最终完成展示 |
+| T22 | Refund Requested/Triggered → PendingApproval → ApprovedPendingExecution | 存在合法退款原因、金额上限、收款人/地址核验及必要资金责任方审批 | 发行方财务/授权资金控制方 | 拒绝/调查并保留原收款事实；审批证据 |
+| T23 | Refund Processing → OnchainConfirming → Confirmed | 真实执行及到账/渠道最终状态经获批准权威源核对 | 资金责任方 + M11 对账 | Unknown/Failed/Returned，禁止盲目二次出款 |
+| T24 | Exception Detected → Assigned → Investigating → RemediationApproved → Recovering → Closed | 主责任模块确认事实，必要审批、补偿/重试结果和复核证据齐备 | M17 协调、原模块及授权审核人决定 | 证据不足保持调查/升级，绝不写假状态 |
+| T25 | Lifecycle Approved → Processing → Completed | 权益快照/计算、适用审批与支付/登记等外部结果按规则得到确认 | 发行方/登记/资金责任方，M13 编排 | 支付未知/部分则不视为全量完成 |
+| T26 | TransferRequest ... | V1 **禁止创建用户间转让申请及对应业务 API**；V2 单独审查 | V1 不适用 | 必要合约级转让限制仍需校验（DEC-011） |
+
+**核心对象状态与投影关系（04-44）**：
+- Project 可以 Active，Offering A 已 Completed、Offering B 仍 Draft，同时 A 有持续期义务；不能只用 Project 一个状态表达所有业务。
+- Offering Open **不要求**所有订单未完成；单笔 InvestorPurchaseView=Completed 可以在 Offering Open 时成立。售罄为可售额度/关闭触发条件（依批准规则），**不是**替代交割状态的独立法律成功状态。
+- Subscription Accepted、Payment Confirmed、Reconciliation Matched、Allocation Allocated、Register Confirmed、Token Confirmed、Offering Completed **互不等价**。
+- InvestorPurchaseView=Completed 仅当**该 Instrument 所要求的全部最终交割/登记与 Token 交付条件已满足**，且无阻断性差异；投资者视图来自各对象的可信派生规则，不允许任意后台手工设为已完成。
+- Offering Cancelled 不代表退款已完成；客户合同 Terminated 不代表 Token 权利或存续义务消灭。
+
+### 9.3 额度账本与原子转换（04-45）
+
+**业务唯一核算责任：M12 为 Offering 批准额度、可配额度、已配额度、异常冻结额度的主责任模块；M10 负责认购、报价和提交预留/释放请求；M11 负责付款核对；M07 链上发行量作为独立事实核对。** M10/M12 不得分别独立认定两个互不一致的剩余额度。
+
+推荐模型：每一单位受限发行容量在**同一瞬间只能归属于一个互斥桶**，例如 Free、Reserved、Frozen、Allocated。Reserved→Allocated 为**一个原子业务转换**，而非先释放再配售；如果异常只是为某笔订单冻结，需先从 Reserved 转 Frozen，不能同时重复扣减。发行总上限应按 Instrument/Token/Offering 已批准关系核算，对共享上限的多个 Offering 进行跨轮次检查。
+
+**示意不变量**（同单位口径、互斥分桶条件下）：ApprovedCap = Free + Reserved + Frozen + Allocated。发生销毁、赎回、再销售或供应量调整时需要新增**受审批的变动事件**并维护账本版本，不能未经规则直接把链上余额变化当作新可售份额。
+
+| 操作 | 账本前置守卫 | 原子结果 | 失败/迟到处理 |
+|---|---|---|---|
+| 创建预留 | Offering Open；报价/资格有效；Free≥需求；唯一购买 ID | Free→Reserved，创建 reservation_id、expire_at、版本 | 容量不足不生成可付款订单；竞争失败重新报价 |
+| 付款被观察到 | 匹配订单或形成未匹配入账事实 | Reserved→Frozen/Held（若需阻断释放）或保持受保护 Reserved | 不能仅按倒计时清除付款 |
+| 预留到期释放 | 截止规则满足，M11 按批准窗口检查了在途/未知支付，无法律占用障碍 | Reserved→Free（带可核验释放凭证） | UNKNOWN/潜在迟到账→Frozen，待核对 |
+| 付款合法确认并配售 | 有效预留/冻结、完成必要对账/准入/批准规则、容量有效 | Reserved/Frozen→Allocated，仅一次 | 配售失败保持可追踪占用；不先释放 |
+| 迟到账且已释放或售罄 | 原订单预留已合法终结，资金事实新确认 | 资金独立入账；不开自动新配售 | 依据获批准新订单/调额/退款决策，防重复配售 |
+| 异常纠正/额度调整 | 明确责任方授权、Legal/Instrument 允许、链上/登记事实核验 | 追加补偿与额度版本，不无痕改账 | 权益已生效时不能单靠退款或销毁数据库记录回售 |
+
+配售确认与 Token 已铸造数量不是同一指标。交付失败不会自动释放已确认配售份额。若一个 Instrument 允许多轮 Offering 共享总发行上限，必须核对合约授权铸造上限、已交付数量与独立权利登记总量；同时定义报价的最小份额单位、精度及溢出/舍入规则。
+
+### 9.4 链上付款、确认变化、迟到账与可恢复性（04-46）
+
+| 事件 | 资金/订单状态动作 | 额度与交付动作 | 权威证据及处理责任 |
+|---|---|---|---|
+| 钱包刚广播 Tx | 记录可查询的交易提交线索，Receipt 不得直接 Confirmed | 保持订单 AwaitingPayment/Processing，不进行最终配售 | M11/M22：chain_id、Tx、币种/收款信息 |
+| 交易被观察到但确认不足 | Receipt=Detected/Confirming | Reservation 保留或 Held，受批准超时策略治理 | M11：链上交易事件、确认要求/区块信息 |
+| 达到规定链上确认 | 只产生链上确认事实；再做入账归属及金额/Token/网络匹配 | Reconciliation 必须 Matched 才可进一步校验自动配售 | M11 及适用服务商收款权威来源 |
+| 交易确认后发生重组/权威反转 | **追加 Reversal/Dispute 事实事件**，打开新的调查/对账版本，不能抹去旧确认记录 | 阻断尚未完成的交付；若已交付按法律/合约授权的补偿/风险程序处理 | M11、M07、M12 与资金/登记责任方共同调查 |
+| 到期未见支付 | PaymentInstruction Expired；核对节点延迟、未知支付和观察窗口 | 可证明安全后 ReleasePending→Released；否则 Held/Frozen | M11 核验，M12 决定额度释放 |
+| 预留释放后迟到账 | 原订单状态与新资金事实独立保存 | 不自动重新占用他人额度；进入异常/可能退款 | M11 异常资金记录与有权责任人决定 |
+| 少付/多付/分笔/错合约/错链 | Receipt 全量记录；对账 Mismatch/Investigating | 默认不满足自动配售 Guard；依法获准时补款、重报或退差 | M11 保留最小单位精度/事件；M10/M12 处理业务后果 |
+| 相同付款 Webhook 重复 | 同一事件 ID 仅更新一次状态事实 | 不重复认购、对账或配售 | M22 接入去重；M11 业务级幂等 |
+| 同一投资者确实发出多笔不同 Tx | 每笔收款凭证分别记录并关联 | 只能依订单和支付条款批准合并/转新单/退款 | M11 金额、Tx、事件索引、订单映射 |
+| 外部服务超时、返回 Unknown | Unknown 保持开放，记录最近查询时间、原因和升级 SLA | 不启动同一不可逆出款或铸造的第二次执行 | 对应模块查询原外部指令、链上 nonce/日志、人工升级 |
+
+**业务级幂等键建议**：购买请求关联 tenant/Offering/investor/client_request_id；区块链事件识别使用 chain_id + tx_hash + log_index + 被批准的事件来源；Allocation 关联 allocation_decision_id/批准版本；TokenExecution 关联 allocation_id + execution_intent_id + 授权数量与链上执行引用；Refund 关联 refund_case_id + payout_intent_id。具体数据库唯一性、事件观察和最终性阈值属第 07 份技术方案，产品侧必须强制“一项真实业务决定不因重复投递而重复执行”。
+
+### 9.5 操作、审批与责任矩阵（04-47）
+
+此表表达**必须满足的责任/授权类别**，不是声称 SaaS 拥有发行、资金托管、法定登记或链上密钥操作的法定权力。角色模板与是否允许同人双岗、双人复核门槛需由具体法域/Instrument/客户风险配置决定。
+
+| 动作/转换 | 申请/发起 | 审批或事前规则授权 | 执行与事实确认 | 分权与审计要求 |
+|---|---|---|---|---|
+| Tenant 开通/暂停/退出 | 客户及授权 SaaS 运营 | 合同/服务权限责任人 | M01/M03 按许可操作 | 平台支持人员不因此取得客户交易更改权 |
+| Asset/Instrument 内部审核 | 发行方资料提交人 | 发行方适格审核/专业机构（适用时） | M04 引用 M06 证据 | 资料上传者不能自证法定权属 |
+| Offering 发布及模式切换 | 项目负责人 | 发行方获授权审批 + 必要法律/服务商就绪 Gate | M05 发布 | 必要分权；发布后变更版本/影响分析 |
+| KYC 与例外资格 | 投资者、核验提供方 | 授权 KYC/合规责任方 | M09 读取 M22 事实并留痕 | 客服无权覆盖拒绝/制裁风险事实 |
+| 购买报价/预留 | 投资者 | 已批准 Offering 规则 | M10 请求、M12 核算 | 并发可用量、可追溯订单/报价 |
+| 付款信息与资金对账 | 投资者发起外部付款 | 授权收款主体/支付规则 | M11 对账，资金事实来自批准的外部权威 | 运营手填不可伪造资金到账 |
+| 自动配售 | 受理购买的系统事件 | **发行前获授权责任主体批准的规则和适用逐笔 Guard** | M12 生成不可重复配售决定 | 规则授权可撤销；符合逐笔法定审批时禁自动跳过 |
+| 人工配售例外 | 授权发行运营人员 | 指定配售审批人/必要双人复核 | M12 执行决定 | 不得由无权客服直接配售 |
+| 权威登记更新 | 已批准配售/登记请求 | 法定登记责任方/授权登记规则 | M12 记录外部权威响应 | 不能用内部“完成”冒充权威登记 |
+| RWA Token 部署、Mint、转移/销毁 | 经授权发行操作或已批准自动流程 | 合约/密钥操作授权，按风险必要双人复核 | M07 + 适格签名/执行主体 | 不以 M03 管理员权限绕过密钥/资格控制 |
+| 退款批准与出款 | 合法退款原因触发 | 发行方财务、资金控制方及必要审批人 | 获授权资金控制方实际出款，M11 核对 | 收款地址核验；出款 Unknown 不盲目重试 |
+| 重要异常人工更正 | M17 工单、原模块提出 | 原业务责任方和必要独立复核人 | 原业务模块追加合法补偿记录 | 原值、新值、依据、身份、时间和外部证据 |
+| 存续期收益/还本 | 发行机构/获授权管理人 | 金额/权益快照/支付计划适用复核 | 资金责任主体，M13 引用权威结果 | 计算审批与出款执行分离 |
+| White-label 跨发行方展示 | 运营商申请 | 每家有权发行机构/渠道批准 | M15 授权，M08 展示 | 不因为品牌统一就共享敏感 KYC |
+| API 生产凭证和关键操作 | 客户开发管理员 | 租户及环境最小必要权限，真实交易仍需业务批准 | M16 调用共同业务核心 | API 不得绕过门户 Guard，所有关键调用审计 |
+
+**紧急处理**：发生异常时可以依据获批准的安全措施暂停受影响自动执行，但强制发布、释放额度、配售、补铸或退款的越权“紧急按钮”不得默认存在。合法紧急覆盖方案需事先确定适用角色、双人复核、事后报告和审计；对不可逆外部动作不承诺普通软件回滚。
+
+### 9.6 E2E-01～E2E-22 可执行验收卡（04-48）
+
+**统一测试规范**：每条验收卡均记录 TestID、给定状态与对象版本、触发动作、断言各权威对象状态、不能发生的副作用、所需日志/外部证据。下面各条提供预置数据、执行动作、必要断言和证据；真正的自动化脚本、模拟服务商及首发法域阈值留第 07/10 份实施设计。**业务测试通过不等于法律审查或生产上线批准。**
+
+| TestID | 前置状态/条件 | 触发动作 | 预期状态与不可发生的副作用 | 必需可核验的证据 |
+|---|---|---|---|---|
+| E2E-01 | Tenant Active，生产发行 Gate 未批准 | 客户点击正式发布/开放 | Offering 不得 Open；Tenant 可保留合法工作台访问；不得触发真实链上交易 | Gate 版本、拒绝原因、审计 |
+| E2E-02 | Project Active；A=Completed 且有存续义务，B=Preparing | 关闭 A 或尝试关闭 Project | Project 不误变 Closed；B 不被关闭；存续义务仍存在 | Project/Offering/存续快照及阻断原因 |
+| E2E-03 | 投资者已 Verified，Offering B 资格规则另有要求 | 点击 B 购买 | 自动重新评估 Eligibility；满足则报价，不要求整套 KYC 重填 | Verification ID、Eligibility 规则版本与决定 |
+| E2E-04 | KYC 有效但 B 额外证明缺失 | 点击购买 B | Eligibility=NeedsMoreInfo；不得生成有效付款指令；仅要求缺失资料 | 缺项清单、受控补件事件 |
+| E2E-05 | Free=1000，两购买者同一时刻各需 800 | 并发提交预留 | 至多一笔全额预留成功（无部分规则时）；Free≥0，Reserved≤ApprovedCap | 预留事务/版本、额度账本 |
+| E2E-06 | 预留 500 即将到期，付款已 Detected/Confirming | 触发超时处理 | Reservation HeldPendingReconciliation 或等效保护；不盲目释放/配售 | Tx 查询、超时/等待规则、额度事件 |
+| E2E-07 | 预留合法 Released，额度已再次售出，旧单新确认到账 | 发送迟到链上确认事件 | 资金记录存在，旧单不得直接复活配售/超额 Mint；创建异常/可退款工单 | 旧预留释放、Tx、ExceptionCase |
+| E2E-08 | 报价 500 USDC | 分别输入实收 450 与 550 | 各自 Reconciliation=MISMATCH（或批准的部分支付规则处理）；不得直接完成订单 | 最小单位金额、Token 合约、规则版本 |
+| E2E-09 | Offering 仅接收批准链/合约 USDC | 支付另一链或假 USDC | 不作为有效匹配支付；状态 NeedsReview/Mismatch；不触发配售 | chain_id、contract、收款账户、Tx |
+| E2E-10 | 投资者使用交易所来源地址，提供另一个合资格接收钱包 | 提交付款及接收钱包 | 四类身份/地址分别留存；接收钱包满足控制/资格要求后才准交付 | 钱包绑定/控制证明、风险规则、付款来源 |
+| E2E-11 | 同一个 Tx 已被业务确认 | 重放 3 次同一个 Webhook | 唯一有效收款/配售/交付记录，不重复执行 | event_id、幂等命中、下游调用计数 |
+| E2E-12 | 同一用户提交两个真实不同 Tx | 接收两个链上事件 | 两笔收款事实独立；仅依已批准订单/分批规则合并或处置 | 各 Tx+logIndex、支付匹配记录 |
+| E2E-13 | Payment 已 Matched，自动配售授权已被撤销 | 再次触发配售引擎 | Allocation 不得进入 Allocated；保持资金事实，进入 NeedsReview/授权补救路径 | 授权撤销版本、阻断原因和工单 |
+| E2E-14 | Token 执行链上已提交，响应 Unknown | 对原操作进行系统重试 | 先查链上 Tx/nonce/合约事件；未知时不提交第二次 Mint | 原 execution_intent_id、链上查询与重试决定 |
+| E2E-15 | 配售已确认，登记 Confirmed 但 Token Failed（反向再测） | 同步交割状态 | DeliveryReconciliation=MISMATCH；PurchaseView≠Completed；保持配售和资金事实 | 登记证据、Token 事件、异常调查 |
+| E2E-16 | Offering Open，付款已发起 | 暂停 Offering 后接收到账事件 | M11 仍识别/对账；新购买禁用；后续分配按暂停 Guard 决定 | 暂停审批、付款、被阻断操作 |
+| E2E-17 | Token/权威登记已完成，投资者要求撤销购买 | 申请退款 | 不直接改写配售/Token 或出款；进入适用法定纠正/赎回/审核 | 原权益、请求理由、审批/法定处理依据 |
+| E2E-18 | Refund 已提交外部出款，响应超时 Unknown | 重发退款请求/重复回调 | 不会二次出款；仍待查询和外部对账 | payout_intent_id、外部查询、重复请求日志 |
+| E2E-19 | 当前版本=V1，钱包存在 Token | 调用转让页面/API；尝试链上不合规转移 | 用户间转让业务入口和 API 不可用；依法要求的合约限制阻断未经授权流转 | API 响应、合约测试、转让规则版本 |
+| E2E-20 | Tenant 退出，有在途退款及存续义务 | 尝试直接 Terminated/删除数据 | 未达到有效责任交接不得结束/删权威记录；保留授权处理路径 | 退出清单、责任承接证据、访问日志 |
+| E2E-21 | White-label 管理 A/B，未授权访问 B 的敏感 KYC | A 的运营员查询 B | 全入口拒绝，包括 API/搜索/导出；不泄露字段或存在性 | RBAC/租户校验、拒绝审计 |
+| E2E-22 | API 重复提交同一个购买意图，Webhook 乱序 | 重放请求及回调 | 一个受理/预留事实；业务状态以权威查询为准，不被旧事件回退 | client_request_id、Webhook ID、业务事件序列 |
+
+**补充覆盖建议（不新增已批准需求）**：对 E2E-05～18 分别加上正常成功对照组、审批权限撤销、系统重启/服务商超时、金额精度/舍入、区块链重组、投资者最终权益可追溯等断言；按首发工具调整测试链、币种、阈值、角色和签署证据。
+
+### 9.7 仍不得直接冻结的实施变量与正式评审结果
+
+**本次已落实 04-43～04-48 的规格要求**：标准状态字典、主要转换/Guard、项目与订单终态映射、唯一额度核算责任和原子占用、链上确认变化与资金事实分离、权限/审批矩阵、22 个可验证 E2E 验收卡。
+
+**严格保留的决策门**：首发法域及金融工具；KYC/AML 与真实准入规则；自动配售是否获法定允许及审批形式；稳定币链/具体合约/收款方/确认阈值；权威登记和 Token 法律效力及执行时序；V1 其他逐功能深度、White-label/API 交付计划；系统字段、数据库、环境、签名与服务商选型。这些由后续正式法域/产品/架构决策确定，不得被此 Draft 假定为已批准。
+
+**冻结建议，仅供产品负责人下一次明确决策**：可考虑将本文件冻结为「跨模块业务规则与状态机原则基线」，但其具体状态代码/技术机制与未决法域/Instrument 条件仍标注待细化；若要求将其冻结为“所有核心状态已达到直接编码的唯一工程规格”，则本版仍未满足该更高标准，需先确定首发工具/资金/登记与详细技术设计。冻结必须由产品负责人另行明确授权，PR #6 不得擅自合并。
+
+**本版结论：v0.1 Draft 已按第 04-43～04-48 项完成状态字典、转换矩阵、额度/链上/权限与 22 个验收卡收口；仍待产品负责人正式冻结决策，不构成研发或生产授权。**

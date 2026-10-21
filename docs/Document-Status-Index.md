@@ -22,7 +22,7 @@
 |---|---|---|
 | 01 | 竞品研究与可追溯证据 | [旧 PRD 适配审查](01-competitor-research/Legacy-PRD-Alignment-Review-v01.md) 为 Review、非冻结。Brickken 第一轮实测报告在独立 [PR #2](https://github.com/mirrorshang/rwa-saas-platform/pull/2)（Open / Unmerged），不在本分支，也未被视为正式冻结或完整实测闭环 |
 | 02 | 产品定位、三条商业产品线、战略原则与未决商业假设 | [v1.0 有条件冻结](02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md)；仅已明确批准的原则作为基线 |
-| 03 | 总体产品需求、功能架构、详细模块 PRD 和验收要求 | [总体 PRD v0.1 Frozen](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)；[功能树/责任矩阵 v0.1 Frozen](03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)；[全模块逐功能清单与 V1 范围建议 v0.1](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 为 **Draft**，已分解 22 模块/187 项建议；SCOPE-001～058 已确认：五批 187/187 项范围定位（P0 125、P1 21、P2 21、V2 6、批次待定 14），以及 SCOPE-053～058 的最小实现/条件性 P1 复核原则；V1 真实必交清单仍需另行评审，完整 V1 交付范围未冻结，模块详细 PRD 未编制 |
+| 03 | 总体产品需求、功能架构、详细模块 PRD 和验收要求 | [总体 PRD v0.1 Frozen](03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)；[功能树/责任矩阵 v0.1 Frozen](03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)；[全模块逐功能清单与 V1 范围建议 v0.1](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 为 **Draft**，已分解 22 模块/187 项建议；SCOPE-001～058 已确认：五批 187/187 项范围定位（P0 125、P1 21、P2 21、V2 6、批次待定 14），以及 SCOPE-053～058 的最小实现/条件性 P1 复核原则；V1 真实必交清单仍需另行评审，完整 V1 交付范围未冻结，模块详细 PRD 未编制；[《V1 最小交付功能建议与未决决策门 v0.1》](03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md) 已建立 **Draft**（187 项逐项最小实现提案和 G-01～G-07 未决门），新增实现建议尚未批准 |
 | 04 | 跨模块流程、状态机、异常与责任 | [《核心业务流程与状态机 v0.1》](04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md) **Frozen（2026-10-21，跨模块流程与状态机原则基线）**；覆盖 WF-01～WF-18、INV-01～03、转换/权限/异常原则和 22 个业务验收场景；具体状态代码、法域/资产、技术及完整 V1 交付未冻结 |
 | 05 | 多资产、投资者资格、法域规则与配置边界 | [目录占位](05-compliance/)；尚未编制，不代替法律意见 |
 | 06 | 信息架构、页面交互和设计系统 | [目录占位](06-ui-ux/)；尚未编制 |
@@ -61,4 +61,4 @@
 4. 具体价格、套餐、额度、SLA 与商业可行性；
 5. 产品功能架构已冻结，但 V1 **逐功能**范围、交付优先级、详细权限/流程、技术选型与实际交付计划仍待决。
 
-当前建议的下一项产品工作：继续对[全模块范围矩阵 Draft](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 分批评审。五批 187/187 项范围定位及 SCOPE-053～058 最小实现原则均已确认，下一步编制 V1 最小交付范围建议与未决门，重点对接首发 Instrument/法域和 White-label/API 商业批次，再决定 V1 范围冻结并编制 **Issuer SaaS 核心模块详细功能 PRD**；按首发市场、金融工具、服务商及法律条件继续细化 V1 范围与 UI/UX。**第 04 份原则冻结不代表具体状态代码、所有模块 V1 交付或真实业务生产授权。**
+当前建议的下一项产品工作：继续对[全模块范围矩阵 Draft](03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 分批评审。五批 187/187 项范围定位及 SCOPE-053～058 最小实现原则均已确认，下一步审核已建立的 [《V1 最小交付功能建议与未决决策门 v0.1》](03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md) Draft 的逐项最小实现建议与未决门，重点对接首发 Instrument/法域和 White-label/API 商业批次，再决定 V1 范围冻结并编制 **Issuer SaaS 核心模块详细功能 PRD**；按首发市场、金融工具、服务商及法律条件继续细化 V1 范围与 UI/UX。**第 04 份原则冻结不代表具体状态代码、所有模块 V1 交付或真实业务生产授权。**

@@ -383,15 +383,21 @@ SCOPE-001～052 已批准 22 模块 187 项功能的**范围方向**；SCOPE-053
 - M10 订单、M11 收款与退款、M12 唯一额度/配售及权威登记引用、M07 Token 链上执行各自独立；M21 只做受控查询，不另建资金/配售账本。
 - 规划三个使用界面（平台运营、发行机构、投资者门户）、15 个**逻辑页面群**，但具体导航/页面数仍待 UI/UX 审查。全部采用 ARCH-001 的同一服务端业务核心与受控 API 契约。
 
-**后续专项审查**：[10 项受权外部执行/核验报告](RWA-SaaS-Issuer-V1-External-Execution-and-Authority-Audit-v0.1.md) 的 **SCOPE-071～077 控制原则已批准**，参见[正式决策](../../decisions/SCOPE-071-077-external-execution-authority-controls.md)；具体受权服务商和责任主体仍待决定。[16 项条件性 P1 必需性审核](RWA-SaaS-Issuer-V1-Conditional-P1-Assessment-v0.1.md) 已形成 Audit/Draft，**SCOPE-078～085 尚待评审**，仍需参考 Instrument/法域裁定。**本文件 187 项最小实现方式整体仍为 Draft，不等于范围冻结或开发授权。**
+**后续专项审查**：[10 项受权外部执行/核验报告](RWA-SaaS-Issuer-V1-External-Execution-and-Authority-Audit-v0.1.md) 的 **SCOPE-071～077 控制原则已批准**，参见[正式决策](../../decisions/SCOPE-071-077-external-execution-authority-controls.md)；具体受权服务商和责任主体仍待决定。[16 项条件性 P1 必需性审核](RWA-SaaS-Issuer-V1-Conditional-P1-Assessment-v0.1.md) 的 **SCOPE-078～085 评审原则已批准**，见[正式决策](../../decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md)，仍需参考 Instrument/法域裁定实际必要性。**本文件 187 项最小实现方式整体仍为 Draft，不等于范围冻结或开发授权。**
 
 ## 九、已批准外部执行原则与待审条件性 P1（SCOPE-071～077；2026-10-22）
 
 SCOPE-071～077 获明确确认，参考[正式决策记录](../../decisions/SCOPE-071-077-external-execution-authority-controls.md)。十项对应 M07-F002/F004/F005/F008、M11-F004/F005/F009、M12-F006、M22-F004/F005，均按**真实外部执行事实可核验、分权审批、独立权威、Unknown 不盲目重试**设计；不默认 SaaS 持有真实资金、私钥或代为形成法定登记。
 
-下一轮 [16 项 P1 审核草案](RWA-SaaS-Issuer-V1-Conditional-P1-Assessment-v0.1.md) 的 **SCOPE-078～085 仅为推荐尚未批准**。其中 M11-F010 最低人工资金差异处理、M19-F006 强制规则优先级等安全 Guard 不得因增强 UI 为 P1 而删除；集中募集、部分配售、收益/赎回及正式通知的完整实现，依 1～2 类参考 Instrument/适用法律/Offering 模式作最终决定。
+下一轮 [16 项 P1 审核草案](RWA-SaaS-Issuer-V1-Conditional-P1-Assessment-v0.1.md) 的 **SCOPE-078～085 业务必要性判断原则已批准，实际首发 Instrument 触发与交付深度待定**。其中 M11-F010 最低人工资金差异处理、M19-F006 强制规则优先级等安全 Guard 不得因增强 UI 为 P1 而删除；集中募集、部分配售、收益/赎回及正式通知的完整实现，依 1～2 类参考 Instrument/适用法律/Offering 模式作最终决定。
 
-## 十、下一次评审的工作方法
+## 十、已批准 16 项 P1 条件性必要原则与 46 项未交付候选审核（2026-10-22）
+
+产品负责人明确批准 **SCOPE-078～SCOPE-085 全部同意**，正式记录：[16 项 P1 决策](../../decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md)。这些决策对 M05/M07/M08/M10/M11/M12/M13/M18/M19/M20/M21 共 **16 项 P1** 确定必要性判断条件、不可删除的最低金融/安全控制，但未决定全部 16 项同时进入 Issuer V1 自动化开发。持续购买优先、集中募集及部分配售和收益赎回需参考 Instrument 裁决；最低资金差异处理、强制规则优先级及依法/合同必要的数据交接不得省略。
+
+新建 [46 项非默认 Issuer 首期交付候选审核](RWA-SaaS-Issuer-V1-Nondefault-46-Item-Exclusion-and-Roadmap-Audit-v0.1.md) **Audit/Draft**，核对剩余 P1 5/P2 21/V2 6/独立商业批次待定 14，提出 **SCOPE-086～095** 待决策。此审核不取消 White-label/Open API 商业产品，也不将其自动指定为 V2；ARCH-001 API-Ready 仍须在 Issuer V1 满足。冻结真实 V1 交付清单前必须选择 1～2 类参考 Instrument、核验适用法域与外部责任和服务商。
+
+## 十一、下一次评审的工作方法
 
 1. 对每个 P0 核心候选核查最小业务能力、页面是否可合并、审计/风险 Guard 是否保留。
 2. 对全部 P1 单独核查首发 Instrument/法域依赖，允许按具体工具上调为 V1 必需；未经批准不能改写原范围分级。

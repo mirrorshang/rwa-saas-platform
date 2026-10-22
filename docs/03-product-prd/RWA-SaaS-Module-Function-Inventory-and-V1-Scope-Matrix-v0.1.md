@@ -658,7 +658,15 @@
 - 本次**不批准 Batch 02～06 的详细研发交付深度，也不决定具体 UI IA/组件、合同收费价格、金融法域或服务商**。按用户要求暂停推进下一批产品 PRD，先列出进入 UI 前的剩余产品工作。
 - 原 187 项（P0 125/P1 21/P2 21/V2 6/待定 14）及五类范围分类不变；A/B 187 项仍 Not Tested，B01-01～22 Not Executed；第 02～04 份 Frozen 和 PR #6 Draft/Open/Unmerged 不变。
 
-## 二十五、统计与未决门
+## 二十五、Batch 02 M04/M06 已批准，Batch 03 M05/M19 待审（2026-10-22）
+
+- 产品负责人已明确确认 [**SCOPE-160～167**](../../decisions/SCOPE-160-167-batch02-asset-instrument-documents-review.md)，涵盖 [Batch 02 M04/M06 共 17 项产品最低交付深度](RWA-SaaS-V1-Delivery-Depth-Batch-02-Asset-Instrument-Documents-Review-v0.1.md) 的**原则 Approved**（P0 13/P1 2/P2 2），不是完整 UI/API/法律金融实施或测试 PASS。
+- 本轮已起草 [Batch 03 M05 Project/Offering 与 M19 规则及发布审批 19 项详细 PRD v0.1](RWA-SaaS-V1-Delivery-Depth-Batch-03-Project-Offering-Rules-Publishing-Review-v0.1.md)，**SCOPE-168～175 尚待批准**（P0 15/P1 2/P2 2）；B03-01～19 案例全为 Not Executed。
+- 重要已确认边界：Asset/Instrument/Offering/Token 权利分层；A 债务权利和 B SPV 实体权益分别版本化；WF-03 ReviewedForUse 仅为内部审查；M06 文件/专业意见/投资者签署分别存证，资料及法律权利历史不得无痕覆盖。
+- 后续 Project 1:N Offering、持续认购与必要集中募集、发布前置及规则版本、在途订单处理按第 04 份 Frozen 流程和产品草案评审，不因为创建 Project 或 Token 即默认为合法发行完成。
+- **原 M01～M22 187 个功能及优先级、五类交付定位不变**；A/B 187 项 Not Tested。执行顺序为“完成全量详细 PRD、统一产品范围收口和正式冻结后再进入 UI”，PR #6 Draft/Open/Unmerged。
+
+## 二十六、统计与未决门
 
 | 范围建议 | 项数 | 审批解释 |
 |---|---:|---|
@@ -673,7 +681,7 @@
 
 **职责校验**：M10 创建认购及预留请求；M12 对统一额度、配售和权威登记负责；M11 对收款事实、对账、退款负责；M07 对 RWA Token 及链上执行事实负责；M17 编排异常但不改写权威数据；M19 管理规则版本；M20 保障安全审计；M22 接外部服务商。项目关联多个 Offering；KYC 与 Offering 资格独立；链上到账不直接等于配售/登记/Token 完成。
 
-## 二十六、评审批次与维护方式
+## 二十七、评审批次与维护方式
 
 1. **第 1 批：M01～M03 已确认范围定位（SCOPE-009～SCOPE-014）**；后续编写详细 PRD 时再细化字段、状态和最终交付深度。
 2. **第 2 批：M04～M06 范围定位已批准（SCOPE-015～SCOPE-020）**，具体法律工具、文件字段及 Offering 页面仍应在详细 PRD 明确。

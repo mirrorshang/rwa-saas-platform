@@ -49,11 +49,12 @@
 
 - **Batch 01**：M01～M03 的 22 项产品最低交付深度原则 Approved；B01-01～22 仍 Not Executed。此批准不冻结页面 IA、具体组件/接口/数据结构、真实法域、生产发布和全部 V1 功能范围。
 - **Batch 02**：产品负责人已正式批准 [SCOPE-160～167](../../decisions/SCOPE-160-167-batch02-asset-instrument-documents-review.md)，覆盖 M04/M06 17 项（P0 13/P1 2/P2 2）的最低交付产品原则；B02-01～17 仍 Not Executed。
-- **Batch 03**：已建立[《M05/M19：Project、Offering 与发行规则/发布审核交付深度 Draft》](RWA-SaaS-V1-Delivery-Depth-Batch-03-Project-Offering-Rules-Publishing-Review-v0.1.md)，19 项（P0 15/P1 2/P2 2），B03-01～19 Not Executed；**SCOPE-168～175 尚待批准**。Batch 04～06 继续待审。
-- **交付顺序**：用户选择“**完整 PRD 后统一 UI**”。Batch 01～02 的产品最低深度原则已批准，**Batch 03 尚为 Draft**；真实 G-01～G-06、187 项实际实施范围、权威主体和测试验收仍需分阶段正式批准。
+- **Batch 03**：产品负责人已正式批准 [SCOPE-168～175](../../decisions/SCOPE-168-175-batch03-project-offering-rules-principles.md)，覆盖 M05/M19 共 19 项最低交付原则；B03-01～19 仍 Not Executed。
+- **Batch 04**：已建立[《M08～M12 投资者准入、真实稳定币付款与法定登记 PRD v0.1》](RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md)，50 项（P0 41/P1 5/P2 4），B04-01～50 全部 Not Executed；**SCOPE-176～185 待产品负责人批准**。Batch 05～06 尚待开展。
+- **交付顺序**：用户选择“**完整 PRD 后统一 UI**”。Batch 01～03 的产品最低深度原则已批准，**Batch 04 尚为 Draft**；真实 G-01～G-06、187 项实施范围、法定主体和测试验收仍需分阶段正式批准。
 
 ## 五、第一批执行入口
 
-已编制 [《Batch 01：Issuer SaaS 商业开通、Tenant 与角色权限交付深度评审 v0.1》](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md) 作为首批详细 V1 候选规格，覆盖 **M01～M03 共 22 项（P0 17 / P1 2 / P2 3）**。其 **SCOPE-152～159 的第一批最小交付深度原则已获得产品负责人全部批准**，见[决策记录](../../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)；但具体 UI/技术方案与实际 Issuer V1 范围仍 Draft，**Batch 02 已批准产品最低深度原则；Batch 03 详细 PRD Draft 正在评审；未提前进入 UI/工程开发**。
+已编制 [《Batch 01：Issuer SaaS 商业开通、Tenant 与角色权限交付深度评审 v0.1》](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md) 作为首批详细 V1 候选规格，覆盖 **M01～M03 共 22 项（P0 17 / P1 2 / P2 3）**。其 **SCOPE-152～159 的第一批最小交付深度原则已获得产品负责人全部批准**，见[决策记录](../../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)；但具体 UI/技术方案与实际 Issuer V1 范围仍 Draft，**Batch 01～03 已批准产品最低深度原则；Batch 04 详细 PRD Draft 待审核；未提前进入 UI/工程开发**。
 
 **状态：六批审核路线 Draft；真实 V1 范围及发布日未冻结，PR #6 Draft/Open/Unmerged，原 187 项 A/B 仍 Not Tested。**

@@ -1,6 +1,6 @@
 # RWA SaaS｜Issuer V1 交付深度 Batch 05：Token、合约与外部受权执行 v0.1
 
-> **Detailed Functional Scope / Draft — SCOPE-186～SCOPE-193 全部尚待产品负责人评审，M07/M22 共 19 个原功能 ID 的最低交付深度为产品候选。** 不代表真实合约已部署、合约合法性已确认、真实签名/登记可执行、软件已完成、验收已测试或 Issuer V1 交付范围已冻结。更新日期：2026-10-22。
+> **SCOPE-186～SCOPE-193 产品最低交付深度原则 Approved（2026-10-23）**，见[正式决策](../../decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md)。M07/M22 共 19 个原功能 ID 的最低交付规则已获原则批准；**完整字段级 PRD、最终 V1 范围、具体法域/签名责任、UI/API/工程仍 Draft/TBD**。 不代表真实合约已部署、合约合法性已确认、真实签名/登记可执行、软件已完成、验收已测试或 Issuer V1 交付范围已冻结。更新日期：2026-10-23。
 >
 > 依据：[Batch 04 已批准最低产品原则](../../decisions/SCOPE-176-185-batch04-investor-payments-registration-principles.md)、[Batch 03 已批准](../../decisions/SCOPE-168-175-batch03-project-offering-rules-principles.md)、[原 187 项功能和等级](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)、[187 项五类交付候选](RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md)、[已冻结 WF-09/11/12/13/18](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[ARCH-001](../../decisions/ARCH-001-api-first-unified-business-core.md)、[A 固定票息债权](RWA-SaaS-Reference-Instrument-A-Debt-Scenario-and-Product-Rules-Review-v0.1.md)、[B SPV 股份权益](RWA-SaaS-Reference-Instrument-B-Equity-Rights-and-Lifecycle-Review-v0.1.md)。
 >
@@ -47,7 +47,7 @@ Issuers 购买 SaaS 不意味着 SaaS 自动成为资产发行人、投资者法
 
 **逻辑页面不等于正式 UI 方案**：一个详情页可以集中展示配售/名册/Token 状态，但数据写权威必须分别属于 M11/M12/M07/M13 和受权外部主体。正式导航、IA、组件/路由按六批完成后用户选定的全局流程图与字段级 PRD 再设计。
 
-## 四、19 个正式功能的逐项最低交付深度候选（**全部 Draft**）
+## 四、19 个正式功能的逐项最低交付深度（**产品原则 Approved；字段级实现 Draft**）
 
 | 功能 ID / 原名 | 旧等级／交付类型 | 谁做什么／必要字段或引用 | 最低规则和阻断条件 | 验收设计 |
 |---|---|---|---|---|
@@ -123,7 +123,7 @@ Issuers 购买 SaaS 不意味着 SaaS 自动成为资产发行人、投资者法
 | **B05-18** | 为外部服务 API Key/Webhook Secret/签名授权和模拟/沙盒/生产环境建立隔离、权限撤销、最小可用范围与变更审计。 | 测试环境调用真实 Mint/退款接口、生产私钥被打印在日志或租户间共用。 | M22-F008 | Not Executed |
 | **B05-19** | 后置的多服务商报价/择优自动切换、供应商 Marketplace 和智能路由；V1 仅需所选合格服务的可靠集成及故障处理。 | 签署/登记中服务商不明导致系统盲切第三方重新执行不可逆命令。 | M22-F009 | Not Executed |
 
-## 八、建议产品负责人审核的八项决策（**SCOPE-186～193 全部 Draft、未批准**）
+## 八、产品负责人已批准的八项最低交付深度决策（**SCOPE-186～193 Approved**）
 
 | 编号 | 本批推荐方案 |
 |---|---|
@@ -138,9 +138,9 @@ Issuers 购买 SaaS 不意味着 SaaS 自动成为资产发行人、投资者法
 
 ## 九、下阶段与边界保护
 
-- 本批 **SCOPE-186～193 仍为待审批**，不能自动沿用上一批“全部同意”。
+- 本批 **SCOPE-186～193 已由产品负责人在 2026-10-23 明确全部批准**，正式记录见[决策文件](../../decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md)。这是本批最低产品交付深度原则批准，并非字段级详细 PRD/完整 V1 范围冻结。
 - 下一批 Batch 06：M13 存续权益和 A 票息/本金、B 合法可选分红/公司行动，M17/M18 异常/通知，M20/M21 审计/报表（原 **37 项功能**）仍须同样的逐 ID 文字需求与 SCOPE 正式审核。
 - 六批最低交付原则全部审核完成后，正式开展**全平台四泳道详细业务流程图 → 187 项交叉核验 → 按端详细功能清单 → 字段级真正详细 PRD → 产品一致性冻结 → 统一 UI**，不直接跳到 UI。
 - 保留第 02～04 份 Frozen 和原 187 项功能优先级。真实首发 Instrument/法域、合约/链、法定登记/资金/签名主体、依法批准募集模式、条件性 P1、真实工程测试与上线须独立履行 G-01～G-06。
 
-**当前：Batch 05 Draft / SCOPE-186～193 未批准；B05-01～19 Not Executed；A/B 187 个原功能全部 Not Tested；PR #6 Draft/Open/Unmerged。**
+**当前：Batch 05 的 SCOPE-186～193 产品最低深度原则 Approved（2026-10-23）；字段级 PRD/最终 V1 交付范围仍 Draft；B05-01～19 Not Executed；A/B 187 个原功能全部 Not Tested；PR #6 Draft/Open/Unmerged。**

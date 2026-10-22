@@ -1,5 +1,8 @@
 # RWA SaaS｜Issuer V1 最后 46 项非默认交付候选范围复核 v0.1
 
+
+> **Step03.5 历史文件提示（2026-10-23）：Historical / Superseded as CURRENT READING ENTRY；原文内容、已批准的相关SCOPE原则和当时审核记录全部保留。** 原46项非默认及SCOPE-086～095阶段建议属于历史审核证据；DEC-013部分首发能力明确更新，不能按旧P1/P2自动视为V1.0外。 当前请以[现行权威目录](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)及[对应现行材料](../03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md)为准。**这不是撤销或重写历史批准，也不意味着该文原有研究数据无价值。**
+
 > **Audit 完成：SCOPE-086～SCOPE-095 十项默认排除与独立商业产品交付边界已获明确批准；46 项各自研发深度与真实 V1 开发范围仍 Draft/未冻结。**
 >
 > 创建日期：2026-10-22。依据：[187 项交付候选五类矩阵](RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md)、[SCOPE-059～062](../../decisions/SCOPE-059-062-issuer-v1-delivery-and-validation-decisions.md)、[ARCH-001](../../decisions/ARCH-001-api-first-unified-business-core.md)、[DEC-011](../../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md)、[SCOPE-078～085](../../decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md)。

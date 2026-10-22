@@ -1,5 +1,8 @@
 # RWA SaaS｜Step 01：Batch 04～06 跨端业务规则收口底稿 v0.1
 
+
+> **Step03.5 历史文件提示（2026-10-23）：Historical / Superseded as CURRENT READING ENTRY；原文内容及其历史批准证据继续保留。** 原文当时记载 Step01 未完成，但后续六批正式原则已经 SCOPE-152～205 Approved。此稿保留 R/BR 与当时讨论证据；本轮不把其草案分支作为已批产品要求。 当前请以[文档权威目录](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)和[对应现行材料](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)为准。**本提示仅更新导航生效关系，不撤销任何历史正式决策，不冻结详细PRD，也不改变原正文。**
+
 > **Working Draft / Step 01 已启动但尚未完成；仅梳理可以进入详细泳道图的业务规则和待决门，不冻结字段级 PRD 或新金融执行规则。** 更新：2026-10-22。
 >
 > 依据：[已确认的六步法与标准文档审计](../00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md)、[WF-01～18 Frozen 核心规则](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[Batch 04 原候选 50 项](RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md)、[187 功能范围](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)、[Batch 03 已批原则](../../decisions/SCOPE-168-175-batch03-project-offering-rules-principles.md)。

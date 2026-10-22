@@ -1,6 +1,6 @@
 # RWA SaaS｜Issuer V1 交付深度 Batch 04：投资者、准入、认购、USDT/USDC 资金及法定配售登记 v0.1
 
-> **Detailed Functional Scope / Draft — M08～M12 共 50 项最小交付深度和 SCOPE-176～SCOPE-185 均尚待产品负责人确认。** 仅为产品需求、角色/界面组及验收设计；不是实际链上付款、法定登记许可、开发完成、UI 正式启动或 Issuer V1 全局冻结。日期：2026-10-22。
+> **Batch 04 M08～M12 共 50 项产品最低交付深度原则 SCOPE-176～185 已获得 Approved（2026-10-22）**，见[正式决策](../../decisions/SCOPE-176-185-batch04-investor-payments-registration-principles.md)。本稿的**完整字段级 PRD、UI/API、具体法域与真实资金/登记执行、全局 Issuer V1 范围仍 Draft/TBD**；B04 验收案例 Not Executed。
 >
 > 正式依据：[Batch 03 已批准原则](../../decisions/SCOPE-168-175-batch03-project-offering-rules-principles.md)、[Batch 02 已批准原则](../../decisions/SCOPE-160-167-batch02-asset-instrument-documents-review.md)、[原 187 项功能范围](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)、[原 187 项 A/B Not Tested 底表](RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md)、[条件性 P1 决策](../../decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md)、[第 04 份 Frozen 流程/状态机](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[ARCH-001](../../decisions/ARCH-001-api-first-unified-business-core.md)。
 >
@@ -48,7 +48,7 @@
 | G 权威登记与 Token 交付 | 受权登记方回执、受权链签名与合约限制、合法版本映射 | 各独立确认事实可对账，适当状态展示权利及 Token | 任何一方 Unknown/失败显示差异/限制，并受权恢复 |
 | H 售后和存续 | 法定存续义务/合同与受权资金或支付方 | 订单、资金、权利、Token、本息或可选分红查询 | 投诉/退款/到期/退出不能因 SaaS Tenant 暂停而被删除 |
 
-## 四、50 个正式功能 ID 的建议最低交付深度（**全部 Draft**）
+## 四、50 个正式功能 ID 的最低产品交付深度原则（**SCOPE-176～185 Approved；实现细节 Draft**）
 
 | ID 与原功能名 | 原等级／五类交付定位 | 具体业务操作／最少字段与结果 | 资格、权威、异常或法律边界 | 验收设计 |
 |---|---|---|---|---|
@@ -194,9 +194,9 @@
 | **B04-49** | 部分授股后未获配资金不得当作全部已交付 | M12-F009 | Not Executed |
 | **B04-50** | 不足募集额时不得给投资者伪造已配权益或静默挪款 | M12-F010 | Not Executed |
 
-## 八、待产品负责人评审的十项建议（**SCOPE-176～185，全部 Draft/未批准**）
+## 八、已获产品负责人批准的十项最低深度原则（**SCOPE-176～185 Approved**）
 
-| ID | 推荐产品原则 |
+| ID | 已批准的产品最低交付深度原则 |
 |---|---|
 | **SCOPE-176** | 确认 Batch 04 严格覆盖 **M08～M12 50 项**（P0 41/P1 5/P2 4），按原功能 ID 与五类交付定位评审，**不改原 187 项编号和分级**。 |
 | **SCOPE-177** | 发行机构投资者门户是机构自拓投资者的发行前台，不构成自营全球 RWA Marketplace；最小范围是受权账户/发行/资格、报价/签署、付款/订单、权益/Token 状态及适用收益/通知查询。 |
@@ -211,9 +211,9 @@
 
 ## 九、后续与冻结前责任
 
-- **批次目标**：如本批原则获得明确批准，再进入 Batch 05（M07/M22 Token、合约、签名与外部受权执行）详细 PRD；之后 Batch 06（M13/M17/M18/M20/M21）及跨批次整合。
+- **批次目标**：本批原则已由产品负责人全部批准，依据 [SCOPE-176～185 正式决策](../../decisions/SCOPE-176-185-batch04-investor-payments-registration-principles.md)；按用户最新指定的原 Batch 01～03 工作方式，接下来进入 **Batch 05（M07/M22 Token、合约、签名与外部受权执行）长篇文字需求及 SCOPE 审核**，之后 Batch 06（M13/M17/M18/M20/M21）。六批全部批准后，执行全平台四端流程图、187 项核验、分端功能清单、字段级详细 PRD、统一产品冻结与 UI 设计。
 - **G-01～G-06 不得漏掉**：真实 Instrument/法域、公司/法律权威/实际资金方和签名方、允许的一级销售结构、条件性 P1 的真实触发、187 项 V1 逐 ID 实施深度与证据验收，均属实际生产上线前独立决策。
 - **治理纪律**：第 02～04 份 Frozen、M01～M22 正式 187 个 ID、ARCH-001/DEC-011 既有原则及 PR #6 Draft/Open/Unmerged 不变。本批不授权代码、真实资金/Token 操作或 UI。
 - **UI 顺序**：用户明确选择完整 PRD 后统一 UI；本批页面组只提供产品操作范围而非 UI 样式和路由冻结。
 
-**当前状态：Batch 04 Draft / SCOPE-176～185 全部未批准；B04-01～50 全部 Not Executed；A/B 187 功能全部 Not Tested；PR #6 Draft/Open/Unmerged。**
+**当前状态：Batch 04 最低产品交付深度原则 SCOPE-176～185 Approved；更细字段/角色/页面/API/法律执行及最终 V1 范围依旧 Draft/TBD；B04-01～50 全部 Not Executed；A/B 187 功能全部 Not Tested；PR #6 Draft/Open/Unmerged。**

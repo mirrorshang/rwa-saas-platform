@@ -45,14 +45,14 @@
 | **G-05** 187 项实现深度 | 每批逐 ID 绑定事件/API、页面、权限、异常、责任和验收 | 只此门完成后才可形成真实产品详细交付清单 |
 | **G-06** 证据与独立签收 | 产品/法律/受权执行方/工程测试，按阶段不同职责签收 | 文档级规则 Approved 不等于沙盒/测试链 E2E 或合规 PASS |
 
-## 四、现阶段暂停点与继续执行条件（2026-10-22）
+## 四、最近一次进展与执行边界（2026-10-22）
 
 - **Batch 01**：M01～M03 的 22 项产品最低交付深度原则 Approved；B01-01～22 仍 Not Executed。此批准不冻结页面 IA、具体组件/接口/数据结构、真实法域、生产发布和全部 V1 功能范围。
-- **Batch 02～06**：目前仅保留六批路线图，暂停建立下一批详细功能 PRD、审批问题、代码和 UI；用户先要求详细列出 UI 设计前的剩余产品工作。
-- **重启触发**：需用户再次明确授权继续某一批或进入 UI 前准备。真实 G-01～G-06 决策门、187 项逐功能交付、运营/金融权威及产品验收不因暂停被关闭。
+- **Batch 02**：用户已明确恢复产品工作，现已建立[《M04/M06：Asset、Instrument 与法律文件/专业审核详细交付深度 v0.1》](RWA-SaaS-V1-Delivery-Depth-Batch-02-Asset-Instrument-Documents-Review-v0.1.md)，涉及 17 个正式功能（P0 13/P1 2/P2 2）、B02-01～17 场景，**SCOPE-160～167 均待批准**。**Batch 03～06** 尚待后续逐批启动。
+- **交付顺序**：用户选择“**完整 PRD 后统一 UI**”。Batch 02 目前仅 Draft，未冻结详细规格；真实 G-01～G-06、187 项实际实施范围、权威主体和测试验收仍需分阶段正式批准。
 
-## 四、第一批执行入口
+## 五、第一批执行入口
 
-已编制 [《Batch 01：Issuer SaaS 商业开通、Tenant 与角色权限交付深度评审 v0.1》](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md) 作为首批详细 V1 候选规格，覆盖 **M01～M03 共 22 项（P0 17 / P1 2 / P2 3）**。其 **SCOPE-152～159 的第一批最小交付深度原则已获得产品负责人全部批准**，见[决策记录](../../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)；但具体 UI/技术方案与实际 Issuer V1 范围仍 Draft，**用户已明确要求暂缓 Batch 02～06 的执行**。
+已编制 [《Batch 01：Issuer SaaS 商业开通、Tenant 与角色权限交付深度评审 v0.1》](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md) 作为首批详细 V1 候选规格，覆盖 **M01～M03 共 22 项（P0 17 / P1 2 / P2 3）**。其 **SCOPE-152～159 的第一批最小交付深度原则已获得产品负责人全部批准**，见[决策记录](../../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)；但具体 UI/技术方案与实际 Issuer V1 范围仍 Draft，**Batch 02 现已恢复为详细需求草案阶段，SCOPE-160～167 待审核；未提前进入 UI/工程开发**。
 
 **状态：六批审核路线 Draft；真实 V1 范围及发布日未冻结，PR #6 Draft/Open/Unmerged，原 187 项 A/B 仍 Not Tested。**

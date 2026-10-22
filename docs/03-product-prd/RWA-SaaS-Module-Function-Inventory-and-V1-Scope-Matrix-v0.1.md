@@ -627,7 +627,17 @@
 - A-D01～D12 为全部 **Not Executed** 的场景设计，原 [A/B 187 功能验证底表](RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md)仍全部 **Not Tested**。
 - 后续 [**样本 B：SPV 股份与实体权益型 Instrument 业务差异审核 Draft**](RWA-SaaS-Reference-Instrument-B-Equity-Rights-and-Lifecycle-Review-v0.1.md)已编制，**SCOPE-134～142 尚待批准**，B-T01～B-T16 全部 Not Executed，未决定真实 Issuer V1 开发范围。
 
-## 二十二、统计与未决门
+## 二十二、样本 B SPV 实体权益验证原则已批准（SCOPE-134～142；2026-10-22）
+
+产品负责人明确 **SCOPE-134～142 全部同意**，见[正式决策](../../decisions/SCOPE-134-142-equity-B-SPV-rights-and-lifecycle-principles.md)、[样本 B 权益业务流程及法定权利审核](RWA-SaaS-Reference-Instrument-B-Equity-Rights-and-Lifecycle-Review-v0.1.md)。
+
+- B 产品样本采用**依法成立的 SPV 股份或类似实体权益**；实际公司法形式、股份类别及股东名册与 Token/底层实物资产所有权不能混同。
+- B1 在公司获批法定发行额度、必要公司机关批准及权利/优先认购约束允许时才能持续一级发行，B2 集中募集依法/公司文件触发；M12 唯一法定权益发行容量需要核对新增发行、稀释和多 Offering 额度。
+- M11 投资者真实认购资金、M12 公司法定权益/名册、M07 Mint 与合约级转让限制、M13 合法可选分红与外部实付事实各自独立，不得套用债务 A 的固定票息或到期本金额度。
+- 受控二级转让继续 DEC-011 V2；B 的股份回购/注销与 M11 认购退单不可混为一谈。既有原等级、187 功能及 16 条条件性 P1 不变。
+- [A/B 两类 Instrument **187 项逐 ID 必要性对照草案**](RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)已建立，另列 16 项 P1 对照、六大正式范围冻结门和 **SCOPE-143～151 待批准**。A/B 源底表全部 **Not Tested**，B-T01～T16 **Not Executed**；真实 V1 交付范围尚未冻结。
+
+## 二十三、统计与未决门
 
 | 范围建议 | 项数 | 审批解释 |
 |---|---:|---|
@@ -642,7 +652,7 @@
 
 **职责校验**：M10 创建认购及预留请求；M12 对统一额度、配售和权威登记负责；M11 对收款事实、对账、退款负责；M07 对 RWA Token 及链上执行事实负责；M17 编排异常但不改写权威数据；M19 管理规则版本；M20 保障安全审计；M22 接外部服务商。项目关联多个 Offering；KYC 与 Offering 资格独立；链上到账不直接等于配售/登记/Token 完成。
 
-## 二十三、评审批次与维护方式
+## 二十四、评审批次与维护方式
 
 1. **第 1 批：M01～M03 已确认范围定位（SCOPE-009～SCOPE-014）**；后续编写详细 PRD 时再细化字段、状态和最终交付深度。
 2. **第 2 批：M04～M06 范围定位已批准（SCOPE-015～SCOPE-020）**，具体法律工具、文件字段及 Offering 页面仍应在详细 PRD 明确。

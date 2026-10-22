@@ -1,5 +1,7 @@
 # RWA SaaS｜187 项功能 V1.0 / V2.0 / V3.0 版本迁移建议 v0.1（DEC-013/015原则已批准；逐项版本Draft）
 
+> **Historical 187-only version-migration snapshot / 当前已由193统一候选主表接续（2026-10-23）**：[DEC-016](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md) 已批准5项扩深及6个新正式ID；**本文件的187条旧版目标表只是差额审计证据**。请改用[193项现行唯一版本候选表（146/22/25，Draft）](RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)审核交付范围。**原187条正文和历史数据完全保留**；下面出现的“新增功能待批”只反映旧时点。产品身份Approved不表示版号Frozen。
+
 > **Draft / 逐项版本归属仍待审核 — 2026-10-23**。已批准 [DEC-012 版本治理方法](../../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)与 [DEC-013 十项 CR 产品方向（全部 A）](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)。本文件的 **187 项具体 V1.0/V2.0/V3.0 版本归属、140/22/25 统计和 CAND-01～08 合并/新增判断仍为 Draft**，不构成正式开发冻结。已通过 [DEC-014完成 Step02 11步核心主流程审核](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)；[Step03 原187双向纸面核验](RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)已全部关联，并由[DEC-015批准 XCHK-01～10 A](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)处理原则。**187项逐行版本尚未获批**，待差额PROP是否新ID确认、V1.0唯一清单与字段级PRD后才可冻结。
 
 ## 一、版本含义（治理原则 Approved，逐项归属 Draft）

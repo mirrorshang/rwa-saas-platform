@@ -5,6 +5,15 @@
 > 当前优先产品：**Issuer SaaS（发行机构工作台及其发行闭环）**  
 > **阅读约定**：本文说明“计划建设什么、已确定什么、目前完成到哪里”。产品需求/业务规则的确认**不等于代码已经完成、合规许可已经取得、真实资金或 Token 测试通过**。
 
+## 最新决策：V1.0 / V2.0 / V3.0 版本治理（2026-10-23）
+
+已确认 [DEC-012：按**实际开发版本**而不是 P0/P1/P2 分类承诺交付](decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)：**V1.0 = 第一版拟开发、验收、交付的全部范围**；V2.0/V3.0 规划后续发布；正式版里不以 P0/P1/P2 混称必需/可选功能。之前187项原分级继续保存为**历史审批/审计证据**，不因为方法切换直接改写旧 SCOPE/DEC/Frozen 原文。
+
+- [**187项逐条目标版本建议（Draft）**](docs/03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)：暂拟 **V1.0 140 / V2.0 22 / V3.0 25**（仅建议，未逐项批准；8个候选新功能缺口尚未加入187原分母）。
+- [**CR-01～10 产品决策 A/B 集中审核稿（Draft）**](docs/03-product-prd/RWA-SaaS-V1.0-Complete-Loop-CR-01-10-Decision-Proposals-v0.1.md)：审核商业订阅、标准门户、基础模板、专业服务、合约Factory、钱包、募集款结算、收益注资/Claim、回购退出和新增ID程序，尚未批准。
+- [**Step 02 四端详细流程 v0.2（Draft）**](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md)：待 CR 审核后重新形成 v0.3，**现有 v0.2 不是已经冻结的流程图**。
+- **审核顺序**：批准 CR 产品模式与候选版本 → 更新四泳道 v0.3 → 187原功能 + 新缺口双向核验 → V1.0 唯一功能清单和字段级 PRD → 单独范围冻结 → UI；正式业务研发仍需另行授权。
+
 ## 1. 一页了解这个产品
 
 RWA SaaS 是一套**从零建设、面向全球机构客户的标准化、可配置、多资产 RWA Tokenization 软件平台**。发行企业、资产管理机构或其他合规发行主体可以购买我们的 SaaS，用它管理资产及其法律权利、发行项目、投资者、认购、资金状态、链上 Token，以及发行后的持有人权益和存续义务。

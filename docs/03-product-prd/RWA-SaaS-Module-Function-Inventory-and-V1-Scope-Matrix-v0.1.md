@@ -637,7 +637,18 @@
 - 受控二级转让继续 DEC-011 V2；B 的股份回购/注销与 M11 认购退单不可混为一谈。既有原等级、187 功能及 16 条条件性 P1 不变。
 - [A/B 两类 Instrument **187 项逐 ID 必要性对照草案**](RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)已建立，另列 16 项 P1 对照、六大正式范围冻结门和 **SCOPE-143～151 待批准**。A/B 源底表全部 **Not Tested**，B-T01～T16 **Not Executed**；真实 V1 交付范围尚未冻结。
 
-## 二十三、统计与未决门
+## 二十三、已批准 A/B 187 项范围审查原则与第 01 批交付深度规划（SCOPE-143～151；2026-10-22）
+
+产品负责人已明确 **SCOPE-143～151 全部同意**，参见[正式决策](../../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)及[已批准 A/B 187 项范围审核底表](RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)。
+
+- 187 项逐 ID A/B 审核及 16 条条件性 P1 的审核**方法/边界已批准**，但实际 V1 每项 UI、API、领域命令、状态机与外部权威实现深度**未冻结**，A/B 187 项仍 Not Tested。
+- A/B 共用一个 API-First Issuer 业务核心。债权 A1 Series/计息和 B SPV 授权股本/稀释/可选分红作为已有 M04/M05/M12/M13 的不同权利适配，独立保留资金、法定登记、链上 Token、外部支付事实。
+- G-01～G-06 是真实 V1 最终冻结前六个独立门：实际 Instrument/法域、外部责任主体、合法发行模式、16 项条件 P1 必需性、187 项逐功能交付深度及真实验证/签收。
+- [六批 Issuer V1 交付深度审核路线 Draft](RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)已建立，先从客户购买 SaaS/开通发行机构工作台开始，再审资产、发行、认购资金、真实 Token 与存续。
+- [Batch 01：M01～M03 商业开通与权限**22 项详细候选**](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)已起草，提出 **SCOPE-152～159 待批准**。其 P0 17 / P1 2 / P2 3 与原基线一致，**不批准在线自动收费、企业 SSO、高级 CRM 等默认 V1 交付**。
+- 原始 187 项等级 P0 125/P1 21/P2 21/V2 6/待定 14，以及 73/42/10/16/46 交付分类不变。第 02～04 份 Frozen、DEC/ARCH 不改；PR #6 继续 Draft/Open/Unmerged。
+
+## 二十四、统计与未决门
 
 | 范围建议 | 项数 | 审批解释 |
 |---|---:|---|
@@ -652,7 +663,7 @@
 
 **职责校验**：M10 创建认购及预留请求；M12 对统一额度、配售和权威登记负责；M11 对收款事实、对账、退款负责；M07 对 RWA Token 及链上执行事实负责；M17 编排异常但不改写权威数据；M19 管理规则版本；M20 保障安全审计；M22 接外部服务商。项目关联多个 Offering；KYC 与 Offering 资格独立；链上到账不直接等于配售/登记/Token 完成。
 
-## 二十四、评审批次与维护方式
+## 二十五、评审批次与维护方式
 
 1. **第 1 批：M01～M03 已确认范围定位（SCOPE-009～SCOPE-014）**；后续编写详细 PRD 时再细化字段、状态和最终交付深度。
 2. **第 2 批：M04～M06 范围定位已批准（SCOPE-015～SCOPE-020）**，具体法律工具、文件字段及 Offering 页面仍应在详细 PRD 明确。

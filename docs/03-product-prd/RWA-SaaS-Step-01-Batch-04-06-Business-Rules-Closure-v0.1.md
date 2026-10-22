@@ -4,7 +4,7 @@
 >
 > 依据：[已确认的六步法与标准文档审计](../00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md)、[WF-01～18 Frozen 核心规则](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[Batch 04 原候选 50 项](RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md)、[187 功能范围](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)、[Batch 03 已批原则](../../decisions/SCOPE-168-175-batch03-project-offering-rules-principles.md)。
 >
-> **状态划分**：以下“既有确认/有依据”指引用已批准的通用原则或 Frozen 状态机；“待具体化”是下一轮需要确定执行责任/非法域通用分支的设计问题。不得以本底稿自动将 **Batch 04 的 SCOPE-176～185 标为 Approved**。不写接口 URL、数据库字段全量规格或 UI 样式。
+> **状态划分**：本文件仍是**跨端参考/审核素材 Draft**，不是批次审批凭证。**Batch 04 SCOPE-176～185 已另行正式 Approved**（见[决策](../../decisions/SCOPE-176-185-batch04-investor-payments-registration-principles.md)）；[Batch 05 SCOPE-186～193](RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md) Draft 待审批，Batch 06 还需编制。用户明确要求继续原 Batch 01～03 的长篇逐功能 + SCOPE 审核，六批结束后再进行详细流程图。不写接口 URL、数据库全量字段或 UI 样式。
 
 ## 0. 阶段背景与覆盖
 
@@ -102,7 +102,7 @@
 4. **失败后谁处理、用户看到什么**：Unknown、差额/重复、审批拒绝、资金退款、Token 不一致、持有人争议是否都有受权恢复路径？
 5. **哪些真实条件仍未决定**：首发工具/市场、受权金融方、转账/登记法律顺序、付款币种及公司发行决议，是否留着明确的待决标记？
 
-**当前阶段状态：业务规则收口底稿 Draft / 待业务确认；2026-10-22 已加入 R-01～R-17 四端责任矩阵及 BRD-A～F 产品默认建议，均未批准。Step 02 可视化泳道图尚未绘制；不得将本底稿当作已冻结字段级 PRD。**
+**当前阶段状态：此跨端辅助底稿仍 Draft / 待复核；R-01～R-17 与 BRD-A～F 尚不是新增功能批准，不能替代 Batch 05/06 SCOPE。Batch 04 产品原则已批准；Step 02 可视化泳道图尚未绘制，不得将本底稿当作完整字段级 PRD。**
 
 
 ## 7. 第一轮交叉审核：四端业务责任与交接矩阵（2026-10-22，**Draft / 待审核**）
@@ -160,7 +160,7 @@
 | **BRD-E 用户状态与异常透明** | 投资者端始终清晰区分**订单、实际资金、获配、法定登记、Token 及收益**进度；异常说明“是谁正在处理、下一步是什么”，不用一个虚假的“全部完成”状态 | 法定条款决定最终交割时间和某些披露限制 |
 | **BRD-F SaaS 退租后责任继续** | SaaS 暂停/退租后**不得新建不允许的发行/认购**；保留依法必要的退款、登记、存续/通知、数据导出与受控交接能力，直至权责合法转移或结清 | 续费/合同限权安排、数据保留期限、责任接替机构及监管要求 |
 
-这些建议不更改既有 Frozen 流程与 SCOPE-176～185 的 Draft 状态。建议产品负责人优先审核 **BRD-A～F 的跨端业务体验和责任默认方案**，再按反馈决定是否补充 Step 01 缺口并进入详细泳道图；无需再次逐条通过 50 项功能，且不得把真实市场/法域假设默认批准。
+这些 BRD-A～F 建议**仍属跨端辅助草案**，不更改既有 Frozen 规则；Batch 04 的 SCOPE-176～185 已另行获得批准。产品负责人要求先完成 **Batch 05/06 长篇逐功能文字与 SCOPE 审核**，这些业务节点及 BRD 作为之后绘制流程图时的参考，不可用六条 BRD 建议直接替代正式审核。
 
 ## 10. 扩充流程缺口检查（追加，不改变既有 BR-01～10）
 
@@ -175,4 +175,4 @@
 | **BR-17** | **合约冻结/暂停/密钥/签名授权被撤销**：已有真实登记与法定权利不消失；链操作受限，通知 Issuer 并形成恢复/法律交接路径 | M07/M12/M17/M22 |
 | **BR-18** | **Issuer 退租后还有法律通知、退款、票息或资金差异**：限制新发但继续依法移交未结责任及投资者必要查询 | M01/M03/M13/M18/M20 |
 
-**阶段门建议**：本轮先确认 BRD-A～F（产品默认方案），并审阅 R-01～R-17 的责任与交接是否完整。若你认可，Step 01 业务主线就具备启动详细泳道图的最低条件；但不将 G-01～G-06 的真实法域/生产责任门自动关闭，也不把未执行案例标为测试通过。
+**更新后的阶段门**：必须先由产品负责人明确批准 Batch 05 与 Batch 06 相应正式 SCOPE，再使用 R-01～R-17、BRD-A～F 及 BR-01～18 对照遗漏并进入完整四泳道图。即使批次原则通过，也不自动关闭 G-01～G-06 的真实法域/生产责任门，测试卡继续 Not Executed。

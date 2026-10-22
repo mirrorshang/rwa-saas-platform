@@ -2,7 +2,7 @@
 
 > **项目性质**：从零建设的标准化、可配置、多资产 RWA Tokenization B2B SaaS。
 >
-> **当前阶段（2026-10-23）**：**Step 03.5 文档治理整理，下一步回到 Step 03 版本与新增功能审核。** 尚未进入正式 UI 设计、软件研发、真实资金/Token 生产执行。
+> **当前阶段（2026-10-23）**：**Step 03.5治理已完成，Step03 PROP-01～11分类和6项新增正式ID已由DEC-016批准；下一步审查193项的V1.0/V2.0/V3.0具体版号**。尚未进入UI/开发或真实资金、Token生产。
 >
 > **唯一当前文档权威与审批状态入口**：[当前有效文档目录与历史覆盖索引](docs/00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)；[完整文件与 DEC/SCOPE 状态清单](docs/Document-Status-Index.md)；[Step03.5首轮审计及原95文件分类](docs/00-governance/RWA-SaaS-Step-03.5-Document-Governance-Audit-and-Disposition-Proposal-v0.1.md)。
 
@@ -30,17 +30,17 @@
 
 ## 3. 当前版本规划（**全部为范围草案**）
 
-| 版本 | 当前业务目标 | 原187项的建议数量（非正式开发承诺） |
+| 版本 | 当前业务目标 | 193项正式ID的首次建议版本（全部Draft） |
 |---|---|---:|
-| **V1.0** | 首版完整发行SaaS闭环，包含标准门户、钱包、受权发行、投资结算及适用收益和退出 | 140 |
+| **V1.0** | 首版完整发行SaaS闭环，包含标准门户、钱包、受权发行、投资结算及适用收益和退出 | 146 |
 | **V2.0** | 受控转让、专业高级White-label与运营增强 | 22 |
 | **V3.0** | 商业Open API/SDK、多链与高级资产/服务商生态 | 25 |
 
-**当前 Step03 审核门**：[PROP-01～11 功能归属与6组新增候选审核稿（Draft）](docs/03-product-prd/RWA-SaaS-Step-03-PROP-01-11-Disposition-and-Six-New-Functions-Review-Draft-v0.1.md)：建议 **5组扩深原功能 + 6组另立可验收功能**；ADD-01～06仅是草案代号，若后续全部批准新增，才可能形成193项、V1候选146项，**目前仍以原187项/140-22-25 Draft为准**。
+**DEC-016 已批准**：[PROP-01～11 5项扩深+6项正式新增ID](decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md)，总编号 **193项**，原187不变。新增ID：M01-F009、M08-F011/012、M11-F012/013、M13-F009。[现行193项版本候选主表](docs/03-product-prd/RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md) **146/22/25仍是Draft，不是研发冻结**。
 
-**DEC-012 已 Approved的是管理方法**：V1.0 = 第一版真正承诺开发及验收的完整功能集合；不再在 V1.0 内以 P0/P1/P2 区分必做/可选。以上140/22/25依旧是**原187项的Draft候选统计**，不是已批准的逐项唯一版本，且 [PROP-01～11](docs/03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)尚待判断扩原ID还是新立正式ID。原P0/P1/P2保留为历史审计证据。
+**DEC-012 批准的是版本管理方法**：V1.0代表首版完整交付的全部功能，不以P0/P1/P2区分必做/可选；[DEC-016](decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md)批准6项新增功能身份和编号，**并没有批准193项的最终版本**。历史原P0/P1/P2仅做审计证据。
 
-[按七段流程阅读三版本业务范围草案](docs/03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md) ｜ [187条逐ID目标版本Draft表](docs/03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)
+[按七段流程阅读三版本业务范围草案](docs/03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md) ｜ [193项统一版本候选主表](docs/03-product-prd/RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md) ｜ [原187迁移草案留证](docs/03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)
 
 ## 4. 已批准和未完成的范围
 
@@ -52,13 +52,14 @@
 | 企业11步核心业务主流程 | **DEC-014 Approved** | [DEC-014](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md) |
 | Step03 原187功能与流程纸面对照、缺口审核原则 | **187/187已完成纸面关联；DEC-015 XCHK原则 Approved** | [逐项对照](docs/03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)、[DEC-015](decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md) |
 | Step03.5文档统一导航/历史入口标记 | **治理整理中；审计不是新产品冻结决定** | [Step03.5现行权威索引](docs/00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md) |
-| V1.0/V2.0/V3.0真实功能数量、PROP新增编号 | **Draft / 未批准** | [功能范围审查稿](docs/03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md) |
+| PROP分类与6项新增正式ID | **DEC-016 Approved；现193项** | [DEC-016](decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md) |
+| V1.0/V2.0/V3.0逐ID实际归属 | **Draft / 范围未冻结** | [193项统一候选表](docs/03-product-prd/RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md) |
 | 法域、资金/托管/分配执行主体、钱包/合约技术与上线许可 | **TBD** | [未决风险与决策覆盖](docs/00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md#4-关键决策的有效范围与历史覆盖矩阵) |
 
 ## 5. 从现在到 UI 前的顺序
 
 - **Step 03.5 收尾**：统一现行索引、标记历史版本、关键事实交叉审查，不覆写历史批准/冻结原文。
-- **Step 03 范围收口**：逐功能审定 V1.0/V2.0/V3.0版号，解决 PROP-01～11的新正式ID或原ID扩深，批准唯一版本功能清单。
+- **Step 03 范围收口**：PROP与新ID分类已由DEC-016 Approved；后续逐功能审批193项的V1.0/V2.0/V3.0唯一版号及实际交付范围，再形成分端功能清单。
 - **Step 04 分端功能清单**：平台运营后台、Issuer工作台、Issuer投资者门户、外部合法主体责任；菜单/模块/页面组/入口/权限与功能。
 - **Step 05 详细产品PRD**：按端/模块完善字段、对象/状态、计算、权限、异常、第三方责任与 Given-When-Then 验收。
 - **Step 06 全局一致性核验与V1.0冻结**：11步×功能ID×页面/角色×规则/状态×验收可追溯；单独授权后统一UI/UX设计。

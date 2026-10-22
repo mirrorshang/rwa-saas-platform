@@ -1,6 +1,6 @@
 # RWA SaaS｜A/B 参考 Instrument 187 项范围必要性及 V1 冻结决策门对照 v0.1
 
-> **Cross-Instrument Product Audit / Draft — SCOPE-134～142 的样本 B 产品规则已经批准；本表的逐功能实际 V1 实现深度、16 项 P1 最终触发及 SCOPE-143～151 均尚未获产品负责人批准。2026-10-22。**
+> **Cross-Instrument Product Audit — SCOPE-143～151 的 A/B 功能审查原则与冻结门已批准；真实 187 项逐功能 V1 实施深度、16 项 P1 的法域最终触发、工程/法律验证仍 Draft/TBD。2026-10-22。** [正式决策](../../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)。
 >
 > 基准：[A/B 187 项验证底表](RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md)、[五类分类矩阵](RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md)、[债权 A 已批准原则](../../decisions/SCOPE-117-125-debt-instrument-A-business-validation-principles.md)、[债权 A1 已批准原则](../../decisions/SCOPE-126-133-debt-A1-coupon-maturity-exception-principles.md)、[SPV 权益 B 已批准原则](../../decisions/SCOPE-134-142-equity-B-SPV-rights-and-lifecycle-principles.md)、[条件性 P1 审核](../../decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md)、[ARCH-001](../../decisions/ARCH-001-api-first-unified-business-core.md)、[DEC-011](../../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md)。
 >
@@ -248,9 +248,9 @@
 - **产品案例评审 ≠ 工程功能 PASS**。现有 A-T16、A-D12、B-T16 及 187 项原表全部保持 Not Executed / Not Tested，故不能宣称完整业务 E2E 已实际运行。
 - 不新增功能 ID、第 23 模块、不改变冻结第 02～04 份文档和既有 DEC/ARCH 决策；PR #6 保持 Draft / Open / Unmerged。
 
-## 六、下一轮推荐决策：SCOPE-143～151（均待产品负责人明确批准）
+## 六、已批准的审核原则：SCOPE-143～151（Approved）
 
-| 编号 | 推荐原则 |
+| 编号 | 已批准的产品审核方法及冻结门（非实际 V1 功能冻结） |
 |---|---|
 | **SCOPE-143** | 将本 187 项 A/B 差异和 16 项 P1 触发草案作为真实 V1 冻结前的**审查工作底表**，并保持全部 Not Tested。 |
 | **SCOPE-144** | A/B 共用身份、受权、版本化 Instrument/Offering、真实稳定币付款/退款、M12 额度/法律登记、M07 Token、M13 存续及审计的统一 API-First 核心；不重建第二套业务权威。 |
@@ -264,6 +264,6 @@
 
 ## 七、后续推进顺序
 
-**如产品负责人认可 SCOPE-143～151**：将对照工作底表归档为产品审核参考（实际 187 项实现深度仍未冻结）；随后将 G-01～G-06 拆成可批次讨论的真实 V1 实现深度与法域/执行权门，最终单独提交 V1 正式冻结评审。产品详细 PRD 可以沿已确定通用部分准备，但不能将没有法律或服务商事实的部分设为已确定生产规则。
+产品负责人已明确批准 [SCOPE-143～151](../../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md) 作为产品审核参考原则。下一步对 G-01～G-06 按客户购买 SaaS → 租户/身份 → 资产/Instrument → Offering → KYC/认购/资金/配售/登记/Token → 存续的用户流程拆成**可分批批准的实际交付深度草案**。详细功能 PRD 可准备不依赖真实法域的共性部分，但不能以空白法律授权/服务商替代生产规则。最终 V1 真实交付范围仍单独冻结。
 
-**文件状态：Draft — SCOPE-143～151 待批准，A/B 187 项 Not Tested，PR #6 Draft/Open/Unmerged。**
+**文件状态：SCOPE-143～151 审核原则 Approved；187 项 A/B 设计底表 Not Tested，真实 V1 交付深度及冻结继续 Draft/TBD，PR #6 Draft/Open/Unmerged。**

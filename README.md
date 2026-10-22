@@ -192,7 +192,7 @@ A/B 用来检查**共用 Issuer SaaS 能力是否覆盖不同金融工具**，�
 | **C/D/E 扩展** | 基金 NAV/申赎、经营收入分成、实物储备/提货等特定能力 | **长期待产品化研究及单独版本审批** |
 | **潜在聚合市场/其他产品线** | 跨发行方资产聚合及分发（如未来开展） | **不属于本期 Issuer SaaS 默认范围** |
 
-## 8. 截至 2026-10-23 的实际进度
+## 8. 截至 2026-10-23 的实际进度（六批原则审核已完成）
 
 ### 已形成、已确认的产品成果
 
@@ -210,30 +210,30 @@ A/B 用来检查**共用 Issuer SaaS 能力是否覆盖不同金融工具**，�
 | **Issuer V1 详细 PRD：Batch 03** | **M05/M19 共 19 项产品最低交付深度原则已批准（SCOPE-168～175）**；19 张 B03 案例仍 Not Executed，UI/API/实际发行未冻结 |
 | **Issuer V1 详细 PRD：Batch 04** | **M08～M12 50 项最低交付深度原则 SCOPE-176～185 已批准**；B04-01～50 仍 Not Executed，详细字段/UI/API 和合法执行未冻结 |
 | **Issuer V1 详细 PRD：Batch 05** | **M07/M22 19 项最低交付深度原则 SCOPE-186～193 已批准**；B05-01～19 仍 Not Executed，真实合约/签名/实际 V1 范围未冻结 |
-| **Issuer V1 详细 PRD：Batch 06** | **M13/M17/M18/M20/M21 共 37 项长篇逐功能业务需求已建立 Draft**；SCOPE-194～205 待集中审批，B06-01～37 均 Not Executed；不视作字段级详细 PRD 完成 |
-| **新的六步产品工作方法** | **已由产品负责人确认**；当前 Step 01 正进行四端业务责任与跨模块交接审查，后续依次为详细流程图、187 项核验、分端清单、字段级 PRD、整体冻结 |
+| **Issuer V1 详细 PRD：Batch 06** | **M13/M17/M18/M20/M21 共 37 项最低交付深度原则 SCOPE-194～205 已批准**；B06-01～37 仍 Not Executed，字段级详细 PRD 与最终 V1 范围均未冻结 |
+| **新的六步产品工作方法** | **已由产品负责人确认**；Step 01 六批最低深度原则均 Approved，Step 02 启动跨端详细泳道流程草案，后续依次为 187 项核验、分端清单、字段级 PRD、整体冻结 |
 | **信息架构/页面级交互/UI 视觉** | **尚未正式设计或冻结**；已有逻辑页面群参考不等于 UI 页面清单 |
 | **真实代码、服务端、合约与第三方集成** | **本项目未授权正式业务开发；本 README 不声明任何功能已建成** |
 | **运行测试/生产上线** | **尚无本轮 A/B 功能实测通过结论**；187 项验证底表均 Not Tested，场景卡均 Not Executed |
 
 ### 当前停在哪里
 
-- **当前产品进度**：Batch 01（22 项）、Batch 02（17 项）、Batch 03（19 项）、Batch 04（50 项）、**Batch 05（M07/M22，19 项）的最低交付深度原则均已 Approved**（SCOPE-186～193 正式决策已归档）；**Batch 06（M13/M17/M18/M20/M21，37 项）长篇逐功能需求 Draft / SCOPE-194～205 待集中审核**。现有 Step 01 17 个跨端责任节点、BRD-A～F 与 18 个异常断点仍是审核素材，不取代 Batch 05/06 正式 SCOPE 评审，亦非真正字段级详细 PRD。
-- **最终确定的工作方式**：**先按原 Batch 01～03 的长篇需求 + SCOPE 集中审批方式完成 Batch 04～06**（目前 Batch 01～05 已批、Batch 06 长篇草案已建立并待审核）；然后 **② 四泳道全流程图 → ③ 原 187 项交叉核验 → ④ 分端完整功能清单 → ⑤ 字段级详细 PRD → ⑥ 全局验收与产品冻结**；全部通过后统一开展 UI，不边写 PRD 边设计 UI。
+- **当前产品进度**：Batch 01（22 项）、Batch 02（17 项）、Batch 03（19 项）、Batch 04（50 项）、**Batch 05（M07/M22，19 项）的最低交付深度原则均已 Approved**（SCOPE-186～193 正式决策已归档）；**Batch 06（M13/M17/M18/M20/M21，37 项）SCOPE-194～205 最低深度原则 Approved（[正式决策](decisions/SCOPE-194-205-batch06-lifecycle-exceptions-notifications-audit-reports-principles.md)）**。现有 Step 01 17 个跨端责任节点、BRD-A～F 与 18 个异常断点仍是审核素材，不取代 Batch 05/06 正式 SCOPE 评审，亦非真正字段级详细 PRD。
+- **最终确定的工作方式**：**先按原 Batch 01～03 的长篇需求 + SCOPE 集中审批方式完成 Batch 04～06**（Batch 01～06 已全部批准最低深度原则，接续 Step 02）；然后 **② 四泳道全流程图 → ③ 原 187 项交叉核验 → ④ 分端完整功能清单 → ⑤ 字段级详细 PRD → ⑥ 全局验收与产品冻结**；全部通过后统一开展 UI，不边写 PRD 边设计 UI。
 - **版本范围状态**：真实 Issuer V1 逐功能交付深度和产品冻结尚未完成；White-label、商业 Open API 和受控转让的具体发布时点均未确定。
 - **工程状态**：不将文档完成程度表达为开发进度百分比；尚未启动本项目正式业务实现或真实金融操作。
 
 ## 9. 接下来仍需完成什么（最新六步产品设计顺序）
 
-以下是产品负责人确认的**最终执行方法**：**Batch 01～06 保持原有长篇文字需求与 SCOPE 批量审核（当前仅 05、06 未通过），之后再做完整流程图、187 项核验、分端功能清单、字段级真正详细 PRD、整体冻结，最后统一 UI**。批次原则 Approved 不等于字段级 PRD 完成。
+以下是产品负责人确认的**最终执行方法**：**Batch 01～06 已按长篇文字需求与 SCOPE 批量审核完成全部最低深度原则批准；现在开展跨端详细流程图，随后依次核验 187 项、编排分端功能清单、字段级真正详细 PRD、整体冻结，最后统一 UI**。批次原则 Approved 不等于字段级 PRD 完成。
 
 | 步骤 | 计划交付什么 | 当前进度及团队如何参与 |
 |---|---|---|
-| **01 六批业务规则原则审核收口** | 先完整批准 Batch 04～06 的长篇逐功能业务需求/SCOPE，再用现有 17 个跨端责任节点与 18 个异常断点交叉核验 | **Batch 01～05 均已批准最低深度原则**；[Batch 05 19 项需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md)对应[正式 SCOPE-186～193](decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md) Approved；[Batch 06 37 项逐功能需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-06-Lifecycle-Workflows-Notifications-Audit-Reports-v0.1.md) Draft / SCOPE-194～205 待批准 |
-| **02 绘制跨端完整泳道图** | **平台后台 / Issuer 企业 SaaS / 机构投资者 / 外部受权服务**四泳道：全局总图 + 分阶段细图 + 失败/Unknown/退款/登记与收益异常 | **尚未绘制/审核**；将作为产品负责人直观确认主流程的首要材料 |
+| **01 六批业务规则原则审核收口** | 先完整批准 Batch 04～06 的长篇逐功能业务需求/SCOPE，再用现有 17 个跨端责任节点与 18 个异常断点交叉核验 | **Batch 01～06 均已批准最低深度原则**；[Batch 05 19 项需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md)对应[正式 SCOPE-186～193](decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md) Approved；[Batch 06 37 项逐功能需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-06-Lifecycle-Workflows-Notifications-Audit-Reports-v0.1.md) SCOPE-194～205 Approved（产品原则；全部 B06 案例 Not Executed） |
+| **02 绘制跨端完整泳道图** | **平台后台 / Issuer 企业 SaaS / 机构投资者 / 外部受权服务**四泳道：全局总图 + 分阶段细图 + 失败/Unknown/退款/登记与收益异常 | **进入 Step 02 Draft 阶段**；四端总图与分段异常图待产品负责人审核，未冻结 |
 | **03 对照原 187 项核验** | 流程节点↔功能 ID 双向映射，审计漏项、重复、职责错误、非线性权限/报表/审计及版本归属 | **待开展**；六批 Issuer 主线 164 项，另有 M14/M15/M16 共 23 项必须明确后置/商业版本去向 |
 | **04 整理分端完整功能清单** | 按 **端→一级模块→二级模块→功能点→通俗详细说明→关联流程节点→原功能 ID→版本** 排列 | **待开展**；便于产品负责人和同事不用读冗长段落即可审查覆盖 |
-| **05 真正的字段级详细 PRD** | 每个功能的字段类型/必填/精度/校验、操作、角色/权限、业务状态、规则、外部依赖、异常恢复和验收 | **待开展**；优先复用 Batch 01～05 已审原则与 Batch 06 待审草案，不重复发明 |
+| **05 真正的字段级详细 PRD** | 每个功能的字段类型/必填/精度/校验、操作、角色/权限、业务状态、规则、外部依赖、异常恢复和验收 | **待开展**；六批 01～06 最低深度原则已批准，字段级 PRD 以后续四端流程和功能清单为依据 |
 | **06 跨文档验收与产品冻结** | 核对流程、187 项、字段/角色/规则/测试/版本范围一致，记录真实金融合法权威和条件阻断，由产品负责人单独批准 | **待开展**；完成后统一启动 UI/UX，工程与生产金融执行另行授权 |
 
 为避免遗漏，配套检查角色权限与外部 RACI、业务实体/字段字典、非法域通用的异常处理、可测试非功能需求、安全/隐私、外部服务事件与 SLA、运营客服和需求↔测试追踪。这些纳入六步成果而不是制造重复文件，详见[标准文档体系与缺口核对](docs/00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md)。
@@ -285,9 +285,9 @@ A/B 用来检查**共用 Issuer SaaS 能力是否覆盖不同金融工具**，�
 | [Batch 04：投资者/认购/支付/配售登记需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md) | 产品、发行运营、金融/合规、后端 | 50 项最低深度原则 **Approved**；50 个案例仍 Not Executed |
 | [Batch 05：Token/合约/第三方执行需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md) | 产品、链/安全/法律/后端 | **SCOPE-186～193 原则 Approved**；19 项（P0 16/P1 1/P2 2）；B05-01～19 Not Executed；[正式决策](decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md) |
 | [六步产品设计与标准文档缺口审计](docs/00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md) | 全体项目成员 | **最新已确认执行方法**、步骤验收门、164+23 的 187 项范围关系、完整 PRD 文档清单及缺口 |
-| [Batch 06：存续期/异常/通知/审计/报表长篇需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-06-Lifecycle-Workflows-Notifications-Audit-Reports-v0.1.md) | 产品、财务/法律/合规/技术 | **37 项 Draft；SCOPE-194～205 待审核**；B06-01～37 Not Executed，不代表研发/法域实施完成 |
+| [Batch 06：存续期/异常/通知/审计/报表长篇需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-06-Lifecycle-Workflows-Notifications-Audit-Reports-v0.1.md) | 产品、财务/法律/合规/技术 | **SCOPE-194～205 原则 Approved**，37 项（P0 23/P1 9/P2 5）；B06-01～37 Not Executed；[正式决策](decisions/SCOPE-194-205-batch06-lifecycle-exceptions-notifications-audit-reports-principles.md)，不代表研发/法域实施完成 |
 | [Step 01：Batch 04～06 跨端业务规则收口底稿](docs/03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md) | 产品、运营、法律/资金和技术评审人 | 17 个跨端业务责任节点、投资者状态与 6 条待审产品建议；**仍 Draft，未冻结** |
-| [六批最低交付深度审核路线](docs/03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md) | 产品、研发负责人、运营 | 当前仅 Batch 06 的 SCOPE-194～205 待评审；六批完成后才进入可视化流程图等后续步骤 |
+| [六批最低交付深度审核路线](docs/03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md) | 产品、研发负责人、运营 | 六批全部最低深度原则已批准；现按阶段计划进入四端可视化流程图草案 |
 | [文档状态与决策索引](docs/Document-Status-Index.md) | 需要核对正式版本的成员 | 文件审批状态与权威依据 |
 
 ## 当前项目治理说明
@@ -295,4 +295,4 @@ A/B 用来检查**共用 Issuer SaaS 能力是否覆盖不同金融工具**，�
 - 产品负责人决定产品范围、规则、正式冻结及开发授权；产品/技术/运营/法律或受权金融责任方按各自职责参与审核。
 - 仓库当前产品文档工作分支：`docs/regulated-activity-boundaries-v01`。
 - [PR #6](https://github.com/mirrorshang/rwa-saas-platform/pull/6) 仍为 **Draft / Open / Unmerged**；未经明确授权不得合并。
-- **最新执行顺序**：先以**长篇文字需求 + SCOPE 集中审核完成 Batch 06**，再绘制四泳道详细流程图、核验 187 项、建立按端功能清单、完成字段级 PRD 并冻结产品范围，随后统一 UI；工程、真实资金与 Token 操作仍需另行批准。
+- **最新执行顺序**：六批已完成**长篇文字需求 + SCOPE 集中审核**，下一步绘制四泳道详细流程图、核验 187 项、建立按端功能清单、完成字段级 PRD 并冻结产品范围，随后统一 UI；工程、真实资金与 Token 操作仍需另行批准。

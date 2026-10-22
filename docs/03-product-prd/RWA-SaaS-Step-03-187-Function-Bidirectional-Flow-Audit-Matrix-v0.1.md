@@ -1,5 +1,7 @@
 # RWA SaaS｜Step 03 原187项 × 核心11步流程交叉审核矩阵 v0.1
 
+> **后续生效说明（2026-10-23）**：本文件是**原187项ID×11步业务的历史完整性审计快照**，不修改187行。[DEC-016](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md) 已正式批准6项新增功能ID，现编号总数193；[193项统一功能与版号候选表](RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)是后续当前主表。**这不推翻原187逐项纸面核验，也不把版号视为已批准。**
+
 > **Draft / Audit Only — 2026-10-23。** 本文件逐项审查 **187 个原始ID**与已 [DEC-014 Approved的11步核心业务](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)、[DEC-013 CR-01～10](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)和 [Step02 v0.3](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)的对应关系，**不把版本规划建议当成正式批准、不编辑原187行、不增加或删除正式ID**，也不表示代码/法域/外部执行已通过验收。
 >
 > 历史来源：[原187项矩阵](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) + [187目标版本建议140/22/25（Draft）](RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)。**本文的“匹配/关联”仅指与产品主流程或横向能力**，并非该功能实现深度足以正式进入 V1.0；对跨步骤的功能只标关键适用节点，不穷举未来字段和例外。

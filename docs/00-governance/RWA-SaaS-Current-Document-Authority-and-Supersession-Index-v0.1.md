@@ -6,7 +6,7 @@
 
 ## 1. 当前项目状态（一页速览）
 
-- **当前阶段**：**Step 03.5 非破坏性文档治理整理；接下来返回 Step 03 的版本与新增功能审查**。Stage 01 Batch01～06产品规则原则已批准；Stage 02 **11/11核心业务主流程已批准**；Stage 03 **187/187原ID已完成纸面双向匹配**、XCHK01～10 A 已批准。还没有进行分端完整功能清单与字段级PRD，尚未进入UI/代码开发。
+- **当前阶段**：**Step 03.5 非破坏性文档整理与决策层交叉核验已完成；下一步返回 Step 03 的版本与新增功能审核**。Stage 01 Batch01～06产品规则原则已批准；Stage 02 **11/11核心业务主流程已批准**；Stage 03 **187/187原ID已完成纸面双向匹配**、XCHK01～10 A 已批准。还没有进行分端完整功能清单与字段级PRD，尚未进入UI/代码开发。
 - **当前产品主线**：企业购买 SaaS → 企业配置工作台/标准Issuer投资者门户 → 合法资产权益/Offering与受权Token部署 → 投资者KYC/钱包认购/真实支付、配售登记与Token交付 → 募集款合法结算 → 条款适用的合法收益资金注资、分配/Claim → 存续/依法清偿或退出。
 - **当前功能基数**：原 **187 个 ID**；[拟版本划分](../03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md) 为 **V1.0 140、V2.0 22、V3.0 25（全部Draft）**；[PROP-01～11](../03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md) 是跨端交付单元建议，尚未判断需新增多少正式ID，也未冻结真实V1.0范围。
 - **技术/生产门**：具体首发法域/Instrument、真实法律与专业责任、托管/收款/资金释放执行方、合同/Token合约标准及生产Signer、嵌入式钱包架构和恢复、Push/Claim实际法律支付效力、退款/定价/时间精度等仍待法域或技术设计审核。不能由 SaaS 自动假定。
@@ -95,4 +95,4 @@
 5. 保留PR #6 Draft/Open/Unmerged，不修改其 base/合并状态；所有变动只在 `docs/regulated-activity-boundaries-v01` 工作分支。
 6. 本索引不是范围冻结决定；日后做真实法域、对外API、钱包/分红/现金流/合约等详细方案，需要权限责任或实证，不得以产品文档名称推断已经通过。
 
-**当前：Document authority map 已建立；四份Frozen保持；11份历史材料已经仅添加历史入口提示并保留原文；README/Document-Status-Index已精简与更新。版本规划/PROP以及字段级PRD仍待审，非产品V1冻结。**
+**当前：Step03.5 第二轮非破坏性整理与12领域决策层交叉核查已完成。** [第二轮整理与验收记录](RWA-SaaS-Step-03.5-Non-Destructive-Cleanup-Verification-v0.1.md)已归档：4份Frozen原样、11份历史文件加提示、README/状态索引精简、187编号和版本提议未改。**V1.0正式功能清单/PROP新ID/字段级PRD、外部资金法域许可仍未冻结。**

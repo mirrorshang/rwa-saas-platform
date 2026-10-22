@@ -475,13 +475,13 @@ B-T01～T16 和 A-T/A-D 案例全为未执行的产品验证设计；既有 A/B 
 
 保持用户确定的**完整 PRD → V1 范围/业务规格冻结 → 统一 UI 设计 → 另行授权研发**。源 A/B 187 功能均 Not Tested，PR #6 Draft/Open/Unmerged，原冻结文档不变。
 
-## 二十一、Batch 03 产品交付深度已批与 Batch 04 草案待审（2026-10-22）
+## 二十一、Batch 03～04 产品最低交付深度已批与 Batch 05 草案待审（2026-10-22）
 
 [**SCOPE-168～175 正式批准决策**](../../decisions/SCOPE-168-175-batch03-project-offering-rules-principles.md)确认了 [Batch 03 M05/M19 共 19 个 ID 最低深度原则](RWA-SaaS-V1-Delivery-Depth-Batch-03-Project-Offering-Rules-Publishing-Review-v0.1.md)，原 P0 15/P1 2/P2 2 不变，B03-01～19 验收卡仍 Not Executed。
 
-[**Batch 04 投资者、资格、认购、USDT/USDC 真实资金/对账和权威配售登记 v0.1**](RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md)已建立 50 项原 ID 的详细功能草案（P0 41/P1 5/P2 4），包含单独的投资者/资格、订单/额度、实际资金/退款、法定登记和 Token 对照权威，以及 B04-01～50 未执行案例。**SCOPE-176～185 全部待审批；当前不是 Issuer V1 实际范围冻结或真实链/资金/法律 E2E 通过**。
+[**Batch 04 投资者、资格、认购、USDT/USDC 真实资金/对账和权威配售登记 v0.1**](RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md)已建立 50 项原 ID 的详细功能草案（P0 41/P1 5/P2 4），包含单独的投资者/资格、订单/额度、实际资金/退款、法定登记和 Token 对照权威，以及 B04-01～50 未执行案例。**[SCOPE-176～185](../../decisions/SCOPE-176-185-batch04-investor-payments-registration-principles.md) 已批准产品最低交付深度原则；B04 验收卡仍 Not Executed，当前不是 Issuer V1 实际范围冻结或真实链/资金/法律 E2E 通过**。
 
-V1 仍须独立补齐真实首发 Instrument/法域、受权资金及法律登记服务方、适用 P1 和具体交付深度；第 02～04 份 Frozen、原功能分级和 187 项 A/B Not Tested 状态不变，PR #6 Draft/Open/Unmerged。用户要求完整详细 PRD 后统一 UI。
+[**Batch 05 M07/M22 共 19 项候选最低深度草案**](RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md)已建立（P0 16/P1 1/P2 2），**SCOPE-186～193 待正式审批**，B05-01～19 Not Executed；Batch 06 待编制。用户明确要求继续 Batch 01～03 的长篇文字 + SCOPE 审核直到六批结束，之后再四泳道流程图、187 核验、分端清单、字段级 PRD、产品冻结与统一 UI。V1 仍须独立补齐真实首发 Instrument/法域、受权资金及法律登记/签名服务方、适用 P1 和具体交付深度；第 02～04 份 Frozen、原功能分级和 187 项 A/B Not Tested 不变，PR #6 Draft/Open/Unmerged。
 
 ## 二十二、下一次评审的工作方法
 

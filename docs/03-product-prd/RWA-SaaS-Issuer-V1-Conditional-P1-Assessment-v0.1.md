@@ -1,5 +1,8 @@
 # RWA SaaS｜Issuer V1 16 项条件性 P1 必需性专项审核 v0.1
 
+
+> **Step03.5 历史文件提示（2026-10-23）：Historical / Superseded as CURRENT READING ENTRY；原文内容、已批准的相关SCOPE原则和当时审核记录全部保留。** 原条件性P1必要性研究继续是审计证据；DEC-012之后应在正式版本主表审查V1.0或后续版号，不从P1称谓直接推断可选交付。 当前请以[现行权威目录](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)及[对应现行材料](../03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)为准。**这不是撤销或重写历史批准，也不意味着该文原有研究数据无价值。**
+
 > **Audit 已完成；SCOPE-078～SCOPE-085 八项条件性 P1 必需性判定原则已获产品负责人批准；具体参考 Instrument、法域及真实 V1 交付必要性仍待决定**。
 >
 > 2026-10-22。依据[187 项五类交付候选](RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md)、[V1 最小交付草案](RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md)、[外部执行审核及已批准 SCOPE-071～077](RWA-SaaS-Issuer-V1-External-Execution-and-Authority-Audit-v0.1.md)、[正式决策](../../decisions/SCOPE-071-077-external-execution-authority-controls.md)、[SCOPE-059～062](../../decisions/SCOPE-059-062-issuer-v1-delivery-and-validation-decisions.md)。

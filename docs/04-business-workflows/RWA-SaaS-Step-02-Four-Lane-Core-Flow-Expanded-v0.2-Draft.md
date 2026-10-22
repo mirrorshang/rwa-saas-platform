@@ -1,5 +1,8 @@
 # RWA SaaS｜Step 02 四端业务全生命周期重构 v0.2（产品审图草案）
 
+
+> **Step03.5 历史文件提示（2026-10-23）：Historical / Superseded as CURRENT READING ENTRY；原文内容及其历史批准证据继续保留。** DEC-013 已批准 CR-01～10 全部 A，DEC-014 已批准11步核心流程。旧 v0.2 的 NEW REVIEW/待批是历史时点信息，不再是当前决策状态。 当前请以[文档权威目录](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)和[对应现行材料](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)为准。**本提示仅更新导航生效关系，不撤销任何历史正式决策，不冻结详细PRD，也不改变原正文。**
+
 > **Draft / For Review，2026-10-23。** 以产品负责人描述的 **11 步企业购买 SaaS → 创建资产 → 自动化发行 → 投资者认购 → 募集资金结算 → 收益注资及分配 → 清偿/退出** 为用户旅程原型；在原 Step 02 v0.1 基础上提出扩展。此文**不是**原 187 功能 ID 变更、不是 SCOPE-152～205 Approved 的修改、不更改四份 Frozen、不是合约技术方案/合法发行意见、不批准商业收费/托管/资金提取/自动 Mint 或软件开发。
 >
 > **权威输入**：[原 Step 02 四端泳道 v0.1](RWA-SaaS-Step-02-Four-Lane-End-to-End-Workflow-Draft-v0.1.md)；[Frozen WF-01～18](RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)；[六批需求和批准进度](../Document-Status-Index.md)；[187项原ID与优先级](../03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)。

@@ -46,7 +46,7 @@ RWA SaaS 是一套**从零建设、面向全球机构客户的标准化、可配
 
 系统采用以下层次来组织数据和发行流程：
 
-\`\`\`text
+```text
 SaaS 客户 / Tenant（购买软件、合同与能力授权）
     └─ Organization / Legal Entity（机构及实际法律主体）
          └─ Underlying Asset（底层资产及证明材料）
@@ -59,7 +59,7 @@ SaaS 客户 / Tenant（购买软件、合同与能力授权）
                              ├─ Allocation + Legal Register（配售与权威登记）
                              ├─ Token + Chain Transaction（链上 Token 及回执）
                              └─ Lifecycle Event（利息、分红、还本、通知等）
-\`\`\`
+```
 
 > 以上是便于理解的**逻辑关系**，不是已确定的数据库层级或单一线性事务。一个 Project 可包含多个 Offering。不同 Instrument 的合法权利、登记与 Token 执行先后关系需按具体金融工具确认。
 
@@ -261,6 +261,6 @@ A/B 用来检查**共用 Issuer SaaS 能力是否覆盖不同金融工具**，�
 ## 当前项目治理说明
 
 - 产品负责人决定产品范围、规则、正式冻结及开发授权；产品/技术/运营/法律或受权金融责任方按各自职责参与审核。
-- 仓库当前产品文档工作分支：\`docs/regulated-activity-boundaries-v01\`。
+- 仓库当前产品文档工作分支：`docs/regulated-activity-boundaries-v01`。
 - [PR #6](https://github.com/mirrorshang/rwa-saas-platform/pull/6) 仍为 **Draft / Open / Unmerged**；未经明确授权不得合并。
 - 下一步**不是**立即开展 UI 或开发，而是在暂停结束后完成剩余详细 PRD 与产品冻结，再统一开展 UI。

@@ -1,6 +1,6 @@
 # RWA SaaS Platform｜文档状态与决策索引
 
-> 更新日期：2026-10-21｜性质：文档治理索引（非新的产品决策、冻结文件或研发授权）
+> 更新日期：2026-10-23｜性质：文档治理索引（非新的产品决策、冻结文件或研发授权）
 >
 > 本索引描述本工作分支的现有产品资料与已批准边界；如与冻结正文或正式决策文件有差异，以对应的已批准 DEC 及冻结文档为准。索引更新不改变其审批状态。
 
@@ -12,6 +12,12 @@
 - [**DEC-013：CR-01～10 全部选择 A**](../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)：**Approved（产品方向与版本目标，2026-10-23）**；[原A/B提案](03-product-prd/RWA-SaaS-V1.0-Complete-Loop-CR-01-10-Decision-Proposals-v0.1.md)同步 Approved。在线SaaS收费、标准 Issuer Portal、A/B受控模板、专业服务文件引用、受权Contract Factory、外部+嵌入式钱包、募集资金真实结算、收益注资与一种合法分配、A到期/B条件退出、历史187转版程序均已原则批准；**未批准逐项ID版本归属、法域/技术方案或生产操作**。
 - 既有 DEC-011 受控二级转让为后续版本的已批原则保留，暂拟 V2.0，不用新治理方法自动将其移至 V3.0；White-label与商业 Open API 的完整产品交付版本仍待实际范围决策。
 - 现有 [Batch 01～06](03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)最低深度原则继续 Approved；DEC-013 十项A方向亦 Approved。**[DEC-014](../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md) 已确认 [Step02 v0.3](04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md) 核心11步主流程 Approved，详细技术/异常细则 Draft**；下一步进入原187功能双向映射与新增功能批准，字段级PRD、UI、法域/技术与工程仍分别待审；PR #6保持 Draft/Open/Unmerged。
+
+## Step 03 187项双向交叉核验（2026-10-23）
+
+- [**187 项逐ID × 核心11步/四端主责任审核矩阵**](03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)：**Draft（首轮纸面核验完成）**，187/187唯一码已关联并给出原名称、四端主责、业务步骤、版本候选及复核意见。标记：**106 项直接核心关联、18 项跨端底座、34 项未来版本关联、29 项需深化/边界核对**；这些均为纸面交叉审核状态，不是程序运行测试。
+- [**差距、重复及XCHK-01～10审核门**](03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)：**Draft / 等待产品负责人批准处理原则**，建立 **D01～D12 12 个差距主题、8组权威重叠、PROP-01～11建议可验收交付单元、XCHK-01～10 A/B审批提案**。不提前创建正式新增功能ID；不因初步拆分更改187功能总数。
+- **状态边界**：DEC-014 核心11步主流程仍 Approved；DEC-013 CR-01～10产品方向 Approved；原 Batch01～06 Approved不变。V1.0/V2.0/V3.0逐行迁移（建议140/22/25）仍 Draft；法域/技术/资金/链签名及最终交付清单未冻结，PR#6维持 Draft/Open/Unmerged。
 
 ## 当前基线与工作边界
 
@@ -127,4 +133,4 @@
 
 [《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
-**当前工作进度（2026-10-23）**：**Batch 01～06 最低深度原则 Approved；DEC-012 版本治理 Approved；DEC-013 CR-01～10 产品方向全部 A Approved；DEC-014 Step 02 v0.3 核心11步业务主流程 Approved**，技术细则仍 Draft；187项目标版本建议140/22/25均 Draft，下一步启动 Step 03双向功能核验。后续将进入 187 项核验、分端完整功能清单、字段级详细 PRD 与最终范围冻结，最后统一 UI。A/B 原 187 项仍 Not Tested、UI/工程未启动，PR #6 Draft/Open/Unmerged。
+**当前工作进度（2026-10-23）**：**Batch 01～06 最低深度原则 Approved、DEC-012版本方法 Approved、DEC-013 CR-01～10产品方向 Approved、DEC-014核心11步主流程 Approved**；**Step 03 首轮纸面187/187逐项交叉审查已完成，审核底稿及XCHK-01～10产品提案 Draft**。新交付单元是否扩原ID/新编正式ID、187项真正V1.0/V2.0/V3.0归属、字段级PRD与最终范围均未冻结。待集中审核差距处理原则，再核准正式版本清单→分端功能清单→字段级PRD→全局冻结→统一UI。A/B 187项仍Not Tested，业务案例Not Executed，无UI/软件研发/真实金融操作，PR#6 Draft/Open/Unmerged。

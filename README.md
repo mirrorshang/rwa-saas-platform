@@ -68,5 +68,6 @@
 - 唯一当前完整状态导航：[docs/Document-Status-Index.md](docs/Document-Status-Index.md)。
 - 权威/历史覆盖及当前主文档：[文档权威目录](docs/00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。
 - 95份原有文件的逐文件处理建议与审计证据：[首轮报告](docs/00-governance/RWA-SaaS-Step-03.5-Document-Governance-Audit-and-Disposition-Proposal-v0.1.md)。
+- **Step03.5第二轮实际执行及交叉核验**：[整理验收报告](docs/00-governance/RWA-SaaS-Step-03.5-Non-Destructive-Cleanup-Verification-v0.1.md)：已标记11份历史草案、核验四份Frozen和187原ID、归档14项问题的处置与后续门。
 - 历史草案仅标 **Superseded as current reading entry**，路径、正文和对应DEC/SCOPE审批历史均保留；四份 Frozen 不直接改写。
 - 当前工作分支：`docs/regulated-activity-boundaries-v01`。[PR #6](https://github.com/mirrorshang/rwa-saas-platform/pull/6) **Draft / Open / Unmerged**，base `docs/initial-asset-scope-v01`；没有收到明确合并授权。

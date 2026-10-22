@@ -22,7 +22,7 @@
 产品负责人**正式认可**新的六步方法：**① Batch 04～06 业务规则收口 → ② 四端可编辑详细业务泳道图 → ③ 原 187 项功能逐项双向核验 → ④ 按端/模块/子模块/功能点建立完整清单 → ⑤ 字段级详细 PRD → ⑥ 一致性验收及正式产品冻结 → 统一 UI 设计**。不再把 Batch 01～04 的“最低交付深度原则”文档视作完整字段级 PRD。
 
 - [**六步执行计划及标准产品文档缺口审计 v0.1**](00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md)：六步方法 **Approved**，具体文档差距/质量标准为工作基线 Draft。包括四泳道图、权限与 RACI、信息对象/字段、NFR、运营、合规、集成、验收与追踪要求。
-- [**Step 01：Batch 04～06 跨端业务规则收口底稿 v0.1**](03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md)：已开始 **Draft / 还未业务审核通过**；覆盖 Batch 04 50 项、Batch 05 19 项、Batch 06 37 项的主要业务链路、四端责任和高风险异常，不是字段级 PRD。
+- [**Step 01：Batch 04～06 跨端业务规则收口底稿 v0.1**](03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md)：**Draft / 待业务审核**；已列 Batch 04～06 主链路、**R-01～17 四端责任与交接、BRD-A～F 六条待审产品默认方案、BR-01～18 异常断点（Not Executed）**，不是已完成字段级 PRD，未进入 Step 02。
 - 经原 187 个 ID 实际核对：**六批 Issuer 主线 164 项；M14/M15/M16 另外 23 项**的 V2/独立商业范围归属必须在 Step 03 审核，不能漏项或默认纳入 V1。
 - **原 Batch 04 SCOPE-176～185 仍待批准**，原 Batch 01～03 最低交付原则的 Approved 不变；原 187 项 A/B 验证底表 Not Tested、业务案例 Not Executed；未授权 UI/研发或真实金融生产执行。第 02～04 份 Frozen 原文不变，PR #6 Draft/Open/Unmerged。
 

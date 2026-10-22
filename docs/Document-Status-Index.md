@@ -81,7 +81,8 @@
 - [《A/B 187 项功能必要性与 V1 冻结决策门交叉对照 v0.1》](03-product-prd/RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)：**SCOPE-143～151 产品审核原则已批准**；逐 ID 对照与 16 条 P1 仍缺少真实法域/执行者/实施深度，A/B 187 项全部 Not Tested。
 - [SCOPE-143～151 正式决策记录](../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)：Approved；统一 API-First、条件性 P1 分类及 V1 六项冻结前置门。
 - [《Issuer V1 逐功能交付深度六批审核路线 v0.1》](03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)：**Product Plan / Draft**，先做客户购买 SaaS、租户和组织权限，再做 Instrument/Offering、认购资金/登记、Token 与存续期。
-- [《Batch 01：M01～M03 商业开通/Tenant/组织权限交付深度 v0.1》](03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)：**Detailed PRD Draft，SCOPE-152～159 待批**；22 个功能 ID（P0 17/P1 2/P2 3）、22 个 B01 案例 Not Executed；在线自动订阅和企业 SSO 不默认 V1。
+- [《Batch 01：M01～M03 商业开通/Tenant/组织权限交付深度 v0.1》](03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)：**SCOPE-152～159 的最低产品交付原则 Approved，具体 UI 与工程仍 Draft**；22 个功能 ID（P0 17/P1 2/P2 3）、22 个 B01 案例 Not Executed；在线订阅和企业 SSO 不默认 V1。
+- [SCOPE-152～159｜商业开通及角色权限正式决策](../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)：**Approved（2026-10-22）**；用户明确暂停下一阶段 Batch 02～06，先核对进入 UI 设计前的产品工作清单。
 
 ## 持续开放的决策门
 
@@ -93,4 +94,4 @@
 
 [《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
-当前建议的下一项产品工作：先审核[《Batch 01：M01～M03 商业开通/Tenant/组织权限交付深度 v0.1》](03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)的 **SCOPE-152～159（待批准）**。后续按六批路线逐功能收口，真实首发 Instrument/法域、受权金融执行与法律登记主体、187 项真实 V1 交付深度/工程验收仍独立待决；PR #6 Draft/Open/Unmerged。
+**当前暂停点（2026-10-22）**：产品负责人已经确认 **SCOPE-152～159 全部同意**，同时要求**暂不进入 Batch 02～06 或正式 UI 设计**，先详细梳理进入 UI 前尚需的产品需求、实际交付深度、角色旅程、信息架构、交互/异常状态、真实金融服务/法律依赖及范围冻结门。除非用户再次明确指示，不自动推进下一批 PRD、研发或 UI。A/B 原 187 项均 Not Tested；PR #6 Draft/Open/Unmerged。

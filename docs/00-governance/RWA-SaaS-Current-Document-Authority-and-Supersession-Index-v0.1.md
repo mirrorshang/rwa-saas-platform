@@ -6,9 +6,9 @@
 
 ## 1. 当前项目状态（一页速览）
 
-- **当前阶段**：**Step 03.5 非破坏性文档整理与决策层交叉核验已完成；下一步返回 Step 03 的版本与新增功能审核**。Stage 01 Batch01～06产品规则原则已批准；Stage 02 **11/11核心业务主流程已批准**；Stage 03 **187/187原ID已完成纸面双向匹配**、XCHK01～10 A 已批准。还没有进行分端完整功能清单与字段级PRD，尚未进入UI/代码开发。
+- **当前阶段**：Step03.5非破坏性治理已完成；**Step03 DEC-016已批准PROP-01～11的分类与6项新增正式编号，现有193项功能ID**。下一步审查193项的逐ID V1.0/V2.0/V3.0 交付版本与非范围，随后Step04/05/06；尚未进入UI、研发或真实资金/Token生产。
 - **当前产品主线**：企业购买 SaaS → 企业配置工作台/标准Issuer投资者门户 → 合法资产权益/Offering与受权Token部署 → 投资者KYC/钱包认购/真实支付、配售登记与Token交付 → 募集款合法结算 → 条款适用的合法收益资金注资、分配/Claim → 存续/依法清偿或退出。
-- **当前功能基数**：原 **187 个 ID**；[拟版本划分](../03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md) 为 **V1.0 140、V2.0 22、V3.0 25（全部Draft）**；[PROP-01～11](../03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md) 是跨端交付单元建议，尚未判断需新增多少正式ID，也未冻结真实V1.0范围。
+- **当前功能基数**：原187历史ID+DEC-016新增6个独立正式ID=**193个唯一ID**，22模块保持；[当前唯一193项版本候选主表](../03-product-prd/RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)提议 **V1.0 146、V2.0 22、V3.0 25，全部Draft**。旧[187项版号草案](../03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)为历史审计对照；[DEC-016](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md)只批准分类及功能编号，未冻结具体版号。
 - **技术/生产门**：具体首发法域/Instrument、真实法律与专业责任、托管/收款/资金释放执行方、合同/Token合约标准及生产Signer、嵌入式钱包架构和恢复、Push/Claim实际法律支付效力、退款/定价/时间精度等仍待法域或技术设计审核。不能由 SaaS 自动假定。
 - **PR**：[PR #6](https://github.com/mirrorshang/rwa-saas-platform/pull/6) **Draft/Open/Unmerged**，base `docs/initial-asset-scope-v01`；严禁未经批准合并。
 
@@ -32,9 +32,9 @@
 | 已批准11步核心主流程 | [Step02 v0.3](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md) + [DEC-014](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md) | **11/11核心业务Approved**；v0.3技术异常/字段仍Draft |
 | 187历史ID源账 | [187原始功能清单](../03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) | **功能编号保持**；P0/P1/P2仅历史，原文审批记录不重写 |
 | 对应新流程的逐ID核验 | [Step03 187交叉审核矩阵](../03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md) | 纸面核验完成、处理原则Approved；非软件测试Pass |
-| PROP-01～11 是否原ID扩深/拟新增独立功能 | [Step03 PROP五项扩深与六项新增候选审核稿](../03-product-prd/RWA-SaaS-Step-03-PROP-01-11-Disposition-and-Six-New-Functions-Review-Draft-v0.1.md) | **Draft / 等待具体分类审批**：5组扩深、6组建议独立；ADD-01～06为临时号，187正式ID不变，未来若批准均新增则可候选变为193、拟V1为146，不是当前实际版号承诺 |
+| PROP-01～11 新旧功能分类和六项正式ID | [DEC-016](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md)与[原11项审核提案](../03-product-prd/RWA-SaaS-Step-03-PROP-01-11-Disposition-and-Six-New-Functions-Review-Draft-v0.1.md) | **分类 Approved A：5项扩深+6项独立正式ID**，旧ADD-01～06为原审查代号；六个正式ID已分配、总计193，仍待具体V1/V2/V3归属批准 |
 | 缺口、职责和待拆功能 | [Step03 12缺口/8重叠/11 PROP](../03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md) + [DEC-015](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md) | XCHK十项原则Approved；PROP拆分与编号仍Draft |
-| 逐项建议交付版号 | [187逐项迁移表](../03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md) | **Draft / 唯一当前版本映射建议表**，不是已冻结开发表 |
+| 逐项建议交付版号 | [193项唯一现行版本候选主表](../03-product-prd/RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)，[原187迁移草案](../03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)仅旧账留证 | **Draft / 每个功能只有一个候选首次交付版号**，不是已冻结开发表 |
 | 面向产品负责人的可读版号规划 | [V1.0/2.0/3.0七段业务规划](../03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md) | **Draft / 供批量评审**，须引用逐项表而不能自己创造第二套功能版本归属 |
 | A/B债权及SPV权益、CDE拓展 | [Document-Status-Index](../Document-Status-Index.md)内权利体系/样本专题章节及对应Approved SCOPE | 产品工具家族原则Approved，具体实现/合法有效性/验证未完成 |
 | 文档审计及归档建议 | [Step03.5全仓首轮审计](RWA-SaaS-Step-03.5-Document-Governance-Audit-and-Disposition-Proposal-v0.1.md) | 95项逐文件核查、14项治理风险；审计证据并非新产品需求 |
@@ -43,7 +43,7 @@
 
 | 主题 | 老档案中可能看到的主张 | 当前适用批准决定 | 处理原则 |
 |---|---|---|---|
-| 版本治理 | 旧功能清单P0/P1/P2、SCOPE中“非默认首期”措辞 | [DEC-012](../../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)：改为 **V1.0/V2.0/V3.0唯一交付版本** | 历史分级保留，但不再用来断言现时V1开发范围；140/22/25Draft |
+| 版本治理 | 旧功能清单P0/P1/P2、SCOPE中“非默认首期”措辞 | [DEC-012](../../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)、[DEC-016](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md) | 历史P0/P1仅审计；现193个正式ID、版号候选146/22/25继续Draft |
 | 购买SaaS | [旧SCOPE-003](../03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)首期可人工合同且**不强制在线收费** | [DEC-013 / CR-01 A](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md) 已批准**V1.0在线订阅收费能力**与人工合同例外 | 新产品方向覆盖旧的“首期不强制”阶段建议，但不改变任何实际商业支付/法域审批门 |
 | Issuer门户 vs高级白标 | 早期 DEC-002 中有White-label V1层级描述，M08门户页面与M15高级域名功能混合 | 后续 SCOPE-059 与 DEC-013 CR-02 + DEC-015 XCHK-02 | **标准Tenant唯一URL/基本品牌为V1产品目标**；独立White-label运营商完整交付后置，不能以早期层级概念默认为V1开发范围 |
 | A/B模板与律师/评估 | 旧M04-F008 P1、复杂M06服务商协作/市场 | DEC-013 CR-03/04 | V1受控A债权/B SPV权利模板及外部合法资料，复杂服务商撮合后置 |
@@ -53,7 +53,7 @@
 | 收益分配 | 旧M13-F004～006历史P1条件最低深度 | DEC-013 CR-08 / DEC-015 XCHK-05 | V1需要**注资+至少一种合法Push或Claim**；Claim-first是推荐路线，实际方案待选 |
 | 债权与SPV退出 | 旧M07-F009 Burn历史P1、M13统一存续概述 | DEC-013 CR-09 / DEC-015 XCHK-08 | A债权本息，B依法适用合法分红/公司回购，法定权利/实付/登记/Token各有来源 |
 | 一级/受控二级 | 历史“V1/V2”的业务分类与新V1.0/V2.0版号可能混淆 | [DEC-011](../../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md)依旧控制交易边界，受控转让拟V2.0 | 不自动把受控转让延至V3，也不把V1认购改成市场撮合 |
-| 全量审核及编号 | 旧187表部分段落将SCOPE-134～151标为待批准 | 已获批准的 [SCOPE-134～142](../../decisions/SCOPE-134-142-equity-B-SPV-rights-and-lifecycle-principles.md) 与 [SCOPE-143～151](../../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)，以及DEC-015 | 旧段落是历史时点陈述，不再代表当前待批；原187 ID不能擅自添加PROP条数 |
+| 全量审核及编号 | 原187表历史审批时点，旧PROP尚未正式编号 | [SCOPE-134～142](../../decisions/SCOPE-134-142-equity-B-SPV-rights-and-lifecycle-principles.md)、[SCOPE-143～151](../../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)、[DEC-015](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)、[DEC-016](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md) | 原187行原样留证，新增6个正式功能编号已获批；版号未决，193项主表不覆写历史 |
 
 **事实优先级说明**：上表是“哪个产品方向后来有了明确变化”的索引，不意味着全部参数、合法责任及运营主体已经 Approved。假如新旧文件无法依据明确变更决策消解，必须新增待决门，而非擅自宣布旧文本错误并覆盖。
 
@@ -90,10 +90,10 @@
 ## 7. 保全规则和二轮完成核验
 
 1. 不修改任何 Frozen/DEC/ARCH/SCOPE 正文；只更新导航 README、现有状态索引与本次11份历史草案**顶部“当前入口已接续”的导航提示**。
-2. 不新增/删除正式功能ID；原187中名称、编号、历史分级不变。版本数字 V1.0 140/V2.0 22/V3.0 25 仍 Draft。
+2. **当前本节旧整理约束以DEC-016新审批为准**：Step03.5曾禁止未授权新增正式ID；用户已在后续DEC-016明确授权新增6个独立正式ID。原187历史行仍不可删除/改名/重号，193项功能全集已登记；当前版本146/22/25仍Draft。
 3. 每份历史 H 文件的新提示**必须引用本索引**，保留原 H1/旧历史结论/审批引用；不得抹除当时的审议证据。
 4. 所有仓库内相对Markdown链接必须继续能解析原路径；检查新增索引、README、状态索引及历史头部。
 5. 保留PR #6 Draft/Open/Unmerged，不修改其 base/合并状态；所有变动只在 `docs/regulated-activity-boundaries-v01` 工作分支。
 6. 本索引不是范围冻结决定；日后做真实法域、对外API、钱包/分红/现金流/合约等详细方案，需要权限责任或实证，不得以产品文档名称推断已经通过。
 
-**当前：Step03.5 第二轮非破坏性整理与12领域决策层交叉核查已完成；已回到Step03 PROP-01～11具体增补/扩深分类审核（Draft）。** [第二轮整理与验收记录](RWA-SaaS-Step-03.5-Non-Destructive-Cleanup-Verification-v0.1.md)已归档：4份Frozen原样、11份历史文件加提示、README/状态索引精简、187编号和版本提议未改。**V1.0正式功能清单/PROP新ID/字段级PRD、外部资金法域许可仍未冻结。**
+**当前：Step03.5 非破坏性整理已经完成，DEC-016已批准5项扩深和6项正式新增ID（总193）；现行193项功能目标版号146/22/25仍Draft、未冻结或授权开发。** [治理验收记录](RWA-SaaS-Step-03.5-Non-Destructive-Cleanup-Verification-v0.1.md)及历史原187审计继续保留。**真实法域/融资资金签名/合约/钱包实现仍TBD**。

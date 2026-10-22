@@ -82,7 +82,10 @@
 - [SCOPE-143～151 正式决策记录](../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)：Approved；统一 API-First、条件性 P1 分类及 V1 六项冻结前置门。
 - [《Issuer V1 逐功能交付深度六批审核路线 v0.1》](03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)：**Product Plan / Draft**，先做客户购买 SaaS、租户和组织权限，再做 Instrument/Offering、认购资金/登记、Token 与存续期。
 - [《Batch 01：M01～M03 商业开通/Tenant/组织权限交付深度 v0.1》](03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)：**SCOPE-152～159 的最低产品交付原则 Approved，具体 UI 与工程仍 Draft**；22 个功能 ID（P0 17/P1 2/P2 3）、22 个 B01 案例 Not Executed；在线订阅和企业 SSO 不默认 V1。
-- [SCOPE-152～159｜商业开通及角色权限正式决策](../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)：**Approved（2026-10-22）**；用户明确暂停下一阶段 Batch 02～06，先核对进入 UI 设计前的产品工作清单。
+- [SCOPE-152～159｜商业开通及角色权限正式决策](../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)：**Approved（2026-10-22）**；Batch 01 原则已确认，后续按“完整 PRD 后统一 UI”推进。
+
+- [《Batch 02：M04/M06 Asset、Instrument 与法律文件/专业审核详细 PRD v0.1》](03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-02-Asset-Instrument-Documents-Review-v0.1.md)：**Detailed PRD / Draft**；17 个原功能 ID（P0 13、P1 2、P2 2），B02-01～17 全部 Not Executed；**SCOPE-160～167 待审核**，不代表实际发行或 UI 已通过。
+- [仓库产品总览 README](../README.md)：面向技术/运营介绍产品结构、22 模块具体功能、版本规划与当前需求进度；每批确认/冻结后同步维护。
 
 ## 持续开放的决策门
 
@@ -94,4 +97,4 @@
 
 [《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
-**当前暂停点（2026-10-22）**：产品负责人已经确认 **SCOPE-152～159 全部同意**，同时要求**暂不进入 Batch 02～06 或正式 UI 设计**，先详细梳理进入 UI 前尚需的产品需求、实际交付深度、角色旅程、信息架构、交互/异常状态、真实金融服务/法律依赖及范围冻结门。除非用户再次明确指示，不自动推进下一批 PRD、研发或 UI。A/B 原 187 项均 Not Tested；PR #6 Draft/Open/Unmerged。
+**当前工作进度（2026-10-22）**：用户确认以 **“完整详细 PRD → 产品范围与跨模块规则收口 → 统一 UI 设计”** 为推进方式，并明确恢复 Batch 02 产品设计。**Batch 02（M04/M06，17 项）详细规格已起草，SCOPE-160～167 待评审**；Batch 03～06 待逐批启动。A/B 原 187 项仍 Not Tested，UI/工程尚未启动；PR #6 Draft/Open/Unmerged。

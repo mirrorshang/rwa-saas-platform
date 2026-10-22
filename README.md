@@ -45,13 +45,14 @@
 - [《A/B 187 项功能必要性与 V1 冻结决策门交叉对照 v0.1》](docs/03-product-prd/RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)：**SCOPE-143～151 审核原则已批准**；逐条覆盖 187 个 ID、16 条条件性 P1、六类真实 V1 冻结前置门，原功能仍全部 Not Tested。
 - [SCOPE-143～151｜A/B 187 项范围审核与 V1 冻结门正式决策](decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)：**Approved（2026-10-22）**；批准审核方法和权威边界，不等于实际 187 项开发深度冻结。
 - [《Issuer V1 交付深度六批审核路线 v0.1》](docs/03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)：**Draft**；按客户购买 SaaS→机构权限→Instrument/Offering→认购支付/配售→Token→存续期六批收口。
-- [《Batch 01：M01～M03 商业开通与租户权限交付深度 v0.1》](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)：**Draft / SCOPE-152～159 待批准**；22 项逐功能建议、角色/界面/状态/异常及 B01-01～22 待执行案例。
+- [《Batch 01：M01～M03 商业开通与租户权限交付深度 v0.1》](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)：**SCOPE-152～159 产品深度原则 Approved**；22 项逐功能最低交付建议、角色/界面/状态/异常及 B01-01～22 未执行案例；详细 UI/技术方案仍 Draft。
+- [SCOPE-152～159｜Batch 01 正式批准与暂停决策](decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)：**Approved（2026-10-22）**；用户明确要求先暂停 Batch 02～06，仅梳理 UI 设计前还需的产品工作。
 - [《Instrument 权利类型体系与多资产扩展边界 v0.1》](docs/03-product-prd/RWA-SaaS-Instrument-Families-and-Extensibility-Boundaries-v0.1.md)：**长期五类家族与扩展原则已批准**；C/D/E 目前仅规划可扩展权利模型，不新增 V1 开发承诺。
 - [SCOPE-101～108｜Instrument 权利类型与扩展边界决策](decisions/SCOPE-101-108-instrument-families-and-extensibility.md)：**Approved（2026-10-22）**；五类产品家族不等于全球法定类别，A/B 验证与 187 项优先级仍有效。
 - [《C/D/E 权利类型扩展与功能缺口评估 v0.1》](docs/03-product-prd/RWA-SaaS-CDE-Instrument-Extension-Gap-Assessment-v0.1.md)：**原始 Audit / Draft**；22 模块映射及 18 项候选 GAP，尚不作为正式功能 ID、开发或上市承诺。
 - [《C/D/E 18 项缺口正式交叉审核 v0.1》](docs/03-product-prd/RWA-SaaS-CDE-18-Gaps-Formal-Product-Review-v0.1.md)：**SCOPE-109～116 产品审核原则已批准**，9 项共享配置/集成扩展及 9 项未来专有业务；作为长期参考，不增加 V1 开发承诺。
 - [SCOPE-109～116｜C/D/E 扩展缺口审核决策](decisions/SCOPE-109-116-cde-extension-gap-review.md)：**Approved（2026-10-22）**；C/D/E 扩展阶段已收口，未来专用系统与法律责任仍须另审。
-- **下一步产品工作**：审核[Batch 01 Issuer SaaS 商业开通与租户权限 22 项交付深度](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)的 **SCOPE-152～159**；之后依六批计划逐步确认真实首发工具/法域、权威执行者及 187 项实际最小实现深度，评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
+- **下一步产品工作（暂停点）**：SCOPE-152～159 已批准，用户要求**暂停 Batch 02～06**，先盘点进入 UI 设计前的剩余产品需求、信息架构、交互/状态、真实金融业务合规依赖和范围冻结门；重启后才依六批路线推进，评审 P0 实现深度、首发 Instrument 必需 P1 及 White-label/API 商业交付批次；完成范围冻结评审后再编制 Issuer SaaS 核心模块**详细功能 PRD**，逐步明确页面、字段、状态和验收。正式开发授权仍需另行批准。
 - **尚未完成**：第 05～10 份核心规格、模块详细 PRD、第 04 份具体工具/法域实施细化及 V1 逐功能范围。产品基线冻结、前端演示开发、正式业务研发和生产启用是不同审批节点。
 
 详见 **[文档状态与决策索引](docs/Document-Status-Index.md)**，其中包含十份核心文档进度、决策链接、未决事项及研究资料来源。

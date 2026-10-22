@@ -648,7 +648,7 @@
 - [Batch 01：M01～M03 商业开通与权限**22 项详细候选**](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)已起草，提出 **SCOPE-152～159 待批准**。其 P0 17 / P1 2 / P2 3 与原基线一致，**不批准在线自动收费、企业 SSO、高级 CRM 等默认 V1 交付**。
 - 原始 187 项等级 P0 125/P1 21/P2 21/V2 6/待定 14，以及 73/42/10/16/46 交付分类不变。第 02～04 份 Frozen、DEC/ARCH 不改；PR #6 继续 Draft/Open/Unmerged。
 
-> **历史快照说明（2026-10-23 核验）**：以下二十四至二十六章保留分批审批过程中当时的评审状态，不代表当前进度。最新批准事实：Batch 01～04 最低交付深度原则均 Approved；Batch 04 为 SCOPE-176～185（[正式决策](../../decisions/SCOPE-176-185-batch04-investor-payments-registration-principles.md)），Batch 05 的 SCOPE-186～193 仍 Draft。实时进度以 [README](../../README.md) 和 [文档状态索引](../Document-Status-Index.md) 为准。本次仅更正文字标签，187 项功能 ID/优先级及全部审查结论不变。
+> **历史快照说明（2026-10-23 核验）**：以下二十四至二十六章保留分批审批过程中当时的评审状态，不代表当前进度。最新批准事实：Batch 01～06 最低交付深度原则均 Approved；Batch 04 为 [SCOPE-176～185](../../decisions/SCOPE-176-185-batch04-investor-payments-registration-principles.md)，Batch 05 为 [SCOPE-186～193](../../decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md)，Batch 06 为 [SCOPE-194～205](../../decisions/SCOPE-194-205-batch06-lifecycle-exceptions-notifications-audit-reports-principles.md)。实时进度以 [README](../../README.md) 和 [文档状态索引](../Document-Status-Index.md) 为准。本次仅更正文字标签，187 项功能 ID/优先级及全部审查结论不变。
 
 ## 二十四、Batch 01 已批准、后续批次当时暂停的历史评审快照（SCOPE-152～159；2026-10-22）
 

@@ -22,6 +22,7 @@
 产品负责人**正式认可**新的六步方法：**① Batch 04～06 业务规则收口 → ② 四端可编辑详细业务泳道图 → ③ 原 187 项功能逐项双向核验 → ④ 按端/模块/子模块/功能点建立完整清单 → ⑤ 字段级详细 PRD → ⑥ 一致性验收及正式产品冻结 → 统一 UI 设计**。不再把 Batch 01～06 的“最低交付深度原则”文档视作完整字段级 PRD。
 
 - [**六步执行计划及标准产品文档缺口审计 v0.1**](00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md)：六步方法 **Approved**，具体文档差距/质量标准为工作基线 Draft。包括四泳道图、权限与 RACI、信息对象/字段、NFR、运营、合规、集成、验收与追踪要求。
+- [**Step 02：四端端到端 L0/L1 业务泳道图 v0.1**](04-business-workflows/RWA-SaaS-Step-02-Four-Lane-End-to-End-Workflow-Draft-v0.1.md)：**Draft / 待产品负责人审核**；已建立 GitHub 可编辑 Mermaid **L0 总图 + L1 五段细图**，串联 R-01～17 与 BR-01～18 异常，仍非 Frozen，未开展完整 187 ID 双向映射、UI 或实际测试。
 - [**Step 01：Batch 04～06 跨端业务规则收口底稿 v0.1**](03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md)：**Draft / 待业务审核**；已列 Batch 04～06 主链路、**R-01～17 四端责任与交接、BRD-A～F 六条待审产品默认方案、BR-01～18 异常断点（Not Executed）**，不是已完成字段级 PRD；Step 02 已启动草案工作。
 - 经原 187 个 ID 实际核对：**六批 Issuer 主线 164 项；M14/M15/M16 另外 23 项**的 V2/独立商业范围归属必须在 Step 03 审核，不能漏项或默认纳入 V1。
 - **Batch 01～06 的最低交付深度原则均 Approved**，其中 Batch 04 [SCOPE-176～185](../decisions/SCOPE-176-185-batch04-investor-payments-registration-principles.md) 及 Batch 05 [SCOPE-186～193](../decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md) 已明确批准；**Batch 06 的 37 项 SCOPE-194～205 已批准最低产品深度原则**（[正式决策](../decisions/SCOPE-194-205-batch06-lifecycle-exceptions-notifications-audit-reports-principles.md)）；完整字段级 PRD 和真实 V1 实施范围仍 Draft。产品负责人明确要求 Batch 04～06 **延续长篇文字需求 + SCOPE 集中审批方式**；六批审核完成后才进入四端流程图、187 项核验、分端功能清单、字段级 PRD、整体冻结及 UI。A/B 187 项 Not Tested，验收卡 Not Executed；第 02～04 份 Frozen 与 PR #6 Draft/Open/Unmerged 不变。
@@ -115,4 +116,4 @@
 
 [《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
-**当前工作进度（2026-10-23）**：**Batch 01～06 最低产品交付深度原则全部 Approved；Batch 06 SCOPE-194～205 已正式归档，Step 01 批次最低深度原则审核收口。现进入 Step 02 四端全流程可视化草案设计，仍需产品负责人正式审核；**随后进入 187 项核验、分端完整功能清单、字段级 PRD、187 项核验、分端功能清单、字段级详细 PRD 与最终范围冻结，最后统一 UI。A/B 原 187 项仍 Not Tested、UI/工程未启动，PR #6 Draft/Open/Unmerged。
+**当前工作进度（2026-10-23）**：**Batch 01～06 最低产品交付深度原则全部 Approved；Batch 06 SCOPE-194～205 已正式归档，Step 01 批次最低深度原则审核收口。Step 02 四端 Mermaid 业务泳道草案已建立（Draft），仍需产品负责人正式审核；**随后进入 187 项核验、分端完整功能清单、字段级 PRD、187 项核验、分端功能清单、字段级详细 PRD 与最终范围冻结，最后统一 UI。A/B 原 187 项仍 Not Tested、UI/工程未启动，PR #6 Draft/Open/Unmerged。

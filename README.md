@@ -36,6 +36,8 @@
 | **V2.0** | 受控转让、专业高级White-label与运营增强 | 22 |
 | **V3.0** | 商业Open API/SDK、多链与高级资产/服务商生态 | 25 |
 
+**当前 Step03 审核门**：[PROP-01～11 功能归属与6组新增候选审核稿（Draft）](docs/03-product-prd/RWA-SaaS-Step-03-PROP-01-11-Disposition-and-Six-New-Functions-Review-Draft-v0.1.md)：建议 **5组扩深原功能 + 6组另立可验收功能**；ADD-01～06仅是草案代号，若后续全部批准新增，才可能形成193项、V1候选146项，**目前仍以原187项/140-22-25 Draft为准**。
+
 **DEC-012 已 Approved的是管理方法**：V1.0 = 第一版真正承诺开发及验收的完整功能集合；不再在 V1.0 内以 P0/P1/P2 区分必做/可选。以上140/22/25依旧是**原187项的Draft候选统计**，不是已批准的逐项唯一版本，且 [PROP-01～11](docs/03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)尚待判断扩原ID还是新立正式ID。原P0/P1/P2保留为历史审计证据。
 
 [按七段流程阅读三版本业务范围草案](docs/03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md) ｜ [187条逐ID目标版本Draft表](docs/03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)

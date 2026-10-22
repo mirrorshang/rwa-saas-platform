@@ -249,5 +249,5 @@
 
 - **已完成**：按原187 ID逐条记录一次审核映射；反向核验原11步；识别跨模块权威重叠和V1核心缺口。
 - **尚未完成**：逐功能字段、验收细节及团队签字；CAND候选并入/扩深/新增的正式结论；V1.0唯一版本归属与真正的 V1.0 完整交付清单；生产法律、支付、合约、钱包方案及实现验证。
-- **推荐后续**：审核[差距/决策底稿](RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)提出的新增功能划分，用户集中决定后才进行新版正式功能树和版本清单调整，绝不在本文件改写已Approved的历史范围。
-- **治理**：原 Batch01～06 SCOPE Approved、DEC-012/013/014 Approved；四份 Frozen 正文未变；[PR #6](https://github.com/mirrorshang/rwa-saas-platform/pull/6) 保持 Draft/Open/Unmerged；不启动UI、真实研发或金融/链上执行。
+- **已批准的缺口处理原则**：[DEC-015：XCHK-01～10全部A Approved](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)；[差距/决策底稿](RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)中的具体 D01～12 / PROP-01～11仍 Draft，进一步在[V1.0/V2.0/V3.0可读范围审核稿](RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md)集中核对。**本文件原187逐行对照不改写**，版本归属需产品负责人明确批准。
+- **治理**：原 Batch01～06 SCOPE Approved、DEC-012/013/014/015 Approved（DEC-015仅十项处理原则）；四份 Frozen 正文未变；[PR #6](https://github.com/mirrorshang/rwa-saas-platform/pull/6) 保持 Draft/Open/Unmerged；不启动UI、真实研发或金融/链上执行。

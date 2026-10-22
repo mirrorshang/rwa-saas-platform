@@ -6,7 +6,7 @@
 >
 > **总体目标**：保持 22 模块/187 项正式功能编号、P0 125/P1 21/P2 21/V2 6/商业批次待定 14 的历史分级不变，将已审定的“共享核心 73 + 共享 UI 42 + 受权外部执行 10 + 条件性 16 + 非默认 Issuer 首期 46”逐 ID 落到**业务页面/入口、字段或事实对象、角色/权限、领域命令/API、状态转换、错误/Unknown 处理、权威证据、验收设计和实施深度**。每批完成原则审批后，最终再单独进行**真实 Issuer V1 冻结决策**；不能以阶段原则批准冒充工程完成。
 
-> **执行方法已更新（2026-10-22）**：本文件保留为**历史六批最低深度规划/已批准产品原则的参考来源**，不再是当前的最终详细 PRD 执行顺序。产品负责人已确认新版 [《六步产品设计及标准文档缺口审计》](../00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md)：先[收口 Batch 04～06 业务规则](RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md)，再四端跨端泳道图、187 项交叉核验、分端功能清单、字段级真正详细 PRD 和全局冻结，**最后统一 UI**。Batch 01～03 已批准原则继续有效；Batch 04 SCOPE-176～185 仍待批准；不得把“最低深度评审”写成“字段级 PRD 已完成”。
+> **执行方法更新（2026-10-22）**：产品负责人明确选择 Batch 04～06 **延续 Batch 01～03 的长篇文字需求 + SCOPE 集中审批**方式，先完成六批最低产品深度原则；其后按照[六步产品方法与文档体系](../00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md)绘制四端跨业务泳道图、187 项交叉核验、分端功能清单、真正字段级 PRD、整体冻结，**最后统一 UI**。Batch 01～04 已批准；[Batch 05 M07/M22 长篇 PRD 草案](RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md)已建立、SCOPE-186～193 待审批，Batch 06 待开展。不得把“最低深度原则审核”误称最终详细 PRD 完成。
 >
 ## 一、产品流程分批策略
 
@@ -52,11 +52,12 @@
 - **Batch 01**：M01～M03 的 22 项产品最低交付深度原则 Approved；B01-01～22 仍 Not Executed。此批准不冻结页面 IA、具体组件/接口/数据结构、真实法域、生产发布和全部 V1 功能范围。
 - **Batch 02**：产品负责人已正式批准 [SCOPE-160～167](../../decisions/SCOPE-160-167-batch02-asset-instrument-documents-review.md)，覆盖 M04/M06 17 项（P0 13/P1 2/P2 2）的最低交付产品原则；B02-01～17 仍 Not Executed。
 - **Batch 03**：产品负责人已正式批准 [SCOPE-168～175](../../decisions/SCOPE-168-175-batch03-project-offering-rules-principles.md)，覆盖 M05/M19 共 19 项最低交付原则；B03-01～19 仍 Not Executed。
-- **Batch 04**：已建立[《M08～M12 投资者准入、真实稳定币付款与法定登记 PRD v0.1》](RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md)，50 项（P0 41/P1 5/P2 4），B04-01～50 全部 Not Executed；**SCOPE-176～185 待产品负责人批准**。Batch 05～06 尚待开展。
-- **交付顺序**：用户选择“**完整 PRD 后统一 UI**”。Batch 01～03 的产品最低深度原则已批准，**Batch 04 尚为 Draft**；真实 G-01～G-06、187 项实施范围、法定主体和测试验收仍需分阶段正式批准。
+- **Batch 04**：[SCOPE-176～185 正式决策](../../decisions/SCOPE-176-185-batch04-investor-payments-registration-principles.md)已确认 M08～M12 50 项最低产品深度原则（P0 41/P1 5/P2 4）；B04-01～50 仍 Not Executed。
+- **Batch 05**：[《M07/M22 Token/合约/第三方执行最低深度 Draft》](RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md)已建立，19 项（P0 16/P1 1/P2 2），B05-01～19 Not Executed；**SCOPE-186～193 均待批准**。Batch 06 待编写审核。
+- **交付顺序**：先完成 Batch 01～06 长篇需求与 SCOPE 原则评审（**Batch 01～04 Approved / Batch 05 Draft / Batch 06 未开始**），再四端流程图→187 项核验→分端功能清单→字段级 PRD→全局产品冻结→统一 UI。真实 G-01～G-06、完整 Issuer V1 交付范围、权威主体和测试验收仍需分阶段批准。
 
 ## 五、第一批执行入口
 
-已编制 [《Batch 01：Issuer SaaS 商业开通、Tenant 与角色权限交付深度评审 v0.1》](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md) 作为首批详细 V1 候选规格，覆盖 **M01～M03 共 22 项（P0 17 / P1 2 / P2 3）**。其 **SCOPE-152～159 的第一批最小交付深度原则已获得产品负责人全部批准**，见[决策记录](../../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)；但具体 UI/技术方案与实际 Issuer V1 范围仍 Draft，**Batch 01～03 已批准产品最低深度原则；Batch 04 详细 PRD Draft 待审核；未提前进入 UI/工程开发**。
+已编制 [《Batch 01：Issuer SaaS 商业开通、Tenant 与角色权限交付深度评审 v0.1》](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md) 作为首批详细 V1 候选规格，覆盖 **M01～M03 共 22 项（P0 17 / P1 2 / P2 3）**。其 **SCOPE-152～159 的第一批最小交付深度原则已获得产品负责人全部批准**，见[决策记录](../../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)；但具体 UI/技术方案与实际 Issuer V1 范围仍 Draft，**Batch 01～04 产品最低深度原则已批准；Batch 05 长篇 PRD Draft 待审批，Batch 06 待起草；未进入 UI/工程开发**。
 
 **状态：六批审核路线 Draft；真实 V1 范围及发布日未冻结，PR #6 Draft/Open/Unmerged，原 187 项 A/B 仍 Not Tested。**

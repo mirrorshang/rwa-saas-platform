@@ -11,8 +11,16 @@
 
 - [**187项逐条目标版本建议（Draft）**](docs/03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)：暂拟 **V1.0 140 / V2.0 22 / V3.0 25**（仅建议，未逐项批准；8个候选新功能缺口尚未加入187原分母）。
 - [**DEC-013：CR-01～10 产品方向全部 A Approved**](decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)：已确认商业订阅、标准门户、基础模板、企业自主专业服务、受权合约Factory、双钱包入口、募集款合法结算、注资和至少一种收益分配、依法退出、187功能转版程序；**真实法域/技术/资金签名/最终逐功能版本仍待决定**。原[十项 A/B 提案](docs/03-product-prd/RWA-SaaS-V1.0-Complete-Loop-CR-01-10-Decision-Proposals-v0.1.md)已同步为Approved归档。
-- [**Step 02 四泳道 v0.3（Draft / 待审图）**](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)：已按 CR-01～10 Approved A 更新 **1张L0总图+10张L1详细图**；保留 [v0.2历史草案](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md)。四泳道全部节点/依赖尚需产品负责人审核，**没有冻结**。
+- [**Step 02 四泳道 v0.3（核心11步Approved，技术细节Draft）**](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)：已按 CR-01～10 Approved A 更新 **1张L0总图+10张L1详细图**；保留 [v0.2历史草案](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md)。DEC-014已批准11步核心流程；四泳道技术/字段细节待后续PRD审核，**没有V1范围冻结**。
 - **最新进度与审核顺序**：[DEC-014 Step 02核心11步业务流程已正式通过](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)。现在进入原187功能与新缺口双向核验 → V1.0 唯一功能清单和字段级 PRD → 单独范围冻结 → UI；正式业务研发仍需另行授权。**核心主流程通过≠所有技术流程细则或 V1.0范围冻结**。
+
+### Step 03：187 项功能与 11 步核心流程交叉审查（2026-10-23）
+
+**纸面双向交叉审查已完成首轮，尚未取得新交付范围的批准**：原187个功能ID无遗漏/重复，其中**106项直接对应核心业务、18项归跨端控制、34项为后续版本关联、29项需要补深或明确职责边界**。以上四类是审核标签，不是“测试通过”和真实 V1.0 已冻结。最关键的缺口集中在 **Issuer基础独立Portal、嵌入式钱包、募集资金合法划拨、收益资金注资/到期分配/Claim**。
+
+- [**Step03：187项逐ID×11步完整交叉核验矩阵（Draft）**](docs/03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)：逐条记录原ID/名称、四端责任、原11步关联、目标版本Draft与是否需要扩深；**187/187全部覆盖**。
+- [**Step03：12处差距、8组疑似重复及XCHK-01～10集中审核草案（Draft）**](docs/03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)：明确哪些可以扩原功能、哪些应拆出独立可验收单元，**并未创建新正式功能ID**。
+- **下一审核门**：先审批 XCHK-01～10 的处理原则，再按版本审查真正的V1.0/V2.0/V3.0唯一功能清单（现140/22/25仍是Draft）；再做分端功能清单与字段级PRD。DEC-014核心业务流程继续Approved；法域、技术、资金与链执行权限未决。
 
 ### 核心业务流程：已审核通过的七段主线（DEC-014）
 
@@ -246,7 +254,7 @@ A/B 用来检查**共用 Issuer SaaS 能力是否覆盖不同金融工具**，�
 |---|---|---|
 | **01 六批业务规则原则审核收口** | 先完整批准 Batch 04～06 的长篇逐功能业务需求/SCOPE，再用现有 17 个跨端责任节点与 18 个异常断点交叉核验 | **Batch 01～06 均已批准最低深度原则**；[Batch 05 19 项需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md)对应[正式 SCOPE-186～193](decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md) Approved；[Batch 06 37 项逐功能需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-06-Lifecycle-Workflows-Notifications-Audit-Reports-v0.1.md) SCOPE-194～205 Approved（产品原则；全部 B06 案例 Not Executed） |
 | **02 绘制跨端完整泳道图** | **平台后台 / Issuer 企业 SaaS / 机构投资者 / 外部受权服务**四泳道：全局总图 + 分阶段细图 + 失败/Unknown/退款/登记与收益异常 | **[DEC-014 已通过 v0.3 中对照原11步的核心业务闭环](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)**，无需逐节点审查技术时序；[v0.3四端详细图](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)仍保留给后续字段级PRD/技术法域审查。现在进入187逐ID交叉核验/新ID批准；最终V1交付冻结未完成 |
-| **03 对照原 187 项核验** | 流程节点↔功能 ID 双向映射，审计漏项、重复、职责错误、非线性权限/报表/审计及版本归属 | **待开展**；六批 Issuer 主线 164 项，另有 M14/M15/M16 共 23 项必须明确后置/商业版本去向 |
+| **03 对照原 187 项核验** | 流程节点↔功能 ID 双向映射，审计漏项、重复、职责错误、非线性权限/报表/审计及版本归属 | **首轮纸面核验已完成**：187条逐ID映射、12处差距、8组跨权威重叠及XCHK-01～10待审决策；**真正版本归属/新增ID仍 Draft**。六批 Issuer 主线164项、M14/M15/M16共23项全部有关联 |
 | **04 整理分端完整功能清单** | 按 **端→一级模块→二级模块→功能点→通俗详细说明→关联流程节点→原功能 ID→版本** 排列 | **待开展**；便于产品负责人和同事不用读冗长段落即可审查覆盖 |
 | **05 真正的字段级详细 PRD** | 每个功能的字段类型/必填/精度/校验、操作、角色/权限、业务状态、规则、外部依赖、异常恢复和验收 | **待开展**；六批 01～06 最低深度原则已批准，字段级 PRD 以后续四端流程和功能清单为依据 |
 | **06 跨文档验收与产品冻结** | 核对流程、187 项、字段/角色/规则/测试/版本范围一致，记录真实金融合法权威和条件阻断，由产品负责人单独批准 | **待开展**；完成后统一启动 UI/UX，工程与生产金融执行另行授权 |

@@ -86,7 +86,9 @@
 
 - [《Batch 02：M04/M06 Asset、Instrument 与法律文件/专业审核详细 PRD v0.1》](03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-02-Asset-Instrument-Documents-Review-v0.1.md)：**SCOPE-160～167 产品最低交付原则 Approved**；17 个原功能 ID（P0 13/P1 2/P2 2），B02-01～17 全部 Not Executed；具体技术/UI/法域仍 Draft。
 - [Batch 02 正式批准决策 SCOPE-160～167](../decisions/SCOPE-160-167-batch02-asset-instrument-documents-review.md)：产品最低交付深度原则 Approved，不代表完整 V1 或真实测试。
-- [《Batch 03：M05/M19 Project/Offering 发行规则与发布审核详细 PRD v0.1》](03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-03-Project-Offering-Rules-Publishing-Review-v0.1.md)：**Draft / SCOPE-168～175 待审**；M05/M19 19 项（P0 15/P1 2/P2 2）、B03-01～19 全部 Not Executed。
+- [《Batch 03：M05/M19 Project/Offering 发行规则与发布审核详细 PRD v0.1》](03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-03-Project-Offering-Rules-Publishing-Review-v0.1.md)：**SCOPE-168～175 产品原则 Approved**；M05/M19 19 项（P0 15/P1 2/P2 2）、B03-01～19 仍 Not Executed。
+- [SCOPE-168～175｜Batch 03 正式产品决策](../decisions/SCOPE-168-175-batch03-project-offering-rules-principles.md)：已批准 Project 1:N Offering、合法销售模式、发布前置与规则版本化原则。
+- [《Batch 04：M08～M12 投资者准入、认购/USDT/USDC 资金与法定登记 PRD v0.1》](03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md)：**Detailed PRD Draft / SCOPE-176～185 待审核**，50 项原功能（P0 41/P1 5/P2 4）、50 个 B04 案例 Not Executed。
 - [仓库产品总览 README](../README.md)：面向技术/运营介绍产品结构、22 模块具体功能、版本规划与当前需求进度；每批确认/冻结后同步维护。
 
 ## 持续开放的决策门
@@ -99,4 +101,4 @@
 
 [《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
-**当前工作进度（2026-10-22）**：用户确认 **“完整详细 PRD → 产品范围与跨模块规则收口 → 统一 UI 设计”**。Batch 01（M01～M03，22 项）与 Batch 02（M04/M06，17 项）最低产品交付深度原则均 **Approved**；Batch 03（M05/M19，19 项）详细规格 **Draft / SCOPE-168～175 待审核**；Batch 04～06 待开展。A/B 原 187 项仍 Not Tested，UI/工程尚未启动；PR #6 Draft/Open/Unmerged。
+**当前工作进度（2026-10-22）**：采用 **“完整详细 PRD → 产品范围与跨模块规则收口 → 统一 UI 设计”**。Batch 01（22 项）、Batch 02（17 项）、Batch 03（19 项）产品最低交付深度原则均 **Approved**；Batch 04（M08～M12，50 项）详细需求 **Draft / SCOPE-176～185 待审核**；Batch 05～06 尚待开展。A/B 原 187 项仍 Not Tested，UI/工程未启动；PR #6 Draft/Open/Unmerged。

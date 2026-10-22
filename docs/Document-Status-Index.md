@@ -78,7 +78,10 @@
 - [SCOPE-126～133 债权 A1 正式决策](../decisions/SCOPE-126-133-debt-A1-coupon-maturity-exception-principles.md)：已批准同权增发、晚入场价格/应计利息、Coupon 与本金实际支付/登记/Token 独立核验及受权恢复。
 - [《样本 B：SPV 股份与实体权益产品验证 v0.1》](03-product-prd/RWA-SaaS-Reference-Instrument-B-Equity-Rights-and-Lifecycle-Review-v0.1.md)：**SCOPE-134～142 产品原则已批准**；B-T01～T16 仍 Not Executed，公司授权、稀释、权益名册及条件分红具体实施仍 Draft。
 - [SCOPE-134～142｜B 实体权益产品正式决策](../decisions/SCOPE-134-142-equity-B-SPV-rights-and-lifecycle-principles.md)：已批准 B 权利类别、法定公司决议/发行额度、法定名册与 Token 的权威分离、分红和合约限制原则。
-- [《A/B 187 项功能必要性与 V1 冻结决策门交叉对照 v0.1》](03-product-prd/RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)：**Cross-Instrument Audit / Draft，SCOPE-143～151 待审批**；逐 ID A/B 需求差异、16 条 P1 触发与六项真实 V1 冻结门，全部 187 项仍 Not Tested。
+- [《A/B 187 项功能必要性与 V1 冻结决策门交叉对照 v0.1》](03-product-prd/RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)：**SCOPE-143～151 产品审核原则已批准**；逐 ID 对照与 16 条 P1 仍缺少真实法域/执行者/实施深度，A/B 187 项全部 Not Tested。
+- [SCOPE-143～151 正式决策记录](../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)：Approved；统一 API-First、条件性 P1 分类及 V1 六项冻结前置门。
+- [《Issuer V1 逐功能交付深度六批审核路线 v0.1》](03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)：**Product Plan / Draft**，先做客户购买 SaaS、租户和组织权限，再做 Instrument/Offering、认购资金/登记、Token 与存续期。
+- [《Batch 01：M01～M03 商业开通/Tenant/组织权限交付深度 v0.1》](03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)：**Detailed PRD Draft，SCOPE-152～159 待批**；22 个功能 ID（P0 17/P1 2/P2 3）、22 个 B01 案例 Not Executed；在线自动订阅和企业 SSO 不默认 V1。
 
 ## 持续开放的决策门
 
@@ -90,4 +93,4 @@
 
 [《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
-当前建议的下一项产品工作：审核[《A/B 187 项功能必要性与 V1 冻结决策门交叉对照 v0.1》](03-product-prd/RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)及 **SCOPE-143～151（均未批准）**，随后按真实首发 Instrument/法域、受权资金/登记/签名主体与 187 项最小实现深度分批审查。A/B 187 项仍 Not Tested；第 02～04 份 Frozen 不代表生产授权；PR #6 继续 Draft/Open/Unmerged。
+当前建议的下一项产品工作：先审核[《Batch 01：M01～M03 商业开通/Tenant/组织权限交付深度 v0.1》](03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)的 **SCOPE-152～159（待批准）**。后续按六批路线逐功能收口，真实首发 Instrument/法域、受权金融执行与法律登记主体、187 项真实 V1 交付深度/工程验收仍独立待决；PR #6 Draft/Open/Unmerged。

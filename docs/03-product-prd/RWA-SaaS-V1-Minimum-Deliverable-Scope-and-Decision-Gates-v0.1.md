@@ -1,5 +1,8 @@
 # RWA SaaS｜V1 最小交付功能建议与未决决策门 v0.1
 
+
+> **Step03.5 历史文件提示（2026-10-23）：Historical / Superseded as CURRENT READING ENTRY；原文内容、已批准的相关SCOPE原则和当时审核记录全部保留。** 早期V1最低范围与冻结门草案保留为审批过程；当前版本治理以DEC-012、10项CR、10项XCHK、187逐项草案为准，真实V1清单仍未冻结。 当前请以[现行权威目录](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)及[对应现行材料](../03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)为准。**这不是撤销或重写历史批准，也不意味着该文原有研究数据无价值。**
+
 > **Draft — 新增实施形态建议尚未评审或冻结，不构成 V1 正式开发承诺**。
 > 编制日期：2026-10-22。隶属第 03 份总体 PRD 范围细化工作，不是第 05 份法域/多资产文档。
 > 已确认依据：[187 项范围矩阵](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)、[冻结功能树](RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)、[第 04 份冻结状态机原则](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[DEC-011](../../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md)。

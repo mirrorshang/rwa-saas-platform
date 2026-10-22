@@ -1,324 +1,72 @@
-# RWA SaaS Platform｜产品总览与当前进度
+# RWA SaaS Platform｜产品总览
 
-> **面向技术、产品、运营与合作同事的项目阅读入口**  
-> 最近更新：**2026-10-23** ｜ 项目阶段：**产品规划与详细 PRD 设计中，尚未进入正式 UI 设计与业务开发**  
-> 当前优先产品：**Issuer SaaS（发行机构工作台及其发行闭环）**  
-> **阅读约定**：本文说明“计划建设什么、已确定什么、目前完成到哪里”。产品需求/业务规则的确认**不等于代码已经完成、合规许可已经取得、真实资金或 Token 测试通过**。
+> **项目性质**：从零建设的标准化、可配置、多资产 RWA Tokenization B2B SaaS。
+>
+> **当前阶段（2026-10-23）**：**Step 03.5 文档治理整理，下一步回到 Step 03 版本与新增功能审核。** 尚未进入正式 UI 设计、软件研发、真实资金/Token 生产执行。
+>
+> **唯一当前文档权威与审批状态入口**：[当前有效文档目录与历史覆盖索引](docs/00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)；[完整文件与 DEC/SCOPE 状态清单](docs/Document-Status-Index.md)；[Step03.5首轮审计及原95文件分类](docs/00-governance/RWA-SaaS-Step-03.5-Document-Governance-Audit-and-Disposition-Proposal-v0.1.md)。
 
-## 最新决策：V1.0 / V2.0 / V3.0 版本治理（2026-10-23）
+## 1. 我们要做的产品
 
-已确认 [DEC-012：按**实际开发版本**而不是 P0/P1/P2 分类承诺交付](decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)：**V1.0 = 第一版拟开发、验收、交付的全部范围**；V2.0/V3.0 规划后续发布；正式版里不以 P0/P1/P2 混称必需/可选功能。之前187项原分级继续保存为**历史审批/审计证据**，不因为方法切换直接改写旧 SCOPE/DEC/Frozen 原文。
+**首要客户**：有持续发行需求的发行企业与资产管理机构（Issuer）；此外规划 White-label 运营商和商业 Open API 客户，具体交付版本以后续批准为准。
 
-- [**187项逐条目标版本建议（Draft）**](docs/03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)：暂拟 **V1.0 140 / V2.0 22 / V3.0 25**（仅建议，未逐项批准；8个候选新功能缺口尚未加入187原分母）。
-- [**DEC-013：CR-01～10 产品方向全部 A Approved**](decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)：已确认商业订阅、标准门户、基础模板、企业自主专业服务、受权合约Factory、双钱包入口、募集款合法结算、注资和至少一种收益分配、依法退出、187功能转版程序；**真实法域/技术/资金签名/最终逐功能版本仍待决定**。原[十项 A/B 提案](docs/03-product-prd/RWA-SaaS-V1.0-Complete-Loop-CR-01-10-Decision-Proposals-v0.1.md)已同步为Approved归档。
-- [**Step 02 四泳道 v0.3（核心11步Approved，技术细节Draft）**](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)：已按 CR-01～10 Approved A 更新 **1张L0总图+10张L1详细图**；保留 [v0.2历史草案](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md)。DEC-014已批准11步核心流程；四泳道技术/字段细节待后续PRD审核，**没有V1范围冻结**。
-- **最新进度与审核顺序**：[DEC-014 Step 02核心11步业务流程已正式通过](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)。现在进入原187功能与新缺口双向核验 → V1.0 唯一功能清单和字段级 PRD → 单独范围冻结 → UI；正式业务研发仍需另行授权。**核心主流程通过≠所有技术流程细则或 V1.0范围冻结**。
+**首期产品边界**：企业购买并开通 Issuer SaaS，使用自己的发行工作台及标准独立投资者门户，对合法的金融权益工具完成发行、投资者认购、真实结算、发行后管理及适用资产的收益/本金/退出流程。**投资者通常由 Issuer 自行拓展和运营**；不默认经营公开 RWA 资产超市。
 
-### Step 03：187 项功能与 11 步核心流程交叉审查（DEC-015原则Approved，版本Draft）
+**产品基本规则**：Asset、法律 Instrument 权益、Offering、法定持有人登记、资金实收/实付、链上 Token 各有自己的权威状态；Token 已交付不必然意味着法律权益已生效，钱包付款成功也不意味着配售和权益登记完成。平台提供软件与合法受权操作编排，**不默认自己持有募集款、成为法定登记者或替客户控制所有合约私钥**。全球化是标准化架构目标，不表示无需选择首发法域或取得相关许可。
 
-**纸面双向交叉审查已完成首轮，尚未取得新交付范围的批准**：原187个功能ID无遗漏/重复，其中**106项直接对应核心业务、18项归跨端控制、34项为后续版本关联、29项需要补深或明确职责边界**。以上四类是审核标签，不是“测试通过”和真实 V1.0 已冻结。最关键的缺口集中在 **Issuer基础独立Portal、嵌入式钱包、募集资金合法划拨、收益资金注资/到期分配/Claim**。
+本项目独立于 WDEX，Brickken 为主要竞品参考之一；历史 RWA V2 PRD 已归档作参考，不代表本项目自动批准其中的需求。
 
-- [**Step03：187项逐ID×11步完整交叉核验矩阵（Draft）**](docs/03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)：逐条记录原ID/名称、四端责任、原11步关联、目标版本Draft与是否需要扩深；**187/187全部覆盖**。
-- [**DEC-015：Step03 XCHK-01～10 全部 A Approved**](decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)：正式批准缺口处置与不错误合并资金/法定登记/Token事实等十项原则。**[差距/重叠底稿](docs/03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)仍 Draft**：12组差距、8组权威重叠、11个PROP交付候选，未新增正式ID。
-- **下一审核门**：XCHK-01～10 已 Approved；现在审阅 **[V1.0/V2.0/V3.0 业务可读版本规划草案](docs/03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md)**，明确187项逐模块版本归属和PROP扩深/新增，140/22/25仍是Draft；再分端功能清单与字段级PRD。DEC-014核心流程继续Approved，法域、技术、资金与链执行权限未决。
+## 2. 已审核通过的核心业务流程（七段易读版）
 
-### 核心业务流程：已审核通过的七段主线（DEC-014）
+1. **企业购买 SaaS**：官网申请/注册、KYB、订阅与商业付费或受控人工合同、创建并授权 Tenant。
+2. **企业配置工作台与投资者门户**：组织成员/角色权限、标准独立 Portal URL、基础品牌、公开与定向 Offering。
+3. **企业准备并发行资产**：A债权/B SPV股份参考受控模板、合法文件与专业意见、Offering定价/额度/适格规则、经授权Contract Factory与合约部署。
+4. **投资者认购及合法交付**：门户注册、KYC、外部或安全嵌入式钱包、签署与认购、USDT/USDC真实付款、合规配售、必要法定登记、Token交付与持仓展示。
+5. **发行机构管理募集资金**：查询销售与收款、区分受限/可结算余额、受权申请划拨、核验真实到账；不把退款与结算视为同一种付款。
+6. **发行后收益或本金分配**：按债权/公司法定权利和记录日核算与审批、实际注资和足额核验，按适用合法方式 Push 或 Claim、查询未领/已付记录。
+7. **存续与依法退出**：持续披露、A债到期清偿与逾期处理、B股份仅在合法前提下进行适用回购/注销，法定权益与 Token 变化独立核对。
 
-**企业购买 SaaS → 企业配置工作台与独立投资门户 → 企业发行资产/合约 → 投资者KYC、钱包认购与持仓 → 企业管理募集资金及合法结算 → 发行后合法收益注资、定期Push或Claim → 持续运营、到期清偿或适用回购退出。**
+[DEC-014：原始11步核心流程11/11已 Approved](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)。[Step02 v0.3 可编辑四端详细流程图](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)供详细 PRD 与工程使用，**技术字段和资金/法律方案仍未冻结**。
 
-这是对用户原始 **11 步业务目标的七段通俗归纳**；[11/11 逐项审核通过（DEC-014）](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)。[详细四端泳道 v0.3](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)作为支持材料，不要求客户逐条理解时序或英文业务状态。**真实资金/合约/法律授权、详细字段和V1.0交付范围尚未冻结。**
+## 3. 当前版本规划（**全部为范围草案**）
 
-## 1. 一页了解这个产品
+| 版本 | 当前业务目标 | 原187项的建议数量（非正式开发承诺） |
+|---|---|---:|
+| **V1.0** | 首版完整发行SaaS闭环，包含标准门户、钱包、受权发行、投资结算及适用收益和退出 | 140 |
+| **V2.0** | 受控转让、专业高级White-label与运营增强 | 22 |
+| **V3.0** | 商业Open API/SDK、多链与高级资产/服务商生态 | 25 |
 
-RWA SaaS 是一套**从零建设、面向全球机构客户的标准化、可配置、多资产 RWA Tokenization 软件平台**。发行企业、资产管理机构或其他合规发行主体可以购买我们的 SaaS，用它管理资产及其法律权利、发行项目、投资者、认购、资金状态、链上 Token，以及发行后的持有人权益和存续义务。
+**DEC-012 已 Approved的是管理方法**：V1.0 = 第一版真正承诺开发及验收的完整功能集合；不再在 V1.0 内以 P0/P1/P2 区分必做/可选。以上140/22/25依旧是**原187项的Draft候选统计**，不是已批准的逐项唯一版本，且 [PROP-01～11](docs/03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)尚待判断扩原ID还是新立正式ID。原P0/P1/P2保留为历史审计证据。
 
-首要客户是**有持续发行需求的资产管理机构和发行企业**；其次是希望管理多家发行机构的白标运营商，以及需要将发行能力接入自己系统的 API/金融科技客户。
+[按七段流程阅读三版本业务范围草案](docs/03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md) ｜ [187条逐ID目标版本Draft表](docs/03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)
 
-**产品的基本关系：**
+## 4. 已批准和未完成的范围
 
-- **购买 SaaS 的客户 = 发行机构或购买相关服务的机构**，不是终端投资者。
-- **投资者原则上由发行机构自己获取和运营**，通过该机构获授权的投资者门户完成资格验证、认购、付款与持仓查看；本平台不默认经营自营全球资产超市。
-- **发行的资产表现为真实链上 Token**；但 Token、投资者的法律权利、法定持有人登记和实际资金支付是不同的权威事实，不可互相替代。
-- **我们主要提供软件、流程编排、风险控制、数据与第三方集成**；不默认取得发行、销售、收款、托管、法律登记、签名或收益支付等受监管活动的资格。
-- **全球化是产品架构目标，不是全球直接可商用的承诺**。实际法域、发行工具、法律许可及适格服务方必须单独确认。
-
-本项目**独立于 WDEX**；既有 WDEX 产品、业务规则或源代码不是本项目已确定的实现基础。Brickken 是重要竞品参考，但我们不会照搬其 UI，也不会把未经验证的竞品宣称当成自己的已实现能力。
-
-## 2. 产品组成与商业交付线
-
-| 产品或界面 | 目标用户 | 提供的核心能力 | 版本定位 |
-|---|---|---|---|
-| **Issuer SaaS 发行机构工作台** | 发行企业、资产管理机构 | 组织权限、资产和权利、项目/Offering、投资者与认购、资金/Token 状态、存续管理 | **当前 V1 首要设计重点** |
-| **发行机构投资者门户** | 该发行机构拓展的投资者 | 查看获授权 Offering、KYC/资格、签署认购、稳定币付款、订单/Token/权益及收益信息 | **Issuer V1 核心发行闭环的配套前台**，详细交付深度待冻结 |
-| **SaaS 平台运营控制台** | 我们的运营、客户服务与审核人员 | 机构申请、合同/套餐授权、Tenant 开通暂停、受控协助和风险升级 | **Issuer V1 必要配套能力**，不等于可代客户操作资金 |
-| **White-label 白标平台** | RWA 服务商、区域平台运营商 | 运营商自有品牌、门户及对多家获授权发行机构的管理、资产展示授权 | **独立商业交付里程碑**，不强制与 Issuer V1 同期；目标形态不含多级代理/转售 |
-| **Open API / SDK** | 银行、Fintech、机构开发者 | 外部系统通过受权 API/Webhook/SDK 使用共用发行核心 | **独立商业交付里程碑**；内部 API-Ready 不等于已开放商用 API |
-| **开发者门户及其他扩展** | API/生态合作方 | 文档、Sandbox、应用授权、调用/用量管理 | 与商业 API 产品线一并单独排期 |
-
-### 统一技术产品原则
-
-- **API-First / Contract-First**：Issuer 工作台、投资者门户及将来的 White-label、Open API 共享同一套受权业务领域核心，避免出现前端与 API 两套业务规则。
-- **Multi-tenant 多租户隔离**：Tenant、Organization、Project、Offering 和敏感投资者数据按授权隔离；平台运营角色与客户业务角色分权。
-- **权利与资产分层**：Underlying Asset（底层资产）不等于 Instrument（投资者获得的法律/经济权利），后者又不等于 Offering（一次发行安排）或 Token（链上表达）。
-- **受权第三方执行 + SaaS 核验**：真实资金/退款、电子签、法定登记、合约部署/Mint 和收益兑付等，需要依适用法律确认受权执行方；SaaS 负责权限、流程、可信结果、异常及审计。
-- **风险操作可追溯**：业务规则版本、审批、幂等、异常 Unknown、链上最终性、登记/资金差异和人工更正需独立留证。
-
-目前尚未冻结具体后端技术栈、数据库设计、生产链、Token 合约标准、支付/登记服务商或最终外部 API 定义。
-
-## 3. 核心业务模型
-
-系统采用以下层次来组织数据和发行流程：
-
-```text
-SaaS 客户 / Tenant（购买软件、合同与能力授权）
-    └─ Organization / Legal Entity（机构及实际法律主体）
-         └─ Underlying Asset（底层资产及证明材料）
-              └─ Instrument（投资者持有的法律/经济权利）
-                   └─ Issuance Project（发行项目/团队/文件/存续管理容器）
-                        └─ Offering（具体发行轮次、额度、价格及准入条款）
-                             ├─ Investor + KYC / Eligibility（投资者及发行资格）
-                             ├─ Subscription + Quote（认购及条款快照）
-                             ├─ Payment + Reconciliation（真实付款和对账）
-                             ├─ Allocation + Legal Register（配售与权威登记）
-                             ├─ Token + Chain Transaction（链上 Token 及回执）
-                             └─ Lifecycle Event（利息、分红、还本、通知等）
-```
-
-> 以上是便于理解的**逻辑关系**，不是已确定的数据库层级或单一线性事务。一个 Project 可包含多个 Offering。不同 Instrument 的合法权利、登记与 Token 执行先后关系需按具体金融工具确认。
-
-最关键的分界是：
-
-| 对象/动作 | 它代表什么 | 它**不**代表什么 |
+| 成果 | 当前状态 | 资料入口 |
 |---|---|---|
-| 商业订购 / Tenant Active | 客户获得已购买的软件使用权限 | 自动取得金融发行资格 |
-| 投资者 KYC 通过 | 某项身份核验结果有效 | 对任何 Offering 均有投资资格 |
-| Subscription / Quote | 投资意图、签署条款及报价快照 | 资金已到账或已合法持有资产 |
-| Payment Confirmed / Reconciled | 外部付款证据与订单资金匹配 | 已完成配售、法定登记或 Token 交付 |
-| Allocation / Legal Register | 受权份额分配及适用的法律权利记录 | 链上 Mint 已完成 |
-| Token Mint / Delivery | 链上合约执行及确认事实 | 自动证明法律权利生效、持有人登记无误或已完成兑付 |
-| Coupon / Distribution Calculated | 经条款与权益快照计算出的应付金额 | 合法付款方已实际汇款 |
+| 战略、总体PRD、22模块功能树、WF01～18状态机 | **四份有条件/原则Frozen** | [文档权威目录](docs/00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md#2-正式可引用的四份冻结业务基线) |
+| 六批业务原则 Batch01～06 | **Approved：产品最小规则，不是完整字段PRD** | [完整批准状态表](docs/Document-Status-Index.md) |
+| CR01～10 产品方向 | **DEC-013 Approved A** | [DEC-013](decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md) |
+| 企业11步核心业务主流程 | **DEC-014 Approved** | [DEC-014](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md) |
+| Step03 原187功能与流程纸面对照、缺口审核原则 | **187/187已完成纸面关联；DEC-015 XCHK原则 Approved** | [逐项对照](docs/03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)、[DEC-015](decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md) |
+| Step03.5文档统一导航/历史入口标记 | **治理整理中；审计不是新产品冻结决定** | [Step03.5现行权威索引](docs/00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md) |
+| V1.0/V2.0/V3.0真实功能数量、PROP新增编号 | **Draft / 未批准** | [功能范围审查稿](docs/03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md) |
+| 法域、资金/托管/分配执行主体、钱包/合约技术与上线许可 | **TBD** | [未决风险与决策覆盖](docs/00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md#4-关键决策的有效范围与历史覆盖矩阵) |
 
-## 4. 发行机构的完整业务流程
+## 5. 从现在到 UI 前的顺序
 
-一个典型客户从购买 SaaS 到管理已发行资产，预期经过以下环节：
+- **Step 03.5 收尾**：统一现行索引、标记历史版本、关键事实交叉审查，不覆写历史批准/冻结原文。
+- **Step 03 范围收口**：逐功能审定 V1.0/V2.0/V3.0版号，解决 PROP-01～11的新正式ID或原ID扩深，批准唯一版本功能清单。
+- **Step 04 分端功能清单**：平台运营后台、Issuer工作台、Issuer投资者门户、外部合法主体责任；菜单/模块/页面组/入口/权限与功能。
+- **Step 05 详细产品PRD**：按端/模块完善字段、对象/状态、计算、权限、异常、第三方责任与 Given-When-Then 验收。
+- **Step 06 全局一致性核验与V1.0冻结**：11步×功能ID×页面/角色×规则/状态×验收可追溯；单独授权后统一UI/UX设计。
 
-| 步骤 | 发行机构/投资者的操作 | 平台承担的产品能力 |
-|---|---|---|
-| **01 商业购买与开通** | 机构咨询或申请、签署合同并获得 SaaS 授权 | 客户资料、Tenant 开通、能力许可、暂停/退租 |
-| **02 组织设置** | 设置管理员、成员、业务角色与项目访问权 | 组织隔离、邀请、鉴权、分权及审计 |
-| **03 Asset / Instrument** | 录入底层资产、选择权利结构，补充资产/发行主体证明 | 权利字段、法律文件、版本及审核记录 |
-| **04 Project / Offering** | 创建发行项目和轮次，设置价格、规模、期限、投资限制 | 参数快照、容量与规则、发布审批、暂停/关闭 |
-| **05 投资者准入** | 发行机构邀请或拓展投资者；投资者提交身份资料 | KYC/KYB、法域/Offering-specific Eligibility |
-| **06 认购与签署** | 投资者查看文件、确认报价并提交认购 | Subscription、Quote、受控额度预留 |
-| **07 真实付款** | 投资者通过规定网络/币种进行 USDT/USDC 付款 | 外部到账/最终性核验、订单资金对账、差异与退款路径 |
-| **08 配售与登记** | 达到资格、资金及条款要求后受权分配 | 原子额度、Allocation、法定持有人登记回执 |
-| **09 Token 交付** | 合法执行方根据批准方案部署/铸造/交付 Token | 合约版本、钱包规则、链上回执、登记与 Token 核验 |
-| **10 发行后管理** | 查看持有人、权益、报告；处理适用票息、还本或分红 | 生命周期事件、核算复核、外部出款证据及异常 |
-| **11 暂停、纠错与退出** | 处理退款、差异、违规或 SaaS 服务退出 | 审批、任务/通知、受控补偿、数据及义务移交 |
+**不提前声明软件研发/实测已完成，也不因产品方向 Approved 就假定真实资金、法律和链上执行已获许可。**
 
-**发行模式**：V1 优先设计**合法条件下的持续一级认购**。若实际金融工具或适用法域要求封闭募集、统一配售或其他发行方式，必须使用相应受权流程，不能因系统默认 Continuous Purchase 而绕开合同/法律约束。
+## 6. GitHub 治理规则
 
-**真实支付方向**：优先研究指定链上的 USDT/USDC；链、币种合约、收款/退款方、钱包/签名权限和法定资金责任均未最终指定。V1 面向真实链上 Token 而非仅数据库模拟资产，但**当前仍是产品设计目标，不是已具备运行能力**。
-
-## 5. 多资产类型和样本覆盖
-
-系统按**底层资产类型 × Instrument 权利类型 × Offering 条款 × 法域/服务商**进行配置，不把“房地产、债券、基金、黄金”等资产名称直接当成统一的权利和履约规则。
-
-长期规划了五类 Instrument 能力家族：
-
-| 类型 | 含义与典型业务 | 当前定位 |
-|---|---|---|
-| **A 债权型 Debt** | 固定或约定债权请求权、利息、本金与期限 | **已完成参考样本的需求规则评审** |
-| **B 实体权益型 Equity** | SPV 股份或类似实体权益、法定持有人及可选分配 | **已完成参考样本的需求规则评审** |
-| **C 基金份额 Fund Interests** | 基金份额/受益权、NAV、申赎等 | 长期扩展，专有业务不默认 Issuer V1 |
-| **D 合同收入/版税权 Revenue Rights** | 合法合同约定的经营收入或版税参与 | 长期扩展，收入核验/分成专有能力另审 |
-| **E 实物权属/托管凭证 Asset Title** | 特定实物的所有权、储备/托管证明、交付 | 长期扩展，储备/交割专有能力另审 |
-
-**已选择的两类产品需求验证样本**：
-- **样本 A**：固定票息、明确到期还本的债权 Instrument；重点验证同一 Series 后续发行、应计利息、晚入定价、记录日、兑付、注销及异常。
-- **样本 B**：SPV 股份/类似实体权益；重点验证合法公司发行授权、权益类别、稀释、名册、Token 约束以及依法批准时的分红。
-
-A/B 用来检查**共用 Issuer SaaS 能力是否覆盖不同金融工具**，并不代表实际首发市场/合法工具已经选定、两类均已具备生产支持或测试通过。C/D/E 的专有能力缺口仅为长期设计参考，不作已交付声明。
-
-## 6. 产品功能全景：6 大能力域、22 个模块
-
-| 能力域 | 模块 | 功能概览 |
-|---|---|---|
-| **A SaaS 客户与治理** | M01 客户开通与商业授权；M02 组织权限；M03 平台运营 | 合同、Tenant、成员权限、运营审核、客户退出 |
-| **B 资产与发行** | M04 资产/Instrument；M05 Project/Offering；M06 文件/专业协作；M07 Token/链上 | 权利建模、发行配置、审核、签署、链上执行 |
-| **C 投资者与认购** | M08 投资者门户；M09 身份/准入；M10 认购；M11 支付/对账/退款；M12 配售/法定登记 | 投资者从资格到真实付款、获配、登记与持有 |
-| **D 发行后管理** | M13 存续期；M14 受控转让 | 利息/分红/还本、报告；转让为后续版本 |
-| **E 商业产品扩展** | M15 White-label；M16 Open API/SDK | 多发行机构白标运营、外部系统接入 |
-| **F 共享基础能力** | M17 工作流/异常；M18 通知/待办；M19 业务规则版本；M20 审计/安全/数据治理；M21 报表/查询；M22 第三方集成 | 横跨发行、投资者、资金与链上业务的共同治理能力 |
-
-22 个模块是**产品逻辑责任域**，不意味着需要 22 套 App、22 个微服务或 22 个开发团队。
-
-### 22 个模块分别要提供哪些实质功能？
-
-以下是**已经纳入产品范围的能力说明**，用于团队快速了解每个模块具体负责哪些操作与结果。它们不是全部已实现，也不表示每项都在 Issuer V1 交付；实际首期深度以逐批详细 PRD 和最终范围冻结为准。
-
-| 模块 | 主要产品需求与用户操作 | 关键交付结果/业务边界 |
-|---|---|---|
-| **M01 SaaS 商业开通** | 客户申请、机构信息录入、商务合同/购买记录、服务套餐与授权、Tenant 创建/开通/暂停/退租 | 有效 SaaS 使用权与独立工作区；在线自动订阅扣费非默认 V1，商业授权不等于金融发行许可 |
-| **M02 组织与权限** | 设置机构与法人关系、管理员激活、成员邀请/停用、角色与 Project/Offering 访问权、敏感操作审批分权 | 不同 Tenant 与项目数据隔离；发行、资金、登记和合约签名仍各需独立授权 |
-| **M03 平台运营** | 审核客户申请/补件、控制租户开通与暂停、受控访问资料、记录支持与问题升级 | SaaS 运营与客户工作台分域；高级 CRM、实施工单等不默认首期完整交付 |
-| **M04 Asset / Instrument** | 创建底层 Asset、关联权属及来源证据、定义投资者取得的 Instrument 权利、关联债务人/SPV、设置利息/分配/转让限制与版本审核 | A 债权与 B 实体权益使用不同权利字段；内部 ReviewedForUse 不是法定权属或发行许可 |
-| **M05 Project / Offering** | 建发行项目和多个发行轮次，配置额度、价格、认购窗口、准入和交付方案；提交审核、发布、暂停、关闭 | Offering 条款快照与合法发行前置检查；持续认购按真实工具允许条件启用，必要时集中配售 |
-| **M06 法律文书与专业审核** | 资料分类上传、必需文件清单/补件、合同与签署版本、内部/适格专业意见、投资者认购文件确认和签署证据 | 上传、审查、专业法律决定和有效签署分别记录；不默认建设专业服务商竞价市场 |
-| **M07 Token 与链上执行** | 维护批准的 Token/合约及钱包规则、受权部署/Mint、发行量与合约级限制、交易回执、最终性及交付核对 | Token 真实上链是目标；法定登记与 Token 独立，签名/私钥及不可逆操作按适格主体授权 |
-| **M08 投资者门户** | 展示发行机构授权的 Offering、风险/条款、投资资格入口、认购引导、订单、持仓、分配与通知 | 机构自己拓展投资者；门户状态不直接取代支付、合法持有人名册或链上权威 |
-| **M09 身份与 Offering 资格** | 身份/KYC/AML、补件与审核；每次购买评估法域、投资者类别、限额、风险及该 Offering 条件 | KYC Verified 不等于对所有 Offering Eligible；资格变化可阻断后续不可逆操作 |
-| **M10 认购与报价** | 生成按 Instrument/Offering 版本的报价、投资者确认、有效期、认购订单、额度预留及过期/取消 | 报价明确数量、价格、币种/网络、文件与费用；已确认金额不得静默变动 |
-| **M11 付款/对账/退款** | 创建合法付款指示、观察 USDT/USDC 链上到账及确认、资金匹配、少付/多付/错链/迟到账调查、受权退款 | 广播≠到账、到账≠对账匹配；退款是单独金融事实，Unknown 时不得盲目重付 |
-| **M12 配售与权威登记** | 统一发行容量/原子预留、受权自动/人工配售、部分配售（适用）、法定持有人登记结果及 Token 对账 | 防超售和重复配售；法定登记方、配售和 Token 交付不可合并为单一成功状态 |
-| **M13 存续期管理** | 维护债权票息与到期本金、B 类合法可选分红/回购；权益快照、核算复核、受权出款、对账、逾期/结束 | 债权本息最低闭环与股权依法分配不同；计算完成、资金实付、权利消灭和 Token Burn 需分别确认 |
-| **M14 受控二级转让** | 未来处理适格受让人审查、转让请求、审批、法律登记/Token 更新及异常 | **V2**；V1 仅保留适用合约/持有人限制，不开放完整投资者间转让业务 |
-| **M15 White-label** | 未来支持品牌/域名、运营商下多家授权发行机构、专属门户与跨机构展示授权 | 独立商业里程碑；不因运营商品牌统一而共享客户隐私与法定资金权威 |
-| **M16 Open API / SDK** | 未来向机构开发者开放鉴权 API、Webhook、Sandbox、文档、应用/调用管理 | 商用能力另行发布；Issuer V1 内部必须先具备 API-First 共用核心 |
-| **M17 工作流与异常** | 跨模块任务归属、人工复核、资金/登记/Token/收益差异工单、调查/升级及受权恢复 | 协调异常而不越权改写 M07/M11/M12/M13 各自的权威事实 |
-| **M18 通知与待办** | 审批补件、交易状态、支付差异、发行与分配通知、必要正式送达及失败补救 | 站内提醒不必然是法律有效送达；通知权限与记录对象隔离 |
-| **M19 规则与版本控制** | 维护发行/资格/额度/审批等规则、版本、平台强制限制与发布前 Guard | 租户配置不能绕过法域、强制安全及适格主体限制 |
-| **M20 审计、安全和数据治理** | 操作日志、文书/付款/登记/Token 证据追溯、敏感数据授权、导出及租户退出交接 | 原始记录和修正历史不可无痕覆盖；数据移交不消灭存续债权或股权 |
-| **M21 报表与查询** | Issuer/投资者按权限查看发行进度、认购与资金、持有人、利息/分配及必要导出 | 只读汇总与外部权威对账，不能通过报表手工制造金融完成事实 |
-| **M22 第三方集成** | 对接适格身份核验、电子签、资金/链监测、法定登记、专业服务及合约执行服务；处理回调/重试 | 保留外部来源、幂等、Unknown 与失败证据；接口成功不能自动替代法律/资金最终结果 |
-
-**三个典型业务结果（产品设计目标，尚未测试）：** 发行机构可以管理同一资产对应的合法 Instrument/Offering 版本；投资者可以在符合准入与支付条件后完成一级认购，并在法定登记与链上交付核对后看到正确结果；发行后能够按债权/股权各自权利处理应付、实付、争议和数据留存。上述业务闭环依赖具体法域、服务商和权限配置，**不宣称现在已上线**。
-
-### 187 项功能的当前范围定位
-
-| 优先级 | 数量 | 目前的产品含义 |
-|---|---:|---|
-| **P0** | **125** | Issuer V1 核心候选能力，具体最小交付深度仍须审核 |
-| **P1** | **21** | 简化/条件触发/增强候选，不能无条件全部删掉或全部纳入 |
-| **P2** | **21** | 后续增强，**不等于已经决定 V2 必做** |
-| **V2** | **6** | 受控二级转让相关功能，保留在 M14 |
-| **商业批次待定** | **14** | White-label/Open API 完整商业交付相关能力 |
-| **合计** | **187** | 功能清单与范围分级原则已批准，**真实 V1 逐项必交清单未冻结** |
-
-从**交付方式**的另一维度，187 项也已被归为：**73 项共享业务核心、42 项共享/简化 UI、10 项受权外部执行与 SaaS 核验、16 项条件性必需、46 项非默认 Issuer 首期能力**。这两套统计是不同维度，不能把优先级当成“代码已实现”的进度。
-
-特别说明：
-- **M13 债权票息与到期本金**：对样本 A 的最低业务闭环是必要能力，即使其相关功能原级别为 P1；不自动调整原优先级。
-- **M07 合约级转让限制**：V1 仍需要具备适用的限制/授权能力，但 **M14 投资者间受控二级转让**规划在 V2。
-- **在线 SaaS 自动订阅收费、企业 SSO、高级 CRM/BI 等**：未作为 Issuer V1 首期默认必交，最低商业授权、安全与必要运营支持能力仍保留。
-
-## 7. 版本规划与交付顺序
-
-以下是**产品版本策略，不是已经批准的发布日期、投入预算或工程排期**。
-
-| 阶段/产品 | 计划覆盖 | 当前决策状态 |
-|---|---|---|
-| **Issuer SaaS V1（首要）** | 企业订购/租户、资产及 Instrument、Project/Offering、投资者门户及资格、一级认购、真实稳定币收款核验、配售/法律登记/真实 Token、必要存续期和审计异常 | **优先规划；逐功能实际交付深度尚未冻结** |
-| **Issuer SaaS V2** | 在合规与受权条件下增加投资者间受控转让流程；不默认公开交易所、订单簿、AMM 或平台自营流动性 | **方向已确认，细节及日期待定** |
-| **White-label 商业产品** | 品牌/域名、一个运营商管理多家发行机构、客户和资产展示授权及品牌门户 | **独立里程碑，未确定与 Issuer V1/V2 的具体日期关系** |
-| **Open API / SDK 商业产品** | 对外 API 授权、Webhook、Sandbox、SDK、文档与用量等 | **独立里程碑；Issuer V1 内部共用 API 核心先行** |
-| **C/D/E 扩展** | 基金 NAV/申赎、经营收入分成、实物储备/提货等特定能力 | **长期待产品化研究及单独版本审批** |
-| **潜在聚合市场/其他产品线** | 跨发行方资产聚合及分发（如未来开展） | **不属于本期 Issuer SaaS 默认范围** |
-
-## 8. 截至 2026-10-23 的实际进度（六批原则审核已完成）
-
-### 已形成、已确认的产品成果
-
-| 产品交付物 | 当前情况 |
-|---|---|
-| **产品战略与商业模式** | **战略原则基线有条件冻结**；全球化、多资产、ToB 优先及三条商业产品线已明确 |
-| **总体产品 PRD** | **总体需求基线 Frozen**，但不代表 V1 具体功能交付全部冻结 |
-| **功能树与模块责任** | **Frozen**：六大能力域、22 模块及责任边界 |
-| **核心流程和状态机** | **Frozen（原则层）**：WF-01～WF-18，含认购/付款/配售/登记/Token/异常与状态守卫 |
-| **187 项功能范围分类** | **已批准分类原则**：原 P0/P1/P2/V2/批次待定及交付方式统计完整；实际必交清单未冻结 |
-| **Instrument 架构** | **五类长期家族的建模原则已确认**；C/D/E 专有功能不默认首期 |
-| **A/B 产品场景** | **债权 A、实体权益 B 的产品需求原则已评审**，建立 A/B 187 项功能对照和相应业务测试设计 |
-| **Issuer V1 详细 PRD：Batch 01** | **M01～M03 的 22 项最低产品交付深度原则已批准**；在线收费、SSO 等增强按原边界后置 |
-| **Issuer V1 详细 PRD：Batch 02** | **M04/M06 共 17 项最低产品交付深度原则已批准**；详细 UI、服务/API、法域与实际研发尚未冻结 |
-| **Issuer V1 详细 PRD：Batch 03** | **M05/M19 共 19 项产品最低交付深度原则已批准（SCOPE-168～175）**；19 张 B03 案例仍 Not Executed，UI/API/实际发行未冻结 |
-| **Issuer V1 详细 PRD：Batch 04** | **M08～M12 50 项最低交付深度原则 SCOPE-176～185 已批准**；B04-01～50 仍 Not Executed，详细字段/UI/API 和合法执行未冻结 |
-| **Issuer V1 详细 PRD：Batch 05** | **M07/M22 19 项最低交付深度原则 SCOPE-186～193 已批准**；B05-01～19 仍 Not Executed，真实合约/签名/实际 V1 范围未冻结 |
-| **Issuer V1 详细 PRD：Batch 06** | **M13/M17/M18/M20/M21 共 37 项最低交付深度原则 SCOPE-194～205 已批准**；B06-01～37 仍 Not Executed，字段级详细 PRD 与最终 V1 范围均未冻结 |
-| **新的六步产品工作方法** | **已由产品负责人确认**；Step 01 六批最低深度原则均 Approved，Step 02 启动跨端详细泳道流程草案，后续依次为 187 项核验、分端清单、字段级 PRD、整体冻结 |
-| **信息架构/页面级交互/UI 视觉** | **尚未正式设计或冻结**；已有逻辑页面群参考不等于 UI 页面清单 |
-| **真实代码、服务端、合约与第三方集成** | **本项目未授权正式业务开发；本 README 不声明任何功能已建成** |
-| **运行测试/生产上线** | **尚无本轮 A/B 功能实测通过结论**；187 项验证底表均 Not Tested，场景卡均 Not Executed |
-
-### 当前停在哪里
-
-- **当前产品进度**：Batch 01（22 项）、Batch 02（17 项）、Batch 03（19 项）、Batch 04（50 项）、**Batch 05（M07/M22，19 项）的最低交付深度原则均已 Approved**（SCOPE-186～193 正式决策已归档）；**Batch 06（M13/M17/M18/M20/M21，37 项）SCOPE-194～205 最低深度原则 Approved（[正式决策](decisions/SCOPE-194-205-batch06-lifecycle-exceptions-notifications-audit-reports-principles.md)）**。现有 Step 01 17 个跨端责任节点、BRD-A～F 与 18 个异常断点仍是审核素材，不取代 Batch 05/06 正式 SCOPE 评审，亦非真正字段级详细 PRD。
-- **最终确定的工作方式**：**先按原 Batch 01～03 的长篇需求 + SCOPE 集中审批方式完成 Batch 04～06**（Batch 01～06 已全部批准最低深度原则，接续 Step 02）；然后 **② 四泳道全流程图 → ③ 原 187 项交叉核验 → ④ 分端完整功能清单 → ⑤ 字段级详细 PRD → ⑥ 全局验收与产品冻结**；全部通过后统一开展 UI，不边写 PRD 边设计 UI。
-- **版本范围状态**：真实 Issuer V1 逐功能交付深度和产品冻结尚未完成；White-label、商业 Open API 和受控转让的具体发布时点均未确定。
-- **工程状态**：不将文档完成程度表达为开发进度百分比；尚未启动本项目正式业务实现或真实金融操作。
-
-## 9. 接下来仍需完成什么（最新六步产品设计顺序）
-
-以下是产品负责人确认的**最终执行方法**：**Batch 01～06 已按长篇文字需求与 SCOPE 批量审核完成全部最低深度原则批准；现在开展跨端详细流程图，随后依次核验 187 项、编排分端功能清单、字段级真正详细 PRD、整体冻结，最后统一 UI**。批次原则 Approved 不等于字段级 PRD 完成。
-
-| 步骤 | 计划交付什么 | 当前进度及团队如何参与 |
-|---|---|---|
-| **01 六批业务规则原则审核收口** | 先完整批准 Batch 04～06 的长篇逐功能业务需求/SCOPE，再用现有 17 个跨端责任节点与 18 个异常断点交叉核验 | **Batch 01～06 均已批准最低深度原则**；[Batch 05 19 项需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md)对应[正式 SCOPE-186～193](decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md) Approved；[Batch 06 37 项逐功能需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-06-Lifecycle-Workflows-Notifications-Audit-Reports-v0.1.md) SCOPE-194～205 Approved（产品原则；全部 B06 案例 Not Executed） |
-| **02 绘制跨端完整泳道图** | **平台后台 / Issuer 企业 SaaS / 机构投资者 / 外部受权服务**四泳道：全局总图 + 分阶段细图 + 失败/Unknown/退款/登记与收益异常 | **[DEC-014 已通过 v0.3 中对照原11步的核心业务闭环](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)**，无需逐节点审查技术时序；[v0.3四端详细图](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)仍保留给后续字段级PRD/技术法域审查。现在进入187逐ID交叉核验/新ID批准；最终V1交付冻结未完成 |
-| **03 对照原 187 项核验** | 流程节点↔功能 ID 双向映射，审计漏项、重复、职责错误、非线性权限/报表/审计及版本归属 | **首轮纸面核验已完成**：187条逐ID映射、12处差距、8组跨权威重叠及XCHK-01～10待审决策；**真正版本归属/新增ID仍 Draft**。六批 Issuer 主线164项、M14/M15/M16共23项全部有关联 |
-| **04 整理分端完整功能清单** | 按 **端→一级模块→二级模块→功能点→通俗详细说明→关联流程节点→原功能 ID→版本** 排列 | **待开展**；便于产品负责人和同事不用读冗长段落即可审查覆盖 |
-| **05 真正的字段级详细 PRD** | 每个功能的字段类型/必填/精度/校验、操作、角色/权限、业务状态、规则、外部依赖、异常恢复和验收 | **待开展**；六批 01～06 最低深度原则已批准，字段级 PRD 以后续四端流程和功能清单为依据 |
-| **06 跨文档验收与产品冻结** | 核对流程、187 项、字段/角色/规则/测试/版本范围一致，记录真实金融合法权威和条件阻断，由产品负责人单独批准 | **待开展**；完成后统一启动 UI/UX，工程与生产金融执行另行授权 |
-
-为避免遗漏，配套检查角色权限与外部 RACI、业务实体/字段字典、非法域通用的异常处理、可测试非功能需求、安全/隐私、外部服务事件与 SLA、运营客服和需求↔测试追踪。这些纳入六步成果而不是制造重复文件，详见[标准文档体系与缺口核对](docs/00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md)。
-
-正式产品冻结还需核对既有 **G-01～G-06**：真实首发 Instrument/法域、适格执行方、合法发行模式、16 项条件性 P1、187 项实现深度与独立验收证据。这些尚未被六步法“流程审批”自动满足。
-
-## 10. 技术、运营同事应该重点关注什么
-
-### 技术团队
-
-当前可以依据已经冻结的功能责任和状态机原则**理解、评估和提前讨论方案**，但还不应把所有 187 项都视作正式开发任务。
-
-最重要的架构约束：统一 API-First、多租户隔离、权限与审批分权；Asset/Instrument/Project/Offering 独立建模；M10 认购、M11 资金、M12 配售与登记、M07 Token、M13 存续分别维护各自的事实；金额/币种精度、规则版本、幂等、外部 Unknown、审计和合法更正不可省略。
-
-后续要结合详细 PRD 再决定具体 API 契约、数据库、链和合约协议、签名/密钥安排、队列/回调、服务商接入、部署测试和安全要求。**目前尚未取得正式代码开发或生产金融执行授权。**
-
-### 运营团队
-
-主要涉及两个层面：
-
-- **SaaS 自身运营**：客户商务申请、合同和能力授权、Tenant 开通、组织管理员、支持/补件、暂停、续约和合法退出；不默认上线完整自助在线扣费、CRM、企业 SSO 或高级客服工单系统。
-- **协助发行客户的业务运营**：发行材料完整性和专业审核配合、发行发布前检查、异常任务、付款与 Token 状态查询、必要合法通知、数据导出与责任交接。运营人员不能因系统管理员身份而直接“确认”真实资金到账、创设法律股权或任意签发 Token。
-
-运营需要参与后续的页面任务、权限矩阵、人工审核与异常恢复细则，以及客户试点、定价/套餐、流程成本、法域/服务商调研。
-
-### 所有同事共同遵守的状态解释
-
-- **Approved / Frozen**：某份产品原则或文档范围获得确认，不等于功能代码交付。
-- **Draft / TBD**：仍需产品、法务、技术或经营负责人确认。
-- **Not Tested / Not Executed**：没有实际运行并提供测试证据，不能填为 PASS。
-- **V1 候选**：待冻结的首期需求，不等于真实生产环境可用。
-- **Legal/Production Eligible**：必须有特定市场、金融工具、主体和合法执行路径支持，不能凭产品配置勾选获得。
-
-## 11. 主要产品资料（供进一步阅读）
-
-本 README 是面向团队的**独立产品总览**，不是历史审批记录。需要细节时，优先查阅下列正式资料：
-
-| 文件 | 建议谁阅读 | 用途 |
-|---|---|---|
-| [产品战略与商业模式](docs/02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md) | 负责人、运营、商业团队 | 定位、客户、产品线和商业边界 |
-| [总体产品需求 PRD](docs/03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md) | 产品、技术、运营 | 总体角色、对象、需求与原则 |
-| [22 模块功能树](docs/03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md) | 产品、架构、研发 | 逻辑模块职责与边界 |
-| [187 项功能及版本分类](docs/03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) | 产品、技术、项目管理 | 功能编号、分级和候选范围 |
-| [核心业务流程与状态机](docs/04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md) | 产品、后端、测试、运营 | 业务生命周期、状态与风险守卫 |
-| [A/B 187 项功能对照](docs/03-product-prd/RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md) | 产品、后端、金融/合规协作 | 债权与权益业务差异、P1 触发与冻结前置门 |
-| [Batch 01：商业开通与权限详细 PRD](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md) | 产品、运营、前后端 | 第一批已批准的 22 项产品最低深度 |
-| [Batch 02：资产/Instrument/文书与审核 PRD](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-02-Asset-Instrument-Documents-Review-v0.1.md) | 产品、法律/运营、前后端 | 17 项最低产品交付深度**原则已批准**；17 个待执行验收案例，具体实现未冻结 |
-| [Batch 03：Project/Offering/发行规则详细 PRD](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-03-Project-Offering-Rules-Publishing-Review-v0.1.md) | 产品、发行运营、后端 | 19 项最低产品深度原则 **Approved**，19 个案例 Not Executed |
-| [Batch 04：投资者/认购/支付/配售登记需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md) | 产品、发行运营、金融/合规、后端 | 50 项最低深度原则 **Approved**；50 个案例仍 Not Executed |
-| [Batch 05：Token/合约/第三方执行需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md) | 产品、链/安全/法律/后端 | **SCOPE-186～193 原则 Approved**；19 项（P0 16/P1 1/P2 2）；B05-01～19 Not Executed；[正式决策](decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md) |
-| [六步产品设计与标准文档缺口审计](docs/00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md) | 全体项目成员 | **最新已确认执行方法**、步骤验收门、164+23 的 187 项范围关系、完整 PRD 文档清单及缺口 |
-| [Batch 06：存续期/异常/通知/审计/报表长篇需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-06-Lifecycle-Workflows-Notifications-Audit-Reports-v0.1.md) | 产品、财务/法律/合规/技术 | **SCOPE-194～205 原则 Approved**，37 项（P0 23/P1 9/P2 5）；B06-01～37 Not Executed；[正式决策](decisions/SCOPE-194-205-batch06-lifecycle-exceptions-notifications-audit-reports-principles.md)，不代表研发/法域实施完成 |
-| [**Step 02 v0.3：核心11步流程已 Approved / 细节 Draft**](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md) | 产品/Issuer运营/财务/合规/外部有权主体 | [DEC-014](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)确认 11/11 主流程完整覆盖；文档新增七段通俗摘要，细节仍供研发PRD审阅，非V1.0整体冻结 |
-| [Step 02 v0.2：按客户11步重构的历史四泳道草案](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md) | 产品总控、发行机构运营、法务/财务及链集成 | **历史 Draft**；当时的 CR 待决陈述现由 DEC-013 批准 A，并已更新为 v0.3；不能再把旧文的 Draft 断言视为当前决策 |
-| [Step 02：四端端到端全局泳道图草案](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-End-to-End-Workflow-Draft-v0.1.md) | 产品、Issuer运营、法律/资金/合规与架构 | **Draft / 待产品负责人审图**；1张L0、5段L1 Mermaid 可编辑图，含 BR-01～18 异常；非 Frozen / 测试通过 |
-| [Step 01：Batch 04～06 跨端业务规则收口底稿](docs/03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md) | 产品、运营、法律/资金和技术评审人 | 17 个跨端业务责任节点、投资者状态与 6 条待审产品建议；**仍 Draft，未冻结** |
-| [六批最低交付深度审核路线](docs/03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md) | 产品、研发负责人、运营 | 六批全部最低深度原则已批准；现按阶段计划进入四端可视化流程图草案 |
-| [文档状态与决策索引](docs/Document-Status-Index.md) | 需要核对正式版本的成员 | 文件审批状态与权威依据 |
-
-## 当前项目治理说明
-
-- 产品负责人决定产品范围、规则、正式冻结及开发授权；产品/技术/运营/法律或受权金融责任方按各自职责参与审核。
-- 仓库当前产品文档工作分支：`docs/regulated-activity-boundaries-v01`。
-- [PR #6](https://github.com/mirrorshang/rwa-saas-platform/pull/6) 仍为 **Draft / Open / Unmerged**；未经明确授权不得合并。
-- **最新执行顺序**：六批已完成**长篇文字需求 + SCOPE 集中审核**，下一步绘制四泳道详细流程图、核验 187 项、建立按端功能清单、完成字段级 PRD 并冻结产品范围，随后统一 UI；工程、真实资金与 Token 操作仍需另行批准。
+- 唯一当前完整状态导航：[docs/Document-Status-Index.md](docs/Document-Status-Index.md)。
+- 权威/历史覆盖及当前主文档：[文档权威目录](docs/00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。
+- 95份原有文件的逐文件处理建议与审计证据：[首轮报告](docs/00-governance/RWA-SaaS-Step-03.5-Document-Governance-Audit-and-Disposition-Proposal-v0.1.md)。
+- 历史草案仅标 **Superseded as current reading entry**，路径、正文和对应DEC/SCOPE审批历史均保留；四份 Frozen 不直接改写。
+- 当前工作分支：`docs/regulated-activity-boundaries-v01`。[PR #6](https://github.com/mirrorshang/rwa-saas-platform/pull/6) **Draft / Open / Unmerged**，base `docs/initial-asset-scope-v01`；没有收到明确合并授权。

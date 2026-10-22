@@ -8,9 +8,9 @@
 
 - [**DEC-012｜V1.0/V2.0/V3.0 版本规划方法**](../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)：**Approved（仅版本治理原则）**。V1.0 代表第一版真正承诺交付的完整功能集合，不再用 P0/P1/P2 作为当前交付范围的可选/必需判断。原187功能分级保留历史记录，不修改冻结正文。
 - [**187项目标版本候选迁移表**](03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)：**Draft / 187项具体版本未批准**。初步建议 V1.0 **140**、V2.0 **22**、V3.0 **25**；另外8个 CAND 仍是差距候选，没有增加原187数量；后续需审图+逐项版本审批。
-- [**CR-01～10 V1.0完整产品闭环决策提案**](03-product-prd/RWA-SaaS-V1.0-Complete-Loop-CR-01-10-Decision-Proposals-v0.1.md)：**Draft / A/B未获审批**。审批后修订 Step 02 v0.3 并实施原187功能与新增缺口审查。
+- [**DEC-013：CR-01～10 全部选择 A**](../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)：**Approved（产品方向与版本目标，2026-10-23）**；[原A/B提案](03-product-prd/RWA-SaaS-V1.0-Complete-Loop-CR-01-10-Decision-Proposals-v0.1.md)同步 Approved。在线SaaS收费、标准 Issuer Portal、A/B受控模板、专业服务文件引用、受权Contract Factory、外部+嵌入式钱包、募集资金真实结算、收益注资与一种合法分配、A到期/B条件退出、历史187转版程序均已原则批准；**未批准逐项ID版本归属、法域/技术方案或生产操作**。
 - 既有 DEC-011 受控二级转让为后续版本的已批原则保留，暂拟 V2.0，不用新治理方法自动将其移至 V3.0；White-label与商业 Open API 的完整产品交付版本仍待实际范围决策。
-- 现有 [Batch 01～06](03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)最低深度原则继续 Approved，功能最终版本/字段级 PRD/UI/工程仍分别待审；PR #6保持 Draft/Open/Unmerged。
+- 现有 [Batch 01～06](03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)最低深度原则继续 Approved；DEC-013 十项A方向亦 Approved。**[Step02 v0.3](04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)是新审图稿 Draft**，187项目标版本/新增功能编号、字段级PRD、UI、法域/技术与工程仍分别待审；PR #6保持 Draft/Open/Unmerged。
 
 ## 当前基线与工作边界
 
@@ -30,7 +30,8 @@
 产品负责人**正式认可**新的六步方法：**① Batch 04～06 业务规则收口 → ② 四端可编辑详细业务泳道图 → ③ 原 187 项功能逐项双向核验 → ④ 按端/模块/子模块/功能点建立完整清单 → ⑤ 字段级详细 PRD → ⑥ 一致性验收及正式产品冻结 → 统一 UI 设计**。不再把 Batch 01～06 的“最低交付深度原则”文档视作完整字段级 PRD。
 
 - [**六步执行计划及标准产品文档缺口审计 v0.1**](00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md)：六步方法 **Approved**，具体文档差距/质量标准为工作基线 Draft。包括四泳道图、权限与 RACI、信息对象/字段、NFR、运营、合规、集成、验收与追踪要求。
-- [**Step 02 v0.2：根据企业购买SaaS至收益Claim/退出的11步重新细化四端流程图**](04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md)：**Draft / 待产品负责人审核**，1张 L0 +10张 L1 GitHub Mermaid；补充 SaaS 自助订阅、基本独立门户、模板化发行、合约Factory、嵌入式钱包、募集资金划拨及收益注资/Claim 的候选主流程，并对 Batch 01～06 提出 CR-01～10 待决影响分析。**没有改动原187 ID/优先级或任一批准的SCOPE/Frozen文档**。
+- [**Step 02 v0.3：CR-01～10 A 已批准后的四端详细泳道审图稿**](04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)：**Draft / 待产品负责人审核**，1张L0四端总图 + 10张 L1 四端详细泳道图；已细化自助订阅、标准门户、A/B发行、合约Factory、双钱包、募集资金受权结算、收益实际注资与Claim/Push、到期/回购、原有异常。**CR方向 Approved ≠ 全图 Frozen / 每个技术与法域节点已批准**。
+- [**Step 02 v0.2：根据企业购买SaaS至收益Claim/退出的历史11步流程草案**](04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md)：**历史 Draft**，CR-01～10 当时待决，现已由 DEC-013 批准 A，后续按 v0.3审图稿，不把历史建议当成尚未批准的新决策。
 - [**Step 02：四端端到端 L0/L1 业务泳道图 v0.1**](04-business-workflows/RWA-SaaS-Step-02-Four-Lane-End-to-End-Workflow-Draft-v0.1.md)：**Draft / 待产品负责人审核**；已建立 GitHub 可编辑 Mermaid **L0 总图 + L1 五段细图**，串联 R-01～17 与 BR-01～18 异常，仍非 Frozen，未开展完整 187 ID 双向映射、UI 或实际测试。
 - [**Step 01：Batch 04～06 跨端业务规则收口底稿 v0.1**](03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md)：**Draft / 待业务审核**；已列 Batch 04～06 主链路、**R-01～17 四端责任与交接、BRD-A～F 六条待审产品默认方案、BR-01～18 异常断点（Not Executed）**，不是已完成字段级 PRD；Step 02 已启动草案工作。
 - 经原 187 个 ID 实际核对：**六批 Issuer 主线 164 项；M14/M15/M16 另外 23 项**的 V2/独立商业范围归属必须在 Step 03 审核，不能漏项或默认纳入 V1。
@@ -125,4 +126,4 @@
 
 [《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
-**当前工作进度（2026-10-23）**：**Batch 01～06 最低产品交付深度原则全部 Approved；Batch 06 SCOPE-194～205 已正式归档，Step 01 批次最低深度原则审核收口。Step 02 四端 Mermaid 业务泳道草案已建立（Draft），仍需产品负责人正式审核；**后续将进入 187 项核验、分端完整功能清单、字段级详细 PRD 与最终范围冻结，最后统一 UI。A/B 原 187 项仍 Not Tested、UI/工程未启动，PR #6 Draft/Open/Unmerged。
+**当前工作进度（2026-10-23）**：**Batch 01～06 最低深度原则 Approved，DEC-012 版本治理 Approved，DEC-013 CR-01～10 产品方向全选 A Approved；Step02 四端 v0.3 Mermaid 业务泳道图 Draft、待用户审图；187项映射建议140/22/25均 Draft**。后续将进入 187 项核验、分端完整功能清单、字段级详细 PRD 与最终范围冻结，最后统一 UI。A/B 原 187 项仍 Not Tested、UI/工程未启动，PR #6 Draft/Open/Unmerged。

@@ -1,5 +1,7 @@
 # RWA SaaS｜Step 03 187功能 × 11步业务：差距、重复、责任归属及审批门 v0.1
 
+> **后续生效变更（2026-10-23）**：[DEC-016](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md)已正式批准此处 PROP-01～11 的5项扩深、6项新增，并分配M01-F009、M08-F011/F012、M11-F012/F013、M13-F009。此文件仍保留**原审查时点草案**；当前193项功能及版号以[统一主表Draft](RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)为准。下方“XCHK已批准、PROP仍待分类批准”等文字只是历史时点陈述；**版号与字段实现仍待审批**。
+
 > **Audit Draft / XCHK-01～10 A Approved — 2026-10-23**。本文件是 [187项逐功能×核心流程矩阵](RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)的核验底稿，继承 [DEC-014核心11步流程Approved](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)及 [DEC-013 CR-01～10全部A](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)。产品负责人已正式批准 [DEC-015：XCHK-01～10全部A](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)，即**差距处置与主权威划分原则Approved**；但 D01～D12 的实际功能细节、PROP-01～11如何合并/正式编号、187项V1.0/V2.0/V3.0唯一归属**仍为Draft**。不提前增删正式功能编号或改写Frozen。
 >
 > **方法**：顺着已批准11步产品闭环，从客户可完成的动作倒推“是否有功能主责/前端操作/真实权威/异常状态/查询反馈”；再逐条把原187项匹配过去。主流程已经 Approved，但**纸面流程有节点不等于原功能清单已完整定义其可开发范围**。

@@ -666,7 +666,14 @@
 - 后续 Project 1:N Offering、持续认购与必要集中募集、发布前置及规则版本、在途订单处理按第 04 份 Frozen 流程和产品草案评审，不因为创建 Project 或 Token 即默认为合法发行完成。
 - **原 M01～M22 187 个功能及优先级、五类交付定位不变**；A/B 187 项 Not Tested。执行顺序为“完成全量详细 PRD、统一产品范围收口和正式冻结后再进入 UI”，PR #6 Draft/Open/Unmerged。
 
-## 二十六、统计与未决门
+## 二十六、Batch 03 产品最低交付深度已批准；Batch 04 投资者至法定登记闭环待审（2026-10-22）
+
+- 产品负责人明确批准 [**SCOPE-168～175**](../../decisions/SCOPE-168-175-batch03-project-offering-rules-principles.md)，涵盖 [**M05/M19 Batch 03 共 19 项**](RWA-SaaS-V1-Delivery-Depth-Batch-03-Project-Offering-Rules-Publishing-Review-v0.1.md)的最低交付深度**产品原则**（P0 15 / P1 2 / P2 2），B03-01～19 仍 **Not Executed**。
+- [**Batch 04：M08～M12 投资者/资格、认购、实际稳定币付款、法定配售登记产品草案**](RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md)已建立，覆盖 50 个原功能 ID（P0 41/P1 5/P2 4），**SCOPE-176～185 仍待批准**，B04-01～B04-50 均 Not Executed。
+- 本轮明确 KYC 不等于 Offering Eligible；Quote/订单、额度预留、外部 USDT/USDC 收款与真实对账、配售、法定登记以及 Token 是独立权威与执行阶段。法域、投资者准入、资金服务方、登记/签名主体仍为真实生产决策门。
+- 保留原 187 项及优先级，既有 A/B 187 功能底表均 **Not Tested**；先完成详细 PRD 和 V1 范围冻结，再统一开展 UI 与另行授权研发，PR #6 继续 Draft/Open/Unmerged。
+
+## 二十七、统计与未决门
 
 | 范围建议 | 项数 | 审批解释 |
 |---|---:|---|
@@ -681,7 +688,7 @@
 
 **职责校验**：M10 创建认购及预留请求；M12 对统一额度、配售和权威登记负责；M11 对收款事实、对账、退款负责；M07 对 RWA Token 及链上执行事实负责；M17 编排异常但不改写权威数据；M19 管理规则版本；M20 保障安全审计；M22 接外部服务商。项目关联多个 Offering；KYC 与 Offering 资格独立；链上到账不直接等于配售/登记/Token 完成。
 
-## 二十七、评审批次与维护方式
+## 二十八、评审批次与维护方式
 
 1. **第 1 批：M01～M03 已确认范围定位（SCOPE-009～SCOPE-014）**；后续编写详细 PRD 时再细化字段、状态和最终交付深度。
 2. **第 2 批：M04～M06 范围定位已批准（SCOPE-015～SCOPE-020）**，具体法律工具、文件字段及 Offering 页面仍应在详细 PRD 明确。

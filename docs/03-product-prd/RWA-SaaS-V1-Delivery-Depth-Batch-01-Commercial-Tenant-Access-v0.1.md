@@ -1,6 +1,6 @@
 # RWA SaaS｜Issuer V1 交付深度 Batch 01：客户购买 SaaS、Tenant 开通与组织权限 v0.1
 
-> **Detailed Functional Scope / Draft — 本文件 22 项的“建议最小交付深度”与 SCOPE-152～159 均尚未获得产品负责人批准，不代表研发实施或真实 Issuer V1 冻结。** 2026-10-22。
+> **Batch 01 的最小交付深度产品原则 SCOPE-152～159 已 Approved；具体 UI/接口/技术实现、真实金融法域许可与全局 Issuer V1 交付范围仍 Draft/TBD。** 2026-10-22 产品负责人明确同意，并要求**暂停 Batch 02 及后续详细需求推进**。参见[正式决策](../../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)。
 >
 > 依据：[已批准 SCOPE-143～151](../../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)、[正式 187 项范围基线](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)、[六批交付深度路线](RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)、[ARCH-001](../../decisions/ARCH-001-api-first-unified-business-core.md)。
 >
@@ -107,9 +107,9 @@
 
 **全部 B01-01～B01-22 为验收设计 Not Executed**；本批文件即便经原则审核，也不能将原 187 项 A/B 验证底表更新为 PASS。
 
-## 六、第一批拟请产品负责人批准的 8 项决策（SCOPE-152～159，全部待审批）
+## 六、Batch 01 已批准的 8 项产品交付原则（SCOPE-152～159 Approved）
 
-| 编号 | 推荐交付深度原则 |
+| 编号 | 已批准交付深度原则（详细实施/UI 仍待定） |
 |---|---|
 | **SCOPE-152** | 从 **客户购买/商业签约和授权**开始建立 Issuer SaaS V1 逻辑旅程；可通过人工商务合同/授权开启 Tenant，**M01-F008 在线自动订阅/收费维持 P2 后置**，商业购买与金融发行合规许可必须分开。 |
 | **SCOPE-153** | M01-F001～F007 交付必要申请、机构资料、商业合同/能力授权、Tenant 隔离/开通暂停恢复及受控退租；合并轻量表单/列表可以，但不得省后端 Guard/审计/必要权益义务交接。 |
@@ -122,9 +122,9 @@
 
 ## 七、第一批签收口径、明确非范围与下一步
 
-- **审核可批准的内容**：M01～M03 的 22 项功能可操作的最小逻辑深度、轻量 UI/共用 API-First 域、运营权限和 Tenant 的法律存续责任不被商业停用覆盖。
+- **已批准的产品原则**：M01～M03 的 22 项功能最小逻辑交付深度、轻量共享 UI 候选、共用 API-First 域、运营权限及 Tenant 的法律存续责任不被商业停用覆盖。具体界面 IA/路径、全部交互字段、服务端接口/数据 schema 和工程验收仍待设计/实施。
 - **暂不默认交付**：M01-F008 在线自动订阅收费、M02-F008 企业 SSO、高级 M03-F003/F004 工作流/工单 UI、M03-F006 CRM/BI；但强制授权、安全与支持底线必须保留。
 - **未解决依赖**：商业定价和支付套餐细则、具体的首发发行法域、真实受权收款/签名/股权登记机构、正式信息安全与留存策略；不得因此凭空指定金融法律责任。
-- **后续批次**：评审并批准适用的 SCOPE-152～159 原则后，开始 Batch 02（M04/M06：Asset/Instrument/法律文书/签署及专业审核）的**具体功能交付深度**，再依六批路线前进。**最终 Issuer V1 交付清单需用户单独正式冻结**。
+- **后续批次**：产品负责人已批准 [SCOPE-152～159](../../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)，但**明确暂停进入 Batch 02（M04/M06）及后续详细 PRD**；当前先对 UI 设计前的剩余产品文档、业务/交互边界和决策门进行清点，待用户后续明确指令再继续。最终 Issuer V1 交付清单仍需用户单独正式冻结。
 
-**当前状态：Batch 01 详细功能交付深度 Draft；SCOPE-152～159 待批准；B01 案例全部 Not Executed；A/B 原 187 项 Not Tested；PR #6 Draft/Open/Unmerged。**
+**当前状态：Batch 01 产品交付深度原则 SCOPE-152～159 Approved；具体 UI/技术方案与最终 V1 实施范围仍 Draft/TBD；Batch 02～06 Paused；B01 案例全部 Not Executed，A/B 187 项 Not Tested；PR #6 Draft/Open/Unmerged。**

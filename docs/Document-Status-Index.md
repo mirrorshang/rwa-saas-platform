@@ -16,8 +16,11 @@
 ## Step 03 187项双向交叉核验（2026-10-23）
 
 - [**187 项逐ID × 核心11步/四端主责任审核矩阵**](03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)：**Draft（首轮纸面核验完成）**，187/187唯一码已关联并给出原名称、四端主责、业务步骤、版本候选及复核意见。标记：**106 项直接核心关联、18 项跨端底座、34 项未来版本关联、29 项需深化/边界核对**；这些均为纸面交叉审核状态，不是程序运行测试。
-- [**差距、重复及XCHK-01～10审核门**](03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)：**Draft / 等待产品负责人批准处理原则**，建立 **D01～D12 12 个差距主题、8组权威重叠、PROP-01～11建议可验收交付单元、XCHK-01～10 A/B审批提案**。不提前创建正式新增功能ID；不因初步拆分更改187功能总数。
-- **状态边界**：DEC-014 核心11步主流程仍 Approved；DEC-013 CR-01～10产品方向 Approved；原 Batch01～06 Approved不变。V1.0/V2.0/V3.0逐行迁移（建议140/22/25）仍 Draft；法域/技术/资金/链签名及最终交付清单未冻结，PR#6维持 Draft/Open/Unmerged。
+- [**Step03 差距、重复及XCHK-01～10原提案**](03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)：**XCHK-01～10产品原则 Approved A / 明细差距及新交付单元 Draft**，12个 D 主题、8组职责重叠、PROP-01～11建议交付单元均保留；不提前创建正式新增功能ID，也不因此更改原187总数。正式批复：[DEC-015](../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)。
+- **状态边界**：DEC-014 核心11步 Approved；DEC-013 CR-01～10 Approved；DEC-015 XCHK-01～10 全部 A Approved；Batch01～06历史原则原样保留。**V1.0/V2.0/V3.0逐行版本（建议140/22/25）和真正新ID数量仍 Draft**；真实法域/技术/资金/链签名及最终交付清单未冻结，PR#6 Draft/Open/Unmerged。
+
+- [**V1.0/V2.0/V3.0 业务可读版本规划审查稿**](03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md)：**Draft / 待逐模块审查**。原187条按建议 V1.0 140 / V2.0 22 / V3.0 25 转换成企业实际能完成的业务清单；11组PROP去重/扩深/正式新ID未确定。V1所有必交范围仍需后续审批。
+- [**DEC-015：Step03 XCHK-01～10全部A Approved**](../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)：正式确认保留原ID、Issuer基础Portal与高级白标分开、钱包/募集结算/收益分配需独立可验收、保留金融法律及Token权威、逐模块批量版本审核。不批准技术方案或逐项版本冻结。
 
 ## 当前基线与工作边界
 
@@ -133,4 +136,4 @@
 
 [《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
-**当前工作进度（2026-10-23）**：**Batch 01～06 最低深度原则 Approved、DEC-012版本方法 Approved、DEC-013 CR-01～10产品方向 Approved、DEC-014核心11步主流程 Approved**；**Step 03 首轮纸面187/187逐项交叉审查已完成，审核底稿及XCHK-01～10产品提案 Draft**。新交付单元是否扩原ID/新编正式ID、187项真正V1.0/V2.0/V3.0归属、字段级PRD与最终范围均未冻结。待集中审核差距处理原则，再核准正式版本清单→分端功能清单→字段级PRD→全局冻结→统一UI。A/B 187项仍Not Tested，业务案例Not Executed，无UI/软件研发/真实金融操作，PR#6 Draft/Open/Unmerged。
+**当前工作进度（2026-10-23）**：**Batch 01～06最低深度原则、DEC-012版本方法、DEC-013 CR-01～10产品方向、DEC-014核心11步业务主流程、DEC-015 XCHK-01～10缺口处理原则全部 Approved**。**Step 03 首轮187/187纸面交叉审查完成，已生成V1.0/V2.0/V3.0业务可读版本规划草案**；11组PROP拆分/扩深/是否新正式ID、187逐项归属、字段级PRD和最终V1范围未冻结。接着按模块确认版本与PROP处理→Step04分端功能清单→Step05字段级PRD→Step06全局冻结→统一UI。A/B187项Not Tested，案例Not Executed，无软件研发/真实资金或链上操作；PR#6 Draft/Open/Unmerged。

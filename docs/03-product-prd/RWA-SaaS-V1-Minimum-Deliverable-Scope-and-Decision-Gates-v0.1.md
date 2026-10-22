@@ -467,7 +467,15 @@ B-T01～T16 和 A-T/A-D 案例全为未执行的产品验证设计；既有 A/B 
 
 **用户已明确恢复 Batch 02 的产品需求工作**，但仍坚持“完整 PRD 后统一 UI”。[Batch 02 M04/M06 17 项详细规格 Draft](RWA-SaaS-V1-Delivery-Depth-Batch-02-Asset-Instrument-Documents-Review-v0.1.md)已建立，**SCOPE-160～167 待批准**；Batch 03～06 未开始，正式 UI 与工程未授权。B01-01～22 均 Not Executed，A/B 187 项 Not Tested；真正 V1 逐项交付冻结与法域、外部主体仍在 G-01～G-06 待决门。
 
-## 二十、下一次评审的工作方法
+## 二十、Batch 02 交付深度已批准与 Batch 03 详细需求待评审（2026-10-22）
+
+[**SCOPE-160～167 正式决策**](../../decisions/SCOPE-160-167-batch02-asset-instrument-documents-review.md)已确认 [Batch 02：M04/M06 17 项最低产品需求](RWA-SaaS-V1-Delivery-Depth-Batch-02-Asset-Instrument-Documents-Review-v0.1.md) 的交付深度**原则**，原 P0 13/P1 2/P2 2 不变。A/B 法定权利字段、文书版本/引用、专业审核和签署证据须独立受权，M04 ReviewedForUse 仅是内部审查状态；B02-01～17 仍 Not Executed。
+
+[**Batch 03：M05/M19 Project、Offering 及规则发布规格 Draft**](RWA-SaaS-V1-Delivery-Depth-Batch-03-Project-Offering-Rules-Publishing-Review-v0.1.md)已起草 19 项（P0 15/P1 2/P2 2）候选交付深度及 B03-01～19 未执行验收卡，提出 **SCOPE-168～175，均未批准**。除产品结构、权益和已冻结业务 Guard 外，本轮不批准真实法域发行、收款、配售、Token 签名、正式 UI 及研发。
+
+保持用户确定的**完整 PRD → V1 范围/业务规格冻结 → 统一 UI 设计 → 另行授权研发**。源 A/B 187 功能均 Not Tested，PR #6 Draft/Open/Unmerged，原冻结文档不变。
+
+## 二十一、下一次评审的工作方法
 
 1. 对每个 P0 核心候选核查最小业务能力、页面是否可合并、审计/风险 Guard 是否保留。
 2. 对全部 P1 单独核查首发 Instrument/法域依赖，允许按具体工具上调为 V1 必需；未经批准不能改写原范围分级。

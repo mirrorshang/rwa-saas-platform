@@ -1,10 +1,24 @@
 # RWA SaaS｜Step 03 PROP-01～11 功能归属与拟新增6项交付单元审核稿 v0.1
 
-> **Draft / User Approval Required — 2026-10-23。** 继承 [DEC-012 版本治理](../../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)、[DEC-013 CR-01～10 A](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)、[DEC-014 核心11步主流程](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)、[DEC-015 XCHK-01～10 A](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)。**本报告仅提出 PROP-01～11 对原187功能的扩深/新建划分建议，未获用户对这11个具体功能归属的正式批准；ADD-01～06是审查代号，绝不是新创建的正式Mxx-Fxxx ID。**
+> **Classification Approved A / original proposal retained — 2026-10-23。** [DEC-016已批准全部PROP-01～11选择A并为6项新增功能分配正式ID](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md)。**本文件后续未更新的“待批准”“建议新增”表述属于原始审查时点的提案记录，并非当前事实**；具体版号、字段/技术、资金/法域及最终V1范围仍 Draft。 继承 [DEC-012 版本治理](../../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)、[DEC-013 CR-01～10 A](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)、[DEC-014 核心11步主流程](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)、[DEC-015 XCHK-01～10 A](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)。**本报告仅提出 PROP-01～11 对原187功能的扩深/新建划分建议，未获用户对这11个具体功能归属的正式批准；ADD-01～06是审查代号，绝不是新创建的正式Mxx-Fxxx ID。**
 >
 > 本次依据：[原187历史功能表](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)；[187逐条V1.0/V2.0/V3.0候选迁移表](RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)；[Step03逐功能双向核验](RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)；[D01～12缺口和PROP原定义](RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)；[三版本业务可读规划](RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md)。
 >
 > **清楚区分**：DEC-015 已批准的是“必须明确闭环和独立权威、只能先提出新增候选后批准编号”的原则，**没有批准本文件的新ID计数或187项版本转正**。本金/股息/募资款实际资金权限、嵌入式钱包架构、合约生产Signer、具体法域及Claim履约均保留 TBD，PR#6仍 Draft/Open/Unmerged。
+
+## 00｜本轮正式审批及正式ID与原PROP对照（2026-10-23）
+
+**正式DEC-016批准：5项扩深（PROP-01/03/04/10/11），6项新增独立ID（PROP-02/05/06/07/08/09）；当前正式功能身份总量193，原187历史ID不变。** 以下原始A/B表按提案历史保留，不再要求重复审批。**所有版号建议继续Draft**，当前统一审查表：[193项当前目标版号草案](RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)。
+
+| 原PROP | 已批准归属 |
+|---|---|
+| PROP-01 / PROP-03 / PROP-04 / PROP-10 / PROP-11 | **原ID扩深 Approved** |
+| PROP-02 | **M01-F009 Approved** |
+| PROP-05 | **M08-F011 Approved** |
+| PROP-06 | **M11-F012 Approved** |
+| PROP-07 | **M11-F013 Approved** |
+| PROP-08 | **M13-F009 Approved** |
+| PROP-09 | **M08-F012 Approved** |
 
 ## 一、产品负责人需要看的结论
 

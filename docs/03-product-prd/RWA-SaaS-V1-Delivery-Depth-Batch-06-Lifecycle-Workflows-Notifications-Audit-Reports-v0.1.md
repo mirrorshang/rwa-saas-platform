@@ -1,6 +1,6 @@
 # RWA SaaS｜Issuer V1 交付深度 Batch 06：存续权益、异常、通知、审计与报表 v0.1
 
-> **Detailed Functional Scope / Draft — SCOPE-194～205 共 12 项待产品负责人集中审核，尚未获批准。** 2026-10-23 编制。适用 M13/M17/M18/M20/M21 **37 个原功能**的最低产品交付深度设计；并非字段级完整 PRD、真实法律判断、UI/API/技术实施或生产上线授权。全部 B06 验收卡为 **Not Executed**，原 A/B 187 项为 **Not Tested**。
+> **SCOPE-194～205 共 12 项产品最低交付深度原则已 Approved（2026-10-23）**，见[正式决策](../../decisions/SCOPE-194-205-batch06-lifecycle-exceptions-notifications-audit-reports-principles.md)。**完整字段级 PRD、最终 V1 实施范围、法域/实际执行方、UI/API/技术实现仍 Draft/TBD**。 2026-10-23 编制。适用 M13/M17/M18/M20/M21 **37 个原功能**的最低产品交付深度设计；并非字段级完整 PRD、真实法律判断、UI/API/技术实施或生产上线授权。全部 B06 验收卡为 **Not Executed**，原 A/B 187 项为 **Not Tested**。
 >
 > 依据：[原 187 功能及版本源表](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)｜[Batch 01～04 Approved 决策入口](../../decisions/)｜[Batch 05 SCOPE-186～193 Approved](../../decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md)｜[Frozen WF-01～18](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)｜[SCOPE-126～133 债权 A1](../../decisions/SCOPE-126-133-debt-A1-coupon-maturity-exception-principles.md)｜[SCOPE-134～142 SPV B](../../decisions/SCOPE-134-142-equity-B-SPV-rights-and-lifecycle-principles.md)｜[ARCH-001](../../decisions/ARCH-001-api-first-unified-business-core.md)｜[DEC-011](../../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md)。
 >
@@ -51,7 +51,7 @@ Batch 06 的核心问题不是“发行以后提供一个收益图表”，而�
 
 **状态表达原则**：可以为用户设计“待审核、待支付、支付调查中、已实际到账、存续争议、已结束”等业务派生标签，但内部仍须分别保留 Instrument/Offering/LifecycleEvent/Payout/Register/Token/Exception/Notification 的领域状态。不得创造一个笼统的“Transaction Success”掩盖任何一项未满足的权威条件。
 
-## 四、37 项原始功能逐项交付深度（全部待本批 SCOPE 审核）
+## 四、37 项原始功能逐项最低交付深度（**产品原则 Approved；字段级细节 Draft**）
 
 ### M13｜发行后存续与收益（8 项）
 
@@ -219,7 +219,7 @@ A1 例外：同一 Series 可有多个 Offering/晚入场，但应严格按已�
 - **B06-E2E-C 租户退出**：SaaS Tenant 停用 → 在途退款/收益/登记/Token 义务筛查 → 法律及数据责任承接 → 外部凭证移交/撤销 → 必要持有人告知 → 合法保留/导出；不因退租让未到期法律债务被删除。
 - **B06-E2E-D 权威差异/安全事件**：发现原始收款与对账不符、登记/Token 差异或泄密 → M17 升级、M20 审计及 M22 危险凭证限制 → 真正领域受权人调查、查询原指令 → 受权补偿 → M21 按事实刷新；禁止客服单点把全部阶段改绿。
 
-## 九、提交产品负责人集中审核的十二项 SCOPE（**SCOPE-194～205，全部 Draft / 未批准**）
+## 九、已获产品负责人批准的十二项产品最低交付深度 SCOPE（**SCOPE-194～205 Approved**）
 
 | 编号 | 决策主题 | 推荐产品原则 |
 |---|---|---|
@@ -234,9 +234,9 @@ A1 例外：同一 Series 可有多个 Offering/晚入场，但应严格按已�
 | **SCOPE-202** | M20 安全、原始证据与退租治理 | M20 管理多租户/字段级隔离、审计追加记录、金额/币种/时间/精度、外部资金/登记/Token/出款证据、KYC 最小权限、异常与凭证撤销、合法留存/删除与责任迁移；纠错保留原事实，不默认 SaaS 拥有财产权或法定登记权限。 |
 | **SCOPE-203** | M21 权限化只读报表 | M21 提供项目、投资者、认购、资金/收益、配售/登记/Token、必要存续信息的按角色只读聚合与权威来源追溯；M20 审核筛选和导出；不得另建资金/股权权威账本、自动把 Pending/Unknown 显示为完成或跨租户泄露。 |
 | **SCOPE-204** | 九项 P1 条件性与五项 P2 后置 | 原 P1：M13-F004/005/006、M17-F006、M18-F004/005、M20-F007、M21-F005/006 按实际 A/B 工具、法域/受权主体和最低法律财务要求判定首期深度，必要底线不能因 UI 裁剪丢失；原 P2：M13-F008/M17-F007/M18-F006/M20-F009/M21-F007 非默认 Issuer V1。不得改动原分级。 |
-| **SCOPE-205** | 验收与阶段边界 | 本批 37 个 B06-01～37 验收卡及建议最低深度均仍 Draft，必须由产品负责人集中批准方可归档；所有 B06 案例 Not Executed、A/B 187 项 Not Tested。审核完成后才进入四端流程图→187 交叉核验→分端功能清单→字段级 PRD→整体冻结→统一 UI；不授权金融/链上真实执行、开发或 PR #6 合并。 |
+| **SCOPE-205** | 验收与阶段边界 | 本批 37 个 B06-01～37 验收卡及建议最低深度已由产品负责人批准为产品原则及验收设计基线；所有 B06 案例 Not Executed、A/B 187 项 Not Tested。审核完成后才进入四端流程图→187 交叉核验→分端功能清单→字段级 PRD→整体冻结→统一 UI；不授权金融/链上真实执行、开发或 PR #6 合并。 |
 
-**推荐批量审核口径**：可集中回复“Batch 06 的 SCOPE-194～205 全部同意”，或逐项批准/调整。**这句话仅作为待审表达，不意味着用户当前已经批准**。未收到明确批准不得建立 Approved 决策文件，不得把本批定义为 Frozen。
+**正式审批记录**：产品负责人已于 2026-10-23 明确回复“**SCOPE-194～205 全部同意**”，正式归档为[Approved 决策](../../decisions/SCOPE-194-205-batch06-lifecycle-exceptions-notifications-audit-reports-principles.md)。批准范围仅为最低产品深度与验收设计原则；不把整个文档误标为 Frozen 或完整字段级 PRD。
 
 ## 十、最重要的未决门与下一步
 
@@ -244,7 +244,7 @@ A1 例外：同一 Series 可有多个 Offering/晚入场，但应严格按已�
 2. A 的日数基准、税费、币种转换、清偿/逾期条款和可执行价格策略；B 的合法分配/公司批准与优先类别，均不得由 SaaS 自动假设。
 3. 收款/退款、Coupon/本金/分红外部实付、通知法定送达、链签名、登记更正须单独确认合法执行者和真实证据，以及未知交易异常恢复方法。
 4. 条件性 P1 根据参考工具/法域/最小强制业务控制最后定深度，保留 **P0 125/P1 21/P2 21/V2 6/商业待定 14 = 187** 原源表，不在本批改级或承诺全 P0 生产。
-5. **六批原则审核全部完成并明确 Approved 后**，才依用户决定进入：四端跨业务泳道流程图 → 原 187 项功能双向核验 → 按端/模块/二级模块/功能点/业务说明/流程节点/ID/版本形成清单 → 真正字段级 PRD → V1 一致性/范围审核冻结 → **最后统一 UI/UX**。本批逻辑任务组不是实际导航或视觉设计。
+5. **Batch 01～06 六批最低交付深度原则均已 Approved（2026-10-23）**，按用户决定下一步进入：四端跨业务泳道流程图 → 原 187 项功能双向核验 → 按端/模块/二级模块/功能点/业务说明/流程节点/ID/版本形成清单 → 真正字段级 PRD → V1 一致性/范围审核冻结 → **最后统一 UI/UX**。本批逻辑任务组不是实际导航或视觉设计。
 6. **PR #6 保持 Draft / Open / Unmerged**，不改第 02～04 份 Frozen、不做真实金融/链上执行、不授权 UI 与研发。所有业务验收卡 **Not Executed**，全量 A/B 原功能 **Not Tested**。
 
-**当前：Batch 01～05 最低产品深度原则 Approved；Batch 06 M13/M17/M18/M20/M21 37 项长篇需求草案已提出，SCOPE-194～205 全部 Draft 待用户集中评审；真实 Issuer V1 最终实施范围与字段级 PRD 尚未冻结。**
+**当前：Batch 01～06 最低产品深度原则均 Approved；Batch 06 M13/M17/M18/M20/M21 37 项最低深度原则已由 SCOPE-194～205 正式归档；B06-01～37 全部 Not Executed，A/B 187 项 Not Tested。已进入 Step 02 四端泳道流程草案阶段；真实 Issuer V1 最终实施范围、字段级 PRD、UI 和研发均未冻结或开始。**

@@ -1,6 +1,6 @@
-# RWA SaaS｜187 项功能 V1.0 / V2.0 / V3.0 版本迁移建议 v0.1（DEC-013 A 已批准）
+# RWA SaaS｜187 项功能 V1.0 / V2.0 / V3.0 版本迁移建议 v0.1（DEC-013/015原则已批准；逐项版本Draft）
 
-> **Draft / 逐项版本归属仍待审核 — 2026-10-23**。已批准 [DEC-012 版本治理方法](../../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)与 [DEC-013 十项 CR 产品方向（全部 A）](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)。本文件的 **187 项具体 V1.0/V2.0/V3.0 版本归属、140/22/25 统计和 CAND-01～08 合并/新增判断仍为 Draft**，不构成正式开发冻结。接续 Step 02 v0.3 审图、Step 03 原187双向核验与差额新增功能批准、V1.0唯一清单和字段级 PRD 后才可冻结。
+> **Draft / 逐项版本归属仍待审核 — 2026-10-23**。已批准 [DEC-012 版本治理方法](../../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)与 [DEC-013 十项 CR 产品方向（全部 A）](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)。本文件的 **187 项具体 V1.0/V2.0/V3.0 版本归属、140/22/25 统计和 CAND-01～08 合并/新增判断仍为 Draft**，不构成正式开发冻结。已通过 [DEC-014完成 Step02 11步核心主流程审核](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)；[Step03 原187双向纸面核验](RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)已全部关联，并由[DEC-015批准 XCHK-01～10 A](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)处理原则。**187项逐行版本尚未获批**，待差额PROP是否新ID确认、V1.0唯一清单与字段级PRD后才可冻结。
 
 ## 一、版本含义（治理原则 Approved，逐项归属 Draft）
 - **V1.0 = 第一版完整可交付范围**：纳入后必须在该版按批准的功能深度研发、验收并具备适用合法运营条件；**不再使用 P0/P1/P2 对第一版功能排序造成边界模糊**。
@@ -8,7 +8,7 @@
 - **暂待明确**：真实首发区域/业务许可、发行工具、资金控制、数据/链协议、专业执行人以及经验证的成本仍是实施门。本表特定提议如不可生产化必须重新裁决，不能“先承诺后跳过”。
 - **187 项历史原账不改**：P0 125 / P1 21 / P2 21 / V2 6 / 待定14 的历史分类、原 ID 和 DEC/SCOPE 已批准事实原文保持不变，审计时保留对照列，不再以其定义正式新版本。
 
-## 二、统计（CR-01～10 方案 A 已批准；**逐项版本分配仍为 Draft 建议**）
+## 二、统计（CR-01～10 / XCHK-01～10 业务原则 Approved；**逐项版本仍 Draft**）
 | 建议目标版本 | 原187项建议数 | 这意味着什么 |
 |---|---:|---|
 | V1.0 | **140** | 125原P0+部分原P1+原P2在线自动订阅提案；**不是已批首版清单** |
@@ -17,6 +17,8 @@
 | **187总计** | **187** | **仅覆盖既有ID**；见第四节的跨域新增能力候选，未来批准后才重新计总功能数 |
 
 **高影响重新归属项**：DEC-013 已批准对应产品方向，但**还未逐条冻结原 ID 的版本归属**；本草案将原本标为 P1/P2 的 **15 项**提议安排在 V1.0，分别为：M01-F008、M04-F008、M07-F009、M08-F009、M11-F010、M13-F004、M13-F005、M13-F006、M17-F006、M18-F004、M18-F005、M19-F006、M20-F007、M21-F005、M21-F006。它们与原“非默认首期”等历史建议有阶段差异，**DEC-013 已批准相应产品方向**，下一步须在 Step 03 将原功能实现深度/新增单元逐项定稿；不得改写 [SCOPE-152～205](../../decisions/) 的原历史内容。
+
+> **快速审阅入口**：[按客户能做什么分组的 V1.0 / V2.0 / V3.0 版本规划审查稿（Draft）](RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md)。该可读稿对照原187项和11组PROP差距，不代表版本已批准。
 
 ## 三、逐项建议（22个模块，187个原ID，全部 Draft）
 
@@ -346,12 +348,12 @@
 | CR-09 退出与Burn **Approved A** | V1.0包含A依法到期清偿及B适用的最小受控退出 | B不默认合同保证回购，M07-F009 P1实施门 |
 | CR-10 全量追踪与新增ID **Approved A** | 先保留187原ID和全部历史分级，再逐功能决定新版本，遗漏提交新增ID提案 | 对原DEC-011的V2转让归属保留，严禁未经批准改为V3 |
 
-## 六、审核冻结条件（本文件不满足）
+## 六、审核冻结条件（本文件不满足；DEC-015只批准缺口处理原则）
 1. 产品负责人确认新交付版本治理方法（见DEC-012）**已完成**，但**未批准本文件里每个Mxx-Fxxx的具体版本**。
 2. **已完成**：产品负责人集中批准 CR-01～10 **全部 A**，见 [DEC-013](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)。实际法域/工程方案和每个 ID 的具体交付版本仍需独立审核。
-3. **待审**：[Step02 v0.3 四端流程图](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)形成审图稿，待产品负责人确认；Step03 再将187项全部交叉映射，解决 CAND 功能的合并/新增与责任。
+3. **已完成主线与首轮映射**：Step02 v0.3 已通过 [DEC-014 核心业务11步审核](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)，187项已经全部完成纸面交叉映射（[明细](RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)），[XCHK-01～10处理原则A Approved](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)；**但CAND/PROP应当扩深还是新ID、真正逐项版本归属仍需审批**。
 4. 建立**V1.0 真实唯一交付清单**；所有归属V1的独立交付单元均具备字段、状态、角色、验收卡/外部责任；任何无法实现者通过单独变更移到其他明确版号而不是在V1保留P1可选。
 5. 之后才依据完成的 PRD / 决策门批准**V1.0范围 Frozen**，统一开始UI；真实链/资金/法域执行及代码研发仍需另行授权。
 6. PR #6 Draft/Open/Unmerged，四份Frozen原文不变；187项原始分类历史无删除，无已执行测试声明。
 
-**当前：DEC-012 版本治理 Approved；DEC-013 CR-01～10 全部 A Approved；187项具体 V1.0/V2.0/V3.0 归属及 140/22/25 数字 Draft，CAND 差距待验；V1.0正式交付范围未冻结。**
+**当前：DEC-012/013/014/015相关原则 Approved，Step03 187项首轮纸面交叉审核完成；具体187个原ID的 V1.0/V2.0/V3.0 分配及 140/22/25 数字仍 Draft，PROP交付单元拆分/是否新ID尚未批准；V1.0正式交付范围未冻结。**

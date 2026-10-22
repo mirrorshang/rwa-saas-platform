@@ -1,6 +1,6 @@
 # RWA SaaS｜Issuer V1 交付深度 Batch 03：Project、Offering 与发行规则/发布审核 v0.1
 
-> **Detailed Functional PRD / Draft — 本批所有页面/功能最小交付建议、测试案例及 SCOPE-168～175 均待产品负责人明确批准。** 不是 UI 设计、法域金融许可、程序实现或真实 Issuer V1 正式冻结。
+> **Batch 03 M05/M19 共 19 项的产品最低交付深度原则 SCOPE-168～175 已获 Approved；具体 UI/API/技术实现、法域执行和真实 V1 全局范围仍 Draft/TBD。** 产品负责人 2026-10-22 明确全部同意。见[正式决策](../../decisions/SCOPE-168-175-batch03-project-offering-rules-principles.md)。
 >
 > 更新：2026-10-22。依据：[已批准 Batch 02](../../decisions/SCOPE-160-167-batch02-asset-instrument-documents-review.md)、[187 功能范围](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)、[五类交付候选](RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md)、[第 04 份 Frozen 核心 WF-04/05、WF-08/09、09 节转换/Guard](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[样本 A 债权](RWA-SaaS-Reference-Instrument-A-Debt-Scenario-and-Product-Rules-Review-v0.1.md)、[样本 B SPV 权益](RWA-SaaS-Reference-Instrument-B-Equity-Rights-and-Lifecycle-Review-v0.1.md)。
 >
@@ -124,9 +124,9 @@
 | **B03-18** | Issuer 试图配置比平台制裁/发行限制更宽的规则 | 平台强制 Guard 必须阻断，P1 的高级 UI 可以延后但规则不可绕过 | M19-F006 | Not Executed |
 | **B03-19** | 高级可视化规则引擎尚未上线 | 受控有限规则版本/审批与发布 Guard 正常，P2 不作为 V1 已完成 | M19-F007 | Not Executed |
 
-## 八、提交产品负责人审核的下一批八项决策（SCOPE-168～175，**全部待批准**）
+## 八、本批已批准的八项产品原则（SCOPE-168～175，**Approved**）
 
-| 决策 | 推荐方案 |
+| 决策 | 已批准产品原则（不代表 UI、法律实施及研发测试完成） |
 |---|---|
 | **SCOPE-168** | 以 **M05 12 项 + M19 7 项 = 19 项**（P0 15 / P1 2 / P2 2）作为 Batch 03 逐功能交付深度审核范围；不新增正式功能 ID、不改原分级和 187 项全部范围。 |
 | **SCOPE-169** | Project 是业务工作与存续容器，**1:N Offering**；Offering、Subscription/Quote、Payment、Allocation、法定登记、Token 与 Lifecycle 独立状态。关闭 Project 必须受控核验各轮未结事项。 |
@@ -139,6 +139,6 @@
 
 ## 九、后续推进及治理边界
 
-本批经明确评审后才能把批准事项标记 Approved；**目前 SCOPE-168～175 仅是建议**。下一步再进入 Batch 04（M08～M12 投资者准入/认购/支付/配售登记）详细 PRD，待六批全部完成后统一审查全量 187 功能真实交付深度、角色/字段/异常/页面交互规格，然后再进入 UI。
+产品负责人已确认 [**SCOPE-168～175**](../../decisions/SCOPE-168-175-batch03-project-offering-rules-principles.md) 的产品最低交付深度原则。下一步建立 Batch 04（M08～M12 投资者准入/认购/实际付款/配售与法定登记）**详细 PRD Draft 并等待单独审批**。待六批全部完成后统一审查全量 187 功能真实交付深度、角色/字段/异常/页面交互规格，然后再进入 UI。
 
-**PR #6 保持 Draft/Open/Unmerged，冻结的第 02～04 份产品文档原文不变。**
+**当前状态：SCOPE-168～175 产品最低交付原则 Approved；B03-01～19 全部 Not Executed、A/B 187 功能 Not Tested；具体 UI/API、服务商/合法发行与 V1 全局实施深度仍 Draft。PR #6 Draft/Open/Unmerged，冻结第 02～04 份产品文档原文不变。**

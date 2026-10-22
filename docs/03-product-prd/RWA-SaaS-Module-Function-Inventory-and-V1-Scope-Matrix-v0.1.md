@@ -617,7 +617,17 @@
 - [A1 计息、到期偿付及异常专项 Draft](RWA-SaaS-Debt-A1-Coupon-Maturity-and-Exception-Validation-v0.1.md)已编制，提出 **SCOPE-126～133 待评审**，12 张 A-D 验证卡全部 **Not Executed**。既有 A/B 187 功能底表全部 **Not Tested**。
 - 本次仅批准 SCOPE-117～125 的产品规则与样本审核原则，**真实债务发行法域、适格权威/资金签名、法律效力、V1 功能范围/开发/交付、PR #6 合并均未批准**。
 
-## 二十一、统计与未决门
+## 二十一、已批准债权 A1 专项规则与权益 B 验证草案（SCOPE-126～133；2026-10-22）
+
+产品负责人明确 **SCOPE-126～SCOPE-133 全部同意**，见[债权 A1 正式决策](../../decisions/SCOPE-126-133-debt-A1-coupon-maturity-exception-principles.md)和[专项验证报告](RWA-SaaS-Debt-A1-Coupon-Maturity-and-Exception-Validation-v0.1.md)。
+
+- A1 同 Series 后续发行须先确认合法增发和权利同等条件；晚入场定价、clean/dirty、应计利息、票息记录日、到期日及实际支付额必须由**获批准的权利及价格策略版本**控制，示例现金流不是生产金融算法。
+- M13 票息/到期本金计算、受权外部实付、M12 法定债权登记减记、M07 Token 销毁/冻结**彼此独立**，付款/登记/链上 Unknown、迟到账、部分偿付、违约须受权恢复，不能重付或自动核销。
+- **M13-F004～F006 在 A 样本固定利息/到期还本的产品级闭环必须得到设计验证**，但原始 P1 等级和 187 项默认分类不变；其它条件性 P1 依真实工具、法域和法律义务独立触发。
+- A-D01～D12 为全部 **Not Executed** 的场景设计，原 [A/B 187 功能验证底表](RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md)仍全部 **Not Tested**。
+- 后续 [**样本 B：SPV 股份与实体权益型 Instrument 业务差异审核 Draft**](RWA-SaaS-Reference-Instrument-B-Equity-Rights-and-Lifecycle-Review-v0.1.md)已编制，**SCOPE-134～142 尚待批准**，B-T01～B-T16 全部 Not Executed，未决定真实 Issuer V1 开发范围。
+
+## 二十二、统计与未决门
 
 | 范围建议 | 项数 | 审批解释 |
 |---|---:|---|
@@ -632,7 +642,7 @@
 
 **职责校验**：M10 创建认购及预留请求；M12 对统一额度、配售和权威登记负责；M11 对收款事实、对账、退款负责；M07 对 RWA Token 及链上执行事实负责；M17 编排异常但不改写权威数据；M19 管理规则版本；M20 保障安全审计；M22 接外部服务商。项目关联多个 Offering；KYC 与 Offering 资格独立；链上到账不直接等于配售/登记/Token 完成。
 
-## 二十二、评审批次与维护方式
+## 二十三、评审批次与维护方式
 
 1. **第 1 批：M01～M03 已确认范围定位（SCOPE-009～SCOPE-014）**；后续编写详细 PRD 时再细化字段、状态和最终交付深度。
 2. **第 2 批：M04～M06 范围定位已批准（SCOPE-015～SCOPE-020）**，具体法律工具、文件字段及 Offering 页面仍应在详细 PRD 明确。

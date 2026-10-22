@@ -1,5 +1,8 @@
 # RWA SaaS｜Step 02：四端端到端业务流程及异常分支 v0.1
 
+
+> **Step03.5 历史文件提示（2026-10-23）：Historical / Superseded as CURRENT READING ENTRY；原文内容及其历史批准证据继续保留。** Step02 v0.3 已按 DEC-014 获准作为现行11步核心流程。旧 v0.1 仅供追溯早期五段时序及异常素材，不再作为当前业务阶段或待决状态。 当前请以[文档权威目录](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)和[对应现行材料](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)为准。**本提示仅更新导航生效关系，不撤销任何历史正式决策，不冻结详细PRD，也不改变原正文。**
+
 > **Draft / 待产品负责人审核（2026-10-23）**。GitHub Mermaid 可编辑业务流程；不是 Frozen 第 04 份状态机正文、技术时序/API、实际金融业务许可、UI/UX 设计或测试已执行。
 
 > 基线：[WF-01～WF-18 Frozen](RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)｜[六批 SCOPE Approved 状态索引](../Document-Status-Index.md)｜[Step 01 R-01～17 与 BR-01～18](../03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md)｜[原 187 项功能](../03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)。

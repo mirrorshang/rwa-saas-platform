@@ -1,6 +1,6 @@
 # RWA SaaS｜样本 A1 债权同一 Series：计息、偿付、赎回及异常状态专项验证 v0.1
 
-> **Product Rules Audit / Draft — 本文提出 SCOPE-126～133 八项新建议，尚未获得产品负责人批准。** SCOPE-117～125 的产品验证原则已批准；具体计价/计息、付款法律效力、Token 退场及生产实施均未冻结。2026-10-22。
+> **Product Rules Audit — SCOPE-126～133 八项产品验证原则已获批准，具体定价/计息算法、法律效力、Token 退场执行及生产方案仍 Draft/TBD。** 产品负责人 2026-10-22 明确全部同意。见[正式决策](../../decisions/SCOPE-126-133-debt-A1-coupon-maturity-exception-principles.md)。
 >
 > 来源：[已批准 SCOPE-117～125](../../decisions/SCOPE-117-125-debt-instrument-A-business-validation-principles.md)、[样本 A 参数与全流程草案](RWA-SaaS-Reference-Instrument-A-Debt-Scenario-and-Product-Rules-Review-v0.1.md)、[冻结的第 04 份流程](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[条件性 P1 规则 SCOPE-078～085](../../decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md)、[A/B 187 项功能验证底表](RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md)、ARCH-001。
 >
@@ -122,9 +122,9 @@
 
 **所有判断只限示例 A1 的产品必要性**；不宣称适用法域已确认、不把原 187 项分级篡改为新的 P0，也不自动批准详细研发。
 
-## 八、后续待审的 8 项产品决策建议（SCOPE-126～133，**尚未批准**）
+## 八、已批准的 8 项产品验证原则（SCOPE-126～133，**Approved**）
 
-| ID | 推荐内容 |
+| ID | 已批准原则（不冻结具体研发与实际金融操作） |
 |---|---|
 | **SCOPE-126** | A1 同 Series 的后续发行必须先核实合法增发/同权同序列的条件，并区分首次发行与后续增量发行；如不满足可同权条件，不得为了持续购买强行共用 Token 或 Series |
 | **SCOPE-127** | 计息与兑付严格按获批准版本和法定权利快照计算，支持起息/到期/record date/必要 ex-coupon、合法后入定价和精度；不得将票面利率误显示为持有期保底收益率 |
@@ -137,6 +137,6 @@
 
 ## 九、工作移交边界
 
-本轮下一步先请产品负责人审核 SCOPE-126～133；随后为 **B 权益型 SPV/股份** 建立同样的权益类别、分红/持有人权益快照、发行/登记与转让限制差异业务案例，最终将 A/B 条件性触发汇总为 Issuer V1 真实逐功能交付范围候选。此阶段不授权开发、真实资金操作或 PR #6 合并。
+产品负责人已确认 [SCOPE-126～133](../../decisions/SCOPE-126-133-debt-A1-coupon-maturity-exception-principles.md)；下一步为 **B 权益型 SPV/股份** 建立权益类别、分红/持有人权利快照、发行/法定登记与转让限制的差异业务案例。A/B 条件性触发完成后，才能形成 Issuer V1 真实逐功能交付范围候选。此阶段不授权开发、真实资金操作或 PR #6 合并。
 
-**文档状态：专项业务验证规则 Draft，SCOPE-126～133 待批准；A-D01～D12 Not Executed，A/B 187 项 Not Tested。**
+**文档状态：SCOPE-126～133 专项产品规则 Approved；具体合同/算法与实现仍 Draft；A-D01～D12 Not Executed，A/B 187 项 Not Tested。**

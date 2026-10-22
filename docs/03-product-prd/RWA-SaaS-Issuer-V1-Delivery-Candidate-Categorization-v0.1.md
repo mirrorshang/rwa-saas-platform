@@ -1,5 +1,8 @@
 # RWA SaaS｜Issuer SaaS V1 交付能力候选分组 v0.1
 
+
+> **Step03.5 历史文件提示（2026-10-23）：Historical / Superseded as CURRENT READING ENTRY；原文内容及其历史批准证据继续保留。** 此稿基于旧P0/P1/P2及非默认V1分类，DEC-012已改为V1.0/V2.0/V3.0唯一目标交付版号。旧分类仅供历史证据，不构成当前交付范围。 当前请以[文档权威目录](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)和[对应现行材料](../03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md)为准。**本提示仅更新导航生效关系，不撤销任何历史正式决策，不冻结详细PRD，也不改变原正文。**
+
 > **Draft — 以下五类为拟议实现与交付处理方式，尚未获得产品负责人逐项批准、未冻结 V1 交付范围。**
 >
 > 编制：2026-10-22。继承 [187 项范围定位矩阵](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) 与 [最小交付实现建议](RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md)；依据已批准的 [SCOPE-059～062](../../decisions/SCOPE-059-062-issuer-v1-delivery-and-validation-decisions.md)、[ARCH-001](../../decisions/ARCH-001-api-first-unified-business-core.md)、[DEC-011](../../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md)。

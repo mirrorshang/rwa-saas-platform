@@ -32,6 +32,7 @@
 | 已批准11步核心主流程 | [Step02 v0.3](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md) + [DEC-014](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md) | **11/11核心业务Approved**；v0.3技术异常/字段仍Draft |
 | 187历史ID源账 | [187原始功能清单](../03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) | **功能编号保持**；P0/P1/P2仅历史，原文审批记录不重写 |
 | 对应新流程的逐ID核验 | [Step03 187交叉审核矩阵](../03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md) | 纸面核验完成、处理原则Approved；非软件测试Pass |
+| PROP-01～11 是否原ID扩深/拟新增独立功能 | [Step03 PROP五项扩深与六项新增候选审核稿](../03-product-prd/RWA-SaaS-Step-03-PROP-01-11-Disposition-and-Six-New-Functions-Review-Draft-v0.1.md) | **Draft / 等待具体分类审批**：5组扩深、6组建议独立；ADD-01～06为临时号，187正式ID不变，未来若批准均新增则可候选变为193、拟V1为146，不是当前实际版号承诺 |
 | 缺口、职责和待拆功能 | [Step03 12缺口/8重叠/11 PROP](../03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md) + [DEC-015](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md) | XCHK十项原则Approved；PROP拆分与编号仍Draft |
 | 逐项建议交付版号 | [187逐项迁移表](../03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md) | **Draft / 唯一当前版本映射建议表**，不是已冻结开发表 |
 | 面向产品负责人的可读版号规划 | [V1.0/2.0/3.0七段业务规划](../03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md) | **Draft / 供批量评审**，须引用逐项表而不能自己创造第二套功能版本归属 |
@@ -95,4 +96,4 @@
 5. 保留PR #6 Draft/Open/Unmerged，不修改其 base/合并状态；所有变动只在 `docs/regulated-activity-boundaries-v01` 工作分支。
 6. 本索引不是范围冻结决定；日后做真实法域、对外API、钱包/分红/现金流/合约等详细方案，需要权限责任或实证，不得以产品文档名称推断已经通过。
 
-**当前：Step03.5 第二轮非破坏性整理与12领域决策层交叉核查已完成。** [第二轮整理与验收记录](RWA-SaaS-Step-03.5-Non-Destructive-Cleanup-Verification-v0.1.md)已归档：4份Frozen原样、11份历史文件加提示、README/状态索引精简、187编号和版本提议未改。**V1.0正式功能清单/PROP新ID/字段级PRD、外部资金法域许可仍未冻结。**
+**当前：Step03.5 第二轮非破坏性整理与12领域决策层交叉核查已完成；已回到Step03 PROP-01～11具体增补/扩深分类审核（Draft）。** [第二轮整理与验收记录](RWA-SaaS-Step-03.5-Non-Destructive-Cleanup-Verification-v0.1.md)已归档：4份Frozen原样、11份历史文件加提示、README/状态索引精简、187编号和版本提议未改。**V1.0正式功能清单/PROP新ID/字段级PRD、外部资金法域许可仍未冻结。**

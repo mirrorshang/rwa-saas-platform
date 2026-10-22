@@ -4,6 +4,14 @@
 >
 > 本索引描述本工作分支的现有产品资料与已批准边界；如与冻结正文或正式决策文件有差异，以对应的已批准 DEC 及冻结文档为准。索引更新不改变其审批状态。
 
+## 版本治理更新与待评审材料（2026-10-23）
+
+- [**DEC-012｜V1.0/V2.0/V3.0 版本规划方法**](../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)：**Approved（仅版本治理原则）**。V1.0 代表第一版真正承诺交付的完整功能集合，不再用 P0/P1/P2 作为当前交付范围的可选/必需判断。原187功能分级保留历史记录，不修改冻结正文。
+- [**187项目标版本候选迁移表**](03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)：**Draft / 187项具体版本未批准**。初步建议 V1.0 **140**、V2.0 **22**、V3.0 **25**；另外8个 CAND 仍是差距候选，没有增加原187数量；后续需审图+逐项版本审批。
+- [**CR-01～10 V1.0完整产品闭环决策提案**](03-product-prd/RWA-SaaS-V1.0-Complete-Loop-CR-01-10-Decision-Proposals-v0.1.md)：**Draft / A/B未获审批**。审批后修订 Step 02 v0.3 并实施原187功能与新增缺口审查。
+- 既有 DEC-011 受控二级转让为后续版本的已批原则保留，暂拟 V2.0，不用新治理方法自动将其移至 V3.0；White-label与商业 Open API 的完整产品交付版本仍待实际范围决策。
+- 现有 [Batch 01～06](03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)最低深度原则继续 Approved，功能最终版本/字段级 PRD/UI/工程仍分别待审；PR #6保持 Draft/Open/Unmerged。
+
 ## 当前基线与工作边界
 
 - 项目：从零规划、面向全球市场的多资产 RWA Tokenization ToB SaaS；独立于 WDEX，不预设代码或业务系统复用。

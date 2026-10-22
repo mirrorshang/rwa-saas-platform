@@ -1,6 +1,6 @@
 # RWA SaaS｜Issuer V1 交付深度 Batch 02：Asset、Instrument、文件与专业审核 v0.1
 
-> **Detailed Functional Scope / Draft — 恢复产品设计后形成的第一份新草案。M04/M06 共 17 个既有功能 ID 的详细交付建议及 SCOPE-160～167 均未获得产品负责人批准。**
+> **Detailed Functional Scope — M04/M06 共 17 项的产品最低交付深度原则 SCOPE-160～167 已获 Approved；具体 UI/接口/法域/实现与全局 V1 范围仍 Draft/TBD。** 产品负责人 2026-10-22 明确全部同意，见[正式决策](../../decisions/SCOPE-160-167-batch02-asset-instrument-documents-review.md)。
 >
 > 更新：2026-10-22。源文档：[六批交付深度路线](RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)、[187 项功能与范围](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)、[交付类型分类](RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md)、[Frozen 跨模块 WF-03](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[A 债权样本](RWA-SaaS-Reference-Instrument-A-Debt-Scenario-and-Product-Rules-Review-v0.1.md)、[B SPV 权益样本](RWA-SaaS-Reference-Instrument-B-Equity-Rights-and-Lifecycle-Review-v0.1.md)、[Batch 01 已批准产品原则](../../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)。
 >
@@ -111,9 +111,9 @@
 | **B02-16** | 不做完整外部服务任务系统 | 仍能受控记录专业意见/负责人/补件，不能冒称 M06-F007 全量已上线 | M06-F007 | Not Executed |
 | **B02-17** | 专业服务 Marketplace 未上线 | 基本法律审核/文件引用可继续，不要求招投标平台作为发行必需 | M06-F008 | Not Executed |
 
-## 八、本批待用户批准的八项产品建议（SCOPE-160～167，全为 Draft）
+## 八、本批已获批准的八项产品原则（SCOPE-160～167 Approved）
 
-| 决策 | 推荐方案 |
+| 决策 | 已批准的产品原则（具体技术及法域实现仍 Draft） |
 |---|---|
 | **SCOPE-160** | Batch 02 只覆盖 **M04 资产与金融权利、M06 文件与专业审核共 17 项**，按已有 13 P0、2 P1、2 P2 等级及原交付分类开展最低深度设计，不增功能或改变冻结基线。 |
 | **SCOPE-161** | Asset、Instrument、Offering、Token 保持独立业务对象；M04 允许有审核证据的底层 Asset 与具体 A/B 法定权利版本，C/D/E 专有生产引擎不默认纳入首期。 |
@@ -126,6 +126,6 @@
 
 ## 九、后续工作与暂停门
 
-本批如获确认，可继续 Batch 03（M05 Project/Offering + M19 规则/发行前置）的详细 PRD，再按六批路线完成整套 V1 PRD，最后统一冻结页面所依赖的业务规格并进入 UI。**此阶段不提前设计 UI，也不启动开发，不合并 GitHub PR #6。**
+本批已由产品负责人明确确认 [SCOPE-160～167](../../decisions/SCOPE-160-167-batch02-asset-instrument-documents-review.md)；下一批应起草 Batch 03（M05 Project/Offering + M19 规则/发行前置）的详细 PRD，并保持 Draft 等待确认。之后按六批路线完成整套 V1 PRD，再统一冻结页面所依赖的业务规格并进入 UI。**此阶段不提前设计 UI，也不启动开发，不合并 GitHub PR #6。**
 
-**当前状态：Batch 02 Detailed PRD Draft / SCOPE-160～167 待批准；17 条 B02 场景 Not Executed，187 项 A/B 原验证全部 Not Tested；PR #6 Draft/Open/Unmerged。**
+**当前状态：Batch 02 产品最低交付原则 SCOPE-160～167 Approved；具体 UI/技术实现及整个 V1 功能范围仍 Draft/TBD；17 条 B02 场景 Not Executed，187 项 A/B 原验证全部 Not Tested；PR #6 Draft/Open/Unmerged。**

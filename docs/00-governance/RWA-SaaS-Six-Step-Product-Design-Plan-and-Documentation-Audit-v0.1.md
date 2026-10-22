@@ -4,7 +4,7 @@
 >
 > **定位**：给产品负责人、技术、运营、法务/外部受权责任方统一一条简单、可审核、可追踪的产品设计路径。不能将产品原则审批解释为 UI、工程、真实资金/Token 执行或法域法律资格已经完成。最终真实 Issuer V1 产品范围和工程排期仍待单独批准。
 >
-> **权威输入**：[仓库总览 README](../../README.md)、[总体 PRD Frozen](../03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)、[22 模块责任矩阵 Frozen](../03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)、[187 项原功能/分级基线](../03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)、[WF-01～18 核心业务规则 Frozen](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[Batch 04 现有 Draft](../03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md)。
+> **权威输入**：[仓库总览 README](../../README.md)、[总体 PRD Frozen](../03-product-prd/RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)、[22 模块责任矩阵 Frozen](../03-product-prd/RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)、[187 项原功能/分级基线](../03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)、[WF-01～18 核心业务规则 Frozen](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[Batch 04 需求 Approved](../03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-04-Investor-Eligibility-Subscription-Payment-Registration-v0.1.md)。
 >
 > **需求审核方式**：从本轮起优先展示**可编辑详细跨端流程图、结构化功能清单及功能规格表**，SCOPE/DEC 作为最终批准证据而非要求产品负责人阅读的主文档。任何新决策都不能默默改写已冻结原文。
 
@@ -12,7 +12,7 @@
 
 | 步骤 | 核心任务 | 面向产品负责人的主要审核材料 | 通过条件（Gate） |
 |---|---|---|---|
-| **01 先完成 Batch 04～06 原方式业务原则审核** | 按用户最终确认：**仍采用 Batch 01～03 的逐功能长篇文字需求与 SCOPE 集中批准方式**，审核投资者、资金/配售、Token/外部与存续/异常。Batch 01～03 Approved，Batch 04 已 Approved，Batch 05 Draft，Batch 06 待编制 | [已有跨端收口素材](../03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md)与 Batch 04/05 原批次文档；本步骤以各批 SCOPE 正式决策为审核依据 | Batch 01～06 产品最低深度原则全部经产品负责人明确批准；**不要求先完整字段级 PRD，也不凭 BRD-A～F 六条建议直接跳到 Step 02** |
+| **01 先完成 Batch 04～06 原方式业务原则审核** | 按用户最终确认：**仍采用 Batch 01～03 的逐功能长篇文字需求与 SCOPE 集中批准方式**，审核投资者、资金/配售、Token/外部与存续/异常。Batch 01～06 均已 Approved 最低产品深度原则（2026-10-23） | [已有跨端收口素材](../03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md)与 Batch 04/05 原批次文档；本步骤以各批 SCOPE 正式决策为审核依据 | Batch 01～06 产品最低深度原则全部经产品负责人明确批准；**不要求先完整字段级 PRD，也不凭 BRD-A～F 六条建议直接跳到 Step 02** |
 | **02 可视化跨端流程图** | 先整体再细节：**平台运营后台、企业 SaaS 租户端、机构投资者端、外部受权服务** 4 泳道，覆盖客户签约入驻至发行、付款/配售/法定登记、Token、收益/还本、暂停退出 | **L0 总图 + L1 分阶段详细泳道图 + 异常/恢复分支图**；优先使用 GitHub 可预览、可编辑的 Mermaid 源图，复杂图可另提供 SVG/网页可视化（后续制作） | 每个节点有角色、执行端、功能 ID、前置条件、动作、判断、成功/失败状态；不是仅把主成功路径画出来 |
 | **03 187 项全量交叉核验** | 逐节点映射原 Mxx-Fxxx，找**缺失、重复、多端表现、错误职责、无页面但必须存在的运营/权限/审计/报表能力**；补齐 V2/商业版本的归属检查 | “流程节点 ↔ 原功能 ID ↔ 操作角色 ↔ 主责模块 ↔ 版本 ↔ 验收/待决”双向追踪表、差异清单 | **187/187 均有明确去向**；需要新增/删改时单独提交变更提案，不能擅自修改原编号/分级 |
 | **04 分端完整功能清单** | **端 → 一级模块 → 二级模块 → 功能点 → 通俗详细说明 → 入口/执行角色 → 流程节点 → 原 ID → V1/V2/商业批次**；各端的同一底层功能可分不同视图，但只保留一套领域权威 | 平台后台、Issuer 企业端、机构投资者端、外部执行责任/系统接口 4 套结构化功能视图 + 全量映射总表 | 产品负责人能通过表格逐条判断“有哪些功能、哪个端做、有什么结果、是否遗漏” |
@@ -23,7 +23,7 @@
 
 1. **原则 Approved**（已有）：战略、核心流程与 Batch 01～03 的最低交付原则已经确认。
 2. **方法 Approved**（本次）：执行上述六步，不再把“逐批最小深度文字评审”等同于“字段级详细 PRD”。
-3. **成果待审/未执行**：Step 01 尚需完成 Batch 05/06 的正式文字需求与 SCOPE 审核；Batch 04 的 [SCOPE-176～185](../../decisions/SCOPE-176-185-batch04-investor-payments-registration-principles.md) 已 Approved；[Batch 05 草案 SCOPE-186～193](../03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md) 待批准，Batch 06 待起草。详细四泳道图和字段级 PRD 未开始。
+3. **成果待审/未执行**：Step 01 已完成 Batch 01～06 的正式文字需求与 SCOPE 原则审核；Batch 04 的 [SCOPE-176～185](../../decisions/SCOPE-176-185-batch04-investor-payments-registration-principles.md) 已 Approved；[Batch 05 Approved SCOPE-186～193](../../decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md) 及 [Batch 06 Approved SCOPE-194～205](../../decisions/SCOPE-194-205-batch06-lifecycle-exceptions-notifications-audit-reports-principles.md) 已归档。[四端泳道图 Draft](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-End-to-End-Workflow-Draft-v0.1.md) 已建，字段级 PRD 尚未开始。
 4. **最终上线待决**：真实法域/Instrument、发行人及公司权威、收款/退款/收益出款方、股东/债权登记方、链上签名和法律资格与验收独立处理。
 
 ## 二、范围完整性：六批 Issuer 主线只覆盖 164/187
@@ -36,8 +36,8 @@
 | Batch 02 | M04/M06 | 17 | 最小产品深度原则 Approved |
 | Batch 03 | M05/M19 | 19 | 最小产品深度原则 Approved |
 | Batch 04 | M08/M09/M10/M11/M12 | 50 | 最低深度原则 **SCOPE-176～185 Approved**；B04 验收卡 Not Executed |
-| Batch 05 | M07/M22 | 19 | 原方式长篇逐功能 Draft 已建立；**SCOPE-186～193 待批准** |
-| Batch 06 | M13/M17/M18/M20/M21 | 37 | 第一轮跨端业务规则待梳理 |
+| Batch 05 | M07/M22 | 19 | 长篇需求原则 **SCOPE-186～193 Approved**；B05 Not Executed |
+| Batch 06 | M13/M17/M18/M20/M21 | 37 | 长篇需求原则 **SCOPE-194～205 Approved**；B06 Not Executed |
 | **Issuer 六批小计** | 19 个模块 | **164** | 不是 187 项完整覆盖 |
 | M14 | 受控转让 | 7 | V2 6 项、P2 1 项；**不默认为 Issuer V1 二级交易** |
 | M15 | White-label | 8 | 商业批次待定 7 项、P2 1 项；独立商业交付 |
@@ -76,10 +76,10 @@
 |---|---|---|---|
 | **产品定位/目标用户/商业价值/范围** | 第 02 份战略基线、总体 PRD | **已有原则基线**；真实客户/市场及计费验证未完 | 持续引用；具体商业上市由独立决策门 |
 | **商业服务蓝图与真实运营职责** | SaaS 订购、组织与退出的 Batch 01 原则；WF-01/15 | **部分**：还需前/后台/外部协作、运营任务、人工兜底与交接 | Step 01～02，Step 05 补操作细节 |
-| **产品整体流程 / 详细泳道图** | WF-01～18 状态机文档 Frozen，但以文字/业务对象为主 | **明显缺口**：缺可直观审核的 4 端详细流程图、异常分支/节点关联 | **Step 02** |
+| **产品整体流程 / 详细泳道图** | WF-01～18 状态机文档 Frozen，但以文字/业务对象为主 | **Draft 待评审**：已建立 4 端 L0/L1 Mermaid 业务图及异常分支，尚待逐节点审查与冻结 | **Step 02** |
 | **全端角色/RACI/操作权限矩阵** | 总体角色、M02、WF-09.5 操作/审批职责 | **部分**：尚未落实每个端/功能点 CRUD/审批/敏感数据及外部权威 | Step 01/03/05 |
 | **按端/模块/子模块/功能点的完整功能列表** | 22 模块 187 项清单按领域模块组织 | **明显缺口**：不是端侧完整说明，缺页面/流程节点双向映射 | **Step 03～04** |
-| **真正字段级功能 PRD** | Batch 01～04 仅最低交付原则 Approved；Batch 05 Draft，零散字段示例 | **重大缺口**：缺系统字段字典、类型/枚举/精度/校验、操作与异常逐功能定稿 | **Step 05** |
+| **真正字段级功能 PRD** | Batch 01～06 最低交付原则 Approved，但仅有零散业务字段示例 | **重大缺口**：缺系统字段字典、类型/枚举/精度/校验、操作与异常逐功能定稿 | **Step 05** |
 | **数据对象关系/ERD（产品逻辑层）** | Asset/Instrument/Offering/Token 分层与权威主体已确认 | **部分**：缺 ID/关联基数、法定持有人 vs 钱包、跨 Tenant 关联/不可变版本的结构化逻辑模型 | Step 03/05；物理 ERD 留技术阶段 |
 | **状态字典/转换/页面表现** | WF-01～18 和 09 节 Frozen 原则 | **已有规则基线，未转成可操作逐功能规格** | Step 01/02/05；保持原 Frozen 不覆写 |
 | **业务规则/金融权利参数与计算口径** | A 债权 A1、B SPV 权益原则及 M04/M13 候选 | **部分**：实际首发 Instrument、价格/应计/分红/精度与记录日的真实合法算法 TBD | Step 01/05 + G-01/G-03 条件门 |
@@ -90,7 +90,7 @@
 | **事件/运营报表/指标字典** | M21 报表、战略成功指标、订单/资金/配售对象 | **部分**：缺具体 KPI 口径、事件名、时间单位、权威数据源、角色可见性 | Step 04～05 |
 | **任务/通知/客服/人工补救操作** | M17/M18/WF-18 异常原则 | **部分**：缺异常分类 → 责任人 → 时间/权限 → 处理/撤销/升级 → 投资者展示 | Step 01～02 + Step 05 |
 | **需求追踪/变更与决策门** | 187 原 ID + 批次 SCOPE + README 索引 | **有编号，缺统一双向需求—流程—功能—验收矩阵** | Step 03 建立，Step 06 冻结 |
-| **UAT/验收计划与边界场景** | WF 22 E2E 和 B01～B04 Not Executed 案例设计 | **有素材、未执行且未成完整 UAT 集**：缺多端连续场景、验收责任/实际证据 | Step 02/05/06 定义；执行在研发后 |
+| **UAT/验收计划与边界场景** | WF 22 E2E 和 B01～B06 共164项 Not Executed 案例设计 | **有素材、未执行且未成完整 UAT 集**：缺多端连续场景、验收责任/实际证据 | Step 02/05/06 定义；执行在研发后 |
 | **版本切分/发行切换/客户迁移与运营准备** | V1/V2/White-label/API 原则，WF-15 退出 | **部分**：缺真实时间/功能冻结、移交 SLA、回滚/事故升级、客服培训/试点名单 | Step 06 决策范围；上线/运营手册留后续 |
 | **信息架构、导航、页面清单、交互规范/设计系统** | 目前只有逻辑页面组的草案 | **未正式设计**，但符合“完整 PRD 后统一 UI”决策 | Step 04 只确定**端与页面责任/入口的功能需求**，正式 IA、线框和视觉在 Step 06 后 UI 阶段 |
 | **架构设计、具体 OpenAPI、数据库/合约/环境部署与测试报告** | ARCH-001 是设计原则，不是具体工程规格 | **未完成，且当前不需要误做成产品已开发** | 详细 PRD 冻结后另立技术设计/开发/执行验收工作流 |
@@ -127,8 +127,8 @@
 
 ## 六、下一项实际工作
 
-1. 继续维护[第一步 Batch 04～06 业务规则收口底稿](../03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md)：先明确投资者/真实资金/配售、Token/外部服务、发行后权益/收益、错误/退租的四端责任与跨模块交接。
-2. **继续原方式审批 Batch 05 的 SCOPE-186～193 和后续 Batch 06**，在两批均获批准后才对照跨端素材补漏并进入 Step 02 完整流程图；Batch 04 SCOPE-176～185 已获批准，BRD-A～F 仍为辅助待审建议而非独立替代 SCOPE。
-3. 进入 Step 02 时绘制总体与细节图，提供可视化审核入口；Step 03 用 187 项全覆盖差异表识别缺失后再正式改变功能范围。
+1. [第一步 Batch 04～06 业务规则收口底稿](../03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md)已完成六批正式 SCOPE 原则审核的支撑；其中 BRD-A～F 仍为待审辅助意见，并非新的 Frozen 规则。
+2. Batch 05 SCOPE-186～193、Batch 06 SCOPE-194～205 均已 Approved；现进入 [Step 02 四端可编辑 L0/L1 业务泳道 Draft](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-End-to-End-Workflow-Draft-v0.1.md) 审核，BRD-A～F 继续作为待审辅助意见。
+3. Step 02 首版总体和细节图已建立（Draft）；Step 03 用 187 项全覆盖差异表识别缺失后再正式改变功能范围。
 
-**当前：六步方法 Approved（Step 01 采用原六批逐批长篇 SCOPE 审核）；文档审计初版 Draft；Batch 01～04 最低深度原则 Approved、Batch 05 Draft/SCOPE-186～193 待审、Batch 06 待起草；流程图/字段级 PRD/UI/研发尚未开始。**
+**当前：六步方法 Approved（Step 01 采用原六批逐批长篇 SCOPE 审核）；文档审计初版 Draft；Batch 01～06 最低深度原则均 Approved；Step 02 L0/L1 流程图 Draft 待审；字段级 PRD/UI/研发尚未开始。**

@@ -1,5 +1,8 @@
 # RWA SaaS｜Issuer V1 逐功能交付深度分批评审路线 v0.1
 
+
+> **Step03.5 历史文件提示（2026-10-23）：Historical / Superseded as CURRENT READING ENTRY；原文内容及其历史批准证据继续保留。** 原本的六批审核执行路线已经完成；每批已获批的产品原则仍以对应SCOPE和Batch正文为准。此稿不再作为项目当前阶段计划。 当前请以[文档权威目录](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)和[对应现行材料](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)为准。**本提示仅更新导航生效关系，不撤销任何历史正式决策，不冻结详细PRD，也不改变原正文。**
+
 > **Product Scope Execution Plan / Draft — 工作分批方式与交付深度候选，非真实 V1 功能范围冻结。** 2026-10-22。
 >
 > 已批准依据：[SCOPE-143～151 审核原则](../../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)、[原 187 项范围基线](RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)、[A/B 187 项必要性对照](RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)、[ARCH-001 API-First](../../decisions/ARCH-001-api-first-unified-business-core.md)及已批准的 SCOPE-001～142 原历史决策。

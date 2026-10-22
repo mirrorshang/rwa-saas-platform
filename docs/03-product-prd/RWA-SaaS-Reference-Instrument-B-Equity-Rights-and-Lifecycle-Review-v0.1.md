@@ -1,6 +1,6 @@
 # RWA SaaS｜样本 B：SPV 股份与实体权益型 Instrument 产品规则、登记及存续验证 v0.1
 
-> **Product Scenario / Draft — 已选 B 权益型样本，B-T01～B-T16 均为 Not Executed，SCOPE-134～SCOPE-142 均为新推荐、尚未批准。** 本稿不构成 SPV 合法设立、法定股东资格确认、实际 Token 化股权生产就绪、法律意见、真实资金/Token 测试或 Issuer V1 逐项交付冻结。2026-10-22。
+> **Product Scenario — SCOPE-134～SCOPE-142 的样本 B 产品验证原则已获 Approved；具体法律效力、功能实现及测试仍 Draft/TBD。** 产品负责人 2026-10-22 明确全部同意，参见[正式决策](../../decisions/SCOPE-134-142-equity-B-SPV-rights-and-lifecycle-principles.md)。B-T01～T16 均为 Not Executed，不能代表 SPV 合法设立、法定股东资格、实际 Token 化股权生产就绪、真实资金/Token 测试或 Issuer V1 交付冻结。
 >
 > 依据：[SCOPE-096～100 参考 Instrument 已选样](../../decisions/SCOPE-096-100-reference-instrument-validation-selection.md)、[SCOPE-101～108 A～E 权利家族](../../decisions/SCOPE-101-108-instrument-families-and-extensibility.md)、[已批准 A 债权完整业务规则](../../decisions/SCOPE-117-125-debt-instrument-A-business-validation-principles.md)、[SCOPE-126～133 A1 专项规则](../../decisions/SCOPE-126-133-debt-A1-coupon-maturity-exception-principles.md)、[187 项 A/B 功能验证底表](RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md)、[SCOPE-078～085 条件性 P1](../../decisions/SCOPE-078-085-conditional-p1-v1-baseline-principles.md)、[冻结第 04 份流程](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)、[ARCH-001](../../decisions/ARCH-001-api-first-unified-business-core.md)。
 
@@ -132,9 +132,9 @@ A1 债务 Series 可验证同一债权增量发行，但 **B 的“持续认购�
 | 异常/报告 | M17～M22 任务、版本化 Guard、必要通知/数据/外部回执 | 公司法定名册/成员权益、可分配现金、法定通知的权威主体与法律文件 |
 | 独立商业线 | M15 White-label、M16 公共 Open API 保留发行后扩展契约 | B 模型存在不等于商用白标多发行机构平台或开放 API 已交付 |
 
-## 十、建议交由产品负责人确认的决策（**SCOPE-134～142 全部待批准**）
+## 十、已确认的 B 权益样本验证原则（**SCOPE-134～142 Approved**）
 
-| 编号 | 本轮推荐原则 |
+| 编号 | 已批准原则（具体实现/法域/软件测试仍未批准） |
 |---|---|
 | **SCOPE-134** | 样本 B 以 **依法成立的 SPV 股份/类似实体权益 Instrument** 为基础，底层房地产/项目资产与投资者法律实体权益严格分离；不假设持 Token 就具有股东身份或底层资产所有权 |
 | **SCOPE-135** | Instrument 应描述**发行实体、股份/成员权益类别、合法份额单位、权利/分配/投票（适用时）、优先级、转让限制、法定名册、授权主体及版本**，并区分实际法律形式 |
@@ -148,9 +148,9 @@ A1 债务 Series 可验证同一债权增量发行，但 **B 的“持续认购�
 
 ## 十一、专项差异验证完成后还有哪些决策门
 
-- 在 B 权利/Offering 条款审核后，建立**A/B 对照实际必需性矩阵**：按两样本分别判断共同 Guard、B 专有权利与合规门、16 项条件性 P1 是否触发及哪些功能实际可简化/外部执行；不得直接改变 187 个原功能 ID/分级。
+- 已批准 [SCOPE-134～142](../../decisions/SCOPE-134-142-equity-B-SPV-rights-and-lifecycle-principles.md) 的 B 权利/Offering 设计原则。下一步建立**A/B 对照实际必需性矩阵 Draft**：按两样本分别判断共同 Guard、B 特有权利与法域门、16 项条件性 P1 的触发条件、简化实现和外部执行边界；不得直接改变 187 个原功能 ID/分级。
 - 样本 A 已完成**规则草案及原则审批**，但 A-T16、A-D12 场景和 A/B 187 功能仍 **Not Executed / Not Tested**，不能伪称完成法律或 E2E 验收；B 同样没有实际测试。
 - 需要针对真实发行业务独立评审首发工具及法域、SPV 真实法律形式和权利、适格发行/公司机关/登记、收款/退款及分红资金控制方、Token 链/合约与签名权限、客户数据/退出义务。
 - 已批准的 ARCH-001、DEC-011、White-label/Open API 独立交付边界继续有效；**本次只是产品案例验证 Draft，不冻结 Issuer SaaS V1 逐项交付，不启动生产开发或合并 PR #6**。
 
-**状态：样本 B 产品业务/权益验证 Draft，SCOPE-134～142 待审，B-T01～T16 Not Executed。**
+**状态：SCOPE-134～142 样本 B 产品规则 Approved；详细条款、法律效力和实现仍 Draft，B-T01～T16 Not Executed，A/B 187 功能 Not Tested。**

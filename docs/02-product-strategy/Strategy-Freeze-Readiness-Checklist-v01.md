@@ -1,5 +1,8 @@
 # 第 02 份《产品战略与商业模式》冻结前检查清单
 
+
+> **Step03.5 历史文件提示（2026-10-23）：Historical / Superseded as CURRENT READING ENTRY；原文内容、已批准的相关SCOPE原则和当时审核记录全部保留。** 战略原则基线已于2026-10-19有条件Frozen，此文件为当时的冻结就绪检查记录，不是当前待冻结战略草案。 当前请以[现行权威目录](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)及[对应现行材料](../02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md)为准。**这不是撤销或重写历史批准，也不意味着该文原有研究数据无价值。**
+
 - 文档编号：02-CHK-01
 - 版本：Draft v0.1
 - 日期：2026-10-19

@@ -457,7 +457,7 @@ B-T01～T16 和 A-T/A-D 案例全为未执行的产品验证设计；既有 A/B 
 
 产品负责人已明确批准 [SCOPE-143～151](../../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)：[A/B 187 项逐功能必要性对照](RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)成为**产品审核工作底表**，共用 API-First 业务核心、A/B 条件性权利差异、16 条 P1 最低安全义务、外部受权执行与真实 V1 六个冻结门已确认原则，但**实施深度尚待批次审核，不是 V1 正式冻结**。
 
-据此编制[六批交付深度路线 Draft](RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)，目前已开始[Batch 01 客户购买 SaaS/Tenant/成员权限与 SaaS 运营](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)的 22 个原功能详细审核（P0 17、P1 2、P2 3），其 **SCOPE-152～159 仍待批准**，22 个 B01 验收卡 Not Executed。
+据此编制[六批交付深度路线 Draft](RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)，目前已开始[Batch 01 客户购买 SaaS/Tenant/成员权限与 SaaS 运营](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)的 22 个原功能详细审核（P0 17、P1 2、P2 3），其 **SCOPE-152～159 产品交付原则已批准**，22 个 B01 验收卡仍 Not Executed。
 
 商业合同授权与 SaaS Tenant Active 不等于金融发行许可；在线自动订阅 M01-F008、企业 SSO M02-F008、M03 CRM/BI 等继续非默认 V1。A/B 原始 187 项实际测试仍 Not Tested，P0 级别不等于全量高级 UI。
 
@@ -465,7 +465,7 @@ B-T01～T16 和 A-T/A-D 案例全为未执行的产品验证设计；既有 A/B 
 
 产品负责人已批准 [SCOPE-152～159](../../decisions/SCOPE-152-159-batch01-commercial-tenant-access-depth.md)，首批 M01～M03 的 22 个原功能 ID（P0 17/P1 2/P2 3）已形成[产品交付深度审核原则](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)：从客户 SaaS 购买/合同授权到 Tenant 及成员/权限、平台运营审核、暂停/退租和风险移交。在线自动订阅 M01-F008、企业 SSO M02-F008 与 CRM/高级工单仍按原级别非默认首期处理。
 
-**用户已明确暂停进入后续批次**：Batch 02～06 和 UI 正式设计尚未启动或获授权。当前优先清点 UI 启动前须确认的产品 IA、角色旅程、跨功能状态与交互边界；本文件不作为自动研发任务。B01-01～22 均 Not Executed，A/B 187 项 Not Tested；真正 V1 逐项交付冻结与法域、外部主体仍在 G-01～G-06 待决门。
+**用户已明确恢复 Batch 02 的产品需求工作**，但仍坚持“完整 PRD 后统一 UI”。[Batch 02 M04/M06 17 项详细规格 Draft](RWA-SaaS-V1-Delivery-Depth-Batch-02-Asset-Instrument-Documents-Review-v0.1.md)已建立，**SCOPE-160～167 待批准**；Batch 03～06 未开始，正式 UI 与工程未授权。B01-01～22 均 Not Executed，A/B 187 项 Not Tested；真正 V1 逐项交付冻结与法域、外部主体仍在 G-01～G-06 待决门。
 
 ## 二十、下一次评审的工作方法
 

@@ -453,7 +453,15 @@ C 的 NAV/开放式申赎、D 的外部经营收入核验/收益结算、E 的�
 
 B-T01～T16 和 A-T/A-D 案例全为未执行的产品验证设计；既有 A/B 187 项源底表仍全部 **Not Tested**，不可当作真实金融、软件或链上 E2E PASS。
 
-## 十八、下一次评审的工作方法
+## 十八、已批准 A/B 范围审核原则与逐功能交付深度分批计划（SCOPE-143～151）
+
+产品负责人已明确批准 [SCOPE-143～151](../../decisions/SCOPE-143-151-AB-scope-comparison-and-v1-freeze-gates.md)：[A/B 187 项逐功能必要性对照](RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)成为**产品审核工作底表**，共用 API-First 业务核心、A/B 条件性权利差异、16 条 P1 最低安全义务、外部受权执行与真实 V1 六个冻结门已确认原则，但**实施深度尚待批次审核，不是 V1 正式冻结**。
+
+据此编制[六批交付深度路线 Draft](RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)，目前已开始[Batch 01 客户购买 SaaS/Tenant/成员权限与 SaaS 运营](RWA-SaaS-V1-Delivery-Depth-Batch-01-Commercial-Tenant-Access-v0.1.md)的 22 个原功能详细审核（P0 17、P1 2、P2 3），其 **SCOPE-152～159 仍待批准**，22 个 B01 验收卡 Not Executed。
+
+商业合同授权与 SaaS Tenant Active 不等于金融发行许可；在线自动订阅 M01-F008、企业 SSO M02-F008、M03 CRM/BI 等继续非默认 V1。A/B 原始 187 项实际测试仍 Not Tested，P0 级别不等于全量高级 UI。
+
+## 十九、下一次评审的工作方法
 
 1. 对每个 P0 核心候选核查最小业务能力、页面是否可合并、审计/风险 Guard 是否保留。
 2. 对全部 P1 单独核查首发 Instrument/法域依赖，允许按具体工具上调为 V1 必需；未经批准不能改写原范围分级。

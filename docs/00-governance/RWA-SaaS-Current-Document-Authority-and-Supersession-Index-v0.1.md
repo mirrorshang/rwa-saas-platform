@@ -28,7 +28,7 @@
 | 主题 | 当前默认入口 | 审核状态/用途 |
 |---|---|---|
 | 核心业务与产品背景 | 四份 Frozen + [README](../../README.md) | 原则 Frozen；README只作导览 |
-| 六批详细业务原则 | [Batch01～06路线记录](../03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md) 与六份 Batch 正文、相应 SCOPE | 六批 **原则Approved**；这里的“原始计划与审批阶段”按历史时点解读 |
+| 六批详细业务原则 | [现行状态索引第三节](../Document-Status-Index.md)的六份 Batch 正文与对应 SCOPE；[旧六批路线](../03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)为历史执行记录 | 六批 **原则Approved**；旧路线内阶段计划按历史时点解读 |
 | 已批准11步核心主流程 | [Step02 v0.3](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md) + [DEC-014](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md) | **11/11核心业务Approved**；v0.3技术异常/字段仍Draft |
 | 187历史ID源账 | [187原始功能清单](../03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) | **功能编号保持**；P0/P1/P2仅历史，原文审批记录不重写 |
 | 对应新流程的逐ID核验 | [Step03 187交叉审核矩阵](../03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md) | 纸面核验完成、处理原则Approved；非软件测试Pass |
@@ -44,7 +44,7 @@
 |---|---|---|---|
 | 版本治理 | 旧功能清单P0/P1/P2、SCOPE中“非默认首期”措辞 | [DEC-012](../../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)：改为 **V1.0/V2.0/V3.0唯一交付版本** | 历史分级保留，但不再用来断言现时V1开发范围；140/22/25Draft |
 | 购买SaaS | [旧SCOPE-003](../03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md)首期可人工合同且**不强制在线收费** | [DEC-013 / CR-01 A](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md) 已批准**V1.0在线订阅收费能力**与人工合同例外 | 新产品方向覆盖旧的“首期不强制”阶段建议，但不改变任何实际商业支付/法域审批门 |
-| Issuer门户 vs高级白标 | M08门户页面、M15商业白标/自定义域名混用 | DEC-013 CR-02 + DEC-015 XCHK-02 | **标准Tenant唯一URL/基本品牌为V1产品目标**；高级运营商/域名不因此整体提前 |
+| Issuer门户 vs高级白标 | 早期 DEC-002 中有White-label V1层级描述，M08门户页面与M15高级域名功能混合 | 后续 SCOPE-059 与 DEC-013 CR-02 + DEC-015 XCHK-02 | **标准Tenant唯一URL/基本品牌为V1产品目标**；独立White-label运营商完整交付后置，不能以早期层级概念默认为V1开发范围 |
 | A/B模板与律师/评估 | 旧M04-F008 P1、复杂M06服务商协作/市场 | DEC-013 CR-03/04 | V1受控A债权/B SPV权利模板及外部合法资料，复杂服务商撮合后置 |
 | Contract Factory | 旧M07合约审批/部署作为最低原则 | DEC-013 CR-05 / DEC-015 XCHK-06 | V1有受权Factory产品目标，不默认SaaS生产私钥控制/每资产3合约 |
 | 嵌入式钱包 | 旧M08/M07只明确钱包关联与地址校验 | DEC-013 CR-06 / DEC-015 XCHK-03 | V1外部钱包+一种安全嵌入式方案；**MPC不是唯一批准技术** |
@@ -95,4 +95,4 @@
 5. 保留PR #6 Draft/Open/Unmerged，不修改其 base/合并状态；所有变动只在 `docs/regulated-activity-boundaries-v01` 工作分支。
 6. 本索引不是范围冻结决定；日后做真实法域、对外API、钱包/分红/现金流/合约等详细方案，需要权限责任或实证，不得以产品文档名称推断已经通过。
 
-**当前：Document authority map 已建立；四份Frozen保持；11份历史材料入口标记待本轮执行并验证；版本规划及字段级PRD待审。**
+**当前：Document authority map 已建立；四份Frozen保持；11份历史材料已经仅添加历史入口提示并保留原文；README/Document-Status-Index已精简与更新。版本规划/PROP以及字段级PRD仍待审，非产品V1冻结。**

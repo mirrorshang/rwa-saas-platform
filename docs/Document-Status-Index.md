@@ -12,7 +12,7 @@
 | 六批Issuer业务最低交付深度 | **Batch01～06产品原则 Approved** | 见第三节；不是逐字段PRD与生产授权 |
 | Step02企业买SaaS至结算/收益/退出的11步闭环 | **DEC-014 核心业务 Approved** | [最新v0.3](04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)；技术实现和细部异常Draft |
 | Step03原187×11步双向纸面核验 | **187/187已关联，XCHK01～10 A Approved** | [187交叉矩阵](03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)、[DEC-015](../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)；非软件PASS |
-| 新功能拆分与交付版号 | **Draft** | [12缺口/8重叠/PROP-01～11](03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)，真正新ID数量未审 |
+| 新功能拆分与交付版号 | **Draft** | [PROP-01～11扩深5＋独立新增6组分类提案](03-product-prd/RWA-SaaS-Step-03-PROP-01-11-Disposition-and-Six-New-Functions-Review-Draft-v0.1.md)；[原12缺口/8重叠核验](03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)；新增正式ID/数量及版本未审，不能直接改187原账 |
 | V1.0/V2.0/V3.0功能规划 | **Draft** | [187项建议：140/22/25](03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)、[可读版](03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md)，**不是开发冻结** |
 | Step03.5文档治理 | **非破坏性整理与重点交叉核验已完成；不代表V1产品冻结** | [权威目录](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)、[首轮审计](00-governance/RWA-SaaS-Step-03.5-Document-Governance-Audit-and-Disposition-Proposal-v0.1.md)、[第二轮验收报告](00-governance/RWA-SaaS-Step-03.5-Non-Destructive-Cleanup-Verification-v0.1.md) |
 | Step04分端功能清单、Step05字段PRD、Step06交叉核验及最终V1冻结 | **未完成** | UI设计必须在产品范围及核心规格另行批准冻结后开展 |

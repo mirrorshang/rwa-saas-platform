@@ -76,7 +76,9 @@
 - [SCOPE-117～125 正式决策记录](../decisions/SCOPE-117-125-debt-instrument-A-business-validation-principles.md)：批准固定收益到期债权的 A1 同 Series 验证、财务/法定登记/Token 分离、票息与还本业务闭环，未批准实际开发与生产。
 - [《债权 A1 计息、偿付及异常状态专项验证 v0.1》](03-product-prd/RWA-SaaS-Debt-A1-Coupon-Maturity-and-Exception-Validation-v0.1.md)：**SCOPE-126～133 专项产品原则已批准**；A-D01～D12 全部 Not Executed、具体合法算法与实施深度仍 Draft。
 - [SCOPE-126～133 债权 A1 正式决策](../decisions/SCOPE-126-133-debt-A1-coupon-maturity-exception-principles.md)：已批准同权增发、晚入场价格/应计利息、Coupon 与本金实际支付/登记/Token 独立核验及受权恢复。
-- [《样本 B：SPV 股份与实体权益产品验证 v0.1》](03-product-prd/RWA-SaaS-Reference-Instrument-B-Equity-Rights-and-Lifecycle-Review-v0.1.md)：**Draft / SCOPE-134～142 待产品负责人审核**，16 张 B-T 案例 Not Executed；公司发行授权、稀释、权威权益名册、可选分红与转让限制。
+- [《样本 B：SPV 股份与实体权益产品验证 v0.1》](03-product-prd/RWA-SaaS-Reference-Instrument-B-Equity-Rights-and-Lifecycle-Review-v0.1.md)：**SCOPE-134～142 产品原则已批准**；B-T01～T16 仍 Not Executed，公司授权、稀释、权益名册及条件分红具体实施仍 Draft。
+- [SCOPE-134～142｜B 实体权益产品正式决策](../decisions/SCOPE-134-142-equity-B-SPV-rights-and-lifecycle-principles.md)：已批准 B 权利类别、法定公司决议/发行额度、法定名册与 Token 的权威分离、分红和合约限制原则。
+- [《A/B 187 项功能必要性与 V1 冻结决策门交叉对照 v0.1》](03-product-prd/RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)：**Cross-Instrument Audit / Draft，SCOPE-143～151 待审批**；逐 ID A/B 需求差异、16 条 P1 触发与六项真实 V1 冻结门，全部 187 项仍 Not Tested。
 
 ## 持续开放的决策门
 
@@ -88,4 +90,4 @@
 
 [《V1 参考 Instrument 选样与功能验证方案》](03-product-prd/RWA-SaaS-Reference-Instrument-Validation-Proposal-v0.1.md) 的 A/B 选样已获 **SCOPE-096～100** 批准；[《A/B 187 项功能验证底表》](03-product-prd/RWA-SaaS-Reference-Instrument-AB-187-Function-Validation-Matrix-v0.1.md) 已建立 **Draft / 187 项 Not Tested**，不是已获得法律认可或真实 V1 交付冻结。
 
-当前建议的下一项产品工作：审核[《样本 B：SPV 股份与实体权益产品验证 v0.1》](03-product-prd/RWA-SaaS-Reference-Instrument-B-Equity-Rights-and-Lifecycle-Review-v0.1.md)的 **SCOPE-134～142（尚待批准）**；然后综合 A/B 两类参考工具核对 187 项功能触发与最低实际 V1 实施要求。现有 187 项 A/B 底表仍 Not Tested；首发法域、真实 Instrument、受权资金/登记/链上签名主体、技术实施及 PR #6 合并均须独立批准。
+当前建议的下一项产品工作：审核[《A/B 187 项功能必要性与 V1 冻结决策门交叉对照 v0.1》](03-product-prd/RWA-SaaS-AB-187-Function-Need-and-V1-Freeze-Gates-Review-v0.1.md)及 **SCOPE-143～151（均未批准）**，随后按真实首发 Instrument/法域、受权资金/登记/签名主体与 187 项最小实现深度分批审查。A/B 187 项仍 Not Tested；第 02～04 份 Frozen 不代表生产授权；PR #6 继续 Draft/Open/Unmerged。

@@ -12,7 +12,13 @@
 - [**187项逐条目标版本建议（Draft）**](docs/03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)：暂拟 **V1.0 140 / V2.0 22 / V3.0 25**（仅建议，未逐项批准；8个候选新功能缺口尚未加入187原分母）。
 - [**DEC-013：CR-01～10 产品方向全部 A Approved**](decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)：已确认商业订阅、标准门户、基础模板、企业自主专业服务、受权合约Factory、双钱包入口、募集款合法结算、注资和至少一种收益分配、依法退出、187功能转版程序；**真实法域/技术/资金签名/最终逐功能版本仍待决定**。原[十项 A/B 提案](docs/03-product-prd/RWA-SaaS-V1.0-Complete-Loop-CR-01-10-Decision-Proposals-v0.1.md)已同步为Approved归档。
 - [**Step 02 四泳道 v0.3（Draft / 待审图）**](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)：已按 CR-01～10 Approved A 更新 **1张L0总图+10张L1详细图**；保留 [v0.2历史草案](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md)。四泳道全部节点/依赖尚需产品负责人审核，**没有冻结**。
-- **审核顺序**：批准 CR 产品模式与候选版本 → 更新四泳道 v0.3 → 187原功能 + 新缺口双向核验 → V1.0 唯一功能清单和字段级 PRD → 单独范围冻结 → UI；正式业务研发仍需另行授权。
+- **最新进度与审核顺序**：[DEC-014 Step 02核心11步业务流程已正式通过](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)。现在进入原187功能与新缺口双向核验 → V1.0 唯一功能清单和字段级 PRD → 单独范围冻结 → UI；正式业务研发仍需另行授权。**核心主流程通过≠所有技术流程细则或 V1.0范围冻结**。
+
+### 核心业务流程：已审核通过的七段主线（DEC-014）
+
+**企业购买 SaaS → 企业配置工作台与独立投资门户 → 企业发行资产/合约 → 投资者KYC、钱包认购与持仓 → 企业管理募集资金及合法结算 → 发行后合法收益注资、定期Push或Claim → 持续运营、到期清偿或适用回购退出。**
+
+这是对用户原始 **11 步业务目标的七段通俗归纳**；[11/11 逐项审核通过（DEC-014）](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)。[详细四端泳道 v0.3](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)作为支持材料，不要求客户逐条理解时序或英文业务状态。**真实资金/合约/法律授权、详细字段和V1.0交付范围尚未冻结。**
 
 ## 1. 一页了解这个产品
 
@@ -239,7 +245,7 @@ A/B 用来检查**共用 Issuer SaaS 能力是否覆盖不同金融工具**，�
 | 步骤 | 计划交付什么 | 当前进度及团队如何参与 |
 |---|---|---|
 | **01 六批业务规则原则审核收口** | 先完整批准 Batch 04～06 的长篇逐功能业务需求/SCOPE，再用现有 17 个跨端责任节点与 18 个异常断点交叉核验 | **Batch 01～06 均已批准最低深度原则**；[Batch 05 19 项需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md)对应[正式 SCOPE-186～193](decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md) Approved；[Batch 06 37 项逐功能需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-06-Lifecycle-Workflows-Notifications-Audit-Reports-v0.1.md) SCOPE-194～205 Approved（产品原则；全部 B06 案例 Not Executed） |
-| **02 绘制跨端完整泳道图** | **平台后台 / Issuer 企业 SaaS / 机构投资者 / 外部受权服务**四泳道：全局总图 + 分阶段细图 + 失败/Unknown/退款/登记与收益异常 | **Step 02 v0.1/v0.2 历史草案保留，[v0.3 已按 DEC-013 十项 Approved A 重绘四端 11 张 Mermaid 图](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)**；v0.3仍 Draft 待逐节点审图，后续187逐ID交叉核验/新ID批准与最终V1交付冻结尚未开始 |
+| **02 绘制跨端完整泳道图** | **平台后台 / Issuer 企业 SaaS / 机构投资者 / 外部受权服务**四泳道：全局总图 + 分阶段细图 + 失败/Unknown/退款/登记与收益异常 | **[DEC-014 已通过 v0.3 中对照原11步的核心业务闭环](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)**，无需逐节点审查技术时序；[v0.3四端详细图](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)仍保留给后续字段级PRD/技术法域审查。现在进入187逐ID交叉核验/新ID批准；最终V1交付冻结未完成 |
 | **03 对照原 187 项核验** | 流程节点↔功能 ID 双向映射，审计漏项、重复、职责错误、非线性权限/报表/审计及版本归属 | **待开展**；六批 Issuer 主线 164 项，另有 M14/M15/M16 共 23 项必须明确后置/商业版本去向 |
 | **04 整理分端完整功能清单** | 按 **端→一级模块→二级模块→功能点→通俗详细说明→关联流程节点→原功能 ID→版本** 排列 | **待开展**；便于产品负责人和同事不用读冗长段落即可审查覆盖 |
 | **05 真正的字段级详细 PRD** | 每个功能的字段类型/必填/精度/校验、操作、角色/权限、业务状态、规则、外部依赖、异常恢复和验收 | **待开展**；六批 01～06 最低深度原则已批准，字段级 PRD 以后续四端流程和功能清单为依据 |
@@ -295,7 +301,7 @@ A/B 用来检查**共用 Issuer SaaS 能力是否覆盖不同金融工具**，�
 | [Batch 05：Token/合约/第三方执行需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-05-Token-Contracts-External-Execution-v0.1.md) | 产品、链/安全/法律/后端 | **SCOPE-186～193 原则 Approved**；19 项（P0 16/P1 1/P2 2）；B05-01～19 Not Executed；[正式决策](decisions/SCOPE-186-193-batch05-token-contracts-external-execution-principles.md) |
 | [六步产品设计与标准文档缺口审计](docs/00-governance/RWA-SaaS-Six-Step-Product-Design-Plan-and-Documentation-Audit-v0.1.md) | 全体项目成员 | **最新已确认执行方法**、步骤验收门、164+23 的 187 项范围关系、完整 PRD 文档清单及缺口 |
 | [Batch 06：存续期/异常/通知/审计/报表长篇需求](docs/03-product-prd/RWA-SaaS-V1-Delivery-Depth-Batch-06-Lifecycle-Workflows-Notifications-Audit-Reports-v0.1.md) | 产品、财务/法律/合规/技术 | **SCOPE-194～205 原则 Approved**，37 项（P0 23/P1 9/P2 5）；B06-01～37 Not Executed；[正式决策](decisions/SCOPE-194-205-batch06-lifecycle-exceptions-notifications-audit-reports-principles.md)，不代表研发/法域实施完成 |
-| [**Step 02 v0.3：CR-01～10 Approved A 后的四泳道正式审图稿**](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md) | 产品/Issuer运营/财务/合规/外部有权主体 | **Draft / 待产品负责人逐节点审图**；1张 L0 总图+10张 L1 图，明确受限资金结算、收益注资/Claim和合法退出；非字段级PRD、非V1.0整体冻结 |
+| [**Step 02 v0.3：核心11步流程已 Approved / 细节 Draft**](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md) | 产品/Issuer运营/财务/合规/外部有权主体 | [DEC-014](decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)确认 11/11 主流程完整覆盖；文档新增七段通俗摘要，细节仍供研发PRD审阅，非V1.0整体冻结 |
 | [Step 02 v0.2：按客户11步重构的历史四泳道草案](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md) | 产品总控、发行机构运营、法务/财务及链集成 | **历史 Draft**；当时的 CR 待决陈述现由 DEC-013 批准 A，并已更新为 v0.3；不能再把旧文的 Draft 断言视为当前决策 |
 | [Step 02：四端端到端全局泳道图草案](docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-End-to-End-Workflow-Draft-v0.1.md) | 产品、Issuer运营、法律/资金/合规与架构 | **Draft / 待产品负责人审图**；1张L0、5段L1 Mermaid 可编辑图，含 BR-01～18 异常；非 Frozen / 测试通过 |
 | [Step 01：Batch 04～06 跨端业务规则收口底稿](docs/03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md) | 产品、运营、法律/资金和技术评审人 | 17 个跨端业务责任节点、投资者状态与 6 条待审产品建议；**仍 Draft，未冻结** |

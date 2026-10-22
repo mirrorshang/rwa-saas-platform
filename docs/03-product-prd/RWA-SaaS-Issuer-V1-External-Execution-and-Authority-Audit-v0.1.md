@@ -1,5 +1,8 @@
 # RWA SaaS｜Issuer V1 10 项外部执行与权威核验专项审核 v0.1
 
+
+> **Step03.5 历史文件提示（2026-10-23）：Historical / Superseded as CURRENT READING ENTRY；原文内容、已批准的相关SCOPE原则和当时审核记录全部保留。** 原外部权威专项审核获批的SCOPE-071～077原则继续有效；新CR和XCHK对结算、Token、权益事实有进一步要求，不得仅以旧审计宣称已具备生产方案。 当前请以[现行权威目录](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)及[对应现行材料](../03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md)为准。**这不是撤销或重写历史批准，也不意味着该文原有研究数据无价值。**
+
 > **Audit 已完成；SCOPE-071～077 七项外部执行与权威核验原则已获产品负责人批准；具体实施/服务商与合法责任主体仍 Draft，未冻结真实 V1 交付清单**。
 >
 > 日期：2026-10-22。依据 [187 项五类交付候选](RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md)、[115 项核心/共享 UI 交叉审核](RWA-SaaS-Issuer-V1-Core-and-Shared-UI-Audit-v0.1.md)、[SCOPE-063～070 已批准决策](../../decisions/SCOPE-063-070-core-ui-cross-module-simplification.md)、[ARCH-001](../../decisions/ARCH-001-api-first-unified-business-core.md)、[第 04 份冻结流程原则](../04-business-workflows/RWA-SaaS-Core-Business-Workflows-and-State-Machines-v0.1.md)。

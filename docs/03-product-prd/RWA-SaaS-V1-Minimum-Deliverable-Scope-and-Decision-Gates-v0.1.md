@@ -439,7 +439,13 @@ C 的 NAV/开放式申赎、D 的外部经营收入核验/收益结算、E 的�
 
 [《债权 A1 计息、到期偿付及异常状态专项验证 Draft》](RWA-SaaS-Debt-A1-Coupon-Maturity-and-Exception-Validation-v0.1.md)已建立，含 **SCOPE-126～133 待审**、12 项 **Not Executed** 产品审核卡。A/B 187 功能矩阵仍为 Not Tested。用户未就具体日数基准、clean/dirty 计价、记录日、适格付款方、法律偿付/注销先后或真实 V1 逐功能交付冻结作出授权。
 
-## 十六、下一次评审的工作方法
+## 十六、债权 A1 专项规则已批与权益 B 差异审查（SCOPE-126～133）
+
+产品负责人明确批准 [SCOPE-126～133](../../decisions/SCOPE-126-133-debt-A1-coupon-maturity-exception-principles.md)：A1 合法同权/增发授权、版本化晚入场报价及息权记录日、M13 票息/到期本金应付与受权实付、M12 法定权益登记以及 M07 Token 退场/异常均须受权、可恢复和独立核对。**M13-F004～F006 对固定收益到期债权的最低产品需求级闭环必需，但不改原 P1 分级，也不自动冻结其技术实现深度。**
+
+[《样本 B SPV 股份与实体权益差异审核 Draft》](RWA-SaaS-Reference-Instrument-B-Equity-Rights-and-Lifecycle-Review-v0.1.md)提出 **SCOPE-134～142 待评审**：公司授权发行和法定股份/成员权益、资本稀释、股东或持有人名册、可选分红和 Token 转让限制；不将 B 自动视为债权到期还本，也不把持 Token 作为法定股东的证据。B-T01～T16 均未执行；A/B 187 项原底表保持 Not Tested。
+
+## 十七、下一次评审的工作方法
 
 1. 对每个 P0 核心候选核查最小业务能力、页面是否可合并、审计/风险 Guard 是否保留。
 2. 对全部 P1 单独核查首发 Instrument/法域依赖，允许按具体工具上调为 V1 必需；未经批准不能改写原范围分级。

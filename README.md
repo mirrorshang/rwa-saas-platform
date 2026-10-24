@@ -112,6 +112,8 @@
 - **DEC-016：PROP-01～11 全部A**，批准**5项扩深原功能**、**6项独立新增并赋予正式ID**；现共有193个唯一功能编号。原187的功能名称、ID、历史分级均保留，不把旧P0/P1/P2当作现行版本范围。
 - **DEC-017：R-01～R-06 全部A**，**正式批准193项逐ID首次交付版本**：V1.0 146、V2.0 22、V3.0 20、TBD 5；原V3草案中5项改列TBD。此决定**不等于V1.0整体需求Frozen**，也不授权开发、资金托管、合约生产签名或上线。
 
+- **DEC-018：S04-01-01～06 全部A**，批准Issuer基础16项Step04功能设计；**DEC-019：S04-01-R01～R05 全部A**，后续明确邮箱注册即试用14天、正式付费前KYB、单一Standard套餐、试用到期只读及30天恢复、已投产业务合法义务保护。二者均不代表V1.0整体Frozen。
+
 此外，**Step 03.5已完成文档治理**：建立现行权威目录、压缩过时导航、标记11份历史工作稿，保留正式DEC/SCOPE及四份Frozen，并验证原187功能编号与历史数据未被改写。
 
 ## 5. 版本规划：首次交付归属已Approved，但尚非最终详细开发包
@@ -152,7 +154,7 @@
 | 原187项双向功能核验、缺口处理 | **纸面核验完成、XCHK原则Approved** | 问题已识别并分类，尚需分端和字段规格 |
 | PROP01～11分类与6项正式ID | **DEC-016 Approved** | **193项功能编号已成立**，不是版号/页面/成本批准 |
 | 193项首次交付版号/待规划归属 | **DEC-017 Approved** | **146/22/20/TBD5已批准**；不等于146项已完成字段级设计、上线或研发验收 |
-| 各端完整菜单、页面组、操作权限与功能清单 | **Step04进行中：S04-01已审16/146，余130待审** | [DEC-018](decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)批准Issuer基础开通/组织/门户逻辑功能；整体仍不能启动全套UI验收 |
+| 各端完整菜单、页面组、操作权限与功能清单 | **Step04进行中：S04-01已审16/146，余130待审** | [DEC-018](decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)及[DEC-019](decisions/DEC-019-step04-s0401-trial-kyb-subscription-supplement-approved.md)批准Issuer基础工作台与14天试用/KYB/标准订阅/到期规则；整体仍不能启动全套UI验收 |
 | 逐模块字段级PRD、状态机细化、验收标准 | **未完成（Step05）** | 不能据此认定后端API、数据库、链合约、计费与异常规则已定 |
 | 最终全局一致性核验与V1.0交付范围冻结 | **未完成（Step06）** | 尚未完成“版本功能↔业务流程↔页面↔状态/责任↔验收”的最终闭环 |
 | UI/UX原型与前端、后端、合约开发 | **未启动** | 仓库没有现成业务应用源码；项目仍处于产品设计阶段 |
@@ -207,10 +209,25 @@
 
 ## 11. Step04最新进展：S04-01首批已批准（2026-10-24）
 
-**审批记录**：[DEC-018｜S04-01六项全部A](decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)；**可执行产品设计阅读入口**：[Issuer基础工作台完整功能清单](docs/03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Approved-v0.1.md)；**全部V1功能逐ID审核账**：[146项分端追踪台账](docs/03-product-prd/RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md)。
+**审批记录**：[DEC-018｜S04-01六项全部A](decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)；**当前有效产品设计阅读入口**：[Issuer基础工作台与试用订阅整合v0.2](docs/03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Trial-Subscription-Approved-v0.2.md)；**全部V1功能逐ID审核账**：[146项分端追踪台账](docs/03-product-prd/RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md)。
 
 - **本批仅16/146项Step04功能设计Approved**：M01-F001～F009（企业申请/机构资料/商业合同/订阅、Tenant、额度、暂停和退租、标准Issuer投资者门户实例）与M02-F001～F007（组织、邀请、登录、角色、项目作用域、敏感分权、撤权与移交）。
 - **开发/运营应如何理解**：买SaaS/商业收费≠获准发行；平台后台受权审核/创建Tenant，Issuer管理员配置团队及标准Portal，投资者门户消费已合法发布信息；同一业务事实只认一个主责模块，跨端页面复用不重复记录真实资金、法定持有人或Token事实。
 - **本批只记录交互边界，不宣布其完整功能已审**：M03平台端和M17～M22共享模块本轮只作依赖说明；其V1功能留后续对应批次细审。其余130项V1功能仍在Step04待审，其他V2/V3/TBD版号照DEC-017保留。
 - **下批S04-02**：Issuer资产/Instrument与法律文件、专业审查（M04/M06）；之后覆盖发行/Token、认购配售、资金收益、投资者端、平台后台与外部合法服务交互。
 - **审批边界**：DEC-018仅批准角色、页面组、功能操作与状态异常分类，不冻结字段/API/UI、V1.0整体需求或真实法域资金/Token生产；四份Frozen和历史DEC/SCOPE不修改，PR #6继续Draft/Open/Unmerged。
+
+## 12. Step04 S04-01后续生效补充：企业自助试用与标准订阅
+
+**正式后续决定**：[DEC-019｜R01～R05全部A](decisions/DEC-019-step04-s0401-trial-kyb-subscription-supplement-approved.md)，并与原[DEC-018](decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)合并理解；当前有效功能设计为[S04-01 v0.2](docs/03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Trial-Subscription-Approved-v0.2.md)，原v0.1审批历史保留不改。
+
+**面向开发、运营和商务的默认企业旅程**：
+
+1. 企业联系人**邮箱注册并验证**，立即获得**受限试用Tenant**，不要求先提交完整KYB或约销售沟通。
+2. 14个自然日免费试用，无需预绑付款方式、不会自动收费；仅使用受控草稿、门户私有预览、模拟/测试发行能力。**真实资金、真实投资者认购、生产Token与法定登记均禁止**。
+3. 试用中可预选Issuer Standard；在**正式商业在线付款前完成企业KYB**，保留DEC-013 CR-01的正式商用准入原则。KYB与真实发行法域/Instrument资格是两回事。
+4. 首期**1个Issuer Standard正式付费套餐**，Growth仅留研究位置；价格、金额、精确席位/项目/KYC额度以及第三方收费未定。KYB与商业合同/支付有效后**在同一个Tenant上升级商业权限**，不重复创建第二租户。
+5. 试用到期未付费进入**只读与转化模式**：保留登录、查看/允许导出、补KYB及付费操作，暂停新建/编辑/测试；暂设30天恢复窗口，之后按合法、已通知的数据政策处理，不直接硬删。
+6. **已有真实发行与投资者权益的正式客户**订阅欠费/到期时仅限制新的商业操作；必要投资者查询、资金退款/兑付/清偿、合法外部执行和责任交接须独立保护，不能随试用到期规则一键锁死。
+
+这些规则由DEC-019在Step04产品层正式批准，尚未代表**试用产品已开发、商业支付服务商/KYB服务商已签约、资金链上生产授权或整体V1 Frozen**。现有16/146已审、130待审的功能计数完全不变。S04-02继续暂停。

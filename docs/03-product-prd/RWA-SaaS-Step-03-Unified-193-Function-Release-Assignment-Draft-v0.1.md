@@ -6,6 +6,8 @@
 >
 > **上游**：[DEC-012版本定义](../../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)、[DEC-013首发业务方向](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)、[DEC-014十一项核心流程](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)、[DEC-015缺口审批](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)、[DEC-016六个新增正式ID](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md)、[DEC-017逐ID版本归属](../../decisions/DEC-017-step03-r01-06-approved-193-release-assignments.md)。
 
+**Step04最新导航（不改变本主表的193条ID、正式名称与版本归属）**：[DEC-018 S04-01首批Approved](../../decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)已确认M01-F001～F009、M02-F001～F007共16/146项的分端设计；[146项分端覆盖台账](RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md)记载其余130项待审。此处仅加导航，不把Step04状态当作新的版号审批。
+
 ## 一、DEC-017正式批准的193项首次交付归属（未冻结总体V1）
 
 | 首次交付归属 | 原187项 | DEC-016新增6项 | 合计 | 本轮审批 |
@@ -348,7 +350,7 @@
 
 1. **DEC-017 已批准193个唯一ID的首次目标版本：146 / 22 / 20 / TBD 5**。首次版号的变更需要新DEC或明确变更审批，不要在实施过程中静默推迟已承诺的V1功能。用户批准的6个新ID身份仍按DEC-016有效。
 2. **V1.0发行方式约束**：依据R-05，按**合法适用的持续认购及基础配售**规划。如果实际确定的首发法律Instrument或法域强制要求集中募集，必须在最终V1.0冻结前**重新审 M05-F011、M10-F009、M12-F009、M12-F010及相关业务功能**；不能默许这些V2功能已在V1开发，也不能用不完整的首版流程替代法定要求。
-3. **Step04/Step05未完成**：接下来形成平台后台/Issuer SaaS/投资者Portal/外部合法责任的分端菜单、页面组、角色、操作与字段级业务规则、状态、异常、支付合约技术与验收；可能揭示新的跨版依赖。此时整体V1.0仍是**未Frozen**。
+3. **Step04仅首批16项设计Approved、整体仍未完成；Step05未完成**：后续继续形成平台后台/Issuer SaaS/投资者Portal/外部合法责任的分端菜单、页面组、角色、操作与字段级业务规则、状态、异常、支付合约技术与验收；可能揭示新的跨版依赖。此时整体V1.0仍是**未Frozen**。
 4. **Step06另行冻结**：按11步原流程×193功能×各端页面×合法资金/权利/Token权威×验收交叉核验后，由产品负责人再次明确批准V1.0整体PRD及开发交接。
 5. **治理限制**：四份Frozen、旧187表、全部历史DEC/SCOPE原文不改；[PR #6](https://github.com/mirrorshang/rwa-saas-platform/pull/6)维持Draft/Open/Unmerged；未授权资金/链上生产操作。
 

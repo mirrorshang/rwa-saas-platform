@@ -2,7 +2,7 @@
 
 > **截至2026-10-24：S04-01已Approved 16/146；未审130/146。** 本台账记录Step04的分端功能设计审核进度，**不重新分配首次交付版号**。193个正式功能ID和V1.0=146、V2.0=22、V3.0=20、TBD=5的唯一归属，以[Step03现行193主表](RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)及[DEC-017](../../decisions/DEC-017-step03-r01-06-approved-193-release-assignments.md)为准。
 
-**已批准依据**：[DEC-018 S04-01六项A](../../decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)与[首批完整功能设计](RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Approved-v0.1.md)。这里的“Approved”是**Step04产品功能/端侧角色/逻辑页面组/操作及异常分类设计**已由用户审核，并非字段PRD、UI、开发、生产服务或V1整体Frozen。
+**已批准依据**：[DEC-018 S04-01六项A](../../decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)＋[DEC-019 R01～R05五项A](../../decisions/DEC-019-step04-s0401-trial-kyb-subscription-supplement-approved.md)，当前功能设计为[首批完整v0.2](RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Trial-Subscription-Approved-v0.2.md)；原v0.1只作历史审批资料。这里的“Approved”是**Step04产品功能/端侧角色/逻辑页面组/操作及异常分类设计**已由用户审核，并非字段PRD、UI、开发、生产服务或V1整体Frozen。
 
 ## 一、审核方法和唯一计数规则
 
@@ -46,15 +46,15 @@
 
 | 正式功能ID | 正式名称（与193主表一致） | DEC-017 首版 | Step04审核批次 | 当前主责端/交互责任（待审行不预判） | Step04审核状态 |
 |---|---|---|---|---|---|
-| M01-F001 | 客户申请与联系方式 | V1.0 | S04-01 | P受理／企业申请入口 | **Approved（DEC-018）** |
-| M01-F002 | 机构与法律主体资料 | V1.0 | S04-01 | P核验／Issuer提交 | **Approved（DEC-018）** |
-| M01-F003 | 合同及商业授权记录 | V1.0 | S04-01 | P商业授权／Issuer查询 | **Approved（DEC-018）** |
-| M01-F004 | Tenant 创建与隔离配置 | V1.0 | S04-01 | P执行／Issuer激活 | **Approved（DEC-018）** |
-| M01-F005 | 产品能力和使用额度 | V1.0 | S04-01 | P套餐配置／Issuer查询 | **Approved（DEC-018）** |
-| M01-F006 | 开通暂停及恢复 | V1.0 | S04-01 | P状态控制／Issuer申请 | **Approved（DEC-018）** |
-| M01-F007 | 终止退出与责任交接 | V1.0 | S04-01 | P退租复核／Issuer发起 | **Approved（DEC-018）** |
-| M01-F008 | 在线自动订阅与收费 | V1.0 | S04-01 | P商业收费编排／外部支付事实 | **Approved（DEC-018）** |
-| M01-F009 | 标准 Issuer 投资者门户实例开通与发布 | V1.0 | S04-01 | P门户实例／Issuer配置／V读取 | **Approved（DEC-018）** |
+| M01-F001 | 客户申请与联系方式 | V1.0 | S04-01 | I自助邮箱注册／P受控运营例外 | **Approved（DEC-018/019）** |
+| M01-F002 | 机构与法律主体资料 | V1.0 | S04-01 | I在试用中提交KYB／P受权审核 | **Approved（DEC-018/019）** |
+| M01-F003 | 合同及商业授权记录 | V1.0 | S04-01 | M01试用及商业授权／I确认 | **Approved（DEC-018/019）** |
+| M01-F004 | Tenant 创建与隔离配置 | V1.0 | S04-01 | M01单一Tenant／P自动配置／I激活试用 | **Approved（DEC-018/019）** |
+| M01-F005 | 产品能力和使用额度 | V1.0 | S04-01 | M01试用/Standard权益／I查看 | **Approved（DEC-018/019）** |
+| M01-F006 | 开通暂停及恢复 | V1.0 | S04-01 | M01 Trial与Paid不同暂停规则 | **Approved（DEC-018/019）** |
+| M01-F007 | 终止退出与责任交接 | V1.0 | S04-01 | M01试用恢复及Paid合法退出 | **Approved（DEC-018/019）** |
+| M01-F008 | 在线自动订阅与收费 | V1.0 | S04-01 | M01 KYB后商业付费／支付方回执 | **Approved（DEC-018/019）** |
+| M01-F009 | 标准 Issuer 投资者门户实例开通与发布 | V1.0 | S04-01 | M01试用私有预览／正式受权发布 | **Approved（DEC-018/019）** |
 | M02-F001 | 组织及法人关系 | V1.0 | S04-01 | I组织与权限 | **Approved（DEC-018）** |
 | M02-F002 | 初始管理员与邀请 | V1.0 | S04-01 | I组织与权限 | **Approved（DEC-018）** |
 | M02-F003 | 账号登录及基本安全 | V1.0 | S04-01 | I组织与权限 | **Approved（DEC-018）** |
@@ -199,7 +199,7 @@
 
 | 11步主线 | 已获Step04审核的相关基础 | 仍待后续批次 |
 |---|---|---|
-| 01 企业申请、KYB、SaaS订阅、Tenant开通 | M01-F001～F008（S04-01 Approved） | P端M03对应完整操作及共享依赖 |
+| 01 邮箱注册、14天Trial、KYB、SaaS订阅及Tenant转正 | M01-F001～F008（DEC-018/019 Approved；不增加新ID） | P端M03对应完整操作及共享依赖仍待S04-08 |
 | 02 Issuer组织、权限、独立Portal | M01-F009、M02-F001～F007（S04-01 Approved） | V端门户访问及Offering资格由S04-07/相关批次核验 |
 | 03 Asset与Instrument/专业法律证据 | — | S04-02 |
 | 04 Project/Offering、Token准备发布 | — | S04-03 |
@@ -218,3 +218,5 @@
 S04-02优先Issuer资产/Instrument/文件与专业审查（M04/M06）；之后S04-03发行与Token、S04-04 Issuer投资者认购配售、S04-05资金与收益存续、S04-06共享工作台、S04-07投资者门户、S04-08平台后台、S04-09外部协作与全局追踪。
 
 四份Frozen与原历史DEC/SCOPE正文保持不变，PR #6 Draft/Open/Unmerged。真实法域、持款和支付方、法定登记、智能合约签名、钱包与生产部署均未批准。
+
+**DEC-019补充后覆盖核验**：M01-F001～009的试用/订阅描述已按v0.2更新端侧主责；M02-F001～007保持DEC-018原有Approved。全部仍是**16个已审唯一V1.0 ID、130个待审**。14天Trial、30天恢复、单一Issuer Standard与生产金融守卫属原M01功能的交付深度，不新增独立编号，也不改变193主表。

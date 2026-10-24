@@ -1,5 +1,7 @@
 # RWA SaaS｜Step 03 193项功能正式版本归属：逐ID核验及集中批准提案 v0.1
 
+> **后续正式决定（2026-10-24）**：产品负责人已按 [DEC-017](../../decisions/DEC-017-step03-r01-06-approved-193-release-assignments.md) 正式批准本提案 **R-01～R-06 全部A**，193项首次交付归属为 **146 / 22 / 20 / TBD 5**；[193项当前主表](RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)已更新为有效版号。本文件下面保留旧**“待审核/尚未批准”**原始表述供审计追溯，**不代表当前状态**。产品V1整体Frozen、详细PRD、法域与真实资金/链生产许可仍未批准。
+
 > **Review Proposal / Draft — 2026-10-23。** 对 [现行193项正式编号、目标版号仍Draft的主表](RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)进行**193/193全覆盖的产品版本归属审核提案**。本文件提出的“R-01～R-06全部推荐A”还**没有获得产品负责人确认**；不会自动修改193项主表目标版本、不会新增或删除任何正式ID，也不构成V1.0研发范围冻结。
 >
 > **权威依据**：[DEC-011一级交易V1/受控转让V2](../../decisions/DEC-011-primary-issuance-v1-controlled-transfer-v2.md)、[DEC-012交付版本规则](../../decisions/DEC-012-release-versioning-replaces-priority-as-delivery-commitment.md)、[DEC-013完整发行目标](../../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md)、[DEC-014核心11步Approved](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)、[DEC-015缺口与事实权威原则](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)、[DEC-016确认193功能身份](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md)；[有条件Frozen战略](../02-product-strategy/RWA-SaaS-Product-Strategy-Business-Model-v01.md)第10/13节及[总体Frozen PRD](RWA-SaaS-Overall-Product-Requirements-PRD-v0.1.md)中的非目标清单。旧187行及四份Frozen原文不修改。

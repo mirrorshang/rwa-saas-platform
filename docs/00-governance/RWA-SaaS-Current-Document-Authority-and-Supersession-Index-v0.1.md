@@ -6,7 +6,7 @@
 
 ## 1. 当前项目状态（一页速览）
 
-- **当前阶段**：**Step03版本归属已按DEC-017 R-01～R-06 全部A Approved**；现193个正式ID均有首次交付版本或TBD。**Step04进行中：DEC-018批准S04-01首批16项，余130项待审**，后续Step05字段PRD→Step06跨文档验收及整体V1.0范围冻结；尚未开始统一UI/研发或真实资金、链上Token生产。
+- **当前阶段**：**Step03版本归属已按DEC-017 R-01～R-06 全部A Approved**；现193个正式ID均有首次交付版本或TBD。**Step04进行中：DEC-018＋DEC-019批准S04-01基础16项及试用/订阅补充规则，余130项待审**，后续Step05字段PRD→Step06跨文档验收及整体V1.0范围冻结；尚未开始统一UI/研发或真实资金、链上Token生产。
 - **当前产品主线**：企业购买 SaaS → 企业配置工作台/标准Issuer投资者门户 → 合法资产权益/Offering与受权Token部署 → 投资者KYC/钱包认购/真实支付、配售登记与Token交付 → 募集款合法结算 → 条款适用的合法收益资金注资、分配/Claim → 存续/依法清偿或退出。
 - **当前功能基数**：原187历史ID+DEC-016新增6 ID=**193唯一ID/22模块**。[当前统一主表](../03-product-prd/RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)的首次交付归属已由[DEC-017](../../decisions/DEC-017-step03-r01-06-approved-193-release-assignments.md)批准：**V1.0 146、V2.0 22、V3.0 20、TBD 5**。旧187草案与193的最初146/22/25仅做历史对照；现行版号Approved≠字段PRD或整体V1 Frozen。
 - **技术/生产门**：具体首发法域/Instrument、真实法律与专业责任、托管/收款/资金释放执行方、合同/Token合约标准及生产Signer、嵌入式钱包架构和恢复、Push/Claim实际法律支付效力、退款/定价/时间精度等仍待法域或技术设计审核。不能由 SaaS 自动假定。
@@ -35,10 +35,12 @@
 | PROP-01～11 新旧功能分类和六项正式ID | [DEC-016](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md) + [DEC-017](../../decisions/DEC-017-step03-r01-06-approved-193-release-assignments.md) | **DEC-016分类及新增编号Approved；DEC-017也批准新增六项首交付均归V1**，但实施PRD未冻结 |
 | 缺口、职责和待拆功能 | [Step03历史12缺口/8重叠/11 PROP](../03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md) + [DEC-015](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md) + [DEC-016](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md) | XCHK及PROP处理均已Approved；具体字段/接口/资金技术依旧需要Step05审核 |
 | 逐项正式首次交付版号 | [193项当前主表](../03-product-prd/RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md) + [DEC-017](../../decisions/DEC-017-step03-r01-06-approved-193-release-assignments.md) | **193/193项版号或TBD已Approved（146/22/20/TBD5）**；文件名仍沿用历史Draft-v0.1，内容已更新。非整体V1 Frozen。 |
-| Step04 Issuer基础工作台第一批及146项逐ID跟踪 | [DEC-018](../../decisions/DEC-018-step04-s0401-issuer-foundation-approved.md) + [S04-01功能设计](../03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Approved-v0.1.md) + [146项分端追踪账](../03-product-prd/RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md) | **仅首批M01 9项＋M02 7项Step04设计Approved**；余130待审，非整体V1 Frozen |
+| Step04 Issuer基础工作台第一批及146项逐ID跟踪 | [DEC-018](../../decisions/DEC-018-step04-s0401-issuer-foundation-approved.md) + [DEC-019](../../decisions/DEC-019-step04-s0401-trial-kyb-subscription-supplement-approved.md) + [当前v0.2整合设计](../03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Trial-Subscription-Approved-v0.2.md) + [146项分端追踪账](../03-product-prd/RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md) | **仅首批M01 9项＋M02 7项Step04设计Approved**；余130待审，非整体V1 Frozen |
 | 面向产品负责人的可读版号规划 | [可读三版本业务规划](../03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md) | **依据DEC-017版号Approved的只读业务摘要**，以193逐ID主表为权威，不另造第二套版本分配 |
 | A/B债权及SPV权益、CDE拓展 | [Document-Status-Index](../Document-Status-Index.md)内权利体系/样本专题章节及对应Approved SCOPE | 产品工具家族原则Approved，具体实现/合法有效性/验证未完成 |
 | 文档审计及归档建议 | [Step03.5全仓首轮审计](RWA-SaaS-Step-03.5-Document-Governance-Audit-and-Disposition-Proposal-v0.1.md) | 95项逐文件核查、14项治理风险；审计证据并非新产品需求 |
+
+**Step04 S04-01生效顺序（2026-10-24）**：DEC-010保留订阅包装原则且原未定试用期限/价格；DEC-013 CR-01保留正式KYB后商业付款；DEC-018批准16项基础角色/功能；**DEC-019后续批准14天无卡Trial先于KYB、一个Standard付费套餐、KYB后商业付款、试用30天恢复及Paid合法义务保护**。S04-01 v0.1保留历史，当前v0.2权威；不改旧DEC正文，不影响DEC-017逐ID版号。
 
 ## 4. 关键决策的有效范围与历史覆盖矩阵
 
@@ -81,7 +83,7 @@
 | 顺序 | 待完成的主要文档 | 最小覆盖 |
 |---|---|---|
 | Step03已完成 | **DEC-017已批准193项功能首次交付版本/TBD** | 后续不得私下变更版号；仍需设计V1页面/字段/合法执行依赖 |
-| Step04 | **进行中：S04-01 Approved 16/146** | 平台后台/Issuer工作台/Investor Portal/外部操作边界；余130逐项待审、模块/页面/操作/状态/角色继续补齐 |
+| Step04 | **进行中：S04-01及R01～R05补充Approved，仍为16/146** | 当前v0.2整合试用/KYB/Standard/到期控制；平台后台/Issuer/Investor Portal/外部责任余130逐项待审 |
 | Step05 | **按端/模块字段级PRD** + 共享权限/对象/金额/状态/第三方职责/验收附录 | 字段、来源、枚举、精度、约束、守卫、状态转移、异常恢复、通知、验收 |
 | Step06 | **全面跨文件一致性审核与V1.0范围冻结** | 业务11步×正式ID×页面×规则×责任×UAT可追踪，无不可解释阻断性差异 |
 | 冻结后 | **统一UI/UX设计** | IA与页面交互/原型、可执行前端；技术/法域/开发许可另行独立审核 |

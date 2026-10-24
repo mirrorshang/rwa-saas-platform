@@ -1,6 +1,6 @@
 # RWA SaaS Platform｜现行文档状态和决策索引
 
-> **更新：2026-10-23｜Document Governance / 非产品范围冻结或实际研发授权。**
+> **更新：2026-10-24｜DEC-017 193项首次交付版号Approved；Step04尚未开展；整体V1.0未Frozen/未获真实生产授权。**
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
@@ -12,10 +12,10 @@
 | 六批Issuer业务最低交付深度 | **Batch01～06产品原则 Approved** | 见第三节；不是逐字段PRD与生产授权 |
 | Step02企业买SaaS至结算/收益/退出的11步闭环 | **DEC-014 核心业务 Approved** | [最新v0.3](04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md)；技术实现和细部异常Draft |
 | Step03原187×11步双向纸面核验 | **187/187已关联，XCHK01～10 A Approved** | [187交叉矩阵](03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md)、[DEC-015](../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md)；非软件PASS |
-| PROP功能分类及正式6个新ID | **DEC-016 Approved（5项扩深＋6项独立编号）** | [DEC-016 正式决策](../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md)；原187历史表不变，正式功能ID全集193，仍未批准逐项交付版本 |
-| V1.0/V2.0/V3.0功能规划 | **Draft / 未冻结** | [193项唯一版本候选主表：146/22/25](03-product-prd/RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)、[可读版](03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md)；原[187旧草案](03-product-prd/RWA-SaaS-Version-Plan-V1.0-V2.0-V3.0-187-Function-Migration-Draft-v0.1.md)为历史候选留证 |
+| PROP功能分类及正式6个新ID | **DEC-016 Approved（5项扩深＋6项独立编号）** | [DEC-016 正式决策](../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md)；原187保留，193个正式功能ID已确认 |
+| **193项首次交付版号/待规划TBD归属** | **DEC-017 R-01～R-06 Approved（146/22/20/TBD5）** | [DEC-017](../decisions/DEC-017-step03-r01-06-approved-193-release-assignments.md)、[193项有效主表](03-product-prd/RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)、[可读版](03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md)；**仅版号Approved，V1.0整体PRD尚未Frozen** |
 | Step03.5文档治理 | **非破坏性整理与重点交叉核验已完成；不代表V1产品冻结** | [权威目录](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)、[首轮审计](00-governance/RWA-SaaS-Step-03.5-Document-Governance-Audit-and-Disposition-Proposal-v0.1.md)、[第二轮验收报告](00-governance/RWA-SaaS-Step-03.5-Non-Destructive-Cleanup-Verification-v0.1.md) |
-| Step04分端功能清单、Step05字段PRD、Step06交叉核验及最终V1冻结 | **未完成** | UI设计必须在产品范围及核心规格另行批准冻结后开展 |
+| Step04分端功能清单、Step05字段PRD、Step06交叉核验及最终V1冻结 | **未完成** | 193项版号虽Approved，但页面组、功能操作、字段/状态、UAT与法律资金生产门仍需设计审核；UI在整体V1冻结后启动 |
 | 真实法域/资金持款和签名方/钱包合约/收益支付授权 | **TBD** | 不因产品方向批准而默许有权生产执行 |
 
 ## 二、四份已Frozen基线（正文不可静默覆盖）
@@ -40,9 +40,9 @@
 
 **重点**：部分早期Batch正文含“先暂停下一批”“在线计费可以后置”等**当时审核阶段**表述。后续SCOPE与DEC-013（CR）对产品方向有明确推进，按第四节的正式决策与[覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md#4-关键决策的有效范围与历史覆盖矩阵)理解，不倒改原文。
 
-## 四、正式决策账（35份DEC/ARCH/SCOPE Markdown，另有历史材料）
+## 四、正式决策账（36份DEC/ARCH/SCOPE Markdown）
 
-### 4.1 DEC-001～016（均已批准各自指定产品原则）
+### 4.1 DEC-001～017（各DEC只批准自己明确列出的范围）
 
 | 文件 | 已批准的主题及有限范围 |
 |---|---|
@@ -61,7 +61,8 @@
 | [DEC-013](../decisions/DEC-013-cr01-10-v1-complete-loop-and-release-directions-approved.md) | CR-01～10 A：首版完整闭环产品方向 |
 | [DEC-014](../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md) | 11步业务主流程已批准 |
 | [DEC-015](../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md) | XCHK-01～10 A：功能缺口处理原则 |
-| [DEC-016](../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md) | PROP-01～11 A：扩深5项、正式新增6项编号；**193项逐功能版本仍Draft** |
+| [DEC-016](../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md) | PROP-01～11 A：扩深5项、正式新增6项编号 |
+| [DEC-017](../decisions/DEC-017-step03-r01-06-approved-193-release-assignments.md) | R-01～R-06 A：**193项版本归属 V1.0 146、V2.0 22、V3.0 20、TBD 5 Approved**；总体V1仍未Frozen |
 
 **特别注意**：DEC-011对受控转让版本范围的明确决定接续DEC-009的早期建议；DEC-012改为统一版号；DEC-013对首版在线订阅/标准门户/模板/受权Factory/钱包/募集款划拨/收益和退出作方向补充，**不代表已经修改过去的Frozen历史正文或正式冻结187项范围**。
 
@@ -112,7 +113,7 @@
 
 1. **首发市场/法域、Issuer/SPV责任、首发法律Instrument，合法发行/托管/支付主体及许可**：仍需法务/实际业务主体证据，不在本轮文档整理中擅定。
 2. **真实商业计费、钱包模型/密钥恢复、合约审计与Signer、资金收付与合法释放、收益Push/Claim法律完成时点**：产品方向部分Approved，但真正生产技术/法律方案TBD。
-3. **Step03下一步**：DEC-016已完成PROP分类与6个独立正式ID编号；接下来按模块/客户业务**逐项审核现193个ID的唯一V1.0/V2.0/V3.0建议版号**，再Step04分端清单→Step05字段级PRD→Step06跨文件一致性及V1冻结→UI。
+3. **Step03已完成逐ID版本归属审批（DEC-017）**：193项每个功能已有唯一正式版号或TBD。**下一步Step04分端功能清单→Step05字段级PRD→Step06跨文件一致性及V1整体冻结→UI**。若首发工具依法要求集中募集，则Step06冻结前必须单独复审M05-F011、M10-F009、M12-F009/F010等交付版本。
 4. **仓库与审批状态**：PR #6 **Draft/Open/Unmerged**，base `docs/initial-asset-scope-v01`；未经产品负责人明确授权，不合并、不改写任何Frozen/DEC/SCOPE、不进行真实资金或链上发行执行。
 
 **本索引只管理已有文档状态与引用。任何后续变更继续通过独立产品决策与新的PRD版本记录。**

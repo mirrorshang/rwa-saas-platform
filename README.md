@@ -6,6 +6,17 @@
 >
 > 本README是可独立阅读的**项目交接摘要**。文中的“批准/完成”主要指**产品规划与文档审查**，**不表示软件已开发、服务已部署、金融活动已获许可或合约已经在链上执行**。核心资料链接放在文末，日常了解项目无需先跳转。
 
+## Step06 最新推进：B01字段深度与B02正式33项逐ID映射（2026-10-26）
+
+在DEC-036技术SaaS优先及DEC-037永久免费Free/Standard基础上，已新增两份**字段专项Draft（非字段Approved）**：
+
+| 最新交付 | 完成程度 | 仍需专项签收 |
+|---|---|---|
+| [Step06-07 B01 Free/Standard字段／Quota／状态／权限／逻辑API Draft](docs/03-product-prd/RWA-SaaS-Step-06-07-B01-Free-Standard-Domain-Field-State-Permission-API-PRD-Draft-v0.1.md) | 建立8类业务对象、12组候选字段契约、三条独立状态轴、10个逻辑操作、16组UAT待测断言；遵守永久Free、不预设Quota或收费金额 | 配额和账期TBD，Schema、授权码、技术/安全及真实测试全Draft |
+| [Step06-08 B02发行准备正式V1 33/33功能逐ID映射Draft](docs/03-product-prd/RWA-SaaS-Step-06-08-B02-33-V1-Functions-Field-State-Permission-API-Crosswalk-Draft-v0.1.md) | **M04 8＋M05 10＋M06 6＋M07 9＝33**，每一正式ID都有候选字段、状态/Guard、P/I/V/X权限、逻辑操作和异常；补齐Offering P01～P07、A债权/B SPV、Free测试与Standard真实执行隔离 | **33/33仅静态ID追踪完整，不代表33项字段PRD Approved**；精确类型/必填/API/合规/QA仍Draft |
+
+**当前Step06待做**：B01数值型配额/标准定价、付费周期的独立商业决策；B02逐对象可实施字段与安全/权限专业审核；接着B03投资者/钱包/认购、B04募集款/收益/退出、B05平台运营字段级PRD，再做146项×11步×P/I/V/X双向一致性与最终产品冻结提案。**不因为存在33/33映射便说Step06已完成**。DEC-028的13个X门全部Open，193版号不变，PR #6 Draft/Open/Unmerged。
+
 ## 2026-10-26 最新商业产品正式决定：DEC-037｜永久免费Free + Standard（现行权威）
 
 **产品负责人Step06-R05=A Approved。** SaaS商业权益采用**永久免费Free（无14天/336小时到期）+付费Standard**。Free让Issuer长期使用绝大部分V1技术能力，在受控Sandbox/可选测试网模拟资产→Offering→测试Token→模拟投资者认购→付款→配售→收益与退出；**不得实际发行有法律权益的主网Token或接受真实投资者购买/实际募集款**。Standard是正式业务的商业使用资格，**不是合法发行许可**；需具体Issuer/Offering合法授权、P平台自身受监管活动RG、合法X资金/Signer及安全/技术条件才可真实生产。

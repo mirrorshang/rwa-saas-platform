@@ -6,6 +6,21 @@
 >
 > 本README是可独立阅读的**项目交接摘要**。文中的“批准/完成”主要指**产品规划与文档审查**，**不表示软件已开发、服务已部署、金融活动已获许可或合约已经在链上执行**。核心资料链接放在文末，日常了解项目无需先跳转。
 
+## 2026-10-26 最新正式产品方向：DEC-036｜通用技术SaaS优先（Step06-R04=A）
+
+**产品负责人正式批准**[DEC-036：SaaS技术服务与Issuer发行合规责任划分](decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)。我们的主营交付是多资产发行、Token管理、机构门户、认购订单、收益/存续与技术接口等**软件能力**；**Issuer自行对具体发行资产、法律工具、招揽和发行合规负责**。P平台仍须独立核查**自身实际参与的受监管活动、支付/托管/Signer控制、数据安全等义务**，不能只靠“SaaS声明”免除。
+
+**对产品工作的实际改变**：**不再要求先选日本/ADGM/新加坡或单一Instrument，才能设计、审核和冻结通用V1产品需求**。原[Step06-01A法域候选比较](docs/03-product-prd/RWA-SaaS-Step-06-01A-Jurisdiction-Instrument-Candidate-Comparison-Draft-v0.1.md)保留为**可选/历史研究Draft**，不作为当前强制审批题。平台的**PG产品规格冻结**与真实发行/Token销售/钱包/资金的**RG生产启用审查**分开，PG不自动通过RG；实际金融执行缺有权主体、Signer或证据时必须阻断。
+
+| 当前优先顺序 | 目前进度/入口 | 完成标准 |
+|---|---|---|
+| **通用SaaS字段级产品PRD** | [Step06当前执行计划 Draft](docs/00-governance/RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)＋[首批B01/B02字段／状态／权限／API Draft](docs/03-product-prd/RWA-SaaS-Step-06-04-Generic-SaaS-B01-B02-Field-States-Permissions-API-Draft-v0.1.md) | 五场景146 V1正式ID逐项字段、作用域与来源/状态/逻辑接口/未知恢复可核查 |
+| **通用资金、全局状态与权限** | [Step06-02募集款专项Draft](docs/03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md)、[Step06-03统一矩阵Draft](docs/03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md) | I授权发起、X真实执行、P技术最小支持；资金/法定名册/Token不同真值；权限/接口可验收 |
+| **跨端一致性/产品冻结前审核** | [X01～13对照](docs/00-governance/RWA-SaaS-Step-06-X01-X13-Audit-Gate-Crosswalk-Draft-v0.1.md)，目前13/13 Open | 146ID×11步×P/I/V/X与领域PRD双向验收；V1正式Frozen另需用户批准 |
+| **独立的真实金融生产RG** | 法域/发行人/平台自身受监管行为/实际持款/Signer/安全/实测，全部待专业核证 | **没有RG批准不得将真实Token销售、收款/放款、托管或Signer生产执行标为可用** |
+
+**不变底线**：四份Frozen与历史DEC/SCOPE不改；DEC-017 **193项：V1 146 / V2 22 / V3 20 / TBD 5**；Step04 146/146与Step05 29条仅产品级Approved；**DEC-028 X-01～13全部Open、V1未Frozen、PR #6 Draft/Open/Unmerged**。UI、代码研发和真实生产仍未在本轮启动。
+
 ## Step06新增研究成果（2026-10-26，仍Draft）
 
 - **[Step06-01A 候选监管对照与产品影响报告](docs/03-product-prd/RWA-SaaS-Step-06-01A-Jurisdiction-Instrument-Candidate-Comparison-Draft-v0.1.md)**：使用同类“私募Token化债权”对比日本、ADGM（与迪拜DIFC/UAE其余法域不同）及新加坡，列出权威监管资料、V1发行/真实资金/法定登记/Token/收益差异及证据缺口。**仅建议优先研究ADGM，不是用户已选首发法域/Instrument，更非监管批准**；其他法域和Instrument仍可配置且待验证。下一决策只选择首个**纸面研究锚点**，不改变当前批准边界。

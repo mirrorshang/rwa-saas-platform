@@ -2,6 +2,19 @@
 
 > **2026-10-26｜执行优先顺序依据[DEC-036 Step06-R04 A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md) Approved；本文具体排期、文档与字段/状态/API工作包仍Draft。** 对DEC-035 R01作后续优先级调整：**无需先选择首发法域×Instrument，即可继续通用SaaS产品需求的设计与评审。** Issuer具体发行法律合规由该Issuer/有权专业机构负责；平台自身受监管活动与真实金融功能RG生产门独立审查。**不可推定软件上线或真实销售无需合法审查。**
 
+## 最新产品设计方法接续（2026-10-26）：先四端页面清单，再逐页面PRD
+
+**产品负责人最新要求**：①增加W官网（产品介绍、套餐Free/Standard、企业注册/订阅/进入I端入口）作为实际产品端；②不要再将系统字段或逻辑API当作主要产品经理交付物；③B01、B02各自完成**真正页面级详细产品PRD并审核**后再进入B03，随后B04/B05。这是现行工作顺序，后文旧版“先领域字段/API”的执行排序**降为辅助资料准备，不再作为阶段完成口径**。
+
+- **Step06-6.1（当前）**：[W/I/V/P四端全局页面地图（104个候选页面组）Draft](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)与[146项V1功能静态映射Draft](../03-product-prd/RWA-SaaS-Step-06-09A-V1-146-Function-to-Page-Coverage-Audit-Draft-v0.1.md)。必须先由产品负责人审核导航/范围/页面增删合并；104个页面组不是最后工程URL数。
+- **Step06-6.2 B01**：W官网获客/注册/登录/I入口、I组织Free/Standard/KYB/订阅、P商业KYB/Tenant，逐页面PRD（中文内容、布局、展示/输入字段、校验、按钮、不同状态与操作、提示、权限、成功/失败流转、跨端联动、验收）；已有65行字段与其他逻辑Schema稿作为辅助，**不会再反复要求产品负责人审核`xxxRef`**。
+- **Step06-6.3 B02**：I Asset、Instrument、Project、Offering、法律文书、Token及对应V端可见披露，逐页面完成和单独审核，原M04/M05/M06/M07 33项ID关联只用于检漏。
+- **Step06-6.4～6.6 B03～B05**：V投资者认购/KYC/钱包、I真实资金和收益、P运营/共享功能，页面/交互/异常逐批审核。
+- **Step06-6.7/6.8**：全146正式功能ID×11步四端页面、状态、权限、已批业务与UAT的双向审计；用户另行批准V1产品需求Frozen。原X法域/真实生产RG门仍独立；**官网新增营销CMS/CRM/客服新能力不能自动升V1**。
+- **后续建议Step07/08**：高保真UI/交互原型、最终统一产品设计交付包（PRD+页面+交互+流程+验收+产品→开发交接），**不等于本次已批准新工程阶段**。
+
+**现有文档状态**：DEC-036/037已批准部分业务规则继续有效；旧的Step06-07 B01系统字段和Step06-08 B02静态字段草案仍Draft且仅为辅助；尚未有任何已Approved的完整逐页面PRD。没有更改原Step04/05业务、任何历史DEC/SCOPE/Frozen、193正式ID或PR #6。X01～13仍全Open。
+
 ## 2026-10-26最新执行变更｜DEC-037 Step06-R05永久Free/Standard（商业规则Approved）
 
 [DEC-037](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)已正式将商业产品从**14天Trial＋720h恢复**改为**永久免费Free（Sandbox覆盖11步）＋付费Standard（有条件Production-eligible）**。因此本计划B01中全部“试用倒计时、到期转只读、30天恢复”的旧陈述**仅属于历史材料，不是现行工作**。现行B01必须使用[Step05-01新版产品PRD v0.4](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md)、[跨端状态v0.3](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Cross-Lane-States-Exceptions-Approved-v0.3.md)、[22模块能力矩阵Draft](../03-product-prd/RWA-SaaS-Step-06-Free-Standard-Capability-Entitlement-Matrix-Draft-v0.1.md)及[65行迁移映射Draft](../03-product-prd/RWA-SaaS-Step-06-06-B01-Free-Standard-Field-Migration-Review-Draft-v0.1.md)。原[Step06-05历史65行审计](../03-product-prd/RWA-SaaS-Step-06-05-B01-65-Field-Line-Crosswalk-Gap-Audit-Draft-v0.1.md)不被删除但336/720时限结论已由新DEC接续。

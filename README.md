@@ -1,10 +1,26 @@
 # RWA SaaS Platform｜产品规划与项目交接总览
 
-> **更新日期：2026-10-26** · **项目阶段：Step04 146/146逐ID Approved；Step05-01～05-05五场景29条产品规则Approved；DEC-035仅批准Step06 R01～R03工作方向并新建3份专项Draft；13项风险Open、法域/字段/API/资金/Signer仍未批准，V1整体未Frozen** · **文档用途：开发、运营、产品及管理团队统一了解项目现状**
+> **更新日期：2026-10-26** · **项目阶段：Step04 146/146逐ID Approved；Step05五场景29项历史产品规则Approved，旧Trial时限由DEC-037正式替代为永久免费Free/付费Standard；Step06字段及状态Draft；X-01～X-13仍13/13 Open、V1整体未Frozen** · **文档用途：开发、运营、产品及管理团队统一了解项目现状**
 >
 > **先看结论：** 我们已完成战略/总体原则、22模块、11步核心流程与**193个正式功能ID的首次交付版号审核（DEC-017）**：**V1.0 146项、V2.0 22项、V3.0 20项、待规划TBD 5项**。**Step04九批146/146项唯一V1.0功能产品设计Approved，静态11步覆盖有条件认可；Step05-01～05-05五场景共29项R产品级Approved（7+4+6+6+6，DEC-029～034）。Step06冻结前五场景总体审计与X-01～X-13风险对照仅Draft、全部13项Open；字段/schema/API、商业价格、具体法域、真实资金/Signer及全部实际测试仍Draft/Not Executed。Step05产品业务规则完成不等于开发交接包Ready或V1 Frozen**；字段级PRD、V1.0整体Frozen、UI/研发及生产运营均未完成。S04-04还获准**Issuer依法自管登记优先、必须时外部登记合作**及**法律文书和Token地址后置依法绑定**的产品原则；实际首发法域法律效力仍须另审。
 >
 > 本README是可独立阅读的**项目交接摘要**。文中的“批准/完成”主要指**产品规划与文档审查**，**不表示软件已开发、服务已部署、金融活动已获许可或合约已经在链上执行**。核心资料链接放在文末，日常了解项目无需先跳转。
+
+## 2026-10-26 最新商业产品正式决定：DEC-037｜永久免费Free + Standard（现行权威）
+
+**产品负责人Step06-R05=A Approved。** SaaS商业权益采用**永久免费Free（无14天/336小时到期）+付费Standard**。Free让Issuer长期使用绝大部分V1技术能力，在受控Sandbox/可选测试网模拟资产→Offering→测试Token→模拟投资者认购→付款→配售→收益与退出；**不得实际发行有法律权益的主网Token或接受真实投资者购买/实际募集款**。Standard是正式业务的商业使用资格，**不是合法发行许可**；需具体Issuer/Offering合法授权、P平台自身受监管活动RG、合法X资金/Signer及安全/技术条件才可真实生产。
+
+**原DEC-019/029/030及历史Trial PRD仍留档，但旧336小时Trial和后续720小时恢复窗口明确被DEC-037替代**；不再作为现行Free超时/只读/删除条件。Free→Standard始终沿用原Tenant与可复用草稿；模拟资金/Token/登记/收益等事实不能通过变更状态变生产。Standard欠费/停用不能消灭已有真实投资者权利和合法资金义务。
+
+| 最新交接入口 | 正式批准范围 / 未决内容 |
+|---|---|
+| [DEC-037商业产品正式变更](decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md) | **永久Free/付费Standard商业规则Approved**，历史旧时限被接续；未批准价格、额度、技术方案 |
+| [现行Step05-01 Free/Standard PRD v0.4](docs/03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md) | 现行七步客户旅程与商业/真实生产分离；具体schema/API Draft |
+| [现行Step05-01四端状态与异常v0.3](docs/03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Cross-Lane-States-Exceptions-Approved-v0.3.md) | Free/Standard权益、Sandbox及RG独立状态；英文enum与UAT仍Draft/Not Executed |
+| [22模块Free/Standard能力矩阵 Draft](docs/03-product-prd/RWA-SaaS-Step-06-Free-Standard-Capability-Entitlement-Matrix-Draft-v0.1.md) | 明确哪些V1功能能Sandbox模拟、哪些真实执行另需RG；具体资源额度TBD |
+| [原65行字段转Free/Standard逐行审查Draft](docs/03-product-prd/RWA-SaaS-Step-06-06-B01-Free-Standard-Field-Migration-Review-Draft-v0.1.md) | 65/65原字段行映射，旧时限禁作Free Guard，新字段与迁移实现尚未签收 |
+
+**对开发/运营的约束**：任何下方历史段落出现“试用14天”“336h/720h”为**历史时点文档内容、现已被DEC-037局部废止**。当前Step06先以Free/Standard更新B01字段，再完成B02～B05、跨端状态/权限/API和146项验收；193项版本**146/22/20/TBD5**不变，X-01～13全部Open，V1未Frozen，PR #6 Draft/Open/Unmerged。**本轮未启动UI/研发/真实发行。**
 
 ## 2026-10-26 最新正式产品方向：DEC-036｜通用技术SaaS优先（Step06-R04=A）
 

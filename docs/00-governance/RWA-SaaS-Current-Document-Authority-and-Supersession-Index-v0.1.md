@@ -143,3 +143,11 @@
 - [Step05-01详细字段PRD v0.2 Draft](../03-product-prd/RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Field-PRD-Draft-v0.2.md)含8类实体、65个待审字段候选；[四端状态/异常规范 Draft](../03-product-prd/RWA-SaaS-Step-05-01-Cross-Lane-States-Exceptions-Draft-v0.1.md)含10类状态、10条迁移建议和15个异常场景，均不因DEC-029而整体Approved。早期[Step05-01可视化v0.1 Draft](../03-product-prd/RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Visual-PRD-Draft-v0.1.md)原文留存。
 - 有效现行流程以DEC-019 + [Step02 v0.4先Trial再商业KYB勘误](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-DEC019-Onboarding-Corrected-v0.4-Draft.md)为准；DEC-017 193项（146/22/20/TBD5）、Step04 146/146 Approved、DEC-028全量审计13项Open均未改变。
 - 无字段Schema、实际合同/价格/付款商、KYB法域、时间精度或真实Signer资金生产许可；四份Frozen、旧DEC/SCOPE保持原样，PR #6 Draft/Open/Unmerged、无UI/研发。
+
+
+## 13. 2026-10-25 DEC-030与Step05-01正式产品级收口（最新权威）
+
+- [DEC-030](../../decisions/DEC-030-step05-01-r04-07-product-rule-closure-approved.md)正式批准**Step05-01-R04～R07全部A**；既有DEC-029批准R01～R03，合计**七条产品行为Approved**：注册后336小时Trial、到期后720小时恢复（服务端UTC瞬间判断）、KYB原案补件与合法拒绝后的有权复核、原Tenant合法Asset/Instrument/Offering草稿须重新校验后才进入正式发行、商业真实付款与Tenant正式授权分开显示及受权恢复。
+- [Step05-01产品级PRD v0.3 Approved](../03-product-prd/RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Product-PRD-Approved-v0.3.md)、[Step05-01产品级状态异常规范 v0.2 Approved](../03-product-prd/RWA-SaaS-Step-05-01-Cross-Lane-Product-States-Exceptions-Approved-v0.2.md)是当前生效业务设计。**65条字段候选/技术enum/精确API、商业价格/税票/服务商、法域/钱包Signer与真实生产许可未批准**；原Draft文档保留历史。
+- [Step05-02 Asset/Instrument/Offering/Token→投资者门户可视化Draft v0.1](../03-product-prd/RWA-SaaS-Step-05-02-Issuer-Asset-Instrument-Offering-Token-Investor-Visibility-Visual-PRD-Draft-v0.1.md)启动，但R01～R04仍等待产品负责人审阅，不能推断任何具体UI/接口/法律生产方案已批准。
+- DEC-017正式193项（V1 146、V2 22、V3 20、TBD 5）、Step04 146/146 Approved、审计13项Open、四份Frozen和历史DEC/SCOPE原文继续不变；V1.0整体未Frozen、PR #6仍Draft/Open/Unmerged，不进入UI/开发/真实金融执行。

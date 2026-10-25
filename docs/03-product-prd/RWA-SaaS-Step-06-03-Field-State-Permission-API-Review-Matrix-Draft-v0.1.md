@@ -33,6 +33,10 @@
 
 **新来源**：[Step05-01现行Free/Standard PRD](RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md)、[四端状态异常v0.3](RWA-SaaS-Step-05-01-Free-Standard-Cross-Lane-States-Exceptions-Approved-v0.3.md)、[22模块能力矩阵Draft](RWA-SaaS-Step-06-Free-Standard-Capability-Entitlement-Matrix-Draft-v0.1.md)、[65行字段新映射Draft](RWA-SaaS-Step-06-06-B01-Free-Standard-Field-Migration-Review-Draft-v0.1.md)。本稿后续旧05-01表内Trial/336h/720h仅是旧Draft快照，不能用于工程现行实现。X-01～13未因此关项。
 
+## 后续分批深化（2026-10-26）：B01与B02专项现行入口
+
+[Step06-07 B01通用Free/Standard领域字段、Quota、权限与逻辑API Draft](RWA-SaaS-Step-06-07-B01-Free-Standard-Domain-Field-State-Permission-API-PRD-Draft-v0.1.md)及[Step06-08 B02 33项正式V1逐ID静态字段映射Draft](RWA-SaaS-Step-06-08-B02-33-V1-Functions-Field-State-Permission-API-Crosswalk-Draft-v0.1.md)已建立。此矩阵持续作为**五场景总索引**，不能混淆静态ID覆盖与字段审核/实现/测试。下一批B03～B05和全146 ID对照仍欠缺；DEC-037已废止Free的336h/720h商业时限，13个X门继续Open。
+
 ## 1. 已批准与未批准的层次
 
 | 层次 | 现行权威 | 状态 | 本轮可做与不可做 |

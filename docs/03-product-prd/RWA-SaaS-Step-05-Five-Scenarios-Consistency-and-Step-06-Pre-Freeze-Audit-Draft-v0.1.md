@@ -2,6 +2,12 @@
 
 > **2026-10-25｜审核文档Draft / Static Review Only / Step06 Not Frozen。** 本文对现有五场景**29项已明确批准的产品规则**进行跨模块与四端11步交叉核对，并整理尚需完成的字段级、法域、资金、Signer、技术接口与真正验收证据；它**不新增Approved决策、不批准字段技术方案、不关闭DEC-028 X-01～X-13、不冻结V1.0，不合并PR #6、不启动UI/研发或真实金融生产**。
 
+## 2026-10-26 较新产品工作方向：DEC-036（审计原结论/13门不变）
+
+[DEC-036 Step06-R04=A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)已明确本项目优先完成**全球可配置ToB技术SaaS的通用PRD**，Issuer自行对其具体发行资产负责法律合规，P SaaS对自身实际受监管活动/安全/数据职责保留独立审查；单个法域×Instrument不再是通用产品设计、字段/权限/API审核的前置条件。此前“先选法域，再填字段”的次序已由较新DEC改变；下文历史审计的11步差异、14组字段包和**X-01～X-13仍13/13 Open**全部保留，法律问题转为具体Issuer/平台RG真实生产启用门，不得理解为风险关闭或许可豁免。
+
+现行执行次序：[Step06技术SaaS优先执行计划Draft](../00-governance/RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)。Step04 146/146、Step05 29条产品规则仍Approved，193首次版本146/22/20/5及V1未Frozen不变。
+
 ## 一、一页产品负责人审核结论（只据文档）
 
 | 维度 | 本次静态核查结论 | 准确的状态说明 |

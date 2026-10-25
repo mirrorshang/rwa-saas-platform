@@ -158,3 +158,10 @@
 - [DEC-031](../../decisions/DEC-031-step05-02-r01-04-offering-visibility-publishing-disclosure-versioning-approved.md)明确批准Step05-02-R01～R04四项产品规则；[产品级PRD v0.2](../03-product-prd/RWA-SaaS-Step-05-02-Issuer-Offering-Investor-Visibility-Product-PRD-Approved-v0.2.md)及[跨端产品状态/异常规范v0.1](../03-product-prd/RWA-SaaS-Step-05-02-Cross-Lane-Product-States-Exceptions-Approved-v0.1.md)继承其批准范围。R01 Offering对特定受众可见不等于该时点可买；R02 Issuer发布必须逐项查适用P-01～P-07 Gate、内部审核后仍明确发布；R03 V详情先依法有效Instrument权益和风险条款，再真实Token技术；R04重大条款/文书/地址变更保留历史并按法域处理在途订单/通知/必要重签。
 - [Step05-02原可视化草案v0.1](../03-product-prd/RWA-SaaS-Step-05-02-Issuer-Asset-Instrument-Offering-Token-Investor-Visibility-Visual-PRD-Draft-v0.1.md)属于DEC-031之前的历史Draft，其“四项待审”只是过去时点，不覆盖后续正式批准。**字段Schema/技术enum/API、首发法域/投资者披露合法性、实际收款/Signer控制、文书法律效力、真实代码与测试仍Draft/Not Executed**。
 - Step05-01七项产品规则依DEC-029/030 Approved；Step05-02四项产品规则依DEC-031 Approved；Step05-03～05及Step06待单独审核。DEC-017 193项V1 146/V2 22/V3 20/TBD5、Step04 146/146与13项审计门Open不变。四份Frozen、历史DEC/SCOPE原文不改，PR #6 Draft/Open/Unmerged，V1整体未Frozen，无UI/开发或真实资金/Token生产。
+
+
+## 15. Step05-03投资者认购到合法持仓：仅Draft审阅入口（2026-10-25）
+
+- [Step05-03可视化PRD Draft v0.1](../03-product-prd/RWA-SaaS-Step-05-03-Investor-KYC-Subscription-Payment-Allocation-Register-Token-Visual-PRD-Draft-v0.1.md)包含M09/M10/M11/M12/M07/M08/X跨端业务流和E03-01～16异常示例，**R01～R06均未批准**。不能据此宣称已形成Step05-03正式产品级PRD或更新原Step04 Frozen原则。
+- 已获批准的Step05-01七条R及Step05-02四条R不受本Draft影响；受监管资金/Signer、法定Issuer或指定登记者模式、钱包技术方案、实际合同/法域和字段API仍待正式审查。
+- 不生成新的DEC、变更193版号或历史DEC/SCOPE/Frozen，不合并PR #6、不开始UI/开发/真实支付与Token生产；Step06 V1整体未Frozen。

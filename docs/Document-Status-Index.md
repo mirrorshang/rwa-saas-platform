@@ -1,6 +1,10 @@
 # RWA SaaS Platform｜现行文档状态和决策索引
 
-> **更新：2026-10-25｜DEC-017批准193项首次交付版号；DEC-018/019批准S04-01 16项及试用订阅，DEC-020批准S04-02 14项，DEC-021批准S04-03 19项，DEC-022批准S04-04 M09/M10/M12共24项及两条后续澄清，DEC-023批准S04-05 M11/M13共20项及R01/R02补充，DEC-024批准S04-06 M17～M21共31项，DEC-025批准S04-07 M08投资者门户11项，DEC-026批准S04-08 M03平台后台3项，DEC-027批准S04-09 M22外部服务8项；Step04九批146/146逐ID功能全部Approved、0待审；全量四端×11步静态一致性审计Draft待审核；整体V1.0未Frozen/未获真实生产授权。**
+> **现行最新状态（2026-10-26）：[DEC-035](../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)仅正式批准Step06-R01～R03三项工作方向（A/A/A）**：一个法域×一种Instrument合规验证锚点、M11-F012/F013第08步募集款释放/划拨专项、五场景业务对象→状态/权限→技术/法域审核→只提请用户审批关键分歧。新增[合规锚点Draft](03-product-prd/RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md)、[募集款专项Draft](03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md)、[字段/状态/权限/API矩阵Draft](03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md)。**尚未选J0法域或I0工具，不批准任何实际资金/Signer/技术Schema/API/权限码。X-01～13全部Open；Step04 146/146、Step05 29条Approved、193项版本146/22/20/5不变，V1未Frozen、PR #6 Draft/Open/Unmerged。**
+>
+> 下方2026-10-25叙述是阶段历史进度与原决定的索引，遇到“Step05-05未批准”等旧时点结论，以本段和末尾最新专节为准。
+
+> **历史阶段回顾（2026-10-25）｜DEC-017批准193项首次交付版号；DEC-018/019批准S04-01 16项及试用订阅，DEC-020批准S04-02 14项，DEC-021批准S04-03 19项，DEC-022批准S04-04 M09/M10/M12共24项及两条后续澄清，DEC-023批准S04-05 M11/M13共20项及R01/R02补充，DEC-024批准S04-06 M17～M21共31项，DEC-025批准S04-07 M08投资者门户11项，DEC-026批准S04-08 M03平台后台3项，DEC-027批准S04-09 M22外部服务8项；Step04九批146/146逐ID功能全部Approved、0待审；全量四端×11步静态一致性审计Draft待审核；整体V1.0未Frozen/未获真实生产授权。**
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
@@ -222,3 +226,12 @@ Step04**138/146 Approved，8项待审**（仅M22-F001～F008）。本次[DEC-026
 [DEC-034正式决策](../decisions/DEC-034-step05-05-r01-06-platform-global-controls-product-rules-approved.md)批准Step05-05六项产品规则。现行产品需求：[Step05-05 PRD v0.2 Approved](03-product-prd/RWA-SaaS-Step-05-05-Platform-Operations-Global-Controls-Product-PRD-Approved-v0.2.md)、[跨端产品状态异常 v0.1 Approved](03-product-prd/RWA-SaaS-Step-05-05-Cross-Lane-Product-States-Exceptions-Approved-v0.1.md)，仅业务行为Approved、具体技术字段与UAT未批准或Not Executed；历史可视化Draft旧状态仅为历史记录。
 
 [五场景总体一致性/11步与字段缺口冻结前审核Draft](03-product-prd/RWA-SaaS-Step-05-Five-Scenarios-Consistency-and-Step-06-Pre-Freeze-Audit-Draft-v0.1.md)、[DEC-028 X-01～X-13逐项对照Draft](00-governance/RWA-SaaS-Step-06-X01-X13-Audit-Gate-Crosswalk-Draft-v0.1.md)是**审计草案，不得自动冻结或关闭审计**。现五场景**29项R（7+4+6+6+6）**全部产品级Approved、Step04 146/146不变；13项审计风险仍Open（High9/Medium3/Low1），尤其法域/真实持款/钱包Signer、募集款实际释放、法律登记Token、API与UAT仍待专业证据与用户单独审核。四份Frozen、历史DEC/SCOPE和DEC-017 193项版号未修改，PR #6 Draft/Open/Unmerged，不进入UI、开发或真实金融/链上生产。
+
+
+## 二十一、2026-10-26 DEC-035：Step06三个工作方向Approved，专项内容仍Draft（最新）
+
+- **正式决策**：[DEC-035 Step06 R01～R03 A/A/A](../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)——仅批准工作方向、交付先后，不批准法域/Instrument实际选择、金融方案、Signer/技术API或V1冻结。
+- **R01 合规锚点**：[法域×Instrument合法性验证/证据矩阵Draft](03-product-prd/RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md)。只要求一个候选主适用法域×一个Instrument作为第一验证案例；**J0和I0未选，发行/资金/登记/投资者跨域连接点、法律Owner均未确定**。
+- **R02 募集款释放**：[M11-F012/F013第08步字段、跨端状态与14项异常专项Draft](03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md)。严格分开认购FinalMatched、Eligible、审批和受款真实到账，不代替M13收益或M01商业付款；X资金方与实际Signer待定。
+- **R03 分层审核**：[五场景对象/状态/权限/API审查矩阵Draft](03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md)。先领域和证据对应，再法律/技术/安全专项评审；用户只审批出现的关键产品分歧，**不会批量自动签收字段Schema/API**。
+- **全局不变**：Step04 146/146 Approved；Step05五场景**7+4+6+6+6＝29条产品规则Approved**；DEC-028 **X-01～X-13 13/13 Open（High9/Medium3/Low1）**；DEC-017 193项V1 146/V2 22/V3 20/TBD5，不改四份Frozen、历史DEC/SCOPE/版号；Step06整体和真实测试未完成、V1未Frozen、PR #6 Draft/Open/Unmerged，不进入UI/研发/生产。

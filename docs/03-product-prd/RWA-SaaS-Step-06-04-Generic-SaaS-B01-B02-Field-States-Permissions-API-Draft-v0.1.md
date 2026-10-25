@@ -8,6 +8,10 @@
 
 新B01字段/状态候选至少区分：FreeActive永久Entitlement、Standard商业订阅及其付款/开通、Free配额/安全限额、Sandbox/可选Testnet/Production的TruthClass、原Tenant草稿复用、ProductionEnablementGate与Issuer/平台RG职责、Standard欠费时既有真实义务的依法交接。**全部候选未获Schema/API/RBAC/迁移方案批准，B02其他用户已批产品行为保持有效。**
 
+## 后续专项字段草案接续（2026-10-26，保留本文件作为首批草稿）
+
+本文件早期B01/B02字段是概览，已经补充两份更细的专项Draft：[Step06-07 B01 Free/Standard产品级字段与配额/权限/状态/接口](RWA-SaaS-Step-06-07-B01-Free-Standard-Domain-Field-State-Permission-API-PRD-Draft-v0.1.md)、[Step06-08 B02 M04/M05/M06/M07 33个正式V1功能逐ID候选映射](RWA-SaaS-Step-06-08-B02-33-V1-Functions-Field-State-Permission-API-Crosswalk-Draft-v0.1.md)。**后两份为当前专项阅读入口**，具体字段/Status/权限码/API实现未签收；B02的33/33是静态覆盖而不是详细字段完成率。B01已正式实行永久免费Free/Standard，不要用本历史概览的Trial/336h/720h作为执行依据。
+
 ## 0. 当前权威和覆盖范围
 
 - **B01** 来源：[Step05-01 Approved PRD v0.3](RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Product-PRD-Approved-v0.3.md)、[既有65项字段候选Draft v0.2](RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Field-PRD-Draft-v0.2.md)、[跨端状态Approved v0.2](RWA-SaaS-Step-05-01-Cross-Lane-Product-States-Exceptions-Approved-v0.2.md)。本稿**引用而不复制/替代65字段主草案**，优先列出需要工程技术评审的缺口，保留Trial=336h、后续只读/受限窗口=720h（DEC-030 Approved），升级不新建Tenant。

@@ -8,6 +8,10 @@
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
+## 产品PRD总文档（主阅读入口，2026-10-26）
+
+**[RWA SaaS Master PRD开发交接总文档 Draft v0.1](03-product-prd/RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.1.md)**：以开发/设计/测试/运营的标准PRD结构，将已获明确批准的战略、11步业务、22模块/193功能版本（146/22/20/TBD5）、Step04/05业务规则、W/I导航局部决策、104候选页面组及146V1跨端映射直接归集到一份主文档；清楚区分**批准的业务原则**和**未完成的每个页面PRD/权限矩阵/API/设计/QA/法律真实生产Gate**。附录A=104页组逐页“待完成”、附录B=193功能官方版号、附录C=146V1功能静态页面对照。**总文档自身Draft，未整体签收/冻结；不改变已有Frozen/DEC/SCOPE权威**。用户已暂停进入V/P端审核及B01～B05逐页面设计，当前仅做文档整理。193/104计数、X01～13 Open、PR #6 Draft/Open/Unmerged保持不变。
+
 ## I端整体IA最后核验｜61页组结构条件通过（2026-10-26，Audit Only/Draft）
 
 **[Step06-6.1B 企业SaaS 9导航×61页面组结构审计Draft](03-product-prd/RWA-SaaS-Step-06-09B-Issuer-IA-61-Page-Consistency-Audit-Draft-v0.1.md)**：现行I端9一级导航+5组横向能力覆盖**61/61**候选页组且无重复ID；跨端146/146正式V1功能有页面候选关联，仍属**静态核验，不是逐页PRD批准**。审计登记**7项Open/Draft**，包括I-12个人设置入口归属、I-13独立门户在11步旅程的路径、横向页实际访问路径、门户页面编辑深度、Project多Asset关系、跨模块唯一真值与页面级交互/QA。结构可条件接受并继续V/P IA审核；需按DEC与PRD关门，不因本审计关闭X01～13或Frozen V1。未修改原Frozen/DEC/SCOPE、193项功能和版本、104候选页组；PR #6 Draft/Open/Unmerged。

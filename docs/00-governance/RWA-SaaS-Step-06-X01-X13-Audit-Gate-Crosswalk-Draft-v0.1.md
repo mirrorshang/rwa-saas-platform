@@ -18,7 +18,7 @@
 | **X-10** | Medium | Paid停服/退租时SaaS能力与已有金融义务交接不完整 | 05-01 R01/R07、05-04 R01、05-05 R01/R06；M01/M03/M13/M20 | 已批准Trial与已发行Paid分轨、真实持仓/收益不能删除且可依法查询。**实际数据导出期限/移交接收方/服务存续SLA/合同法域未定**。 | SaaS商业/法律/运营+Issuer交接责任人（建议） | Trial/Paid退出权限与仍存续义务分轨、数据保留/下载/客户移交协议、法定履约和投资者查询最小功能/测试 | Contract / Business-continuity gate | Open |
 | **X-11** | Medium | M18邮件服务与M22外部适配ID范围归属待定 | 05-05 R04/R06；M18-F004/F005、M22-F001～F008 | 已批准M18通知投递与法定送达区分、M22跨Provider凭证/健康。**邮件SDK/发送重试/运维责任是否落M18直接实现或复用M22尚未明确**，不得偷偷扩张M22正式ID。 | 通知工程Owner+架构/安全/法务（建议） | 邮件发送/重试/回执/健康职责RACI与接口清单，明确M18最低实现和M22共用基础设施边界及法定送达专项 | Interface-ownership gate | Open |
 | **X-12** | Low | 历史分批已Approved文档包含过去时点‘其他待审’字样 | 05-01～05-05现行批准文件/DEC-034及README/Authority最新索引 | 已建立最新状态导航与有效来源，新文件可覆盖历史时点表述。**历史Approved原文不得静默修改；开发交接仍应识别现行版本和证据差异**。 | 产品文档治理Owner/交付负责人（建议） | Current Authority与README文档优先级/历史清单、冻结前阅读路径人工签收与链接核验 | Documentation-reading gate | Open |
-| **X-13** | High | 146项已批但字段级、API、安全/法域及实际测试、跨端交付仍缺 | 05-01～05-05全部；DEC-017/027/028 | 五场景**产品行为级**31项R已明确审批（7+4+6+6+6）；05-01有65项候选字段，但技术schema仍Draft；其余场景字段/API、独立状态/用例仍未签收。 | 产品总控+研发架构/QA/安全/法律及Issuer交接方（建议） | 146 ID→五场景→11步→四端→字段字典→枚举/权限矩阵→API/错误码/异常→可执行E2E/Sandbox→法域生产门→正式冻结签收追踪，实测无证据不标PASS | Step06 product freeze / Execution acceptance blocker | Open |
+| **X-13** | High | 146项已批但字段级、API、安全/法域及实际测试、跨端交付仍缺 | 05-01～05-05全部；DEC-017/027/028 | 五场景**产品行为级**29项R已明确审批（7+4+6+6+6）；05-01有65项候选字段，但技术schema仍Draft；其余场景字段/API、独立状态/用例仍未签收。 | 产品总控+研发架构/QA/安全/法律及Issuer交接方（建议） | 146 ID→五场景→11步→四端→字段字典→枚举/权限矩阵→API/错误码/异常→可执行E2E/Sandbox→法域生产门→正式冻结签收追踪，实测无证据不标PASS | Step06 product freeze / Execution acceptance blocker | Open |
 
 **强制约束**：任何X项不得因为表格引用了产品Approved文件便自动标Resolved/Closed。**High 9项、Medium 3项、Low 1项，13/13仍Open。** 其中X-02是**条件性范围/法域门**，不是默认把V2四项加入V1；X-12可通过清晰有效入口缓解阅读误解，但本轮同样不关闭原X项。
 
@@ -44,4 +44,4 @@
 
 建议以后按**“法律/Instrument先定→资金/Signer/法律登记方案→领域字段与四端权限/API→实际安全及场景测试→十三门闭环签收→Step06最终V1冻结”**分门审查。当前只提交阅读和批准顺序的**建议草稿**，不自动批准X-01～X-13的关闭，不虚构具名责任人、服务商、代码/测试、律师结论或生产权限。
 
-当前事实：**Step04 146/146 V1 ID产品功能设计Approved；Step05五场景共31项R产品规则Approved（7+4+6+6+6）；Step06冻结前材料Draft；13项审计Open；DEC-017 193项版号不变，四份Frozen及历史DEC/SCOPE不改，PR #6 Draft/Open/Unmerged。**
+当前事实：**Step04 146/146 V1 ID产品功能设计Approved；Step05五场景共29项R产品规则Approved（7+4+6+6+6）；Step06冻结前材料Draft；13项审计Open；DEC-017 193项版号不变，四份Frozen及历史DEC/SCOPE不改，PR #6 Draft/Open/Unmerged。**

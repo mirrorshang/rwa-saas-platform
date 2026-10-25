@@ -6,6 +6,10 @@
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
 
+## 已批准官网页面方向最新补充：DEC-039（2026-10-26）
+
+[DEC-039 W-R08～R13全部A Approved](../../decisions/DEC-039-step06-website-w-r08-r13-help-contact-policy-login-sandbox-approved.md)：FAQ/新手教程/客服联系销售（简单表单＋人工跟进，无新CRM）；官网页脚服务条款/隐私/Cookie/免责声明入口（法律正文另审）；单Tenant直入I／多Tenant有权企业选择；投资者仅对应Issuer门户登录；I Free/V演示醒目标Sandbox测试。**仅以上六项局部页面方向Approved**，与已确认W-NAV-R01及[DEC-038](../../decisions/DEC-038-step06-website-w-r02-r07-navigation-content-entry-approved.md)共同形成当前官网已批准产品方案。全站IA、104候选页详细PRD、法律/隐私交互、咨询表单字段及后续I端审核题均Draft；193版号、Frozen/历史DEC/SCOPE和X01～13状态保持不变。V1未Frozen、PR #6 Draft/Open/Unmerged。
+
 ## 当前W官网已批局部产品方向（DEC-038，2026-10-26）
 
 - [DEC-038 W-R02～R07全部A Approved](../../decisions/DEC-038-step06-website-w-r02-r07-navigation-content-entry-approved.md)：首页、功能介绍、解决方案、双版本价格（未确定Standard价格时联系销售）、邮箱验证注册永久免费Free、从W进入I企业SaaS工作台并在I内完成商业KYB/订阅。先前W-NAV-R01=A顶部导航见[Step06-6.1页面地图Draft](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)。

@@ -6,6 +6,18 @@
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
 
+## 2026-10-26 权威变更摘要：DEC-036后续覆盖DEC-035 R01的执行优先级
+
+| 当前权威与读者应先读的资料 | 生效状态 | 本轮与既有文件的关系 |
+|---|---|---|
+| **[DEC-036：Step06-R04=A通用技术SaaS优先](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)** | **Approved：工作优先级和责任边界** | 后续调整[DEC-035](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md) R01：**选择法域×Instrument不再是通用V1字段PRD及产品冻结的前置**。旧DEC保留；R02募集款专项和R03分层评审继续 |
+| [Step06最新执行计划Draft](RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md) | **Draft计划，非Frozen** | 通用SaaS字段B01→B05、状态/权限/API、146ID×11步四端交叉审查、PG产品冻结与RG独立真实金融生产 |
+| [Step06-04 B01/B02第一批字段PRD](../03-product-prd/RWA-SaaS-Step-06-04-Generic-SaaS-B01-B02-Field-States-Permissions-API-Draft-v0.1.md) | **Draft内容，Not Executed** | Tenant/商业KYB与Issuer/Asset/Offering对象、状态/权限和逻辑API候选；不代替上游Approved PRD，不批准字段Schema |
+| [Step06-03统一矩阵Draft](../03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md)、[02资金专项Draft](../03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md) | **Draft** | 现行字段/跨端/资金工作底稿，已添加DEC-036 SaaS平台与Issuer/X分责说明 |
+| [Step06-01合规验证Draft](../03-product-prd/RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md)、[01A日本/ADGM/新候选Draft](../03-product-prd/RWA-SaaS-Step-06-01A-Jurisdiction-Instrument-Candidate-Comparison-Draft-v0.1.md) | **降为可选研究，不是产品前置或批准法域** | 保留原研究事实与历史建议，客户实际发行及平台自身受监管运营RG视情况独立调用；不得要求用户现在必须先选国家 |
+
+**责任解释**：Issuer自行负责各自发行的法律合规和受权外部机构；平台运营主体仍对**自身软件、数据、技术控制以及其实际参与的销售、接单、持款、Signer等受监管活动**负责。**客户声明不能自动消除平台可能受到的监管义务**。PG产品冻结可与特定客户发行资格解耦，但真实资金/Token销售RG未通过不得开放。**DEC-028 X01～X13均Open**，没有调整193ID首次版本归属或4份Frozen。PR #6持续Draft/Open/Unmerged。
+
 ## 1. 当前项目状态（一页速览）
 
 - **当前阶段**：**Step03版本归属已按DEC-017 R-01～R-06 全部A Approved**；现193个正式ID均有首次交付版本或TBD。**Step04逐ID功能设计已完成：DEC-018/019批准S04-01 16项、DEC-020批准S04-02 14项、DEC-021批准S04-03 19项、DEC-022批准S04-04 24项及两条跨模块适用澄清，DEC-023批准S04-05 M11/M13 20项及R01/R02合约收款/Claim方向，DEC-024批准S04-06共享工作台31项，DEC-025批准S04-07投资者门户11项，DEC-026批准S04-08平台运营M03三项，DEC-027批准S04-09 M22外部适配8项；Step04九批146/146项逐IDApproved、0待审，全量四端×11步审计仍Draft待审核**。Step05字段PRD及Step06整体V1冻结均未完成；未启动统一UI/研发或资金、Token、法定登记的真实生产操作。

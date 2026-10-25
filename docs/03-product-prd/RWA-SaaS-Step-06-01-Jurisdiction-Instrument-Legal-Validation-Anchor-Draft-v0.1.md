@@ -2,6 +2,10 @@
 
 > **2026-10-26｜Draft / Legal Research Planning Only / No Regulatory Conclusion**。依据[DEC-035 Step06-R01工作方法已Approved](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)：先选择**一个拟首发法域×一种Instrument**作法律/运营可落地性验证锚点，但**本文件不选择任何具体法域、资产或发行工具**，也不构成法律意见、金融牌照或生产执行批准。X-01～X-13仍全部Open，V1.0未Frozen。
 
+## 最新研究入口（2026-10-26，仅候选比较 Draft）
+
+现已补充[Step06-01A：日本／ADGM／新加坡 × 私募Token化债权候选比较、监管依据与产品影响 Draft v0.1](RWA-SaaS-Step-06-01A-Jurisdiction-Instrument-Candidate-Comparison-Draft-v0.1.md)。其中A=ADGM、B=新加坡、C=日本是**待用户选择的研究方案**，不构成首发法域、Instrument、合规权利或实际执行方案确认。用户尚未作出 Step06-01A-R01 决策，J0/I0仍TBD；X-01～X-13仍全部Open。
+
 ## 一、验证锚点的目标与边界
 
 - **目标**：用一个**可证据化的试点假设**反查全球标准化RWA SaaS的共同对象、可配置分叉和不得执行的法定Guard，使Step06有一个能验证的最小闭环，而不是将“适用全球”误当“全球合规”。

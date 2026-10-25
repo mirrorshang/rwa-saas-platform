@@ -2,6 +2,14 @@
 
 > **2026-10-26｜全篇专项字段／权限／接口／法域/真实资金方案Draft；所有测试Not Executed**。依据[DEC-035 R02专项方向Approved](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)；此前[DEC-023与S04-05](RWA-SaaS-Step-04-S04-05-Issuer-Funds-Lifecycle-Approved-v0.1.md)已批准**M11-F012募集资金受限／可释放余额**与**M11-F013受权划拨及真实到账核验**的产品功能。本稿**不重新批准这些功能、不新增正式ID、不决定合法资金方或Signer**，仅供Step06跨端和字段专项审核。
 
+## 2026-10-26 R04接续｜通用SaaS发行资金工具，不预先固定法域（Draft）
+
+依据[DEC-036](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)，本M11专项不以选择J0国家/I0债权样本为前置条件。发行方客户自行决定其具体募资合法性、受限条件及有权资金服务方；平台提供**可配置受限资金业务对象、Issuer授权申请/审批、X真实资金执行、外部最终性证据与异常调查**，而非默认替其募资或控制募集款。下一步按[Step06技术SaaS优先执行计划](../00-governance/RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)与[领域矩阵](RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md)优先完善通用字段和P/I/V/X权限。
+
+新增候选产品字段（**Draft非Schema**）：`IssuerMoneyPolicyRef`、`LegalFundHolderRef`、`ReleaseRestrictionRuleRef`、`IssuerApproverAuthorityRef`、`ExternalPayoutExecutorRef`、`ProofOfActualDebitCreditRef`、`ProductionExecutionGate`、`RegulatedActivityAssessmentRef`。Issuer配置/声明**不等于资金依法可以释放的证明**。缺合法实际出款人/Signer、原Intent/批准/规则/受限证据时，真实出款**禁止执行**；SaaS可独立完成工作流配置、模拟和受权查询。若平台实际控制持款、订单执行或Signer，须另审平台自身监管与安全生产门（RG）。
+
+保留上游DEC-023、Step05 Guard：FinalMatched≠Eligible≠Approved≠Settled；M11认购款与M13收益款及M01 SaaS商业账严格分离；Unknown只能查原Intent。原文法域/资金方专项Gate仍保留作为**特定Issuer真实启用/平台行为RG证据门**，不阻断通用字段PRD。
+
 ## 1. 为什么必须单独成章
 
 11步端到端业务的**第08步**发生在认购真钱核验、配售/名册等合法前置条件之后、发行后收益分配之前。这一步是**募集资金依合法条件释放、受权向合法接收方实际划拨和真实到账确认**；不得与以下三种事实混淆：

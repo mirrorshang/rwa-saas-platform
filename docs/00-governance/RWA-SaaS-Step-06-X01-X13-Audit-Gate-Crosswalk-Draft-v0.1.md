@@ -8,6 +8,12 @@
 
 本表所列X-01～X-13原内容和Open状态**一律保留**（High9/Medium3/Low1），不因此改成Resolved/Low/NotApplicable；X-02若某实际客户需强制集中募集，V2四项仍须单独决定，未经批准不能变更DEC-017。当前工作转为[Step06 SaaS优先计划](RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)和[第一批B01/B02字段Draft](../03-product-prd/RWA-SaaS-Step-06-04-Generic-SaaS-B01-B02-Field-States-Permissions-API-Draft-v0.1.md)；本表以下截至10-25的“先法律后字段”建议属于旧审计排序，不再作为现行强制前置。
 
+## DEC-037新商业版本引入的风险持续性说明（不关任何X门）
+
+按[DEC-037 Free永久Sandbox＋Standard商业付费](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)，原Step05-01 14天/336小时和720小时恢复时限**被正式覆盖**，不再是Free能力开关。**X-10**原商业欠费/退租与已发行真实金融义务保护持续Open，且新模型还须验收Standard失效→Free Sandbox但真实旧义务仍依法查询/履约/交接；**X-06/X-07/X-13**及其他X门须核对Sandbox/Testnet/Production不能旁路真实Signer、钱、名册、购买权限、字段/技术及E2E测试；X-08跨Tenant KYB仍Open。**这不是新X编号或严重度调整，13/13仍Open**。
+
+最新产品输入：[Step05-01现行产品PRD](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md)、[全模块能力矩阵Draft](../03-product-prd/RWA-SaaS-Step-06-Free-Standard-Capability-Entitlement-Matrix-Draft-v0.1.md)、[65行迁移审查Draft](../03-product-prd/RWA-SaaS-Step-06-06-B01-Free-Standard-Field-Migration-Review-Draft-v0.1.md)。客户发行合规及平台自身实际受监管活动RG不可因Free或Standard标记免除。
+
 ## 一、全量13门当前可读总览
 
 | 原审计ID | 原始风险级别 | 原有未决门 | 已有Step05产品规则/事实承接（非闭环） | 仍缺的证据或决策，为什么不能Close | 建议主责角色（未正式任命） | 最低下一步交付证据 | 门类别 | 状态 |

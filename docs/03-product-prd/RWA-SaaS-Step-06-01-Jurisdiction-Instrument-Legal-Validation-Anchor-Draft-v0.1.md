@@ -2,6 +2,12 @@
 
 > **2026-10-26｜Draft / Legal Research Planning Only / No Regulatory Conclusion**。依据[DEC-035 Step06-R01工作方法已Approved](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)：先选择**一个拟首发法域×一种Instrument**作法律/运营可落地性验证锚点，但**本文件不选择任何具体法域、资产或发行工具**，也不构成法律意见、金融牌照或生产执行批准。X-01～X-13仍全部Open，V1.0未Frozen。
 
+## 2026-10-26 DEC-036现行优先级（本研究已降为可选，不是产品设计前置）
+
+用户已批准[Step06-R04=A／DEC-036](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)：全球标准化技术SaaS优先，**无需先选J0法域×I0法律工具**才能推进V1通用字段/状态/权限/API、跨端一致性和产品冻结前评审。具体资产合法发行由Issuer及有权专业主体负责；**平台自身实际受监管行为**与Issuer实际Token销售/资金/签名仍设独立真实生产审查门。
+
+本文J0×I0验证框架**保留作为特定客户发行启用和平台真实运营审查时的可选证据工具**；所有候选仍Draft、J0/I0未选，旧文中任何“必须先决定J0/I0再设计字段”的工作建议已被DEC-036的较新决定接续。**不自动关闭任何X审计门、不推断全球均免牌照。** 当前必读：[Step06技术SaaS优先执行计划](../00-governance/RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)。
+
 ## 最新研究入口（2026-10-26，仅候选比较 Draft）
 
 现已补充[Step06-01A：日本／ADGM／新加坡 × 私募Token化债权候选比较、监管依据与产品影响 Draft v0.1](RWA-SaaS-Step-06-01A-Jurisdiction-Instrument-Candidate-Comparison-Draft-v0.1.md)。其中A=ADGM、B=新加坡、C=日本是**待用户选择的研究方案**，不构成首发法域、Instrument、合规权利或实际执行方案确认。用户尚未作出 Step06-01A-R01 决策，J0/I0仍TBD；X-01～X-13仍全部Open。

@@ -1,10 +1,21 @@
 # RWA SaaS｜当前有效文档权威目录与历史状态勘误 v0.1
 
-> **2026-10-26最新生效导航（仅方法批准）**：[DEC-035](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)批准Step06 R01/R02/R03=A，新增[法域×Instrument证据锚点Draft](../03-product-prd/RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md)、[M11第08步募集款释放专项Draft](../03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md)、[对象/状态/权限/API矩阵Draft](../03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md)。以上不是法域/资金/Signer/Schema/API Approved；**J0与I0未选、13个X门全部Open、V1未Frozen**。下文截至2026-10-25的“某场景待审”均须按后续正式DEC读取，不能覆盖已批准的Step05 29条产品规则。
+> **现行最高阅读顺序（2026-10-26）**：DEC-036批准SaaS产品/发行法律分责，DEC-037批准永久Free+付费Standard；最新Step06-6.1四端页面地图及146功能静态页面覆盖仍Draft，B01～B05逐页面详细PRD待完成。**下面DEC-035段落属于较早工作方法快照，已被较新的产品审阅次序接续**。X-01～X-13全Open，V1未Frozen，PR #6 Draft/Open/Unmerged。
 >
 > **Current Navigation / Document Governance（2026-10-25）**。该索引记录当前权威与有效产品决策关系；**DEC-017已批准193项的首次目标交付版号（146/22/20/TBD5），但整体V1.0产品需求尚未Frozen，产品与技术生产授权仍未完成**。本索引依据此前Step03.5非破坏性文档治理建立，原Frozen及历史DEC/SCOPE不改写。
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
+
+## 2026-10-26最新产品工作方法/阅读入口：优先页面级PRD，W官网纳入候选产品端
+
+| 当前先读 | 状态与批准范围 |
+|---|---|
+| [Step06-6.1 W/I/V/P全局信息架构与104个候选页面组Draft](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md) | **Draft**：新增官网作为第四实际产品端的页面规划，产品经理关注中文表单/展示/交互和页面间旅程；当前页面数量/导航未冻结 |
+| [Step06-6.1A 146项正式V1功能→页面交叉核验Draft](../03-product-prd/RWA-SaaS-Step-06-09A-V1-146-Function-to-Page-Coverage-Audit-Draft-v0.1.md) | **Draft静态审计**：146/146至少有页面关联；7个营销/帮助/法律W页面没有已批准金融/业务ID，若需新增系统能力须另审版本 |
+| [Step05-01现行永久Free/Standard PRD](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md) | **DEC-037业务规则Approved**，W/I上的具体页面设计仍Draft |
+| [Step06字段/状态/逻辑API辅助底稿](../03-product-prd/RWA-SaaS-Step-06-07-B01-Free-Standard-Domain-Field-State-Permission-API-PRD-Draft-v0.1.md) | **仅参考**，不等于真实逐页页面结构/用户交互/字段中文显示和产品验收已通过 |
+
+**方法上的最新产品约定**：依产品负责人的明确指示，Step06首先审全端页面地图，随后B01→B05逐页面完成标准PRD与单批产品审核，最终146ID×11步×四端一致性和V1产品冻结另批审批。系统字段`xxxRef`、Schema与API留技术团队后期完成，产品设计以**信息结构/表单/按钮/交互/状态/异常/角色/验收**为主。此优先级调整不回写历史DEC和Frozen、未形成新的正式DEC、未修改193正式功能归属；X13项均Open，PR #6 Draft/Open/Unmerged。
 
 ## Step06最新字段专项导航（2026-10-26；仅静态映射，不是字段批准）
 

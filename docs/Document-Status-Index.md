@@ -8,6 +8,10 @@
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
+## I端整体IA最后核验｜61页组结构条件通过（2026-10-26，Audit Only/Draft）
+
+**[Step06-6.1B 企业SaaS 9导航×61页面组结构审计Draft](03-product-prd/RWA-SaaS-Step-06-09B-Issuer-IA-61-Page-Consistency-Audit-Draft-v0.1.md)**：现行I端9一级导航+5组横向能力覆盖**61/61**候选页组且无重复ID；跨端146/146正式V1功能有页面候选关联，仍属**静态核验，不是逐页PRD批准**。审计登记**7项Open/Draft**，包括I-12个人设置入口归属、I-13独立门户在11步旅程的路径、横向页实际访问路径、门户页面编辑深度、Project多Asset关系、跨模块唯一真值与页面级交互/QA。结构可条件接受并继续V/P IA审核；需按DEC与PRD关门，不因本审计关闭X01～13或Frozen V1。未修改原Frozen/DEC/SCOPE、193项功能和版本、104候选页组；PR #6 Draft/Open/Unmerged。
+
 ## I企业SaaS工作台I-R19已批｜DEC-043独立投资者门户（2026-10-26）
 
 **[DEC-043 I-R19方案A Approved](../decisions/DEC-043-step06-issuer-i-r19-standalone-investor-portal-navigation-approved.md)**：新增**「投资者门户」作为企业SaaS独立第9个一级导航**，将已有I-13候选页面组从企业设置迁入新模块；**仍由M01-F009已批V1标准门户实例/名称Logo/法律链接/合法Offering展示策略/预览发布承担基础范围**。现I一级为：工作台首页｜资产与发行｜投资者门户｜投资者与认购｜资金与结算｜Token管理｜收益与分配｜数据与报表｜企业设置。

@@ -6,6 +6,10 @@
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
 
+## Master PRD主交付阅读入口（2026-10-26，Draft；不是新批准或Frozen）
+
+**[RWA SaaS Master PRD开发移交主文档](../03-product-prd/RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.1.md)**汇集现有明确批准业务方向、正式193功能ID和首交付版号（146/22/20/TBD5）、四端104候选页组、146V1静态页面关联、11步旅程、状态权限/运营/NFR/QA交付标准及所有仍待完成的页面PRD内容。**此总文档仅为索引与现行产品证据汇总，不能通过重述提升Draft为Approved，也不能替代源DEC、四份Frozen、正式功能主表或法律/实际生产审批。** 全部详细页PRD、V/P IA复核、合规技术与QA证据仍待完成。用户要求本轮暂停下一阶段，只整理此工作文档；X-01～X-13 Open、V1未Frozen、PR #6 Draft/Open/Unmerged不变。
+
 ## DEC-043｜I-R19独立投资者门户一级导航正式批准（2026-10-26）
 
 **[DEC-043 I-R19=A](../../decisions/DEC-043-step06-issuer-i-r19-standalone-investor-portal-navigation-approved.md)**是对DEC-040最初8一级菜单与DEC-042“I-R19提案仍Draft”之**后续局部批准**：I端现在**9个独立一级导航**，新设「投资者门户」，将原I-13从企业设置迁入该独立模块，不增加逻辑页组或正式功能ID。标准门户基础实例、品牌名称Logo、法律链接、受权Offering展示策略、预览/发布仍属于已批准V1 **M01-F009**，不能把高级白标/独立域名或任意页面编辑器推定为已批V1。标准模板的首页板块/Banner/导航编辑、配置发布流程和权限仍Draft、逐页PRD/正式范围审核。**M15-F004高级白标域名维持V2、M08-F010高级个性化营销维持TBD**。

@@ -228,6 +228,10 @@ Step04**138/146 Approved，8项待审**（仅M22-F001～F008）。本次[DEC-026
 [五场景总体一致性/11步与字段缺口冻结前审核Draft](03-product-prd/RWA-SaaS-Step-05-Five-Scenarios-Consistency-and-Step-06-Pre-Freeze-Audit-Draft-v0.1.md)、[DEC-028 X-01～X-13逐项对照Draft](00-governance/RWA-SaaS-Step-06-X01-X13-Audit-Gate-Crosswalk-Draft-v0.1.md)是**审计草案，不得自动冻结或关闭审计**。现五场景**29项R（7+4+6+6+6）**全部产品级Approved、Step04 146/146不变；13项审计风险仍Open（High9/Medium3/Low1），尤其法域/真实持款/钱包Signer、募集款实际释放、法律登记Token、API与UAT仍待专业证据与用户单独审核。四份Frozen、历史DEC/SCOPE和DEC-017 193项版号未修改，PR #6 Draft/Open/Unmerged，不进入UI、开发或真实金融/链上生产。
 
 
+## Step06-01A研究进展（2026-10-26，候选Draft，非DEC）
+
+- [日本／ADGM／新加坡×私募Token化债权研究锚点比较Draft](03-product-prd/RWA-SaaS-Step-06-01A-Jurisdiction-Instrument-Candidate-Comparison-Draft-v0.1.md)：基于日本FSA、ADGM FSRA、新加坡MAS及SFA官方资料形成C1/C2/C3条件性比较；推荐先研究ADGM仅为工作建议，**用户尚未批准具体J0/I0研究锚点**。法律意见、许可、Issuer/X持款/Signer与V1持续认购仍未决；X-01～13 Open，193版号不变。
+
 ## 二十一、2026-10-26 DEC-035：Step06三个工作方向Approved，专项内容仍Draft（最新）
 
 - **正式决策**：[DEC-035 Step06 R01～R03 A/A/A](../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)——仅批准工作方向、交付先后，不批准法域/Instrument实际选择、金融方案、Signer/技术API或V1冻结。

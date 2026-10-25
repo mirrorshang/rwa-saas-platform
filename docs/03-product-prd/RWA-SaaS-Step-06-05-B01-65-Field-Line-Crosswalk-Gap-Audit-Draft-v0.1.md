@@ -2,6 +2,10 @@
 
 > **2026-10-26｜字段审计Draft，Not Approved / Not Executed。** 依据[DEC-036 R04 SaaS技术产品优先](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)；对原[Step05-01共65行候选字段草案](RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Field-PRD-Draft-v0.2.md)进行**完整逐行静态映射**。产品级规则依[Step05-01 Approved v0.3](RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Product-PRD-Approved-v0.3.md)与[跨端状态 Approved v0.2](RWA-SaaS-Step-05-01-Cross-Lane-Product-States-Exceptions-Approved-v0.2.md)、DEC-029/030。**该清单不是65行字段正式签收、不是Schema/权限码/API批准。**
 
+## DEC-037晚于本稿：时间差异结论已由新决策接续（2026-10-26）
+
+本稿曾对**旧Trial商业版本**的65行候选字段核对，以当时DEC-030批准的336h Trial＋720h恢复为核验依据。随后产品负责人已明确批准[DEC-037 Free/Standard永久Free新模式](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)。因此**本稿有关336h/720h“应继续实现”的结论现已失效**，不能被研发误认为新Free当期需求。65行原字段/正式ID对照仍可参考，但应以**[Step06-06逐行Free/Standard迁移映射Draft](RWA-SaaS-Step-06-06-B01-Free-Standard-Field-Migration-Review-Draft-v0.1.md)**及[现行Step05-01产品PRD](RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md)为后续权威；**没有真的修改原字段Schema或迁移任何数据库**。X-01～13仍Open、V1未Frozen。
+
 ## 一、核验统计（程序解析原字段表物理行，不表示独立数据列数）
 
 - 原草案**8组、65行**已全部读取，分别**账户5／商业客户6／Tenant11／模拟草稿6／商业KYB10／合同8／商业支付11／门户审计8**，总计65。

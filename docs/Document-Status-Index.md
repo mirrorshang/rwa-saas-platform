@@ -8,6 +8,12 @@
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
+## I企业SaaS工作台I-R19已批｜DEC-043独立投资者门户（2026-10-26）
+
+**[DEC-043 I-R19方案A Approved](../decisions/DEC-043-step06-issuer-i-r19-standalone-investor-portal-navigation-approved.md)**：新增**「投资者门户」作为企业SaaS独立第9个一级导航**，将已有I-13候选页面组从企业设置迁入新模块；**仍由M01-F009已批V1标准门户实例/名称Logo/法律链接/合法Offering展示策略/预览发布承担基础范围**。现I一级为：工作台首页｜资产与发行｜投资者门户｜投资者与认购｜资金与结算｜Token管理｜收益与分配｜数据与报表｜企业设置。
+
+[四端IA页面清单](03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)与[146功能映射草案](03-product-prd/RWA-SaaS-Step-06-09A-V1-146-Function-to-Page-Coverage-Audit-Draft-v0.1.md)已同步**I-13一级归属及M01-F009映射仍旧不变**。用户尚未批准具体标准模板首页板块、Banner、导航/文案/排序等编辑方式或其V1新功能范围，继续Draft；M15-F004高级白标域名V2、M08-F010推荐营销TBD。**I61、W14/V15/P14合计104候选组不变；193正式ID146/22/20/TBD5不变**；旧DEC-042关于I-R19“待审”系当时记录，现由DEC-043接续。Frozen/历史DEC/SCOPE、X01～13 Open、V1未Frozen、PR #6 Draft/Open/Unmerged不变。
+
 ## I企业SaaS工作台第6批局部已批：DEC-042（2026-10-26）
 
 **[DEC-042 I-R13～I-R18全部A](../decisions/DEC-042-step06-issuer-i-r13-r18-business-operations-secondary-navigation-approved.md)**：投资者与认购（投资者/资格/订单/配售/法定登记）、资金与结算（收款对账/退款异常/募集款结算）、Token（合约/操作/链上对账）、收益存续（存续/分配/到期退出）、全局待办/异常/消息及报表审计等**二级菜单和跨项目聚合模式**正式Approved。见[Step06-6.1四端页面地图](03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)。

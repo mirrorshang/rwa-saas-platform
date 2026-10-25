@@ -2,6 +2,10 @@
 
 > **2026-10-26｜执行优先顺序依据[DEC-036 Step06-R04 A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md) Approved；本文具体排期、文档与字段/状态/API工作包仍Draft。** 对DEC-035 R01作后续优先级调整：**无需先选择首发法域×Instrument，即可继续通用SaaS产品需求的设计与评审。** Issuer具体发行法律合规由该Issuer/有权专业机构负责；平台自身受监管活动与真实金融功能RG生产门独立审查。**不可推定软件上线或真实销售无需合法审查。**
 
+## Step06-6.1B I端61页组全量结构审计（2026-10-26，Draft）
+
+已建立**[I端9导航×61页组结构一致性最终核验（Audit Only）](../03-product-prd/RWA-SaaS-Step-06-09B-Issuer-IA-61-Page-Consistency-Audit-Draft-v0.1.md)**。**61/61候选I页组可唯一归类、146/146官方V1 ID跨端均有合法候选页面引用、无重复页面ID；结论只为结构层面Conditional PASS**。保留7项审计记录Open：I-12个人安全顶栏入口和现行归类不一致、I-13门户发布配置未补入11步跨端旅程、5个横向页面访问方式、I-13配置能力/版本界限、Project多Asset关系、跨模块只读/真值责任，以及全部详细页面PRD和QA缺失。**后续先校正文档表述，V/P端IA继续审核，并将其余项纳入B01～B05；不能将审计报告写为正式DEC或无条件冻结。** 193版号、X风险、PR #6状态均不改变。
+
 ## Step06-6.1 最新批准｜DEC-043独立「投资者门户」一级导航（2026-10-26）
 
 **[DEC-043 I-R19=A](../../decisions/DEC-043-step06-issuer-i-r19-standalone-investor-portal-navigation-approved.md)**正式将投资者门户配置从企业设置中独立为**I端第9个一级导航**；复用I-13候选逻辑页面组和M01-F009既有V1标准门户基础能力，**无需新增I-67/194正式功能ID**。已经同步[四端IA页面清单](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)及[146项静态功能映射](../03-product-prd/RWA-SaaS-Step-06-09A-V1-146-Function-to-Page-Coverage-Audit-Draft-v0.1.md)。本节优先于下方DEC-042阶段描述“待审核I-R19”，但**页面展示配置细节尚未批准**：首页板块、Banner、导航/文案/排序、保存预览发布规则等要在I-13页面PRD审，超出M01-F009既有V1需单独版本决定。M15-F004高级白标域名V2、M08-F010推荐营销TBD继续保留。

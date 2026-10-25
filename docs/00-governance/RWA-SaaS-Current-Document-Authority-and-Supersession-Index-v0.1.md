@@ -127,3 +127,11 @@
 - [全量146功能×四端P/I/V/X×11步静态一致性审计Draft](../03-product-prd/RWA-SaaS-Step-04-146-Functions-Four-Lanes-11-Steps-Cross-Audit-Draft-v0.1.md)为**另立审核对象**，虽已执行逐ID/步骤/参与端核查并形成13项待跟踪门，但**尚未经用户批准**，不可将审计结论、字段PRD或整体V1.0范围标为Frozen。
 - 本页先前章节“DEC-023时93/146、DEC-025时135/146、DEC-026时138/146”均为历史审批快照，**最新当前状态以本节、146项台账和文档状态索引为准**。
 - 四份Frozen、旧DEC/SCOPE正文不更改；PR #6 Draft/Open/Unmerged。实际法域/外部资金控制、Token Signer、合约/KYC服务供应商、真实生产操作、UI与研发均未获授权。
+
+
+## 11. 当前权威：DEC-028及Step05场景式审核（2026-10-25）
+
+- [DEC-028](../../decisions/DEC-028-step04-cross-audit-conditional-acceptance-and-step05-visual-review.md)仅对**146/146功能与P/I/V/X四端11步的静态产品功能覆盖有条件认可**；[全量审计Draft](../03-product-prd/RWA-SaaS-Step-04-146-Functions-Four-Lanes-11-Steps-Cross-Audit-Draft-v0.1.md)的13项风险/实施门继续Open，不代表审计全文已Approved，且V1范围仍未Frozen。
+- 企业入驻时序以[DEC-019](../../decisions/DEC-019-step04-s0401-trial-kyb-subscription-supplement-approved.md)及[S04-01 v0.2](../03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Trial-Subscription-Approved-v0.2.md)为正式权威；[Step02 v0.4四端新图](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-DEC019-Onboarding-Corrected-v0.4-Draft.md)替代历史v0.3中“先KYB/付款，再创建Tenant”的过期时序，历史稿保留。正确流程邮箱验证即开14天受限Trial，商业KYB通过、Standard合同与实际商业付款后在原Tenant转Paid，受限Trial有30天恢复窗口，金融生产另行合法Gate。
+- [Step05-01企业商业开通可视化PRD Draft](../03-product-prd/RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Visual-PRD-Draft-v0.1.md)已供用户审核，采用业务图、四端交接、对象状态、异常和字段待补清单；**尚未Approved且不授权UI/研发**。
+- DEC-017 193项版号、四份Frozen、旧DEC/SCOPE正文均不改；PR #6 Draft/Open/Unmerged。

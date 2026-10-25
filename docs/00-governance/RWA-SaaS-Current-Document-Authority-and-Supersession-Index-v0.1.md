@@ -135,3 +135,11 @@
 - 企业入驻时序以[DEC-019](../../decisions/DEC-019-step04-s0401-trial-kyb-subscription-supplement-approved.md)及[S04-01 v0.2](../03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Trial-Subscription-Approved-v0.2.md)为正式权威；[Step02 v0.4四端新图](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-DEC019-Onboarding-Corrected-v0.4-Draft.md)替代历史v0.3中“先KYB/付款，再创建Tenant”的过期时序，历史稿保留。正确流程邮箱验证即开14天受限Trial，商业KYB通过、Standard合同与实际商业付款后在原Tenant转Paid，受限Trial有30天恢复窗口，金融生产另行合法Gate。
 - [Step05-01企业商业开通可视化PRD Draft](../03-product-prd/RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Visual-PRD-Draft-v0.1.md)已供用户审核，采用业务图、四端交接、对象状态、异常和字段待补清单；**尚未Approved且不授权UI/研发**。
 - DEC-017 193项版号、四份Frozen、旧DEC/SCOPE正文均不改；PR #6 Draft/Open/Unmerged。
+
+
+## 12. 当前产品状态：DEC-029只批准Step05-01 R01～R03（2026-10-25）
+
+- [DEC-029](../../decisions/DEC-029-step05-01-r01-03-trial-data-kyb-payment-recovery-approved.md)有明确用户逐项A审批记录，范围仅覆盖**原Tenant合法草稿留存与模拟事实隔离（R01）／KYB未通过但依法受限保留及补件复核（R02）／商业款已实付而升Paid失败时原Tenant受权恢复且不重复扣款（R03）**。
+- [Step05-01详细字段PRD v0.2 Draft](../03-product-prd/RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Field-PRD-Draft-v0.2.md)含8类实体、65个待审字段候选；[四端状态/异常规范 Draft](../03-product-prd/RWA-SaaS-Step-05-01-Cross-Lane-States-Exceptions-Draft-v0.1.md)含10类状态、10条迁移建议和15个异常场景，均不因DEC-029而整体Approved。早期[Step05-01可视化v0.1 Draft](../03-product-prd/RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Visual-PRD-Draft-v0.1.md)原文留存。
+- 有效现行流程以DEC-019 + [Step02 v0.4先Trial再商业KYB勘误](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-DEC019-Onboarding-Corrected-v0.4-Draft.md)为准；DEC-017 193项（146/22/20/TBD5）、Step04 146/146 Approved、DEC-028全量审计13项Open均未改变。
+- 无字段Schema、实际合同/价格/付款商、KYB法域、时间精度或真实Signer资金生产许可；四份Frozen、旧DEC/SCOPE保持原样，PR #6 Draft/Open/Unmerged、无UI/研发。

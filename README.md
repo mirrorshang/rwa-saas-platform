@@ -1,10 +1,23 @@
 # RWA SaaS Platform｜产品规划与项目交接总览
 
-> **更新日期：2026-10-25** · **项目阶段：Step04 146/146逐ID Approved；Step05-01～05-05五场景共29条产品规则已Approved（DEC-029～034）；13项跨端审计风险仍Open、Step06冻结前交叉审核为Draft；字段/API/法域/资金/Signer仍待决，V1整体未Frozen** · **文档用途：开发、运营、产品及管理团队统一了解项目现状**
+> **更新日期：2026-10-26** · **项目阶段：Step04 146/146逐ID Approved；Step05-01～05-05五场景29条产品规则Approved；DEC-035仅批准Step06 R01～R03工作方向并新建3份专项Draft；13项风险Open、法域/字段/API/资金/Signer仍未批准，V1整体未Frozen** · **文档用途：开发、运营、产品及管理团队统一了解项目现状**
 >
 > **先看结论：** 我们已完成战略/总体原则、22模块、11步核心流程与**193个正式功能ID的首次交付版号审核（DEC-017）**：**V1.0 146项、V2.0 22项、V3.0 20项、待规划TBD 5项**。**Step04九批146/146项唯一V1.0功能产品设计Approved，静态11步覆盖有条件认可；Step05-01～05-05五场景共29项R产品级Approved（7+4+6+6+6，DEC-029～034）。Step06冻结前五场景总体审计与X-01～X-13风险对照仅Draft、全部13项Open；字段/schema/API、商业价格、具体法域、真实资金/Signer及全部实际测试仍Draft/Not Executed。Step05产品业务规则完成不等于开发交接包Ready或V1 Frozen**；字段级PRD、V1.0整体Frozen、UI/研发及生产运营均未完成。S04-04还获准**Issuer依法自管登记优先、必须时外部登记合作**及**法律文书和Token地址后置依法绑定**的产品原则；实际首发法域法律效力仍须另审。
 >
 > 本README是可独立阅读的**项目交接摘要**。文中的“批准/完成”主要指**产品规划与文档审查**，**不表示软件已开发、服务已部署、金融活动已获许可或合约已经在链上执行**。核心资料链接放在文末，日常了解项目无需先跳转。
+
+## 2026-10-26 最新工作决定与交接重点（DEC-035）
+
+**产品负责人已明确批准Step06下一轮三项工作方向R01=A、R02=A、R03=A；这是工作方法Approved，而不是法域、真实资金或字段API方案Approved。**
+
+| 当前新增成果 | 对业务与交接意味着什么 | 下一轮还缺什么 |
+|---|---|---|
+| [DEC-035 Step06工作方向正式决策](decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md) | 已批准以“单个法域×单个Instrument”合规验证锚点、M11募集款释放独立PRD、分层字段/权限/API审核推进 | 三个方向的具体法律与技术选择仍待审核 |
+| [Step06-01 法域×Instrument合规验证锚点 Draft](docs/03-product-prd/RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md) | 系统列出J0首发主适用法域、I0法律Instrument、关联法域、Issuer/资金/登记/Token/收益与法律证据门；**目前J0和I0均未选择** | 由产品负责人选调研锚点，再取得有权主体法律证据；如依法必须集中募集须单独复核V2四项 |
+| [Step06-02 M11-F012/F013募集款释放和划拨专项Draft](docs/03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md) | 11步中的**第08步**独立形成资金来源、受限余额/Eligible、审批、真实TransferIntent、部分/Unknown、四端权限、14项异常 | 真正资金持款方、释放合同/法域、Signer、付款/到账与完整实测仍Draft |
+| [Step06-03 五场景字段/状态/权限/API矩阵 Draft](docs/03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md) | 不再要求产品负责人逐行审核上百字段：先按对象、唯一真值、状态、P/I/V/X与逻辑接口对账，之后专家审核，最后只审批重大差异 | Schema、API路径、权限码、真实服务商和测试仍未批准 |
+
+**给开发、运营的当前结论**：已具备146项功能与29条跨端产品规则的文字权威，但**没有可直接开发或运营真实金融业务的完整冻结包**。募资款的“真实收款→受限→可释放→独立审批→实际划拨→真实到账”必须独立于SaaS商业收费、配售/Token以及收益Claim；P SaaS运营不得默认成为发行资金/Signer控制者。Step06新三份文件全部是Draft；X-01～X-13仍为**9 High＋3 Medium＋1 Low、13/13 Open**；193正式ID版本**146/22/20/5**不变；四份Frozen及历史DEC/SCOPE保持，PR #6 **Draft/Open/Unmerged**，不开始UI/研发/真实资金/链上生产。
 
 ## 1. 一分钟了解当前项目
 
@@ -421,6 +434,6 @@ R04计时按336小时受限Trial＋到期后720小时受限恢复，UTC实际时
 | Step05五场景与11步主链 | [五场景总体一致性暨Step06冻结前审核 Draft v0.1](docs/03-product-prd/RWA-SaaS-Step-05-Five-Scenarios-Consistency-and-Step-06-Pre-Freeze-Audit-Draft-v0.1.md) | **Draft，不是整体Step05字段完成/Step06冻结批准**；含11步、四端、14组字段技术缺口 |
 | DEC-028十三门 | [X-01～X-13逐项证据/Owner建议/决策门 Draft v0.1](docs/00-governance/RWA-SaaS-Step-06-X01-X13-Audit-Gate-Crosswalk-Draft-v0.1.md) | **High9/Medium3/Low1，13/13继续Open**；没有获准关闭任何风险 |
 
-**开发/运营必须知道的缺口**：Step05-01的65项字段候选具体Schema/API仍Draft，Step05-02～05未提交全套字段/权限/接口契约；**11步第08步“M11募集款可释放余额、合法划拨/实际到账”虽在Step04覆盖，仍需字段级专项收口**。具体法域/Instrument、强制集中募集时M05/M10/M12四项V2版号条件复审、合法登记/实际资金持管/钱包Signer、Claim/Push、法律通知、真实测试均不可省略。
+**开发/运营必须知道的缺口**：Step05-01的65项字段候选具体Schema/API仍Draft，Step05-02～05未提交全套字段/权限/接口契约；**11步第08步“M11募集款可释放余额、合法划拨/实际到账”虽在Step04覆盖，已有Step06-02专项Draft，仍需专业证据与字段级签收**。具体法域/Instrument、强制集中募集时M05/M10/M12四项V2版号条件复审、合法登记/实际资金持管/钱包Signer、Claim/Push、法律通知、真实测试均不可省略。
 
 **最新状态覆盖历史材料**：原Step05-05可视化v0.1中的“六项未批准”仅为历史时点。本批仅新建DEC-034及其现行PRD/状态规格和Step06冻结前Draft，不修改四份Frozen、过去DEC/SCOPE及DEC-017原193功能版号（V1 146、V2 22、V3 20、TBD 5），Step04 146/146和DEC-028有条件认可不变，PR #6保持Draft/Open/Unmerged。**不进入UI、研发或任何真实金融/Token生产。**

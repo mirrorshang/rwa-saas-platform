@@ -2,6 +2,12 @@
 
 > **2026-10-26｜产品字段/状态/权限/逻辑API均Draft，Not Approved、Not Executed。** 依据[DEC-036 Step06-R04=A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)与[技术SaaS优先执行计划](../00-governance/RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)。本文件是**已经开始的通用产品字段级工作底稿**，不是将Step05原65字段或05-02上游业务规则重新批准。客户Issuer自行负责具体发行法律合规；平台实际受监管服务、真实资金与Signer需独立RG启用门，所有X-01～13保持Open。
 
+## 新近优先级补丁（2026-10-26）：B01现行模式改为永久Free/Standard
+
+**[DEC-037](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)在本Draft形成后正式生效**。本稿以下B01小节的TrialActive/336h/720h、TrialExpiresAt、试用只读恢复、Trial→Paid等均是**旧业务输入，现行规则已经被正式覆盖**；任何当期字段审查不得再把336/720h写为Approved业务要求。本稿保留B02 Issuer/Offering候选内容和当时上下文，**B01现行唯一阅读入口**应优先采用[Step05-01 Free/Standard产品PRD v0.4](RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md)、[四端状态v0.3](RWA-SaaS-Step-05-01-Free-Standard-Cross-Lane-States-Exceptions-Approved-v0.3.md)、[65行旧字段迁移Draft](RWA-SaaS-Step-06-06-B01-Free-Standard-Field-Migration-Review-Draft-v0.1.md)与[能力矩阵Draft](RWA-SaaS-Step-06-Free-Standard-Capability-Entitlement-Matrix-Draft-v0.1.md)。
+
+新B01字段/状态候选至少区分：FreeActive永久Entitlement、Standard商业订阅及其付款/开通、Free配额/安全限额、Sandbox/可选Testnet/Production的TruthClass、原Tenant草稿复用、ProductionEnablementGate与Issuer/平台RG职责、Standard欠费时既有真实义务的依法交接。**全部候选未获Schema/API/RBAC/迁移方案批准，B02其他用户已批产品行为保持有效。**
+
 ## 0. 当前权威和覆盖范围
 
 - **B01** 来源：[Step05-01 Approved PRD v0.3](RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Product-PRD-Approved-v0.3.md)、[既有65项字段候选Draft v0.2](RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Field-PRD-Draft-v0.2.md)、[跨端状态Approved v0.2](RWA-SaaS-Step-05-01-Cross-Lane-Product-States-Exceptions-Approved-v0.2.md)。本稿**引用而不复制/替代65字段主草案**，优先列出需要工程技术评审的缺口，保留Trial=336h、后续只读/受限窗口=720h（DEC-030 Approved），升级不新建Tenant。

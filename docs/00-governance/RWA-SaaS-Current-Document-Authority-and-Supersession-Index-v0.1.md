@@ -1,5 +1,7 @@
 # RWA SaaS｜当前有效文档权威目录与历史状态勘误 v0.1
 
+> **2026-10-26最新生效导航（仅方法批准）**：[DEC-035](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)批准Step06 R01/R02/R03=A，新增[法域×Instrument证据锚点Draft](../03-product-prd/RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md)、[M11第08步募集款释放专项Draft](../03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md)、[对象/状态/权限/API矩阵Draft](../03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md)。以上不是法域/资金/Signer/Schema/API Approved；**J0与I0未选、13个X门全部Open、V1未Frozen**。下文截至2026-10-25的“某场景待审”均须按后续正式DEC读取，不能覆盖已批准的Step05 29条产品规则。
+>
 > **Current Navigation / Document Governance（2026-10-25）**。该索引记录当前权威与有效产品决策关系；**DEC-017已批准193项的首次目标交付版号（146/22/20/TBD5），但整体V1.0产品需求尚未Frozen，产品与技术生产授权仍未完成**。本索引依据此前Step03.5非破坏性文档治理建立，原Frozen及历史DEC/SCOPE不改写。
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
@@ -187,3 +189,17 @@
 - **五场景R总计29条批准**（05-01：7，05-02：4，05-03：6，05-04：6，05-05：6）。[五场景11步总体交叉审核/字段与Step06冻结前报告Draft](../03-product-prd/RWA-SaaS-Step-05-Five-Scenarios-Consistency-and-Step-06-Pre-Freeze-Audit-Draft-v0.1.md)是目前审核阅读入口；[X-01～X-13风险逐项门对照Draft](RWA-SaaS-Step-06-X01-X13-Audit-Gate-Crosswalk-Draft-v0.1.md)继续**13/13 Open**，High9/Medium3/Low1。这两份不代表审计关项或V1 Frozen。
 - **仍待**：Step05-01 65字段候选及05-02～05的逐领域Schema/API/状态码、11步第08步募集款合法释放/划拨细化、首发Instrument法域/是否强制集中募集、合法Signer/钱包/资金/登记/税费/Claim技术安全方案、真实Sandbox与E2E测试。实际字段、法域与生产方案并未批准。
 - DEC-017 193正式功能ID的版号仍为**V1 146/V2 22/V3 20/TBD 5**，Step04 146/146 Approved、DEC-028条件静态覆盖及13项Open不变。**不修改四份Frozen/历史DEC/SCOPE，PR #6 Draft/Open/Unmerged，不进入UI/研发/真实金融Token生产。**
+
+
+## 19. 2026-10-26 DEC-035：Step06工作方法与三个专项Draft（目前最新）
+
+**权威层级**：[DEC-035](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)只批准R01～R03的工作方式；DEC-017与DEC-018～034先前批准的范围不变，任何Step06新字段、法域结论、实现方案不能由方法决定取得Approved效力。
+
+| 权威/审查资料 | 当前文件状态 | 适用范围、不能推断的事项 |
+|---|---|---|
+| [DEC-035：R01、R02、R03均A](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md) | **Approved：仅方法/专项工作安排** | 先选一个“法域×Instrument”作验证锚点、独立细化M11-F012/F013、分层审核只上报重大产品差异；不是实际发行法域、Instrument、资金方或技术决策 |
+| [Step06-01 法域和Instrument验证矩阵](../03-product-prd/RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md) | **Draft** | J0×I0及其附属法律连接点全部待定，不能取代适格法律审查；X-01/02等Open |
+| [Step06-02 M11募集款释放/划拨PRD](../03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md) | **Draft** | 原Step04 M11-F012/F013功能已Approved，本稿新增的候选字段/接口/Signer、结算定义及异常测试仍未批 |
+| [Step06-03 五场景对象/状态/权限/API审核矩阵](../03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md) | **Draft** | 仅规范审查工作顺序；不等于全字段Schema/API/权限码或技术安全实现通过 |
+
+**不可破坏的基线**：四份Frozen、历史DEC/SCOPE原文与193项版本主表不改（V1 146、V2 22、V3 20、TBD 5）；Step04 146/146功能Approved、Step05 29条产品规则Approved、DEC-028的X-01～X-13仍13/13 Open；V1.0整体未Frozen、PR #6 Draft/Open/Unmerged、不启动UI/研发或真实金融/Token生产。

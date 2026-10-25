@@ -6,6 +6,20 @@
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
 
+## 2026-10-26 最新权威接续：DEC-037永久Free/Standard商业版本重构
+
+**[DEC-037 Step06-R05=A](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)**是相对于历史DEC-019/029/030更晚的**正式商业业务规则变更**：Free无限期并开放绝大部分功能完整Sandbox模拟；Standard在商业付费/签约/KYB满足后取得**正式能力的商业资格**，真实Token发行/销售/资金及平台自身受监管行为仍通过独立生产RG与Issuer/X相关Guards。历史旧**14天Trial（DEC-019）与336小时Trial+720小时恢复（DEC-030 R04）被明确替代**；不修改历史原文。
+
+| 现行建议阅读入口 | 状态 | 接续与禁止误读 |
+|---|---|---|
+| [DEC-037 Free/Standard商业决定](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md) | **Approved：商业业务规则** | 不批收费价格/周期、资源限额、真实发行许可、字段Schema与API |
+| [Step05-01 Free/Standard PRD v0.4](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md) | **现行产品级PRD，Approved范围限DEC** | 取代旧Trial-v0.3作为当前Step05-01业务入口，原稿仍历史有效 |
+| [Step05-01 Free/Standard跨端状态v0.3](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Cross-Lane-States-Exceptions-Approved-v0.3.md) | **当前产品状态语义，技术Draft** | 原Trial到期/恢复迁移不再生效，英文状态名/真实执行仍待审 |
+| [22模块Free/Standard能力矩阵](../03-product-prd/RWA-SaaS-Step-06-Free-Standard-Capability-Entitlement-Matrix-Draft-v0.1.md) | **Draft** | 不提前将V2/3/TBD功能升V1，额度与第三方可用性待审 |
+| [原65行字段新商业版本逐条映射](../03-product-prd/RWA-SaaS-Step-06-06-B01-Free-Standard-Field-Migration-Review-Draft-v0.1.md) | **Draft** | 原65行仍可追溯，trialExpiresAt等旧时间字段不可控制免费Tenant |
+
+**关系**：DEC-035 R01被DEC-036调整顺序；DEC-036已批准SaaS技术优先与Issuer合规分责；**DEC-037进一步改变SaaS商业版本**。这不修改四份Frozen、历史DEC/SCOPE、DEC-017正式193项首次版号；Step04 146与Step05 29项历史规则仍可追踪，**具体被DEC-037明确覆盖的Trial时限不再是现行执行规则**；X-01～X-13全Open、V1未Frozen、PR #6 Draft/Open/Unmerged。
+
 ## 2026-10-26 权威变更摘要：DEC-036后续覆盖DEC-035 R01的执行优先级
 
 | 当前权威与读者应先读的资料 | 生效状态 | 本轮与既有文件的关系 |

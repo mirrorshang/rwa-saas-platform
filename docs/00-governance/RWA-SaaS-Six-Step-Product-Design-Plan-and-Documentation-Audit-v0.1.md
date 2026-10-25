@@ -8,6 +8,12 @@
 >
 > **需求审核方式**：从本轮起优先展示**可编辑详细跨端流程图、结构化功能清单及功能规格表**，SCOPE/DEC 作为最终批准证据而非要求产品负责人阅读的主文档。任何新决策都不能默默改写已冻结原文。
 
+## 最新正式方向接续：2026-10-26 DEC-036（不改原六步方法）
+
+[DEC-036 Step06-R04=A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)明确**通用技术SaaS优先**：Issuer及其有权专业主体负责每项真实资产发行法律合规，平台对自身实际提供的受监管活动及安全/数据责任仍另审。此前[DEC-035](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md) R01“法域×Instrument验证锚点”**不再是通用产品字段设计与V1产品冻结前置**；R02募集款专项与R03字段/状态/权限/API分层审核继续。
+
+**实际最新Step06执行计划请以**[通用技术SaaS优先：六工作包＋独立RG生产门 Draft](RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)为准。以下2026-10-22原六步文件是**历史方法与当时缺口审计**，其187原功能统计、Step05历史进度仅是彼时基线；正式当前总数和进度以193正式ID/146 V1、Step05五场景29条已批、X-01～13 Open以及README最新索引为准。**本文件原正文不删改，四份Frozen及历史DEC/SCOPE不回写**。
+
 ## 一、已经批准的新六步主流程
 
 | 步骤 | 核心任务 | 面向产品负责人的主要审核材料 | 通过条件（Gate） |

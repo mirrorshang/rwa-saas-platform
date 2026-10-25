@@ -6,6 +6,12 @@
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
 
+## DEC-042｜I端运营导航局部批准及门户页面配置缺口（2026-10-26）
+
+**[DEC-042 I-R13～I-R18六项A Approved](../../decisions/DEC-042-step06-issuer-i-r13-r18-business-operations-secondary-navigation-approved.md)**：投资者/资格/订单/配售登记、募集款对账退款结算、Token合约与执行记录、收益存续退出、消息任务异常报表审计，以及跨企业项目的授权筛选。仅批准本批菜单分组/聚合方向，**不表示页面级PRD通过**。继承[DEC-041](../../decisions/DEC-041-step06-issuer-i-r07-r12-secondary-navigation-project-offering-approved.md)、[DEC-040](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)。
+
+用户另指出**投资者端页面配置模块遗漏**。审核发现已有V1的**M01-F009/I-13**支持标准Issuer门户基础品牌/法务链接/展示策略/预览发布，V端M08为投资者前台；作为补充建议**I-R19独立「投资者门户」管理入口及可视化页面展示配置仍Draft**，并未改变当前已批准8一级菜单或扩张正式V1范围。M15高级白标/自定义域名仍V2；M08-F010营销推荐仍TBD。四端104候选页、193版号146/22/20/5、旧Frozen/DEC/SCOPE、X01～13 Open、V1未Frozen、PR #6 Draft/Open/Unmerged保持不变。
+
 ## DEC-041 I端二级菜单与Project/Offering产品方向（2026-10-26）
 
 **[DEC-041 I-R07～I-R12已明确批准A](../../decisions/DEC-041-step06-issuer-i-r07-r12-secondary-navigation-project-offering-approved.md)**，接续[DEC-040](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)并只增加「资产与发行」二级菜单、Asset/Instrument独立列表/创建/详情、Project统一新建向导及工作空间页签、Offering从Project创建/全企业列表和必须归属Project、Offering详情分区六个产品页面组织方向。详细映射参见[四端IA候选页面清单](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)。

@@ -8,6 +8,13 @@
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
+## 2026-10-26最新产品商业变更：DEC-037 Free/Standard（优先于下面旧Trial描述）
+
+- **[DEC-037正式批准Step06-R05=A](../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)**：V1改为**永久免费Free/付费Standard**，Free全业务Sandbox模拟、无14天自动失效；正式主网Token/购买/真实募集款需Standard**商业资格**及Issuer、平台自身RG和外部合法执行共同满足，不能因付费自动开放。
+- **新Step05-01当前阅读入口**：[Free/Standard产品级PRD v0.4](03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md)与[跨端状态异常v0.3](03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Cross-Lane-States-Exceptions-Approved-v0.3.md)。旧Step05-01 Trial Approved v0.3、跨端v0.2与DEC-019/029/030作为历史已批准证据保留；**336h/720h期限已被新DEC局部替代，不再有效驱动Free权限**；其余KYB、付款幂等、原Tenant与模拟/生产隔离原则继续。
+- **字段和套餐审阅Draft**：[22模块能力矩阵](03-product-prd/RWA-SaaS-Step-06-Free-Standard-Capability-Entitlement-Matrix-Draft-v0.1.md)、[65行旧Trial字段逐条迁移映射](03-product-prd/RWA-SaaS-Step-06-06-B01-Free-Standard-Field-Migration-Review-Draft-v0.1.md)。**字段/enum/权限/API/资源数量/价格、技术和生产LG/RG尚未签收**；原Step06-05旧字段审计对336/720的陈述只作为历史。
+- **阶段现状**：B01字段需求要先改Free/Standard；继续B02～B05与146功能整体一致性、独立V1冻结评审；DEC-028 X-01～13仍13/13 Open；DEC-017首次版号193项V1 146/V2 22/V3 20/TBD5不改；四份Frozen、历史DEC/SCOPE原文不修改；V1未Frozen、PR #6 Draft/Open/Unmerged。
+
 ## 2026-10-26最新正式权威：DEC-036技术SaaS优先，产品PG与实际发行RG分离
 
 - **正式[DEC-036（Step06-R04=A）](../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)**：仅批准产品责任边界与Step06优先级——客户Issuer/有权服务方负责具体发行合法性；我们出售可配置SaaS技术能力，但平台实际受监管行为、数据与钱包/资金/Signer责任须独立审；不得声称软件商绝对不受监管。

@@ -2,6 +2,10 @@
 
 > **2026-10-26｜Draft／审查框架，不是工程Schema、接口或权限码规格，不代表开发可直接实施**。[DEC-035 Step06-R03](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)批准**“先形成业务对象/状态/权限矩阵 → 法域和技术/安全专项审核 → 产品负责人只审核新出现的关键分歧”**的工作方法。上游Step04 146/146正式V1功能和Step05五场景29条产品规则Approved维持；本文的具体字段候选、状态enum、接口、安全、法域、Signer、法律责任及测试均Draft/Not Executed；X-01～X-13继续Open。
 
+## 现行产品经理设计重点修订｜Step06-6.1页面地图优先（2026-10-26）
+
+用户要求Step06优先交付**四端实际用户页面与逐页完整产品PRD**，而不是进一步扩写本文件的系统字段、接口或权限码。[四端页面地图](RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)已新增W官网，[146项功能ID→页面静态对照](RWA-SaaS-Step-06-09A-V1-146-Function-to-Page-Coverage-Audit-Draft-v0.1.md)用来检漏。本文件继续作为业务领域、异常、唯一权威和外部依赖**底层参考草案**，但**不再是B01～B05页面级完成的验收交付物**；技术Schema/API/Token/资金实现留工程阶段。坚持DEC-037永久Free/Standard及DEC-036平台技术服务和Issuer法律责任独立，X01～13仍Open。
+
 ## 2026-10-26最新现行设计原则｜Step06-R04=A技术SaaS优先（Approved仅责任/方法，字段仍Draft）
 
 **适用的较新正式决定**：[DEC-036：通用技术SaaS、Issuer负责具体资产发行合规、平台自身受监管活动另设真实生产Gate](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)；[Step06技术SaaS优先执行计划Draft](../00-governance/RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)。本节**在优先级上接续/修订**旧文中“必须先选法域×Instrument”的工作顺序；不改上游已批准功能和产品Guard，不表示已批具体字段、技术或法域。

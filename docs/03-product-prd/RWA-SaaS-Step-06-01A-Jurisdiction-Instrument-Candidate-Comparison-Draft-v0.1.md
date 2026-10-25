@@ -2,6 +2,10 @@
 
 > **2026-10-26｜Research / Product Options Draft，未形成法律意见、未批准首发法域、Instrument、Issuer、真实资金方案或实际运营安排。** 本文件执行[DEC-035 Step06-R01方向批准](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)和[Step06-01法域×Instrument证据矩阵](RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md)，用于让产品负责人在三组**纸面验证案例**中确定优先研究对象。**J0/I0目前仍TBD，法域审核和真实合法性不能从本比较推导为已获批准。** DEC-028 X-01～13全部Open，V1.0整体未Frozen。
 
+## 较新正式方向声明（2026-10-26）
+
+根据[DEC-036 Step06-R04=A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)，本表的日本/ADGM/新加坡及债务工具只作为**可选、历史研究证据与未来Issuer生产启用评估素材**，其A/B/C/D不再是V1通用SaaS产品设计、字段PRD或产品冻结的前置审核题。后文「推荐先研究ADGM」「下一轮选一组」保留以体现当时Draft方案，**已不代表现行推进建议，也没有获批J0/I0**。现行优先级改为[Step06产品字段优先执行计划](../00-governance/RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)；客户具体发行合规与平台自身实际受监管行为由独立生产RG门审查。13个X门不关闭。
+
 ## 一、评估范围与统一比较基准
 
 为避免「三个法域×多种完全不同资产」带来混淆，第一轮**三个候选都暂用“非公开/定向发行、具明确本金和合同现金流的Token化债务证券”作可比假设**，用以覆盖Offering、投资者资格、认购款、配售、法定权益、Token、利息/本金及退出的V1闭环。

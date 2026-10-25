@@ -8,6 +8,12 @@
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
+## I企业SaaS工作台第6批局部已批：DEC-042（2026-10-26）
+
+**[DEC-042 I-R13～I-R18全部A](../decisions/DEC-042-step06-issuer-i-r13-r18-business-operations-secondary-navigation-approved.md)**：投资者与认购（投资者/资格/订单/配售/法定登记）、资金与结算（收款对账/退款异常/募集款结算）、Token（合约/操作/链上对账）、收益存续（存续/分配/到期退出）、全局待办/异常/消息及报表审计等**二级菜单和跨项目聚合模式**正式Approved。见[Step06-6.1四端页面地图](03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)。
+
+**未决I-R19投资者门户页面配置（Draft）**：既有M01-F009/I-13的标准门户基础名称/Logo、法律链接、展示策略、预览发布属已批V1，用户新提出首页板块/页面内容与导航配置是否成立独立「投资者门户」一级入口需另审。复杂CMS/推荐和V2白标不可自动提级。**既有I61/四端104候选页面组、193版号146/22/20/TBD5未变，未新建任何正式ID。** Project同时多Asset仍Draft；X01～13 Open、V1未Frozen、PR #6 Draft/Open/Unmerged。
+
 ## I企业SaaS工作台第5批最新已批：DEC-041（2026-10-26）
 
 **[DEC-041 I-R07～I-R12全部A Approved](../decisions/DEC-041-step06-issuer-i-r07-r12-secondary-navigation-project-offering-approved.md)**：I端「资产与发行」二级为**资产库、金融工具、项目管理、发行管理、文件中心**；资产/Instrument独立列表/新建/详情及筛选；Project列表统一创建引导及项目工作空间页签；从Project创建Offering，Offering须属明确Project；全企业Offering列表与发行参数/投资者规则/收款Token配置/发行前检查/状态管理详情分区。继承[DEC-040 I-R01～R06](../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)同企业多资产、多项目、多轮次并行原则。

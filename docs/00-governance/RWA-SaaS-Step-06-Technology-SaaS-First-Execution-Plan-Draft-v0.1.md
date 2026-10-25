@@ -2,6 +2,12 @@
 
 > **2026-10-26｜执行优先顺序依据[DEC-036 Step06-R04 A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md) Approved；本文具体排期、文档与字段/状态/API工作包仍Draft。** 对DEC-035 R01作后续优先级调整：**无需先选择首发法域×Instrument，即可继续通用SaaS产品需求的设计与评审。** Issuer具体发行法律合规由该Issuer/有权专业机构负责；平台自身受监管活动与真实金融功能RG生产门独立审查。**不可推定软件上线或真实销售无需合法审查。**
 
+## Step06-6.1 最新批准｜DEC-042六项I端运营菜单及I-R19缺口（2026-10-26）
+
+[DEC-042 I-R13～I-R18全部A](../../decisions/DEC-042-step06-issuer-i-r13-r18-business-operations-secondary-navigation-approved.md)已正式批准投资者/认购/配售登记、资金收款退款结算、Token合约操作对账、存续收益退出、全局审批任务消息异常与报表审计的I端二级菜单/业务模块归类；要求当前Tenant/用户有权跨Project/Asset/Offering汇总与筛选。已同步[Step06-6.1页面清单](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)，**不增删I61/总104逻辑页面组**。
+
+**插入后续I-R19专项评审（仍Draft）**：原I-13/M01-F009已经批准标准Issuer投资者门户名称Logo、法律链接、展示策略与预览/发布，但用户明确提醒门户**页面配置**尚缺。建议独立「投资者门户」管理入口并审核标准页面板块/导航/内容可编辑范围、预览及发布权限；如超出原V1既有功能，必须另走正式功能范围审查，不能擅自增加第194项/变更版号。**现行8个一级菜单不因建议自动变为9个**；M15-F004自定义域名V2与M08-F010营销推荐TBD不提前。I-R19确认后做I端61页组完整映射，再V/P端IA审核及B01→B05逐页PRD；Project多Asset组合关联继续Draft。冻结/风险/PR治理不变。
+
 ## Step06-6.1 最新批准｜DEC-041企业端二级菜单/Project/Offering（2026-10-26）
 
 [DEC-041 I-R07～I-R12全部A Approved](../../decisions/DEC-041-step06-issuer-i-r07-r12-secondary-navigation-project-offering-approved.md)，在[DEC-040一级IA批准](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)之后，批准资产库/金融工具/项目管理/发行管理/文件中心五个二级入口，Asset和Instrument独立管理、统一Project创建引导与工作空间页签、Offering从Project发起且必须有明确Project归属、全企业Offering列表和Offering详情的功能分区。[四端IA清单](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)相应I-20～I-36已作局部Approved标注。**未创建新增页面组或功能ID；Project同时关联多个Asset尚未批准，仍Draft。**

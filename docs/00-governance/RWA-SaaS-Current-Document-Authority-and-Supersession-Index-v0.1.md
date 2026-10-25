@@ -165,3 +165,10 @@
 - [Step05-03可视化PRD Draft v0.1](../03-product-prd/RWA-SaaS-Step-05-03-Investor-KYC-Subscription-Payment-Allocation-Register-Token-Visual-PRD-Draft-v0.1.md)包含M09/M10/M11/M12/M07/M08/X跨端业务流和E03-01～16异常示例，**R01～R06均未批准**。不能据此宣称已形成Step05-03正式产品级PRD或更新原Step04 Frozen原则。
 - 已获批准的Step05-01七条R及Step05-02四条R不受本Draft影响；受监管资金/Signer、法定Issuer或指定登记者模式、钱包技术方案、实际合同/法域和字段API仍待正式审查。
 - 不生成新的DEC、变更193版号或历史DEC/SCOPE/Frozen，不合并PR #6、不开始UI/开发/真实支付与Token生产；Step06 V1整体未Frozen。
+
+
+## 16. 2026-10-25 DEC-032：Step05-03产品批准、Step05-04仅Draft（最新有效权威）
+
+- [DEC-032](../../decisions/DEC-032-step05-03-r01-06-investor-subscription-legal-holdings-product-rules-approved.md)以用户明确六项A批准Step05-03 R01～R06；[Step05-03产品级PRD Approved v0.2](../03-product-prd/RWA-SaaS-Step-05-03-Investor-Subscription-Legal-Holdings-Product-PRD-Approved-v0.2.md)与[跨端产品状态/异常规范 Approved v0.1](../03-product-prd/RWA-SaaS-Step-05-03-Cross-Lane-Product-States-Exceptions-Approved-v0.1.md)是现行业务产品阅读入口。批准范围限M09/M10/M11/M12/M07/M08的跨端业务行为与受权Guard，不批准任何精确技术字段/API/实际钱包、托管、Signer/法域合法性与生产执行。早期[Step05-03 Visual Draft](../03-product-prd/RWA-SaaS-Step-05-03-Investor-KYC-Subscription-Payment-Allocation-Register-Token-Visual-PRD-Draft-v0.1.md)“六项未批准”的历史文字不得当作当前状态。
+- [Step05-04收益、到期及退出可视化Draft v0.1](../03-product-prd/RWA-SaaS-Step-05-04-Post-Issuance-Yield-Maturity-Exit-Visual-PRD-Draft-v0.1.md)六项产品细化R01～R06**尚未审核**，本轮不创建DEC-033或已批准PRD。场景遵循S04-05 M13真实权益快照/注资/Claim优先、依法Push/外部支付等既有原则，B SPV权益不默认利息或回购。
+- DEC-017 193项版号146/22/20/TBD5和Step04 146/146 Approved不动，13项静态审计风险Open，V1.0整体不Frozen。四份Frozen/历史DEC/SCOPE原文不改，PR #6 Draft/Open/Unmerged，禁止UI、程序/合约研发或真实资金/Token生产。

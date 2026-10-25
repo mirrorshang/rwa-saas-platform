@@ -2,6 +2,12 @@
 
 > **2026-10-26｜执行优先顺序依据[DEC-036 Step06-R04 A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md) Approved；本文具体排期、文档与字段/状态/API工作包仍Draft。** 对DEC-035 R01作后续优先级调整：**无需先选择首发法域×Instrument，即可继续通用SaaS产品需求的设计与评审。** Issuer具体发行法律合规由该Issuer/有权专业机构负责；平台自身受监管活动与真实金融功能RG生产门独立审查。**不可推定软件上线或真实销售无需合法审查。**
 
+## Step06-6.1 最新批准｜DEC-043独立「投资者门户」一级导航（2026-10-26）
+
+**[DEC-043 I-R19=A](../../decisions/DEC-043-step06-issuer-i-r19-standalone-investor-portal-navigation-approved.md)**正式将投资者门户配置从企业设置中独立为**I端第9个一级导航**；复用I-13候选逻辑页面组和M01-F009既有V1标准门户基础能力，**无需新增I-67/194正式功能ID**。已经同步[四端IA页面清单](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)及[146项静态功能映射](../03-product-prd/RWA-SaaS-Step-06-09A-V1-146-Function-to-Page-Coverage-Audit-Draft-v0.1.md)。本节优先于下方DEC-042阶段描述“待审核I-R19”，但**页面展示配置细节尚未批准**：首页板块、Banner、导航/文案/排序、保存预览发布规则等要在I-13页面PRD审，超出M01-F009既有V1需单独版本决定。M15-F004高级白标域名V2、M08-F010推荐营销TBD继续保留。
+
+**后续工作**：做I端9一级×二级菜单×61候选页组/146功能及11步业务主线整体一致性核验，再审V投资者端与P平台后台IA；之后按此前已批准顺序推进B01、B02、B03～B05逐页面PRD。W14/I61/V15/P14共104逻辑页组、193正式功能ID/版号146/22/20/TBD5保持；不要求用户审核数据库字段/Schema/API。历史Frozen/DEC/SCOPE不变，X-01～X-13全Open，V1未Frozen，PR #6 Draft/Open/Unmerged。
+
 ## Step06-6.1 最新批准｜DEC-042六项I端运营菜单及I-R19缺口（2026-10-26）
 
 [DEC-042 I-R13～I-R18全部A](../../decisions/DEC-042-step06-issuer-i-r13-r18-business-operations-secondary-navigation-approved.md)已正式批准投资者/认购/配售登记、资金收款退款结算、Token合约操作对账、存续收益退出、全局审批任务消息异常与报表审计的I端二级菜单/业务模块归类；要求当前Tenant/用户有权跨Project/Asset/Offering汇总与筛选。已同步[Step06-6.1页面清单](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)，**不增删I61/总104逻辑页面组**。

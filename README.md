@@ -6,6 +6,14 @@
 >
 > 本README是可独立阅读的**项目交接摘要**。文中的“批准/完成”主要指**产品规划与文档审查**，**不表示软件已开发、服务已部署、金融活动已获许可或合约已经在链上执行**。核心资料链接放在文末，日常了解项目无需先跳转。
 
+## I企业SaaS工作台第4批正式批准｜DEC-040（2026-10-26）
+
+**[DEC-040 I-R01～I-R06=A（I-R05含多资产并行补充）](decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)**：I端采用**左侧一级业务导航＋顶部企业/消息/帮助/个人账户**；企业首页展示有权多项目发行/认购/资金/Token、待办、异常；Free和Standard统一后台、按套餐与生产Gate区分能力；企业资料/成员/权限/订阅/安全归企业设置。业务资源按**Asset→Instrument→Project→Offering可关联但分别管理、Project为业务中心**组织；同一企业可管理**多资产类别、多底层资产、多并行项目、多轮发行**，按资产/项目/轮次跨模块筛选，**不按房地产/债权等类型拆一级菜单**。订单/配售登记、资金结算、Token、存续收益、报表按职能归类；待办/通知/异常跨模块可达。
+
+**概念级八个一级模块**：工作台首页｜资产与发行｜投资者与认购｜资金与结算｜Token管理｜收益与分配｜数据与报表｜企业设置。详见[Step06-6.1 I页分组索引](docs/03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)。**I61页组与四端104候选数未变；具体二级导航及全部逐页面详细PRD仍Draft**。一个Project能否同时关联多个底层Asset**尚未批准**，需后续专审，不能把多项目与多资产同时管理推定为多Asset组合发行获批。
+
+**下一批**：I-R07～I-R12企业SaaS二级导航及项目创建/Offering管理页面分组；之后B01→B02→B03～B05逐页面PRD。既有W-NAV-R01、DEC-038/039已在本文、现行IA及相关索引同步核验；不变更任何历史Frozen/DEC/SCOPE、DEC-017正式193版号**146/22/20/TBD5**；X-01～X-13全Open，V1整体不Frozen，PR #6保持Draft/Open/Unmerged。
+
 ## W官网第3批六项已批准｜DEC-039（2026-10-26）
 
 **[DEC-039 W-R08～R13全部A](decisions/DEC-039-step06-website-w-r08-r13-help-contact-policy-login-sandbox-approved.md)**：W帮助中心＝FAQ/教程/联系客服；联系销售简单咨询表单、人工跟进，**V1无完整CRM**；官网页脚提供SaaS条款/隐私/Cookie政策/免责声明入口（正文待专业审核）；单家授权企业登录直达I、多家先选择；真实投资者从Issuer专属V门户登录；I Free与V演示中醒目标“Sandbox／测试模式”。W页面清单中对应页面已更新；此前W-NAV-R01与DEC-038六项保留已批状态。**W全部页面PRD与四端IA整体仍Draft**；下一轮转I端导航，六项一批简短审核，不能把表单细节/法律正文/新CRM视为已批。Frozen/历史DEC/SCOPE和193版号未变，X13项Open，V1未Frozen，PR #6 Draft/Open/Unmerged。

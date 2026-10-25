@@ -8,6 +8,12 @@
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
+## Step06 字段审阅新增：B01详细领域规格与B02正式33项逐ID（2026-10-26，Draft）
+
+- [Step06-07 B01 Free/Standard字段、Quota、状态与逻辑API详细PRD Draft](03-product-prd/RWA-SaaS-Step-06-07-B01-Free-Standard-Domain-Field-State-Permission-API-PRD-Draft-v0.1.md)：在DEC-037永久Free/付费Standard规则之下细化8组对象、商业及Sandbox/Production三套独立状态、配额计量、原Tenant升级与真实既存金融义务保护；**具体Free数量、订阅账期、价格、API、Schema全部TBD/Draft**，未做UAT。
+- [Step06-08 B02 M04/M05/M06/M07共33个正式V1功能逐ID映射 Draft](03-product-prd/RWA-SaaS-Step-06-08-B02-33-V1-Functions-Field-State-Permission-API-Crosswalk-Draft-v0.1.md)：**8+10+6+9=33/33静态功能ID已覆盖**，每条有字段、状态Guard、角色、逻辑操作和异常候选；不新增193项功能ID或调整版号；字段签收、接口技术、法域、Issuer/X实际执行和真实测试仍未完成。
+- **次序**：B01/B02后继续B03投资者与认购、B04资金收益与退出、B05运营；再做146项/11步/四端全量审核。**旧Step05-01 336h/720h已由DEC-037替代**；所有X01～13仍Open，V1未Frozen，PR #6 Draft/Open/Unmerged。
+
 ## 2026-10-26最新产品商业变更：DEC-037 Free/Standard（优先于下面旧Trial描述）
 
 - **[DEC-037正式批准Step06-R05=A](../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)**：V1改为**永久免费Free/付费Standard**，Free全业务Sandbox模拟、无14天自动失效；正式主网Token/购买/真实募集款需Standard**商业资格**及Issuer、平台自身RG和外部合法执行共同满足，不能因付费自动开放。

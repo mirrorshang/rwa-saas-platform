@@ -2,6 +2,12 @@
 
 > **2026-10-25｜Draft / Audit Only / No Issue Closure / No V1 Freeze**。本表逐项**复用[DEC-028](../../decisions/DEC-028-step04-cross-audit-conditional-acceptance-and-step05-visual-review.md)及[原13项清单](../03-product-prd/RWA-SaaS-Step-04-146-Functions-Four-Lanes-11-Steps-Cross-Audit-Draft-v0.1.md#4-风险差异与待决策门登记本次审计发现尚未获批)的X-01～X-13真实编号及主题**，并不是新增13项已签收决策。全部**Open**；下列Owner是审计**建议角色，不是已获人事授权的指派或法域律师意见**。当前Step05-01～05-05产品级R全部批准，不等于任何X项关闭。
 
+## 2026-10-26 DEC-036后续审计解释（所有X状态不变）
+
+[DEC-036 R04=A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)调整了X门的**审查阶段归属**：通用字段/状态/权限/接口的PG产品设计**不再必须先选一个首发法域×Instrument**；Issuer对每项实际发行负责自身法律合规，平台自身实际涉足销售、订单路由、资金、私钥/Signer、数据等活动则须独立RG审查。**PG与RG是不同门，未做法律评估和真实测试不得打开生产金融动作**。
+
+本表所列X-01～X-13原内容和Open状态**一律保留**（High9/Medium3/Low1），不因此改成Resolved/Low/NotApplicable；X-02若某实际客户需强制集中募集，V2四项仍须单独决定，未经批准不能变更DEC-017。当前工作转为[Step06 SaaS优先计划](RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)和[第一批B01/B02字段Draft](../03-product-prd/RWA-SaaS-Step-06-04-Generic-SaaS-B01-B02-Field-States-Permissions-API-Draft-v0.1.md)；本表以下截至10-25的“先法律后字段”建议属于旧审计排序，不再作为现行强制前置。
+
 ## 一、全量13门当前可读总览
 
 | 原审计ID | 原始风险级别 | 原有未决门 | 已有Step05产品规则/事实承接（非闭环） | 仍缺的证据或决策，为什么不能Close | 建议主责角色（未正式任命） | 最低下一步交付证据 | 门类别 | 状态 |

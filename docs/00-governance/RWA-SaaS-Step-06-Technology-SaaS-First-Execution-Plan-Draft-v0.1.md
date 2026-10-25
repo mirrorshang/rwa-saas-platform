@@ -2,6 +2,12 @@
 
 > **2026-10-26｜执行优先顺序依据[DEC-036 Step06-R04 A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md) Approved；本文具体排期、文档与字段/状态/API工作包仍Draft。** 对DEC-035 R01作后续优先级调整：**无需先选择首发法域×Instrument，即可继续通用SaaS产品需求的设计与评审。** Issuer具体发行法律合规由该Issuer/有权专业机构负责；平台自身受监管活动与真实金融功能RG生产门独立审查。**不可推定软件上线或真实销售无需合法审查。**
 
+## 2026-10-26最新执行变更｜DEC-037 Step06-R05永久Free/Standard（商业规则Approved）
+
+[DEC-037](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)已正式将商业产品从**14天Trial＋720h恢复**改为**永久免费Free（Sandbox覆盖11步）＋付费Standard（有条件Production-eligible）**。因此本计划B01中全部“试用倒计时、到期转只读、30天恢复”的旧陈述**仅属于历史材料，不是现行工作**。现行B01必须使用[Step05-01新版产品PRD v0.4](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md)、[跨端状态v0.3](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Cross-Lane-States-Exceptions-Approved-v0.3.md)、[22模块能力矩阵Draft](../03-product-prd/RWA-SaaS-Step-06-Free-Standard-Capability-Entitlement-Matrix-Draft-v0.1.md)及[65行迁移映射Draft](../03-product-prd/RWA-SaaS-Step-06-06-B01-Free-Standard-Field-Migration-Review-Draft-v0.1.md)。原[Step06-05历史65行审计](../03-product-prd/RWA-SaaS-Step-06-05-B01-65-Field-Line-Crosswalk-Gap-Audit-Draft-v0.1.md)不被删除但336/720时限结论已由新DEC接续。
+
+**当前优先次序调整**：①先收口Free/Standard商业权益与Sandbox/Production环境/配额、原Tenant升级及历史义务；②同步保留B02 Issuer/Offering，继续B03～B05；③跨端权限、状态、逻辑API和146功能ID×11步审计；④用户另行决定V1整体Frozen。**Free永久免费不等于无限免费资源或放开真实Token销售；Standard付费不等于真正法律/Signer/支付生产权限。**价格/配额/周期、测试网、迁移代码和QA仍Draft，RG独立未完成。X-01～13全部Open，原193版号不变。
+
 ## 0. 前序产品设计已经具备的事实
 
 - **Step01总体产品战略与4份Frozen原则**：适用全球的标准化多资产ToB技术SaaS方向；四份Frozen原文不改。

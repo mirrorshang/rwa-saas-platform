@@ -1,8 +1,8 @@
 # RWA SaaS Platform｜产品规划与项目交接总览
 
-> **更新日期：2026-10-25** · **项目阶段：Step04进行中，S04-01～S04-08累计138项Approved，余8项待审** · **文档用途：开发、运营、产品及管理团队统一了解项目现状**
+> **更新日期：2026-10-25** · **项目阶段：Step04九批146/146唯一V1.0功能逐ID已Approved；全量四端×11步审计Draft待审核** · **文档用途：开发、运营、产品及管理团队统一了解项目现状**
 >
-> **先看结论：** 我们已完成战略/总体原则、22模块、11步核心流程与**193个正式功能ID的首次交付版号审核（DEC-017）**：**V1.0 146项、V2.0 22项、V3.0 20项、待规划TBD 5项**。**Step04八批已批准138项分端功能设计，另外8项待审**；字段级PRD、V1.0整体Frozen、UI/研发及生产运营均未完成。S04-04还获准**Issuer依法自管登记优先、必须时外部登记合作**及**法律文书和Token地址后置依法绑定**的产品原则；实际首发法域法律效力仍须另审。
+> **先看结论：** 我们已完成战略/总体原则、22模块、11步核心流程与**193个正式功能ID的首次交付版号审核（DEC-017）**：**V1.0 146项、V2.0 22项、V3.0 20项、待规划TBD 5项**。**Step04九批已批准146/146项唯一V1.0分端功能设计、0项逐ID待审；全量跨端一致性审计Draft（13项待跟踪），尚未获产品负责人审核**；字段级PRD、V1.0整体Frozen、UI/研发及生产运营均未完成。S04-04还获准**Issuer依法自管登记优先、必须时外部登记合作**及**法律文书和Token地址后置依法绑定**的产品原则；实际首发法域法律效力仍须另审。
 >
 > 本README是可独立阅读的**项目交接摘要**。文中的“批准/完成”主要指**产品规划与文档审查**，**不表示软件已开发、服务已部署、金融活动已获许可或合约已经在链上执行**。核心资料链接放在文末，日常了解项目无需先跳转。
 
@@ -114,6 +114,7 @@
 
 - **DEC-018：S04-01-01～06 全部A**，批准Issuer基础16项Step04功能设计；**DEC-019：S04-01-R01～R05 全部A**，后续明确邮箱注册即试用14天、正式付费前KYB、单一Standard套餐、试用到期只读及30天恢复、已投产业务合法义务保护；**DEC-020：S04-02-01～06 全部A**，批准M04资产/Instrument 8项及M06文件/专业审查6项，总计再增14项。**DEC-021：S04-03-01～07全部A**，新增M05 Project/Offering 10项与M07 Token 9项Step04正式批准；**DEC-022：S04-04七项A**，M09投资者8项、M10认购8项、M12配售登记8项批准，追加依法Issuer自管优先登记与合约地址文书绑定产品原则。**DEC-023：S04-05-01～07全部A，R01/R02全部A**，新增M11认购资金12项与M13收益存续8项Step04 Approved；收款合约优先评估、依法允许其他收款通道，以及实际预注资Claim优先/Push合法替代均为产品方向，未批准具体合约、托管、资金执行。以上DEC均不代表V1.0整体Frozen。
 
+- **DEC-027：S04-09-01～06全部A**，批准M22-F001～F008八项外部适配产品设计，**Step04逐ID146/146 Approved、0待审**；[全量146项×四端×11步静态审计Draft](docs/03-product-prd/RWA-SaaS-Step-04-146-Functions-Four-Lanes-11-Steps-Cross-Audit-Draft-v0.1.md)发现13项待跟踪决策门，**尚未审核通过，V1.0整体未Frozen**。
 - **DEC-026：S04-08-01～03全部A**，批准M03-F001/F002/F005三项平台运营P端产品功能设计（商业KYB、Tenant开停与恢复、受控敏感资料访问）；Step04累计**138/146 Approved、剩余M22 8项**。商业Tenant真值仍由M01负责，真实金融及链签名不受本DEC授权。
 - **DEC-025：S04-07-01～07全部A**，批准M08投资者门户11个V1 ID的完整Step04产品设计，覆盖账户、Offering、资格引导、认购支付、订单持仓、钱包及收益中心，累计**135/146 Approved、剩余11项待审**。M08-F010高级营销仍TBD，V1整体Frozen与生产授权未批。
 - **DEC-024：S04-06-01～09全部A**，批准M17工作流异常6项＋M18通知5项＋M19规则6项＋M20安全审计8项＋M21只读报表6项，共31个唯一V1.0 ID；Step04累计**124/146 Approved，余22项**。本批准不修改193项版号、任何Frozen/历史决定、UI/开发/真实生产授权。
@@ -158,7 +159,7 @@
 | 原187项双向功能核验、缺口处理 | **纸面核验完成、XCHK原则Approved** | 问题已识别并分类，尚需分端和字段规格 |
 | PROP01～11分类与6项正式ID | **DEC-016 Approved** | **193项功能编号已成立**，不是版号/页面/成本批准 |
 | 193项首次交付版号/待规划归属 | **DEC-017 Approved** | **146/22/20/TBD5已批准**；不等于146项已完成字段级设计、上线或研发验收 |
-| 各端完整菜单、页面组、操作权限与功能清单 | **Step04进行中：S04-01～08已审138/146，余8待审** | [DEC-018/019](decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)批准基础16项及试用补充；[DEC-020](decisions/DEC-020-step04-s0402-issuer-asset-instrument-documents-review-approved.md)批准M04/M06 14项；[DEC-021](decisions/DEC-021-step04-s0403-issuer-offering-token-approved.md)批准M05/M07 19项；[DEC-022](decisions/DEC-022-step04-s0404-investor-subscription-allocation-registration-approved.md)批准M09/M10/M12 24项及两条跨模块产品原则；[DEC-023](decisions/DEC-023-step04-s0405-funds-lifecycle-approved.md)批准M11/M13 20项及R01/R02两条资金合约/Claim产品原则；[DEC-024](decisions/DEC-024-step04-s0406-shared-workflows-rules-audit-reports-approved.md)共享31项、[DEC-025](decisions/DEC-025-step04-s0407-issuer-investor-portal-approved.md)门户11项也已批准；[DEC-026](decisions/DEC-026-step04-s0408-platform-operations-approved.md)批准平台后台M03 3项；整体不能启动正式全套UI验收 |
+| 各端完整菜单、页面组、操作权限与功能清单 | **Step04九批146/146逐IDApproved；跨端11步审计Draft待审核** | [DEC-018/019](decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)批准基础16项及试用补充；[DEC-020](decisions/DEC-020-step04-s0402-issuer-asset-instrument-documents-review-approved.md)批准M04/M06 14项；[DEC-021](decisions/DEC-021-step04-s0403-issuer-offering-token-approved.md)批准M05/M07 19项；[DEC-022](decisions/DEC-022-step04-s0404-investor-subscription-allocation-registration-approved.md)批准M09/M10/M12 24项及两条跨模块产品原则；[DEC-023](decisions/DEC-023-step04-s0405-funds-lifecycle-approved.md)批准M11/M13 20项及R01/R02两条资金合约/Claim产品原则；[DEC-024](decisions/DEC-024-step04-s0406-shared-workflows-rules-audit-reports-approved.md)共享31项、[DEC-025](decisions/DEC-025-step04-s0407-issuer-investor-portal-approved.md)门户11项也已批准；[DEC-026](decisions/DEC-026-step04-s0408-platform-operations-approved.md)批准平台后台M03 3项；[DEC-027](decisions/DEC-027-step04-s0409-external-authority-services-approved.md)最后M22八项逐ID批准，[全量交叉审计](docs/03-product-prd/RWA-SaaS-Step-04-146-Functions-Four-Lanes-11-Steps-Cross-Audit-Draft-v0.1.md)仍Draft待用户审核；整体不能启动正式全套UI验收 |
 | 逐模块字段级PRD、状态机细化、验收标准 | **未完成（Step05）** | 不能据此认定后端API、数据库、链合约、计费与异常规则已定 |
 | 最终全局一致性核验与V1.0交付范围冻结 | **未完成（Step06）** | 尚未完成“版本功能↔业务流程↔页面↔状态/责任↔验收”的最终闭环 |
 | UI/UX原型与前端、后端、合约开发 | **未启动** | 仓库没有现成业务应用源码；项目仍处于产品设计阶段 |
@@ -234,13 +235,13 @@
 5. 试用到期未付费进入**只读与转化模式**：保留登录、查看/允许导出、补KYB及付费操作，暂停新建/编辑/测试；暂设30天恢复窗口，之后按合法、已通知的数据政策处理，不直接硬删。
 6. **已有真实发行与投资者权益的正式客户**订阅欠费/到期时仅限制新的商业操作；必要投资者查询、资金退款/兑付/清偿、合法外部执行和责任交接须独立保护，不能随试用到期规则一键锁死。
 
-这些规则由DEC-019在Step04产品层正式批准，尚未代表**试用产品已开发、商业支付服务商/KYB服务商已签约、资金链上生产授权或整体V1 Frozen**。DEC-019补充本身没有新增ID，批准时仍为16/146；**其后S04-02～S04-06由DEC-020～024批准，最新累计138/146、余8项**，参见下节。
+这些规则由DEC-019在Step04产品层正式批准，尚未代表**试用产品已开发、商业支付服务商/KYB服务商已签约、资金链上生产授权或整体V1 Frozen**。DEC-019补充本身没有新增ID，批准时仍为16/146；**其后S04-02～S04-06由DEC-020～024批准，最新146/146逐ID已批准；全量审计Draft待审**，参见下节。
 
 ## 13. Step04 S04-02已批准：资产、Instrument、文件与专业审查（2026-10-24）
 
 **正式决策**：[DEC-020｜S04-02-01～06全部A](decisions/DEC-020-step04-s0402-issuer-asset-instrument-documents-review-approved.md)；**现行功能设计**：[S04-02 M04/M06完整功能设计 v0.1](docs/03-product-prd/RWA-SaaS-Step-04-S04-02-Issuer-Asset-Instrument-Documents-Approved-v0.1.md)；**逐项进度权威**：[146项分端追踪台账](docs/03-product-prd/RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md)。
 
-- 本次**M04资产与Instrument 8项＋M06文件与专业审查6项**，14/14项Step04产品功能设计Approved。与S04-01原16项无重叠，**S04-02批准当时累计30/146、余116项**；后续S04-03新增19项、S04-04新增24项、S04-05新增20项，最新138/146、余8项见第19节。
+- 本次**M04资产与Instrument 8项＋M06文件与专业审查6项**，14/14项Step04产品功能设计Approved。与S04-01原16项无重叠，**S04-02批准当时累计30/146、余116项**；后续S04-03新增19项、S04-04新增24项、S04-05新增20项，最新146/146（审计Draft）见第20节。
 - Issuer资产建档/权属证据→受控A债权或B SPV实体权益模板→实际发行与债务/SPV主体关联→权利义务和收益/偿付条款→独立复核、正式文书版本→自行委托适格专业方并引用审查成果→M05后续引用批准版本。内部ReviewedForUse不等于合法发行许可。
 - Investor Portal的必要条款展示/签署由M06管理正式文书和签署证据，M08承载体验、M10校验认购前置，M22接电子签。M05/M08/M10/M17～M22仍只是跨模块依赖，**不能重复记为已审**。
 - 版本边界：**M04-F008受控A/B基础模板已属于V1**，但M04-F009复杂资产组合属V3、M06-F007外部专业协作属V2、M06-F008服务商市场属V3。早期SCOPE的历史P1文字保留，由较新的DEC-013/017明确当前V1归属。
@@ -250,7 +251,7 @@
 
 **正式决定**：[DEC-021｜S04-03-01～07全部A](decisions/DEC-021-step04-s0403-issuer-offering-token-approved.md)；**当前设计**：[S04-03 Issuer Project/Offering与Token完整19项设计v0.1](docs/03-product-prd/RWA-SaaS-Step-04-S04-03-Issuer-Project-Offering-Token-Approved-v0.1.md)；**唯一逐ID进度**：[146项分端追踪台账](docs/03-product-prd/RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md)。
 
-- **M05 Project/Offering 10项＋M07 Token 9项**本轮Step04功能设计全部Approved，与之前M01/M02/M04/M06无交叠，截至S04-03累计**49/146已审、97待审**；随后S04-04获批24项、S04-05获批20项，现138/146已审、8待审。这仍是产品需求审查，不是已开发、已上线或法域许可。
+- **M05 Project/Offering 10项＋M07 Token 9项**本轮Step04功能设计全部Approved，与之前M01/M02/M04/M06无交叠，截至S04-03累计**49/146已审、97待审**；随后S04-04获批24项、S04-05获批20项，现146/146逐ID已审、0待审。这仍是产品需求审查，不是已开发、已上线或法域许可。
 - Issuer通过Project工作空间选择经审Instrument、创建独立Offering、配置受控价格/数量/持续销售条件、引用真正合法收款/登记/Token方案、经过具体发布Gate，再独立执行受权发布与暂停/关闭；真实资金与法定权利的状态归M11/M12及有权主体，不由Offering界面伪造。
 - Token采用受控链/标准与权利单位映射、经批准的合约模板和部署意图、实际有权Signer执行与链上Finality；M07负责接收钱包条件、Mint/链事件、必要禁转与依法适用的Burn，M12的配售/法定登记、M11实收及M13偿付各保留独立权威。
 - **仍不进V1的功能**：M05-F011集中募集/批次配售（V2）、M05-F012动态定价（V3）、M07-F010复杂多链/升级（V3）。如果首发法域或Instrument依法必须集中募集，按DEC-017在V1整体冻结前重新审核相关M05/M10/M12版号，不能暗中绕过。**M07-F009必要Token赎回/销毁已为V1**，但不代表SPV股份自动具有回购义务。
@@ -261,12 +262,12 @@
 
 **正式决定**：[DEC-022｜S04-04-01～07七项全部A](decisions/DEC-022-step04-s0404-investor-subscription-allocation-registration-approved.md)；**现行功能设计**：[S04-04 M09/M10/M12完整24项设计v0.1](docs/03-product-prd/RWA-SaaS-Step-04-S04-04-Issuer-Investor-Subscription-Allocation-Approved-v0.1.md)；**跨模块后续生效原则**：[权威登记责任与法律文件—合约地址绑定](docs/03-product-prd/RWA-SaaS-Step-04-Legal-Register-Authority-Token-Address-Binding-Approved-v0.1.md)；**唯一ID进度**：[146项分端追踪台账](docs/03-product-prd/RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md)。
 
-- **已审24项**：M09投资者档案、KYC/KYB、AML、每Offering资格、补件/复核/审计共8项；M10唯一认购订单、报价/文书、额度预留请求、付款待核保护、签署、取消异常共8项；M12唯一发行额度、合法预留与基础配售、法定登记证据及Token差异核对共8项。与前批无重叠，S04-04批准时累计**73/146 Approved、73项待审核**；后续DEC-023新增20项，最新138/146、余8项。
+- **已审24项**：M09投资者档案、KYC/KYB、AML、每Offering资格、补件/复核/审计共8项；M10唯一认购订单、报价/文书、额度预留请求、付款待核保护、签署、取消异常共8项；M12唯一发行额度、合法预留与基础配售、法定登记证据及Token差异核对共8项。与前批无重叠，S04-04批准时累计**73/146 Approved、73项待审核**；后续DEC-023新增20项，最新146/146逐ID已批准；审计Draft。
 - **发行机构合法登记能力（DEC-022 C01）**：产品默认允许**发行机构依法自管**的登记责任模型，通过本平台管理受权持有人名册/配售/证据/版本/审计。发行人依法委托合作方时支持结果记录或接口；**只有特定法域/Instrument依法强制特定登记或许可主体时才启用强制外部门槛**。Issuer/其合法代理对实际登记有效性负责；平台不默认取得法定登记权，也不能通过合同免除自身可能存在的法定义务。M22-F004只是必要外部登记服务集成能力，不是所有客户必须购买的独立审核机构。
 - **法律文件与Token地址绑定（DEC-022 C02）**：M04/M06可先准备并审查合法权利结构、发行条款及文书；按适用授权经M07取得真实合约地址，若某最终生效文件依法必须载明地址，再由M06形成经授权附件、补充文件/必要重签，M05完成最终文书与部署合约一致性发布Gate。**已签署旧文件不可后台补填覆盖；单纯部署合约也不等于允许募集、发行或Mint**。是否合法先部署、哪些文书必须载明地址与其法律效力，仍由具体法域/Instrument决定。
 - **四端唯一主责**：M09对每Offering资格决策负责，M10对订单/Quote负责，M12对额度、配售和合法登记**结果引用及核对**负责，M11/实际资金方对真实款项负责，M07/受权执行方对Token事实负责，M06对已签文书版本负责，Investor Portal只展示受权派生视图。
 - **仍不进V1**：M09-F009 TBD；M10-F009与M12-F009/F010属V2，M10-F010属V3。若首发法律工具强制集中募集，须在V1整体Frozen前重新正式审核相关版号。
-- **后续进展**：S04-05 M11募集款真实收款/退款/划拨与M13合法收益/存续20项已于DEC-023批准；M08完整门户已按DEC-025批准，M03平台管理已按DEC-026批准，M22外部协作仍待审；M17～M21共享能力已按DEC-024批准。字段PRD、真实法律责任/合约/资金生产、UI研发、V1整体Frozen与PR #6合并均未批准。
+- **后续进展**：S04-05 M11募集款真实收款/退款/划拨与M13合法收益/存续20项已于DEC-023批准；M08完整门户已按DEC-025批准，M03平台管理已按DEC-026批准，M22外部适配已按DEC-027批准（仅真实服务商/法域生产待定）；M17～M21共享能力已按DEC-024批准。字段PRD、真实法律责任/合约/资金生产、UI研发、V1整体Frozen与PR #6合并均未批准。
 
 ## 16. Step04 S04-05已批准：认购资金、募集款结算、收益与存续（2026-10-25）
 
@@ -277,7 +278,7 @@
 - **补充R02批准**：链上收益**优先评估独立预注资Claim合约**，完成M12法定权利快照、M13计算/审批、真实合法付款人和足额注资核验后开放领取；保留法律要求的Push/外部付款。**已注资≠投资者已收款；已领取≠法律债务当然解除**。分配合约与认购收款、Token发行合约分别定位。
 - **核心权威**：SaaS商业订阅费M01、投资者认购款及退款/募集划拨M11、存续收益及本息付款M13三条资金责任链不能混用；M12法律持有人、M07 Token执行、M17异常、M21只读统计各负其责。
 - **规划保留**：M11-F011法币/多通道投资者认购和M13-F008复杂公司行动仍为V3.0，不能偷入V1。S04-05批准当时累计**93/146 Approved、53/146待审核**；随后DEC-024批准共享能力31项，DEC-025后最新**135/146 Approved、11/146待审**，余M03 3项＋M22 8项。
-- **下一步**：S04-06已按DEC-024获批，S04-07投资者门户已按DEC-025批准，S04-08平台后台已批准，下一为S04-09外部服务核验；具体合约架构/合法资金主体/字段、接口、Gas、未领金额处理和真实生产签名在Step05与法域决策门审议。
+- **下一步**：S04-06已按DEC-024获批，S04-07投资者门户已按DEC-025批准，S04-08平台后台已批准，S04-09已按DEC-027批准；下一为Draft审计结果审核；具体合约架构/合法资金主体/字段、接口、Gas、未领金额处理和真实生产签名在Step05与法域决策门审议。
 
 **边界不变**：S04-05的Approved只覆盖功能和业务归属，V1.0整体仍未Frozen；不修改四份Frozen和既有正式决策/SCOPE正文，不批准UI/开发或真实资金、Token、智能合约生产执行，也不合并PR #6。
 
@@ -291,7 +292,7 @@
 - **M19（6项）**负责SaaS权限、Instrument/Offering条款、资格和自动配售规则的版本、审批、生效及安全强制优先级，不建设任意可视化规则引擎。
 - **M20（8项）**负责Tenant与敏感字段隔离、追加审计、金额/时间统一规则、原始外部证据、KYC最小访问、合法保留/退租交接、受控导出和安全事件。
 - **M21（6项）**形成项目、投资者认购、资金/异常、配售登记/Token、存续收益等按权限只读报表；不另建法定登记、真实资金或Token账本。
-- **S04-06批准当时进度**：S04-01～S04-06六批共**124/146唯一ID Step04 Approved（84.9%）**；当时剩余M08投资者门户11项、M03平台后台3项、M22外部服务适配8项，合计22项；此后S04-07已按DEC-025批准，S04-07已完成，S04-08已在DEC-026批准，接下来仅S04-09外部服务逐端审核。V1.0整体未Frozen，Step05字段PRD/Step06终审尚未完成。
+- **S04-06批准当时进度**：S04-01～S04-06六批共**124/146唯一ID Step04 Approved（84.9%）**；当时剩余M08投资者门户11项、M03平台后台3项、M22外部服务适配8项，合计22项；此后S04-07已按DEC-025批准，S04-07已完成，S04-08已在DEC-026批准，S04-09已按DEC-027完成，待全量一致性审计审核。V1.0整体未Frozen，Step05字段PRD/Step06终审尚未完成。
 
 **保持边界**：四份Frozen、既有DEC/SCOPE正文和DEC-017 193项版号原样保留；PR #6 Draft/Open/Unmerged，不授权UI/代码研发、资金/Token生产执行或上线。
 
@@ -316,6 +317,18 @@
 - **M03-F001商业客户申请/KYB**：SaaS客户邮箱注册即受限14天Trial，正式商业付款前审核合法企业KYB；SaaS KYB不替代真实Issuer/Instrument发行合规审核。
 - **M03-F002 Tenant受权开通、暂停与恢复**：M01仍是Tenant生命周期/商业授权权威，M03为P端操作入口；Trial到期只读及30天恢复与Paid存在真实发行义务时的必要保全分开。
 - **M03-F005敏感资料受控访问**：默认不任意跨Tenant读取原始KYC；合法必要时按目的、最小范围、审批、限时授权及M20审计执行，不能用普通客服权限读取私钥。
-- **版本及进度**：本批新增3个唯一ID，**最新138/146 Approved（94.5%）、仅M22外部合法服务适配8项待审**。M03-F003/F004仍V2、F006仍V3。S04-09及四端×11步×146项交叉核验尚未完成；Step05字段PRD、Step06整体V1 Frozen、UI研发/真实金融生产均未获授权。
+- **版本及进度**：本批新增3个唯一ID，**S04-08批准时138/146 Approved（94.5%），M22 8项待审**；随后DEC-027批准M22全部8项，当前**146/146唯一功能逐ID Approved**，跨端审计仍Draft。M03-F003/F004仍V2、F006仍V3。S04-09及四端×11步×146项交叉核验尚未完成；Step05字段PRD、Step06整体V1 Frozen、UI研发/真实金融生产均未获授权。
 
 **纪律**：DEC-017 193项正式ID/版本归属、历史DEC/SCOPE与四份Frozen正文不修改；PR #6继续Draft/Open/Unmerged。
+
+
+## 20. Step04 S04-09已批准：M22外部合法服务适配8项＋全量一致性审计Draft（2026-10-25）
+
+**本次正式决策**：[DEC-027｜S04-09-01～06六项全部A](decisions/DEC-027-step04-s0409-external-authority-services-approved.md)。**完整批准版功能设计**：[S04-09 M22 F001～F008](docs/03-product-prd/RWA-SaaS-Step-04-S04-09-External-Authority-Service-Adapters-Approved-v0.1.md)。**全量审核草案（尚未批准）**：[146项×P/I/V/X四端×11步审计Draft](docs/03-product-prd/RWA-SaaS-Step-04-146-Functions-Four-Lanes-11-Steps-Cross-Audit-Draft-v0.1.md)。唯一ID权威：[Step04 146项台账](docs/03-product-prd/RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md)。
+
+- **Step04真实进度**：S04-01～09九批逐ID设计全部批准，**146/146 V1功能已获Approved、0待审**；跨端及11步一致性审计是新的**Draft**，尚未获产品负责人认可，也不表示V1整体冻结。
+- **M22八项覆盖**：商业/投资者KYC/KYB/AML外部核验、稳定币收款监测、钱包节点和链上事件、按法律必要接入法定登记者、电子签署证据、Webhook安全与幂等、服务健康及异常升级、Tenant与Sandbox/生产凭证分离。**M22-F009智能多服务商切换仍V3.0**。
+- **静态审计已完成基础对账**：193正式ID仍为V1 146/V2 22/V3 20/TBD 5；146项已批准唯一ID与主表完全对应，无重名/缺号/版号越界；11步均有V1功能覆盖，按四端责任标记全量146行。**13项建议待跟踪**（高9、中3、低1），包括首发法域/合法持款及登记责任、条件性集中募集V2跨版门、付款/退款/收益Claim合约方案、法律文件与Token地址绑定、Signer/钱包、Webhook Unknown、未领收益和退出义务等。具体解决优先级需你审核。
+- **下一阶段不自动开始**：先审核Draft交叉审计的结论与13项待决门，再进入Step05字段级PRD。Step06另行决定V1.0整体Frozen/合法生产门。产品文档已审核不等于完成UI、代码、测试、实际服务商签约或真实金融执行。
+
+**纪律**：四份Frozen及旧DEC/SCOPE正文不改，PR #6 Draft/Open/Unmerged，未授权UI、开发、真实资金/法定登记/Mint或链上生产。

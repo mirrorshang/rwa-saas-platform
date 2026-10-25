@@ -6,6 +6,12 @@
 >
 > 本README是可独立阅读的**项目交接摘要**。文中的“批准/完成”主要指**产品规划与文档审查**，**不表示软件已开发、服务已部署、金融活动已获许可或合约已经在链上执行**。核心资料链接放在文末，日常了解项目无需先跳转。
 
+## I企业SaaS独立投资者门户导航正式批准｜DEC-043（2026-10-26）
+
+**[DEC-043 I-R19=A](decisions/DEC-043-step06-issuer-i-r19-standalone-investor-portal-navigation-approved.md)**：企业SaaS工作台现行**9个一级导航**：**工作台首页｜资产与发行｜投资者门户｜投资者与认购｜资金与结算｜Token管理｜收益与分配｜数据与报表｜企业设置**。新独立「投资者门户」通过**原I-13**管理Issuer标准投资者门户，I-13从企业设置归属迁出；**不新增逻辑页面ID或193项正式功能ID**。
+
+**V1已批基础（M01-F009）**：标准独立URL/实例、Issuer名称Logo、必要法律链接、合法Offering展示策略、预览/发布/暂停。**尚待逐页PRD评审**：页面内容和标准模板具体可编辑配置（首页板块、横幅、导航及排序、保存/版本/发布交互等）；如实质超出M01-F009等既有已批能力须独立范围及版本决策，不得静默纳入V1。**M15-F004高级白标/自定义域名继续V2，M08-F010个性化营销继续TBD**，Free Sandbox与Standard真实生产RG边界照旧。[四端104候选组IA](docs/03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)与[146项静态映射](docs/03-product-prd/RWA-SaaS-Step-06-09A-V1-146-Function-to-Page-Coverage-Audit-Draft-v0.1.md)已局部更新；仍W14/I61/V15/P14，正式版本V1 146/V2 22/V3 20/TBD 5不变。此前I-R19 Draft表述属于DEC-042阶段历史记录，现由DEC-043局部接续；**Draft仍限未明确批准的具体页面配置细节**。下一步I端整体IA一致性审核，之后V/P端页面架构及B01～B05逐页PRD；X01～13全Open、历史Frozen/DEC/SCOPE不变，V1不冻结，PR #6 Draft/Open/Unmerged。
+
 ## I企业SaaS工作台第6批正式批准｜DEC-042（2026-10-26）
 
 **[DEC-042：I-R13～I-R18全部A](decisions/DEC-042-step06-issuer-i-r13-r18-business-operations-secondary-navigation-approved.md)**。I端**投资者与认购**二级确认为「投资者管理、资格审核、认购订单、配售管理、持有人登记」；**资金与结算**为「收款与对账、退款与异常、募集款结算」（与企业订阅账单独立）；**Token管理**为「合约管理、Token操作、链上记录与对账」；**收益与存续**为「存续管理、收益分配、到期与退出」；待办/审批、消息/异常全局可达，报表/审计集中，规则、外部服务、安全支持按权限可达。各模块支持企业有权多资产、多项目、多Offering的跨项目总览与筛选。此为**局部菜单/页面分组Approved**，不表示逐页面PRD已签收。

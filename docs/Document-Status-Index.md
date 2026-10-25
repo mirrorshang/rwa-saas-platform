@@ -8,6 +8,10 @@
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
+## W官网最新局部已批：DEC-039 第3批六项（2026-10-26）
+
+[DEC-039 W-R08～R13全部A Approved](../decisions/DEC-039-step06-website-w-r08-r13-help-contact-policy-login-sandbox-approved.md)：W帮助中心FAQ/新手教程/联系客服，联系销售简表由运营人工跟进、**本版无完整CRM**；条款、隐私、Cookie政策和免责声明设官网页脚入口（法务正文未批准）；企业单Tenant登录直达I、多Tenant先选择；V投资者经各Issuer门户登录；I Free与V Sandbox演示醒目标测试模式。已接入[现行四端页面地图](03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)。W-NAV-R01及DEC-038仍已批；**其余页面设计、官网整体信息架构和页面级PRD仍Draft**，X-01～13 Open，193正式ID版本不变，PR #6 Draft/Open/Unmerged。
+
 ## 最新局部批准索引｜DEC-038 W官网第2批六项产品方向
 
 [DEC-038：W-R02～W-R07全部批准A](../decisions/DEC-038-step06-website-w-r02-r07-navigation-content-entry-approved.md)。官网首页、产品功能、解决方案、价格Free/Standard、邮箱验证注册→Free工作台、W官网→I企业商业KYB／合同／订阅付款的分工方向已Approved；先前W-NAV-R01顶部导航已在[Step06-6.1四端页面地图](03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)局部留档。**只批准这6项及前一项导航方向**，W其他页、104页组和逐页详细PRD仍Draft；不批准新CMS/CRM/定价或新增193功能ID。不改Frozen/历史DEC/SCOPE/DEC-017 146/22/20/TBD5，X-01～X-13全Open，V1未Frozen，PR #6 Draft/Open/Unmerged。

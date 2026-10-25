@@ -8,6 +8,12 @@
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
+## I企业SaaS工作台第5批最新已批：DEC-041（2026-10-26）
+
+**[DEC-041 I-R07～I-R12全部A Approved](../decisions/DEC-041-step06-issuer-i-r07-r12-secondary-navigation-project-offering-approved.md)**：I端「资产与发行」二级为**资产库、金融工具、项目管理、发行管理、文件中心**；资产/Instrument独立列表/新建/详情及筛选；Project列表统一创建引导及项目工作空间页签；从Project创建Offering，Offering须属明确Project；全企业Offering列表与发行参数/投资者规则/收款Token配置/发行前检查/状态管理详情分区。继承[DEC-040 I-R01～R06](../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)同企业多资产、多项目、多轮次并行原则。
+
+[现行四端104候选页面组中I端61组](03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)已同步这些**局部已批架构方向**；二级菜单其余细目、字段/按钮/交互/状态/权限/验收、Project同时关联多个底层Asset条件、最终路由、UI和实际生产均**Draft**。版本146/22/20/TBD5与冻结/风险/PR治理不变。下一批I-R13～I-R18，后进入B01→B05页面级PRD。
+
 ## I企业SaaS工作台最新局部已批：DEC-040 第4批六项（2026-10-26）
 
 **[DEC-040：I-R01～I-R06全部A，I-R05已补充多资产并行](../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)**。已批准I工作台左侧一级导航＋顶部全局工具栏，首页多项目/发行/待办信息，共用Free/Standard后台与套餐/生产门隔离，企业设置集中组织/成员/权限/账单/安全，以Project为业务中心分别管理Asset/Instrument/Project/Offering，同Tenant多资产类型、多项目、多轮次并行；业务模块按职能分组，避免按资产类型拆导航。I-R05并**未批准一个Project同时关联多个底层Asset**，需后审。

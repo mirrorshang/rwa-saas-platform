@@ -6,6 +6,10 @@
 >
 > 本README是可独立阅读的**项目交接摘要**。文中的“批准/完成”主要指**产品规划与文档审查**，**不表示软件已开发、服务已部署、金融活动已获许可或合约已经在链上执行**。核心资料链接放在文末，日常了解项目无需先跳转。
 
+## W官网第3批六项已批准｜DEC-039（2026-10-26）
+
+**[DEC-039 W-R08～R13全部A](decisions/DEC-039-step06-website-w-r08-r13-help-contact-policy-login-sandbox-approved.md)**：W帮助中心＝FAQ/教程/联系客服；联系销售简单咨询表单、人工跟进，**V1无完整CRM**；官网页脚提供SaaS条款/隐私/Cookie政策/免责声明入口（正文待专业审核）；单家授权企业登录直达I、多家先选择；真实投资者从Issuer专属V门户登录；I Free与V演示中醒目标“Sandbox／测试模式”。W页面清单中对应页面已更新；此前W-NAV-R01与DEC-038六项保留已批状态。**W全部页面PRD与四端IA整体仍Draft**；下一轮转I端导航，六项一批简短审核，不能把表单细节/法律正文/新CRM视为已批。Frozen/历史DEC/SCOPE和193版号未变，X13项Open，V1未Frozen，PR #6 Draft/Open/Unmerged。
+
 ## 最新局部产品确认｜W官网导航及首页/注册/升级6项（DEC-038）
 
 - **已批准**：[DEC-038 W-R02～R07=A](decisions/DEC-038-step06-website-w-r02-r07-navigation-content-entry-approved.md)：W首页含首屏、核心能力、发行流程、应用场景、套餐及FAQ；功能介绍资产/Token/投资者门户/认购/发行后管理；解决方案优先资产管理机构和发行企业；价格页展示永久免费Free及Standard、未定价时“联系销售”；邮箱注册验证后进Free企业工作台；官网只做Standard升级入口，I端承担商业KYB/商约和付费。先前**W-NAV-R01=A**（首页/产品功能/解决方案/价格/帮助中心＋登录/免费开始）已在[四端页面清单](docs/03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)留档。

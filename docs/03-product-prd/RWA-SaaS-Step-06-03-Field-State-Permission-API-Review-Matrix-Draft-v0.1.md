@@ -2,6 +2,29 @@
 
 > **2026-10-26｜Draft／审查框架，不是工程Schema、接口或权限码规格，不代表开发可直接实施**。[DEC-035 Step06-R03](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)批准**“先形成业务对象/状态/权限矩阵 → 法域和技术/安全专项审核 → 产品负责人只审核新出现的关键分歧”**的工作方法。上游Step04 146/146正式V1功能和Step05五场景29条产品规则Approved维持；本文的具体字段候选、状态enum、接口、安全、法域、Signer、法律责任及测试均Draft/Not Executed；X-01～X-13继续Open。
 
+## 2026-10-26最新现行设计原则｜Step06-R04=A技术SaaS优先（Approved仅责任/方法，字段仍Draft）
+
+**适用的较新正式决定**：[DEC-036：通用技术SaaS、Issuer负责具体资产发行合规、平台自身受监管活动另设真实生产Gate](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)；[Step06技术SaaS优先执行计划Draft](../00-governance/RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)。本节**在优先级上接续/修订**旧文中“必须先选法域×Instrument”的工作顺序；不改上游已批准功能和产品Guard，不表示已批具体字段、技术或法域。
+
+- **最优先从通用领域对象开始**：Tenant→Issuer→Asset/Instrument→Offering→Investor/Eligibility→Quote/Order→PaymentIntent→Allocation/Register→Token→Release→Yield/Exit；M17～M22提供技术支撑。先字段字典、状态转换、P/I/V/X角色作用域、逻辑API和Unknown异常，再进行完整146项双向核对。
+- **Issuer客户负责具体发行的法律合规**：系统提供IssuerComplianceDeclaration/EvidenceRef、JurisdictionRuleConfig、IssuerLegalAuthorityRef、LegalIssuerID、OfferingAudienceConfig、ExternalLegalProviderRef、ApprovalEvidence等**候选通用记录能力**，不自动代表律师意见或监管许可；真实客户自己/有权X签署、核验及承担法律决定。
+- **平台自身法律与信息安全义务仍独立**：P的实际服务若涉及证券营销/销售、接受/路由投资订单、资金控制、托管、投资者资产/钱包密钥、真实Token与付款指令执行，需按**真实行为**完成RG法域/许可、安全、合同、外包与权限审查。P管理员不能凭“软件商”身份取得上述操作权。
+- **生产默认安全策略**：具体合法Issuer、必要权限/资金方/Signer证据缺失时，对**真实不可逆金融动作**Fail-Closed或标未获生产启用，允许通用工作区Draft、配置/模拟、非金融商业账单及经授权状态查询；不可把缺证据改成“允许任意真实募资”。
+- **两门分离**：PG是V1产品规格冻结审查（须所有通用规则/字段/权限与外部依赖明确）；RG是平台自身行为及Issuer具体发行的真实金融功能启用审查。PG的Draft/Approved不等于RG生产许可，且**X-01～X-13仍13/13 Open**。
+- 原Step06-01/01A司法案例为**按需参考研究而非字段收口前置**；不得再将研究ADGM/日本/新加坡A/B/C选择作为本场景PRD起草的强制下一题。R02的M11-F012/F013第08步继续通用化设计，X实际执行。
+
+### 字段级技术SaaS产品分工（候选接口定义，不是工程schema）
+
+| 业务问题 | 谁作合法业务决定 | SaaS应如何描述通用字段/权限 | 触发独立RG审查 |
+|---|---|---|---|
+| 此Asset能否发行、用何Instrument/受众 | I的有权法律/发行主体或X适格专业人 | 证据版本、签署人、审查结果来源、配置型Eligibility/Disclosure Guard；没有证据不冒充“已合法” | I真实Offering对外招揽/出售及P实际参与销售 |
+| 真钱收款、受限与释放 | I依法授权的财务与X合法资金/Signer | MoneyIntent与受限额度分离、审批责任、原Intent幂等及独立真实到账证明 | P实控钱或Signer、实际收退款/结算启用 |
+| Token与法定名册 | I/X法定登记主体与实际Token Signer | M12 LegalRegisterEvidence≠M07 ChainEvidence，钱包接收/变更独立证明 | P控制Mint签名、托管、销售或真实交付 |
+| 收益、本金与退租后合法义务 | I/X合法债务/资金责任主体 | M13实付/债务与M12名册/M07 Burn分离，业务连续性及移交证据 | P真实收付款/保管或控制投资者权利 |
+| SaaS商业订阅、账号、系统安全 | P对自身软件及商业运营负责 | M01账与M11/M13隔离，Tenant隔离、权限审计、隐私、外部Provider配置 | P自身数据/商业/安全及可能的金融服务实际活动 |
+
+**现行执行顺序以DEC-036和新Step06计划为准**；后文先前“法律/Instrument先选”的句子仅保留为原Draft的历史工作建议，不再是当前约束。
+
 ## 1. 已批准与未批准的层次
 
 | 层次 | 现行权威 | 状态 | 本轮可做与不可做 |

@@ -6,6 +6,11 @@
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
 
+## 当前W官网已批局部产品方向（DEC-038，2026-10-26）
+
+- [DEC-038 W-R02～R07全部A Approved](../../decisions/DEC-038-step06-website-w-r02-r07-navigation-content-entry-approved.md)：首页、功能介绍、解决方案、双版本价格（未确定Standard价格时联系销售）、邮箱验证注册永久免费Free、从W进入I企业SaaS工作台并在I内完成商业KYB/订阅。先前W-NAV-R01=A顶部导航见[Step06-6.1页面地图Draft](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)。
+- **批准边界**：仅局部官网页面产品方向，不等于W/I/V/P全部104页面组Approved、逐页PRD完成或V1 Frozen；营销内容型官网页面如需新CMS/CRM/销售线索后台必须单独范围决定。193版号、四份Frozen/历史DEC/SCOPE与X-01～13 Open状态不改；PR #6 Draft/Open/Unmerged。
+
 ## 2026-10-26最新产品工作方法/阅读入口：优先页面级PRD，W官网纳入候选产品端
 
 | 当前先读 | 状态与批准范围 |

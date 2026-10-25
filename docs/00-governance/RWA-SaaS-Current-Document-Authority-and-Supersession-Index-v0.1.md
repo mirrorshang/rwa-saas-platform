@@ -6,6 +6,12 @@
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
 
+## DEC-041 I端二级菜单与Project/Offering产品方向（2026-10-26）
+
+**[DEC-041 I-R07～I-R12已明确批准A](../../decisions/DEC-041-step06-issuer-i-r07-r12-secondary-navigation-project-offering-approved.md)**，接续[DEC-040](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)并只增加「资产与发行」二级菜单、Asset/Instrument独立列表/创建/详情、Project统一新建向导及工作空间页签、Offering从Project创建/全企业列表和必须归属Project、Offering详情分区六个产品页面组织方向。详细映射参见[四端IA候选页面清单](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)。
+
+**批准效力限于上述IA与入口/页面分组规则**：不代表I端61组逐页PRD或四端104组全部批准、UI/字段/技术完成；**一Project是否同时可关联多项Asset仍Draft**。其他一级模块二级菜单待下一批审核。193项首次归属146/22/20/TBD5、旧Frozen/DEC/SCOPE、X-01～X-13 Open、V1未Frozen、PR #6 Draft/Open/Unmerged均不变。
+
 ## DEC-040 I端工作台信息架构局部批准（2026-10-26）
 
 [DEC-040：I-R01～I-R06六项方案A Approved](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)。现行**I端一级导航/首页/Free-Standard展示/企业设置/Asset-Instrument-Project-Offering分组/订单资金Token收益报表分组**的产品方向由该DEC决定；I-R05明确支持同Tenant多资产类别、多资产、多项目、多Offering并行管理、筛选且不按资产类型拆一级导航。**一Project可否同时关联多底层Asset仍Draft**；完整I端二级导航、61候选页面逐页PRD及四端总104页组的完整审核均未完成。[四端页面地图](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)是局部已批规则的索引与剩余Draft候选，不取代DEC。

@@ -6,6 +6,15 @@
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
 
+## Step06最新字段专项导航（2026-10-26；仅静态映射，不是字段批准）
+
+| 新增Draft | 已形成的可读工作成果 | 权威和状态 |
+|---|---|---|
+| [B01 Free/Standard商业权益与配额的领域字段级PRD](../03-product-prd/RWA-SaaS-Step-06-07-B01-Free-Standard-Domain-Field-State-Permission-API-PRD-Draft-v0.1.md) | 8业务对象组、候选字段、Free/Standard与Sandbox/生产的独立状态、P/I/V/X、逻辑API、Quota与UAT准备 | **Draft；DEC-037批准商业方向，不批准配额数字、收费周期/金额或字段/Schema** |
+| [B02 33项正式V1功能ID逐行字段/状态/权限/API矩阵](../03-product-prd/RWA-SaaS-Step-06-08-B02-33-V1-Functions-Field-State-Permission-API-Crosswalk-Draft-v0.1.md) | M04 8、M05 10、M06 6、M07 9；33/33静态映射、真实发布P01～07及模拟/生产Guard | **Draft；原Step04逐ID产品批准不扩为技术字段Approved；且未覆盖其余113项V1及后续B03～B05** |
+
+**文档优先级**：DEC-037与[Step05-01当前Free/Standard PRD](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md)覆盖历史Trial时限；Step06-07为当前B01字段深度，Step06-08为当前B02 33正式功能的字段*候选*入口。不能因标题写“33/33”推定B02可交付研发或已经执行了QA。下一阶段仍须B03～B05与146全量交叉审核；DEC-028 X01～13全Open，V1未Frozen，PR #6 Draft/Open/Unmerged。
+
 ## 2026-10-26 最新权威接续：DEC-037永久Free/Standard商业版本重构
 
 **[DEC-037 Step06-R05=A](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)**是相对于历史DEC-019/029/030更晚的**正式商业业务规则变更**：Free无限期并开放绝大部分功能完整Sandbox模拟；Standard在商业付费/签约/KYB满足后取得**正式能力的商业资格**，真实Token发行/销售/资金及平台自身受监管行为仍通过独立生产RG与Issuer/X相关Guards。历史旧**14天Trial（DEC-019）与336小时Trial+720小时恢复（DEC-030 R04）被明确替代**；不修改历史原文。

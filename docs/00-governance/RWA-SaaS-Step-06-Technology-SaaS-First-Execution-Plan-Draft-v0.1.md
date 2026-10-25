@@ -2,6 +2,12 @@
 
 > **2026-10-26｜执行优先顺序依据[DEC-036 Step06-R04 A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md) Approved；本文具体排期、文档与字段/状态/API工作包仍Draft。** 对DEC-035 R01作后续优先级调整：**无需先选择首发法域×Instrument，即可继续通用SaaS产品需求的设计与评审。** Issuer具体发行法律合规由该Issuer/有权专业机构负责；平台自身受监管活动与真实金融功能RG生产门独立审查。**不可推定软件上线或真实销售无需合法审查。**
 
+## Step06-6.1 最新批准｜DEC-041企业端二级菜单/Project/Offering（2026-10-26）
+
+[DEC-041 I-R07～I-R12全部A Approved](../../decisions/DEC-041-step06-issuer-i-r07-r12-secondary-navigation-project-offering-approved.md)，在[DEC-040一级IA批准](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)之后，批准资产库/金融工具/项目管理/发行管理/文件中心五个二级入口，Asset和Instrument独立管理、统一Project创建引导与工作空间页签、Offering从Project发起且必须有明确Project归属、全企业Offering列表和Offering详情的功能分区。[四端IA清单](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)相应I-20～I-36已作局部Approved标注。**未创建新增页面组或功能ID；Project同时关联多个Asset尚未批准，仍Draft。**
+
+**现行下一步**：I-R13～I-R18运营模块二级导航/跨项目筛选/全局待办与报表归类；随后B01和B02逐页面详细PRD，才继续B03～B05及146功能×11步全量审查。不要回到旧版“先签Schema/API字段”的主要产品负责人评审路径。产品规格PG、真实金融/Token RG分离；104候选页与193功能归属不变，X-01～X-13全Open、V1未Frozen、PR #6 Draft/Open/Unmerged。
+
 ## Step06-6.1 最新评审收口｜I端局部信息架构DEC-040
 
 [DEC-040 I-R01～I-R06全部A（含I-R05多资产并行管理）](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)已确认I端左侧一级导航＋顶部全局栏、首页业务总览与待办、Free/Standard统一工作台和生产授权隔离、企业设置归类、**以Project为业务中心管理多Asset类型、多资产、多并行Project/Offering**、按业务职能组织投资者/订单/配售/资金/Token/收益/报表，支持按资产/项目/轮次受权筛选；不得按资产类别拆顶级菜单。更新结果已同步[Step06-6.1四端页面地图](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)、根README和权威索引。

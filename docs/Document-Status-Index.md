@@ -8,6 +8,14 @@
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
+## 2026-10-26最新正式权威：DEC-036技术SaaS优先，产品PG与实际发行RG分离
+
+- **正式[DEC-036（Step06-R04=A）](../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)**：仅批准产品责任边界与Step06优先级——客户Issuer/有权服务方负责具体发行合法性；我们出售可配置SaaS技术能力，但平台实际受监管行为、数据与钱包/资金/Signer责任须独立审；不得声称软件商绝对不受监管。
+- **[Step06技术SaaS优先执行计划 Draft](00-governance/RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)**：B01～B05字段→状态/权限/逻辑API→146ID×11步四端审计→用户另行决定产品冻结。**法域×Instrument候选不再是产品PRD前置**；实际Issuer发行与平台自身RG生产门独立。
+- **[Step06-04 B01/B02通用字段级PRD首批 Draft](03-product-prd/RWA-SaaS-Step-06-04-Generic-SaaS-B01-B02-Field-States-Permissions-API-Draft-v0.1.md)**：已开始商业Tenant/KYB/Trial/Standard及Issuer/Asset/Instrument/Offering的字段、状态、权限、逻辑API首批设计。**没有批准任一新Schema/API或声称原65候选字段全部审完**。
+- **[Step06-02资金专项Draft](03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md)与[Step06-03统一审查矩阵Draft](03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md)**已接入DEC-036。**[Step06-01法律锚点](03-product-prd/RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md)及[01A候选比较](03-product-prd/RWA-SaaS-Step-06-01A-Jurisdiction-Instrument-Candidate-Comparison-Draft-v0.1.md)降为可选研究Draft**，不是强制问用户选国家的工作任务。
+- **效力及风险**：DEC-035历史原文仍保留，R01优先级被后续DEC-036接续；R02/R03继续。Step04 146/146、Step05 29条Approved不变；X-01～X-13 **13/13 Open**；DEC-017 193ID版号146/22/20/TBD5不变；**V1未Frozen、PR #6 Draft/Open/Unmerged**，没有真实金融/Token生产或技术许可。
+
 ## 一、当前真实进度（以本表为当前状态权威入口）
 
 | 工作成果 | 状态 | 说明/入口 |

@@ -2,6 +2,12 @@
 
 > **2026-10-26｜执行优先顺序依据[DEC-036 Step06-R04 A](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md) Approved；本文具体排期、文档与字段/状态/API工作包仍Draft。** 对DEC-035 R01作后续优先级调整：**无需先选择首发法域×Instrument，即可继续通用SaaS产品需求的设计与评审。** Issuer具体发行法律合规由该Issuer/有权专业机构负责；平台自身受监管活动与真实金融功能RG生产门独立审查。**不可推定软件上线或真实销售无需合法审查。**
 
+## Step06-6.1 最新评审收口｜I端局部信息架构DEC-040
+
+[DEC-040 I-R01～I-R06全部A（含I-R05多资产并行管理）](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)已确认I端左侧一级导航＋顶部全局栏、首页业务总览与待办、Free/Standard统一工作台和生产授权隔离、企业设置归类、**以Project为业务中心管理多Asset类型、多资产、多并行Project/Offering**、按业务职能组织投资者/订单/配售/资金/Token/收益/报表，支持按资产/项目/轮次受权筛选；不得按资产类别拆顶级菜单。更新结果已同步[Step06-6.1四端页面地图](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)、根README和权威索引。
+
+**下步**：I-R07～I-R12二级导航/项目创建/Offering管理页面分组审核，随后B01→B02→B03～B05逐页PRD。**一Project同时关联多个底层Asset的条件和关联基数仍Draft**。现有I61/W14/V15/P14=104候选页面组未改、146项映射仍仅静态；V1整体Frozen、字段/API、UI/生产不因本次局部批准而获得授权；历史DEC/SCOPE/Frozen、193项版号及X01～13 Open/PR #6 Draft/Open/Unmerged不变。
+
 ## 最新产品设计方法接续（2026-10-26）：先四端页面清单，再逐页面PRD
 
 **产品负责人最新要求**：①增加W官网（产品介绍、套餐Free/Standard、企业注册/订阅/进入I端入口）作为实际产品端；②不要再将系统字段或逻辑API当作主要产品经理交付物；③B01、B02各自完成**真正页面级详细产品PRD并审核**后再进入B03，随后B04/B05。这是现行工作顺序，后文旧版“先领域字段/API”的执行排序**降为辅助资料准备，不再作为阶段完成口径**。

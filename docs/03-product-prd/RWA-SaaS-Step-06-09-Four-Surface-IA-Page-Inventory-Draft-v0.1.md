@@ -2,6 +2,12 @@
 
 > **2026-10-26｜Product IA / Page Inventory Draft；未获逐页面PRD批准、未冻结导航、URL、UI、字段/Schema/API。** 用户明确要求新增**W官网**，并将后续产品设计重心改为**产品经理标准页面级PRD**；现有P/I/V仍按产品端独立设计，X外部服务是泳道/协作依赖而非默认自建第四/第五套业务后台。本文件为产品页面设计的下一步**建议页面地图**，页面ID属Draft页面标识，不是Mxx-Fxxx正式功能编号。本次**不新增或调整193项正式功能ID/版号**，营销内容及新入口若构成新增范围见文末决策门。
 
+## 已确认的局部产品决定：W官网顶部导航（2026-10-26）
+
+**W-NAV-R01：用户明确选择 A，局部产品导航方向 Approved**。顶部主导航采用**首页｜产品功能｜解决方案｜价格｜帮助中心**，右侧为**登录｜免费开始**。点击“免费开始”进入企业注册，注册后按DEC-037永久免费Free Sandbox模式开通；已注册客户可由“登录”进入现有企业工作台（实际登录流与多组织选择的具体页面交互仍待逐页PRD审核）。
+
+**批准范围严格限定**：仅上述导航条目与入口方向；页内结构、官网全部104页面组、页数、字体/视觉样式、域名路由、官网营销CMS、价格数字、Free资源额度、注册细节及下批提案**均未因此Approved**。本文件整体仍Draft，四端全局IA未冻结。用户同时要求后续**每批集中审核多个关键产品问题**，减少长篇概念说明；未来局部确认应按主题记录，未经用户明确批准不能自行把整批/整端标Approved。
+
 ## 一、来源、批准边界及产品目标
 
 - [四份Frozen原则](../00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)、[DEC-014十一步](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md)、[Step03的193项官方版本主表](RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)、[Step04 146项端侧注册台账](RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md)以及Step05五场景29条历史规则、后续[DEC-036](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)与[DEC-037](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)为依据。**已批功能与业务Guards直接继承；本页面组织方式尚未批准。**

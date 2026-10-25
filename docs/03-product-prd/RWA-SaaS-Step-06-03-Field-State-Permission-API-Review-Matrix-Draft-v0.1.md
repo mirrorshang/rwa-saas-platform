@@ -27,6 +27,12 @@
 
 **字段级首批已开始**：[Step06-04 B01/B02商业Tenant与Issuer发行配置字段／状态／权限／逻辑API Draft](RWA-SaaS-Step-06-04-Generic-SaaS-B01-B02-Field-States-Permissions-API-Draft-v0.1.md)，本矩阵是跨场景审核索引而不是已批技术合同；B03～B05尚待同样深度，146项总映射仍未完成。
 
+## DEC-037后的Free/Standard商业权益与跨域技术Guard（2026-10-26）
+
+本矩阵05-01对象与状态须以[DEC-037](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)为现行商业规则：**不再有14天到期或30天恢复引起的Free权限迁移**。M01 Free/Standard商业Plan、M19 Sandbox/Production能力与资源控制、M03商业服务受权运维、M20审计/数据隔离；M05/M07/M09/M10/M11/M12/M13真实业务权威仍各自独立、X真Signer/资金不可被订阅按钮代替。Free可完整模拟11步业务，但**不允许真发行/认购/法定权益创建**；Standard还需Issuer真实发行条件及平台自身RG。
+
+**新来源**：[Step05-01现行Free/Standard PRD](RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md)、[四端状态异常v0.3](RWA-SaaS-Step-05-01-Free-Standard-Cross-Lane-States-Exceptions-Approved-v0.3.md)、[22模块能力矩阵Draft](RWA-SaaS-Step-06-Free-Standard-Capability-Entitlement-Matrix-Draft-v0.1.md)、[65行字段新映射Draft](RWA-SaaS-Step-06-06-B01-Free-Standard-Field-Migration-Review-Draft-v0.1.md)。本稿后续旧05-01表内Trial/336h/720h仅是旧Draft快照，不能用于工程现行实现。X-01～13未因此关项。
+
 ## 1. 已批准与未批准的层次
 
 | 层次 | 现行权威 | 状态 | 本轮可做与不可做 |

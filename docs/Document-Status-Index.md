@@ -8,6 +8,12 @@
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
 
+## I企业SaaS工作台最新局部已批：DEC-040 第4批六项（2026-10-26）
+
+**[DEC-040：I-R01～I-R06全部A，I-R05已补充多资产并行](../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)**。已批准I工作台左侧一级导航＋顶部全局工具栏，首页多项目/发行/待办信息，共用Free/Standard后台与套餐/生产门隔离，企业设置集中组织/成员/权限/账单/安全，以Project为业务中心分别管理Asset/Instrument/Project/Offering，同Tenant多资产类型、多项目、多轮次并行；业务模块按职能分组，避免按资产类型拆导航。I-R05并**未批准一个Project同时关联多个底层Asset**，需后审。
+
+[四端104候选页面地图中I端61组的分组和局部备注](03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)已同步，**只有六项IA/分组方向Approved**：详细二级菜单、各页面字段/按钮/权限/异常/验收、项目-资产关联基数、UI、实际生产仍Draft。下一批I-R07～I-R12，再B01→B02→B03～B05逐页PRD。前期官网W-NAV-R01、DEC-038、DEC-039保留已批；193正式功能归属146/22/20/TBD5、四份Frozen、历史DEC/SCOPE不变；X01～13全Open、V1未Frozen、PR #6 Draft/Open/Unmerged。
+
 ## W官网最新局部已批：DEC-039 第3批六项（2026-10-26）
 
 [DEC-039 W-R08～R13全部A Approved](../decisions/DEC-039-step06-website-w-r08-r13-help-contact-policy-login-sandbox-approved.md)：W帮助中心FAQ/新手教程/联系客服，联系销售简表由运营人工跟进、**本版无完整CRM**；条款、隐私、Cookie政策和免责声明设官网页脚入口（法务正文未批准）；企业单Tenant登录直达I、多Tenant先选择；V投资者经各Issuer门户登录；I Free与V Sandbox演示醒目标测试模式。已接入[现行四端页面地图](03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)。W-NAV-R01及DEC-038仍已批；**其余页面设计、官网整体信息架构和页面级PRD仍Draft**，X-01～13 Open，193正式ID版本不变，PR #6 Draft/Open/Unmerged。

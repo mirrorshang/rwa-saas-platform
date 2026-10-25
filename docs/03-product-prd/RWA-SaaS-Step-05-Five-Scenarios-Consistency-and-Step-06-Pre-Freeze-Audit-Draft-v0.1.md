@@ -8,6 +8,10 @@
 
 现行执行次序：[Step06技术SaaS优先执行计划Draft](../00-governance/RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md)。Step04 146/146、Step05 29条产品规则仍Approved，193首次版本146/22/20/5及V1未Frozen不变。
 
+## DEC-037更新：05-01正式商业产品模式已变更（2026-10-26）
+
+本五场景静态审计的29项历史Approved产品规则可追溯，但**Step05-01旧Trial 14天/336h以及随后720h受限恢复规则已由[DEC-037](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)正式替代**；不能将旧29项原始文本全部当作目前现行不变规则。05-01当前应读[Free/Standard永久Sandbox商业PRD](RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md)与[四端状态异常v0.3](RWA-SaaS-Step-05-01-Free-Standard-Cross-Lane-States-Exceptions-Approved-v0.3.md)，并在跨端11步审计中验证Free**模拟完整闭环**与Standard**真实执行RG独立**。原审计13个X仍全部Open，Step04 146V1 ID/193总体首次版号不变，V1未Frozen。
+
 ## 一、一页产品负责人审核结论（只据文档）
 
 | 维度 | 本次静态核查结论 | 准确的状态说明 |

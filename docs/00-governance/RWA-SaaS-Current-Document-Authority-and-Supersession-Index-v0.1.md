@@ -6,6 +6,12 @@
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
 
+## DEC-043｜I-R19独立投资者门户一级导航正式批准（2026-10-26）
+
+**[DEC-043 I-R19=A](../../decisions/DEC-043-step06-issuer-i-r19-standalone-investor-portal-navigation-approved.md)**是对DEC-040最初8一级菜单与DEC-042“I-R19提案仍Draft”之**后续局部批准**：I端现在**9个独立一级导航**，新设「投资者门户」，将原I-13从企业设置迁入该独立模块，不增加逻辑页组或正式功能ID。标准门户基础实例、品牌名称Logo、法律链接、受权Offering展示策略、预览/发布仍属于已批准V1 **M01-F009**，不能把高级白标/独立域名或任意页面编辑器推定为已批V1。标准模板的首页板块/Banner/导航编辑、配置发布流程和权限仍Draft、逐页PRD/正式范围审核。**M15-F004高级白标域名维持V2、M08-F010高级个性化营销维持TBD**。
+
+本次只改变导航与页面归属，其他DEC-040/041/042已批业务分类仍有效；[I端61/四端104候选页面地图](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)和[146功能静态覆盖](../03-product-prd/RWA-SaaS-Step-06-09A-V1-146-Function-to-Page-Coverage-Audit-Draft-v0.1.md)保留Draft，193正式版号146/22/20/TBD5不变。历史Frozen/DEC/SCOPE不改，X01～13全Open，V1未Frozen，PR #6 Draft/Open/Unmerged。
+
 ## DEC-042｜I端运营导航局部批准及门户页面配置缺口（2026-10-26）
 
 **[DEC-042 I-R13～I-R18六项A Approved](../../decisions/DEC-042-step06-issuer-i-r13-r18-business-operations-secondary-navigation-approved.md)**：投资者/资格/订单/配售登记、募集款对账退款结算、Token合约与执行记录、收益存续退出、消息任务异常报表审计，以及跨企业项目的授权筛选。仅批准本批菜单分组/聚合方向，**不表示页面级PRD通过**。继承[DEC-041](../../decisions/DEC-041-step06-issuer-i-r07-r12-secondary-navigation-project-offering-approved.md)、[DEC-040](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)。

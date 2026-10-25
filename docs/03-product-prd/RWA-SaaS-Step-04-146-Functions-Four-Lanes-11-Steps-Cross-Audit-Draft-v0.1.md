@@ -1,6 +1,8 @@
 # RWA SaaS｜Step04 全量一致性审计：146项 × P/I/V/X四端 × 11步业务主线（Draft v0.1）
 
-> **状态：Audit Draft / Pending Product Owner Review（2026-10-25）**。本审计是用户在批准S04-09六组A后独立委托开展的**静态文档审计**。**不属于DEC-027已批准范围，不自动冻结V1.0，不修改任何历史DEC/SCOPE/Frozen，不代表字段级PRD、工程实现、资金/Token生产执行或E2E测试已经通过。**
+> **状态：Audit Draft／Static Coverage Conditionally Accepted（2026-10-25）**。产品负责人“基本确认，按你的建议”按[DEC-028](../../decisions/DEC-028-step04-cross-audit-conditional-acceptance-and-step05-visual-review.md)仅有条件认可146项×四端×11步的静态覆盖结论；X-01～X-13仍Draft/Open，全文未无条件Approved、V1未Frozen。
+>
+> **旧流程时序勘误**：历史Step02 v0.3的L0/L1-A企业商业KYB/付款先于Tenant创建，被后续已批准DEC-019覆盖；已保留旧图并创建[Step02 v0.4勘误图](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-DEC019-Onboarding-Corrected-v0.4-Draft.md)，先14天受限Trial、后KYB/付费原Tenant转正。首份[Step05-01可视化PRD Draft](RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Visual-PRD-Draft-v0.1.md)已启动。本审计是用户在批准S04-09六组A后独立委托开展的**静态文档审计**。**不属于DEC-027已批准范围，不自动冻结V1.0，不修改任何历史DEC/SCOPE/Frozen，不代表字段级PRD、工程实现、资金/Token生产执行或E2E测试已经通过。**
 
 ## 0. 执行摘要与实测审计方法
 

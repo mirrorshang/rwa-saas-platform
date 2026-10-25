@@ -6,6 +6,12 @@
 >
 > **一条核心规则**：功能范围和法律事实以主题适用的 Approved DEC/SCOPE、Frozen正文及其后续明确的**变更决定**综合判断；导航索引不是批准权威。某项 Approved ≠ 整篇 PRD Frozen；用户版号规划 Draft ≠ 开发授权；纸面流程通过 ≠ 代码及资金通过。
 
+## DEC-040 I端工作台信息架构局部批准（2026-10-26）
+
+[DEC-040：I-R01～I-R06六项方案A Approved](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)。现行**I端一级导航/首页/Free-Standard展示/企业设置/Asset-Instrument-Project-Offering分组/订单资金Token收益报表分组**的产品方向由该DEC决定；I-R05明确支持同Tenant多资产类别、多资产、多项目、多Offering并行管理、筛选且不按资产类型拆一级导航。**一Project可否同时关联多底层Asset仍Draft**；完整I端二级导航、61候选页面逐页PRD及四端总104页组的完整审核均未完成。[四端页面地图](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)是局部已批规则的索引与剩余Draft候选，不取代DEC。
+
+该决定不覆盖[DEC-039官网第3批](../../decisions/DEC-039-step06-website-w-r08-r13-help-contact-policy-login-sandbox-approved.md)、[DEC-038官网第2批](../../decisions/DEC-038-step06-website-w-r02-r07-navigation-content-entry-approved.md)、[DEC-037永久Free/Standard](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)或原Frozen历史权威；不改变DEC-017 193项首次版本146/22/20/TBD5、X01～13 Open、V1产品未Frozen与PR #6 Draft/Open/Unmerged。下轮I-R07～I-R12、再B01～B05逐页PRD。
+
 ## 已批准官网页面方向最新补充：DEC-039（2026-10-26）
 
 [DEC-039 W-R08～R13全部A Approved](../../decisions/DEC-039-step06-website-w-r08-r13-help-contact-policy-login-sandbox-approved.md)：FAQ/新手教程/客服联系销售（简单表单＋人工跟进，无新CRM）；官网页脚服务条款/隐私/Cookie/免责声明入口（法律正文另审）；单Tenant直入I／多Tenant有权企业选择；投资者仅对应Issuer门户登录；I Free/V演示醒目标Sandbox测试。**仅以上六项局部页面方向Approved**，与已确认W-NAV-R01及[DEC-038](../../decisions/DEC-038-step06-website-w-r02-r07-navigation-content-entry-approved.md)共同形成当前官网已批准产品方案。全站IA、104候选页详细PRD、法律/隐私交互、咨询表单字段及后续I端审核题均Draft；193版号、Frozen/历史DEC/SCOPE和X01～13状态保持不变。V1未Frozen、PR #6 Draft/Open/Unmerged。

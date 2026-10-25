@@ -8,6 +8,12 @@
 
 **当前优先次序调整**：①先收口Free/Standard商业权益与Sandbox/Production环境/配额、原Tenant升级及历史义务；②同步保留B02 Issuer/Offering，继续B03～B05；③跨端权限、状态、逻辑API和146功能ID×11步审计；④用户另行决定V1整体Frozen。**Free永久免费不等于无限免费资源或放开真实Token销售；Standard付费不等于真正法律/Signer/支付生产权限。**价格/配额/周期、测试网、迁移代码和QA仍Draft，RG独立未完成。X-01～13全部Open，原193版号不变。
 
+## 当前执行进度｜B01详细PRD与B02 33个V1正式ID字段草案已建立（2026-10-26）
+
+- **[Step06-07 B01 Free/Standard深度字段PRD](../03-product-prd/RWA-SaaS-Step-06-07-B01-Free-Standard-Domain-Field-State-Permission-API-PRD-Draft-v0.1.md)**：永久Free无时间限制、配额/模拟/Standard升级、已发行客户订阅失效保护，字段、权限、状态、逻辑API与待测UAT全部Draft；旧Trial336h/720h不得进入现行实现。
+- **[Step06-08 B02正式V1 33ID静态逐项映射](../03-product-prd/RWA-SaaS-Step-06-08-B02-33-V1-Functions-Field-State-Permission-API-Crosswalk-Draft-v0.1.md)**：M04/M05/M06/M07合计33个ID各有候选字段及四端/逻辑接口/异常。**这不是33个功能的字段签收，只是覆盖率33/33的静态审计结果**。
+- **下一批顺序**：B01配额/账期的少量高价值商业决策门（仍待决定），B02字段技术化、B03投资者/KYC/钱包/认购、B04资金收益退出、B05平台运维；146项×11步双向验收与独立产品Frozen提案。**产品PG与真实发行/平台RG分离，X01～13全Open。**
+
 ## 0. 前序产品设计已经具备的事实
 
 - **Step01总体产品战略与4份Frozen原则**：适用全球的标准化多资产ToB技术SaaS方向；四份Frozen原文不改。

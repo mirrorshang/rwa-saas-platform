@@ -25,6 +25,8 @@
 
 **现行执行顺序以DEC-036和新Step06计划为准**；后文先前“法律/Instrument先选”的句子仅保留为原Draft的历史工作建议，不再是当前约束。
 
+**字段级首批已开始**：[Step06-04 B01/B02商业Tenant与Issuer发行配置字段／状态／权限／逻辑API Draft](RWA-SaaS-Step-06-04-Generic-SaaS-B01-B02-Field-States-Permissions-API-Draft-v0.1.md)，本矩阵是跨场景审核索引而不是已批技术合同；B03～B05尚待同样深度，146项总映射仍未完成。
+
 ## 1. 已批准与未批准的层次
 
 | 层次 | 现行权威 | 状态 | 本轮可做与不可做 |

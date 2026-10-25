@@ -1,12 +1,19 @@
 # RWA SaaS Platform｜现行文档状态和决策索引
 
-> **现行最新状态（2026-10-26）：[DEC-035](../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)仅正式批准Step06-R01～R03三项工作方向（A/A/A）**：一个法域×一种Instrument合规验证锚点、M11-F012/F013第08步募集款释放/划拨专项、五场景业务对象→状态/权限→技术/法域审核→只提请用户审批关键分歧。新增[合规锚点Draft](03-product-prd/RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md)、[募集款专项Draft](03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md)、[字段/状态/权限/API矩阵Draft](03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md)。**尚未选J0法域或I0工具，不批准任何实际资金/Signer/技术Schema/API/权限码。X-01～13全部Open；Step04 146/146、Step05 29条Approved、193项版本146/22/20/5不变，V1未Frozen、PR #6 Draft/Open/Unmerged。**
+> **2026-10-26现行阅读顺序：DEC-036/037的已批准业务规则 → Step06-6.1新四端页面地图Draft → B01～B05逐页面详细PRD与独立审核。** 下方DEC-035首次Step06工作方法与Trial等说明保留为历史阶段快照，**不再作为当前页面设计排序及商业模式权威**。目前104候选页面组、146/146功能静态映射，页面本身尚未Approved/Frozen。X-01～13全部Open；V1总体未Frozen；PR #6 Draft/Open/Unmerged。
 >
 > 下方2026-10-25叙述是阶段历史进度与原决定的索引，遇到“Step05-05未批准”等旧时点结论，以本段和末尾最新专节为准。
 
 > **历史阶段回顾（2026-10-25）｜DEC-017批准193项首次交付版号；DEC-018/019批准S04-01 16项及试用订阅，DEC-020批准S04-02 14项，DEC-021批准S04-03 19项，DEC-022批准S04-04 M09/M10/M12共24项及两条后续澄清，DEC-023批准S04-05 M11/M13共20项及R01/R02补充，DEC-024批准S04-06 M17～M21共31项，DEC-025批准S04-07 M08投资者门户11项，DEC-026批准S04-08 M03平台后台3项，DEC-027批准S04-09 M22外部服务8项；Step04九批146/146逐ID功能全部Approved、0待审；全量四端×11步静态一致性审计Draft待审核；整体V1.0未Frozen/未获真实生产授权。**
 >
 > **读这份索引之前**：如遇到不同文件对同一事情的旧/新描述，先查[当前权威与后续生效覆盖矩阵](00-governance/RWA-SaaS-Current-Document-Authority-and-Supersession-Index-v0.1.md)。正式DEC、ARCH、SCOPE按各自批准范围适用；四份Frozen原文不更改。历史文件上看到的“待批准”可能是过去时点，不可取代更新的正式决策。项目总览见[README](../README.md)。
+
+## 2026-10-26最新页面级产品设计工作入口（Step06-6.1，尚为Draft）
+
+- [四端W/I/V/P全局信息架构与候选页面清单](03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)：W官网14页、I企业61页、V投资者15页、P后台14页，共104个**逻辑页面/页面组候选**。W负责官网介绍、套餐/注册登录/I入口，具体升级KYB合同和实际SaaS费主要放I；外部X为外部服务与执行责任，不默认自建X端。**没有批准最终导航、页面数、路由或UI设计**。
+- [146项正式V1功能×候选页面双向静态覆盖审计](03-product-prd/RWA-SaaS-Step-06-09A-V1-146-Function-to-Page-Coverage-Audit-Draft-v0.1.md)：正式ID **146/146至少有一处关联，无功能ID漏项**，**不等于146项页面PRD已完成**。W纯内容/政策/帮助类7页没有既有官方功能ID，营销CMS/CRM/支持后台是否另需新功能待审核，禁止自动扩大V1范围。
+- **新的产品工作顺序**：先审全局四端页面地图，随后B01→B02→B03→B04→B05逐页面编写中文字段、内容区、按钮、状态、流转、权限及产品UAT，再全量146功能×11步静态与原型验收；此前Step06-07/08字段、状态、API对象文档变为辅助输入，**不能当页面级详细PRD的已交付证明**。
+- **边界**：此工作方法与页面稿仍待产品级具体审核，没有正式Frozen；DEC-036/037仍是已批准业务规则，四份Frozen及历史DEC/SCOPE不改、193版本146/22/20/5不变、X-01～13全部Open、PR #6 Draft/Open/Unmerged。
 
 ## Step06 字段审阅新增：B01详细领域规格与B02正式33项逐ID（2026-10-26，Draft）
 

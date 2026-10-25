@@ -191,6 +191,10 @@
 - DEC-017 193正式功能ID的版号仍为**V1 146/V2 22/V3 20/TBD 5**，Step04 146/146 Approved、DEC-028条件静态覆盖及13项Open不变。**不修改四份Frozen/历史DEC/SCOPE，PR #6 Draft/Open/Unmerged，不进入UI/研发/真实金融Token生产。**
 
 
+## 新增研究材料导航（2026-10-26，非生效决策）
+
+[Step06-01A 日本／ADGM／新加坡×私募Token化债权研究比较Draft](../03-product-prd/RWA-SaaS-Step-06-01A-Jurisdiction-Instrument-Candidate-Comparison-Draft-v0.1.md)提出首个合规验证锚点候选及现行官方研究来源。其推荐ADGM先研究**并非**DEC-035对具体法域的批准，更非监管合规意见；**J0/I0仍未选定、三份原Step06专项仍Draft、X-01～13仍13/13 Open**。现行产品级Approved仍以历史正式DEC各自边界为准。
+
 ## 19. 2026-10-26 DEC-035：Step06工作方法与三个专项Draft（目前最新）
 
 **权威层级**：[DEC-035](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md)只批准R01～R03的工作方式；DEC-017与DEC-018～034先前批准的范围不变，任何Step06新字段、法域结论、实现方案不能由方法决定取得Approved效力。

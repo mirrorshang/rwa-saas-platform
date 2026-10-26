@@ -479,3 +479,48 @@ img { max-width: 100%; }
 @media (max-width: 1100px) { .upgrade-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 850px) { .pricing-grid, .production-grid { grid-template-columns: 1fr; } .upgrade-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 570px) { .pricing-hero { padding: 80px 0; } .plan-card { padding: 24px; } .upgrade-steps { grid-template-columns: 1fr; } .upgrade-steps article { min-height: auto; } }
+
+.help-hero { position: relative; overflow: hidden; padding: 110px 0 125px; background: radial-gradient(circle at 77% 25%, #12435e, #071b2d 45%, #041321 80%); }
+.help-hero .container { position: relative; }
+.help-hero h1 { font-size: clamp(44px, 5.5vw, 72px); line-height: 1.14; letter-spacing: -.055em; margin: 24px 0; }
+.help-hero h1 em { color: $cyan; font-style: normal; }
+.help-hero p { max-width: 630px; color: #adc5d4; font-size: 17px; line-height: 1.9; }
+.help-shortcuts { margin-top: -70px; position: relative; z-index: 2; }
+.help-shortcuts-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.help-shortcuts-grid a { min-height: 198px; background: linear-gradient(140deg, #10324b, #0a2136); border: 1px solid #2b617c; border-radius: 9px; padding: 28px; transition: border .2s, transform .2s; }
+.help-shortcuts-grid a:hover { border-color: $cyan; transform: translateY(-4px); }
+.help-shortcuts-grid a > span { color: $cyan; font-size: 11px; letter-spacing: .12em; }
+.help-shortcuts-grid h2 { display: flex; justify-content: space-between; font-size: 24px; margin: 25px 0 12px; }
+.help-shortcuts-grid h2 b { color: $cyan; font-size: 17px; }
+.help-shortcuts-grid p { color: #9ebdcc; font-size: 13px; line-height: 1.7; margin: 0; }
+.help-faq-section { background: #061525; scroll-margin-top: 25px; }
+.help-categories { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 35px; }
+.help-categories button { background: #0b273d; border: 1px solid #27506a; color: #aec9d7; border-radius: 99px; font-size: 13px; padding: 11px 20px; }
+.help-categories button:hover, .help-categories button.active { border-color: $cyan; background: #124d65; color: white; }
+.help-faq-section .faq-item { scroll-margin-top: 20px; }
+.help-faq-section .faq-item button { align-items: center; }
+.help-faq-section .faq-item button small { display: block; color: $cyan; font-size: 10px; font-weight: 550; letter-spacing: .07em; margin-bottom: 9px; }
+.help-empty { border: 1px solid #2c536c; padding: 35px; color: #a9c3d1; }
+.help-empty button { background: none; border: none; color: $cyan; margin-left: 12px; }
+.help-tutorial-section { background: #081c2e; scroll-margin-top: 25px; }
+.tutorial-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.tutorial-card { border: 1px solid #2b536d; border-radius: 8px; background: #0c273c; overflow: hidden; }
+.tutorial-card.expanded { border-color: #3da6c2; }
+.tutorial-trigger { width: 100%; min-height: 117px; border: 0; background: none; display: flex; align-items: start; text-align: left; gap: 19px; padding: 27px; color: white; }
+.tutorial-index { color: $cyan; font-size: 28px; font-weight: 700; line-height: 1; }
+.tutorial-trigger > span:nth-child(2) { flex: 1; }
+.tutorial-trigger strong { display: block; font-size: 17px; margin: 1px 0 10px; }
+.tutorial-trigger small { color: #9cbbc9; font-size: 12px; line-height: 1.6; }
+.tutorial-trigger b { color: $cyan; font-size: 20px; }
+.tutorial-detail { border-top: 1px solid #2d5269; padding: 25px 28px 30px; }
+.tutorial-detail ol { padding-left: 22px; color: #bdd5de; font-size: 13px; line-height: 1.75; }
+.tutorial-detail li { margin: 12px 0; padding-left: 5px; }
+.tutorial-detail li::marker { color: $cyan; }
+.tutorial-note { background: #0b3548; border-left: 2px solid $cyan; padding: 15px; color: #9dbdcc; font-size: 12px; line-height: 1.8; margin: 26px 0; }
+.help-support-section { background: #061321; scroll-margin-top: 25px; }
+.support-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.support-grid article { padding: 35px; border: 1px solid #2c5870; border-radius: 9px; background: #0b263b; }
+.support-symbol { color: $cyan; font-size: 36px; }
+.support-grid h3 { margin: 20px 0 15px; font-size: 21px; }
+.support-grid p { color: #a8c2d0; font-size: 13px; line-height: 1.8; min-height: 60px; }
+@media (max-width: 850px) { .help-shortcuts-grid { grid-template-columns: 1fr; } .help-shortcuts { margin-top: -35px; } .tutorial-grid, .support-grid { grid-template-columns: 1fr; } }

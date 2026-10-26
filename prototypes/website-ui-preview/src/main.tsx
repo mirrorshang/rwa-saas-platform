@@ -10,6 +10,7 @@ import { Help } from './pages/Help';
 import { Contact } from './pages/Contact';
 import { Policies } from './pages/Policies';
 import { Register } from './pages/Register';
+import { VerifyEmail } from './pages/VerifyEmail';
 import './utilities.css';
 import './styles.scss';
 
@@ -23,10 +24,11 @@ const contactRoute = createRoute({ getParentRoute: () => rootRoute, path: '/cont
 const policiesRoute = createRoute({ getParentRoute: () => rootRoute, path: '/policies', component: Policies });
 const policyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/policies/$policy', component: Policies });
 const registerRoute = createRoute({ getParentRoute: () => rootRoute, path: '/register', component: Register });
+const verifyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/verify-email', component: VerifyEmail });
 const pendingRoutes = [
-  '/verify-email', '/login', '/free-onboarding', '/organizations', '/standard-upgrade',
+  '/login', '/free-onboarding', '/organizations', '/standard-upgrade',
 ].map(path => createRoute({ getParentRoute: () => rootRoute, path, component: PendingPage }));
-const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, ...pendingRoutes]);
+const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, ...pendingRoutes]);
 const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {

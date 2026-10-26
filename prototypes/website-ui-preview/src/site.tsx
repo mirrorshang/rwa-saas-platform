@@ -61,6 +61,9 @@ export function Footer({ onCookies }: { onCookies: () => void }) {
   </div></footer>;
 }
 
+function AuthHeader() { return <header className="auth-header"><div className="container"><a className="brand" href={paths.home} aria-label="WDEX SaaS 首页"><span className="brand-mark"><i /><i /><i /></span>{site.brand}</a></div></header>; }
+function AuthFooter() { return <footer className="auth-footer"><div className="container"><span>WDEX SaaS · 企业账户</span><nav aria-label="验证帮助"><a href={paths.help}>帮助中心</a><a href={paths.policies + '/terms'}>服务条款</a><a href={paths.policies + '/privacy'}>隐私政策</a></nav></div></footer>; }
+
 type CookieChoice = { analytics: boolean; functional: boolean; marketing: boolean };
 const cookieKey = 'wdex-cookie-preview';
 
@@ -83,12 +86,13 @@ export function App() {
   const [role, setRole] = useDemoRole();
   const [cookiesOpen, setCookiesOpen] = useState(false);
   const demoMode = new URLSearchParams(location.search).get('demo') === '1';
+  const compactAuth = location.pathname === paths.verify;
   useEffect(() => { document.title = `${site.brand}｜面向发行机构的多资产Token化SaaS`; }, []);
   return <>
-    <Header role={role} />
+    {compactAuth ? <AuthHeader /> : <Header role={role} />}
     {demoMode && <div className="scenario-bar"><span>{site.demoLabel}</span><label>访客/授权场景：<select value={role} onChange={e => setRole(e.target.value as DemoRole)}><option value="visitor">访客</option><option value="single">单企业Free管理员</option><option value="multiple">多企业</option><option value="none">无有效企业授权</option><option value="no-subscription">Free无订阅权限</option><option value="standard">已开通Standard</option><option value="upgrading">升级处理中</option></select></label></div>}
     <Outlet />
-    <Footer onCookies={() => setCookiesOpen(true)} />
+    {compactAuth ? <AuthFooter /> : <Footer onCookies={() => setCookiesOpen(true)} />}
     <CookieLayer open={cookiesOpen} setOpen={setCookiesOpen} />
   </>;
 }

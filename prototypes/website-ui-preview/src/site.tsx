@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { paths, site } from './config';
 
-export type DemoRole = 'visitor' | 'single' | 'multiple' | 'none';
+export type DemoRole = 'visitor' | 'single' | 'multiple' | 'none' | 'no-subscription' | 'standard' | 'upgrading';
 
 const useDemoStore = create<{ role: DemoRole; setRole: (role: DemoRole) => void }>()(
   persist(
@@ -86,7 +86,7 @@ export function App() {
   useEffect(() => { document.title = `${site.brand}｜面向发行机构的多资产Token化SaaS`; }, []);
   return <>
     <Header role={role} />
-    {demoMode && <div className="scenario-bar"><span>{site.demoLabel}</span><label>访客/授权场景：<select value={role} onChange={e => setRole(e.target.value as DemoRole)}><option value="visitor">访客</option><option value="single">单企业</option><option value="multiple">多企业</option><option value="none">无有效企业授权</option></select></label></div>}
+    {demoMode && <div className="scenario-bar"><span>{site.demoLabel}</span><label>访客/授权场景：<select value={role} onChange={e => setRole(e.target.value as DemoRole)}><option value="visitor">访客</option><option value="single">单企业Free管理员</option><option value="multiple">多企业</option><option value="none">无有效企业授权</option><option value="no-subscription">Free无订阅权限</option><option value="standard">已开通Standard</option><option value="upgrading">升级处理中</option></select></label></div>}
     <Outlet />
     <Footer onCookies={() => setCookiesOpen(true)} />
     <CookieLayer open={cookiesOpen} setOpen={setCookiesOpen} />

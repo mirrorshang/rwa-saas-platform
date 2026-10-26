@@ -4,7 +4,7 @@ import { paths } from '../config';
 
 const capabilities = [
   { no: '01', icon: '▰', title: '多资产管理', body: '统一管理不同类别的底层资产、金融权利工具及相关法律资料。支持多资产、多项目的集中管理。', anchor: 'assets' },
-  { no: '02', icon: '▤', title: '项目与发行管理', body: '按Project和Offering组织发行计划、发行轮次、条款配置、审核与发布流程。', anchor: 'offerings' },
+  { no: '02', icon: '▤', title: '项目与发行管理', body: '按Project和Offering组织发行计划、发行轮次、条款配置、审核与发布流程。', anchor: 'issuance' },
   { no: '03', icon: '⬡', title: 'Token管理', body: '管理Token方案、合约配置、受权链上操作及相关交易状态，保持业务记录与链上信息可追溯。', anchor: 'token' },
   { no: '04', icon: '◇', title: '独立投资者门户', body: '为发行机构建立独立门户，配置基础品牌信息、授权展示内容及投资者访问入口。', anchor: 'portal' },
   { no: '05', icon: '▣', title: '认购与资金管理', body: '统一跟踪投资者资格、认购订单、付款、配售、登记、退款与募集款结算状态。', anchor: 'subscription' },

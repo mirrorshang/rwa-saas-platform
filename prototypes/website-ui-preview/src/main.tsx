@@ -8,6 +8,7 @@ import { Solutions } from './pages/Solutions';
 import { Pricing } from './pages/Pricing';
 import { Help } from './pages/Help';
 import { Contact } from './pages/Contact';
+import { Policies } from './pages/Policies';
 import './utilities.css';
 import './styles.scss';
 
@@ -18,11 +19,12 @@ const solutionsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/so
 const pricingRoute = createRoute({ getParentRoute: () => rootRoute, path: '/pricing', component: Pricing });
 const helpRoute = createRoute({ getParentRoute: () => rootRoute, path: '/help', component: Help });
 const contactRoute = createRoute({ getParentRoute: () => rootRoute, path: '/contact', component: Contact });
+const policiesRoute = createRoute({ getParentRoute: () => rootRoute, path: '/policies', component: Policies });
+const policyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/policies/$policy', component: Policies });
 const pendingRoutes = [
-  '/policies', '/policies/$policy',
   '/register', '/verify-email', '/login', '/free-onboarding', '/organizations', '/standard-upgrade',
 ].map(path => createRoute({ getParentRoute: () => rootRoute, path, component: PendingPage }));
-const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, helpRoute, contactRoute, ...pendingRoutes]);
+const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, helpRoute, contactRoute, policiesRoute, policyRoute, ...pendingRoutes]);
 const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {

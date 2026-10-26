@@ -15,7 +15,14 @@ const quickLinks = [
   ['帮助中心', '查阅常见问题、新手教程和使用说明。', '浏览帮助', paths.help],
 ];
 type FormFields = { topic: string; name: string; email: string; company: string; country: string; phone: string; message: string; privacy: boolean };
-const initialFields = (): FormFields => ({ topic: topicFromSource[new URLSearchParams(location.search).get('topic') || ''] || '', name: '', email: '', company: '', country: '', phone: '', message: '', privacy: false });
+const draftKey = 'wdex-contact-draft';
+const initialFields = (): FormFields => {
+  const empty: FormFields = { topic: '', name: '', email: '', company: '', country: '', phone: '', message: '', privacy: false };
+  try { Object.assign(empty, JSON.parse(sessionStorage.getItem(draftKey) || '{}')); } catch { /* corrupted draft is ignored */ }
+  empty.privacy = false;
+  empty.topic = topicFromSource[new URLSearchParams(location.search).get('topic') || ''] || empty.topic;
+  return empty;
+};
 
 export function Contact() {
   const [fields, setFields] = useState<FormFields>(initialFields);
@@ -24,7 +31,7 @@ export function Contact() {
   const [outcome, setOutcome] = useState('unavailable');
   const [receipt, setReceipt] = useState<{ topic: string; email: string } | null>(null);
   const demoMode = new URLSearchParams(location.search).get('demo') === '1';
-  const update = (key: keyof FormFields, value: string | boolean) => { setFields(current => ({ ...current, [key]: value })); setErrors(current => ({ ...current, [key]: undefined })); setStatus(''); };
+  const update = (key: keyof FormFields, value: string | boolean) => { setFields(current => { const next = { ...current, [key]: value }; const { privacy: _privacy, ...draft } = next; void _privacy; sessionStorage.setItem(draftKey, JSON.stringify(draft)); return next; }); setErrors(current => ({ ...current, [key]: undefined })); setStatus(''); };
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const next: typeof errors = {};
@@ -38,7 +45,7 @@ export function Contact() {
     const first = Object.keys(next)[0];
     if (first) { document.querySelector<HTMLElement>(`[name="${first}"]`)?.focus(); return; }
     if (!demoMode) { setStatus('暂时无法提交，请稍后重试。咨询接收服务尚未接通；您的信息未发送。'); return; }
-    if (outcome === 'success') { setReceipt({ topic: fields.topic, email: fields.email.trim() }); setStatus(''); return; }
+    if (outcome === 'success') { setReceipt({ topic: fields.topic, email: fields.email.trim() }); sessionStorage.removeItem(draftKey); setStatus(''); return; }
     setStatus(outcome === 'network' ? '网络连接异常，请检查后重试。演示状态：未发送。' : outcome === 'unknown' ? '暂时无法确认提交结果。演示状态：不会自动重复发送。' : outcome === 'rate' ? '提交过于频繁，请稍后再试。演示状态：未发送。' : '暂时无法提交，请稍后重试。咨询接收服务尚未接通；您的信息未发送。');
   };
   return <main className="contact-page">

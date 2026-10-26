@@ -4,17 +4,19 @@ import { createRootRoute, createRoute, createRouter, RouterProvider } from '@tan
 import { App, PendingPage } from './site';
 import { Home } from './pages/Home';
 import { Features } from './pages/Features';
+import { Solutions } from './pages/Solutions';
 import './utilities.css';
 import './styles.scss';
 
 const rootRoute = createRootRoute({ component: App });
 const homeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/', component: Home });
 const featuresRoute = createRoute({ getParentRoute: () => rootRoute, path: '/features', component: Features });
+const solutionsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/solutions', component: Solutions });
 const pendingRoutes = [
-  '/solutions', '/pricing', '/help', '/contact', '/policies', '/policies/$policy',
+  '/pricing', '/help', '/contact', '/policies', '/policies/$policy',
   '/register', '/verify-email', '/login', '/free-onboarding', '/organizations', '/standard-upgrade',
 ].map(path => createRoute({ getParentRoute: () => rootRoute, path, component: PendingPage }));
-const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, ...pendingRoutes]);
+const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, ...pendingRoutes]);
 const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {

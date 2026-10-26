@@ -687,3 +687,42 @@ img { max-width: 100%; }
 .verify-spinner { width: 38px; height: 38px; border: 3px solid #2f7792; border-top-color: $cyan; border-radius: 50%; animation: verify-spin 1s linear infinite; margin: 25px auto; }
 @keyframes verify-spin { to { transform: rotate(360deg); } }
 @media (max-width: 570px) { .verify-card { padding: 30px 22px; } .verify-actions { display: grid; } .auth-footer .container { display: block; } .auth-footer nav { margin-top: 12px; } }
+
+.login-layout { display: grid; grid-template-columns: 1fr 1fr; min-height: 840px; }
+.login-story { display: flex; align-items: center; justify-content: end; padding: 75px 70px 75px max(35px, calc((100vw - 1240px) / 2)); background: radial-gradient(circle at 72% 38%, #124460, #08243b 48%, #061727); }
+.login-story > div { max-width: 535px; }
+.login-story h1 { font-size: clamp(43px, 5vw, 64px); margin: 24px 0 16px; }
+.login-story > div > p { color: #b1cad8; font-size: 16px; line-height: 1.8; }
+.login-visual { min-height: 260px; border: 1px solid #32708a; border-radius: 10px; background: linear-gradient(150deg, #123c56, #0b263d); padding: 30px; margin: 45px 0 28px; box-shadow: 0 28px 65px #0005; }
+.login-visual > span { font-size: 15px; font-weight: 800; }
+.login-visual > div { display: flex; gap: 8px; margin: 58px 0 35px; }
+.login-visual b { flex: 1; border: 1px solid #3c819a; padding: 14px 6px; color: #bde4ee; font-size: 11px; text-align: center; font-weight: 550; }
+.login-visual small { color: #8bb4c3; }
+.login-security { border-left: 2px solid $cyan; padding-left: 16px; font-size: 12px !important; }
+.login-panel { background: #081929; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 55px 35px; }
+.login-card { width: min(100%, 480px); background: #0d283d; border: 1px solid #2d6079; border-radius: 10px; padding: 42px; box-shadow: 0 25px 65px #0005; }
+.login-card h2 { font-size: 29px; margin: 17px 0 12px; }
+.login-card > p { color: #adc7d3; font-size: 13px; line-height: 1.8; }
+.login-card form { margin-top: 30px; }
+.login-card form > label:not(.login-demo) { font-size: 13px; font-weight: 700; }
+.login-card input, .login-demo select { display: block; width: 100%; background: #06192b; border: 1px solid #31566e; border-radius: 6px; color: white; padding: 12px 14px; min-height: 48px; margin-top: 9px; outline: 0; }
+.login-card input:focus { border-color: $cyan; }
+.login-card input::placeholder { color: #7999a9; }
+.login-demo { display: block; color: #a8c5d3; font-size: 11px; margin: 22px 0; }
+.login-submit { width: 100%; margin-top: 23px; }
+.login-other { text-align: center; border-top: 1px solid #2e536a; padding-top: 25px; margin-top: 27px; }
+.login-card a:not(.button), .login-help-link, .login-links button, .login-help-cases button { color: $cyan; }
+.login-other a { margin-left: 7px; }
+.login-help-link { display: block; background: none; border: 0; margin: 14px auto 0; font-size: 12px; }
+.login-legal { display: flex; gap: 24px; margin-top: 25px; color: #7899aa; font-size: 11px; }
+.login-masked { color: #a7c4d2; font-size: 12px; border: 1px solid #345f78; background: #0b334a; padding: 15px; margin: 23px 0; }
+.login-masked strong { color: white; margin-left: 7px; }
+.login-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 23px; }
+.login-links button, .login-help-cases button { background: none; border: 0; padding: 0; font-size: 12px; }
+.login-detail-note { color: #83a5b5; font-size: 11px; line-height: 1.8; display: block; margin-top: 23px; }
+.login-help-cases { margin-top: 26px; }
+.login-help-cases article { border-top: 1px solid #31536a; padding: 18px 0; }
+.login-help-cases h3 { margin: 0 0 9px; font-size: 15px; }
+.login-help-cases p { color: #a1bdcc; font-size: 12px; line-height: 1.75; }
+@media (max-width: 900px) { .login-layout { grid-template-columns: 1fr; } .login-story { justify-content: center; padding: 65px 30px; } .login-panel { padding: 65px 30px; } }
+@media (max-width: 570px) { .login-card { padding: 27px; } .login-visual > div { flex-wrap: wrap; } .login-visual b { min-width: 42%; } }

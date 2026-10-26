@@ -86,7 +86,7 @@ export function App() {
   const [role, setRole] = useDemoRole();
   const [cookiesOpen, setCookiesOpen] = useState(false);
   const demoMode = new URLSearchParams(location.search).get('demo') === '1';
-  const compactAuth = location.pathname === paths.verify;
+  const compactAuth = location.pathname === paths.verify || location.pathname === paths.login;
   useEffect(() => { document.title = `${site.brand}｜面向发行机构的多资产Token化SaaS`; }, []);
   return <>
     {compactAuth ? <AuthHeader /> : <Header role={role} />}

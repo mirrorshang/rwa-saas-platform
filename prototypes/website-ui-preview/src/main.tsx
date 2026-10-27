@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createRootRoute, createRoute, createRouter, RouterProvider } from '@tanstack/react-router';
-import { App, PendingPage } from './site';
+import { App } from './site';
 import { Home } from './pages/Home';
 import { Features } from './pages/Features';
 import { Solutions } from './pages/Solutions';
@@ -14,6 +14,7 @@ import { VerifyEmail } from './pages/VerifyEmail';
 import { Login } from './pages/Login';
 import { FreeOnboarding } from './pages/FreeOnboarding';
 import { Organizations } from './pages/Organizations';
+import { StandardUpgrade } from './pages/StandardUpgrade';
 import './utilities.css';
 import './styles.scss';
 
@@ -31,10 +32,8 @@ const verifyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/verif
 const loginRoute = createRoute({ getParentRoute: () => rootRoute, path: '/login', component: Login });
 const onboardingRoute = createRoute({ getParentRoute: () => rootRoute, path: '/free-onboarding', component: FreeOnboarding });
 const organizationsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/organizations', component: Organizations });
-const pendingRoutes = [
-  '/standard-upgrade',
-].map(path => createRoute({ getParentRoute: () => rootRoute, path, component: PendingPage }));
-const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, ...pendingRoutes]);
+const upgradeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/standard-upgrade', component: StandardUpgrade });
+const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, upgradeRoute]);
 const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {

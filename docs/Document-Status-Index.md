@@ -1,5 +1,15 @@
 # RWA SaaS Platform｜现行文档状态和决策索引
 
+## 最新：DEC-044～046统一投资端五端战略与125页候选架构（2026-10-28）
+
+[Master PRD v0.2](03-product-prd/RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)作为新五端Draft总入口；[五端125组候选地图](03-product-prd/RWA-SaaS-Step-06-Five-Surface-125-Page-Inventory-Draft-v0.1.md)；[M23/M24功能去重附表](03-product-prd/RWA-SaaS-Step-B-M23-M24-Function-Crosswalk-Draft-v0.1.md)。
+
+- [DEC-044](../decisions/DEC-044-rwa-saas-unified-investor-platform-strategy-approved.md)：Step A R01～16全部A；独立M投资端、Issuer可选Offering上架、原V独立门户保留，平台自身受监管活动另设RG。
+- [DEC-045](../decisions/DEC-045-rwa-saas-marketplace-function-scope-approved.md)：Step B B01～17全部A；M23七项及M24四项共11个候选ID，M-Launch首发版本未定；**原193功能146/22/20/TBD5不变**。
+- [DEC-046](../decisions/DEC-046-rwa-saas-five-surface-information-architecture-approved.md)：Step C C-R01～24全部A；五端125页组（W14/I63/M16/V15/P17）为候选，页面数及详细PRD未冻结。
+- Step D D-R01～06全部A仅授权新增DEC/v0.2/候选附表及索引。旧Frozen、旧Master v0.1、104页历史清单、原193主表、README、代码及历史DEC原文不改；X-01～13 Open，PR #6 Draft/Open/Unmerged。
+
+
 > **2026-10-26现行阅读顺序：DEC-036/037的已批准业务规则 → Step06-6.1新四端页面地图Draft → B01～B05逐页面详细PRD与独立审核。** 下方DEC-035首次Step06工作方法与Trial等说明保留为历史阶段快照，**不再作为当前页面设计排序及商业模式权威**。目前104候选页面组、146/146功能静态映射，页面本身尚未Approved/Frozen。X-01～13全部Open；V1总体未Frozen；PR #6 Draft/Open/Unmerged。
 >
 > 下方2026-10-25叙述是阶段历史进度与原决定的索引，遇到“Step05-05未批准”等旧时点结论，以本段和末尾最新专节为准。

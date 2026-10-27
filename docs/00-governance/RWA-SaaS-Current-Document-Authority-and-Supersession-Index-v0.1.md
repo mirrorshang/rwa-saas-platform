@@ -1,5 +1,15 @@
 # RWA SaaS｜当前有效文档权威目录与历史状态勘误 v0.1
 
+## DEC-044～046五端统一投资端：当前后续生效方向（2026-10-28）
+
+**新主阅读入口：** [Master PRD v0.2（Draft）](../03-product-prd/RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)、[五端125页组候选地图](../03-product-prd/RWA-SaaS-Step-06-Five-Surface-125-Page-Inventory-Draft-v0.1.md)、[M23/M24功能去重附表](../03-product-prd/RWA-SaaS-Step-B-M23-M24-Function-Crosswalk-Draft-v0.1.md)。
+
+- [DEC-044](../../decisions/DEC-044-rwa-saas-unified-investor-platform-strategy-approved.md)正式记录R01～16全部A：增加M统一投资端，不再把旧纯ToB/仅Issuer门户描述当成完整当前目标；Issuer发行合规与平台自己涉及的投资展示/招揽/受理责任分离。
+- [DEC-045](../../decisions/DEC-045-rwa-saas-marketplace-function-scope-approved.md)记录B01～17全部A及M23/M24的11个拟议ID；首次版本仍Draft，原193（V1 146/V2 22/V3 20/TBD5）完全保持。
+- [DEC-046](../../decisions/DEC-046-rwa-saas-five-surface-information-architecture-approved.md)记录C-R01～24全部A、五端125页组候选，详细页面PRD与总组数未冻结。
+- 四份Frozen、历史DEC/SCOPE、旧Master v0.1、104四端页面地图仍为原文权威历史，**新DEC仅对明确冲突的后续产品方向作有限接续**；X-01～13 Open，V1整体未Frozen，PR #6必须Draft/Open/Unmerged。README不改。
+
+
 > **现行最高阅读顺序（2026-10-26）**：DEC-036批准SaaS产品/发行法律分责，DEC-037批准永久Free+付费Standard；最新Step06-6.1四端页面地图及146功能静态页面覆盖仍Draft，B01～B05逐页面详细PRD待完成。**下面DEC-035段落属于较早工作方法快照，已被较新的产品审阅次序接续**。X-01～X-13全Open，V1未Frozen，PR #6 Draft/Open/Unmerged。
 >
 > **Current Navigation / Document Governance（2026-10-25）**。该索引记录当前权威与有效产品决策关系；**DEC-017已批准193项的首次目标交付版号（146/22/20/TBD5），但整体V1.0产品需求尚未Frozen，产品与技术生产授权仍未完成**。本索引依据此前Step03.5非破坏性文档治理建立，原Frozen及历史DEC/SCOPE不改写。

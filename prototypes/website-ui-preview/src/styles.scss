@@ -870,3 +870,23 @@ img { max-width: 100%; }
 @media (max-width: 1050px) { .upgrade-process-grid { grid-template-columns: repeat(3, 1fr); } .upgrade-hero-grid { gap: 30px; } }
 @media (max-width: 850px) { .upgrade-hero-grid, .upgrade-payment-grid, .upgrade-status-panel { grid-template-columns: 1fr; } .upgrade-prep-grid { grid-template-columns: repeat(2, 1fr); } .upgrade-exception-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) { .upgrade-process-grid, .upgrade-networks, .upgrade-prep-grid, .upgrade-exception-grid { grid-template-columns: 1fr; } .upgrade-process-note { display: block; } .upgrade-process-note .button { margin-top: 15px; } .upgrade-hero { padding: 70px 0; } .upgrade-status-panel { padding: 24px; } }
+
+.cookie-banner > div:first-child { max-width: 760px; }
+.cookie-banner a { display: inline-block; margin-top: 8px; color: $cyan; font-size: 11px; }
+.cookie-banner small { display: block; color: #82a8b9; font-size: 10px; margin-top: 5px; }
+.cookie-actions button { min-height: 37px; }
+.cookie-actions button:disabled, .modal-actions button:disabled { opacity: .55; cursor: wait; }
+.cookie-preferences-card { width: min(690px, 100%); outline: none; }
+.cookie-preferences-card .cookie-policy-link { display: inline-block; color: $cyan; margin: 3px 0 17px; font-size: 12px; }
+.cookie-preferences-card .cookie-option { gap: 25px; }
+.cookie-preferences-card .cookie-option strong { font-size: 14px; }
+.cookie-preferences-card .cookie-option small { line-height: 1.7; }
+.cookie-preferences-card .cookie-option > span { min-width: 75px; text-align: right; }
+.cookie-unavailable-heading { background: #0e3146; color: #8db6c5; font-size: 11px; padding: 11px 14px; margin-top: 14px; }
+.cookie-preferences-card .cookie-scope-note, .cookie-preferences-card .cookie-saved-note { color: #88acbc; font-size: 11px; line-height: 1.7; margin: 18px 0 8px; }
+.cookie-save-status { color: $cyan !important; }
+.cookie-toast { position: fixed; z-index: 70; right: 22px; bottom: 22px; background: #103b50; border: 1px solid #4c9eaf; color: #d7f4f9; padding: 13px 17px; border-radius: 7px; box-shadow: 0 12px 35px #0007; font-size: 12px; }
+.policy-cookie-actions { border: 1px solid #315b73; background: #0c2b40; padding: 22px; margin-bottom: 35px; }
+.policy-cookie-actions .policy-cookie-note { margin: 0 0 15px; }
+.policy-cookie-actions button { color: $cyan; border: 1px solid #4b93a8; background: #0f3a4e; padding: 10px 14px; border-radius: 5px; font-size: 12px; }
+@media (max-width: 850px) { .cookie-banner { display: block; } .cookie-actions { margin-top: 15px; } }

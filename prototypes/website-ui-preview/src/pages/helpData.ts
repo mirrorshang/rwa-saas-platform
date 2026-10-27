@@ -88,7 +88,7 @@ export const helpQuestions: HelpQuestion[] = [
     "id": 15,
     "category": "投资者与Token",
     "question": "平台是否帮助发行企业寻找投资者？",
-    "answer": "RWA SaaS主要提供技术管理工具和机构独立投资者门户。发行机构自行负责拓展投资者，平台不默认提供募资承销或跨机构投资者分发服务。"
+    "answer": "WDEX SaaS主要提供技术管理工具和机构独立投资者门户。发行机构自行负责拓展投资者，平台不默认提供募资承销或跨机构投资者分发服务。"
   },
   {
     "id": 16,

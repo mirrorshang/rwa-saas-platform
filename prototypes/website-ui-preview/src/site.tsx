@@ -79,7 +79,3 @@ export function App() {
     <CookiePreferences open={cookiesOpen} setOpen={setCookiesOpen} />
   </>;
 }
-
-export function PendingPage() {
-  return <main className="container placeholder-page"><span className="eyebrow">页面开发中</span><h1>此页面正在实现</h1><p>当前分支按W-01至W-14顺序逐页构建。您可以返回首页查看已完成的页面。</p><Button href="/">返回首页</Button></main>;
-}

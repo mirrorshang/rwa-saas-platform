@@ -28,7 +28,7 @@ export const helpQuestions: HelpQuestion[] = [
     "id": 5,
     "category": "账户与企业",
     "question": "投资者是否通过SaaS官网登录？",
-    "answer": "不是。SaaS官网主要供购买和使用平台的企业客户登录。投资者通过其所属发行机构的独立投资者门户注册或登录。\n\n**分类2：套餐与订阅（Q6～Q10）**"
+    "answer": "不是。WDEX SaaS的企业登录只服务企业客户；投资者可通过所属Issuer独立门户（V端），或在WDEX统一投资端开放后从官网「投资机会」进入M端。M与企业登录分流，V历史持仓不自动合并。\n\n**分类2：套餐与订阅（Q6～Q10）**"
   },
   {
     "id": 6,
@@ -88,7 +88,7 @@ export const helpQuestions: HelpQuestion[] = [
     "id": 15,
     "category": "投资者与Token",
     "question": "平台是否帮助发行企业寻找投资者？",
-    "answer": "WDEX SaaS主要提供技术管理工具和机构独立投资者门户。发行机构自行负责拓展投资者，平台不默认提供募资承销或跨机构投资者分发服务。"
+    "answer": "发行机构可以使用自己的V独立投资者门户，也可以针对具体Offering申请WDEX统一投资端展示。平台将依法审核上架、法域及受众要求；在正式开放前仅提供筹备说明，不保证投资者数量或募集成功，也不因购买Standard而自动获得渠道资格。"
   },
   {
     "id": 16,

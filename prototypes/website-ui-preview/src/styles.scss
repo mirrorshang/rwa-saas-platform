@@ -929,3 +929,36 @@ img { max-width: 100%; }
 .policy-cookie-actions .policy-cookie-note { margin: 0 0 15px; }
 .policy-cookie-actions button { color: $cyan; border: 1px solid #4b93a8; background: #0f3a4e; padding: 10px 14px; border-radius: 5px; font-size: 12px; }
 @media (max-width: 850px) { .cookie-banner { display: block; } .cookie-actions { margin-top: 15px; } }
+
+/* W官网 · M统一投资端最小增量（筹备期只链接原W能力介绍，绝不模拟M上线） */
+.main-nav .nav-status { margin-left: 5px; color: #70d4e9; font-size: 9px; font-weight: 600; vertical-align: middle; white-space: nowrap; }
+.marketplace-section { background: linear-gradient(140deg, #09243a, #061626 68%); border-top: 1px solid #1a435d; border-bottom: 1px solid #1a435d; }
+.marketplace-layout { display: grid; grid-template-columns: .95fr 1.05fr; gap: 54px; align-items: center; }
+.marketplace-layout h2 { margin: 16px 0 18px; font-size: clamp(28px, 3vw, 39px); line-height: 1.32; }
+.marketplace-layout > div > p { color: #b4cedb; line-height: 1.88; font-size: 14px; }
+.marketplace-text-link, .feature-marketplace a, .marketplace-channel-inline a { display: inline-block; margin-top: 15px; color: #63d8ec; font-size: 13px; font-weight: 700; }
+.marketplace-channel-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 15px; }
+.marketplace-channel-grid article { padding: 25px 22px; background: #0b2c43; border: 1px solid #32637b; border-radius: 10px; min-width: 0; }
+.marketplace-channel-grid article > span { display: block; min-height: 38px; color: #70d7e9; font-size: 11px; }
+.marketplace-channel-grid article strong { display: block; font-size: 17px; line-height: 1.4; }
+.marketplace-channel-grid article p { color: #abc4d2; line-height: 1.8; font-size: 12px; }
+.marketplace-channel-grid em { padding: 2px 5px; border: 1px solid #3d7389; border-radius: 4px; font-size: 10px; font-style: normal; white-space: nowrap; }
+.feature-marketplace { margin: 15px 0 18px; padding: 19px 20px; border-left: 3px solid #4ebcd3; background: #0b2b41; border-radius: 3px; }
+.feature-marketplace > strong { font-size: 14px; }
+.feature-marketplace p { margin: 11px 0; font-size: 12px; color: #abc8d5; line-height: 1.75; }
+.feature-marketplace p b { color: #e3f4f9; }
+.feature-marketplace small { display: block; font-size: 11px; line-height: 1.75; color: #8cb3c6; }
+.marketplace-channel-inline { margin: 28px 0 24px; border: 1px solid #31627c; border-radius: 10px; padding: 26px; background: #09243a; }
+.marketplace-channel-inline h3 { margin: 12px 0; font-size: 20px; }
+.marketplace-channel-inline p { color: #acc7d5; font-size: 13px; line-height: 1.8; }
+.marketplace-channel-inline .marketplace-inline-status { color: #80d6e6; font-size: 12px; }
+@media (max-width: 1150px) { .main-nav { gap: 17px; } }
+@media (max-width: 850px) {
+  .main-nav .nav-status { margin-left: 10px; }
+  .marketplace-layout { grid-template-columns: 1fr; gap: 30px; }
+}
+@media (max-width: 570px) {
+  .marketplace-channel-grid { grid-template-columns: 1fr; }
+  .marketplace-channel-grid article { padding: 21px; }
+  .marketplace-channel-inline { padding: 20px; }
+}

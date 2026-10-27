@@ -2,10 +2,10 @@ import { useState, type FormEvent } from 'react';
 import { Button, DemoNotice, SectionHeading } from '../site';
 import { paths } from '../config';
 
-const topics = ['产品功能与演示', '商业合作', '注册与账户访问', 'Sandbox使用支持', 'Standard订阅与账单', '其他问题'];
-const topicFromSource: Record<string, string> = { product: topics[0], business: topics[1], account: topics[2], sandbox: topics[3], standard: topics[4] };
+const topics = ['产品功能与演示', '商业合作', '注册与账户访问', 'Sandbox使用支持', 'Standard订阅与账单', 'Offering平台渠道咨询', '其他问题'];
+const topicFromSource: Record<string, string> = { product: topics[0], business: topics[1], account: topics[2], sandbox: topics[3], standard: topics[4], marketplace: topics[5] };
 const cards = [
-  ['产品与合作咨询', '了解多资产发行、Token管理、独立投资者门户等产品能力，或探讨适合企业的使用场景与商业合作。', '产品演示 · 业务适用性 · 企业合作'],
+  ['产品与合作咨询', '了解多资产发行、Token管理、独立投资者门户及可选的Offering平台展示渠道，或探讨企业使用场景与合作。', '产品演示 · 业务适用性 · 企业合作'],
   ['账户与产品支持', '如果您在注册、登录、企业工作台访问或Sandbox模拟操作过程中遇到问题，可以向我们反馈。', '账户访问 · 操作疑问 · 测试模式'],
   ['订阅与账单咨询', '了解Standard商业订阅、企业审核和未来账单流程。', '商业订阅 · 企业审核 · 账单流程'],
 ];

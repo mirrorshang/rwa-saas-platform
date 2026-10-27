@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, DemoNotice, useDemoRole } from '../site';
+import { Button, DemoNotice, ServiceUnavailable, useDemoRole } from '../site';
 import { paths } from '../config';
 
 type ExampleOrg = { name: string; role: string; plan: 'Free' | 'Standard'; environment: string; subscription: boolean; short: string };
@@ -20,6 +20,7 @@ export function Organizations() {
   const [entryResult, setEntryResult] = useState('unavailable');
   const [notice, setNotice] = useState('');
   const [selected, setSelected] = useState('');
+  if (!demoMode) return <ServiceUnavailable title="企业工作台访问暂未开放" description="当前无法核验企业授权或加载工作台列表。账户服务开放后，用户可按权限选择企业。" />;
   const authorized = demoMode ? role === 'multiple' ? examples : role === 'none' || role === 'visitor' ? [] : examples.slice(0, 1) : [];
   const filtered = authorized.filter(org => org.name.includes(query.trim()));
   const enter = (org: ExampleOrg, subscribe: boolean) => {

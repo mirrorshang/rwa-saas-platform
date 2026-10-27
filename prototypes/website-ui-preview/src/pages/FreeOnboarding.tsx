@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Button, DemoNotice, useDemoRole } from '../site';
+import { Button, DemoNotice, ServiceUnavailable, useDemoRole } from '../site';
 import { paths } from '../config';
 
 type View = 'processing' | 'success' | 'failure' | 'auth';
 const steps = ['确认账户与注册信息', '检查或创建企业工作台', '启用Free Sandbox权益', '准备进入工作台'];
 const abilities = [
-  ['管理资产与发行项目', '创建模拟资产、金融工具、Project和Offering，了解主要发行管理流程。'],
-  ['配置投资者门户', '体验机构专属的模拟投资者门户及Offering展示。'],
+  ['管理资产与发行项目', '创建模拟资产、金融工具、项目和发行轮次，了解主要发行管理流程。'],
+  ['配置投资者门户', '体验机构专属的模拟投资者门户及发行轮次展示。'],
   ['模拟认购与发行后管理', '演练投资者资格、认购、Token交付、资金状态和收益管理。'],
 ];
 function mask(value?: string) { const [local, domain] = (value || '').split('@'); return local && domain ? `${local[0]}***@${domain}` : '未提供'; }
@@ -19,6 +19,7 @@ export function FreeOnboarding() {
   const verifiedDemo = demoMode && sessionStorage.getItem('wdex-verification-demo') === 'verified';
   const [view, setView] = useState<View>(verifiedDemo ? 'processing' : 'auth');
   const [notice, setNotice] = useState('');
+  if (!demoMode) return <ServiceUnavailable title="Free工作台开通暂未开放" description="账户验证、企业授权及工作台开通服务尚未接入。您可以先了解Free与Standard方案。" />;
   const retry = () => setNotice('暂时无法确认开通结果，请重试查询。当前没有接通Tenant及Free权益服务，未新建工作台。');
   const enter = () => {
     if (role === 'visitor' || role === 'none') { location.href = paths.login + (standardIntent ? '?intent=standard' : ''); return; }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, DemoNotice } from '../site';
+import { Button, DemoNotice, ServiceUnavailable } from '../site';
 import { paths } from '../config';
 
 type View = 'waiting' | 'processing' | 'success' | 'expired' | 'invalid' | 'used' | 'unknown';
@@ -22,6 +22,7 @@ export function VerifyEmail() {
   const [notice, setNotice] = useState('');
   const [checkResult, setCheckResult] = useState('pending');
   const [resendResult, setResendResult] = useState('unavailable');
+  if (!demoMode) return <ServiceUnavailable title="邮箱验证暂不可用" description="正式注册与邮件服务尚未开放，当前没有可验证的真实邮件请求。" />;
   const check = () => {
     if (!demoMode || checkResult === 'unknown') { setNotice('暂时无法确认验证状态，请稍后重试。没有服务端核验结果，邮箱不会被标记为已验证。'); return; }
     if (checkResult === 'pending') { setNotice('邮箱尚未完成验证，请前往邮箱操作。'); return; }

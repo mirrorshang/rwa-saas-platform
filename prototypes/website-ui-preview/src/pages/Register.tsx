@@ -35,6 +35,7 @@ export function Register() {
     if (role !== 'visitor') { location.href = role === 'multiple' ? paths.organizations : role === 'none' ? paths.organizations : paths.onboarding; return; }
     if (!demoMode || outcome === 'unavailable') { setStatus('注册服务暂时不可用，请稍后再试。正式服务条款与账户、邮件服务尚未发布；没有创建账户或发送邮件。'); return; }
     if (outcome === 'accepted') {
+      sessionStorage.removeItem('wdex-verification-demo');
       sessionStorage.setItem('wdex-registration-demo', JSON.stringify({ email: cleaned, standardIntent }));
       location.href = paths.verify + '?demo=1' + (standardIntent ? '&intent=standard' : '');
       return;

@@ -752,3 +752,44 @@ img { max-width: 100%; }
 .onboarding-demo select { display: block; width: 100%; background: #061b2c; border: 1px solid #315e76; color: white; padding: 11px; margin-top: 9px; }
 .onboarding-demo small { display: block; color: #789cae; font-size: 11px; margin-top: 11px; }
 @media (max-width: 690px) { .onboarding-card { padding: 28px; } .onboarding-abilities, .onboarding-steps { grid-template-columns: 1fr; } }
+
+.organizations-page { background: #061728; min-height: calc(100vh - 135px); }
+.organizations-hero { position: relative; overflow: hidden; background: radial-gradient(circle at 76% 35%, #12425c, #071a2c 48%, #051525); padding: 75px 0 65px; }
+.organizations-hero .container { position: relative; }
+.organizations-hero h1 { font-size: clamp(35px, 4vw, 55px); margin: 18px 0; }
+.organizations-hero p { color: #afc8d4; font-size: 15px; line-height: 1.8; }
+.organizations-account { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 30px 0 20px; }
+.organizations-account span, .organizations-account strong { border: 1px solid #31617a; border-radius: 6px; background: #0d3046; padding: 10px 14px; font-size: 12px; }
+.organizations-account span { color: #a1c1ce; }
+.organizations-boundary { border-left: 2px solid $cyan; padding-left: 15px; font-size: 12px !important; }
+.organizations-content { background: #071728; }
+.organizations-content > .container > .register-intent { margin-top: 0; }
+.organizations-list-header { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 33px; }
+.organizations-list-header h2 { font-size: 29px; margin: 12px 0; }
+.organizations-list-header p { color: #91b1bf; font-size: 12px; }
+.organizations-list-header label { color: #a9c6d3; font-size: 12px; min-width: 250px; }
+.organizations-list-header input { width: 100%; display: block; padding: 11px 13px; margin-top: 8px; color: white; background: #0b263a; border: 1px solid #32627c; border-radius: 6px; }
+.organization-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; }
+.organization-grid article { border: 1px solid #2e607a; background: linear-gradient(150deg, #0f3148, #0a2136); padding: 30px; border-radius: 9px; }
+.organization-card-top { display: flex; justify-content: space-between; align-items: center; }
+.organization-avatar { width: 45px; height: 45px; display: grid; place-items: center; color: $cyan; font-size: 26px; background: #0a4156; border: 1px solid #4c9db1; border-radius: 7px; }
+.organization-state { color: #7fbece; font-size: 11px; }
+.organization-grid h3 { font-size: 22px; margin: 22px 0 7px; }
+.organization-short { color: #82a8b8; font-size: 12px; }
+.organization-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 30px 0; }
+.organization-facts div { border-top: 1px solid #315a70; padding-top: 15px; }
+.organization-facts span { display: block; color: #84a7b8; font-size: 10px; margin-bottom: 8px; }
+.organization-facts strong { color: #deeff5; font-size: 12px; line-height: 1.5; }
+.organization-permission { color: #9ebdca; font-size: 12px; line-height: 1.7; margin: 15px 0 0; }
+.organization-empty { border: 1px solid #2e607a; background: #0b273b; padding: 42px; border-radius: 9px; }
+.organization-empty h2 { font-size: 27px; margin: 0 0 15px; }
+.organization-empty p { color: #abc5d2; font-size: 13px; line-height: 1.8; margin-bottom: 25px; }
+.organization-feedback { border: 1px solid #3b8da5; background: #0d394e; border-radius: 7px; padding: 20px; margin-top: 23px; }
+.organization-feedback strong { color: $cyan; }
+.organization-feedback p { color: #c1dce5; line-height: 1.8; font-size: 13px; }
+.organization-demo { margin-top: 38px; border-top: 1px solid #28516a; padding-top: 22px; }
+.organization-demo label { color: #a6c4d1; font-size: 12px; }
+.organization-demo select { display: block; background: #0a273a; border: 1px solid #32647c; color: white; padding: 10px 12px; margin-top: 8px; }
+.organization-demo small { color: #799dab; display: block; margin-top: 9px; }
+@media (max-width: 850px) { .organization-grid { grid-template-columns: 1fr; } .organizations-list-header { display: block; } .organizations-list-header label { display: block; margin-top: 25px; } }
+@media (max-width: 570px) { .organization-grid article, .organization-empty { padding: 22px; } .organization-facts { grid-template-columns: 1fr; } }

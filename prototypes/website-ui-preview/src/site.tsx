@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Outlet } from '@tanstack/react-router';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
@@ -48,13 +48,51 @@ const nav = [
 
 export function Header({ role }: { role: DemoRole }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hash, setHash] = useState(() => location.hash);
+  const menuToggle = useRef<HTMLButtonElement>(null);
   const current = location.pathname;
+  const isPortal = !marketplaceIsOpen && current === paths.features && hash === '#portal';
   const workHref = role === 'multiple' ? paths.organizations : role === 'none' ? paths.register : paths.onboarding;
+
+  useEffect(() => {
+    const onHashChange = () => setHash(location.hash);
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        menuToggle.current?.focus();
+      }
+    };
+    const onResize = () => { if (window.innerWidth > 850) setMenuOpen(false); };
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [menuOpen]);
+
+  const navIsActive = (label: string, href: string) =>
+    label === '投资机会' ? isPortal :
+      href === paths.features ? current === paths.features && !isPortal :
+        current === href;
+
   return <header className="site-header">
     <div className="header-inner container">
       <a className="brand" href={paths.home} aria-label="WDEX SaaS 首页"><span className="brand-mark"><i /><i /><i /></span>{site.brand}</a>
-      <button className="menu-toggle" type="button" aria-label="切换导航" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-      <nav className={`main-nav ${menuOpen ? 'open' : ''}`} aria-label="主导航">{nav.map(([label, href]) => <a key={label} className={current === href ? 'active' : ''} href={href} aria-label={label === '投资机会' && !marketplaceIsOpen ? '投资机会，筹备中，了解渠道' : label}>{label}{label === '投资机会' && !marketplaceIsOpen && <small className="nav-status">筹备中</small>}</a>)}</nav>
+      <button ref={menuToggle} className="menu-toggle" type="button" aria-label="切换导航" aria-controls="site-main-nav" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+      <nav id="site-main-nav" className={'main-nav' + (menuOpen ? ' open' : '')} aria-label="主导航" onClick={event => { if (event.target instanceof Element && event.target.closest('a')) setMenuOpen(false); }}>
+        {nav.map(([label, href]) => {
+          const active = navIsActive(label, href);
+          return <a key={label} className={active ? 'active' : ''} href={href} aria-current={active ? (isPortal && label === '投资机会' ? 'location' : 'page') : undefined} aria-label={label === '投资机会' && !marketplaceIsOpen ? '投资机会，筹备中，了解渠道' : label}>{label}{label === '投资机会' && !marketplaceIsOpen && <small className="nav-status">筹备中</small>}</a>;
+        })}
+        <div className="mobile-nav-actions"><a className="login-link" href={paths.login}>企业登录</a><Button href={role === 'visitor' ? paths.pricing : workHref}>{role === 'visitor' ? '了解套餐' : '进入工作台'}</Button></div>
+      </nav>
       <div className="header-actions"><a className="login-link" href={paths.login}>登录</a><Button href={role === 'visitor' ? paths.pricing : workHref}>{role === 'visitor' ? '了解套餐' : '进入工作台'}</Button></div>
     </div>
   </header>;

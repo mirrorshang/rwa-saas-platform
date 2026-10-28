@@ -32,31 +32,31 @@ export const helpQuestions: HelpQuestion[] = [
   },
   {
     "id": 6,
-    "category": "套餐与订阅",
+    "category": "订阅与账单",
     "question": "Free版本是否永久免费？",
     "answer": "是的。Free没有固定试用到期时间，可持续用于Sandbox业务体验，但需要遵守相应资源配额、安全和服务规则。"
   },
   {
     "id": 7,
-    "category": "套餐与订阅",
+    "category": "订阅与账单",
     "question": "Free需要绑定银行卡或付款方式吗？",
     "answer": "免费开通Free不需要预先绑定付款方式。如果后续使用独立收费的服务，应以正式产品规则和服务协议为准。"
   },
   {
     "id": 8,
-    "category": "套餐与订阅",
+    "category": "订阅与账单",
     "question": "Free与Standard的主要区别是什么？",
     "answer": "Free用于资产、Offering、投资者、认购、Token及收益等主要业务流程的模拟体验。Standard提供正式商业SaaS权益，但具体真实业务还需要满足额外的法律、业务及生产授权条件。"
   },
   {
     "id": 9,
-    "category": "套餐与订阅",
+    "category": "订阅与账单",
     "question": "如何从Free升级Standard？",
     "answer": "正式方案开放后，有订阅管理权限的企业管理员可在原企业工作台办理商业KYB、合同与有效账单付款。当前官网只提供升级流程说明，不生成真实订单或付款入口；符合条件的配置可复用，模拟交易不会直接转为真实权益。"
   },
   {
     "id": 10,
-    "category": "套餐与订阅",
+    "category": "订阅与账单",
     "question": "Standard的价格是多少？",
     "answer": "Standard的具体价格及计费周期尚未公布。正式方案批准后可在订阅页查看，并由有权限的企业管理员按开放规则办理；当前不显示虚构价格或发起真实付款。"
   },

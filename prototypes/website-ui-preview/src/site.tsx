@@ -34,31 +34,23 @@ export function SectionHeading({ eyebrow, title, description, center = false }: 
 }
 
 export function ServiceUnavailable({ title, description }: { title: string; description: string }) {
-  return <main className="service-unavailable"><div className="network-grid" /><div className="container"><span className="eyebrow">企业服务</span><h1>{title}</h1><p>{description}</p><div className="button-row"><Button href={paths.pricing}>了解套餐</Button><Button href={paths.help} variant="outline">查看帮助中心</Button></div></div></main>;
+  return <main className="service-unavailable"><div className="network-grid" /><div className="container"><span className="eyebrow">企业服务</span><h1>{title}</h1><p>{description}</p><div className="button-row"><Button href={paths.help}>查看使用指南</Button><Button href={paths.pricing} variant="outline">查看订阅方案</Button></div></div></main>;
 }
 
 const nav = [
-  ['首页', paths.home],
   ['产品功能', paths.features],
   ['解决方案', paths.solutions],
-  ['投资机会', marketplaceLink],
-  ['套餐', paths.pricing],
+  ['订阅', paths.pricing],
+  ['投资者平台', marketplaceLink],
   ['帮助中心', paths.help],
 ];
 
 export function Header({ role }: { role: DemoRole }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [hash, setHash] = useState(() => location.hash);
   const menuToggle = useRef<HTMLButtonElement>(null);
   const current = location.pathname;
-  const isPortal = !marketplaceIsOpen && current === paths.features && hash === '#portal';
   const workHref = role === 'multiple' ? paths.organizations : role === 'none' ? paths.register : paths.onboarding;
-
-  useEffect(() => {
-    const onHashChange = () => setHash(location.hash);
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
-  }, []);
+  const actionLabel = role === 'visitor' ? '使用指南' : role === 'none' ? '查看开通状态' : '进入工作台';
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -77,10 +69,7 @@ export function Header({ role }: { role: DemoRole }) {
     };
   }, [menuOpen]);
 
-  const navIsActive = (label: string, href: string) =>
-    label === '投资机会' ? isPortal :
-      href === paths.features ? current === paths.features && !isPortal :
-        current === href;
+  const navIsActive = (href: string) => current === href;
 
   return <header className="site-header">
     <div className="header-inner container">
@@ -88,12 +77,12 @@ export function Header({ role }: { role: DemoRole }) {
       <button ref={menuToggle} className="menu-toggle" type="button" aria-label="切换导航" aria-controls="site-main-nav" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>☰</button>
       <nav id="site-main-nav" className={'main-nav' + (menuOpen ? ' open' : '')} aria-label="主导航" onClick={event => { if (event.target instanceof Element && event.target.closest('a')) setMenuOpen(false); }}>
         {nav.map(([label, href]) => {
-          const active = navIsActive(label, href);
-          return <a key={label} className={active ? 'active' : ''} href={href} aria-current={active ? (isPortal && label === '投资机会' ? 'location' : 'page') : undefined} aria-label={label === '投资机会' && !marketplaceIsOpen ? '投资机会，筹备中，了解渠道' : label}>{label}{label === '投资机会' && !marketplaceIsOpen && <small className="nav-status">筹备中</small>}</a>;
+          const active = navIsActive(href);
+          return <a key={label} className={active ? 'active' : ''} href={href} aria-current={active ? 'page' : undefined} aria-label={label === '投资者平台' && !marketplaceIsOpen ? '投资者平台，筹备中' : label}>{label}{label === '投资者平台' && !marketplaceIsOpen && <small className="nav-status">筹备中</small>}</a>;
         })}
-        <div className="mobile-nav-actions"><a className="login-link" href={paths.login}>企业登录</a><Button href={role === 'visitor' ? paths.pricing : workHref}>{role === 'visitor' ? '了解套餐' : '进入工作台'}</Button></div>
+        <div className="mobile-nav-actions"><a className="login-link" href={paths.login}>企业登录</a><Button href={role === 'visitor' ? paths.help : workHref}>{actionLabel}</Button></div>
       </nav>
-      <div className="header-actions"><a className="login-link" href={paths.login}>登录</a><Button href={role === 'visitor' ? paths.pricing : workHref}>{role === 'visitor' ? '了解套餐' : '进入工作台'}</Button></div>
+      <div className="header-actions"><a className="login-link" href={paths.login}>企业登录</a><Button href={role === 'visitor' ? paths.help : workHref}>{actionLabel}</Button></div>
     </div>
   </header>;
 }
@@ -101,7 +90,7 @@ export function Header({ role }: { role: DemoRole }) {
 export function Footer({ onCookies }: { onCookies: () => void }) {
   return <footer className="site-footer"><div className="container footer-inner">
     <div className="footer-brand"><a className="brand" href={paths.home}><span className="brand-mark"><i /><i /><i /></span>{site.brand}</a><p>面向发行机构的多资产Token化SaaS。<br />以有序的技术工作流连接资产、发行与投资者。</p></div>
-    <div className="footer-column"><strong>产品</strong><a href={paths.features}>产品功能</a><a href={paths.solutions}>解决方案</a><a href={marketplaceLink}>投资机会{!marketplaceIsOpen ? '（筹备中）' : ''}</a><a href={paths.pricing}>套餐</a></div>
+    <div className="footer-column"><strong>产品</strong><a href={paths.features}>产品功能</a><a href={paths.solutions}>解决方案</a><a href={paths.pricing}>订阅方案</a><a href={marketplaceLink}>投资者平台{!marketplaceIsOpen ? '（筹备中）' : ''}</a></div>
     <div className="footer-column"><strong>支持</strong><a href={paths.help}>帮助中心</a><a href={paths.contact}>联系我们</a></div>
     <div className="footer-column"><strong>法律与政策</strong><a href={paths.policies + '/terms'}>服务条款</a><a href={paths.policies + '/privacy'}>隐私政策</a><a href={paths.policies + '/cookies'}>Cookie政策</a><a href={paths.policies + '/disclaimer'}>免责声明</a><button type="button" onClick={onCookies}>本地存储说明</button></div>
   </div></footer>;
@@ -118,7 +107,7 @@ export function App() {
   useEffect(() => {
     const pageTitles: Record<string, string> = {
       [paths.home]: '面向发行机构的多资产Token化SaaS',
-      [paths.features]: '产品功能', [paths.solutions]: '解决方案', [paths.pricing]: '套餐与订阅',
+      [paths.features]: '产品功能', [paths.solutions]: '解决方案', [paths.pricing]: '订阅方案', [paths.investorPlatform]: '投资者平台筹备说明',
       [paths.help]: '帮助中心', [paths.contact]: '联系我们', [paths.policies]: '法律与政策',
       [paths.register]: '创建企业账户', [paths.verify]: '验证邮箱', [paths.login]: '登录',
       [paths.onboarding]: '开通Free工作台', [paths.organizations]: '选择企业', [paths.upgrade]: '升级Standard',

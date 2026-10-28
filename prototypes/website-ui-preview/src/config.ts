@@ -12,6 +12,7 @@ export const marketplace = {
 export const paths = {
   home: '/',
   features: '/features',
+  investorPlatform: '/investor-platform',
   solutions: '/solutions',
   pricing: '/pricing',
   help: '/help',
@@ -30,4 +31,4 @@ export const marketplaceIsOpen = marketplace.status === 'open'
   && /^https:\/\//i.test(marketplace.opportunitiesUrl);
 export const marketplaceLink = marketplaceIsOpen
   ? marketplace.opportunitiesUrl
-  : `${paths.features}#portal`;
+  : paths.investorPlatform;

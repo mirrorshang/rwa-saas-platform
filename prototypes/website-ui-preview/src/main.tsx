@@ -15,6 +15,7 @@ import { Login } from './pages/Login';
 import { FreeOnboarding } from './pages/FreeOnboarding';
 import { Organizations } from './pages/Organizations';
 import { StandardUpgrade } from './pages/StandardUpgrade';
+import { InvestorPlatform } from './pages/InvestorPlatform';
 import './utilities.css';
 import './styles.scss';
 
@@ -33,7 +34,8 @@ const loginRoute = createRoute({ getParentRoute: () => rootRoute, path: '/login'
 const onboardingRoute = createRoute({ getParentRoute: () => rootRoute, path: '/free-onboarding', component: FreeOnboarding });
 const organizationsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/organizations', component: Organizations });
 const upgradeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/standard-upgrade', component: StandardUpgrade });
-const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, upgradeRoute]);
+const investorPlatformRoute = createRoute({ getParentRoute: () => rootRoute, path: '/investor-platform', component: InvestorPlatform });
+const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, investorPlatformRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, upgradeRoute]);
 const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {

@@ -182,7 +182,7 @@ RWA SaaS以**通用多资产Issuer SaaS**服务发行机构，同时新增由WDE
 | 06 报价/订单/实收 | V报价签署→I-44/45→I-49/50/51 | M10唯一订单/预留、M11 FinalMatched实收独立 | 取消后晚付款、错链/少多付查原订单/Tx |
 | 07 配售/登记/Mint | I-46基础配售→I-47法定登记与I-39/40链交付（法定时序不预设）→V本人有权持仓；**仅出现差异、冲突或Unknown才进入I-48/I-60** | M12法律名册和M07 Mint链事实分离、合法先后依法确定；正常交割无需创建差异Case | 差异转I-48/60，Unknown查原登记或Mint Intent；Case Closed不能替代实际交付 |
 | 08 募集款结算 | I-50→I-52→I-53→X实际付款 | M11实收、Eligible、Approved、Settled分开 | 未获释放资格停止；出款Unknown查原付款Intent |
-| 09 收益计算注资 | I-54→I-55→I-56 | M12 RecordDate、M13合法应付和真实注资分列 | B无合法分红决议不得应付；不足额不开整批Claim |
+| 09 收益计算注资 | I-54→I-55→I-56 | **M13按合法依据确定RecordDate并管理收益资格快照（M13-F002），M12提供该记录时点有权法定名册/登记证据**；M13合法应付、真实注资各有独立事实 | B无合法分红决议不得应付；名册Unknown不能以Token余额替代；不足额不开整批Claim |
 | 10 Claim/实付 | V本人Claim或X Push→I-57 | M13可领、Submitted、Partial、Paid、Unclaimed不混用 | 未领≠已付；Unknown查原Claim/付款Intent |
 | 11 到期退出 | I-58按适用法定事件→I-57实际清偿/支付核对＋I-47法定权益名册变更＋I-39/40 Token适法处置；**I-14仅在独立发起商业Tenant退出/责任移交时可选进入，不是每次兑付必经** | M13清偿、M12权益调整、M07 Burn各为独立真值；金融产品完结≠SaaS订阅终止 | Burn已成功但本金未付仍逾期；合法责任与未领款不能因另行退租消失 |
 
@@ -5634,7 +5634,7 @@ flowchart TD
 | P-02 权益结构与法律文书 | M04合法InstrumentVersion/M06合同和专业意见 | 缺项→I-25/I-27；内部Reviewed不等于法律有效 |
 | P-03 发行方式/数量/容量 | M05价格、窗口、依法持续模式、M12容量 | 集中募集法定必需时阻断并申请版本重审 |
 | P-04 投资者准入 | M05受众与M09/M19资格/限制/合同条件 | 缺项→I-32；可见不等于Eligible |
-| P-05 合法收款/退款 | M11/M22持款责任/网络/币种/最终性 | 缺项→I-33/I-49，不能复用商业订阅钱包 |
+| P-05 合法收款/退款 | **发行前只审核**M11/M22合法收款/持款与退款责任主体、方案版本、获批网络/币种及实际付款最终性核验**机制是否可用**；未产生付款不要求提供具体交易Finality或FinalMatched | 缺项→I-33/I-49；**真实交易发生后的Observed/Finality/FinalMatched仅由I-50依原M11与合法持款X证据核验**，不在P-05预认已收款；不能复用商业订阅钱包 |
 | P-06 登记与Token | M12名册、M07网络/合约方案及依法所需的真实Signer、部署状态/合同证据 | **方案参数缺口→I-33/I-37；实际部署申请、链核证及Signer状态缺口→I-38（链历史可回I-40）**。真实部署是否必须先于Offering发布由Instrument/法域及有效合同判定，未批准不设全球统一先后；强制证据未满足则Fail-Closed |
 | P-07 存续/审计 | 发行前检查M04权益义务/M06正式文书及适用M13存续管理准备、M17～22任务/审计能力 | **发行前缺合同/责任主体/披露义务先回I-25/I-27补证**，任务或审计缺项回I-59/I-63；**I-54仅在有权且真实存续档案已建立时供查看，不以“已有存续记录”为所有Offering发布前的强制条件** |
 | 逐Gate状态/证据/有效时点 | 待核/缺项/已满足/不适用附合法证明/失效/Unknown | 无证据不能仅选择“不适用”或打绿色勾 |
@@ -6954,7 +6954,7 @@ flowchart TD
 | I-37已审方案 → I-38受审合约模板/部署申请 → X受权Signer执行 → I-40查询部署Finality | M07唯一Plan/DeployIntent、M17审批、X实际Signer/M22链核验，最终地址/代码版本需与文书适法绑定 | Plan Approved/Deploy Approved/TxHash不等于FinalDeployed；不通过普通Issuer按钮代签或重复部署 |
 | I-34/35依法发行、V投资者通过M09资格及M10订单签署、M11真实付款、M12唯一Allocation → I-39 Mint | 按Instrument法域确认M12合法登记前后时序、受权EOA/MPC接收、链限制与TokenPlan版本 | 订单Created或FinalMatched不能替代Allocation；钱包不能替代法定持有人；Mint不能替代法定登记 |
 | I-39真正Mint、接收与链Finality → I-40与I-47/I-48法定名册核对 | Token真实合约事件M07与M12唯一法定登记独立显示，冲突只经M17受权工单 | 链成功而名册Unknown不能宣称合法完整交割；工单关闭不更改两个原主账 |
-| I-39冻结、Burn及合法退出 → I-54～58收益/到期、I-47名册、I-40链查询 | 债权A合法偿还/未还，SPV权益B有效公司决议或合法回购，真实X及M13/M12事实 | Burn不能销毁未偿债权或依法已成立的SPV权益，冻结不自动禁止履行付款/收益义务 |
+| **I-54～58先核适法退出/清偿与M13付款真值→I-47查询M12合法登记及变更→I-39受权Burn申请/I-40链结果（具体登记与Burn法律生效先后依法决定）**；紧急Pause/Freeze须按现有合法独立安全前置走I-39，不要求先清偿 | 债权A真实已付/欠付、SPV权益B合法公司决议/回购依据、M12法定名册及M07链事件分别核原Issuer/X权威；页面跳转不代表任何无门执行顺序 | **未获适法权利处置条件时禁止生产Burn**，Burn Final不等于债务清偿或法律权益终止；紧急冻结不自动暂停真实付款/收益义务 |
 | 权限撤销、业务暂停、Tenant退租 | 已发生链事件、法定登记、募集与收益义务仍依法保留；限制仅禁止新的不合法/无权动作 | 不删除既有Mint/名册/合同或允许后台支持人员“代签恢复” |
 
 | 角色/责任人 | 页面可提供的受权能力 | 不得获得的默认高危权限 |
@@ -7220,7 +7220,7 @@ flowchart TD
 | CTA或用户动作 | 真实可用条件和目标页面 | 确认、异常和危险结果保护 |
 |---|---|---|
 | 筛选按Batch/轨道/状态与刷新 | 只读M13/X实际授权结果，Empty与FilteredEmpty分离 | 无权只显示可合法访问摘要 |
-| 查看ClaimIntent及链事实 | →I-40或原M13合法交易详情；仅查原Intent | Unknown/重组不可再次触发同笔Claim |
+| 查看Claim/Push付款意图及外部链/银行回证 | **首选查询原M13 Payment/ClaimIntent及受权真实付款X回执**；涉及链交易时按M13所批准的真实链/Provider证据查询；**仅同一交易确有关联M07 Token操作时**按权限跳I-40查看对应Token链事件 | I-40不是M13收益资金主账；链Hash、广播、Provider受理不等于实际Paid。Unknown/重组先核原M13 Intent，不再次触发同一笔Claim或出款 |
 | 查看Push/外部付款证据 | 仅有权检查原X/银行支付方回证 | Provider Accepted不等于Paid |
 | 提交受权差异调查 | →I-60/原M17 Case、按真实资金主责处理 | 不提供一键“人工确认到账” |
 | 核对受益人/修改受款条件 | →I-55/I-47及原合法代理/钱包核验路径 | 收款地址改变要重新取权，不能覆写历史已付记录 |
@@ -7741,8 +7741,8 @@ flowchart TD
 |---|---|---|
 | M01 Tenant/商业 | Free Sandbox/Standard商业KYB合同/USDT账单到账/生效 | 付费≠生产；原账单Unknown查Intent |
 | M01门户/M05 Offering | Portal Published/Offering Published/可见/可买 | P-01～P-07及法律RG分开，停售保留已形成权利 |
-| M09准入/M10订单 | KYC/AML/Eligible/钱包；Quote/签署/订单/预留 | KYC通过≠适格，已取消后晚付款查M11 |
-| M11认购资金 | 广播/FinalMatched/退款实付；Eligible/Approved/Settled | 错链/少多付/迟到/重组核原Tx，审批≠实付 |
+| M09准入/M10订单 | KYC/AML/**M09 Offering级InvestorEligible**/钱包；Quote/签署/订单/预留 | InvestorEligible仅指投资者在当次Offering的合法资格，不等于M11 ReleaseEligible；KYC通过≠适格，已取消后晚付款查M11。此处InvestorEligible为展示消歧用语，不新增正式状态字段或技术枚举 |
+| M11认购资金 | **支付Observed/Finality/FinalMatched与RefundPaid**独立；**募集款ReleaseEligible→TransferApproved→TransferSubmitted→Settled**各属M11释放/划拨不同阶段，均不是M09投资者Eligible | 错链/少多付/迟到/重组核原Tx；ReleaseEligible仅可申请、TransferApproved仅批准，Submitted不等于合法收款人最终Settled，审批≠实付；各状态仅为UI语义，非新增或冻结后端Enum |
 | M12配售名册 | 合法Allocation/登记生效/差异Unknown | 有权登记X证据，Mint不等于法律持有人 |
 | M07 Token | 合约申请/部署Finality/Mint/Burn独立 | Signer合法授权，Unknown查原Intent，Burn≠还款 |
 | M13收益/到期 | RecordDate/应付Approved/Funded/Claim/Partial/Paid/Unclaimed/Overdue | 合法合同/公司决议、真实注资；未领≠实付 |
@@ -7750,6 +7750,8 @@ flowchart TD
 | M17～22共享 | Task Closed/Read/Provider Recovered/只读报表AsOf | 不能据技术任务成功覆盖资金/链/名册真值 |
 
 **受权恢复六步**：校验Tenant/原Intent/版本→核本人/审批/X签名权限→向权威资金/链/登记查询真实最终性、部分结果及重组→已成功不可逆操作阻断重复→合法可恢复需独立授权及余额/额度/名册/幂等校验→回源记录M17/M20审计与有权通知。重复Webhook≠重复真款，两个真实交易不能误合并。字段、并发、技术时序/法域及实际QA仍Draft。
+
+**C04-03-R01～R05产品语义澄清（用户已批准全部A）**：M13负责RecordDate/资格快照，M12提供记录日法律登记事实；M09 InvestorEligible与M11 ReleaseEligible、TransferApproved、Settled分别标领域；M13 Claim/Push付款回源而非把I-40当收益主账；I-39 Burn须依据适法退出/清偿前置，安全冻结例外依合法控制独立处理；I-34 P-05检查收款最终性核验机制，不预设已经有真实收款事件。这些区分不授权新生产动作，不新设真实主账/正式功能ID/物理路由，精确字段、枚举、法域、Signer、支付Provider和X-01～X-13仍Draft/Open，UI/资金/链/法律真实验收Not Executed。
 
 ### 7.3 M渠道业务状态增量
 

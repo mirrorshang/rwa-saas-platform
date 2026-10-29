@@ -16,8 +16,10 @@ import { FreeOnboarding } from './pages/FreeOnboarding';
 import { Organizations } from './pages/Organizations';
 import { StandardUpgrade } from './pages/StandardUpgrade';
 import { InvestorPlatform } from './pages/InvestorPlatform';
+import { IssuerWorkspace } from './pages/IssuerWorkspace';
 import './utilities.css';
 import './styles.scss';
+import './issuer.scss';
 
 const rootRoute = createRootRoute({ component: App });
 const homeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/', component: Home });
@@ -35,7 +37,8 @@ const onboardingRoute = createRoute({ getParentRoute: () => rootRoute, path: '/f
 const organizationsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/organizations', component: Organizations });
 const upgradeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/standard-upgrade', component: StandardUpgrade });
 const investorPlatformRoute = createRoute({ getParentRoute: () => rootRoute, path: '/investor-platform', component: InvestorPlatform });
-const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, investorPlatformRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, upgradeRoute]);
+const issuerRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer', component: IssuerWorkspace });
+const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, investorPlatformRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, upgradeRoute, issuerRoute]);
 const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {

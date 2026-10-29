@@ -4,6 +4,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { marketplaceIsOpen, marketplaceLink, paths, site } from './config';
 import { CookiePreferences } from './CookiePreferences';
+import { clearDemoContext } from './issuerDemo';
 
 export type DemoRole = 'visitor' | 'single' | 'multiple' | 'none' | 'no-subscription' | 'standard' | 'upgrading';
 
@@ -104,6 +105,7 @@ export function App() {
   const [cookiesOpen, setCookiesOpen] = useState(false);
   const demoMode = new URLSearchParams(location.search).get('demo') === '1';
   const compactAuth = location.pathname === paths.verify || location.pathname === paths.login || location.pathname === paths.onboarding || location.pathname === paths.organizations;
+  const issuerPage = location.pathname === paths.issuer;
   useEffect(() => {
     const pageTitles: Record<string, string> = {
       [paths.home]: '面向发行机构的多资产Token化SaaS',
@@ -113,13 +115,14 @@ export function App() {
       [paths.onboarding]: '开通Free工作台', [paths.organizations]: '选择企业', [paths.upgrade]: '升级Standard',
     };
     const page = pageTitles[location.pathname] || (location.pathname.startsWith(`${paths.policies}/`) ? '法律与政策' : 'WDEX SaaS');
-    document.title = `${page}｜${site.brand}`;
+    document.title = `${issuerPage ? 'Issuer工作台' : page}｜${site.brand}`;
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (description) description.content = 'WDEX SaaS为发行机构提供资产、项目、投资者门户、认购、Token与发行后管理工具。';
   }, []);
+  if (issuerPage) return <Outlet />;
   return <>
     {compactAuth ? <AuthHeader /> : <Header role={role} />}
-    {demoMode && <div className="scenario-bar"><span>{site.demoLabel}</span><label>访客/授权场景：<select value={role} onChange={e => setRole(e.target.value as DemoRole)}><option value="visitor">访客</option><option value="single">单企业Free管理员</option><option value="multiple">多企业</option><option value="none">无有效企业授权</option><option value="no-subscription">Free无订阅权限</option><option value="standard">已开通Standard</option><option value="upgrading">升级处理中</option></select></label></div>}
+    {demoMode && <div className="scenario-bar"><span>{site.demoLabel}</span><label>访客/授权场景：<select value={role} onChange={e => { clearDemoContext(); setRole(e.target.value as DemoRole); }}><option value="visitor">访客</option><option value="single">单企业Free管理员</option><option value="multiple">多企业</option><option value="none">无有效企业授权</option><option value="no-subscription">Free无订阅权限</option><option value="standard">已开通Standard</option><option value="upgrading">升级处理中</option></select></label></div>}
     <Outlet />
     {compactAuth ? <AuthFooter /> : <Footer onCookies={() => setCookiesOpen(true)} />}
     <CookiePreferences open={cookiesOpen} setOpen={setCookiesOpen} />

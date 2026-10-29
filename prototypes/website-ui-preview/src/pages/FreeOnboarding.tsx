@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, DemoNotice, ServiceUnavailable, useDemoRole } from '../site';
 import { paths } from '../config';
+import { beginNewTenantDemo } from '../issuerDemo';
 
 type View = 'processing' | 'success' | 'failure' | 'auth';
 const steps = ['确认账户与注册信息', '检查或创建企业工作台', '启用Free Sandbox权益', '准备进入工作台'];
@@ -22,6 +23,7 @@ export function FreeOnboarding() {
   if (!demoMode) return <ServiceUnavailable title="Free工作台开通暂未开放" description="账户验证、企业授权及工作台开通服务尚未接入。您可以先了解Free与Standard方案。" />;
   const retry = () => setNotice('暂时无法确认开通结果，请重试查询。当前没有接通Tenant及Free权益服务，未新建工作台。');
   const enter = () => {
+    if (view === 'success' && verifiedDemo) { beginNewTenantDemo(); location.href = paths.issuer + '?demo=1' + (standardIntent ? '&intent=standard' : ''); return; }
     if (role === 'visitor' || role === 'none') { location.href = paths.login + (standardIntent ? '?intent=standard' : ''); return; }
     if (role === 'multiple') { location.href = paths.organizations + (standardIntent ? '?intent=standard&demo=1' : '?demo=1'); return; }
     setNotice('当前仅为UI演示，尚未建立真实企业会话或I端工作台入口。进入正式工作台前必须核验Tenant及角色授权。');

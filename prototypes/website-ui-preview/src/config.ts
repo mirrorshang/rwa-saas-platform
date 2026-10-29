@@ -23,6 +23,7 @@ export const paths = {
   login: '/login',
   onboarding: '/free-onboarding',
   organizations: '/organizations',
+  issuer: '/issuer',
   upgrade: '/standard-upgrade',
 } as const;
 

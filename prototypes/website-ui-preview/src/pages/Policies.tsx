@@ -21,6 +21,6 @@ export function Policies() {
 
   return <main className="policies-page">
     <section className="policy-hero"><div className="container"><span className="eyebrow">DOCUMENT STATUS / 文件状态</span><h1>法律与政策</h1><p>查看四类SaaS文件的发布状态。正式正文与生效日期尚待审核公布。</p></div></section>
-    <section className="section policy-center"><div className="container"><div className="policy-warning"><h2>文件发布状态</h2><p>以下四份SaaS相关文件的正式正文尚未发布。在文件和相应服务完成必要审核前，注册、咨询及商业订阅不可实际提交。M统一投资端涉及的投资者服务条款、Offering法律披露与隐私告知需独立审核和发布，不能以SaaS条款替代。</p></div><div className="policy-card-grid">{policies.map((item, index) => <a className="policy-card" href={`${paths.policies}/${item.slug}`} key={item.slug}><span>0{index + 1} / 待发布</span><h2>{item.title}</h2><p>{item.description}</p><div><small>正式版本与生效日期待公布</small><strong>查看发布状态 ↗</strong></div></a>)}</div></div></section>
+    <section className="section policy-center"><div className="container"><div className="policy-warning"><h2>文件发布状态</h2><p>以下四份SaaS相关文件的正式正文尚未发布。在文件和相应服务完成必要审核前，注册、咨询及商业订阅不可实际提交。WDEX投资者平台涉及的投资者服务条款、发行方案法律披露与隐私告知需独立审核和发布，不能以SaaS条款替代。</p></div><div className="policy-card-grid">{policies.map((item, index) => <a className="policy-card" href={`${paths.policies}/${item.slug}`} key={item.slug}><span>0{index + 1} / 待发布</span><h2>{item.title}</h2><p>{item.description}</p><div><small>正式版本与生效日期待公布</small><strong>查看发布状态 ↗</strong></div></a>)}</div></div></section>
   </main>;
 }

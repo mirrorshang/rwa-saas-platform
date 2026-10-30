@@ -2,12 +2,12 @@ import { useState, type FormEvent } from 'react';
 import { Button, DemoNotice } from '../site';
 import { paths } from '../config';
 
-const topics = ['产品功能与演示', '商业合作', '注册与账户访问', 'Sandbox使用支持', 'Standard订阅与账单', 'Offering平台渠道咨询', '其他问题'];
+const topics = ['产品功能与演示', '商业合作', '注册与账户访问', 'Sandbox使用支持', 'Standard订阅与账单', 'WDEX投资者平台展示咨询', '其他问题'];
 const topicFromSource: Record<string, string> = { product: topics[0], business: topics[1], account: topics[2], sandbox: topics[3], standard: topics[4], marketplace: topics[5] };
 const cards = [
   ['产品与业务咨询', '了解WDEX的资产发行管理能力及企业使用场景。', '产品能力 · 业务适用性'],
   ['企业账户与产品支持', '查找注册、登录、工作台访问及Sandbox操作指引。', '账户访问 · 使用支持'],
-  ['Standard与Offering渠道', '了解商业订阅条件，以及独立审核的M平台展示申请边界。', '商业订阅 · Offering渠道'],
+  ['Standard与投资者平台展示', '了解商业订阅条件，以及独立审核的WDEX投资者平台展示申请边界。', '商业订阅 · 投资者平台展示'],
 ];
 type FormFields = { topic: string; name: string; email: string; company: string; country: string; phone: string; message: string; privacy: boolean };
 const draftKey = 'wdex-contact-draft';

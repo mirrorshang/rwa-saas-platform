@@ -41,17 +41,23 @@ export function ServiceUnavailable({ title, description }: { title: string; desc
 const nav = [
   ['产品功能', paths.features],
   ['解决方案', paths.solutions],
-  ['订阅', paths.pricing],
-  ['投资者平台', marketplaceLink],
+  ['订阅方案', paths.pricing],
   ['帮助中心', paths.help],
 ];
+
+export function demoRoute(path: string) {
+  const localPreview = location.hostname === 'localhost' || location.hostname.split('.')[0] === '127' || location.hostname === '[::1]';
+  const demo = localPreview || new URLSearchParams(location.search).get('demo') === '1';
+  return demo ? `${path}${path.includes('?') ? '&' : '?'}demo=1` : path;
+}
 
 export function Header({ role }: { role: DemoRole }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuToggle = useRef<HTMLButtonElement>(null);
   const current = location.pathname;
-  const workHref = role === 'multiple' ? paths.organizations : role === 'none' ? paths.register : paths.onboarding;
-  const actionLabel = role === 'visitor' ? '使用指南' : role === 'none' ? '查看开通状态' : '进入工作台';
+  const workHref = role === 'multiple' ? paths.organizations : role === 'none' ? paths.register : paths.issuer;
+  const enterpriseHref = demoRoute(role === 'visitor' ? paths.login : workHref);
+  const enterpriseLabel = role === 'visitor' ? '企业登录' : role === 'none' ? '查看开通状态' : '进入工作台';
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -79,11 +85,11 @@ export function Header({ role }: { role: DemoRole }) {
       <nav id="site-main-nav" className={'main-nav' + (menuOpen ? ' open' : '')} aria-label="主导航" onClick={event => { if (event.target instanceof Element && event.target.closest('a')) setMenuOpen(false); }}>
         {nav.map(([label, href]) => {
           const active = navIsActive(href);
-          return <a key={label} className={active ? 'active' : ''} href={href} aria-current={active ? 'page' : undefined} aria-label={label === '投资者平台' && !marketplaceIsOpen ? '投资者平台，筹备中' : label}>{label}{label === '投资者平台' && !marketplaceIsOpen && <small className="nav-status">筹备中</small>}</a>;
+          return <a key={label} className={active ? 'active' : ''} href={href} aria-current={active ? 'page' : undefined}>{label}</a>;
         })}
-        <div className="mobile-nav-actions"><a className="login-link" href={paths.login}>企业登录</a><Button href={role === 'visitor' ? paths.help : workHref}>{actionLabel}</Button></div>
+        <div className="mobile-nav-actions"><a className="login-link" href={enterpriseHref}>{enterpriseLabel}</a><Button href={paths.investorPlatform}>投资者平台</Button></div>
       </nav>
-      <div className="header-actions"><a className="login-link" href={paths.login}>企业登录</a><Button href={role === 'visitor' ? paths.help : workHref}>{actionLabel}</Button></div>
+      <div className="header-actions"><a className="login-link" href={enterpriseHref}>{enterpriseLabel}</a><Button href={paths.investorPlatform}>投资者平台</Button></div>
     </div>
   </header>;
 }
@@ -115,7 +121,7 @@ export function App() {
       [paths.onboarding]: '开通Free工作台', [paths.organizations]: '选择企业', [paths.upgrade]: '升级Standard',
     };
     const page = pageTitles[location.pathname] || (location.pathname.startsWith(`${paths.policies}/`) ? '法律与政策' : 'WDEX SaaS');
-    document.title = `${issuerPage ? 'Issuer工作台' : page}｜${site.brand}`;
+    document.title = `${issuerPage ? '发行机构工作台' : page}｜${site.brand}`;
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (description) description.content = 'WDEX SaaS为发行机构提供资产、项目、投资者门户、认购、Token与发行后管理工具。';
   }, []);

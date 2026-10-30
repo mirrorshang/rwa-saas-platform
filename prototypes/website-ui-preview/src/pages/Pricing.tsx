@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Button, DemoNotice, SectionHeading, useDemoRole } from '../site';
+import { Button, DemoNotice, SectionHeading, demoRoute, useDemoRole } from '../site';
 import { paths } from '../config';
 
 const freeBenefits = [
-  '免费创建企业工作台', '管理模拟资产与金融工具', '创建Sandbox项目与发行轮次',
+  '免费创建企业工作台', '管理模拟资产与权益结构', '创建Sandbox项目与发行轮次',
   '模拟Token配置及相关流程', '使用模拟投资者门户', '模拟投资者资格、认购与资金处理',
   '模拟配售、收益和发行后管理', '保留测试环境中的工作记录及允许复用的配置',
 ];
@@ -16,7 +16,7 @@ const standardBenefits = [
 const comparison = [
   ['企业工作台', '免费开通', '商业订阅使用'],
   ['多资产管理', 'Sandbox配置与模拟', '正式业务管理能力'],
-  ['金融权利工具', '模拟配置', '按适用条件管理'],
+  ['权益结构', '模拟配置', '按适用条件管理'],
   ['多项目与发行轮次', 'Sandbox模拟', '正式项目及发行管理'],
   ['文件与审批', '模拟业务流程', '受权正式工作流'],
   ['Token管理', '模拟Token或批准的测试环境', '满足条件后可使用受权生产操作'],
@@ -63,9 +63,9 @@ export function Pricing() {
         : 'Standard价格与计费周期尚未公布，当前不能生成订阅账单。您可以先了解升级条件。');
   const standardLabel = role === 'standard' ? '管理订阅' : role === 'upgrading' ? '查看升级进度' : '了解升级条件';
   return <main className="pricing-page">
-    <section className="pricing-hero"><div className="network-grid" /><div className="container"><span className="eyebrow">SUBSCRIPTION / 订阅方案</span><h1>从免费Sandbox开始，<br /><em>按业务需要升级</em></h1><p>Free永久免费，适合熟悉发行管理流程。Standard为准备开展正式业务的企业提供商业SaaS订阅，价格与计费周期待公布。</p><div className="pricing-hero-note">订阅Standard不自动取得真实Token发行、资金执行或M平台Offering上架资格。</div></div></section>
+    <section className="pricing-hero"><div className="network-grid" /><div className="container"><span className="eyebrow">SUBSCRIPTION / 订阅方案</span><h1>从免费Sandbox开始，<br /><em>按业务需要升级</em></h1><p>Free永久免费，适合熟悉发行管理流程。Standard为准备开展正式业务的企业提供商业SaaS订阅，价格与计费周期待公布。</p><div className="pricing-hero-note">订阅Standard不自动取得真实Token发行、资金执行或WDEX投资者平台发行方案上架资格。</div></div></section>
     <section className="section pricing-plans"><div className="container"><div className="pricing-grid"><article className="plan-card free"><div className="plan-top"><span className="eyebrow">SANDBOX / 模拟体验</span><h2>Free</h2><strong className="plan-price">永久免费</strong><p>适合希望了解WDEX SaaS、准备发行方案或进行流程测试的企业。</p></div><a className="button button-outline plan-main" href={freeHref}>{role === 'single' ? '进入工作台' : '查看开通状态'}<span aria-hidden="true">↗</span></a><div className="plan-divider" /><span className="plan-subtitle">包含能力</span><ul>{freeBenefits.map(item => <li key={item}>{item}</li>)}</ul><p className="plan-boundary">Free始终运行在受控Sandbox/测试环境中。模拟投资者、订单、资金、Token及权益不产生真实法律效力。</p><small>永久免费不代表无资源限制。具体配额以正式公布的订阅方案说明为准。</small></article>
-    <article className="plan-card standard"><div className="plan-top"><span className="eyebrow">COMMERCIAL / 商业订阅</span><h2>Standard</h2><strong className="plan-price">价格待公布</strong><p>适合准备将WDEX SaaS应用于实际发行业务，并需要正式商业订阅与生产能力的机构。</p></div>{standardHref ? <a className="button button-primary plan-main" href={standardHref}>{standardLabel}<span aria-hidden="true">↗</span></a> : <button className="button button-primary plan-main" type="button" onClick={subscribe}>{standardLabel}<span aria-hidden="true">↗</span></button>}<div className="plan-secondary"><a href={paths.contact + '?topic=standard'}>有疑问？查看联系渠道</a>{role === 'visitor' && <a href={paths.login + '?intent=standard'}>已有账号？先登录</a>}</div>{notice && <p className="inline-notice" role="status">{notice}</p>}<div className="plan-divider" /><span className="plan-subtitle">包含能力</span><ul>{standardBenefits.map(item => <li key={item}>{item}</li>)}</ul><p className="plan-boundary">Standard订阅并不自动开通真实Token发行、资金操作或投资者购买权限。实际业务需要完成适用的法律、业务与生产授权。</p><small>价格、计费周期、资源配额及外部服务费用以正式商业方案为准。</small></article></div></div></section>
+    <article className="plan-card standard"><div className="plan-top"><span className="eyebrow">COMMERCIAL / 商业订阅</span><h2>Standard</h2><strong className="plan-price">价格待公布</strong><p>适合准备将WDEX SaaS应用于实际发行业务，并需要正式商业订阅与生产能力的机构。</p></div>{standardHref ? <a className="button button-primary plan-main" href={standardHref}>{standardLabel}<span aria-hidden="true">↗</span></a> : <button className="button button-primary plan-main" type="button" onClick={subscribe}>{standardLabel}<span aria-hidden="true">↗</span></button>}<div className="plan-secondary"><a href={paths.contact + '?topic=standard'}>有疑问？查看联系渠道</a>{role === 'visitor' && <a href={demoRoute(paths.login + '?intent=standard')}>已有账号？先登录</a>}</div>{notice && <p className="inline-notice" role="status">{notice}</p>}<div className="plan-divider" /><span className="plan-subtitle">包含能力</span><ul>{standardBenefits.map(item => <li key={item}>{item}</li>)}</ul><p className="plan-boundary">Standard订阅并不自动开通真实Token发行、资金操作或投资者购买权限。实际业务需要完成适用的法律、业务与生产授权。</p><small>价格、计费周期、资源配额及外部服务费用以正式商业方案为准。</small></article></div></div></section>
     <section className="section pricing-comparison"><div className="container"><SectionHeading eyebrow="PLAN COMPARISON / 方案对比" title="按业务阶段比较两种方案" description="Free用于Sandbox模拟；Standard提供商业SaaS使用基础。" /><div className="compare-wrap"><table><thead><tr><th>功能类别</th><th>Free</th><th>Standard</th></tr></thead><tbody>{comparison.map(([feature, free, standard]) => <tr key={feature}><th>{feature}</th><td>{free}</td><td>{standard}</td></tr>)}</tbody></table></div><p className="compare-note">真实业务操作仍须满足发行主体、项目、合法执行及生产条件。资源配额、第三方费用、价格和付款网络以正式方案与有效账单为准。</p></div></section>
     <section className="section pricing-upgrade"><div className="container"><SectionHeading eyebrow="STANDARD / 升级摘要" title="沿用原企业工作台升级" description="订阅页说明选择差异；详细审核、账单和异常状态请查看升级说明。" /><div className="upgrade-steps">{upgradeSteps.map(([title, body], index) => <article key={title}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{body}</p></div></article>)}</div><p className="upgrade-warning">Sandbox中的模拟资金、认购、Token及权益不会直接转为真实记录。</p><Button href={paths.upgrade} variant="outline">查看Standard升级流程</Button></div></section>
     <section className="section faq-section"><div className="container narrow"><SectionHeading eyebrow="FAQ / 常见问题" title="订阅常见问题" /><PricingFaq /><div className="section-action"><Button variant="text" href={paths.help}>查看帮助中心</Button></div></div></section><div className="preview-strip"><DemoNotice /></div>

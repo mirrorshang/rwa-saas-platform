@@ -61,9 +61,9 @@ export function Header({ role }: { role: DemoRole }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuToggle = useRef<HTMLButtonElement>(null);
   const current = location.pathname;
-  const workHref = role === 'multiple' ? paths.organizations : role === 'none' ? paths.register : paths.issuer;
-  const enterpriseHref = demoRoute(role === 'visitor' ? paths.login : workHref);
-  const enterpriseLabel = role === 'visitor' ? '企业登录' : role === 'none' ? '查看开通状态' : '进入工作台';
+  const workHref = role === 'multiple' ? paths.organizations : paths.issuer;
+  const enterpriseHref = demoRoute(role === 'visitor' || role === 'none' ? paths.login : workHref);
+  const enterpriseLabel = role === 'visitor' || role === 'none' ? '企业登录' : '进入工作台';
 
   useEffect(() => {
     if (!menuOpen) return;

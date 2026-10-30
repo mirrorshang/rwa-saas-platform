@@ -767,7 +767,7 @@ img { max-width: 100%; }
 .login-help-cases article { border-top: 1px solid #31536a; padding: 18px 0; }
 .login-help-cases h3 { margin: 0 0 9px; font-size: 15px; }
 .login-help-cases p { color: #a1bdcc; font-size: 12px; line-height: 1.75; }
-@media (max-width: 900px) { .login-layout { grid-template-columns: 1fr; } .login-story { justify-content: center; padding: 65px 30px; } .login-panel { padding: 65px 30px; } }
+@media (max-width: 900px) { .login-layout { grid-template-columns: 1fr; } .login-story { justify-content: center; padding: 45px 30px; } .login-panel { order: -1; padding: 35px 30px; } .register-form-side { order: -1; } }
 @media (max-width: 570px) { .login-card { padding: 27px; } .login-visual > div { flex-wrap: wrap; } .login-visual b { min-width: 42%; } }
 
 .onboarding-page { position: relative; isolation: isolate; background: #061728; min-height: calc(100vh - 135px); padding: 75px 0 0; overflow: hidden; }

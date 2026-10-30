@@ -18,11 +18,11 @@ const useDemoStore = create<{ role: DemoRole; setRole: (role: DemoRole) => void 
 export function useDemoRole(): [DemoRole, (role: DemoRole) => void] {
   const role = useDemoStore(state => state.role);
   const setRole = useDemoStore(state => state.setRole);
-  return [new URLSearchParams(location.search).get('demo') === '1' ? role : 'visitor', setRole];
+  return [isDemoPreview() ? role : 'visitor', setRole];
 }
 
 export function DemoNotice({ children }: { children?: ReactNode }) {
-  if (new URLSearchParams(location.search).get('demo') !== '1') return null;
+  if (!isDemoPreview()) return null;
   return <div className="demo-notice"><span className="status-dot" />{children || site.demoLabel}</div>;
 }
 
@@ -45,10 +45,16 @@ const nav = [
   ['帮助中心', paths.help],
 ];
 
+export function isLocalPreview() {
+  return location.hostname === 'localhost' || /^127(?:\.\d{1,3}){3}$/.test(location.hostname) || location.hostname === '[::1]';
+}
+
+export function isDemoPreview() {
+  return isLocalPreview() && new URLSearchParams(location.search).get('demo') === '1';
+}
+
 export function demoRoute(path: string) {
-  const localPreview = location.hostname === 'localhost' || location.hostname.split('.')[0] === '127' || location.hostname === '[::1]';
-  const demo = localPreview || new URLSearchParams(location.search).get('demo') === '1';
-  return demo ? `${path}${path.includes('?') ? '&' : '?'}demo=1` : path;
+  return isLocalPreview() ? `${path}${path.includes('?') ? '&' : '?'}demo=1` : path;
 }
 
 export function Header({ role }: { role: DemoRole }) {
@@ -109,7 +115,7 @@ function AuthFooter() { return <footer className="auth-footer"><div className="c
 export function App() {
   const [role, setRole] = useDemoRole();
   const [cookiesOpen, setCookiesOpen] = useState(false);
-  const demoMode = new URLSearchParams(location.search).get('demo') === '1';
+  const demoMode = isDemoPreview();
   const compactAuth = location.pathname === paths.verify || location.pathname === paths.login || location.pathname === paths.onboarding || location.pathname === paths.organizations;
   const issuerPage = location.pathname === paths.issuer;
   useEffect(() => {
@@ -125,7 +131,7 @@ export function App() {
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (description) description.content = 'WDEX SaaS为发行机构提供资产、项目、投资者门户、认购、Token与发行后管理工具。';
   }, []);
-  if (issuerPage) return <Outlet />;
+  if (issuerPage) return isLocalPreview() ? <Outlet /> : <ServiceUnavailable title="企业工作台暂未开放" description="当前公开网站不提供模拟企业登录或真实工作台访问。" />;
   return <>
     {compactAuth ? <AuthHeader /> : <Header role={role} />}
     {demoMode && <div className="scenario-bar"><span>{site.demoLabel}</span><label>访客/授权场景：<select value={role} onChange={e => { clearDemoContext(); setRole(e.target.value as DemoRole); }}><option value="visitor">访客</option><option value="single">单企业Free管理员</option><option value="multiple">多企业</option><option value="none">无有效企业授权</option><option value="no-subscription">Free无订阅权限</option><option value="standard">已开通Standard</option><option value="upgrading">升级处理中</option></select></label></div>}

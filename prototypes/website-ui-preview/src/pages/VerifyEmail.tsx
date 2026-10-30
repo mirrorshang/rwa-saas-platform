@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Button, DemoNotice, ServiceUnavailable, demoRoute } from '../site';
+import { Button, DemoNotice, ServiceUnavailable, demoRoute, isDemoPreview } from '../site';
 import { paths } from '../config';
 
 type View = 'waiting' | 'processing' | 'success' | 'expired' | 'invalid' | 'used' | 'unknown';
 const viewText: Record<View, { title: string; body: string }> = {
-  waiting: { title: '请验证您的邮箱', body: '我们已受理向您的注册邮箱发送验证邮件的请求。请前往邮箱，打开验证邮件并点击其中的验证链接。' },
+  waiting: { title: '模拟邮箱验证', body: '本地演示已模拟受理验证请求，不会发送真实邮件。请选择下方演示结果以继续体验流程。' },
   processing: { title: '正在验证您的邮箱', body: '正在确认验证链接，请勿重复操作。' },
-  success: { title: '邮箱验证成功', body: '您的邮箱已完成验证。接下来将为您检查并开通Free企业工作台。' },
+  success: { title: '模拟邮箱验证成功', body: '本地演示验证已完成。接下来模拟检查Free企业工作台的开通状态。' },
   expired: { title: '验证链接已过期', body: '当前验证链接已失效。您可以申请新的验证邮件，继续完成注册。' },
   invalid: { title: '无法验证此链接', body: '该链接无效或无法用于当前注册。请返回注册页面重新获取有效的验证指引。' },
   used: { title: '该邮箱已完成验证', body: '当前邮箱已完成验证。您可以继续注册流程，或使用已有账户登录。' },
@@ -15,7 +15,7 @@ const viewText: Record<View, { title: string; body: string }> = {
 function maskEmail(value: string) { const [local, domain] = value.split('@'); return local && domain ? `${local[0]}***@${domain}` : '***@***'; }
 
 export function VerifyEmail() {
-  const demoMode = new URLSearchParams(location.search).get('demo') === '1';
+  const demoMode = isDemoPreview();
   const standardIntent = new URLSearchParams(location.search).get('intent') === 'standard';
   const source = (() => { try { return JSON.parse(sessionStorage.getItem('wdex-registration-demo') || '{}') as { email?: string; standardIntent?: boolean }; } catch { return {}; } })();
   const [view, setView] = useState<View>(demoMode ? 'waiting' : 'invalid');

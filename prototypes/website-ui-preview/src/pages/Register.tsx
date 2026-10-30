@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { DemoNotice, demoRoute, useDemoRole } from '../site';
+import { DemoNotice, demoRoute, useDemoRole, isDemoPreview } from '../site';
 import { paths } from '../config';
 
 const values = [
@@ -20,7 +20,7 @@ export function Register() {
   const [errors, setErrors] = useState<{ email?: string; accepted?: string }>({});
   const [status, setStatus] = useState('');
   const [outcome, setOutcome] = useState('unavailable');
-  const demoMode = new URLSearchParams(location.search).get('demo') === '1';
+  const demoMode = isDemoPreview();
   const standardIntent = new URLSearchParams(location.search).get('intent') === 'standard';
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { Button, DemoNotice } from '../site';
+import { Button, DemoNotice, isDemoPreview } from '../site';
 import { paths } from '../config';
 
 const topics = ['产品功能与演示', '商业合作', '注册与账户访问', 'Sandbox使用支持', 'Standard订阅与账单', 'WDEX投资者平台展示咨询', '其他问题'];
@@ -25,7 +25,7 @@ export function Contact() {
   const [status, setStatus] = useState('');
   const [outcome, setOutcome] = useState('unavailable');
   const [receipt, setReceipt] = useState<{ topic: string; email: string } | null>(null);
-  const demoMode = new URLSearchParams(location.search).get('demo') === '1';
+  const demoMode = isDemoPreview();
   const update = (key: keyof FormFields, value: string | boolean) => { setFields(current => { const next = { ...current, [key]: value }; const { privacy: _privacy, ...draft } = next; void _privacy; sessionStorage.setItem(draftKey, JSON.stringify(draft)); return next; }); setErrors(current => ({ ...current, [key]: undefined })); setStatus(''); };
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

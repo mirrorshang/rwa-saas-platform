@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, DemoNotice, ServiceUnavailable, demoRoute, useDemoRole } from '../site';
+import { Button, DemoNotice, ServiceUnavailable, demoRoute, useDemoRole, isDemoPreview } from '../site';
 import { paths } from '../config';
 import { demoTenants, getDemoAuth, selectDemoTenant } from '../issuerDemo';
 
@@ -14,7 +14,7 @@ function mask(value?: string) { const [local, domain] = (value || '').split('@')
 
 export function Organizations() {
   const [role] = useDemoRole();
-  const demoMode = new URLSearchParams(location.search).get('demo') === '1';
+  const demoMode = isDemoPreview();
   const standardIntent = new URLSearchParams(location.search).get('intent') === 'standard';
   const registration = (() => { try { return JSON.parse(sessionStorage.getItem('wdex-registration-demo') || '{}') as { email?: string }; } catch { return {}; } })();
   const [query, setQuery] = useState('');

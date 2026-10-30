@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { Button, DemoNotice, ServiceUnavailable, demoRoute, useDemoRole } from '../site';
+import { Button, DemoNotice, ServiceUnavailable, demoRoute, useDemoRole, isDemoPreview } from '../site';
 import { paths } from '../config';
 import { beginDemoAuth, selectDemoTenant } from '../issuerDemo';
 
@@ -14,7 +14,7 @@ export function Login() {
   const [error, setError] = useState('');
   const [outcome, setOutcome] = useState('unavailable');
   const [codeOutcome, setCodeOutcome] = useState('wrong');
-  const demoMode = new URLSearchParams(location.search).get('demo') === '1';
+  const demoMode = isDemoPreview();
   const standardIntent = new URLSearchParams(location.search).get('intent') === 'standard';
   if (!demoMode) return <ServiceUnavailable title="企业账户登录暂未开放" description="邮箱验证与企业授权服务尚未接入。当前无法登录或访问企业工作台。" />;
   const requestCode = (event: FormEvent) => {

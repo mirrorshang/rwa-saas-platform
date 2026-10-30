@@ -116,14 +116,14 @@ export function App() {
   const [role, setRole] = useDemoRole();
   const [cookiesOpen, setCookiesOpen] = useState(false);
   const demoMode = isDemoPreview();
-  const compactAuth = location.pathname === paths.verify || location.pathname === paths.login || location.pathname === paths.onboarding || location.pathname === paths.organizations;
+  const compactAuth = location.pathname === paths.register || location.pathname === paths.verify || location.pathname === paths.login || location.pathname === paths.onboarding || location.pathname === paths.organizations;
   const issuerPage = location.pathname === paths.issuer;
   useEffect(() => {
     const pageTitles: Record<string, string> = {
       [paths.home]: '面向发行机构的多资产Token化SaaS',
       [paths.features]: '产品功能', [paths.solutions]: '解决方案', [paths.pricing]: '订阅方案', [paths.investorPlatform]: '投资者平台筹备说明',
       [paths.help]: '帮助中心', [paths.contact]: '联系我们', [paths.policies]: '法律与政策',
-      [paths.register]: '创建企业账户', [paths.verify]: '验证邮箱', [paths.login]: '登录',
+      [paths.register]: '账号确认', [paths.verify]: '验证邮箱', [paths.login]: '登录',
       [paths.onboarding]: '开通Free工作台', [paths.organizations]: '选择企业', [paths.upgrade]: '升级Standard',
     };
     const page = pageTitles[location.pathname] || (location.pathname.startsWith(`${paths.policies}/`) ? '法律与政策' : 'WDEX SaaS');

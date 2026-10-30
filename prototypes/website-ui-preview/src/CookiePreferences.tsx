@@ -55,7 +55,8 @@ export function CookiePreferences({ open, setOpen }: { open: boolean; setOpen: (
       <div className="cookie-option"><div><strong>会话存储 · 模拟咨询草稿</strong><small>演示表单可能暂存您输入的字段；请勿填写真实敏感资料。</small></div><span>{isStored('session', 'wdex-contact-draft') ? '已保存' : '未保存'}</span></div>
       <div className="cookie-option"><div><strong>会话存储 · 注册与验证演示状态</strong><small>仅供模拟开户和邮箱验证页面展示，不构成真实注册或验证。</small></div><span>{isStored('session', 'wdex-registration-demo') || isStored('session', 'wdex-verification-demo') ? '已保存' : '未保存'}</span></div>
       <div className="cookie-option"><div><strong>会话存储 · 邮箱账号辅助状态</strong><small>临时保存模拟邮箱及条款确认进度；不显示邮箱内容，不构成真实认证。</small></div><span>{isStored('session', 'wdex-auth-pending-account') ? '已保存' : '未保存'}</span></div>
-      <div className="cookie-option"><div><strong>会话存储 · 工作台演示上下文</strong><small>仅保存模拟授权场景及所选示例企业，不代表真实权限。</small></div><span>{isStored('session', 'wdex-issuer-demo-auth') || isStored('session', 'wdex-issuer-demo-tenant') ? '已保存' : '未保存'}</span></div>
+      <div className="cookie-option"><div><strong>会话存储 · 工作台演示上下文</strong><small>暂存模拟账号、企业、成员、Free权益及当前企业；不显示具体内容，不代表真实权限。</small></div><span>{isStored('session', 'wdex-issuer-demo-auth') || isStored('session', 'wdex-issuer-demo-tenant') || isStored('session', 'wdex-issuer-demo-store') ? '已保存' : '未保存'}</span></div>
+      <div className="cookie-option"><div><strong>会话存储 · 企业创建草稿与申请状态</strong><small>仅用于当前浏览器会话中恢复原Mock申请，不展示企业名称或联系资料。</small></div><span>{isStored('session', 'wdex-tenant-create-draft') || isStored('session', 'wdex-tenant-create-active') ? '已保存' : '未保存'}</span></div>
       <div className="cookie-option"><div><strong>分析与营销追踪</strong><small>当前未启用；未来如启用，须先发布正式政策并提供适用的选择方式。</small></div><span>未启用</span></div>
       <a className="cookie-policy-link" href={paths.policies + '/cookies'}>查看Cookie政策发布状态 ↗</a>
       <div className="modal-actions"><button className="solid" type="button" onClick={acknowledge}>知道了</button></div>

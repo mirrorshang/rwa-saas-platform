@@ -836,6 +836,27 @@ img { max-width: 100%; }
 .organization-demo small { color: #799dab; display: block; margin-top: 9px; }
 @media (max-width: 850px) { .organization-grid { grid-template-columns: 1fr; } .organizations-list-header { display: block; } .organizations-list-header label { display: block; margin-top: 25px; } }
 @media (max-width: 570px) { .organization-grid article, .organization-empty { padding: 22px; } .organization-facts { grid-template-columns: 1fr; } }
+.tenant-create-page .register-story-inner > p { color: #afc9d6; line-height: 1.85; font-size: 14px; }
+.tenant-create-benefits { margin: 36px 0; padding: 25px; border: 1px solid #315a73; border-radius: 8px; background: #0b2b40; }
+.tenant-create-benefits h2 { font-size: 20px; margin: 0 0 14px; }
+.tenant-create-benefits li { margin: 9px 0; color: #bbd4df; font-size: 13px; }
+.tenant-create-card .tenant-field { display: block; margin: 17px 0; color: #cde5ed; font-size: 13px; font-weight: 700; }
+.tenant-create-card .tenant-field input, .tenant-create-card .tenant-field select, .tenant-create-card .tenant-field textarea { display: block; width: 100%; min-height: 47px; margin-top: 9px; padding: 11px 12px; color: white; background: #06192a; border: 1px solid #315a73; border-radius: 6px; font: inherit; }
+.tenant-create-card .tenant-field textarea { min-height: 85px; resize: vertical; }
+.tenant-create-card .tenant-field input:focus-visible, .tenant-create-card .tenant-field select:focus-visible, .tenant-create-card .tenant-field textarea:focus-visible { outline: 2px solid $cyan; outline-offset: 2px; }
+.tenant-create-card .tenant-field input[readonly] { color: #9abac8; }
+.tenant-create-card small { color: #8fafbf; line-height: 1.6; }
+.tenant-create-card .tenant-submit { width: 100%; margin-top: 18px; }
+.tenant-create-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; border-top: 1px solid #315a73; padding-top: 23px; margin-top: 30px; }
+.tenant-create-summary div { display: flex; justify-content: space-between; gap: 15px; padding: 13px 0; border-bottom: 1px solid #315a73; }
+.tenant-create-summary dt { color: #91b1bf; }
+.tenant-create-summary dd { margin: 0; text-align: right; }
+.tenant-text-button { display: block; border: 0; background: none; color: $cyan; cursor: pointer; margin: 17px 0; padding: 5px 0; text-decoration: underline; }
+.tenant-mock-control { border-top: 1px solid #315a73; padding-top: 17px; }
+.organization-create { margin-top: 30px; padding: 27px; border: 1px dashed #39738b; border-radius: 8px; background: #0a2638; }
+.organization-create h2 { margin: 0 0 9px; font-size: 20px; }
+.organization-create p { color: #9ab9c7; font-size: 13px; }
+@media (max-width: 570px) { .tenant-create-page .register-story { padding: 42px 25px; } .tenant-create-page .register-form-side { padding: 32px 16px; } .tenant-create-card .button { width: 100%; justify-content: center; } }
 
 .standard-upgrade-page { background: #071727; }
 .upgrade-hero { position: relative; overflow: hidden; padding: 96px 0; background: radial-gradient(circle at 78% 31%, #134a61, #071b2e 50%, #061525); }

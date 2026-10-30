@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, DemoNotice, SectionHeading, demoRoute, useDemoRole, isDemoPreview } from '../site';
 import { paths } from '../config';
-import { getDemoAuth } from '../issuerDemo';
+import { getAuthorizedTenants, getDemoAccount, getDemoAuth, getDemoTenant } from '../issuerDemo';
 
 const steps = [
   ['选择企业与Standard', '登录WDEX SaaS，选择您有权管理订阅的企业工作台，进入Standard升级流程。', '确认目标企业及订阅管理权限。'],
@@ -71,15 +71,17 @@ export function StandardUpgrade() {
   const demo = isDemoPreview();
   const effectiveRole = demo ? role : 'visitor';
   const auth = demo ? getDemoAuth() : null;
+  const tenants = auth ? getAuthorizedTenants() : [];
+  const selected = getDemoTenant();
   const [stage, setStage] = useState<DemoStage>('ready');
   const [notice, setNotice] = useState('');
   const [openFaq, setOpenFaq] = useState(0);
   const href = !auth ? demoRoute(paths.login + '?intent=standard') :
-    auth.role === 'multiple' ? paths.organizations + '?intent=standard&demo=1' :
-      auth.role === 'no-subscription' ? '' : paths.issuer + '?intent=standard&demo=1';
-  const label = !auth ? '登录后申请升级' : auth.role === 'multiple' ? '选择企业继续' :
+    tenants.length === 0 ? getDemoAccount()?.canCreate ? paths.onboarding + '?intent=standard&demo=1' : paths.organizations + '?intent=standard&demo=1' :
+      tenants.length > 1 || !selected ? paths.organizations + '?intent=standard&demo=1' : !selected.canSubscribe ? '' : paths.issuer + '?intent=standard&demo=1';
+  const label = !auth ? '登录后申请升级' : tenants.length > 1 || (tenants.length === 1 && !selected) ? '选择企业继续' :
     effectiveRole === 'standard' ? '管理订阅' : effectiveRole === 'upgrading' ? '查看升级状态' : '进入工作台申请升级';
-  const action = () => setNotice(effectiveRole === 'no-subscription' || stage === 'member' ? stageCopy.member :
+  const action = () => setNotice((selected && !selected.canSubscribe) || stage === 'member' ? stageCopy.member :
     effectiveRole === 'standard' ? '该企业的Standard已生效。请由有权限的管理员在原企业工作台管理订阅；演示预览不包含真实企业工作台。' :
       effectiveRole === 'upgrading' ? '请返回原企业工作台查看原升级申请，不重新发起订阅或付款。演示预览不包含真实企业工作台。' :
         stageCopy[stage]);

@@ -1,37 +1,52 @@
-import { useState } from 'react';
-import { Button, DemoNotice, ServiceUnavailable, demoRoute, useDemoRole, isDemoPreview } from '../site';
+import { useState, type FormEvent } from 'react';
+import { Button, DemoNotice, ServiceUnavailable, isDemoPreview } from '../site';
 import { paths } from '../config';
-import { beginNewTenantDemo } from '../issuerDemo';
+import { entryIntent, entryPath } from '../authDemo';
+import { getDemoAuth, getDemoAccount, getActiveTenantIntent, getTenantDraft, saveTenantDraft, submitTenantCreate, resolveTenantCreate, beginNewTenantDraft, type TenantDraft, type TenantCreateIntent, type CreateOutcome } from '../issuerDemo';
 
-type View = 'processing' | 'success' | 'failure' | 'auth';
-const steps = ['确认账户与注册信息', '检查或创建企业工作台', '启用Free Sandbox权益', '准备进入工作台'];
-const abilities = [
-  ['管理资产与发行项目', '创建模拟资产、权益结构、发行项目和发行轮次，了解主要发行管理流程。'],
-  ['配置投资者门户', '体验机构专属的模拟投资者门户及发行轮次展示。'],
-  ['模拟认购与发行后管理', '演练投资者资格、认购、Token交付、资金状态和收益管理。'],
-];
-function mask(value?: string) { const [local, domain] = (value || '').split('@'); return local && domain ? `${local[0]}***@${domain}` : '未提供'; }
-
+const regions = [['HK', '中国香港（演示）'], ['SG', '新加坡（演示）'], ['GB', '英国（演示）'], ['US', '美国（演示）']];
 export function FreeOnboarding() {
-  const [role] = useDemoRole();
-  const demoMode = isDemoPreview();
-  const standardIntent = new URLSearchParams(location.search).get('intent') === 'standard';
-  const registration = (() => { try { return JSON.parse(sessionStorage.getItem('wdex-registration-demo') || '{}') as { email?: string }; } catch { return {}; } })();
-  const verifiedDemo = demoMode && sessionStorage.getItem('wdex-verification-demo') === 'verified';
-  const [view, setView] = useState<View>(verifiedDemo ? 'processing' : 'auth');
-  const [notice, setNotice] = useState('');
-  if (!demoMode) return <ServiceUnavailable title="Free工作台开通暂未开放" description="账户验证、企业授权及工作台开通服务尚未接入。您可以先了解Free与Standard方案。" />;
-  const retry = () => setNotice('暂时无法确认开通结果，请重试查询。当前没有接通企业空间及Free权益服务，未新建工作台。');
-  const enter = () => {
-    if (view === 'success' && verifiedDemo) { beginNewTenantDemo(); location.href = paths.issuer + '?demo=1' + (standardIntent ? '&intent=standard' : ''); return; }
-    if (role === 'visitor' || role === 'none') { location.href = demoRoute(paths.login + (standardIntent ? '?intent=standard' : '')); return; }
-    if (role === 'multiple') { location.href = paths.organizations + (standardIntent ? '?intent=standard&demo=1' : '?demo=1'); return; }
-    setNotice('当前仅为UI演示，尚未建立真实企业会话或企业工作台工作台入口。进入正式工作台前必须核验企业空间及角色授权。');
+  const demo = isDemoPreview();
+  const auth = getDemoAuth();
+  const account = getDemoAccount();
+  const intent = entryIntent();
+  const [draft, setDraft] = useState<TenantDraft>(() => getTenantDraft() || { name: '', country: '', description: '' });
+  const [record, setRecord] = useState<TenantCreateIntent | null>(() => getActiveTenantIntent());
+  const [outcome, setOutcome] = useState<CreateOutcome>('success');
+  const [confirmed, setConfirmed] = useState(false);
+  const [error, setError] = useState('');
+  if (!demo) return <ServiceUnavailable title="企业工作台创建暂未开放" description="当前未接入真实企业创建与授权服务。" />;
+  if (!auth) return <ServiceUnavailable title="请先验证企业账号" description="创建企业工作台必须先经过邮箱认证；邮箱验证本身不会创建企业。" />;
+  if (!account?.canCreate || account.restricted) return <main className="issuer-block"><h1>当前账号无法创建企业</h1><p>没有有效的演示创建资格；不会建立企业或Free权益。</p><Button href={paths.contact + '?topic=account'}>联系支持</Button></main>;
+  const change = (next: TenantDraft) => { setDraft(next); saveTenantDraft(next); setError(''); };
+  const submit = (event: FormEvent) => {
+    event.preventDefault();
+    const name = draft.name.trim();
+    if (!name || [...name].length > 80) { setError('企业工作台名称须为1～80个有效字符。'); return; }
+    if (!regions.some(([code]) => code === draft.country)) { setError('请选择演示注册国家或地区。'); return; }
+    if (!confirmed) { setError('请确认Free Sandbox说明。'); return; }
+    const next = { ...draft, name, description: draft.description.trim() };
+    change(next);
+    const created = submitTenantCreate(next);
+    if (!created) { setError('当前账号没有创建资格，请重新登录核实。'); return; }
+    setRecord(created);
+    window.setTimeout(() => setRecord(resolveTenantCreate(created.id, outcome)), 500);
   };
-  return <main className="onboarding-page"><div className="onboarding-glow" /><div className="onboarding-card"><div className="onboarding-icon">{view === 'success' ? '✓' : view === 'processing' ? '▣' : view === 'auth' ? '◎' : '!'}</div><span className="eyebrow">FREE WORKSPACE / 工作台开通</span>
-    {view === 'processing' && <><h1>正在为您开通工作台</h1><p>邮箱验证已完成。我们正在检查您的账户并准备永久免费Free工作台。</p><div className="onboarding-steps">{steps.map((step, index) => <div key={step}><span>{String(index + 1).padStart(2, '0')}</span>{step}</div>)}</div><p className="onboarding-note">请勿重复注册。即使您刷新页面，系统也会检查原有开通进度。</p><button className="button button-outline" onClick={retry}>检查原开通进度 <span aria-hidden="true">↗</span></button></>}
-    {view === 'success' && <><h1>您的免费工作台已准备就绪</h1><p>欢迎使用WDEX SaaS！您的Free工作台现已开通，可以开始探索资产发行管理流程。</p><div className="onboarding-summary"><div><span>账户邮箱</span><strong>{mask(registration.email)}</strong></div><div><span>当前方案</span><strong>Free</strong></div><div><span>工作环境</span><strong>Sandbox / 测试模式</strong></div><div><span>使用期限</span><strong>永久免费，无固定试用到期时间</strong></div><div><span>企业工作台</span><strong>演示工作台，无真实企业空间</strong></div><div><span>开通结果</span><strong>模拟已开通</strong></div></div><h2>开始探索您的Free工作台</h2><div className="onboarding-abilities">{abilities.map(([title, body]) => <article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div><p className="onboarding-boundary">Free为Sandbox测试环境。所有模拟投资者、订单、资金、Token和权益均不构成真实金融交易或法定权利。</p>{standardIntent && <p className="register-intent">您可以继续申请Standard订阅。完成相应商业KYB、合同确认和USDT账单付款后，才能获得Standard商业权益。</p>}<div className="button-row">{standardIntent ? <button className="button button-primary" onClick={enter}>继续订阅Standard <span aria-hidden="true">↗</span></button> : <button className="button button-primary" onClick={enter}>进入企业工作台 <span aria-hidden="true">↗</span></button>}{standardIntent ? <button className="button button-outline" onClick={enter}>先进入Free工作台 <span aria-hidden="true">↗</span></button> : <Button href={paths.features} variant="outline">了解产品功能</Button>}</div></>}
-    {view === 'failure' && <><h1>暂时无法完成工作台开通</h1><p>我们暂时无法确认您的工作台开通结果。您可以重新检查当前状态，或联系支持团队获取帮助。</p><div className="button-row"><button className="button button-primary" onClick={retry}>重新检查开通状态 <span aria-hidden="true">↗</span></button><Button href={paths.contact + '?topic=account'} variant="outline">联系支持</Button></div></>}
-    {view === 'auth' && <><h1>需要重新登录或确认授权</h1><p>{verifiedDemo ? '邮箱演示验证已完成，但尚无可用的企业授权会话。进入工作台前需重新登录并核验权限。' : '无法确认您的注册信息，请重新验证或登录。未经服务端验证与授权，不能开通或访问企业工作台。'}</p><div className="button-row"><Button href={demoRoute(paths.login + (standardIntent ? '?intent=standard' : ''))}>企业账户登录</Button><Button href={demoRoute(paths.verify)} variant="outline">返回邮箱验证</Button></div></>}
-    {demoMode && <div className="onboarding-demo"><label>演示服务端结果<select value={view} onChange={e => { setView(e.target.value as View); setNotice(''); }}><option value="processing">处理中</option><option value="success">模拟企业空间与Free权益均已生效</option><option value="failure">失败 / 结果未知</option><option value="auth">无会话或无授权</option></select></label><small>仅供前端状态预览；页面切换不创建企业空间、账号或Free权益。</small></div>}{notice && <p className="inline-notice" role="status">{notice}</p>}{demoMode && <p className="verify-disclaimer">演示状态不构成真实开户证明；正式结果必须由账户、企业空间与Entitlement服务共同确认。</p>}</div><div className="preview-strip"><DemoNotice /></div></main>;
+  const queryOriginal = () => {
+    if (!record) return;
+    setRecord(resolveTenantCreate(record.id, outcome));
+  };
+  const newDraft = () => {
+    if (record && ['processing', 'unknown', 'partial'].includes(record.status)) return;
+    if (!window.confirm('开始新的模拟企业创建申请？')) return;
+    if (!beginNewTenantDraft()) return;
+    setDraft({ name: '', country: '', description: '' }); setRecord(null); setConfirmed(false); setError('');
+  };
+  const complete = record?.status === 'success' && record.tenantCreated && record.freeActive && record.memberActive;
+  return <main className="register-shell tenant-create-page">
+    <section className="register-story"><div className="register-story-inner"><span className="eyebrow">W-11 / FREE SANDBOX</span><h1>创建企业<br /><em>工作台</em></h1><p>为您的发行机构建立独立的Free Sandbox工作区，开始准备资产资料与发行项目。</p><div className="tenant-create-benefits"><h2>永久免费Sandbox</h2><ul><li>模拟资产、发行项目与发行方案</li><li>独立的企业成员和数据上下文</li><li>后续可在同一企业申请Standard订阅</li></ul></div><p>工作台名称不等于法定企业名称；演示地区不代表发行法域已获批准。商业KYB会独立核对主体资料。Free无需钱包绑定、Privy、MPC或商业KYB，也不是14天试用。</p><p>模拟资产、订单、资金、Token和权益没有法律或金融效力。</p></div></section>
+    <section className="register-form-side"><div className="register-form-card tenant-create-card"><span className="eyebrow">企业创建 · Mock</span><p className="register-intent" role="status">演示模式｜仅保存在当前浏览器会话，不创建真实企业或生产权限。</p>{intent === 'standard' && <p className="register-intent">Standard意向已保留；新企业首先开通Free，未生成账单或Standard权益。</p>}
+      {complete ? <><h2>您的企业工作台已准备就绪</h2><p>三项模拟结果均已确认：Tenant、Free权益、初始企业管理员成员关系。</p><dl className="tenant-create-summary"><div><dt>企业工作台</dt><dd>{record.draft.name}</dd></div><div><dt>当前套餐</dt><dd>Free · 永久Sandbox</dd></div><div><dt>账号角色</dt><dd>企业管理员</dd></div><div><dt>创建结果</dt><dd>模拟成功</dd></div></dl><Button href={entryPath(paths.issuer, intent)}>进入企业工作台</Button><button className="tenant-text-button" type="button" onClick={newDraft}>创建另一家企业</button></> : record ? <><h2>{record.status === 'processing' ? '正在创建企业工作台' : record.status === 'partial' ? '企业已创建，Free权益待确认' : record.status === 'unknown' ? '创建结果暂无法确认' : '创建未完成'}</h2><p>申请编号：{record.id.slice(0, 8)} · 仅用于当前浏览器会话的Mock查询。</p><p>{record.status === 'partial' ? '不得进入工作台；请继续核实原申请的Free权益和成员授权。' : record.status === 'unknown' ? '请查询原申请，不要重复创建企业。' : record.status === 'failed' ? '可恢复原草稿并重试同一申请。' : '正在模拟处理，请勿重复提交或关闭页面。'}</p><label className="tenant-field">模拟原申请查询结果<select value={outcome} onChange={event => setOutcome(event.target.value as CreateOutcome)}><option value="success">三项均成功</option><option value="partial">Tenant已创建，Free待确认</option><option value="unknown">结果仍未知</option><option value="failed">创建失败</option></select></label><button className="button button-primary" type="button" onClick={queryOriginal}>查询原申请 ↗</button>{record.status === 'failed' && <button className="tenant-text-button" type="button" onClick={() => setRecord(null)}>返回原草稿</button>}</> : <><h2>填写企业基本信息</h2><p>账号邮箱：{auth.email}。账号认证与企业创建是两个独立步骤。</p><form noValidate onSubmit={submit}><label className="tenant-field" htmlFor="tenant-name">企业工作台名称<span aria-hidden="true"> *</span><input id="tenant-name" value={draft.name} maxLength={100} onChange={event => change({ ...draft, name: event.target.value })} aria-invalid={!!error && !draft.name.trim()} /></label><label className="tenant-field" htmlFor="tenant-country">注册国家或地区<span aria-hidden="true"> *</span><select id="tenant-country" value={draft.country} onChange={event => change({ ...draft, country: event.target.value })}><option value="">请选择演示选项</option>{regions.map(([code, label]) => <option key={code} value={code}>{label}</option>)}</select></label><small>仅为演示选项，不代表真实支持的发行法域。</small><label className="tenant-field" htmlFor="tenant-email">商业联系邮箱<input id="tenant-email" value={auth.email} readOnly type="email" /></label><label className="tenant-field" htmlFor="tenant-description">业务类型或说明（选填）<textarea id="tenant-description" value={draft.description} maxLength={500} onChange={event => change({ ...draft, description: event.target.value })} /></label><label className="register-terms"><input type="checkbox" checked={confirmed} onChange={event => setConfirmed(event.target.checked)} /> 我确认创建的是永久免费的Sandbox演示工作台，不代表真实发行或商业订阅已获批准。</label>{error && <p className="field-error" role="alert">{error}</p>}<button className="button button-primary tenant-submit" type="submit">确认创建企业 ↗</button></form></>}
+      <div className="tenant-create-links"><Button href={entryPath(paths.organizations, intent)} variant="outline">查看我的企业</Button><Button href={paths.help} variant="text">帮助中心</Button></div><label className="tenant-field tenant-mock-control">Mock创建结果<select value={outcome} onChange={event => setOutcome(event.target.value as CreateOutcome)}><option value="success">三项均成功</option><option value="failed">创建失败</option><option value="unknown">结果未知</option><option value="partial">Tenant成功、Free待确认</option></select></label></div><div className="preview-strip"><DemoNotice /></div></section>
+  </main>;
 }

@@ -4,9 +4,9 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { marketplaceIsOpen, marketplaceLink, paths, site } from './config';
 import { CookiePreferences } from './CookiePreferences';
-import { clearDemoContext } from './issuerDemo';
+import { getAuthorizedTenants, getDemoAccount, getDemoAuth, getDemoTenant, resetDemoScenario } from './issuerDemo';
 
-export type DemoRole = 'visitor' | 'single' | 'multiple' | 'none' | 'no-subscription' | 'standard' | 'upgrading';
+export type DemoRole = 'visitor' | 'single' | 'multiple' | 'none' | 'create' | 'restricted' | 'invited' | 'no-subscription' | 'standard' | 'upgrading';
 
 const useDemoStore = create<{ role: DemoRole; setRole: (role: DemoRole) => void }>()(
   persist(
@@ -57,13 +57,15 @@ export function demoRoute(path: string) {
   return isLocalPreview() ? `${path}${path.includes('?') ? '&' : '?'}demo=1` : path;
 }
 
-export function Header({ role }: { role: DemoRole }) {
+export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuToggle = useRef<HTMLButtonElement>(null);
   const current = location.pathname;
-  const workHref = role === 'multiple' ? paths.organizations : paths.issuer;
-  const enterpriseHref = demoRoute(role === 'visitor' || role === 'none' ? paths.login : workHref);
-  const enterpriseLabel = role === 'visitor' || role === 'none' ? '企业登录' : '进入工作台';
+  const auth = getDemoAuth();
+  const tenants = getAuthorizedTenants();
+  const workHref = tenants.length > 1 || (tenants.length === 1 && !getDemoTenant()) ? paths.organizations : tenants.length === 1 ? paths.issuer : getDemoAccount()?.canCreate ? paths.onboarding : paths.organizations;
+  const enterpriseHref = demoRoute(auth ? workHref : paths.login);
+  const enterpriseLabel = auth ? '进入工作台' : '企业登录';
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -124,7 +126,7 @@ export function App() {
       [paths.features]: '产品功能', [paths.solutions]: '解决方案', [paths.pricing]: '订阅方案', [paths.investorPlatform]: '投资者平台筹备说明',
       [paths.help]: '帮助中心', [paths.contact]: '联系我们', [paths.policies]: '法律与政策',
       [paths.register]: '账号确认', [paths.verify]: '验证邮箱', [paths.login]: '登录',
-      [paths.onboarding]: '开通Free工作台', [paths.organizations]: '选择企业', [paths.upgrade]: '升级Standard',
+      [paths.onboarding]: '创建企业工作台', [paths.organizations]: '选择企业', [paths.upgrade]: '升级Standard',
     };
     const page = pageTitles[location.pathname] || (location.pathname.startsWith(`${paths.policies}/`) ? '法律与政策' : 'WDEX SaaS');
     document.title = `${issuerPage ? '发行机构工作台' : page}｜${site.brand}`;
@@ -133,8 +135,8 @@ export function App() {
   }, []);
   if (issuerPage) return isLocalPreview() ? <Outlet /> : <ServiceUnavailable title="企业工作台暂未开放" description="当前公开网站不提供模拟企业登录或真实工作台访问。" />;
   return <>
-    {compactAuth ? <AuthHeader /> : <Header role={role} />}
-    {demoMode && <div className="scenario-bar"><span>{site.demoLabel}</span><label>访客/授权场景：<select value={role} onChange={e => { clearDemoContext(); setRole(e.target.value as DemoRole); }}><option value="visitor">访客</option><option value="single">单企业Free管理员</option><option value="multiple">多企业</option><option value="none">无有效企业授权</option><option value="no-subscription">Free无订阅权限</option><option value="standard">已开通Standard</option><option value="upgrading">升级处理中</option></select></label></div>}
+    {compactAuth ? <AuthHeader /> : <Header />}
+    {demoMode && <div className="scenario-bar"><span>{site.demoLabel}</span><label>访客/授权场景：<select value={role} onChange={e => { resetDemoScenario(); setRole(e.target.value as DemoRole); }}><option value="visitor">访客</option><option value="single">单企业Free管理员</option><option value="multiple">多企业</option><option value="create">无企业，可创建</option><option value="restricted">受限账号</option><option value="invited">待处理邀请</option><option value="none">无有效企业授权</option><option value="no-subscription">Free无订阅权限</option><option value="standard">已开通Standard</option><option value="upgrading">升级处理中</option></select></label></div>}
     <Outlet />
     {compactAuth ? <AuthFooter /> : <Footer onCookies={() => setCookiesOpen(true)} />}
     <CookiePreferences open={cookiesOpen} setOpen={setCookiesOpen} />

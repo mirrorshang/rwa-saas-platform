@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { Button, DemoNotice, ServiceUnavailable, isDemoPreview, useDemoRole } from '../site';
 import { paths } from '../config';
-import { beginDemoAuth, clearDemoContext, selectDemoTenant } from '../issuerDemo';
+import { beginDemoAuth, beginNewDemoAccount, clearDemoContext, getAuthorizedTenants, getDemoAccount, selectDemoTenant } from '../issuerDemo';
 import { clearPendingAccount, entryIntent, entryPath, pendingAccount, savePendingAccount } from '../authDemo';
 
 type Step = 'email' | 'code' | 'checking' | 'new-account' | 'result' | 'restricted' | 'help';
@@ -10,7 +10,7 @@ type VerifyResult = 'wrong' | 'accepted' | 'expired' | 'used' | 'network' | 'unk
 function masked(value: string) { const [name, domain] = value.split('@'); return name && domain ? `${name[0]}***@${domain}` : '***@***'; }
 
 export function Login() {
-  const [role, setRole] = useDemoRole();
+  const [role] = useDemoRole();
   const demoMode = isDemoPreview();
   const intent = entryIntent();
   const pending = pendingAccount();
@@ -28,18 +28,19 @@ export function Login() {
   useEffect(() => {
     if (!demoMode || step !== 'checking') return;
     const timer = window.setTimeout(() => {
-      if (accountKind === 'new') {
-        clearDemoContext();
-        setRole('none');
-      } else {
-        beginDemoAuth(role);
-        if (role !== 'multiple' && role !== 'none' && role !== 'visitor') selectDemoTenant(role === 'standard' ? 'operator' : 'assetco');
-      }
+      const authenticated = accountKind === 'new' ? beginNewDemoAccount(email) : beginDemoAuth(role, email);
       clearPendingAccount();
+      if (authenticated) {
+        const tenants = getAuthorizedTenants();
+        if (tenants.length === 1 && selectDemoTenant(tenants[0].id)) { location.href = entryPath(paths.issuer, intent); return; }
+        if (tenants.length > 1) { location.href = entryPath(paths.organizations, intent); return; }
+        if (getDemoAccount()?.canCreate && !getDemoAccount()?.invitationPending) { location.href = entryPath(paths.onboarding, intent); return; }
+        if (getDemoAccount()?.invitationPending) { location.href = entryPath(paths.organizations, intent); return; }
+      }
       setStep('result');
     }, 450);
     return () => window.clearTimeout(timer);
-  }, [accountKind, demoMode, role, setRole, step]);
+  }, [accountKind, demoMode, email, intent, role, step]);
 
   useEffect(() => {
     if (step === 'email') document.getElementById('login-email')?.focus();
@@ -85,7 +86,6 @@ export function Login() {
     if (requestResult === 'accepted') setNotice('模拟重新受理验证码请求；没有发送真实邮件。');
     else setError(requestResult === 'rate' ? '操作过于频繁，请稍后再试。' : '重新发送未成功，请返回邮箱步骤重试。');
   };
-  const destination = role === 'multiple' ? entryPath(paths.organizations, intent) : entryPath(paths.issuer, intent);
 
   return <main className="login-page"><div className="login-layout">
     <section className="login-story"><div><span className="eyebrow">ENTERPRISE ACCESS</span><h1>欢迎回来</h1><p>使用工作邮箱进入 WDEX SaaS，管理您有权访问的发行机构工作台。</p><div className="login-visual"><span>WDEX SaaS</span><div><b>资产</b><b>项目</b><b>发行方案</b><b>投资者</b></div><small>账号认证后仍需核实企业授权。</small></div><p className="login-security">验证码仅用于企业账号认证。我们不会通过登录邮件要求您转账 USDT 或提供钱包私钥。</p></div></section>
@@ -98,7 +98,7 @@ export function Login() {
       {step === 'checking' && <div role="status" aria-live="polite"><h2>正在核实您可访问的企业</h2><p>当前仅演示账号与企业权限查询阶段；没有连接真实 Tenant 服务。</p></div>}
       {step === 'new-account' && <><h2>需要完成新账号确认</h2><p>模拟邮箱验证已完成，但尚未创建账号或企业。请先查看条款确认辅助视图。</p><Button href={entryPath(paths.register, intent)}>继续账号确认</Button></>}
       {step === 'restricted' && <><h2>账号暂无法继续</h2><p role="alert">{error}</p><Button href={paths.contact + '?topic=account'}>联系支持</Button><button className="login-help-link" type="button" onClick={() => { setStep('email'); setError(''); }}>返回邮箱输入</button></>}
-      {step === 'result' && (accountKind === 'new' ? <><h2>模拟账号已确认，尚无企业授权</h2><p>W-08 只完成本地 Mock 账号确认。创建企业工作台是独立步骤，将在后续批次提供；当前不能进入任何预置企业。</p><div className="button-row"><Button href={paths.home}>返回官网</Button><Button href={paths.contact + '?topic=account'} variant="outline">联系支持</Button></div></> : <><h2>{role === 'none' || role === 'visitor' ? '当前没有可访问的企业工作台' : '模拟邮箱认证已完成'}</h2><p>演示模式正在使用预设企业授权场景；邮箱验证本身不创建企业，也不授予任何真实 Tenant 权限。</p>{role === 'none' || role === 'visitor' ? <div className="button-row"><Button href={paths.contact + '?topic=account'}>联系支持</Button><Button href={paths.home} variant="outline">返回官网</Button></div> : <Button href={destination}>{role === 'multiple' ? '查看模拟企业选择' : '进入模拟工作台'}</Button>}</>)}
+      {step === 'result' && <><h2>当前没有可访问的企业工作台</h2><p>该演示账号没有有效企业授权或创建资格。邮箱认证不会自动授予企业权限；如有邀请，请由管理员确认。</p><div className="button-row"><Button href={paths.contact + '?topic=account'}>联系支持</Button><Button href={paths.home} variant="outline">返回官网</Button></div></>}
       {step === 'help' && <><h2>登录遇到问题？</h2><p>请检查邮箱地址；验证码过期、已使用或结果未知时，返回原邮箱流程重新核实。</p><p className="login-detail-note">支持团队不会仅凭邮箱、姓名或付款截图转移企业管理员权限。</p><div className="button-row"><button className="button button-primary" type="button" onClick={() => { setStep('email'); setError(''); }}>返回邮箱输入</button><Button href={paths.contact + '?topic=account'} variant="outline">联系支持</Button></div></>}
     </div><div className="login-legal"><a href={paths.help}>帮助中心</a><a href={paths.policies + '/terms'}>服务条款发布状态</a><a href={paths.policies + '/privacy'}>隐私政策发布状态</a></div></section>
   </div><div className="preview-strip"><DemoNotice /></div></main>;

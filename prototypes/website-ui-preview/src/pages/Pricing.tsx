@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, DemoNotice, SectionHeading, demoRoute, isDemoPreview, isLocalPreview, useDemoRole } from '../site';
 import { paths } from '../config';
-import { getDemoAuth } from '../issuerDemo';
+import { getAuthorizedTenants, getDemoAccount, getDemoAuth, getDemoTenant } from '../issuerDemo';
 
 const freeBenefits = [
   '免费创建企业工作台', '管理模拟资产与权益结构', '创建Sandbox项目与发行轮次',
@@ -55,16 +55,18 @@ export function Pricing() {
   const [notice, setNotice] = useState('');
   const freeHref = demoRoute(paths.login + '?intent=free');
   const auth = isDemoPreview() ? getDemoAuth() : null;
-  const applicationHref = !auth ? demoRoute(paths.login + '?intent=standard') : auth.role === 'multiple' ? paths.organizations + '?intent=standard&demo=1' : paths.issuer + '?intent=standard&demo=1';
-  const standardHref = role === 'visitor' ? paths.upgrade : auth?.role === 'no-subscription' ? undefined : applicationHref;
-  const subscribe = () => setNotice(role === 'no-subscription'
+  const tenants = auth ? getAuthorizedTenants() : [];
+  const selected = getDemoTenant();
+  const applicationHref = !auth ? demoRoute(paths.login + '?intent=standard') : tenants.length === 0 ? getDemoAccount()?.canCreate ? paths.onboarding + '?intent=standard&demo=1' : paths.organizations + '?intent=standard&demo=1' : tenants.length > 1 || !selected ? paths.organizations + '?intent=standard&demo=1' : paths.issuer + '?intent=standard&demo=1';
+  const standardHref = !auth && role === 'visitor' ? paths.upgrade : selected && !selected.canSubscribe ? undefined : applicationHref;
+  const subscribe = () => setNotice(selected && !selected.canSubscribe
     ? '当前演示角色没有订阅管理权限。请联系所属企业管理员；不能越权升级。'
     : role === 'standard'
       ? '当前企业已开通Standard。正式服务中，有权限的管理员可在原企业工作台管理订阅；此处不重复开通或生成账单。'
       : role === 'upgrading'
         ? '当前企业升级申请处理中。请在原企业工作台查看原申请进度，不重复创建申请或扣款。'
         : 'Standard价格与计费周期尚未公布，当前不能生成订阅账单。您可以先了解升级条件。');
-  const standardLabel = role === 'visitor' ? '了解升级条件' : !auth ? '先登录申请升级' : auth.role === 'multiple' ? '选择企业继续' : role === 'standard' ? '管理订阅' : role === 'upgrading' ? '查看升级进度' : '进入工作台申请升级';
+  const standardLabel = !auth && role === 'visitor' ? '了解升级条件' : !auth ? '先登录申请升级' : tenants.length > 1 || (tenants.length === 1 && !selected) ? '选择企业继续' : role === 'standard' ? '管理订阅' : role === 'upgrading' ? '查看升级进度' : '进入工作台申请升级';
   return <main className="pricing-page">
     <section className="pricing-hero"><div className="network-grid" /><div className="container"><span className="eyebrow">SUBSCRIPTION / 订阅方案</span><h1>从免费Sandbox开始，<br /><em>按业务需要升级</em></h1><p>Free永久免费，适合熟悉发行管理流程。Standard为准备开展正式业务的企业提供商业SaaS订阅，价格与计费周期待公布。</p><div className="pricing-hero-note">订阅Standard不自动取得真实Token发行、资金执行或WDEX投资者平台发行方案上架资格。</div></div></section>
     <section className="section pricing-plans"><div className="container"><div className="pricing-grid"><article className="plan-card free"><div className="plan-top"><span className="eyebrow">SANDBOX / 模拟体验</span><h2>Free</h2><strong className="plan-price">永久免费</strong><p>适合希望了解WDEX SaaS、准备发行方案或进行流程测试的企业。</p></div>{isLocalPreview() ? <a className="button button-outline plan-main" href={freeHref}>免费开始<span aria-hidden="true">↗</span></a> : <span className="button button-outline plan-main" aria-disabled="true">Free开通暂未开放</span>}<div className="plan-divider" /><span className="plan-subtitle">包含能力</span><ul>{freeBenefits.map(item => <li key={item}>{item}</li>)}</ul><p className="plan-boundary">Free始终运行在受控Sandbox/测试环境中。模拟投资者、订单、资金、Token及权益不产生真实法律效力。</p><small>永久免费不代表无资源限制。具体配额以正式公布的订阅方案说明为准。</small></article>

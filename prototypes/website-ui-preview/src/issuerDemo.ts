@@ -29,7 +29,7 @@ const save = (key: string, value: unknown) => sessionStorage.setItem(key, JSON.s
 const store = () => read<Store>(storeKey) || blank();
 
 export function clearDemoContext() { sessionStorage.removeItem(authKey); sessionStorage.removeItem(selectionKey); }
-export function resetDemoScenario() { [authKey, selectionKey, storeKey, intentKey, draftKey].forEach(key => sessionStorage.removeItem(key)); }
+export function resetDemoScenario() { [authKey, selectionKey, storeKey, intentKey, draftKey, 'wdex-issuer-b03-profile', 'wdex-issuer-b03-upgrade'].forEach(key => sessionStorage.removeItem(key)); }
 export function getDemoAuth(): DemoAuth | null {
   const auth = read<DemoAuth>(authKey);
   if (!auth || auth.expiresAt <= Date.now()) { clearDemoContext(); return null; }
@@ -96,6 +96,17 @@ export function selectDemoTenant(id: string) {
 export function getDemoTenant() {
   const id = isDemoPreview() ? sessionStorage.getItem(selectionKey) : null;
   return getAuthorizedTenants().find(item => item.id === id) || null;
+}
+// Explicit UI-only scenario override. No KYB, invoice, payment, or production access is created.
+export function simulateStandardEntitlement(id: string) {
+  const tenant = getDemoTenant();
+  if (!tenant || tenant.id !== id || !tenant.canSubscribe) return false;
+  const value = store();
+  const entitlement = value.entitlements.find(item => item.tenantId === id && item.status === 'active');
+  if (!entitlement) return false;
+  entitlement.plan = 'Standard';
+  save(storeKey, value);
+  return true;
 }
 export function getTenantDraft(): TenantDraft | null {
   const auth = getDemoAuth();

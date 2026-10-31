@@ -75,3 +75,84 @@
 @media (max-width: 1100px) { .issuer-metrics { grid-template-columns: repeat(3,minmax(0,1fr)); } .issuer-grid { grid-template-columns: 1fr; } .issuer-side { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width: 800px) { .issuer-shell { grid-template-columns: 1fr; } .issuer-sidebar { position: fixed; z-index: 30; width: 238px; height: 100vh; visibility: hidden; transform: translateX(-100%); transition: transform .2s; } .issuer-sidebar.open { visibility: visible; transform: translateX(0); } .issuer-sidebar-close { display: block; position: absolute; top: 24px; right: 12px; width: 32px; height: 32px; border: 1px solid #53718a; border-radius: 6px; background: #123750; color: white; cursor: pointer; } .issuer-menu { display: block; } .issuer-topbar { padding: 12px 16px; flex-wrap: wrap; } .issuer-top-actions { width: 100%; margin-left: 0; justify-content: flex-end; } .issuer-content { padding: 18px 16px 32px; } }
 @media (max-width: 560px) { .issuer-metrics, .issuer-side, .issuer-bottom { grid-template-columns: 1fr; } .issuer-intro, .issuer-welcome { flex-direction: column; align-items: flex-start; } .issuer-top-plan { margin-left: auto; } .issuer-topbar select { max-width: 210px; } .issuer-badge { white-space: normal; } }
+
+.issuer-sidebar nav a { display: flex; align-items: center; gap: 11px; width: 100%; min-height: 43px; border-radius: 7px; padding: 0 13px; color: #91aabd; font-size: 13px; }
+.issuer-sidebar nav a small { margin-left: auto; font-size: 10px; opacity: .65; }
+.issuer-sidebar nav a:hover, .issuer-sidebar nav a.active, .issuer-sidebar nav a[aria-current="page"] { color: white; background: #123750; }
+.issuer-sidebar nav a.active, .issuer-sidebar nav a[aria-current="page"] { box-shadow: inset 3px 0 #42d8f7; }
+.issuer-nav-index { color: #78a5ba; font-size: 11px; }
+.issuer-nav-group { min-width: 0; }
+.issuer-subnav { display: grid; gap: 2px; padding: 4px 0 7px 31px; }
+.issuer-sidebar nav .issuer-subnav a { min-height: 34px; font-size: 12px; color: #a5c2d1; }
+.issuer-sidebar nav .issuer-subnav a[aria-current="page"] { color: #fff; }
+.issuer-quicklinks { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 17px; }
+.issuer-quicklinks a { color: #116e94; font-weight: 700; }
+.issuer-action, .issuer-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; border-radius: 7px; padding: 8px 13px; font: inherit; font-weight: 700; cursor: pointer; text-decoration: none; }
+.issuer-action { background: #0c789d; border: 1px solid #0c789d; color: #fff; }
+.issuer-action:hover { background: #075e7d; color: #fff; }
+.issuer-secondary { background: #fff; border: 1px solid #9cbcca; color: #145b78; }
+.issuer-secondary:hover { border-color: #167fa2; color: #0b5875; }
+.issuer-profile-grid { grid-template-columns: minmax(280px,.9fr) minmax(0,1.4fr); margin-top: 0; }
+.issuer-facts { margin: 10px 0; display: grid; gap: 2px; }
+.issuer-facts > div { display: grid; grid-template-columns: minmax(125px,.55fr) 1fr; gap: 12px; border-top: 1px solid var(--i-line); padding: 12px 0; }
+.issuer-facts dt { color: var(--i-muted); font-size: 12px; }
+.issuer-facts dd { margin: 0; color: var(--i-ink); font-weight: 700; overflow-wrap: anywhere; }
+.issuer-note { border-left: 3px solid #69bfd5; padding-left: 12px; font-size: 12px; }
+.issuer-simple-list { padding-left: 20px; color: #47677b; line-height: 1.9; }
+.issuer-form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.issuer-field { display: grid; gap: 6px; color: #284c64; font-weight: 700; font-size: 12px; }
+.issuer-field:has(textarea) { grid-column: 1 / -1; }
+.issuer-field input, .issuer-field textarea, .issuer-field select, .issuer-mock-select select, .issuer-mock-panel select { width: 100%; min-width: 0; border: 1px solid #bed0da; border-radius: 7px; background: #fff; color: var(--i-ink); padding: 10px 11px; font: inherit; }
+.issuer-field textarea { min-height: 86px; resize: vertical; }
+.issuer-field small { color: var(--i-muted); font-weight: 400; line-height: 1.5; }
+.issuer-field .issuer-field-error { color: #9b3f25; font-weight: 700; }
+.issuer-field [aria-invalid="true"] { border-color: #b95d3a; }
+.issuer-form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; }
+.issuer-form-actions span { color: #9b4b28; font-size: 12px; }
+.issuer-form-errors { margin-top: 14px; padding: 12px 15px; border-radius: 6px; background: #fff3ed; color: #8b3d1f; }
+.issuer-form-errors ul { margin: 5px 0 0; padding-left: 18px; }
+.issuer-feedback { margin: 16px 0; padding: 12px 15px; border: 1px solid #a7d4df; border-radius: 7px; background: #eaf8fb; color: #125471; }
+.issuer-mock-select { display: flex; align-items: center; gap: 8px; margin-top: 18px; color: var(--i-muted); font-size: 11px; }
+.issuer-mock-select select { width: auto; padding: 6px; font-size: 11px; }
+.issuer-plan-summary { display: flex; justify-content: space-between; gap: 28px; border-left: 4px solid #28bfdc; }
+.issuer-plan-summary > div:first-child { max-width: 620px; }
+.issuer-plan-summary strong { color: #0b708f; font-size: 20px; }
+.issuer-plan-facts { display: grid; grid-template-columns: repeat(3,minmax(120px,1fr)); gap: 12px; align-content: center; }
+.issuer-plan-facts div { display: grid; gap: 8px; border-left: 1px solid var(--i-line); padding-left: 12px; }
+.issuer-plan-facts span { color: var(--i-muted); font-size: 11px; }
+.issuer-plan-facts strong { font-size: 13px; color: var(--i-ink); }
+.issuer-usage { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.issuer-upgrade-head { display: flex; justify-content: space-between; gap: 24px; }
+.issuer-upgrade-head > div:first-child { flex: 1; }
+.issuer-upgrade-actions { display: flex; flex-direction: column; align-items: stretch; gap: 9px; min-width: 190px; }
+.issuer-upgrade-steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.issuer-step-top { display: flex; align-items: flex-start; gap: 12px; }
+.issuer-step-top > div { flex: 1; }
+.issuer-step-top h2 { margin: 0 0 5px; }
+.issuer-step-top small { color: var(--i-muted); }
+.issuer-step-number { border-radius: 6px; padding: 7px; background: #e5f7fb; color: #12708d; font-weight: 800; }
+.issuer-upgrade-steps .issuer-link { white-space: normal; font-size: 11px; }
+.issuer-mock-panel { margin-top: 22px; border-style: dashed; }
+.issuer-mock-panel label { display: flex; align-items: center; gap: 10px; margin: 16px 0; }
+.issuer-mock-panel select { width: auto; max-width: 100%; }
+.issuer-modal-backdrop { position: fixed; z-index: 70; inset: 0; background: #03111bbd; display: grid; place-items: center; padding: 16px; }
+.issuer-modal { width: min(480px,100%); background: #fff; border: 1px solid #84b6c7; border-radius: 10px; padding: 26px; box-shadow: 0 25px 80px #0008; }
+.issuer-modal h2 { margin: 0 0 8px; font-size: 20px; }
+.issuer-modal p { color: var(--i-muted); }
+.issuer-modal > div { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+@media (max-width: 1100px) { .issuer-profile-grid { grid-template-columns: 1fr; } .issuer-plan-summary, .issuer-upgrade-head { flex-direction: column; } .issuer-upgrade-steps { grid-template-columns: repeat(2,minmax(0,1fr)); } .issuer-usage { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 560px) { .issuer-form-grid, .issuer-upgrade-steps, .issuer-usage, .issuer-plan-facts { grid-template-columns: 1fr; } .issuer-facts > div { grid-template-columns: 1fr; gap: 4px; } .issuer-mock-panel label { align-items: stretch; flex-direction: column; } .issuer-top-actions { flex-wrap: wrap; gap: 9px 15px; } .issuer-topbar select { max-width: min(210px,65vw); } }
+@media (max-width: 560px) {
+  .issuer-projects .issuer-table-wrap table, .issuer-benefit-table table { min-width: 0; }
+  .issuer-projects thead, .issuer-benefit-table thead { display: none; }
+  .issuer-projects tbody tr, .issuer-benefit-table tbody tr { display: grid; gap: 5px; padding: 12px 0; border-top: 1px solid var(--i-line); }
+  .issuer-projects td, .issuer-benefit-table td { display: block; padding: 2px 0; border: 0; overflow-wrap: anywhere; }
+  .issuer-projects td::before, .issuer-benefit-table td::before { display: block; margin-bottom: 3px; color: var(--i-muted); font-size: 10px; font-weight: 400; }
+  .issuer-projects td:nth-child(1)::before { content: '发行项目'; }
+  .issuer-projects td:nth-child(2)::before { content: '主要资产'; }
+  .issuer-projects td:nth-child(3)::before { content: '关联发行轮次'; }
+  .issuer-projects td:nth-child(4)::before { content: '模拟状态'; }
+  .issuer-benefit-table td:first-child { font-weight: 700; color: var(--i-ink); }
+  .issuer-benefit-table td:nth-child(2)::before { content: 'Free Sandbox'; }
+  .issuer-benefit-table td:nth-child(3)::before { content: 'Standard'; }
+}

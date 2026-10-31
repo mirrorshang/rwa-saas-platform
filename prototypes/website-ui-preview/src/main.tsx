@@ -41,7 +41,12 @@ const issuerRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issue
 const issuerProfileRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/profile', component: IssuerWorkspace });
 const issuerSubscriptionRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/subscription', component: IssuerWorkspace });
 const issuerUpgradeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/upgrade', component: IssuerWorkspace });
-const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, investorPlatformRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, upgradeRoute, issuerRoute, issuerProfileRoute, issuerSubscriptionRoute, issuerUpgradeRoute]);
+const issuerKybRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/kyb', component: IssuerWorkspace });
+const issuerKybReviewRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/kyb-review', component: IssuerWorkspace });
+const issuerContractRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/contract', component: IssuerWorkspace });
+const issuerPaymentRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/payment', component: IssuerWorkspace });
+const issuerBillingRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/billing', component: IssuerWorkspace });
+const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, investorPlatformRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, upgradeRoute, issuerRoute, issuerProfileRoute, issuerSubscriptionRoute, issuerUpgradeRoute, issuerKybRoute, issuerKybReviewRoute, issuerContractRoute, issuerPaymentRoute, issuerBillingRoute]);
 const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {

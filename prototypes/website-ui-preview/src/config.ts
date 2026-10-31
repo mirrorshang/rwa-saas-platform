@@ -27,6 +27,11 @@ export const paths = {
   issuerProfile: '/issuer/profile',
   issuerSubscription: '/issuer/subscription',
   issuerUpgrade: '/issuer/upgrade',
+  issuerKyb: '/issuer/kyb',
+  issuerKybReview: '/issuer/kyb-review',
+  issuerContract: '/issuer/contract',
+  issuerPayment: '/issuer/payment',
+  issuerBilling: '/issuer/billing',
   upgrade: '/standard-upgrade',
 } as const;
 

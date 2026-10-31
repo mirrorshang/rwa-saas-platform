@@ -29,7 +29,7 @@ const save = (key: string, value: unknown) => sessionStorage.setItem(key, JSON.s
 const store = () => read<Store>(storeKey) || blank();
 
 export function clearDemoContext() { sessionStorage.removeItem(authKey); sessionStorage.removeItem(selectionKey); }
-export function resetDemoScenario() { [authKey, selectionKey, storeKey, intentKey, draftKey, 'wdex-issuer-b03-profile', 'wdex-issuer-b03-upgrade'].forEach(key => sessionStorage.removeItem(key)); }
+export function resetDemoScenario() { [authKey, selectionKey, storeKey, intentKey, draftKey, 'wdex-issuer-b03-profile', 'wdex-issuer-b03-upgrade', 'wdex-issuer-b04-commercial', 'wdex-issuer-b04-contract-preview', 'wdex-issuer-b04-payment-preview', 'wdex-issuer-b04-entitlement-preview'].forEach(key => sessionStorage.removeItem(key)); }
 export function getDemoAuth(): DemoAuth | null {
   const auth = read<DemoAuth>(authKey);
   if (!auth || auth.expiresAt <= Date.now()) { clearDemoContext(); return null; }

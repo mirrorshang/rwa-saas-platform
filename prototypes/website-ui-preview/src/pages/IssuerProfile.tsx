@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useState, type FormEvent } from 'react';
 import { type DemoTenant } from '../issuerDemo';
 import { getProfileDraft, saveProfileDraft, type ProfileDraft } from '../issuerB03Demo';
+import { paths } from '../config';
 
 type SaveOutcome = 'saved' | 'failed' | 'unknown' | 'conflict';
 const countryNames: Record<string, string> = { HK: '中国香港', SG: '新加坡', GB: '英国', US: '美国' };
@@ -87,6 +88,6 @@ export function IssuerProfile({ tenant, onDirtyChange, onRequestDiscard }: {
       </dl>}
       {!canEdit && <p role="status">仅可查看，当前角色没有修改企业资料权限。</p>}{feedback && <p className="issuer-feedback" role="status">{feedback}</p>}<label className="issuer-mock-select">Mock保存结果 <select value={outcome} onChange={event => setOutcome(event.target.value as SaveOutcome)}><option value="saved">本地草稿保存</option><option value="failed">保存失败</option><option value="unknown">结果未知</option><option value="conflict">版本冲突</option></select></label>
     </section></div>
-    <div className="issuer-grid issuer-bottom"><section className="issuer-card"><h2>法定代表人与授权关系</h2><p>暂无可核实的法定代表人、受托代表或签署授权记录。联系人草稿不构成代表权或签字权。</p><p className="issuer-note">法定发行机构应按发行方案及有权证据另行核实，不自动等于SaaS商业签约主体。</p></section><section className="issuer-card"><h2>营业登记与证明材料索引</h2><p>暂无正式登记证明或授权材料索引；文件上传和证据核验待接入，不在此页模拟已提交材料。</p></section><section className="issuer-card"><h2>商业KYB状态摘要</h2><p>待接入 I-05 / I-06 权威审核结果。当前资料草稿不代表KYB已提交或通过。</p></section><section className="issuer-card"><h2>资料变更历史</h2><p>暂无可核实的正式变更记录。本地Mock草稿保存不写入正式审计历史。</p></section><section className="issuer-card"><h2>企业关联钱包</h2><p>可选能力尚未开放。Free和Standard均不以钱包绑定为入口条件；Privy/MPC与Signer未接入，此页不会生成地址。</p><p className="issuer-note">资料草稿不改变现有发行项目、资产持有主体、合同或订阅账单。</p></section></div>
+    <div className="issuer-grid issuer-bottom"><section className="issuer-card"><h2>法定代表人与授权关系</h2><p>暂无可核实的法定代表人、受托代表或签署授权记录。联系人草稿不构成代表权或签字权。</p><p className="issuer-note">法定发行机构应按发行方案及有权证据另行核实，不自动等于SaaS商业签约主体。</p></section><section className="issuer-card"><h2>营业登记与证明材料索引</h2><p>暂无正式登记证明或授权材料索引；文件上传和证据核验待接入，不在此页模拟已提交材料。</p></section><section className="issuer-card"><h2>商业KYB状态摘要</h2><p>当前资料草稿不代表KYB已提交或通过；审核结论仍待有权服务。</p><div className="issuer-quicklinks"><a href={paths.issuerKyb + '?demo=1'}>准备商业KYB资料 →</a><a href={paths.issuerKybReview + '?demo=1'}>查看原申请进度 →</a></div></section><section className="issuer-card"><h2>资料变更历史</h2><p>暂无可核实的正式变更记录。本地Mock草稿保存不写入正式审计历史。</p></section><section className="issuer-card"><h2>企业关联钱包</h2><p>可选能力尚未开放。Free和Standard均不以钱包绑定为入口条件；Privy/MPC与Signer未接入，此页不会生成地址。</p><p className="issuer-note">资料草稿不改变现有发行项目、资产持有主体、合同或订阅账单。</p></section></div>
   </>;
 }

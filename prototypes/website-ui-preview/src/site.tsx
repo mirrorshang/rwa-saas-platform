@@ -129,6 +129,8 @@ export function App() {
       [paths.register]: '账号确认', [paths.verify]: '验证邮箱', [paths.login]: '登录',
       [paths.onboarding]: '创建企业工作台', [paths.organizations]: '选择企业', [paths.upgrade]: '升级Standard',
       [paths.issuerProfile]: '企业资料', [paths.issuerSubscription]: '套餐与使用', [paths.issuerUpgrade]: 'Standard升级',
+      [paths.issuerKyb]: '商业KYB资料', [paths.issuerKybReview]: '商业KYB进度', [paths.issuerContract]: 'SaaS商业合同',
+      [paths.issuerPayment]: 'Standard订阅付款', [paths.issuerBilling]: '订阅账单与开通',
     };
     const page = pageTitles[location.pathname] || (location.pathname.startsWith(`${paths.policies}/`) ? '法律与政策' : 'WDEX SaaS');
     document.title = `${issuerPage ? '发行机构工作台' : page}｜${site.brand}`;

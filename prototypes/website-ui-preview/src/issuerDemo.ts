@@ -106,6 +106,7 @@ export function saveTenantDraft(draft: TenantDraft) {
   const auth = getDemoAuth();
   if (auth) save(draftKey, { email: auth.email, draft });
 }
+export function clearTenantDraft() { sessionStorage.removeItem(draftKey); }
 export function getActiveTenantIntent(): TenantCreateIntent | null {
   const auth = getDemoAuth();
   const intent = read<TenantCreateIntent>(intentKey);
@@ -125,7 +126,7 @@ export function submitTenantCreate(draft: TenantDraft): TenantCreateIntent | nul
   const prior = getActiveTenantIntent();
   if (prior && prior.status !== 'failed') return prior;
   const id = prior?.id || crypto.randomUUID();
-  const intent: TenantCreateIntent = prior ? { ...prior, status: 'processing' } : {
+  const intent: TenantCreateIntent = prior ? { ...prior, draft: prior.tenantCreated ? prior.draft : draft, status: 'processing' } : {
     id, tenantId: `created-${id}`, email: account.email, draft, status: 'processing',
     tenantCreated: false, freeActive: false, memberActive: false, createdAt: Date.now(),
   };

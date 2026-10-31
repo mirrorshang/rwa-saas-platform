@@ -5,6 +5,7 @@ import { persist } from 'zustand/middleware';
 import { marketplaceIsOpen, marketplaceLink, paths, site } from './config';
 import { CookiePreferences } from './CookiePreferences';
 import { getAuthorizedTenants, getDemoAccount, getDemoAuth, getDemoTenant, resetDemoScenario } from './issuerDemo';
+import { resetAuthDemoScenario } from './authDemo';
 
 export type DemoRole = 'visitor' | 'single' | 'multiple' | 'none' | 'create' | 'restricted' | 'invited' | 'no-subscription' | 'standard' | 'upgrading';
 
@@ -136,7 +137,7 @@ export function App() {
   if (issuerPage) return isLocalPreview() ? <Outlet /> : <ServiceUnavailable title="企业工作台暂未开放" description="当前公开网站不提供模拟企业登录或真实工作台访问。" />;
   return <>
     {compactAuth ? <AuthHeader /> : <Header />}
-    {demoMode && <div className="scenario-bar"><span>{site.demoLabel}</span><label>访客/授权场景：<select value={role} onChange={e => { resetDemoScenario(); setRole(e.target.value as DemoRole); }}><option value="visitor">访客</option><option value="single">单企业Free管理员</option><option value="multiple">多企业</option><option value="create">无企业，可创建</option><option value="restricted">受限账号</option><option value="invited">待处理邀请</option><option value="none">无有效企业授权</option><option value="no-subscription">Free无订阅权限</option><option value="standard">已开通Standard</option><option value="upgrading">升级处理中</option></select></label></div>}
+    {demoMode && <div className="scenario-bar"><span>{site.demoLabel}</span><label>访客/授权场景：<select value={role} onChange={e => { resetDemoScenario(); resetAuthDemoScenario(); setRole(e.target.value as DemoRole); }}><option value="visitor">访客</option><option value="single">单企业Free管理员</option><option value="multiple">多企业</option><option value="create">无企业，可创建</option><option value="restricted">受限账号</option><option value="invited">待处理邀请</option><option value="none">无有效企业授权</option><option value="no-subscription">Free无订阅权限</option><option value="standard">已开通Standard</option><option value="upgrading">升级处理中</option></select></label></div>}
     <Outlet />
     {compactAuth ? <AuthFooter /> : <Footer onCookies={() => setCookiesOpen(true)} />}
     <CookiePreferences open={cookiesOpen} setOpen={setCookiesOpen} />

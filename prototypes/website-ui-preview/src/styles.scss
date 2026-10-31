@@ -239,6 +239,7 @@ img { max-width: 100%; }
 .modal-top { display: flex; justify-content: space-between; align-items: center; }
 .modal-card h2 { font-size: 25px; margin: 10px 0; }
 .modal-card > p { font-size: 12px; color: #a2bfcd; line-height: 1.8; }
+.tenant-leave-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; margin-top: 24px; }
 .icon-button { color: #d8f0f8; font-size: 25px; border: 0; background: transparent; }
 .cookie-option { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #29506a; padding: 15px 0; }
 .cookie-option strong { display: block; font-size: 13px; }

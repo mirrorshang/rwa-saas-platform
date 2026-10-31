@@ -38,3 +38,6 @@ export function confirmDemoTerms() {
 }
 
 export function clearPendingAccount() { sessionStorage.removeItem(key); }
+export function resetAuthDemoScenario() {
+  [key, 'wdex-registration-demo', 'wdex-verification-demo'].forEach(item => sessionStorage.removeItem(item));
+}

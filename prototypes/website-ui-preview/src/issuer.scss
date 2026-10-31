@@ -56,6 +56,8 @@
 .issuer-table-wrap table { width: 100%; border-collapse: collapse; min-width: 550px; text-align: left; }
 .issuer-table-wrap th { font-size: 11px; color: var(--i-muted); background: #f5f9fb; padding: 11px; }
 .issuer-table-wrap td { font-size: 12px; padding: 14px 11px; border-bottom: 1px solid var(--i-line); }
+.issuer-offerings { margin: 0; padding-left: 16px; display: grid; gap: 5px; }
+.issuer-projects td a { color: #116e94; font-weight: 700; }
 .issuer-status { color: #256582; background: #e8f5f9; padding: 5px 7px; border-radius: 4px; white-space: nowrap; }
 .issuer-bottom { grid-template-columns: repeat(2,minmax(0,1fr)); }
 .issuer-bottom ol { margin: 12px 0; padding-left: 22px; line-height: 2.5; }
@@ -152,6 +154,7 @@
   .issuer-projects td:nth-child(2)::before { content: '主要资产'; }
   .issuer-projects td:nth-child(3)::before { content: '关联发行轮次'; }
   .issuer-projects td:nth-child(4)::before { content: '模拟状态'; }
+  .issuer-projects td:nth-child(5)::before { content: '查看'; }
   .issuer-benefit-table td:first-child { font-weight: 700; color: var(--i-ink); }
   .issuer-benefit-table td:nth-child(2)::before { content: 'Free Sandbox'; }
   .issuer-benefit-table td:nth-child(3)::before { content: 'Standard'; }

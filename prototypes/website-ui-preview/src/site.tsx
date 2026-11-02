@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react';
-import { Outlet } from '@tanstack/react-router';
+import { Outlet, useLocation } from '@tanstack/react-router';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { marketplaceIsOpen, marketplaceLink, paths, site } from './config';
@@ -113,6 +113,7 @@ function AuthHeader() { return <header className="auth-header"><div className="c
 function AuthFooter() { return <footer className="auth-footer"><div className="container"><span>WDEX SaaS · 企业账户</span><nav aria-label="验证帮助"><a href={paths.help}>帮助中心</a><a href={paths.policies + '/terms'}>服务条款</a><a href={paths.policies + '/privacy'}>隐私政策</a></nav></div></footer>; }
 
 export function App() {
+  const routeLocation = useLocation();
   const [role, setRole] = useDemoRole();
   const [cookiesOpen, setCookiesOpen] = useState(false);
   const demoMode = isDemoPreview();
@@ -131,17 +132,20 @@ export function App() {
       [paths.home]: '面向发行机构的多资产Token化SaaS',
       [paths.features]: '产品功能', [paths.solutions]: '解决方案', [paths.pricing]: '订阅方案', [paths.investorPlatform]: '投资者平台筹备说明',
       [paths.help]: '帮助中心', [paths.contact]: '联系我们', [paths.policies]: '法律与政策',
-      [paths.register]: '账号确认', [paths.verify]: '验证邮箱', [paths.login]: '登录',
+      [paths.register]: '账号确认', [paths.verify]: '验证邮箱', [paths.login]: '登录或创建企业账户',
       [paths.onboarding]: '创建企业工作台', [paths.organizations]: '选择企业', [paths.upgrade]: '升级Standard',
+      [paths.issuer]: '企业工作台',
       [paths.issuerProfile]: '企业资料', [paths.issuerSubscription]: '套餐与使用', [paths.issuerUpgrade]: 'Standard升级',
       [paths.issuerKyb]: '商业KYB资料', [paths.issuerKybReview]: '商业KYB进度', [paths.issuerContract]: 'SaaS商业合同',
       [paths.issuerPayment]: 'Standard订阅付款', [paths.issuerBilling]: '订阅账单与开通',
     };
-    const page = pageTitles[location.pathname] || (location.pathname.startsWith(`${paths.policies}/`) ? '法律与政策' : 'WDEX SaaS');
-    document.title = `${issuerPage ? '发行机构工作台' : page}｜${site.brand}`;
+    const tab = new URLSearchParams(location.search).get('tab');
+    const settingsTitle = tab === 'kyb' ? '企业认证' : tab === 'subscription' ? '订阅管理' : '企业信息';
+    const page = location.pathname === paths.issuerSettings ? settingsTitle : pageTitles[location.pathname] || (location.pathname.startsWith(`${paths.policies}/`) ? '法律与政策' : 'WDEX SaaS');
+    document.title = `${page}｜${site.brand}`;
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (description) description.content = 'WDEX SaaS为发行机构提供资产、项目、投资者门户、认购、Token与发行后管理工具。';
-  }, []);
+  }, [routeLocation.pathname, routeLocation.searchStr]);
   if (issuerPage) return canUseLocalDemo() ? <><Outlet />{demoPanel}</> : <ServiceUnavailable title="企业工作台暂未开放" description="当前公开网站不提供企业登录或工作台访问。" />;
   return <>
     {compactAuth ? <AuthHeader /> : <Header />}

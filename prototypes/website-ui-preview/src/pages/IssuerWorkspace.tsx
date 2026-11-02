@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { paths } from '../config';
 import { beginNewTenantDraft, clearDemoContext, getActiveTenantIntent, getAuthorizedTenants, getDemoAccount, getDemoAuth, getDemoTenant, selectDemoTenant, type DemoTenant } from '../issuerDemo';
-import { getKybCase } from '../issuerB04Demo';
+import { getKybCase, getKybDraft } from '../issuerB04Demo';
 import { getProfileDraft, getUpgradeIntent } from '../issuerB03Demo';
 import { useDemoControls } from '../demoControls';
 import { isDemoPreview } from '../demoEnvironment';
@@ -43,7 +43,7 @@ export function IssuerWorkspace() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [notice, setNotice] = useState('');
   const [dirty, setDirty] = useState(false);
-  const [pendingLeave, setPendingLeave] = useState<{ action: () => void; navigates: boolean } | null>(null);
+  const [pendingLeave, setPendingLeave] = useState<{ action: () => void; navigates: boolean; warning?: string } | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const leaveApproved = useRef(false);
   const controls = useDemoControls(state => state.controls);
@@ -51,6 +51,7 @@ export function IssuerWorkspace() {
   const auth = getDemoAuth();
   const account = getDemoAccount();
   const tenant = demo && auth ? getDemoTenant() : null;
+  const hasSavedCertificationDraft = tenant ? getKybDraft(tenant).savedAt > 0 : false;
   const authorized = getAuthorizedTenants();
   const activeCreate = getActiveTenantIntent();
   const recoverCreate = activeCreate && ['processing', 'unknown', 'partial'].includes(activeCreate.status);
@@ -87,14 +88,14 @@ export function IssuerWorkspace() {
     if (event.shiftKey && document.activeElement === buttons[0]) { event.preventDefault(); buttons[buttons.length - 1].focus(); }
     else if (!event.shiftKey && document.activeElement === buttons[buttons.length - 1]) { event.preventDefault(); buttons[0].focus(); }
   };
-  const requestLeave = (action: () => void, navigates: boolean) => setPendingLeave({ action, navigates });
+  const requestLeave = (action: () => void, navigates: boolean, warning?: string) => setPendingLeave({ action, navigates, warning });
   const switchTenant = (id: string) => {
     const action = () => {
       if (!selectDemoTenant(id)) { setNotice('您已无法访问该企业，请重新选择。'); leaveApproved.current = false; return; }
       resetControls();
       location.href = paths.issuer + '?' + sharedQuery;
     };
-    if (dirty) requestLeave(action, true); else action();
+    if (dirty || hasSavedCertificationDraft) requestLeave(action, true, hasSavedCertificationDraft ? '切换企业将清除当前企业已保存但尚未提交的认证资料。请确认已留存所需信息。' : undefined); else action();
   };
   const create = () => {
     if (recoverCreate) { setNotice('您有未完成的企业创建申请。请先查看原申请，避免重复创建。'); return; }
@@ -103,7 +104,7 @@ export function IssuerWorkspace() {
   };
   const signOut = () => {
     const action = () => { clearDemoContext(); location.href = paths.login + '?demo=1'; };
-    if (dirty) requestLeave(action, true); else action();
+    if (dirty || hasSavedCertificationDraft) requestLeave(action, true, hasSavedCertificationDraft ? '退出账户将清除当前企业已保存但尚未提交的认证资料。请确认已留存所需信息。' : undefined); else action();
   };
   if (!demo || !auth || !tenant || controls.access !== 'allowed' || ['expired', 'revoked', 'inactive'].includes(query.get('access') || '')) {
     return <main className="issuer-block"><h1>无法进入企业工作台</h1><p>当前没有有效的企业访问权限。请重新登录或联系企业管理员。</p><a className="button button-primary" href={paths.login + '?demo=1'}>返回企业登录</a><a href={paths.home}>返回官网</a></main>;
@@ -128,6 +129,6 @@ export function IssuerWorkspace() {
       {isSettings ? <><h1 className="mvp-settings-title">企业设置</h1><nav className="mvp-settings-tabs" aria-label="企业设置">{tabs.map(([id, label]) => <a key={id} href={settingsHref(id, sharedQuery)} className={tab === id ? 'active' : ''} aria-current={tab === id ? 'page' : undefined}>{label}</a>)}</nav>
         {tab === 'info' ? <IssuerInfo key={tenant.id} tenant={tenant} onDirtyChange={setDirty} onRequestDiscard={action => requestLeave(action, false)} /> : tab === 'kyb' ? <IssuerCertification key={tenant.id} tenant={tenant} onDirtyChange={setDirty} onRequestDiscard={action => requestLeave(action, false)} /> : <IssuerPlan key={tenant.id} tenant={tenant} />}</> : <Dashboard tenant={tenant} query={sharedQuery} panel={controls.panel} />}
     </div></div>
-    {pendingLeave && <div className="issuer-modal-backdrop"><div className="issuer-modal" role="dialog" aria-modal="true" aria-labelledby="issuer-leave-title" ref={dialogRef} tabIndex={-1} onKeyDown={onDialogKey}><h2 id="issuer-leave-title">放弃未保存的更改？</h2><p>离开后，未保存的信息将丢失。</p><div><button className="issuer-secondary" type="button" onClick={() => setPendingLeave(null)}>继续编辑</button><button className="issuer-action" type="button" onClick={() => { if (!pendingLeave) return; leaveApproved.current = pendingLeave.navigates; pendingLeave.action(); setPendingLeave(null); }}>放弃更改并离开</button></div></div></div>}
+    {pendingLeave && <div className="issuer-modal-backdrop"><div className="issuer-modal" role="dialog" aria-modal="true" aria-labelledby="issuer-leave-title" ref={dialogRef} tabIndex={-1} onKeyDown={onDialogKey}><h2 id="issuer-leave-title">{pendingLeave.warning ? '确认离开当前企业？' : '放弃未保存的更改？'}</h2><p>{pendingLeave.warning || '离开后，未保存的信息将丢失。'}{pendingLeave.warning && dirty ? ' 未保存的更改也将丢失。' : ''}</p><div><button className="issuer-secondary" type="button" onClick={() => setPendingLeave(null)}>继续编辑</button><button className="issuer-action" type="button" onClick={() => { if (!pendingLeave) return; leaveApproved.current = pendingLeave.navigates; pendingLeave.action(); setPendingLeave(null); }}>{pendingLeave.warning ? '确认离开' : '放弃更改并离开'}</button></div></div></div>}
   </main>;
 }

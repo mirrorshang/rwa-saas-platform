@@ -1080,7 +1080,7 @@ img { max-width: 100%; }
 .login-center .login-submit { width: 100%; justify-content: center; margin-top: 10px; }
 .login-center .login-legal { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; }
 .mvp-entry-page { min-height: calc(100vh - 130px); padding: 44px 18px; display: grid; place-items: start center; background: #f1f6f8; }
-.mvp-entry-card { width: min(100%, 560px); background: #fff; border: 1px solid #d4e1e8; border-radius: 14px; padding: clamp(24px, 5vw, 40px); box-shadow: 0 20px 50px #092e4413; }
+.mvp-entry-card { width: min(100%, 560px); background: #fff; color: #183e53; border: 1px solid #d4e1e8; border-radius: 14px; padding: clamp(24px, 5vw, 40px); box-shadow: 0 20px 50px #092e4413; }
 .mvp-entry-card h1 { margin: 8px 0; color: #092e44; font-size: clamp(28px, 5vw, 36px); }
 .mvp-entry-card > p { color: #567287; }
 .mvp-entry-card form { display: grid; gap: 17px; margin-top: 28px; }
@@ -1098,7 +1098,7 @@ img { max-width: 100%; }
 .mvp-card-head { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
 .mvp-org-list { display: grid; gap: 12px; margin-top: 24px; }
 .mvp-org-list article { display: flex; justify-content: space-between; align-items: center; gap: 18px; border: 1px solid #d4e1e8; border-radius: 9px; padding: 18px; }
-.mvp-org-list h2 { margin: 0 0 5px; font-size: 19px; }
+.mvp-org-list h2 { margin: 0 0 5px; color: #092e44; font-size: 19px; }
 .mvp-org-list p { margin: 0; color: #577385; }
 .mvp-empty { margin-top: 26px; padding: 30px; border: 1px dashed #bfd2dc; border-radius: 9px; text-align: center; }
 @media (max-width: 600px) { .mvp-card-head, .mvp-org-list article { align-items: stretch; flex-direction: column; } }

@@ -27,7 +27,7 @@ export function Login() {
         if (tenants.length === 1 && selectDemoTenant(tenants[0].id)) { location.href = entryPath(paths.issuer, intent); return; }
         if (tenants.length > 1 || getDemoAccount()?.invitationPending) { location.href = entryPath(paths.organizations, intent); return; }
         if (getDemoAccount()?.canCreate) { location.href = entryPath(paths.onboarding, intent); return; }
-      }
+      } else setError('当前邮箱的账号状态与所选入口不一致，请检查账号或联系支持。');
       setStep('result');
     }, 450);
     return () => clearTimeout(timer);
@@ -71,7 +71,7 @@ export function Login() {
     {step === 'checking' && <div role="status"><h2>正在核实企业访问权限</h2><p>请稍候。</p></div>}
     {step === 'new-account' && <div role="status"><h2>完成账号确认</h2><p>您的邮箱尚未关联企业账户。账号确认与创建企业是两个独立步骤。</p><form className="login-account-confirm" onSubmit={event => event.preventDefault()}><label htmlFor="account-email">工作邮箱</label><input id="account-email" value={email} readOnly /><p>服务条款正式版本发布后，可继续创建账号。<a href={paths.policies + '/terms'} target="_blank" rel="noreferrer">查看服务条款发布状态</a></p><label className="login-terms"><input type="checkbox" disabled />我已阅读并同意《WDEX SaaS服务条款》</label><button className="button button-primary login-submit" disabled>确认账号并继续</button></form><Button href={paths.contact + '?topic=account'} variant="text">联系支持</Button></div>}
     {step === 'restricted' && <div role="alert"><h2>账号暂无法访问</h2><p>{error}</p><Button href={paths.contact + '?topic=account'}>联系支持</Button></div>}
-    {step === 'result' && <div role="status"><h2>暂无可访问的企业</h2><p>请联系企业管理员确认授权。</p><Button href={paths.contact + '?topic=account'}>联系支持</Button></div>}
+    {step === 'result' && <div role="status"><h2>无法进入企业工作台</h2><p>{error || '暂无可访问的企业，请联系企业管理员确认授权。'}</p><Button href={paths.contact + '?topic=account'}>联系支持</Button></div>}
     {step === 'help' && <><h2>需要帮助？</h2><p>请检查邮箱及验证码，或联系支持。</p><Button href={paths.contact + '?topic=account'}>联系支持</Button><button className="login-help-link" onClick={() => setStep('email')}>返回登录</button></>}
     {step === 'email' && <button className="login-help-link" type="button" onClick={() => setStep('help')}>无法登录？</button>}
     <nav className="login-legal" aria-label="账户帮助"><a href={paths.help}>帮助中心</a><a href={paths.policies + '/terms'}>服务条款</a><a href={paths.policies + '/privacy'}>隐私政策</a></nav>

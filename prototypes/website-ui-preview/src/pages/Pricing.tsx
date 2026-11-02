@@ -60,7 +60,7 @@ export function Pricing() {
   const applicationHref = !auth ? demoRoute(paths.login + '?intent=standard') : tenants.length === 0 ? getDemoAccount()?.canCreate ? paths.onboarding + '?intent=standard&demo=1' : paths.organizations + '?intent=standard&demo=1' : tenants.length > 1 || !selected ? paths.organizations + '?intent=standard&demo=1' : paths.issuer + '?intent=standard&demo=1';
   const standardHref = !auth && role === 'visitor' ? paths.upgrade : selected && !selected.canSubscribe ? undefined : applicationHref;
   const subscribe = () => setNotice(selected && !selected.canSubscribe
-    ? '当前演示角色没有订阅管理权限。请联系所属企业管理员；不能越权升级。'
+    ? '您没有当前企业的订阅管理权限。请联系企业管理员。'
     : role === 'standard'
       ? '当前企业已开通Standard。正式服务中，有权限的管理员可在原企业工作台管理订阅；此处不重复开通或生成账单。'
       : role === 'upgrading'

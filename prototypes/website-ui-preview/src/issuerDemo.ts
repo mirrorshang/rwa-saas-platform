@@ -5,7 +5,7 @@ import { b04StorageKeys, clearAccountSensitiveCache, clearB04TenantCache } from 
 type Plan = 'Free' | 'Standard';
 type Status = 'active' | 'pending';
 type Scenario = 'visitor' | 'single' | 'multiple' | 'none' | 'create' | 'restricted' | 'invited' | 'no-subscription' | 'standard' | 'upgrading';
-type Account = { email: string; canCreate: boolean; restricted?: boolean; invitationPending?: boolean };
+type Account = { email: string; canCreate: boolean; restricted?: boolean; invitationPending?: boolean; scenario?: Scenario };
 type Tenant = { id: string; name: string; country: string; contactEmail: string; description: string; empty: boolean };
 type Member = { email: string; tenantId: string; role: string; canSubscribe: boolean; status: Status };
 type Entitlement = { tenantId: string; plan: Plan; status: Status };
@@ -47,8 +47,13 @@ export function getDemoAccount(): Account | null {
 }
 function seedScenario(role: Scenario, email: string) {
   const value = store();
-  if (value.accounts.some(item => item.email === email)) return;
-  value.accounts.push({ email, canCreate: !['none', 'restricted', 'visitor'].includes(role), restricted: role === 'restricted', invitationPending: role === 'invited' });
+  const existing = value.accounts.find(item => item.email === email);
+  if (existing) {
+    if (existing.scenario && existing.scenario !== role) return false;
+    if (!existing.scenario) { existing.scenario = role; save(storeKey, value); }
+    return true;
+  }
+  value.accounts.push({ email, scenario: role, canCreate: !['none', 'restricted', 'visitor'].includes(role), restricted: role === 'restricted', invitationPending: role === 'invited' });
   const fixtures: Tenant[] = [
     { id: 'assetco', name: '澜序资产管理有限公司', country: 'HK', contactEmail: email, description: '', empty: false },
     { id: 'issuerco', name: '云岱发行有限公司', country: 'SG', contactEmail: email, description: '', empty: false },
@@ -63,11 +68,12 @@ function seedScenario(role: Scenario, email: string) {
     value.members.push({ email, tenantId: id, role: id === 'issuerco' || role === 'no-subscription' ? '普通成员' : '企业管理员', canSubscribe: id !== 'issuerco' && role !== 'no-subscription', status: 'active' });
   });
   save(storeKey, value);
+  return true;
 }
 export function beginDemoAuth(role: Scenario, email = 'demo@wdex.example') {
   if (!isDemoPreview() || role === 'visitor') return false;
   const normalized = email.trim().toLowerCase();
-  seedScenario(role, normalized);
+  if (!seedScenario(role, normalized)) return false;
   clearDemoContext();
   save(authKey, { email: normalized, role, expiresAt: Date.now() + 60 * 60 * 1000 } satisfies DemoAuth);
   return true;
@@ -77,7 +83,7 @@ export function beginNewDemoAccount(email: string) {
   const normalized = email.trim().toLowerCase();
   const value = store();
   if (value.accounts.some(item => item.email === normalized)) return false;
-  value.accounts.push({ email: normalized, canCreate: true });
+  value.accounts.push({ email: normalized, scenario: 'create', canCreate: true });
   save(storeKey, value);
   clearDemoContext();
   save(authKey, { email: normalized, role: 'create', expiresAt: Date.now() + 60 * 60 * 1000 } satisfies DemoAuth);

@@ -37,7 +37,7 @@ export function validateKybSubmission(draft: SavedKybDraft) {
   if (draft.value.country && !kybCountryOptions.some(option => option.value === draft.value.country)) invalidFields.push('country');
   if (draft.value.entityType && !kybEntityOptions.some(option => option === draft.value.entityType)) invalidFields.push('entityType');
   const blockers: string[] = [];
-  if (!draft.materials.some(item => item.status === '模拟已上传')) blockers.push('尚无可用的演示材料。');
+  if (!draft.materials.some(item => item.status === '模拟已上传')) blockers.push('尚未添加证明材料。');
   const policy = approvedKybPolicies[draft.value.country];
   if (!policy) blockers.push('当前地区的登记编号适用条件与材料清单尚未获批，暂不能提交商业KYB申请。');
   else {

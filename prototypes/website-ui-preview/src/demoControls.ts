@@ -9,9 +9,8 @@ export type DemoControls = {
   access: 'allowed' | 'revoked' | 'expired' | 'unknown';
   profile: 'saved' | 'failed' | 'unknown' | 'conflict';
   kybUpload: 'success' | 'failed';
-  kybSubmit: 'reviewing' | 'failed' | 'unknown' | 'conflict';
   kybRead: 'ready' | 'loading' | 'failed' | 'unknown';
-  kybResult: 'reviewing' | 'supplement' | 'rejected' | 'unknown' | 'passed-preview';
+  kybResult: 'actual' | 'reviewing' | 'supplement' | 'rejected' | 'unknown';
   upgrade: 'preparing' | 'processing' | 'failed' | 'unknown' | 'mock-complete';
   contract: 'unpublished' | 'reading' | 'read-confirmed' | 'signature-unknown' | 'effective-preview';
   payment: 'unavailable' | 'unknown' | 'observed' | 'matching' | 'matched';
@@ -22,8 +21,8 @@ export type DemoControls = {
 
 export const defaultDemoControls: DemoControls = {
   mail: 'accepted', code: 'accepted', account: 'existing', create: 'success', access: 'allowed',
-  profile: 'saved', kybUpload: 'success', kybSubmit: 'reviewing', kybRead: 'ready',
-  kybResult: 'reviewing', upgrade: 'preparing', contract: 'unpublished', payment: 'unavailable',
+  profile: 'saved', kybUpload: 'success', kybRead: 'ready',
+  kybResult: 'actual', upgrade: 'preparing', contract: 'unpublished', payment: 'unavailable',
   entitlement: 'unavailable', billingRead: 'ready', panel: 'ready',
 };
 
@@ -32,4 +31,13 @@ export const useDemoControls = create<Store>()(persist((set) => ({
   controls: defaultDemoControls,
   setControl: (key, value) => set(state => ({ controls: { ...state.controls, [key]: value } })),
   resetControls: () => set({ controls: defaultDemoControls }),
-}), { name: 'wdex-demo-controls', storage: createJSONStorage(() => sessionStorage) }));
+}), { name: 'wdex-demo-controls', version: 3, migrate: persisted => {
+  const previous = (persisted as { controls?: Partial<DemoControls> })?.controls || {};
+  return { controls: {
+    ...defaultDemoControls, ...previous,
+    kybResult: 'actual', contract: 'unpublished',
+    payment: previous.payment === 'unknown' ? 'unknown' : 'unavailable',
+    entitlement: previous.entitlement === 'pending' ? 'pending' : 'unavailable',
+    upgrade: previous.upgrade === 'processing' || previous.upgrade === 'failed' || previous.upgrade === 'unknown' ? previous.upgrade : 'preparing',
+  } };
+}, storage: createJSONStorage(() => sessionStorage) }));

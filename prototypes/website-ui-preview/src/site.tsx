@@ -1,11 +1,15 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+/// <reference types="vite/client" />
+import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Outlet } from '@tanstack/react-router';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { marketplaceIsOpen, marketplaceLink, paths, site } from './config';
 import { CookiePreferences } from './CookiePreferences';
 import { getAuthorizedTenants, getDemoAccount, getDemoAuth, getDemoTenant } from './issuerDemo';
-import { DemoControlPanel } from './DemoControlPanel';
+
+const LocalDemoControlPanel = import.meta.env.DEV
+  ? lazy(() => import('./DemoControlPanel').then(module => ({ default: module.DemoControlPanel })))
+  : null;
 
 export type DemoRole = 'visitor' | 'single' | 'multiple' | 'none' | 'create' | 'restricted' | 'invited' | 'no-subscription' | 'standard' | 'upgrading';
 
@@ -119,6 +123,9 @@ export function App() {
   const [role, setRole] = useDemoRole();
   const [cookiesOpen, setCookiesOpen] = useState(false);
   const demoMode = isDemoPreview();
+  const demoPanel = demoMode && LocalDemoControlPanel
+    ? <Suspense fallback={null}><LocalDemoControlPanel role={role} setRole={setRole} /></Suspense>
+    : null;
   const compactAuth = location.pathname === paths.register || location.pathname === paths.verify || location.pathname === paths.login || location.pathname === paths.onboarding || location.pathname === paths.organizations;
   const issuerPage = location.pathname === paths.issuer || location.pathname.startsWith(`${paths.issuer}/`);
   useEffect(() => {
@@ -137,11 +144,11 @@ export function App() {
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (description) description.content = 'WDEX SaaS为发行机构提供资产、项目、投资者门户、认购、Token与发行后管理工具。';
   }, []);
-  if (issuerPage) return isLocalPreview() ? <><Outlet />{demoMode && <DemoControlPanel role={role} setRole={setRole} />}</> : <ServiceUnavailable title="企业工作台暂未开放" description="当前公开网站不提供企业登录或工作台访问。" />;
+  if (issuerPage) return isLocalPreview() ? <><Outlet />{demoPanel}</> : <ServiceUnavailable title="企业工作台暂未开放" description="当前公开网站不提供企业登录或工作台访问。" />;
   return <>
     {compactAuth ? <AuthHeader /> : <Header />}
     <Outlet />
-    {demoMode && <DemoControlPanel role={role} setRole={setRole} />}
+    {demoPanel}
     {compactAuth ? <AuthFooter /> : <Footer onCookies={() => setCookiesOpen(true)} />}
     <CookiePreferences open={cookiesOpen} setOpen={setCookiesOpen} />
   </>;

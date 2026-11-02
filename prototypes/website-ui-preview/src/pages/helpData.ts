@@ -10,7 +10,7 @@ export const helpQuestions: HelpQuestion[] = [
     "id": 2,
     "category": "账户与企业",
     "question": "注册Free需要提前完成企业KYB吗？",
-    "answer": "不需要先完成完整商业KYB。正式注册开放后，您可以先创建企业并使用Free Sandbox；申请升级Standard时，需按适用要求完成商业KYB和订阅流程。"
+    "answer": "您可以先创建企业并使用 Free Sandbox，也可以按开放的订阅流程申请 Standard。企业 KYB 可在订阅后按适用要求办理。真实发行前仍须满足相应的 KYB、业务及生产准入条件。"
   },
   {
     "id": 3,
@@ -52,7 +52,7 @@ export const helpQuestions: HelpQuestion[] = [
     "id": 9,
     "category": "订阅与账单",
     "question": "如何从Free升级Standard？",
-    "answer": "正式方案开放后，有订阅管理权限的企业管理员可在原企业工作台办理商业KYB、合同与有效账单付款。当前官网只提供升级流程说明，不生成真实订单或付款入口；符合条件的配置可复用，模拟交易不会直接转为真实权益。"
+    "answer": "正式方案开放后，有订阅管理权限的企业管理员可先在原企业工作台发起升级流程，再按适用要求办理商业KYB、合同与有效账单付款。当前官网只提供升级流程说明，不生成真实订单或付款入口；符合条件的配置可复用，模拟交易不会直接转为真实权益。"
   },
   {
     "id": 10,

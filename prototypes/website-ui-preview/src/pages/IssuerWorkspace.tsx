@@ -7,6 +7,7 @@ import { useDemoControls } from '../demoControls';
 import { isDemoPreview } from '../demoEnvironment';
 import { IssuerCertification, IssuerInfo, IssuerPlan } from './IssuerSettings';
 import { IssuerAssets } from './IssuerAssets';
+import { IssuerInstruments } from './IssuerInstruments';
 
 type Tab = 'info' | 'kyb' | 'subscription';
 const oldTabs: Record<string, Tab> = {
@@ -28,7 +29,7 @@ function Dashboard({ tenant, query, panel }: { tenant: DemoTenant; query: string
       <article><span>企业认证</span><strong>{kyb ? ({ reviewing: '审核中', supplement: '待补件', rejected: '未通过', unknown: '结果待确认' }[kyb.status]) : '未提交'}</strong><a href={settingsHref('kyb', query)}>查看企业认证 →</a></article>
       <article><span>订阅状态</span><strong>{upgrade?.status === 'unknown' ? '结果待确认' : tenant.plan === 'Free' ? 'Free Sandbox' : 'Standard'}</strong><a href={settingsHref('subscription', query)}>管理订阅 →</a></article>
     </div>}</section>
-    <section className="issuer-card mvp-next"><h2>接下来可以做什么</h2><p>{tenant.empty ? '先完善企业信息，再按需要准备企业认证资料。' : '您可以查看企业信息、认证进度与订阅状态。'}</p><div className="issuer-quicklinks"><a href={settingsHref('info', query)}>完善企业信息</a><a href={settingsHref('kyb', query)}>查看企业认证</a><a href={settingsHref('subscription', query)}>管理订阅</a><a href={paths.issuerAssets + '?' + query}>进入资产库</a></div></section>
+    <section className="issuer-card mvp-next"><h2>接下来可以做什么</h2><p>{tenant.empty ? '先完善企业信息，再按需要准备企业认证资料。' : '您可以查看企业信息、认证进度与订阅状态。'}</p><div className="issuer-quicklinks"><a href={settingsHref('info', query)}>完善企业信息</a><a href={settingsHref('kyb', query)}>查看企业认证</a><a href={settingsHref('subscription', query)}>管理订阅</a><a href={paths.issuerAssets + '?' + query}>进入资产库</a><a href={paths.issuerInstruments + '?' + query}>查看权益结构</a></div></section>
   </div>;
 }
 
@@ -40,6 +41,7 @@ export function IssuerWorkspace() {
   const oldTab = oldTabs[location.pathname];
   const isSettings = location.pathname === paths.issuerSettings || !!oldTab;
   const isAssets = location.pathname === paths.issuerAssets || location.pathname.startsWith(paths.issuerAssets + '/');
+  const isInstruments = location.pathname === paths.issuerInstruments || location.pathname.startsWith(paths.issuerInstruments + '/');
   const requestedTab = query.get('tab');
   const tab: Tab = oldTab || (requestedTab === 'kyb' || requestedTab === 'subscription' ? requestedTab : 'info');
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -117,7 +119,7 @@ export function IssuerWorkspace() {
       <a className="issuer-brand" href={paths.home}><span className="brand-mark"><i /><i /><i /></span> WDEX <b>SaaS</b></a>
       <button className="issuer-sidebar-close" aria-label="关闭业务导航" onClick={() => setMobileOpen(false)}>×</button>
       <span className="issuer-nav-label">发行机构工作台</span>
-      <nav aria-label="发行机构业务导航"><a href={paths.issuer + '?' + sharedQuery} className={!isSettings && !isAssets ? 'active' : ''} aria-current={!isSettings && !isAssets ? 'page' : undefined}>工作台</a><div className="issuer-nav-group"><span className="issuer-nav-label">资产与发行</span><div className="issuer-subnav"><a href={paths.issuerAssets + '?' + sharedQuery} className={isAssets ? 'active' : ''} aria-current={isAssets ? 'page' : undefined}>资产库</a></div></div><a href={settingsHref('info', sharedQuery)} className={isSettings ? 'active' : ''} aria-current={isSettings ? 'page' : undefined}>企业设置</a></nav>
+      <nav aria-label="发行机构业务导航"><a href={paths.issuer + '?' + sharedQuery} className={!isSettings && !isAssets && !isInstruments ? 'active' : ''} aria-current={!isSettings && !isAssets && !isInstruments ? 'page' : undefined}>工作台</a><div className="issuer-nav-group"><span className="issuer-nav-label">资产与发行</span><div className="issuer-subnav"><a href={paths.issuerAssets + '?' + sharedQuery} className={isAssets ? 'active' : ''} aria-current={isAssets ? 'page' : undefined}>资产库</a><a href={paths.issuerInstruments + '?' + sharedQuery} className={isInstruments ? 'active' : ''} aria-current={isInstruments ? 'page' : undefined}>权益结构</a></div></div><a href={settingsHref('info', sharedQuery)} className={isSettings ? 'active' : ''} aria-current={isSettings ? 'page' : undefined}>企业设置</a></nav>
       <div className="issuer-sidebar-foot">WDEX SaaS</div>
     </aside>
     <div className="issuer-main"><header className="issuer-topbar">
@@ -129,7 +131,7 @@ export function IssuerWorkspace() {
     <div className="issuer-content">{notice && <section className="issuer-card issuer-intent" role="alert"><p>{notice}</p>{recoverCreate && <a href={paths.onboarding + '?' + sharedQuery}>查看原创建申请 →</a>}</section>}
       {standard && tenant.plan === 'Free' && <section className="issuer-card issuer-intent" role="status"><strong>Standard 意向已保留</strong><p>请在当前企业的订阅管理中查看升级条件。</p><a href={settingsHref('subscription', sharedQuery)}>查看订阅管理 →</a></section>}
       {isSettings ? <><h1 className="mvp-settings-title">企业设置</h1><nav className="mvp-settings-tabs" aria-label="企业设置">{tabs.map(([id, label]) => <a key={id} href={settingsHref(id, sharedQuery)} className={tab === id ? 'active' : ''} aria-current={tab === id ? 'page' : undefined}>{label}</a>)}</nav>
-        {tab === 'info' ? <IssuerInfo key={tenant.id} tenant={tenant} onDirtyChange={setDirty} onRequestDiscard={action => requestLeave(action, false)} /> : tab === 'kyb' ? <IssuerCertification key={tenant.id} tenant={tenant} onDirtyChange={setDirty} onRequestDiscard={action => requestLeave(action, false)} /> : <IssuerPlan key={tenant.id} tenant={tenant} />}</> : isAssets ? <IssuerAssets key={`${tenant.id}-${location.pathname}`} tenant={tenant} query={sharedQuery} onDirtyChange={setDirty} onRequestDiscard={action => requestLeave(action, true)} onSavedNavigate={url => { leaveApproved.current = true; location.href = url; }} /> : <Dashboard tenant={tenant} query={sharedQuery} panel={controls.panel} />}
+        {tab === 'info' ? <IssuerInfo key={tenant.id} tenant={tenant} onDirtyChange={setDirty} onRequestDiscard={action => requestLeave(action, false)} /> : tab === 'kyb' ? <IssuerCertification key={tenant.id} tenant={tenant} onDirtyChange={setDirty} onRequestDiscard={action => requestLeave(action, false)} /> : <IssuerPlan key={tenant.id} tenant={tenant} />}</> : isAssets ? <IssuerAssets key={`${tenant.id}-${location.pathname}`} tenant={tenant} query={sharedQuery} onDirtyChange={setDirty} onRequestDiscard={action => requestLeave(action, true)} onSavedNavigate={url => { leaveApproved.current = true; location.href = url; }} /> : isInstruments ? <IssuerInstruments key={`${tenant.id}-${location.pathname}`} tenant={tenant} query={sharedQuery} onDirtyChange={setDirty} onRequestDiscard={action => requestLeave(action, true)} onSavedNavigate={url => { leaveApproved.current = true; location.href = url; }} /> : <Dashboard tenant={tenant} query={sharedQuery} panel={controls.panel} />}
     </div></div>
     {pendingLeave && <div className="issuer-modal-backdrop"><div className="issuer-modal" role="dialog" aria-modal="true" aria-labelledby="issuer-leave-title" ref={dialogRef} tabIndex={-1} onKeyDown={onDialogKey}><h2 id="issuer-leave-title">{pendingLeave.warning ? '确认离开当前企业？' : '放弃未保存的更改？'}</h2><p>{pendingLeave.warning || '离开后，未保存的信息将丢失。'}{pendingLeave.warning && dirty ? ' 未保存的更改也将丢失。' : ''}</p><div><button className="issuer-secondary" type="button" onClick={() => setPendingLeave(null)}>继续编辑</button><button className="issuer-action" type="button" onClick={() => { if (!pendingLeave) return; leaveApproved.current = pendingLeave.navigates; pendingLeave.action(); setPendingLeave(null); }}>{pendingLeave.warning ? '确认离开' : '放弃更改并离开'}</button></div></div></div>}
   </main>;

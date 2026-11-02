@@ -24,6 +24,13 @@ export type DemoControls = {
   assetVersion: 'ready' | 'conflict';
   assetAccess: 'allowed' | 'denied';
   assetHistory: 'ready' | 'loading' | 'failed' | 'unknown';
+  instrumentList: 'ready' | 'loading' | 'failed' | 'unknown';
+  instrumentSave: 'success' | 'failed' | 'unknown';
+  instrumentVersion: 'ready' | 'conflict';
+  instrumentAccess: 'allowed' | 'denied';
+  instrumentHistory: 'ready' | 'loading' | 'failed' | 'unknown';
+  instrumentReviewer: 'same' | 'independent' | 'none';
+  instrumentReview: 'success' | 'failed' | 'unknown';
 };
 
 export const defaultDemoControls: DemoControls = {
@@ -32,6 +39,8 @@ export const defaultDemoControls: DemoControls = {
   kybResult: 'actual', upgrade: 'preparing', contract: 'unpublished', payment: 'unavailable',
   entitlement: 'unavailable', billingRead: 'ready', panel: 'ready',
   assetList: 'ready', assetSave: 'success', assetVersion: 'ready', assetAccess: 'allowed', assetHistory: 'ready',
+  instrumentList: 'ready', instrumentSave: 'success', instrumentVersion: 'ready', instrumentAccess: 'allowed',
+  instrumentHistory: 'ready', instrumentReviewer: 'same', instrumentReview: 'success',
 };
 
 type Store = { controls: DemoControls; setControl: <K extends keyof DemoControls>(key: K, value: DemoControls[K]) => void; resetControls: () => void };

@@ -38,6 +38,15 @@ const groups: { title: string; controls: { key: keyof DemoControls; label: strin
     { key: 'assetAccess', label: '资产访问', options: [['allowed', '允许'], ['denied', '无权限']] },
     { key: 'assetHistory', label: '版本历史读取', options: [['ready', '正常'], ['loading', '加载中'], ['failed', '失败'], ['unknown', '结果待确认']] },
   ] },
+  { title: '权益结构', controls: [
+    { key: 'instrumentList', label: '列表读取', options: [['ready', '正常'], ['loading', '加载中'], ['failed', '失败'], ['unknown', '结果待确认']] },
+    { key: 'instrumentSave', label: '草稿保存', options: [['success', '成功'], ['failed', '失败'], ['unknown', '结果待确认']] },
+    { key: 'instrumentVersion', label: '版本检查', options: [['ready', '正常'], ['conflict', '版本冲突']] },
+    { key: 'instrumentAccess', label: '访问权限', options: [['allowed', '允许'], ['denied', '无权限']] },
+    { key: 'instrumentHistory', label: '历史读取', options: [['ready', '正常'], ['loading', '加载中'], ['failed', '失败'], ['unknown', '结果待确认']] },
+    { key: 'instrumentReviewer', label: '内部复核身份', options: [['same', '提交人本人'], ['independent', '独立授权角色'], ['none', '无复核权限']] },
+    { key: 'instrumentReview', label: '复核处理', options: [['success', '成功'], ['failed', '失败'], ['unknown', '结果待确认']] },
+  ] },
 ];
 const roles: [DemoRole, string][] = [['visitor', '访客'], ['single', '已有单企业'], ['multiple', '已有多企业'], ['create', '新账号／无企业'], ['none', '无企业授权'], ['restricted', '受限账号'], ['invited', '待处理邀请'], ['no-subscription', '普通企业成员'], ['standard', 'Standard已开通'], ['upgrading', '升级处理中']];
 const presets: [string, DemoRole, Partial<DemoControls>][] = [
@@ -52,6 +61,9 @@ const pageName = () => {
   if (path === '/issuer/assets') return '资产库';
   if (path === '/issuer/assets/new') return '新建资产';
   if (path.startsWith('/issuer/assets/')) return path.endsWith('/edit') ? '编辑资产' : '资产详情';
+  if (path === '/issuer/instruments') return '权益结构';
+  if (path === '/issuer/instruments/new') return '新建权益结构';
+  if (path.startsWith('/issuer/instruments/')) return path.endsWith('/edit') ? '编辑权益结构' : '权益结构详情';
   return ({ '/': '首页', '/features': '产品功能', '/solutions': '解决方案', '/pricing': '订阅方案', '/help': '帮助中心', '/contact': '联系我们', '/login': '企业登录', '/free-onboarding': '创建企业', '/organizations': '选择企业', '/issuer': '企业工作台', '/standard-upgrade': 'Standard 升级' } as Record<string, string>)[path] || '当前页面';
 };
 

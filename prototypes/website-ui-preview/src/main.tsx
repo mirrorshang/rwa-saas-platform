@@ -42,6 +42,10 @@ const issuerAssetsRoute = createRoute({ getParentRoute: () => rootRoute, path: '
 const issuerAssetNewRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/assets/new', component: IssuerWorkspace });
 const issuerAssetDetailRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/assets/$assetId', component: IssuerWorkspace });
 const issuerAssetEditRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/assets/$assetId/edit', component: IssuerWorkspace });
+const issuerInstrumentsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/instruments', component: IssuerWorkspace });
+const issuerInstrumentNewRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/instruments/new', component: IssuerWorkspace });
+const issuerInstrumentDetailRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/instruments/$instrumentId', component: IssuerWorkspace });
+const issuerInstrumentEditRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/instruments/$instrumentId/edit', component: IssuerWorkspace });
 const issuerSettingsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/settings', component: IssuerWorkspace });
 const issuerProfileRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/profile', component: IssuerWorkspace });
 const issuerSubscriptionRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/subscription', component: IssuerWorkspace });
@@ -51,7 +55,7 @@ const issuerKybReviewRoute = createRoute({ getParentRoute: () => rootRoute, path
 const issuerContractRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/contract', component: IssuerWorkspace });
 const issuerPaymentRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/payment', component: IssuerWorkspace });
 const issuerBillingRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/billing', component: IssuerWorkspace });
-const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, investorPlatformRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, upgradeRoute, issuerRoute, issuerAssetsRoute, issuerAssetNewRoute, issuerAssetDetailRoute, issuerAssetEditRoute, issuerSettingsRoute, issuerProfileRoute, issuerSubscriptionRoute, issuerUpgradeRoute, issuerKybRoute, issuerKybReviewRoute, issuerContractRoute, issuerPaymentRoute, issuerBillingRoute]);
+const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, investorPlatformRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, upgradeRoute, issuerRoute, issuerAssetsRoute, issuerAssetNewRoute, issuerAssetDetailRoute, issuerAssetEditRoute, issuerInstrumentsRoute, issuerInstrumentNewRoute, issuerInstrumentDetailRoute, issuerInstrumentEditRoute, issuerSettingsRoute, issuerProfileRoute, issuerSubscriptionRoute, issuerUpgradeRoute, issuerKybRoute, issuerKybReviewRoute, issuerContractRoute, issuerPaymentRoute, issuerBillingRoute]);
 const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {

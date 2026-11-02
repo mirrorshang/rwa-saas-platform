@@ -1,0 +1,24 @@
+.instrument-page .instrument-summary { display: flex; flex-wrap: wrap; gap: 10px; }
+.instrument-page .instrument-summary span { padding: 10px 12px; border: 1px solid var(--i-line); border-radius: 7px; font-size: 12px; color: #37647a; }
+.instrument-page .instrument-list table { min-width: 970px; }
+.instrument-page .instrument-inline-link { margin-left: 10px; color: #116e94; font-weight: 700; }
+.instrument-page .instrument-actions { display: grid; gap: 14px; }
+.instrument-page .instrument-actions h2 { margin: 0; }
+.instrument-page .instrument-actions > button { justify-self: start; }
+.instrument-page .instrument-review-actions { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }
+.instrument-page .instrument-review-actions label { display: grid; gap: 6px; min-width: min(100%, 310px); flex: 1; font-weight: 700; font-size: 12px; }
+.instrument-page .instrument-review-actions textarea { min-height: 70px; width: 100%; border: 1px solid #a9c0cd; border-radius: 7px; padding: 10px; font: inherit; }
+.instrument-page .instrument-lifecycle { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--i-line); }
+@media (max-width: 560px) {
+  .instrument-page .asset-library-head { align-items: stretch; }
+  .instrument-page .instrument-summary { display: grid; grid-template-columns: 1fr 1fr; }
+  .instrument-page .instrument-list table { min-width: 0; }
+  .instrument-page .instrument-list td:nth-child(1)::before { content: '权益结构'; }
+  .instrument-page .instrument-list td:nth-child(2)::before { content: '权益类型'; }
+  .instrument-page .instrument-list td:nth-child(3)::before { content: '版本与主体'; }
+  .instrument-page .instrument-list td:nth-child(4)::before { content: '关联资产'; }
+  .instrument-page .instrument-list td:nth-child(5)::before { content: '状态'; }
+  .instrument-page .instrument-list td:nth-child(6)::before { content: '最近保存'; }
+  .instrument-page .instrument-list td:nth-child(7)::before { content: '操作'; }
+  .instrument-page .instrument-review-actions { display: grid; }
+}

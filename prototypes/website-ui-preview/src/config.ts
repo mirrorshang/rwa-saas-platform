@@ -25,6 +25,7 @@ export const paths = {
   organizations: '/organizations',
   issuer: '/issuer',
   issuerAssets: '/issuer/assets',
+  issuerInstruments: '/issuer/instruments',
   issuerSettings: '/issuer/settings',
   issuerProfile: '/issuer/profile',
   issuerSubscription: '/issuer/subscription',

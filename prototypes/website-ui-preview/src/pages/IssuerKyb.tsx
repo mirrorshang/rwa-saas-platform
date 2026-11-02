@@ -1,11 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState, type FormEvent } from 'react';
 import { paths } from '../config';
 import { type DemoTenant } from '../issuerDemo';
-import { getKybCase, getKybDraft, saveKybDraft, submitKybVersion, type KybDraft, type MockMaterial, type SavedKybDraft } from '../issuerB04Demo';
+import { getKybCase, getKybDraft, kybCountryOptions, kybEntityOptions, saveKybDraft, submitKybVersion, validateKybSubmission, type KybDraft, type MockMaterial, type SavedKybDraft } from '../issuerB04Demo';
 import { CommercialBoundary, CommercialFlow, CommercialIntro, FactRows } from './IssuerCommercialShared';
 
 type Outcome = 'reviewing' | 'unknown' | 'failed' | 'conflict';
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const materials = ['营业登记证明（演示）', '签约授权说明（演示）', '受益控制说明（演示）'];
 const fields: [keyof KybDraft, string, string][] = [
   ['legalName', '法定企业名称', '送审必填；可与工作台显示名称不同。'],
@@ -20,12 +19,6 @@ const fields: [keyof KybDraft, string, string][] = [
   ['authority', '授权依据', '描述证据来源，不代表授权已获证实。'],
   ['beneficialControl', '受益控制声明（适用时）', '是否适用及比例由实际法域规则决定。'],
 ];
-function validate(draft: KybDraft) {
-  const required: (keyof KybDraft)[] = ['legalName', 'country', 'entityType', 'address', 'contactEmail', 'contactRole', 'representative', 'authority'];
-  const errors = required.filter(key => !draft[key].trim()).map(key => key);
-  if (draft.contactEmail.trim() && !emailPattern.test(draft.contactEmail.trim())) errors.push('contactEmail');
-  return errors;
-}
 export function IssuerKyb({ tenant, onDirtyChange, onRequestDiscard }: {
   tenant: DemoTenant; onDirtyChange: (dirty: boolean) => void; onRequestDiscard: (action: () => void) => void;
 }) {
@@ -42,6 +35,7 @@ export function IssuerKyb({ tenant, onDirtyChange, onRequestDiscard }: {
   const [dialog, setDialog] = useState<'preview' | 'confirm' | null>(null);
   const [message, setMessage] = useState('');
   const dialogRef = useRef<HTMLDivElement>(null);
+  const pendingRef = useRef(false);
   const canManage = tenant.role === '企业管理员' && tenant.canSubscribe;
   const canSubmit = !caseRecord || caseRecord.status === 'supplement';
   const dirty = editing && JSON.stringify(draft) !== JSON.stringify(saved);
@@ -54,26 +48,30 @@ export function IssuerKyb({ tenant, onDirtyChange, onRequestDiscard }: {
     return () => previous?.focus();
   }, [dialog]);
 
-  const setField = (key: keyof KybDraft, value: string) => setDraft(previous => ({ ...previous, value: { ...previous.value, [key]: value } }));
+  const setField = (key: keyof KybDraft, value: string) => { if (!pendingRef.current) setDraft(previous => ({ ...previous, value: { ...previous.value, [key]: value } })); };
   const save = () => {
+    if (pendingRef.current) return;
     const next = { ...draft, savedAt: Date.now() };
     if (!saveKybDraft(tenant, next)) { setMessage('当前角色无权保存商业KYB草稿。'); return; }
     setSaved(next); setDraft(next); setEditing(false); setMessage('本地Mock草稿已保存，尚未提交商业KYB审核。');
   };
   const cancel = () => {
+    if (pendingRef.current) return;
     const discard = () => { setDraft(saved); setEditing(false); setErrors([]); setMessage('未保存修改已放弃。'); };
     if (dirty) onRequestDiscard(discard); else discard();
   };
   const beginSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const missing = validate(draft.value);
-    setErrors(missing);
-    if (missing.length) { setMessage('请补齐标记字段；这些是本次Mock通用表单要求，不代表正式法域材料标准。'); document.querySelector<HTMLElement>('.issuer-kyb-form [aria-invalid="true"]')?.focus(); return; }
+    if (pendingRef.current) return;
+    const validation = validateKybSubmission(draft);
+    setErrors(validation.invalidFields);
+    if (validation.invalidFields.length) { setMessage('请核对标记字段；演示选项不代表正式法域批准。'); document.querySelector<HTMLElement>('.issuer-kyb-form [aria-invalid="true"]')?.focus(); return; }
+    if (validation.blockers.length) { setMessage(`当前申请仍缺必要资料或适用规则：${validation.blockers.join(' ')}`); return; }
     if (!canSubmit) { setMessage('原申请仍在；请先查看原Case结果，不重复建立申请。'); return; }
     setDialog('confirm');
   };
   const upload = () => {
-    if (!editing || !canManage) return;
+    if (!editing || !canManage || pendingRef.current) return;
     setUploadState('uploading');
     window.setTimeout(() => {
       if (uploadOutcome === 'failed') { setUploadState('failed'); setMessage('模拟上传失败，可在原草稿中重试；未传输真实文件。'); return; }
@@ -84,15 +82,21 @@ export function IssuerKyb({ tenant, onDirtyChange, onRequestDiscard }: {
     }, 350);
   };
   const confirm = () => {
-    if (pending || !canManage || !canSubmit) return;
+    if (pendingRef.current || !canManage || !canSubmit) return;
+    const snapshot: SavedKybDraft = { ...draft, value: { ...draft.value }, materials: draft.materials.map(item => ({ ...item })) };
+    const validation = validateKybSubmission(snapshot);
+    if (validation.invalidFields.length || validation.blockers.length) { setDialog(null); setErrors(validation.invalidFields); setMessage(`提交前核验未通过：${validation.blockers.join(' ') || '请检查标记字段。'}`); return; }
+    const selectedOutcome = outcome;
+    pendingRef.current = true;
     setDialog(null); setPending(true); setMessage('模拟提交处理中；重复提交已禁用。');
     window.setTimeout(() => {
-      const next = submitKybVersion(tenant, draft, outcome);
+      const next = submitKybVersion(tenant, snapshot, selectedOutcome);
+      pendingRef.current = false;
       setPending(false);
-      if (outcome === 'failed' || outcome === 'conflict') { setMessage(outcome === 'failed' ? 'Mock提交失败，原草稿保留；未创建新Case。' : 'Mock版本冲突，请核对原Case后再提交；未创建新版本。'); return; }
-      if (!next) { setMessage('提交未完成，请检查当前企业权限。'); return; }
-      setCaseRecord(next); setSaved(draft); setEditing(false);
-      setMessage(outcome === 'unknown' ? 'Mock提交结果未知；原Case已保留，请到I-06查询，不得重复创建。' : 'Mock版本已提交至原Case；这不代表商业KYB审核通过。');
+      if (selectedOutcome === 'failed' || selectedOutcome === 'conflict') { setMessage(selectedOutcome === 'failed' ? 'Mock提交失败，当前编辑内容保留；未创建新Case。' : 'Mock版本冲突，当前编辑内容保留；未创建新版本。'); return; }
+      if (!next) { setMessage('提交未完成，编辑内容仍保留；请检查当前企业权限与适用规则。'); return; }
+      setCaseRecord(next); setSaved(snapshot); setDraft(snapshot); setEditing(false);
+      setMessage(selectedOutcome === 'unknown' ? 'Mock提交结果未知；原Case已保留，请到I-06查询，不得重复创建。' : 'Mock版本已提交至原Case；这不代表商业KYB审核通过。');
     }, 450);
   };
   return <>
@@ -104,12 +108,13 @@ export function IssuerKyb({ tenant, onDirtyChange, onRequestDiscard }: {
       ['资料来源', '首次预填自I-02商业资料草稿；后续独立保存'],
     ]} /><CommercialBoundary /></section>
     {canManage ? <section className="issuer-card issuer-commercial-section"><div className="issuer-card-head"><div><h2>商业身份草稿</h2><p>草稿独立于I-02与已提交版本；名称相似不能证明法人身份相同。</p></div>{!editing && <button className="issuer-action" onClick={() => { setDraft(saved); setEditing(true); setMessage(''); }}>编辑草稿</button>}</div>
-      {editing ? <form className="issuer-kyb-form" onSubmit={beginSubmit} noValidate><div className="issuer-form-grid">{fields.map(([key, label, hint]) => <label className="issuer-field" key={key}>{label}<input value={draft.value[key]} onChange={event => setField(key, event.target.value)} aria-invalid={errors.includes(key)} aria-describedby={errors.includes(key) ? `kyb-error-${key}` : undefined} />{errors.includes(key) && <small className="issuer-field-error" id={`kyb-error-${key}`}>请填写或核对{label}。</small>}<small>{hint}</small></label>)}</div>
+      {editing ? <form className="issuer-kyb-form" onSubmit={beginSubmit} noValidate><fieldset disabled={pending} className="issuer-kyb-fieldset"><div className="issuer-form-grid">{fields.map(([key, label, hint]) => <label className="issuer-field" key={key}>{label}{key === 'country' ? <select value={draft.value.country} onChange={event => setField(key, event.target.value)} aria-invalid={errors.includes(key)}><option value="">请选择演示地区</option>{draft.value.country && !kybCountryOptions.some(option => option.value === draft.value.country) && <option value={draft.value.country}>原草稿地区：{draft.value.country}（未配置）</option>}{kybCountryOptions.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}</select> : key === 'entityType' ? <select value={draft.value.entityType} onChange={event => setField(key, event.target.value)} aria-invalid={errors.includes(key)}><option value="">请选择演示类别</option>{draft.value.entityType && !kybEntityOptions.some(option => option === draft.value.entityType) && <option value={draft.value.entityType}>原草稿类别：{draft.value.entityType}（未配置）</option>}{kybEntityOptions.map(option => <option key={option} value={option}>{option}</option>)}</select> : <input value={draft.value[key]} onChange={event => setField(key, event.target.value)} aria-invalid={errors.includes(key)} aria-describedby={errors.includes(key) ? `kyb-error-${key}` : undefined} />}{errors.includes(key) && <small className="issuer-field-error" id={`kyb-error-${key}`}>请填写或核对{label}。</small>}<small>{hint}</small></label>)}</div>
         <div className="issuer-commercial-upload"><h3>材料清单与上传区域</h3><p>只选择内置演示材料名称；不接受或传输真实敏感文件。格式、大小及适用清单待法域规则确定。</p><label>模拟选择材料 <select value={selectedMaterial} onChange={event => setSelectedMaterial(event.target.value)}>{materials.map(name => <option key={name}>{name}</option>)}</select></label><label>Mock上传结果 <select value={uploadOutcome} onChange={event => setUploadOutcome(event.target.value as 'success' | 'failed')}><option value="success">模拟成功</option><option value="failed">模拟失败</option></select></label><button type="button" className="issuer-secondary" disabled={uploadState === 'uploading'} onClick={upload}>{uploadState === 'uploading' ? '模拟上传中…' : '模拟上传 / 重试'}</button>{uploadState === 'uploading' && <progress aria-label="模拟上传进度" value={50} max={100} />}{uploadState === 'failed' && <p role="alert">模拟上传失败，草稿未改变。</p>}</div>
         <ul className="issuer-simple-list">{draft.materials.map(item => <li key={item.name}>{item.name} · v{item.version} · {item.status}</li>)}</ul>
-        <div className="issuer-form-actions"><button type="button" className="issuer-secondary" onClick={save}>保存草稿</button><button type="button" className="issuer-secondary" onClick={() => setDialog('preview')}>预览草稿</button><button type="submit" className="issuer-action" disabled={pending || !canSubmit}>{caseRecord?.status === 'supplement' ? '预览并提交补件' : '预览并提交Mock申请'}</button><button type="button" className="issuer-link" onClick={cancel}>取消编辑</button>{dirty && <span>有未保存的更改</span>}</div>
+        <p className="issuer-note">登记编号适用条件与必要材料清单尚未获批；当前只能保存演示草稿，不能建立新Mock Case。</p>
+        <div className="issuer-form-actions"><button type="button" className="issuer-secondary" onClick={save}>保存草稿</button><button type="button" className="issuer-secondary" onClick={() => setDialog('preview')}>预览草稿</button><button type="submit" className="issuer-action" disabled={!canSubmit}>{caseRecord?.status === 'supplement' ? '预览并提交补件' : '预览并提交Mock申请'}</button><button type="button" className="issuer-link" onClick={cancel}>取消编辑</button>{dirty && <span>有未保存的更改</span>}</div>
         <label className="issuer-mock-select">Mock提交结果 <select value={outcome} onChange={event => setOutcome(event.target.value as Outcome)}><option value="reviewing">模拟审核中</option><option value="unknown">结果未知</option><option value="failed">提交失败</option><option value="conflict">版本冲突</option></select></label>
-      </form> : <FactRows rows={fields.map(([key, label]) => [label, key === 'registrationId' ? (saved.value[key] ? '已保存演示草稿（编号已隐藏）' : '尚未填写') : saved.value[key] || '尚未填写'])} />}
+      </fieldset></form> : <FactRows rows={fields.map(([key, label]) => [label, key === 'registrationId' ? (saved.value[key] ? '已保存演示草稿（编号已隐藏）' : '尚未填写') : saved.value[key] || '尚未填写'])} />}
     </section> : <section className="issuer-card issuer-commercial-section"><h2>只读访问</h2><p>当前角色没有商业KYB草稿管理权；仅显示申请状态，不展示登记号、联系人或材料内容。</p></section>}
     <section className="issuer-card issuer-commercial-section"><h2>材料版本与提交历史</h2>{caseRecord ? <ol className="issuer-simple-list">{caseRecord.versions.map(version => <li key={version.number}>Mock版本 v{version.number} · {new Date(version.submittedAt).toLocaleString('zh-CN')} · {version.materials.length} 项模拟材料；旧版只读保留</li>)}</ol> : <p>暂无已提交版本；保存草稿不创建Case。</p>}{caseRecord && !canSubmit && <p>原Case已存在。结果未知或审核中时不得重复提交；请先查看原申请。</p>}</section>
     <div className="issuer-quicklinks"><a href={paths.issuerKybReview + '?demo=1'}>查看原申请与审核进度 →</a><a href={paths.issuerUpgrade + '?demo=1'}>返回升级总览 →</a></div>

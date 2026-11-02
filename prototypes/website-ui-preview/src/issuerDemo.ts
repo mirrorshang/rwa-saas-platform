@@ -1,4 +1,5 @@
 import { isDemoPreview } from './site';
+import { b04StorageKeys, clearAccountSensitiveCache, clearB04TenantCache } from './issuerSensitiveCache';
 
 // Browser-session fixtures only. No server authentication or commercial entitlement is created.
 type Plan = 'Free' | 'Standard';
@@ -28,8 +29,13 @@ const read = <T,>(key: string): T | null => {
 const save = (key: string, value: unknown) => sessionStorage.setItem(key, JSON.stringify(value));
 const store = () => read<Store>(storeKey) || blank();
 
-export function clearDemoContext() { sessionStorage.removeItem(authKey); sessionStorage.removeItem(selectionKey); }
-export function resetDemoScenario() { [authKey, selectionKey, storeKey, intentKey, draftKey, 'wdex-issuer-b03-profile', 'wdex-issuer-b03-upgrade', 'wdex-issuer-b04-commercial', 'wdex-issuer-b04-contract-preview', 'wdex-issuer-b04-payment-preview', 'wdex-issuer-b04-entitlement-preview'].forEach(key => sessionStorage.removeItem(key)); }
+export function clearDemoContext() {
+  const auth = read<DemoAuth>(authKey);
+  if (auth) clearAccountSensitiveCache(auth.email);
+  sessionStorage.removeItem(authKey);
+  sessionStorage.removeItem(selectionKey);
+}
+export function resetDemoScenario() { [authKey, selectionKey, storeKey, intentKey, draftKey, 'wdex-issuer-b03-profile', 'wdex-issuer-b03-upgrade', ...b04StorageKeys].forEach(key => sessionStorage.removeItem(key)); }
 export function getDemoAuth(): DemoAuth | null {
   const auth = read<DemoAuth>(authKey);
   if (!auth || auth.expiresAt <= Date.now()) { clearDemoContext(); return null; }
@@ -88,8 +94,11 @@ export function getAuthorizedTenants(): DemoTenant[] {
   });
 }
 export function selectDemoTenant(id: string) {
+  const previousId = sessionStorage.getItem(selectionKey);
+  const auth = getDemoAuth();
   sessionStorage.removeItem(selectionKey);
   if (!getAuthorizedTenants().some(item => item.id === id)) return false;
+  if (auth && previousId && previousId !== id) clearB04TenantCache(auth.email, previousId);
   sessionStorage.setItem(selectionKey, id);
   return true;
 }

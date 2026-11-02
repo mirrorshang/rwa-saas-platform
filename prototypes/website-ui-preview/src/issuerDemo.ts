@@ -50,9 +50,9 @@ function seedScenario(role: Scenario, email: string) {
   if (value.accounts.some(item => item.email === email)) return;
   value.accounts.push({ email, canCreate: !['none', 'restricted', 'visitor'].includes(role), restricted: role === 'restricted', invitationPending: role === 'invited' });
   const fixtures: Tenant[] = [
-    { id: 'assetco', name: '示例资产管理公司', country: 'HK', contactEmail: email, description: '', empty: false },
-    { id: 'issuerco', name: '示例发行企业', country: 'SG', contactEmail: email, description: '', empty: false },
-    { id: 'operator', name: '示例运营机构', country: 'HK', contactEmail: email, description: '', empty: false },
+    { id: 'assetco', name: '澜序资产管理有限公司', country: 'HK', contactEmail: email, description: '', empty: false },
+    { id: 'issuerco', name: '云岱发行有限公司', country: 'SG', contactEmail: email, description: '', empty: false },
+    { id: 'operator', name: '海序运营有限公司', country: 'HK', contactEmail: email, description: '', empty: false },
   ];
   const ids = role === 'multiple' ? ['assetco', 'issuerco', 'operator'] : role === 'standard' ? ['operator'] :
     ['single', 'no-subscription', 'upgrading'].includes(role) ? ['assetco'] : [];
@@ -90,7 +90,10 @@ export function getAuthorizedTenants(): DemoTenant[] {
   return value.members.filter(item => item.email === auth.email && item.status === 'active').flatMap(member => {
     const tenant = value.tenants.find(item => item.id === member.tenantId);
     const entitlement = value.entitlements.find(item => item.tenantId === member.tenantId && item.status === 'active');
-    return tenant && entitlement ? [{ ...tenant, plan: entitlement.plan, role: member.role, canSubscribe: member.canSubscribe }] : [];
+    const legacyNames: Record<string, string> = { assetco: '澜序资产管理有限公司', issuerco: '云岱发行有限公司', operator: '海序运营有限公司' };
+    if (!tenant || !entitlement) return [];
+    const name = tenant.name.startsWith('示例') ? legacyNames[tenant.id] || tenant.name : tenant.name;
+    return [{ ...tenant, name, plan: entitlement.plan, role: member.role, canSubscribe: member.canSubscribe }];
   });
 }
 export function selectDemoTenant(id: string) {

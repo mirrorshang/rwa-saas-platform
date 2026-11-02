@@ -4,8 +4,8 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { marketplaceIsOpen, marketplaceLink, paths, site } from './config';
 import { CookiePreferences } from './CookiePreferences';
-import { getAuthorizedTenants, getDemoAccount, getDemoAuth, getDemoTenant, resetDemoScenario } from './issuerDemo';
-import { resetAuthDemoScenario } from './authDemo';
+import { getAuthorizedTenants, getDemoAccount, getDemoAuth, getDemoTenant } from './issuerDemo';
+import { DemoControlPanel } from './DemoControlPanel';
 
 export type DemoRole = 'visitor' | 'single' | 'multiple' | 'none' | 'create' | 'restricted' | 'invited' | 'no-subscription' | 'standard' | 'upgrading';
 
@@ -23,8 +23,8 @@ export function useDemoRole(): [DemoRole, (role: DemoRole) => void] {
 }
 
 export function DemoNotice({ children }: { children?: ReactNode }) {
-  if (!isDemoPreview()) return null;
-  return <div className="demo-notice"><span className="status-dot" />{children || site.demoLabel}</div>;
+  void children;
+  return null;
 }
 
 export function Button({ href, children, variant = 'primary', className = '' }: { href: string; children: ReactNode; variant?: 'primary' | 'outline' | 'text'; className?: string }) {
@@ -137,11 +137,11 @@ export function App() {
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (description) description.content = 'WDEX SaaS为发行机构提供资产、项目、投资者门户、认购、Token与发行后管理工具。';
   }, []);
-  if (issuerPage) return isLocalPreview() ? <Outlet /> : <ServiceUnavailable title="企业工作台暂未开放" description="当前公开网站不提供模拟企业登录或真实工作台访问。" />;
+  if (issuerPage) return isLocalPreview() ? <><Outlet />{demoMode && <DemoControlPanel role={role} setRole={setRole} />}</> : <ServiceUnavailable title="企业工作台暂未开放" description="当前公开网站不提供企业登录或工作台访问。" />;
   return <>
     {compactAuth ? <AuthHeader /> : <Header />}
-    {demoMode && <div className="scenario-bar"><span>{site.demoLabel}</span><label>访客/授权场景：<select value={role} onChange={e => { resetDemoScenario(); resetAuthDemoScenario(); setRole(e.target.value as DemoRole); }}><option value="visitor">访客</option><option value="single">单企业Free管理员</option><option value="multiple">多企业</option><option value="create">无企业，可创建</option><option value="restricted">受限账号</option><option value="invited">待处理邀请</option><option value="none">无有效企业授权</option><option value="no-subscription">Free无订阅权限</option><option value="standard">已开通Standard</option><option value="upgrading">升级处理中</option></select></label></div>}
     <Outlet />
+    {demoMode && <DemoControlPanel role={role} setRole={setRole} />}
     {compactAuth ? <AuthFooter /> : <Footer onCookies={() => setCookiesOpen(true)} />}
     <CookiePreferences open={cookiesOpen} setOpen={setCookiesOpen} />
   </>;

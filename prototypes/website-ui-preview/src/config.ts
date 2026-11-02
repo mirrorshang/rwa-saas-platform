@@ -24,6 +24,7 @@ export const paths = {
   onboarding: '/free-onboarding',
   organizations: '/organizations',
   issuer: '/issuer',
+  issuerSettings: '/issuer/settings',
   issuerProfile: '/issuer/profile',
   issuerSubscription: '/issuer/subscription',
   issuerUpgrade: '/issuer/upgrade',

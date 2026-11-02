@@ -1062,3 +1062,47 @@ img { max-width: 100%; }
 }
 
 @media (max-width: 570px) { .future-collaboration .answer-grid { grid-template-columns: 1fr; } }
+.login-center { min-height: calc(100vh - 130px); display: grid; place-items: center; padding: 42px 18px; background: radial-gradient(circle at 50% 10%, #123d58 0, #071728 60%); }
+.login-center .login-card { width: min(100%, 470px); margin: 0; padding: clamp(26px, 5vw, 42px); border: 1px solid #9db7c544; border-radius: 16px; background: #fff; box-shadow: 0 24px 80px #0005; }
+.login-center .login-card label { color: #193d52; font-weight: 700; }
+.login-center .login-card input:not([type="checkbox"]) { background: #fff; border: 1px solid #a9c0cd; color: #0c3148; border-radius: 7px; }
+.login-center .login-card input::placeholder { color: #718b9b; }
+.login-center .login-card a, .login-center .login-card .login-help-link, .login-center .login-card .login-links button { color: #0b718e; }
+.login-center .login-card h2 { color: #0c3148; }
+.login-center .login-terms { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; }
+.login-center .login-terms input { width: auto; min-height: 0; margin-top: 2px; }
+.login-center .login-brand { display: inline-block; margin-bottom: 24px; color: #0c344e; font-size: 19px; font-weight: 750; text-decoration: none; }
+.login-center .login-brand strong { color: #0a9bb7; }
+.login-center h1 { margin: 0 0 10px; font-size: clamp(27px, 5vw, 34px); line-height: 1.2; color: #092d45; }
+.login-center p { color: #557083; }
+.login-center form { display: grid; gap: 11px; margin-top: 26px; }
+.login-center input { width: 100%; min-height: 48px; }
+.login-center .login-submit { width: 100%; justify-content: center; margin-top: 10px; }
+.login-center .login-legal { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; }
+.mvp-entry-page { min-height: calc(100vh - 130px); padding: 44px 18px; display: grid; place-items: start center; background: #f1f6f8; }
+.mvp-entry-card { width: min(100%, 560px); background: #fff; border: 1px solid #d4e1e8; border-radius: 14px; padding: clamp(24px, 5vw, 40px); box-shadow: 0 20px 50px #092e4413; }
+.mvp-entry-card h1 { margin: 8px 0; color: #092e44; font-size: clamp(28px, 5vw, 36px); }
+.mvp-entry-card > p { color: #567287; }
+.mvp-entry-card form { display: grid; gap: 17px; margin-top: 28px; }
+.mvp-entry-card form > label:not(.mvp-check) { display: grid; gap: 7px; font-weight: 650; color: #183e53; }
+.mvp-entry-card input:not([type="checkbox"]), .mvp-entry-card select, .mvp-entry-card textarea { width: 100%; min-height: 46px; border: 1px solid #b9ccd6; border-radius: 7px; padding: 10px; font: inherit; }
+.mvp-entry-card textarea { min-height: 90px; resize: vertical; }
+.mvp-entry-card .mvp-check { display: flex; gap: 9px; align-items: flex-start; font-size: 13px; color: #29495e; }
+.mvp-entry-card .mvp-check input { margin-top: 3px; }
+.mvp-entry-card .button { justify-content: center; }
+.mvp-entry-links { display: flex; gap: 16px; margin-top: 24px; }
+.mvp-entry-links button { background: none; border: 0; color: #0b7690; cursor: pointer; padding: 0; }
+.mvp-entry-links a { color: #0b7690; }
+.mvp-hint { padding: 10px 12px; background: #eaf6f8; border-radius: 7px; }
+.mvp-organizations .mvp-entry-card { width: min(100%, 920px); }
+.mvp-card-head { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+.mvp-org-list { display: grid; gap: 12px; margin-top: 24px; }
+.mvp-org-list article { display: flex; justify-content: space-between; align-items: center; gap: 18px; border: 1px solid #d4e1e8; border-radius: 9px; padding: 18px; }
+.mvp-org-list h2 { margin: 0 0 5px; font-size: 19px; }
+.mvp-org-list p { margin: 0; color: #577385; }
+.mvp-empty { margin-top: 26px; padding: 30px; border: 1px dashed #bfd2dc; border-radius: 9px; text-align: center; }
+@media (max-width: 600px) { .mvp-card-head, .mvp-org-list article { align-items: stretch; flex-direction: column; } }
+.cookie-banner { left: auto; right: 18px; bottom: 18px; width: min(420px, calc(100vw - 36px)); padding: 17px; display: block; border: 1px solid #3d8aa9; border-radius: 10px; }
+.cookie-banner .cookie-actions { margin-top: 12px; }
+@media (max-width: 570px) { .cookie-banner { right: 10px; bottom: 10px; width: calc(100vw - 20px); } }
+@media (max-width: 570px) { .mvp-entry-page form > button.button-primary { width: calc(100% - 68px); } }

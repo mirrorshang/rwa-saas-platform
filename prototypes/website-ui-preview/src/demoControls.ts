@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
+declare const __WDEX_DEMO_BUILD__: boolean;
+
 export type DemoControls = {
   mail: 'accepted' | 'unavailable' | 'network' | 'unknown' | 'rate';
   code: 'accepted' | 'wrong' | 'expired' | 'used' | 'network' | 'unknown' | 'restricted';
@@ -27,7 +29,9 @@ export const defaultDemoControls: DemoControls = {
 };
 
 type Store = { controls: DemoControls; setControl: <K extends keyof DemoControls>(key: K, value: DemoControls[K]) => void; resetControls: () => void };
-export const useDemoControls = create<Store>()(persist((set) => ({
+const productionState: Store = { controls: defaultDemoControls, setControl: () => undefined, resetControls: () => undefined };
+export const useDemoControls = (import.meta.env.DEV || __WDEX_DEMO_BUILD__)
+  ? create<Store>()(persist((set) => ({
   controls: defaultDemoControls,
   setControl: (key, value) => set(state => ({ controls: { ...state.controls, [key]: value } })),
   resetControls: () => set({ controls: defaultDemoControls }),
@@ -40,4 +44,5 @@ export const useDemoControls = create<Store>()(persist((set) => ({
     entitlement: previous.entitlement === 'pending' ? 'pending' : 'unavailable',
     upgrade: previous.upgrade === 'processing' || previous.upgrade === 'failed' || previous.upgrade === 'unknown' ? previous.upgrade : 'preparing',
   } };
-}, storage: createJSONStorage(() => sessionStorage) }));
+}, storage: createJSONStorage(() => sessionStorage) }))
+  : create<Store>()(() => productionState);

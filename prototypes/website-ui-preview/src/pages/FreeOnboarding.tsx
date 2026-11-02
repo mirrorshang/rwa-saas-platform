@@ -3,9 +3,10 @@ import { Button, ServiceUnavailable, isDemoPreview } from '../site';
 import { useDemoControls } from '../demoControls';
 import { paths } from '../config';
 import { entryIntent, entryPath } from '../authDemo';
+import { CountrySelect } from '../CountrySelect';
+import { isCountryCode } from '../countries';
 import { getDemoAuth, getDemoAccount, getActiveTenantIntent, getTenantDraft, saveTenantDraft, clearTenantDraft, submitTenantCreate, resolveTenantCreate, type TenantDraft, type TenantCreateIntent, type CreateOutcome } from '../issuerDemo';
 
-const regions = [['HK', '中国香港'], ['SG', '新加坡'], ['GB', '英国'], ['US', '美国']];
 export function FreeOnboarding() {
   const demo = isDemoPreview();
   const auth = getDemoAuth();
@@ -54,7 +55,7 @@ export function FreeOnboarding() {
     event.preventDefault();
     const name = draft.name.trim();
     if (!name || [...name].length > 80) { setError('企业工作台名称须为1～80个有效字符。'); return; }
-    if (!regions.some(([code]) => code === draft.country)) { setError('请选择注册国家或地区。'); return; }
+    if (!isCountryCode(draft.country)) { setError('请选择注册国家或地区。'); return; }
     if (!confirmed) { setError('请确认Free Sandbox使用范围。'); return; }
     const next = { ...draft, name, description: draft.description.trim() };
     change(next);
@@ -95,7 +96,7 @@ export function FreeOnboarding() {
     {intent === 'standard' && <p className="mvp-hint">Standard 升级意向已保留，创建企业不会自动开通订阅。</p>}
     {complete ? <><h2>企业创建成功</h2><p>{record.draft.name} · Free Sandbox</p><Button href={entryPath(paths.issuer, intent)}>进入工作台</Button></> : record ? <div role="status"><h2>{record.status === 'processing' ? '正在处理创建申请' : record.status === 'partial' ? '企业已创建，开通状态待确认' : record.status === 'unknown' ? '创建结果待确认' : '创建未完成'}</h2><p>请查询原申请结果，避免重复创建企业。</p><button className="button button-primary" type="button" onClick={queryOriginal}>查询原申请</button>{record.status === 'failed' && !record.tenantCreated && <button className="button button-outline" type="button" onClick={() => { setDraft(record.draft); saveTenantDraft(record.draft); setDirty(false); setRecord(null); }}>返回原草稿</button>}</div> : <form noValidate onSubmit={submit}>
       <label htmlFor="tenant-name">企业名称<input id="tenant-name" value={draft.name} maxLength={80} onChange={event => change({ ...draft, name: event.target.value })} /></label>
-      <label htmlFor="tenant-country">注册国家或地区<select id="tenant-country" value={draft.country} onChange={event => change({ ...draft, country: event.target.value })}><option value="">请选择</option>{regions.map(([code, label]) => <option key={code} value={code}>{label}</option>)}</select></label>
+      <CountrySelect id="tenant-country" value={draft.country} onChange={country => change({ ...draft, country })} />
       <label htmlFor="tenant-email">企业联系邮箱<input id="tenant-email" type="email" value={auth.email} readOnly /></label>
       <label htmlFor="tenant-description">业务简介（选填）<textarea id="tenant-description" value={draft.description} maxLength={500} onChange={event => change({ ...draft, description: event.target.value })} /></label>
       <label className="mvp-check"><input type="checkbox" checked={confirmed} onChange={event => setConfirmed(event.target.checked)} />我了解 Free Sandbox 不支持真实发行或募资。</label>

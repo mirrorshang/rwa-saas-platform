@@ -1,11 +1,11 @@
 import { useEffect, useLayoutEffect, useState, type FormEvent } from 'react';
 import { type DemoTenant } from '../issuerDemo';
 import { getProfileDraft, saveProfileDraft, getUpgradeIntent } from '../issuerB03Demo';
-import { getKybCase, getKybDraft, kybCountryOptions, kybEntityOptions, saveKybDraft, validateKybSubmission, type KybDraft, type SavedKybDraft } from '../issuerB04Demo';
+import { getKybCase, getKybDraft, hasOriginalPaymentRecord, kybCountryOptions, kybEntityOptions, saveKybDraft, validateKybSubmission, type KybDraft, type SavedKybDraft } from '../issuerB04Demo';
 import { useDemoControls } from '../demoControls';
+import { countryName } from '../countries';
 
 type Props = { tenant: DemoTenant; onDirtyChange: (dirty: boolean) => void; onRequestDiscard: (action: () => void) => void };
-const countries: Record<string, string> = { HK: '中国香港', SG: '新加坡', GB: '英国', US: '美国' };
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function IssuerInfo({ tenant, onDirtyChange, onRequestDiscard }: Props) {
@@ -28,7 +28,7 @@ export function IssuerInfo({ tenant, onDirtyChange, onRequestDiscard }: Props) {
     setSaved(next); setDraft(next); setEditing(false); setMessage('企业信息已保存。');
   };
   return <section className="issuer-card mvp-settings-card"><div className="issuer-card-head"><div><h2>企业信息</h2><p>管理企业工作台的基本资料。</p></div>{tenant.role === '企业管理员' && !editing && <button className="issuer-action" onClick={() => setEditing(true)}>编辑</button>}</div>
-    {editing ? <form onSubmit={save} className="mvp-settings-form"><label>企业名称<input value={draft.displayName} maxLength={80} onChange={event => setDraft({ ...draft, displayName: event.target.value })} /></label><label>注册国家或地区<input value={countries[tenant.country] || tenant.country} readOnly /></label><label>企业联系邮箱<input type="email" value={draft.contactEmail} onChange={event => setDraft({ ...draft, contactEmail: event.target.value })} /></label><label>基础业务信息<textarea value={draft.description} onChange={event => setDraft({ ...draft, description: event.target.value })} maxLength={500} /></label><div className="issuer-form-actions"><button className="issuer-action" type="submit">保存</button><button className="issuer-secondary" type="button" onClick={cancel}>取消</button></div></form> : <dl className="issuer-facts"><div><dt>企业名称</dt><dd>{saved.displayName || tenant.name}</dd></div><div><dt>注册国家或地区</dt><dd>{countries[tenant.country] || tenant.country}</dd></div><div><dt>企业联系邮箱</dt><dd>{saved.contactEmail || tenant.contactEmail}</dd></div><div><dt>基础业务信息</dt><dd>{saved.description || '尚未填写'}</dd></div></dl>}
+    {editing ? <form onSubmit={save} className="mvp-settings-form"><label>企业名称<input value={draft.displayName} maxLength={80} onChange={event => setDraft({ ...draft, displayName: event.target.value })} /></label><label>注册国家或地区<input value={countryName(tenant.country)} readOnly /></label><label>企业联系邮箱<input type="email" value={draft.contactEmail} onChange={event => setDraft({ ...draft, contactEmail: event.target.value })} /></label><label>基础业务信息<textarea value={draft.description} onChange={event => setDraft({ ...draft, description: event.target.value })} maxLength={500} /></label><div className="issuer-form-actions"><button className="issuer-action" type="submit">保存</button><button className="issuer-secondary" type="button" onClick={cancel}>取消</button></div></form> : <dl className="issuer-facts"><div><dt>企业名称</dt><dd>{saved.displayName || tenant.name}</dd></div><div><dt>注册国家或地区</dt><dd>{countryName(tenant.country)}</dd></div><div><dt>企业联系邮箱</dt><dd>{saved.contactEmail || tenant.contactEmail}</dd></div><div><dt>基础业务信息</dt><dd>{saved.description || '尚未填写'}</dd></div></dl>}
     {tenant.role !== '企业管理员' && <p>您可以查看企业信息，修改请联系企业管理员。</p>}{message && <p className="issuer-feedback" role="status">{message}</p>}
   </section>;
 }
@@ -74,12 +74,13 @@ export function IssuerPlan({ tenant }: { tenant: DemoTenant }) {
   const [confirming, setConfirming] = useState(false);
   const controls = useDemoControls(state => state.controls);
   const intent = getUpgradeIntent(tenant);
-  const payment = controls.payment === 'unknown' ? '付款记录查询结果待确认' : '暂无有效账单';
+  const hasPaymentRecord = hasOriginalPaymentRecord(tenant);
+  const payment = hasPaymentRecord && controls.payment === 'unknown' ? '付款记录查询结果待确认' : '暂无有效账单';
   const entitlement = controls.entitlement === 'pending' ? '状态核实中' : tenant.plan === 'Standard' ? '待核实' : '未开通';
   const upgradeLabels = { preparing: '准备中', processing: '处理中', failed: '申请未完成', unknown: '结果待确认', 'mock-complete': '权益状态待核实' };
   const upgradeStatus = intent ? controls.upgrade === 'preparing' ? intent.status : controls.upgrade : null;
-  const billingMessage = controls.billingRead === 'loading' ? '正在查询账单…' : controls.billingRead === 'failed' ? '账单暂时无法读取，请稍后重试。' : controls.billingRead === 'unknown' ? '账单查询结果待确认，请勿重复付款。' : '暂无账单';
+  const billingMessage = controls.billingRead === 'loading' ? '正在查询账单…' : controls.billingRead === 'failed' ? '账单暂时无法读取，请稍后重试。' : controls.billingRead === 'unknown' ? '账单列表查询结果待确认；当前没有可核实的付款记录。' : '暂无账单';
   return <div className="mvp-settings-stack"><section className="issuer-card mvp-settings-card"><div className="issuer-card-head"><div><h2>订阅管理</h2><p>{tenant.name} · {tenant.plan === 'Free' ? 'Free Sandbox' : 'Standard'}</p></div></div><dl className="issuer-facts"><div><dt>当前套餐</dt><dd>{tenant.plan}</dd></div><div><dt>订阅状态</dt><dd>{intent?.status === 'unknown' ? '结果待确认' : tenant.plan === 'Free' ? '永久免费' : '已开通'}</dd></div><div><dt>账期与价格</dt><dd>待公布</dd></div></dl><div className="mvp-plan-compare"><div><h3>Free Sandbox</h3><p>永久免费，用于准备和测试。不支持真实发行或募集资金。</p></div><div><h3>Standard</h3><p>商业订阅权益。生产能力仍须符合业务审核及准入要求。</p></div></div>{tenant.plan === 'Free' && tenant.canSubscribe && <button className="issuer-action" onClick={() => setConfirming(!confirming)}>升级到 Standard</button>}{!tenant.canSubscribe && <p>您没有管理本企业订阅的权限。</p>}</section>
     {confirming && <section className="issuer-card mvp-settings-card"><h2>确认升级</h2><dl className="issuer-facts"><div><dt>当前企业</dt><dd>{tenant.name}</dd></div><div><dt>套餐</dt><dd>Standard</dd></div><div><dt>价格与周期</dt><dd>待正式公布</dd></div></dl><p>SaaS服务协议尚未发布，当前无法提交升级申请。<a href="/policies/terms" target="_blank" rel="noreferrer">查看服务条款状态</a></p><label className="mvp-check"><input type="checkbox" disabled />我已阅读并同意《WDEX SaaS服务协议》</label><button className="issuer-action" disabled>提交升级申请</button></section>}
-    <section className="issuer-card mvp-settings-card"><h2>付款与账单</h2>{intent && upgradeStatus ? <p role="status">升级申请：{upgradeLabels[upgradeStatus]}</p> : <p role="status">暂无升级申请。</p>}<p>服务协议尚未发布，暂不能确认同意或提交正式升级申请。</p><dl className="issuer-facts"><div><dt>付款状态</dt><dd>{payment}</dd></div><div><dt>商业权益</dt><dd>{entitlement}</dd></div></dl>{controls.payment === 'unknown' && <p>请核实原记录，勿重复付款。</p>}<p role={controls.billingRead === 'failed' ? 'alert' : 'status'}>{billingMessage}</p><h3>订阅历史</h3><p>暂无订阅记录</p></section></div>;
+    <section className="issuer-card mvp-settings-card"><h2>付款与账单</h2>{intent && upgradeStatus ? <p role="status">升级申请：{upgradeLabels[upgradeStatus]}</p> : <p role="status">暂无升级申请。</p>}<p>服务协议尚未发布，暂不能确认同意或提交正式升级申请。</p><dl className="issuer-facts"><div><dt>付款状态</dt><dd>{payment}</dd></div><div><dt>商业权益</dt><dd>{entitlement}</dd></div></dl>{hasPaymentRecord && controls.payment === 'unknown' && <p>请核实原记录，勿重复付款。</p>}<p role={controls.billingRead === 'failed' ? 'alert' : 'status'}>{billingMessage}</p><h3>订阅历史</h3><p>暂无订阅记录</p></section></div>;
 }

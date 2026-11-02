@@ -1,4 +1,4 @@
-.demo-control-root { position: fixed; left: 22px; bottom: 22px; z-index: 2100; }
+.demo-control-root { position: fixed; right: 22px; bottom: 22px; z-index: 2100; }
 .demo-control-trigger { width: 54px; height: 54px; border: 1px solid #69d7e7; border-radius: 50%; background: #08304a; color: #fff; box-shadow: 0 12px 30px #06233d55; font-size: 26px; cursor: pointer; }
 .demo-control-trigger:focus-visible, .demo-control-panel :focus-visible { outline: 3px solid #14b8d4; outline-offset: 2px; }
 .demo-control-backdrop { position: fixed; inset: 0; background: #071a2b55; display: flex; align-items: flex-end; justify-content: flex-end; padding: 20px 22px 88px; }
@@ -7,6 +7,7 @@
 .demo-control-head strong { display: block; font-size: 20px; }
 .demo-control-head small { color: #587183; }
 .demo-control-note { margin: 0; font-size: 12px; line-height: 1.55; color: #587183; }
+.demo-control-context { display: grid; gap: 4px; padding: 10px 12px; border: 1px solid #bfd7e2; border-radius: 8px; background: #f0f8fb; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
 .demo-control-head button { border: 0; background: transparent; font-size: 26px; cursor: pointer; }
 .demo-control-panel label { display: grid; gap: 6px; font-size: 13px; font-weight: 700; }
 .demo-control-panel select { width: 100%; padding: 9px; border: 1px solid #b7cbd5; border-radius: 8px; background: #fff; color: #12344a; }
@@ -14,5 +15,5 @@
 .demo-control-presets button, .demo-control-groups button, .demo-control-foot button { border: 1px solid #b7cbd5; border-radius: 7px; background: #f6fafb; color: #12344a; padding: 7px 10px; cursor: pointer; }
 .demo-control-groups button[aria-selected="true"] { border-color: #0a87a6; background: #e6f7fa; }
 .demo-control-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.demo-control-foot { border-top: 1px solid #dbe7ec; padding-top: 12px; }
-@media (max-width: 600px) { .demo-control-root { left: 14px; bottom: 14px; } .demo-control-backdrop { padding: 0; } .demo-control-panel { width: 100vw; max-height: 82dvh; border-radius: 18px 18px 0 0; padding-bottom: max(20px, env(safe-area-inset-bottom)); } .demo-control-fields { grid-template-columns: 1fr; } }
+.demo-control-foot { border-top: 1px solid #dbe7ec; padding-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 600px) { .demo-control-root { right: 14px; bottom: 14px; } .demo-control-backdrop { padding: 0; } .demo-control-panel { width: 100vw; max-height: 82dvh; border-radius: 18px 18px 0 0; padding-bottom: max(20px, env(safe-area-inset-bottom)); } .demo-control-fields { grid-template-columns: 1fr; } }

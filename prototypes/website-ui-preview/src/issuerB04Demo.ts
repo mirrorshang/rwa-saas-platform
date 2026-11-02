@@ -1,6 +1,7 @@
 import { getDemoAuth, getDemoTenant, type DemoTenant } from './issuerDemo';
 import { getProfileDraft } from './issuerB03Demo';
 import { b04StorageKeys } from './issuerSensitiveCache';
+import { countryOptions } from './countries';
 
 export type KybDraft = {
   legalName: string; displayName: string; country: string; entityType: string;
@@ -25,8 +26,8 @@ const entitlementKey = 'wdex-issuer-b04-entitlement-preview';
 type Store = { email: string; tenants: Record<string, { draft?: SavedKybDraft; case?: KybCase }> };
 type RecordForTenant = Store['tenants'][string];
 const defaultPreview: CommercialPreview = { contract: 'unpublished', payment: 'unavailable', entitlement: 'unavailable' };
-// These choices only constrain the Mock form. They are not approved KYB jurisdictions or entity definitions.
-export const kybCountryOptions = [{ value: 'HK', label: '香港（演示资料）' }, { value: 'SG', label: '新加坡（演示资料）' }] as const;
+// Draft location choices are a data directory, never an approved KYB jurisdiction list.
+export const kybCountryOptions = countryOptions.map(item => ({ value: item.code, label: item.name }));
 export const kybEntityOptions = ['公司（演示分类）', '其他机构（演示分类）'] as const;
 // Applicable registration-number and material rules remain TBD in Master PRD §§6.20.2/6.30.2.
 const approvedKybPolicies: Record<string, { registrationIdRequired: boolean; requiredMaterials: string[] }> = {};
@@ -130,6 +131,12 @@ export function getCommercialPreview(tenant: DemoTenant): CommercialPreview {
     payment: readField(paymentKey, defaultPreview.payment),
     entitlement: readField(entitlementKey, defaultPreview.entitlement),
   };
+}
+
+// This UI has no original invoice or payment record. Preview values never establish one.
+export function hasOriginalPaymentRecord(_tenant: DemoTenant): boolean {
+  void _tenant;
+  return false;
 }
 export function setCommercialPreview(tenant: DemoTenant, preview: CommercialPreview): boolean {
   const auth = current(tenant);

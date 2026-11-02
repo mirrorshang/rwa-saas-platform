@@ -4,6 +4,7 @@ import { beginNewTenantDraft, clearDemoContext, getActiveTenantIntent, getAuthor
 import { getKybCase } from '../issuerB04Demo';
 import { getProfileDraft, getUpgradeIntent } from '../issuerB03Demo';
 import { useDemoControls } from '../demoControls';
+import { isDemoPreview } from '../demoEnvironment';
 import { IssuerCertification, IssuerInfo, IssuerPlan } from './IssuerSettings';
 
 type Tab = 'info' | 'kyb' | 'subscription';
@@ -32,7 +33,7 @@ function Dashboard({ tenant, query, panel }: { tenant: DemoTenant; query: string
 
 export function IssuerWorkspace() {
   const query = new URLSearchParams(location.search);
-  const demo = query.get('demo') === '1';
+  const demo = isDemoPreview();
   const standard = query.get('intent') === 'standard';
   const sharedQuery = 'demo=1' + (standard ? '&intent=standard' : '');
   const oldTab = oldTabs[location.pathname];
@@ -46,6 +47,7 @@ export function IssuerWorkspace() {
   const dialogRef = useRef<HTMLDivElement>(null);
   const leaveApproved = useRef(false);
   const controls = useDemoControls(state => state.controls);
+  const resetControls = useDemoControls(state => state.resetControls);
   const auth = getDemoAuth();
   const account = getDemoAccount();
   const tenant = demo && auth ? getDemoTenant() : null;
@@ -89,6 +91,7 @@ export function IssuerWorkspace() {
   const switchTenant = (id: string) => {
     const action = () => {
       if (!selectDemoTenant(id)) { setNotice('您已无法访问该企业，请重新选择。'); leaveApproved.current = false; return; }
+      resetControls();
       location.href = paths.issuer + '?' + sharedQuery;
     };
     if (dirty) requestLeave(action, true); else action();

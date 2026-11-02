@@ -6,19 +6,24 @@ import { persist } from 'zustand/middleware';
 import { marketplaceIsOpen, marketplaceLink, paths, site } from './config';
 import { CookiePreferences } from './CookiePreferences';
 import { getAuthorizedTenants, getDemoAccount, getDemoAuth, getDemoTenant } from './issuerDemo';
+import { canUseLocalDemo, demoRoute, isDemoPreview, preserveDemoLink } from './demoEnvironment';
 
-const LocalDemoControlPanel = import.meta.env.DEV
+export { canUseLocalDemo, demoRoute, isDemoPreview, isLocalPreview } from './demoEnvironment';
+
+declare const __WDEX_DEMO_BUILD__: boolean;
+const LocalDemoControlPanel = (import.meta.env.DEV || __WDEX_DEMO_BUILD__)
   ? lazy(() => import('./DemoControlPanel').then(module => ({ default: module.DemoControlPanel })))
   : null;
 
 export type DemoRole = 'visitor' | 'single' | 'multiple' | 'none' | 'create' | 'restricted' | 'invited' | 'no-subscription' | 'standard' | 'upgrading';
 
-const useDemoStore = create<{ role: DemoRole; setRole: (role: DemoRole) => void }>()(
+type DemoRoleStore = { role: DemoRole; setRole: (role: DemoRole) => void };
+const useDemoStore = (import.meta.env.DEV || __WDEX_DEMO_BUILD__) ? create<DemoRoleStore>()(
   persist(
     (set) => ({ role: 'visitor', setRole: (role) => set({ role }) }),
     { name: 'wdex-demo-role' },
   ),
-);
+) : create<DemoRoleStore>()(() => ({ role: 'visitor', setRole: () => undefined }));
 
 export function useDemoRole(): [DemoRole, (role: DemoRole) => void] {
   const role = useDemoStore(state => state.role);
@@ -49,18 +54,6 @@ const nav = [
   ['订阅方案', paths.pricing],
   ['帮助中心', paths.help],
 ];
-
-export function isLocalPreview() {
-  return location.hostname === 'localhost' || /^127(?:\.\d{1,3}){3}$/.test(location.hostname) || location.hostname === '[::1]';
-}
-
-export function isDemoPreview() {
-  return isLocalPreview() && new URLSearchParams(location.search).get('demo') === '1';
-}
-
-export function demoRoute(path: string) {
-  return isLocalPreview() ? `${path}${path.includes('?') ? '&' : '?'}demo=1` : path;
-}
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -126,6 +119,11 @@ export function App() {
   const demoPanel = demoMode && LocalDemoControlPanel
     ? <Suspense fallback={null}><LocalDemoControlPanel role={role} setRole={setRole} /></Suspense>
     : null;
+  useEffect(() => {
+    if (!demoMode) return;
+    document.addEventListener('click', preserveDemoLink, true);
+    return () => document.removeEventListener('click', preserveDemoLink, true);
+  }, [demoMode]);
   const compactAuth = location.pathname === paths.register || location.pathname === paths.verify || location.pathname === paths.login || location.pathname === paths.onboarding || location.pathname === paths.organizations;
   const issuerPage = location.pathname === paths.issuer || location.pathname.startsWith(`${paths.issuer}/`);
   useEffect(() => {
@@ -144,7 +142,7 @@ export function App() {
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (description) description.content = 'WDEX SaaS为发行机构提供资产、项目、投资者门户、认购、Token与发行后管理工具。';
   }, []);
-  if (issuerPage) return isLocalPreview() ? <><Outlet />{demoPanel}</> : <ServiceUnavailable title="企业工作台暂未开放" description="当前公开网站不提供企业登录或工作台访问。" />;
+  if (issuerPage) return canUseLocalDemo() ? <><Outlet />{demoPanel}</> : <ServiceUnavailable title="企业工作台暂未开放" description="当前公开网站不提供企业登录或工作台访问。" />;
   return <>
     {compactAuth ? <AuthHeader /> : <Header />}
     <Outlet />

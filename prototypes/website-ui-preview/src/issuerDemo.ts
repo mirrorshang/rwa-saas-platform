@@ -35,7 +35,7 @@ export function clearDemoContext() {
   sessionStorage.removeItem(authKey);
   sessionStorage.removeItem(selectionKey);
 }
-export function resetDemoScenario() { [authKey, selectionKey, storeKey, intentKey, draftKey, 'wdex-issuer-b03-profile', 'wdex-issuer-b03-upgrade', ...b04StorageKeys].forEach(key => sessionStorage.removeItem(key)); }
+export function resetDemoScenario() { [authKey, selectionKey, storeKey, intentKey, draftKey, 'wdex-issuer-b03-profile', 'wdex-issuer-b03-upgrade', 'wdex-issuer-assets', ...b04StorageKeys].forEach(key => sessionStorage.removeItem(key)); }
 export function getDemoAuth(): DemoAuth | null {
   const auth = read<DemoAuth>(authKey);
   if (!auth || auth.expiresAt <= Date.now()) { clearDemoContext(); return null; }

@@ -19,6 +19,11 @@ export type DemoControls = {
   entitlement: 'unavailable' | 'pending' | 'activated-preview';
   billingRead: 'ready' | 'loading' | 'failed' | 'unknown';
   panel: 'ready' | 'loading' | 'failed' | 'unknown';
+  assetList: 'ready' | 'loading' | 'failed' | 'unknown';
+  assetSave: 'success' | 'failed' | 'unknown';
+  assetVersion: 'ready' | 'conflict';
+  assetAccess: 'allowed' | 'denied';
+  assetHistory: 'ready' | 'loading' | 'failed' | 'unknown';
 };
 
 export const defaultDemoControls: DemoControls = {
@@ -26,6 +31,7 @@ export const defaultDemoControls: DemoControls = {
   profile: 'saved', kybUpload: 'success', kybRead: 'ready',
   kybResult: 'actual', upgrade: 'preparing', contract: 'unpublished', payment: 'unavailable',
   entitlement: 'unavailable', billingRead: 'ready', panel: 'ready',
+  assetList: 'ready', assetSave: 'success', assetVersion: 'ready', assetAccess: 'allowed', assetHistory: 'ready',
 };
 
 type Store = { controls: DemoControls; setControl: <K extends keyof DemoControls>(key: K, value: DemoControls[K]) => void; resetControls: () => void };

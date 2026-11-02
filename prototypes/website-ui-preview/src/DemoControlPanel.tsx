@@ -31,6 +31,13 @@ const groups: { title: string; controls: { key: keyof DemoControls; label: strin
     { key: 'billingRead', label: '账单读取', options: [['ready', '正常'], ['loading', '加载中'], ['failed', '失败'], ['unknown', '结果未知']] },
   ] },
   { title: '通用状态', controls: [{ key: 'panel', label: '工作台数据', options: [['ready', '正常'], ['loading', '加载中'], ['failed', '失败'], ['unknown', '结果未知']] }] },
+  { title: '资产管理', controls: [
+    { key: 'assetList', label: '资产列表读取', options: [['ready', '正常'], ['loading', '加载中'], ['failed', '失败'], ['unknown', '结果待确认']] },
+    { key: 'assetSave', label: '资产保存', options: [['success', '成功'], ['failed', '失败'], ['unknown', '结果待确认']] },
+    { key: 'assetVersion', label: '资产版本', options: [['ready', '正常'], ['conflict', '版本冲突']] },
+    { key: 'assetAccess', label: '资产访问', options: [['allowed', '允许'], ['denied', '无权限']] },
+    { key: 'assetHistory', label: '版本历史读取', options: [['ready', '正常'], ['loading', '加载中'], ['failed', '失败'], ['unknown', '结果待确认']] },
+  ] },
 ];
 const roles: [DemoRole, string][] = [['visitor', '访客'], ['single', '已有单企业'], ['multiple', '已有多企业'], ['create', '新账号／无企业'], ['none', '无企业授权'], ['restricted', '受限账号'], ['invited', '待处理邀请'], ['no-subscription', '普通企业成员'], ['standard', 'Standard已开通'], ['upgrading', '升级处理中']];
 const presets: [string, DemoRole, Partial<DemoControls>][] = [
@@ -42,6 +49,9 @@ const presets: [string, DemoRole, Partial<DemoControls>][] = [
 const pageName = () => {
   const path = location.pathname;
   if (path === '/issuer/settings') return `企业设置 · ${{ info: '企业信息', kyb: '企业认证', subscription: '订阅管理' }[new URLSearchParams(location.search).get('tab') || 'info'] || '企业信息'}`;
+  if (path === '/issuer/assets') return '资产库';
+  if (path === '/issuer/assets/new') return '新建资产';
+  if (path.startsWith('/issuer/assets/')) return path.endsWith('/edit') ? '编辑资产' : '资产详情';
   return ({ '/': '首页', '/features': '产品功能', '/solutions': '解决方案', '/pricing': '订阅方案', '/help': '帮助中心', '/contact': '联系我们', '/login': '企业登录', '/free-onboarding': '创建企业', '/organizations': '选择企业', '/issuer': '企业工作台', '/standard-upgrade': 'Standard 升级' } as Record<string, string>)[path] || '当前页面';
 };
 

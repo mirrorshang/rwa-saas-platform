@@ -5,8 +5,7 @@ export type IssuerNavSection = IssuerNavItem & { icon: string; children?: Issuer
 export const issuerNavigation: IssuerNavSection[] = [
   { label: '工作台首页', path: '/issuer', icon: 'M3 10.5 12 3l9 7.5V21H3z M9 21v-7h6v7' },
   { label: '资产与发行', path: '/issuer/assets', icon: 'M4 5h16v14H4z M4 10h16 M9 10v9', children: [
-    { label: '资产库', path: '/issuer/assets' }, { label: '权益结构', path: '/issuer/instruments' },
-    { label: '项目管理', path: '/issuer/projects' }, { label: '发行管理', path: '/issuer/offerings' }, { label: '文件中心', path: '/issuer/files' },
+    { label: '资产管理', path: '/issuer/assets' }, { label: '发行管理', path: '/issuer/projects' },
   ] },
   { label: '投资者门户', path: '/issuer/portal', icon: 'M4 20V5h16v15 M4 9h16 M8 15h3 M14 15h3' },
   { label: '投资者与认购', path: '/issuer/investors', icon: 'M16 20v-2a4 4 0 0 0-8 0v2 M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M3 20h18', children: [
@@ -29,7 +28,7 @@ export const issuerNavigation: IssuerNavSection[] = [
 ];
 
 export const issuerBlankPaths = new Set([
-  '/issuer/portal', '/issuer/projects', '/issuer/offerings', '/issuer/files',
+  '/issuer/portal',
   '/issuer/investors', '/issuer/eligibility', '/issuer/orders', '/issuer/allocations', '/issuer/holders',
   '/issuer/receipts', '/issuer/refunds', '/issuer/settlement',
   '/issuer/token-contracts', '/issuer/token-operations', '/issuer/chain-records',
@@ -38,7 +37,8 @@ export const issuerBlankPaths = new Set([
 ]);
 
 export const navPathIsActive = (current: string, target: string) => current === target ||
-  ((target === '/issuer/assets' || target === '/issuer/instruments') && current.startsWith(target + '/'));
+  (target === '/issuer/assets' && (current.startsWith('/issuer/assets/') || current === '/issuer/instruments' || current.startsWith('/issuer/instruments/'))) ||
+  (target === '/issuer/projects' && (current.startsWith('/issuer/projects/') || current === '/issuer/offerings' || current.startsWith('/issuer/offerings/') || current === '/issuer/issuance-check' || current === '/issuer/files'));
 
 export function activeSection(current: string): IssuerNavSection | undefined {
   return issuerNavigation.find(section => section.children?.some(item => navPathIsActive(current, item.path)) || navPathIsActive(current, section.path));

@@ -23,8 +23,9 @@ export type OfferingFields = {
 };
 export type Revision<T> = { number: number; fields: T; savedAt: number; savedBy: string };
 export type Project = { id: string; tenantId: string; number: string; status: 'draft'; versions: Revision<ProjectFields>[] };
-export type Offering = { id: string; tenantId: string; number: string; status: 'draft' | 'sandbox-published' | 'sandbox-paused' | 'sandbox-ended'; versions: Revision<OfferingFields>[]; events: { kind: string; at: number; actor: string }[] };
-export type IssuanceIntent = { id: string; tenantId: string; actor: string; kind: 'project' | 'offering' | 'lifecycle'; recordId: string; expectedVersion: number; status: 'processing' | 'failed' | 'unknown'; snapshot?: ProjectFields | OfferingFields; action?: 'publish' | 'pause' | 'resume' | 'end' };
+export type OfferingChange = { id: string; basedOn: number; snapshot: OfferingFields; requestedAt: number; requestedBy: string; status: 'pending' };
+export type Offering = { id: string; tenantId: string; number: string; status: 'draft' | 'sandbox-published' | 'sandbox-paused' | 'sandbox-ended'; versions: Revision<OfferingFields>[]; events: { kind: string; at: number; actor: string }[]; pendingChange?: OfferingChange };
+export type IssuanceIntent = { id: string; tenantId: string; actor: string; kind: 'project' | 'offering' | 'lifecycle' | 'change'; recordId: string; expectedVersion: number; status: 'processing' | 'failed' | 'unknown'; snapshot?: ProjectFields | OfferingFields; action?: 'publish' | 'pause' | 'resume' | 'end' };
 type Bucket = { projects: Project[]; offerings: Offering[]; intent: IssuanceIntent | null };
 type Store = { accounts: Record<string, Record<string, Bucket>> };
 export type Result<T> = { status: 'saved' | 'failed' | 'unknown' | 'conflict' | 'denied' | 'invalid'; record?: T; intent?: IssuanceIntent; errors?: string[] };
@@ -174,9 +175,28 @@ export function checkIssuanceIntent(tenant: DemoTenant): Result<Project | Offeri
   const store = read(); const data = bucket(store, current.email, current.tenantId); const intent = data.intent;
   if (!intent || intent.status !== 'unknown') return { status: 'denied' };
   const outcome = useDemoControls.getState().controls.issuanceSave;
-  if (outcome === 'success') return intent.kind === 'lifecycle' ? commitLifecycle(store, current.email, current.tenantId, intent) : commit(store, current.email, current.tenantId, intent);
+  if (outcome === 'success') return intent.kind === 'lifecycle' ? commitLifecycle(store, current.email, current.tenantId, intent) : intent.kind === 'change' ? commitChange(store, current.email, current.tenantId, intent) : commit(store, current.email, current.tenantId, intent);
   if (outcome === 'failed') { intent.status = 'failed'; put(store, current.email, current.tenantId, data); return { status: 'failed', intent: clone(intent) }; }
   return { status: 'unknown', intent: clone(intent) };
+}
+function commitChange(store: Store, email: string, tenantId: string, intent: IssuanceIntent): Result<Offering> {
+  const data = bucket(store, email, tenantId); const record = data.offerings.find(item => item.id === intent.recordId);
+  if (!record || record.pendingChange || record.versions.length !== intent.expectedVersion || !intent.snapshot || record.status === 'draft' || record.status === 'sandbox-ended') return { status: 'conflict', intent: clone(intent) };
+  record.pendingChange = { id: intent.id, basedOn: intent.expectedVersion, snapshot: clone(intent.snapshot as OfferingFields), requestedAt: Date.now(), requestedBy: email, status: 'pending' };
+  record.events.push({ kind: 'change-request', at: Date.now(), actor: email }); data.intent = null; put(store, email, tenantId, data);
+  return { status: 'saved', record: clone(record) };
+}
+export function requestOfferingChange(tenant: DemoTenant, offeringId: string, fields: OfferingFields, expectedVersion: number, retryId?: string): Result<Offering> {
+  const current = scope(tenant, true); if (!current) return { status: 'denied' };
+  const errors = offeringErrors(tenant, fields, offeringId); if (errors.length) return { status: 'invalid', errors };
+  const store = read(); const data = bucket(store, current.email, current.tenantId); const record = data.offerings.find(item => item.id === offeringId);
+  if (!record || record.pendingChange || record.status === 'draft' || record.status === 'sandbox-ended' || record.versions.length !== expectedVersion) return { status: 'denied' };
+  if (data.intent && (data.intent.status !== 'failed' || data.intent.kind !== 'change' || data.intent.id !== retryId || data.intent.recordId !== offeringId)) return { status: data.intent.status === 'unknown' ? 'unknown' : 'denied', intent: clone(data.intent) };
+  const intent: IssuanceIntent = { id: data.intent?.id || crypto.randomUUID(), tenantId: tenant.id, actor: current.email, kind: 'change', recordId: offeringId, expectedVersion, snapshot: clone(fields), status: 'processing' };
+  data.intent = intent; put(store, current.email, current.tenantId, data);
+  const outcome = useDemoControls.getState().controls.issuanceSave;
+  if (outcome === 'success') return commitChange(store, current.email, current.tenantId, intent);
+  intent.status = outcome; put(store, current.email, current.tenantId, data); return { status: outcome, intent: clone(intent) };
 }
 function commitLifecycle(store: Store, email: string, tenantId: string, intent: IssuanceIntent): Result<Offering> {
   const data = bucket(store, email, tenantId); const record = data.offerings.find(item => item.id === intent.recordId);

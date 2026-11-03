@@ -270,5 +270,7 @@
 .issuance-files h2 { margin: 0; }
 .issuance-file-form { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)) auto; gap: 10px; align-items: end; padding-top: 14px; border-top: 1px solid #dfebf0; }
 .issuance-file-form label { display: grid; gap: 6px; min-width: 0; color: #2a4b5f; font-size: 12px; font-weight: 700; }
+.issuance-confirm { display: flex; align-items: center; gap: 8px; margin: 18px 0; color: #26475c; font-size: 13px; }
+.issuance-confirm input { width: auto; }
 @media (max-width: 800px) { .issuance-grid { grid-template-columns: 1fr; } .issuance-file-form { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .issuance-form-grid, .issuance-file-form { grid-template-columns: 1fr; } .issuance-facts div { grid-template-columns: 1fr; gap: 3px; } .issuance-heading { align-items: flex-start; } .issuance-tabs a, .issuance-subtabs button { padding: 11px 12px; font-size: 12px; } }

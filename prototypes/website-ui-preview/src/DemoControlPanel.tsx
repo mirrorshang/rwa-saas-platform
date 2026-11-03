@@ -6,6 +6,7 @@ import { getKybCase, hasOriginalPaymentRecord } from './issuerB04Demo';
 import { defaultDemoControls } from './demoControls';
 import { getUpgradeIntent } from './issuerB03Demo';
 import type { DemoRole } from './site';
+import { issuerNavigation } from './issuerNavigation';
 import './demoControlPanel.scss';
 
 const groups: { title: string; controls: { key: keyof DemoControls; label: string; options: [string, string][] }[] }[] = [
@@ -41,6 +42,7 @@ const groups: { title: string; controls: { key: keyof DemoControls; label: strin
   { title: '权益结构', controls: [
     { key: 'instrumentList', label: '列表读取', options: [['ready', '正常'], ['loading', '加载中'], ['failed', '失败'], ['unknown', '结果待确认']] },
     { key: 'instrumentSave', label: '草稿保存', options: [['success', '成功'], ['failed', '失败'], ['unknown', '结果待确认']] },
+    { key: 'instrumentSubmit', label: '内部复核提交', options: [['success', '成功'], ['failed', '失败'], ['unknown', '结果待确认']] },
     { key: 'instrumentVersion', label: '版本检查', options: [['ready', '正常'], ['conflict', '版本冲突']] },
     { key: 'instrumentAccess', label: '访问权限', options: [['allowed', '允许'], ['denied', '无权限']] },
     { key: 'instrumentHistory', label: '历史读取', options: [['ready', '正常'], ['loading', '加载中'], ['failed', '失败'], ['unknown', '结果待确认']] },
@@ -64,6 +66,8 @@ const pageName = () => {
   if (path === '/issuer/instruments') return '权益结构';
   if (path === '/issuer/instruments/new') return '新建权益结构';
   if (path.startsWith('/issuer/instruments/')) return path.endsWith('/edit') ? '编辑权益结构' : '权益结构详情';
+  const issuerMenu = issuerNavigation.flatMap(section => [section, ...(section.children || [])]).find(item => item.path === path);
+  if (issuerMenu) return issuerMenu.label;
   return ({ '/': '首页', '/features': '产品功能', '/solutions': '解决方案', '/pricing': '订阅方案', '/help': '帮助中心', '/contact': '联系我们', '/login': '企业登录', '/free-onboarding': '创建企业', '/organizations': '选择企业', '/issuer': '企业工作台', '/standard-upgrade': 'Standard 升级' } as Record<string, string>)[path] || '当前页面';
 };
 

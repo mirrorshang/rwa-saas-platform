@@ -7,6 +7,7 @@ import { marketplaceIsOpen, marketplaceLink, paths, site } from './config';
 import { CookiePreferences } from './CookiePreferences';
 import { getAuthorizedTenants, getDemoAccount, getDemoAuth, getDemoTenant } from './issuerDemo';
 import { canUseLocalDemo, demoRoute, isDemoPreview, preserveDemoLink } from './demoEnvironment';
+import { issuerNavigation } from './issuerNavigation';
 
 export { canUseLocalDemo, demoRoute, isDemoPreview, isLocalPreview } from './demoEnvironment';
 
@@ -141,7 +142,8 @@ export function App() {
     };
     const tab = new URLSearchParams(location.search).get('tab');
     const settingsTitle = tab === 'kyb' ? '企业认证' : tab === 'subscription' ? '订阅管理' : '企业信息';
-    const page = location.pathname === paths.issuerSettings ? settingsTitle : pageTitles[location.pathname] || (location.pathname.startsWith(`${paths.policies}/`) ? '法律与政策' : 'WDEX SaaS');
+    const navTitle = issuerNavigation.flatMap(section => [section, ...(section.children || [])]).find(item => item.path === location.pathname)?.label;
+    const page = location.pathname === paths.issuerSettings ? settingsTitle : pageTitles[location.pathname] || navTitle || (location.pathname.startsWith(`${paths.policies}/`) ? '法律与政策' : 'WDEX SaaS');
     document.title = `${page}｜${site.brand}`;
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (description) description.content = 'WDEX SaaS为发行机构提供资产、项目、投资者门户、认购、Token与发行后管理工具。';

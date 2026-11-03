@@ -210,3 +210,23 @@
 .issuer-top-actions > button { border: 0; background: transparent; color: #256383; cursor: pointer; }
 @media (max-width: 800px) { .mvp-overview-grid { grid-template-columns: 1fr; } .mvp-issuer-shell .issuer-sidebar { box-shadow: 12px 0 32px #061c3055; } }
 @media (max-width: 560px) { .mvp-welcome { padding: 22px; } .mvp-kyb-grid, .mvp-plan-compare { grid-template-columns: 1fr; } .mvp-settings-tabs a { padding: 12px 13px; } .mvp-settings-card { padding: 17px; } }
+
+.mvp-issuer-shell .issuer-sidebar { position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+.mvp-issuer-shell .issuer-navigation { gap: 2px; padding: 4px 10px 14px; }
+.issuer-nav-section { min-width: 0; }
+.issuer-nav-row { display: flex; align-items: center; gap: 2px; }
+.mvp-issuer-shell .issuer-sidebar .issuer-nav-row > a { flex: 1; min-width: 0; min-height: 42px; font-size: 13px; padding: 0 10px; }
+.issuer-nav-row svg { width: 17px; height: 17px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.issuer-nav-row a span { min-width: 0; }
+.mvp-issuer-shell .issuer-sidebar .issuer-nav-row .issuer-nav-toggle { flex: 0 0 31px; width: 31px; min-height: 34px; padding: 0; justify-content: center; }
+.issuer-nav-toggle span { flex: none !important; font-size: 18px !important; transition: transform .15s; }
+.issuer-nav-toggle[aria-expanded="true"] span { transform: rotate(180deg); }
+.issuer-subnav[hidden] { display: none !important; }
+.mvp-issuer-shell .issuer-sidebar nav .issuer-subnav { padding: 2px 0 6px 31px; }
+.mvp-issuer-shell .issuer-sidebar nav .issuer-subnav a { min-height: 31px; padding: 0 10px; font-size: 12px; }
+.mvp-issuer-shell .issuer-content-blank { max-width: none; min-height: calc(100vh - 70px); padding: 0; background: white; }
+.mvp-issuer-shell .issuer-topbar:has(.issuer-topbar-notice) { flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+.mvp-issuer-shell .issuer-topbar-notice { flex: 0 0 100%; color: #14536b; font-size: 12px; }
+.mvp-issuer-shell .issuer-topbar-notice a { margin-left: 12px; text-decoration: underline; }
+.issuer-blank-workspace { min-height: calc(100vh - 70px); background: white; }
+@media (max-width: 800px) { .mvp-issuer-shell .issuer-sidebar { position: fixed; height: 100vh; overflow-y: auto; } .mvp-issuer-shell .issuer-content-blank, .issuer-blank-workspace { min-height: calc(100vh - 145px); } }

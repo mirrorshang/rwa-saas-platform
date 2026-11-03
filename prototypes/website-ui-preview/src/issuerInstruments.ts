@@ -12,14 +12,14 @@ export type InstrumentFields = {
   name: string; type: InstrumentType; assetId: string; assetVersion: number; purpose: string;
   issuer: string; debtor: string; debtorRelation: string; debtNature: string; rightsContent: string;
   spv: string; spvRole: string; spvAssetRelation: string; equityNature: string; holderRights: string;
-  economicSummary: string; principal: string; currency: string; interest: string; repayment: string; maturity: string; priority: string;
+  economicSummary: string; principal: string; currency: string; interest: string; interestPayment: string; repayment: string; maturity: string; priority: string;
   equitySource: string; equityShare: string; distribution: string; governance: string; exitTerms: string;
   qualification: string; transfer: string; disclosure: string; buyback: string; risks: string; materials: InstrumentMaterial[];
 };
 export type InstrumentVersion = { number: number; fields: InstrumentFields; savedAt: number; savedBy: string; assetName: string; assetNumber: string };
 export type InstrumentEvent = { id: string; version: number; kind: 'saved' | 'submitted' | 'returned' | 'completed' | 'paused' | 'archived'; at: number; actor: string; note: string };
 export type Instrument = { id: string; tenantId: string; number: string; status: InstrumentStatus; versions: InstrumentVersion[]; events: InstrumentEvent[]; submittedBy?: string; submittedAt?: number };
-export type InstrumentIntent = { id: string; kind: 'save' | 'review'; tenantId: string; instrumentId: string; expectedVersion: number; actor: string; status: 'processing' | 'failed' | 'unknown'; snapshot?: InstrumentFields; decision?: 'completed' | 'changes'; note?: string };
+export type InstrumentIntent = { id: string; kind: 'save' | 'submit' | 'review'; tenantId: string; instrumentId: string; expectedVersion: number; actor: string; status: 'processing' | 'failed' | 'unknown'; snapshot?: InstrumentFields; decision?: 'completed' | 'changes'; note?: string };
 type TenantData = { records: Instrument[]; intent: InstrumentIntent | null };
 type Store = { accounts: Record<string, Record<string, TenantData>> };
 export type InstrumentResult = { status: 'saved' | 'completed' | 'changes' | 'failed' | 'unknown' | 'conflict' | 'denied' | 'invalid'; record?: Instrument; intent?: InstrumentIntent; errors?: string[] };
@@ -28,7 +28,7 @@ export const typeLabels: Record<Exclude<InstrumentType, ''>, string> = { debt: '
 export const statusLabels: Record<InstrumentStatus, string> = { draft: '草稿', reviewing: '审核中', changes: '待修改', completed: '内部复核完成', paused: '已暂停', archived: '已归档' };
 export const blankInstrumentFields = (): InstrumentFields => ({
   name: '', type: '', assetId: '', assetVersion: 0, purpose: '', issuer: '', debtor: '', debtorRelation: '', debtNature: '', rightsContent: '',
-  spv: '', spvRole: '', spvAssetRelation: '', equityNature: '', holderRights: '', economicSummary: '', principal: '', currency: '', interest: '', repayment: '', maturity: '', priority: '',
+  spv: '', spvRole: '', spvAssetRelation: '', equityNature: '', holderRights: '', economicSummary: '', principal: '', currency: '', interest: '', interestPayment: '', repayment: '', maturity: '', priority: '',
   equitySource: '', equityShare: '', distribution: '', governance: '', exitTerms: '', qualification: '', transfer: '', disclosure: '', buyback: '', risks: '', materials: [],
 });
 const clone = <T,>(value: T): T => structuredClone(value);
@@ -117,10 +117,23 @@ export function checkInstrumentIntent(tenant: DemoTenant): InstrumentResult {
   const value = read(); const bucket = data(value, current.email, current.tenantId); const intent = bucket.intent;
   if (!intent || intent.status !== 'unknown') return { status: 'denied' };
   if (intent.kind === 'review') return settleReview(tenant, value, current.email, bucket, intent);
+  if (intent.kind === 'submit') return settleSubmit(tenant, value, current.email, bucket, intent);
   const outcome = useDemoControls.getState().controls.instrumentSave;
   if (outcome === 'success') return commitSave(value, current.email, current.tenantId, intent);
   if (outcome === 'failed') { intent.status = 'failed'; put(value, current.email, current.tenantId, bucket); return { status: 'failed', intent: clone(intent) }; }
   return { status: 'unknown', intent: clone(intent) };
+}
+function settleSubmit(tenant: DemoTenant, value: Store, email: string, bucket: TenantData, intent: InstrumentIntent): InstrumentResult {
+  const record = bucket.records.find(item => item.id === intent.instrumentId && item.tenantId === tenant.id);
+  if (!record || record.versions.length !== intent.expectedVersion || !['draft', 'changes'].includes(record.status)) return { status: 'conflict', intent: clone(intent) };
+  const errors = instrumentErrors(tenant, latest(record).fields, true);
+  if (errors.length) { intent.status = 'failed'; put(value, email, tenant.id, bucket); return { status: 'invalid', intent: clone(intent), errors }; }
+  const outcome = useDemoControls.getState().controls.instrumentSubmit;
+  if (outcome !== 'success') { intent.status = outcome; put(value, email, tenant.id, bucket); return { status: outcome, intent: clone(intent), record: clone(record) }; }
+  record.status = 'reviewing'; record.submittedBy = email; record.submittedAt = Date.now();
+  record.events.push(event(intent.expectedVersion, 'submitted', email, '提交企业内部复核'));
+  bucket.intent = null; put(value, email, tenant.id, bucket);
+  return { status: 'saved', record: clone(record) };
 }
 export function submitInstrument(tenant: DemoTenant, id: string, expectedVersion: number, confirmed: boolean): InstrumentResult {
   const current = scope(tenant, true); if (!current || !confirmed) return { status: 'denied' };
@@ -129,8 +142,10 @@ export function submitInstrument(tenant: DemoTenant, id: string, expectedVersion
   const record = bucket.records.find(item => item.id === id && item.tenantId === tenant.id);
   if (!record || record.versions.length !== expectedVersion || !['draft', 'changes'].includes(record.status)) return { status: 'denied' };
   const errors = instrumentErrors(tenant, latest(record).fields, true); if (errors.length) return { status: 'invalid', errors };
-  record.status = 'reviewing'; record.submittedBy = current.email; record.submittedAt = Date.now(); record.events.push(event(expectedVersion, 'submitted', current.email, '提交企业内部复核'));
-  put(value, current.email, current.tenantId, bucket); return { status: 'saved', record: clone(record) };
+  const retry = bucket.intent?.kind === 'submit' && bucket.intent.status === 'failed' && bucket.intent.instrumentId === id && bucket.intent.expectedVersion === expectedVersion ? bucket.intent : null;
+  const intent: InstrumentIntent = { id: retry?.id || crypto.randomUUID(), kind: 'submit', tenantId: tenant.id, instrumentId: id, expectedVersion, actor: current.email, status: 'processing' };
+  bucket.intent = intent; put(value, current.email, tenant.id, bucket);
+  return settleSubmit(tenant, value, current.email, bucket, intent);
 }
 const reviewer = (tenant: DemoTenant, submitter: string): string | null => {
   const current = scope(tenant, true); if (!current) return null;

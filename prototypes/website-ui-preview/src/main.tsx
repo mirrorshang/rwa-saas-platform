@@ -38,6 +38,7 @@ const organizationsRoute = createRoute({ getParentRoute: () => rootRoute, path: 
 const upgradeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/standard-upgrade', component: StandardUpgrade });
 const investorPlatformRoute = createRoute({ getParentRoute: () => rootRoute, path: '/investor-platform', component: InvestorPlatform });
 const issuerRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer', component: IssuerWorkspace });
+const issuerNavigationShellRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/$section', component: IssuerWorkspace });
 const issuerAssetsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/assets', component: IssuerWorkspace });
 const issuerAssetNewRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/assets/new', component: IssuerWorkspace });
 const issuerAssetDetailRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/assets/$assetId', component: IssuerWorkspace });
@@ -55,7 +56,7 @@ const issuerKybReviewRoute = createRoute({ getParentRoute: () => rootRoute, path
 const issuerContractRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/contract', component: IssuerWorkspace });
 const issuerPaymentRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/payment', component: IssuerWorkspace });
 const issuerBillingRoute = createRoute({ getParentRoute: () => rootRoute, path: '/issuer/billing', component: IssuerWorkspace });
-const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, investorPlatformRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, upgradeRoute, issuerRoute, issuerAssetsRoute, issuerAssetNewRoute, issuerAssetDetailRoute, issuerAssetEditRoute, issuerInstrumentsRoute, issuerInstrumentNewRoute, issuerInstrumentDetailRoute, issuerInstrumentEditRoute, issuerSettingsRoute, issuerProfileRoute, issuerSubscriptionRoute, issuerUpgradeRoute, issuerKybRoute, issuerKybReviewRoute, issuerContractRoute, issuerPaymentRoute, issuerBillingRoute]);
+const routeTree = rootRoute.addChildren([homeRoute, featuresRoute, solutionsRoute, pricingRoute, investorPlatformRoute, helpRoute, contactRoute, policiesRoute, policyRoute, registerRoute, verifyRoute, loginRoute, onboardingRoute, organizationsRoute, upgradeRoute, issuerRoute, issuerNavigationShellRoute, issuerAssetsRoute, issuerAssetNewRoute, issuerAssetDetailRoute, issuerAssetEditRoute, issuerInstrumentsRoute, issuerInstrumentNewRoute, issuerInstrumentDetailRoute, issuerInstrumentEditRoute, issuerSettingsRoute, issuerProfileRoute, issuerSubscriptionRoute, issuerUpgradeRoute, issuerKybRoute, issuerKybReviewRoute, issuerContractRoute, issuerPaymentRoute, issuerBillingRoute]);
 const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {

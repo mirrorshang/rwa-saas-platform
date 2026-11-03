@@ -26,6 +26,7 @@ export type DemoControls = {
   assetHistory: 'ready' | 'loading' | 'failed' | 'unknown';
   instrumentList: 'ready' | 'loading' | 'failed' | 'unknown';
   instrumentSave: 'success' | 'failed' | 'unknown';
+  instrumentSubmit: 'success' | 'failed' | 'unknown';
   instrumentVersion: 'ready' | 'conflict';
   instrumentAccess: 'allowed' | 'denied';
   instrumentHistory: 'ready' | 'loading' | 'failed' | 'unknown';
@@ -39,7 +40,7 @@ export const defaultDemoControls: DemoControls = {
   kybResult: 'actual', upgrade: 'preparing', contract: 'unpublished', payment: 'unavailable',
   entitlement: 'unavailable', billingRead: 'ready', panel: 'ready',
   assetList: 'ready', assetSave: 'success', assetVersion: 'ready', assetAccess: 'allowed', assetHistory: 'ready',
-  instrumentList: 'ready', instrumentSave: 'success', instrumentVersion: 'ready', instrumentAccess: 'allowed',
+  instrumentList: 'ready', instrumentSave: 'success', instrumentSubmit: 'success', instrumentVersion: 'ready', instrumentAccess: 'allowed',
   instrumentHistory: 'ready', instrumentReviewer: 'same', instrumentReview: 'success',
 };
 

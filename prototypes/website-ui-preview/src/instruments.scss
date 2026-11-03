@@ -9,6 +9,11 @@
 .instrument-page .instrument-review-actions label { display: grid; gap: 6px; min-width: min(100%, 310px); flex: 1; font-weight: 700; font-size: 12px; }
 .instrument-page .instrument-review-actions textarea { min-height: 70px; width: 100%; border: 1px solid #a9c0cd; border-radius: 7px; padding: 10px; font: inherit; }
 .instrument-page .instrument-lifecycle { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--i-line); }
+.instrument-preview-section { display: grid; gap: 8px; padding: 14px 0; border-top: 1px solid var(--i-line); }
+.instrument-preview-section h3, .instrument-diff h4 { margin: 0; font-size: 14px; color: #195575; }
+.instrument-diff { margin-top: 12px; padding: 13px; background: #f4f9fb; border-radius: 7px; }
+.instrument-diff dl { margin-top: 8px; }
+.instrument-diff dd { display: grid; gap: 4px; }
 @media (max-width: 560px) {
   .instrument-page .asset-library-head { align-items: stretch; }
   .instrument-page .instrument-summary { display: grid; grid-template-columns: 1fr 1fr; }

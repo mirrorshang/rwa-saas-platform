@@ -11,6 +11,7 @@ export type AssetFields = {
   name: string; category: AssetCategory; region: string; summary: string;
   controller: string; controllerType: string; tenantRelation: string; ownershipNote: string;
   detail: string; referenceValue: string; currency: string; referenceDate: string; valueSource: string;
+  authorizationLimit: string; authorizationCurrency: string; authorizationBasis: string; authorizationResponsible: string;
   materials: AssetMaterial[];
 };
 export type AssetVersion = { number: number; fields: AssetFields; savedAt: number; savedBy: string };
@@ -25,7 +26,7 @@ export type SaveResult = { status: 'saved' | 'failed' | 'unknown' | 'conflict' |
 
 export const blankAssetFields = (): AssetFields => ({
   name: '', category: '', region: '', summary: '', controller: '', controllerType: '', tenantRelation: '', ownershipNote: '',
-  detail: '', referenceValue: '', currency: '', referenceDate: '', valueSource: '', materials: [],
+  detail: '', referenceValue: '', currency: '', referenceDate: '', valueSource: '', authorizationLimit: '', authorizationCurrency: '', authorizationBasis: '', authorizationResponsible: '', materials: [],
 });
 const clone = <T,>(value: T): T => structuredClone(value);
 const readStore = (): AssetStore => {
@@ -82,6 +83,8 @@ export function assetFieldErrors(fields: AssetFields): string[] {
   if (fields.name.length > 120) errors.push('资产名称不能超过120字。');
   if (fields.referenceValue && (!/^\d+(?:\.\d+)?$/.test(fields.referenceValue) || Number(fields.referenceValue) <= 0 || !Number.isFinite(Number(fields.referenceValue)))) errors.push('参考价值请输入大于0的有效数字。');
   if (fields.referenceValue && !fields.currency.trim()) errors.push('填写参考价值时，请说明计价币种。');
+  if (fields.authorizationLimit && (!/^\d+(?:\.\d{1,8})?$/.test(fields.authorizationLimit) || Number(fields.authorizationLimit) <= 0)) errors.push('企业声明的授权发行额度须为大于0、最多8位小数的数字。');
+  if (fields.authorizationLimit && (!fields.authorizationCurrency?.trim() || !fields.authorizationBasis?.trim() || !fields.authorizationResponsible?.trim())) errors.push('填写授权发行额度时，请同时说明币种、依据及责任主体。');
   return errors;
 }
 function commit(value: AssetStore, email: string, tenantId: string, intent: AssetSaveIntent): SaveResult {

@@ -49,6 +49,12 @@ const groups: { title: string; controls: { key: keyof DemoControls; label: strin
     { key: 'instrumentReviewer', label: '内部复核身份', options: [['same', '提交人本人'], ['independent', '独立授权角色'], ['none', '无复核权限']] },
     { key: 'instrumentReview', label: '复核处理', options: [['success', '成功'], ['failed', '失败'], ['unknown', '结果待确认']] },
   ] },
+  { title: '发行管理与文件', controls: [
+    { key: 'issuanceList', label: '项目与方案读取', options: [['ready', '正常'], ['loading', '加载中'], ['failed', '失败'], ['unknown', '结果待确认']] },
+    { key: 'issuanceSave', label: '项目与方案保存', options: [['success', '成功'], ['failed', '失败'], ['unknown', '结果待确认']] },
+    { key: 'issuanceAccess', label: '发行管理访问', options: [['allowed', '允许'], ['denied', '无权限']] },
+    { key: 'fileAccess', label: '文件访问', options: [['allowed', '允许'], ['denied', '无权限']] },
+  ] },
 ];
 const roles: [DemoRole, string][] = [['visitor', '访客'], ['single', '已有单企业'], ['multiple', '已有多企业'], ['create', '新账号／无企业'], ['none', '无企业授权'], ['restricted', '受限账号'], ['invited', '待处理邀请'], ['no-subscription', '普通企业成员'], ['standard', 'Standard已开通'], ['upgrading', '升级处理中']];
 const presets: [string, DemoRole, Partial<DemoControls>][] = [
@@ -66,6 +72,11 @@ const pageName = () => {
   if (path === '/issuer/instruments') return '权益结构';
   if (path === '/issuer/instruments/new') return '新建权益结构';
   if (path.startsWith('/issuer/instruments/')) return path.endsWith('/edit') ? '编辑权益结构' : '权益结构详情';
+  if (path === '/issuer/projects') return '发行项目';
+  if (path.startsWith('/issuer/projects/')) return path.endsWith('/edit') ? '编辑发行项目' : path.endsWith('/new') ? '新建发行项目' : '发行项目详情';
+  if (path === '/issuer/offerings') return '发行方案';
+  if (path.startsWith('/issuer/offerings/')) return path.endsWith('/edit') ? '编辑发行方案' : path.endsWith('/new') ? '新建发行方案' : '发行方案详情';
+  if (path === '/issuer/issuance-check') return '发行前检查';
   const issuerMenu = issuerNavigation.flatMap(section => [section, ...(section.children || [])]).find(item => item.path === path);
   if (issuerMenu) return issuerMenu.label;
   return ({ '/': '首页', '/features': '产品功能', '/solutions': '解决方案', '/pricing': '订阅方案', '/help': '帮助中心', '/contact': '联系我们', '/login': '企业登录', '/free-onboarding': '创建企业', '/organizations': '选择企业', '/issuer': '企业工作台', '/standard-upgrade': 'Standard 升级' } as Record<string, string>)[path] || '当前页面';

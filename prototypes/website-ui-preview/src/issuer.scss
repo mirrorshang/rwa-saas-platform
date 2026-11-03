@@ -230,3 +230,45 @@
 .mvp-issuer-shell .issuer-topbar-notice a { margin-left: 12px; text-decoration: underline; }
 .issuer-blank-workspace { min-height: calc(100vh - 70px); background: white; }
 @media (max-width: 800px) { .mvp-issuer-shell .issuer-sidebar { position: fixed; height: 100vh; overflow-y: auto; } .mvp-issuer-shell .issuer-content-blank, .issuer-blank-workspace { min-height: calc(100vh - 145px); } }
+
+.issuance-page { display: grid; gap: 18px; max-width: 1220px; min-width: 0; }
+.issuance-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.issuance-heading h1 { margin: 4px 0 0; font-size: clamp(24px, 2.3vw, 32px); color: #132e43; }
+.issuance-eyebrow { margin: 0; color: #397990; font-size: 12px; font-weight: 750; letter-spacing: .035em; }
+.issuance-muted { margin: 0; color: #587284; font-size: 13px; line-height: 1.7; }
+.issuance-warning { border-left: 3px solid #be7441; background: #fff6ee; padding: 13px 16px; color: #78442c; line-height: 1.6; }
+.issuance-tabs, .issuance-subtabs { display: flex; gap: 6px; overflow-x: auto; border-bottom: 1px solid #d3e3e9; min-width: 0; }
+.issuance-tabs { max-width: 1220px; margin: 0 0 17px; }
+.issuance-tabs a, .issuance-subtabs button { white-space: nowrap; padding: 12px 18px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: #547084; font: inherit; font-weight: 700; cursor: pointer; }
+.issuance-tabs a[aria-current="page"], .issuance-subtabs button[aria-current="page"] { color: #0b7190; border-color: #0da6c7; }
+.issuance-actions { display: flex; gap: 9px; align-items: center; flex-wrap: wrap; }
+.issuance-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.issuance-tile { display: grid; align-content: start; gap: 9px; min-width: 0; }
+.issuance-tile h2 { margin: 0; font-size: 19px; overflow-wrap: anywhere; }
+.issuance-tile p { margin: 0; color: #587284; }
+.issuance-tile a, .issuance-list a { color: #0b7391; font-weight: 700; }
+.issuance-state { padding: 32px; }
+.issuance-state h2 { margin-top: 0; }
+.issuance-search, .issuance-field { display: grid; gap: 7px; color: #2a4b5f; font-size: 13px; font-weight: 700; min-width: 0; }
+.issuance-search { max-width: 320px; }
+.issuance-search input, .issuance-field input, .issuance-field select, .issuance-field textarea, .issuance-file-form input, .issuance-file-form select { width: 100%; min-width: 0; padding: 11px 12px; border: 1px solid #afc7d1; border-radius: 7px; background: #fff; color: #203b4f; font: inherit; }
+.issuance-field textarea { min-height: 90px; resize: vertical; }
+.issuance-field small { color: #668092; font-weight: 400; line-height: 1.5; }
+.issuance-form { display: grid; gap: 18px; }
+.issuance-form fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+.issuance-form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 17px; }
+.issuance-form-grid .issuance-field:has(textarea) { grid-column: 1 / -1; }
+.issuance-facts { display: grid; gap: 0; margin: 8px 0; }
+.issuance-facts div { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 12px; border-bottom: 1px solid #e2edf1; padding: 13px 0; }
+.issuance-facts dt { color: #617b8d; }
+.issuance-facts dd { margin: 0; color: #213e51; overflow-wrap: anywhere; }
+.issuance-list, .issuance-file-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.issuance-list li, .issuance-file-list li { display: grid; gap: 5px; border: 1px solid #d7e7ed; border-radius: 8px; padding: 14px; min-width: 0; }
+.issuance-list span, .issuance-file-list span, .issuance-list small, .issuance-file-list small { color: #607b8d; }
+.issuance-file-list li > div { display: flex; flex-wrap: wrap; gap: 7px; }
+.issuance-files { display: grid; gap: 16px; }
+.issuance-files h2 { margin: 0; }
+.issuance-file-form { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)) auto; gap: 10px; align-items: end; padding-top: 14px; border-top: 1px solid #dfebf0; }
+.issuance-file-form label { display: grid; gap: 6px; min-width: 0; color: #2a4b5f; font-size: 12px; font-weight: 700; }
+@media (max-width: 800px) { .issuance-grid { grid-template-columns: 1fr; } .issuance-file-form { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .issuance-form-grid, .issuance-file-form { grid-template-columns: 1fr; } .issuance-facts div { grid-template-columns: 1fr; gap: 3px; } .issuance-heading { align-items: flex-start; } .issuance-tabs a, .issuance-subtabs button { padding: 11px 12px; font-size: 12px; } }

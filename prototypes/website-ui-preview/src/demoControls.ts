@@ -32,6 +32,10 @@ export type DemoControls = {
   instrumentHistory: 'ready' | 'loading' | 'failed' | 'unknown';
   instrumentReviewer: 'same' | 'independent' | 'none';
   instrumentReview: 'success' | 'failed' | 'unknown';
+  issuanceList: 'ready' | 'loading' | 'failed' | 'unknown';
+  issuanceSave: 'success' | 'failed' | 'unknown';
+  issuanceAccess: 'allowed' | 'denied';
+  fileAccess: 'allowed' | 'denied';
 };
 
 export const defaultDemoControls: DemoControls = {
@@ -42,6 +46,7 @@ export const defaultDemoControls: DemoControls = {
   assetList: 'ready', assetSave: 'success', assetVersion: 'ready', assetAccess: 'allowed', assetHistory: 'ready',
   instrumentList: 'ready', instrumentSave: 'success', instrumentSubmit: 'success', instrumentVersion: 'ready', instrumentAccess: 'allowed',
   instrumentHistory: 'ready', instrumentReviewer: 'same', instrumentReview: 'success',
+  issuanceList: 'ready', issuanceSave: 'success', issuanceAccess: 'allowed', fileAccess: 'allowed',
 };
 
 type Store = { controls: DemoControls; setControl: <K extends keyof DemoControls>(key: K, value: DemoControls[K]) => void; resetControls: () => void };

@@ -12,7 +12,7 @@ export type InstrumentFields = {
   name: string; type: InstrumentType; assetId: string; assetVersion: number; purpose: string;
   issuer: string; debtor: string; debtorRelation: string; debtNature: string; rightsContent: string;
   spv: string; spvRole: string; spvAssetRelation: string; equityNature: string; holderRights: string;
-  economicSummary: string; principal: string; currency: string; interest: string; interestPayment: string; repayment: string; maturity: string; priority: string;
+  economicSummary: string; principal: string; currency: string; structureCap: string; structureCapCurrency: string; structureCapBasis: string; interest: string; interestPayment: string; repayment: string; maturity: string; priority: string;
   equitySource: string; equityShare: string; distribution: string; governance: string; exitTerms: string;
   qualification: string; transfer: string; disclosure: string; buyback: string; risks: string; materials: InstrumentMaterial[];
 };
@@ -28,7 +28,7 @@ export const typeLabels: Record<Exclude<InstrumentType, ''>, string> = { debt: '
 export const statusLabels: Record<InstrumentStatus, string> = { draft: '草稿', reviewing: '审核中', changes: '待修改', completed: '内部复核完成', paused: '已暂停', archived: '已归档' };
 export const blankInstrumentFields = (): InstrumentFields => ({
   name: '', type: '', assetId: '', assetVersion: 0, purpose: '', issuer: '', debtor: '', debtorRelation: '', debtNature: '', rightsContent: '',
-  spv: '', spvRole: '', spvAssetRelation: '', equityNature: '', holderRights: '', economicSummary: '', principal: '', currency: '', interest: '', interestPayment: '', repayment: '', maturity: '', priority: '',
+  spv: '', spvRole: '', spvAssetRelation: '', equityNature: '', holderRights: '', economicSummary: '', principal: '', currency: '', structureCap: '', structureCapCurrency: '', structureCapBasis: '', interest: '', interestPayment: '', repayment: '', maturity: '', priority: '',
   equitySource: '', equityShare: '', distribution: '', governance: '', exitTerms: '', qualification: '', transfer: '', disclosure: '', buyback: '', risks: '', materials: [],
 });
 const clone = <T,>(value: T): T => structuredClone(value);
@@ -66,6 +66,9 @@ export function instrumentErrors(tenant: DemoTenant, fields: InstrumentFields, f
   if (fields.type !== '' && fields.type !== 'debt' && fields.type !== 'spv') errors.push('权益类型暂不支持。');
   if (fields.principal && (!/^\d+(?:\.\d+)?$/.test(fields.principal) || Number(fields.principal) <= 0)) errors.push('本金说明中的数值必须大于0。');
   if (fields.principal && !fields.currency.trim()) errors.push('填写本金数值时，请说明币种。');
+  if (fields.structureCap && (!/^\d+(?:\.\d{1,8})?$/.test(fields.structureCap) || Number(fields.structureCap) <= 0)) errors.push('权益结构额度参考须为大于0、最多8位小数的数字。');
+  if (fields.structureCap && !fields.structureCapCurrency?.trim()) errors.push('填写权益结构额度参考时，请说明币种。');
+  if (fields.structureCap && !fields.structureCapBasis?.trim()) errors.push('填写权益结构额度参考时，请说明依据。');
   if (forReview) {
     if (!fields.name.trim()) errors.push('请填写权益结构名称。');
     if (!fields.type) errors.push('请选择权益类型。');

@@ -167,7 +167,7 @@ M18-F006 不等于高级推荐和个性化营销算法。M08-F010「高级推荐
 - 高级披露、文件协作、多方签署；
 - 复杂收益/使用权益的计算、分配和履约引擎。
 
-Project、Offering和发行准备的MVP基础流程尚待R2-04及后续阶段完成设计。上述高级能力不得反向扩大当前MVP页面和数据模型范围。
+Project与Offering、逻辑Token/Contract的R2-04五批及一致性审核已获批准并形成UI-Ready PRD；发行准备R2-05仍待设计。上述高级能力不得反向扩大当前MVP页面和数据模型范围。
 
 ### 3.6 Offering级投资者资格配置与企业独立审批（2026-11-04新增）
 
@@ -233,7 +233,9 @@ MVP采用简单的线性生命周期：Draft → Confirmed → Published → Act
 
 **版本边界**：上述仅是后续能力池，不能擅自将DEC-017中正式V3.0或TBD归属的复杂智能合约、商业API、多链能力提前改为V2.0。R2-04-05认可的一生产主合约仍需要具体技术标准、安全模型、主合约如何承载多个逻辑Token、Signer/Provider/网络和合规准入的独立决策，不能视为已获生产批准。
 
-关联：[R2-04决策记录及跨模块一致性审核草案](RWA-SaaS-C08-R2-04-Project-Offering-Token-Decision-Log-Draft-v0.1.md)。
+关联：[R2-04已批准决策记录](RWA-SaaS-C08-R2-04-Project-Offering-Token-Decision-Log-Draft-v0.1.md)及[R2-04 UI-Ready PRD](RWA-SaaS-C08-R2-04-Project-Offering-Token-UI-Ready-PRD-v0.1.md)。
+
+**R2-04最终一致性审核状态（2026-11-04）：** C01～C08全部A。当前MVP采取默认单Asset/单Project、后续轮次提前Draft、Token容量与Offering订单预留分层、不改变历史披露快照、暂停为附加阻断、以及Completed不代表投资者存续义务终结。需要复杂轮次协调、并行发行、跨对象组合及高级状态编排的需求仍仅为后续候选，不改变本需求池正式22项和既有V3/TBD归属。详细见[R2-04 UI-Ready PRD](RWA-SaaS-C08-R2-04-Project-Offering-Token-UI-Ready-PRD-v0.1.md)。
 
 ## 4. 不属于正式 V2.0 的明确边界
 
@@ -299,7 +301,7 @@ V2.0内部优先级、实施批次、客户试点、工作量和发布日期均�
 - R2-01 总体业务模型：完成。
 - R2-02 资产管理：完成；MVP房地产四类已建成物业模板已形成UI-Ready PRD。
 - R2-03 权益结构：完成；MVP三类权益、容量池、Token映射、状态和版本规则已形成UI-Ready PRD。
-- R2-04 Project、Offering、Token发行配置：R2-04-01～05全部通过；跨模块一致性审核C01～C08仍为Draft，待用户批准。
+- R2-04 Project、Offering、Token/Contract：R2-04-01～05及一致性审核C01～C08全部A，完整UI-Ready PRD已提交；不代表真实生产合约及Provider/Signer准入。
 - R2-05 发行准备：尚待详细设计。
 - V2.0：正式22项已建立统一需求池；补充候选能力单独标记，等待后续产品评审，不进入当前MVP开发。
 

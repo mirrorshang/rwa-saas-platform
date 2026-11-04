@@ -11,7 +11,9 @@
 - [MVP 与 V2.0 延后范围](03-product-prd/RWA-SaaS-C08-MVP-V2-Deferred-Scope-v0.1.md)：当前MVP与后续能力的边界。
 - [R2-04 Project / Offering / Token UI-Ready PRD](03-product-prd/RWA-SaaS-C08-R2-04-Project-Offering-Token-UI-Ready-PRD-v0.1.md)：R2-04-01～05及一致性C01～C08全部A，当前详细开发交接规格（生产技术Gate仍Open）。
 - [R2-04批准决策记录](03-product-prd/RWA-SaaS-C08-R2-04-Project-Offering-Token-Decision-Log-Draft-v0.1.md)：批次审核与C01～C08批准证据。
-- [R2-05发行准备分批决策记录](03-product-prd/RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)：R2-05-01～03各R01～R10全部A；整体一致性C01～C10待审核，UI-Ready整合尚待收口。
+- [R2-05发行准备 UI-Ready PRD](03-product-prd/RWA-SaaS-C08-R2-05-Issuance-Readiness-UI-Ready-PRD-v0.1.md)：R2-05-01～03共30项及一致性C01～C10全部A；当前发行准备、发布、M上架及Mock开发交接规范。
+- [R2-05已批准决策记录](03-product-prd/RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)：全部批次与一致性审核证据。
+- [R2-02～05跨模块文档一致性审计](00-governance/RWA-SaaS-C08-R2-02-to-R2-05-MVP-Cross-Module-Consistency-Audit-v0.1.md)：对象、容量、状态、渠道及G01～G04待决门；尚非代码/生产测试。
 - [V2.0 产品需求池与版本规划台账](03-product-prd/RWA-SaaS-V2-0-Requirements-Backlog-and-Planning-Pool-v0.1.md)：集中管理DEC-017正式V2.0的22项功能及C08补充候选；不改变193项正式版本归属。
 - [GitHub仓库文件、分支与文档权威审计](00-governance/RWA-SaaS-Repository-Document-and-Branch-Audit-v0.1.md)：记录分支/PR/文件盘点、保留规则及清理处置结果。
 
@@ -23,7 +25,7 @@
 | R2-02 资产管理 | 产品设计完成；MVP房地产模板已形成UI-Ready PRD |
 | R2-03 权益结构 | MVP产品设计完成；已形成UI-Ready PRD |
 | R2-04 Project、Offering、Token发行配置 | 01～05及C01～C08全部A，UI-Ready详细PRD已提交；技术生产Gate仍待审 |
-| R2-05 发行准备 | 01～03各10/10 A；整体一致性C01～C10待审核 |
+| R2-05 发行准备 | 01～03共30项与C01～C10全部A，UI-Ready已提交；生产Gate仍Open |
 | V2.0需求池 | 已建立统一文档；详细PRD、优先级和开发批次未冻结 |
 
 ### 当前文档与仓库保护状态

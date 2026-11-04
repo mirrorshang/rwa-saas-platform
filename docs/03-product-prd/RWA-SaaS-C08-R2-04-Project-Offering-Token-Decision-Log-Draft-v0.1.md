@@ -1,12 +1,15 @@
 # RWA SaaS｜C08-R2-04 Project / Offering / Token 发行配置：分批决策记录 v0.1
 
-> **状态：R2-04-01～05分批方案已确认 / 跨模块一致性审核 Draft（待单独确认）**
+> **状态：Approved Decisions（R2-04-01～05 全部确认；跨模块一致性 C01～C08 全部 A）/ 详细产品规格单独见 UI-Ready PRD**
 >
 > 更新日期：2026-11-04  
 > 适用范围：Issuer SaaS MVP 产品重构 R2-04  
 > 关联：[R2-03 权益结构 UI-Ready PRD](RWA-SaaS-C08-R2-03-Rights-Structure-UI-Ready-PRD-v0.1.md)、[V2.0 需求池](RWA-SaaS-V2-0-Requirements-Backlog-and-Planning-Pool-v0.1.md)
 >
 > 注意：本文件记录已批准的**产品范围及业务行为**，不修改历史 Frozen / Master PRD / DEC / SCOPE / 193项正式版本归属，不授权真实生产 Provider、Signer、合约、资金或 Token 执行。
+
+
+**详细 UI-Ready 产品规格：** [R2-04 Project、Offering、Token/Contract UI-Ready PRD](RWA-SaaS-C08-R2-04-Project-Offering-Token-UI-Ready-PRD-v0.1.md)。
 
 ## 1. R2-04-01：Project 管理与对象关系（R01–R08 全部 A）
 
@@ -173,11 +176,11 @@
 
 正式归属已在V3/TBD的能力继续保持原归属；上述条目作为补充候选，不自动纳入DEC-017正式V2的22项。
 
-## 6. R2-04 跨模块一致性审核（Audit Draft，尚未批准）
+## 6. R2-04 跨模块一致性审核（C01～C08 全部 A）
 
-此表为对已确认五批设计与R2-02/R2-03之间进行的业务交叉核验。表内建议不等于已经获得用户批准，需在后续审核中单独确认。
+用户于2026-11-04明确确认：**“R2-04 一致性审核 C01～C08 全部 A。”** 下表建议正式转为本轮当前批准的产品收口规则。技术标准、法律准入和生产执行仍由独立Gate处理，不因本次产品审核自动批准。
 
-| 审核项 | 当前一致性检查结论 | 仍需审核的MVP收口建议 |
+| 审核项 | 已批准一致性依据 | 已批准的MVP收口规则 |
 |---|---|---|
 | C01 业务对象关系 | Asset可关联多个Instrument，Project对应一个Asset；Offering只引用一个Instrument版本；逻辑Token按Instrument复用 | 同一Asset首次Offering创建一个默认Project，后续轮次优先复用，不引入多个同资产Project管理与选择流程 |
 | C02 同轮排他 | 同一Project不支持多轮并行认购，但Draft、Confirmed、Published、Active的重叠规则尚不够明确 | 同一Project在同一时刻最多有一轮处于可发布/已发布/认购中或暂停后可恢复的当前发行；其他后续轮次可建Draft但不得抢占开放位置 |
@@ -208,7 +211,7 @@
 
 ## 8. 后续批次与版本/代码保护
 
-- 下一步：审核R2-04跨模块一致性审计C01–C08；批准后收口详细R2-04 UI-Ready PRD，并进入R2-05发行准备设计。五批R2-04-01～05已逐批确认。
+- R2-04五批（01～05）及C01～C08一致性审核已全部通过；本批批准内容详见R2-04 UI-Ready PRD。下一步进入R2-05发行准备设计。
 - R2-05：发行准备独立设计，正式发行与生产技术Gate仍保持受控。
 - Free Sandbox模拟与Standard真实生产严格区分。
 - 正式V2 22项、V1 146项、V3 20项、TBD 5项均保持原批准归属。
@@ -216,4 +219,4 @@
 
 ---
 
-**当前审核状态：R2-04-01 8/8 A；R2-04-02 10/10 A（含1U=1USDT）；R2-04-03修订版全部确认；R2-04-04 R01–R10全部A；R2-04-05 R01–R10全部A。跨模块一致性审核C01–C08待确认，R2-05待开展。**
+**当前审核状态：R2-04-01 8/8 A；R2-04-02 10/10 A（含1U=1USDT）；R2-04-03修订版全部确认；R2-04-04 R01–R10全部A；R2-04-05 R01–R10全部A；一致性审核 C01～C08 8/8 A。R2-04产品设计审核已全部完成，R2-05待开展。**

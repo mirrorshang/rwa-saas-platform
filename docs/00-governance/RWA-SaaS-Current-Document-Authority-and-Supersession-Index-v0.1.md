@@ -1,5 +1,40 @@
 # RWA SaaS｜当前有效文档权威目录与历史状态勘误 v0.1
 
+## 2026-11-04｜C08-R2 MVP及V2.0需求池：当前后续生效阅读入口
+
+本节为截至2026-11-04的最新产品工作入口，接续下方DEC-044～046五端统一投资端阶段快照。它只整理当前产品工作与文档权威关系，不修改四份Frozen、历史DEC/ARCH/SCOPE、193项正式版本归属或README。
+
+### 当前权威阅读顺序
+
+1. **总体产品需求**：[Master PRD v0.2（Draft）](../03-product-prd/RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)。
+2. **C08-R2产品重构增量基线**：[R2产品设计基线](../03-product-prd/RWA-SaaS-C08-R2-Product-Design-Baseline-v0.1.md)及[MVP/V2.0延后范围](../03-product-prd/RWA-SaaS-C08-MVP-V2-Deferred-Scope-v0.1.md)。
+3. **R2-02资产管理详细规格**：[房地产资产管理UI-Ready PRD](../03-product-prd/RWA-SaaS-C08-R2-02-Asset-Management-Real-Estate-UI-Ready-PRD-v0.1.md)。
+4. **R2-03权益结构详细规格**：[权益结构UI-Ready PRD](../03-product-prd/RWA-SaaS-C08-R2-03-Rights-Structure-UI-Ready-PRD-v0.1.md)。
+5. **R2-04 Project/Offering/Token详细规格**：[R2-04 UI-Ready PRD](../03-product-prd/RWA-SaaS-C08-R2-04-Project-Offering-Token-UI-Ready-PRD-v0.1.md)。
+6. **R2-05发行准备UI-Ready详细规格**：[R2-05 UI-Ready PRD](../03-product-prd/RWA-SaaS-C08-R2-05-Issuance-Readiness-UI-Ready-PRD-v0.1.md)及[全部批准决策](../03-product-prd/RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)，R2-05-01～03各R01～R10和C01～C10全部A。
+7. **R2-02～05跨模块一致性审计**：[审计报告](RWA-SaaS-C08-R2-02-to-R2-05-MVP-Cross-Module-Consistency-Audit-v0.1.md)，Open事项G01～G04不等于产品UI设计未完成。
+8. **V2.0未来需求集中入口**：[V2.0产品需求池与版本规划台账](../03-product-prd/RWA-SaaS-V2-0-Requirements-Backlog-and-Planning-Pool-v0.1.md)。
+9. **仓库治理与清理记录**：[GitHub仓库文件、分支与文档权威审计](RWA-SaaS-Repository-Document-and-Branch-Audit-v0.1.md)。
+
+### 当前阶段及版本边界
+
+- R2-01：7批72/72项全部A。
+- R2-02：资产管理产品设计完成；当前MVP仅房地产四种已建成物业模板完成详细设计。
+- R2-03：权益结构MVP设计完成；正式支持Equity、Debt、Income Participation三类，容量池、Token映射、版本和状态规则已形成UI-Ready规格。
+- R2-04：Project、Offering、Token/合约关系分批设计R2-04-01～05及整体一致性C01～C08全部A；[R2-04 UI-Ready PRD](../03-product-prd/RWA-SaaS-C08-R2-04-Project-Offering-Token-UI-Ready-PRD-v0.1.md)是当前MVP交接依据，[决策记录](../03-product-prd/RWA-SaaS-C08-R2-04-Project-Offering-Token-Decision-Log-Draft-v0.1.md)保留审核证据。Token主合约实现、法律与生产Gate仍Draft/Open。
+- R2-05：R2-05-01～03共30项及一致性C01～C10全部A，完整[UI-Ready PRD](../03-product-prd/RWA-SaaS-C08-R2-05-Issuance-Readiness-UI-Ready-PRD-v0.1.md)已提交；[跨模块文档审计](RWA-SaaS-C08-R2-02-to-R2-05-MVP-Cross-Module-Consistency-Audit-v0.1.md)指出G01旧资格正式DEC映射、G02合约标准、G03资金/法律与G04跨端开发范围保持Open。Sandbox UI/Mock可进入开发准备，真实生产Gate仍Open。
+- DEC-017正式版本分配仍为V1.0 146、V2.0 22、V3.0 20、TBD 5。V2需求池中的补充候选不得擅自改变该分配；与既有V1 ID映射存在冲突的候选必须单独审议。
+
+### 历史文档与仓库清理规则
+
+- 四份Frozen、全部DEC/ARCH/SCOPE、原始187功能记录及193项正式主表均保留原文。
+- Master PRD v0.1及其他被后续版本接续的文档保留历史路径，不作为当前唯一阅读入口。
+- 已加Historical / Superseded标记的阶段文件继续保留；如未来要物理归档，须先检查并修复反向链接。
+- 四份Legacy RWA V2 PRD仅作历史参考，不自动成为本项目V2.0需求。
+- README按此前明确要求本轮不修改；其更新时间2026-10-26，已落后当前C08-R2阶段。
+- PR #6和PR #7保持Draft / Open / Unmerged；不合并、不关闭、不改base。
+- 2026-11-04仓库审计未发现可安全直接删除的非空重复文件，本轮物理删除0项。
+
 ## DEC-044～046五端统一投资端：当前后续生效方向（2026-10-28）
 
 **新主阅读入口：** [Master PRD v0.2（Draft）](../03-product-prd/RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)、[五端125页组候选地图](../03-product-prd/RWA-SaaS-Step-06-Five-Surface-125-Page-Inventory-Draft-v0.1.md)、[M23/M24功能去重附表](../03-product-prd/RWA-SaaS-Step-B-M23-M24-Function-Crosswalk-Draft-v0.1.md)。

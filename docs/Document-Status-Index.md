@@ -1,5 +1,41 @@
 # RWA SaaS Platform｜现行文档状态和决策索引
 
+## 2026-11-04 最新产品文档入口：C08-R2 MVP 与 V2.0 需求池
+
+**本节为当前最新阅读入口，优先于下方2026-10-28及更早阶段快照。** 不修改历史DEC、Frozen、193项版本归属或README。
+
+- [Master PRD v0.2](03-product-prd/RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)：现行总体产品需求总入口，仍为Draft。
+- [C08-R2 产品重构基线](03-product-prd/RWA-SaaS-C08-R2-Product-Design-Baseline-v0.1.md)：记录R2-01至R2-03的当前产品设计结论及后续工作边界。
+- [R2-02 资产管理 UI-Ready PRD](03-product-prd/RWA-SaaS-C08-R2-02-Asset-Management-Real-Estate-UI-Ready-PRD-v0.1.md)：MVP房地产四种已建成物业模板的当前详细产品规格。
+- [R2-03 权益结构 UI-Ready PRD](03-product-prd/RWA-SaaS-C08-R2-03-Rights-Structure-UI-Ready-PRD-v0.1.md)：MVP Equity、Debt、Income Participation三类权益、容量池、Token映射及版本/状态规则的当前详细规格。
+- [MVP 与 V2.0 延后范围](03-product-prd/RWA-SaaS-C08-MVP-V2-Deferred-Scope-v0.1.md)：当前MVP与后续能力的边界。
+- [R2-04 Project / Offering / Token UI-Ready PRD](03-product-prd/RWA-SaaS-C08-R2-04-Project-Offering-Token-UI-Ready-PRD-v0.1.md)：R2-04-01～05及一致性C01～C08全部A，当前详细开发交接规格（生产技术Gate仍Open）。
+- [R2-04批准决策记录](03-product-prd/RWA-SaaS-C08-R2-04-Project-Offering-Token-Decision-Log-Draft-v0.1.md)：批次审核与C01～C08批准证据。
+- [R2-05发行准备 UI-Ready PRD](03-product-prd/RWA-SaaS-C08-R2-05-Issuance-Readiness-UI-Ready-PRD-v0.1.md)：R2-05-01～03共30项及一致性C01～C10全部A；当前发行准备、发布、M上架及Mock开发交接规范。
+- [R2-05已批准决策记录](03-product-prd/RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)：全部批次与一致性审核证据。
+- [R2-02～05跨模块文档一致性审计](00-governance/RWA-SaaS-C08-R2-02-to-R2-05-MVP-Cross-Module-Consistency-Audit-v0.1.md)：对象、容量、状态、渠道及G01～G04待决门；尚非代码/生产测试。
+- [V2.0 产品需求池与版本规划台账](03-product-prd/RWA-SaaS-V2-0-Requirements-Backlog-and-Planning-Pool-v0.1.md)：集中管理DEC-017正式V2.0的22项功能及C08补充候选；不改变193项正式版本归属。
+- [GitHub仓库文件、分支与文档权威审计](00-governance/RWA-SaaS-Repository-Document-and-Branch-Audit-v0.1.md)：记录分支/PR/文件盘点、保留规则及清理处置结果。
+
+### 当前阶段状态
+
+| 工作项 | 当前状态 |
+|---|---|
+| R2-01 总体业务模型 | 7批72/72项已审核A |
+| R2-02 资产管理 | 产品设计完成；MVP房地产模板已形成UI-Ready PRD |
+| R2-03 权益结构 | MVP产品设计完成；已形成UI-Ready PRD |
+| R2-04 Project、Offering、Token发行配置 | 01～05及C01～C08全部A，UI-Ready详细PRD已提交；技术生产Gate仍待审 |
+| R2-05 发行准备 | 01～03共30项与C01～C10全部A，UI-Ready已提交；生产Gate仍Open |
+| V2.0需求池 | 已建立统一文档；详细PRD、优先级和开发批次未冻结 |
+
+### 当前文档与仓库保护状态
+
+- 193项正式首次交付版本仍为V1.0 146、V2.0 22、V3.0 20、TBD 5。
+- 四份Frozen、全部历史DEC/ARCH/SCOPE及193项主表不修改。
+- README本轮不修改；其2026-10-26内容已落后当前阶段，后续需单独更新。
+- PR #6、PR #7均保持Draft / Open / Unmerged；本轮不合并、不关闭、不改base。
+- 本轮仓库审计未发现可安全直接删除的非空重复文件，物理删除0项；历史Superseded文件保留追溯。
+
 ## 最新：DEC-044～046统一投资端五端战略与125页候选架构（2026-10-28）
 
 [Master PRD v0.2](03-product-prd/RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)作为新五端Draft总入口；[五端125组候选地图](03-product-prd/RWA-SaaS-Step-06-Five-Surface-125-Page-Inventory-Draft-v0.1.md)；[M23/M24功能去重附表](03-product-prd/RWA-SaaS-Step-B-M23-M24-Function-Crosswalk-Draft-v0.1.md)。

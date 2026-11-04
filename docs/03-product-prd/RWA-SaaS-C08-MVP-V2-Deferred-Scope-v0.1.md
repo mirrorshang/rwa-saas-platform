@@ -174,7 +174,7 @@ R2-05-02 R01～R10全部A：检查按权威来源判定Pass/Pending/Blocked/Unkn
 
 ### 5.5 R2-05-03执行编排、M端上架及投资者交付（已确认）
 
-R2-05-03 R01～R10全部A，MVP用户侧仅需在准备检查通过后通过一次企业声明发起发行，系统形成唯一幂等任务。Free只模拟；Standard符合必要KYB、法域、平台自身和技术生产Gate后，才调用获准Provider/Signer/Contract完成必要的首次部署或复用，再依据法域认可顺序建立合法发布快照。Issuer按每轮Offering自愿申请M渠道展示，P独立审核并可拒绝/下架；与Issuer V门户展示分离。真实投资者完成有效KYC、必要风险阻断、下单和OP Mainnet USDT支付后，才依据真实配售及必要法定交割条件执行受控Mint；不在发行确认时一次Mint最大额度。详见[R2-05决策记录（03已批准、整体一致性待审）](RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)与[V2.0需求池§3.11](RWA-SaaS-V2-0-Requirements-Backlog-and-Planning-Pool-v0.1.md)。
+R2-05-03 R01～R10全部A，MVP用户侧仅需在准备检查通过后通过一次企业声明发起发行，系统形成唯一幂等任务。Free只模拟；Standard符合必要KYB、法域、平台自身和技术生产Gate后，才调用获准Provider/Signer/Contract完成必要的首次部署或复用，再依据法域认可顺序建立合法发布快照。Issuer按每轮Offering自愿申请M渠道展示，P独立审核并可拒绝/下架；与Issuer V门户展示分离。真实投资者完成有效KYC、必要风险阻断、下单和OP Mainnet USDT支付后，才依据真实配售及必要法定交割条件执行受控Mint；不在发行确认时一次Mint最大额度。详见[R2-05全部批准决策记录](RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)与[V2.0需求池§3.11](RWA-SaaS-V2-0-Requirements-Backlog-and-Planning-Pool-v0.1.md)。
 
 ### 5.6 R2-05完成与开发交接（2026-11-04）
 

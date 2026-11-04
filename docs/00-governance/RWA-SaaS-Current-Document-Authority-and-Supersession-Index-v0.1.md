@@ -18,7 +18,7 @@
 - R2-01：7批72/72项全部A。
 - R2-02：资产管理产品设计完成；当前MVP仅房地产四种已建成物业模板完成详细设计。
 - R2-03：权益结构MVP设计完成；正式支持Equity、Debt、Income Participation三类，容量池、Token映射、版本和状态规则已形成UI-Ready规格。
-- R2-04：Project、Offering、Token发行配置尚待详细设计。
+- R2-04：Project、Offering、Token/合约关系分批设计R2-04-01～05全部通过；[R2-04决策记录及整体一致性审核Draft](../03-product-prd/RWA-SaaS-C08-R2-04-Project-Offering-Token-Decision-Log-Draft-v0.1.md) 已同步，一致性审核C01～C08仍待批准，不视为整阶段已冻结。
 - R2-05：发行准备尚待详细设计。
 - DEC-017正式版本分配仍为V1.0 146、V2.0 22、V3.0 20、TBD 5。V2需求池中的补充候选不得擅自改变该分配；与既有V1 ID映射存在冲突的候选必须单独审议。
 

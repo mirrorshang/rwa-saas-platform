@@ -166,7 +166,7 @@ R2-03 的权益结构详细产品设计已完成并审核通过。MVP 已批准�
 
 ### 5.3 R2-05-01发行准备定位及V2后置（已确认）
 
-R2-05-01 R01～R10全部A：Confirmed Offering进入一个发行准备页面；显示七组系统检查及阻断原因、回源补充、合法投资者展示预览；企业单一操作账号完成最终责任声明后，仍须通过全部独立生产Gate才能执行真实发布。无企业内部多级审批、跨部门审批工作流或外部专业机构在线联合会签。已同步[R2-05分批决策记录](RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)及[V2需求池§3.10](RWA-SaaS-V2-0-Requirements-Backlog-and-Planning-Pool-v0.1.md)。R2-05-02七组检查通过/待补充/阻断/Unknown规则已全部A；R2-05-03 R01～R10已全部A，涵盖一次企业确认、条件式受控部署/复用、Offering发布、Issuer自愿申请M上架、P审核渠道、投资者认购后受控Mint；R2-05整体一致性C01～C10待审。
+R2-05-01 R01～R10全部A：Confirmed Offering进入一个发行准备页面；显示七组系统检查及阻断原因、回源补充、合法投资者展示预览；企业单一操作账号完成最终责任声明后，仍须通过全部独立生产Gate才能执行真实发布。无企业内部多级审批、跨部门审批工作流或外部专业机构在线联合会签。已同步[R2-05分批决策记录](RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)及[V2需求池§3.10](RWA-SaaS-V2-0-Requirements-Backlog-and-Planning-Pool-v0.1.md)。R2-05-02七组检查通过/待补充/阻断/Unknown规则已全部A；R2-05-03 R01～R10已全部A，涵盖一次企业确认、条件式受控部署/复用、Offering发布、Issuer自愿申请M上架、P审核渠道、投资者认购后受控Mint；R2-05整体一致性C01～C10全部A；UI-Ready PRD已形成，真实生产门另审。
 
 ### 5.4 R2-05-02检查条件与生产/渠道边界（已确认）
 
@@ -175,6 +175,10 @@ R2-05-02 R01～R10全部A：检查按权威来源判定Pass/Pending/Blocked/Unkn
 ### 5.5 R2-05-03执行编排、M端上架及投资者交付（已确认）
 
 R2-05-03 R01～R10全部A，MVP用户侧仅需在准备检查通过后通过一次企业声明发起发行，系统形成唯一幂等任务。Free只模拟；Standard符合必要KYB、法域、平台自身和技术生产Gate后，才调用获准Provider/Signer/Contract完成必要的首次部署或复用，再依据法域认可顺序建立合法发布快照。Issuer按每轮Offering自愿申请M渠道展示，P独立审核并可拒绝/下架；与Issuer V门户展示分离。真实投资者完成有效KYC、必要风险阻断、下单和OP Mainnet USDT支付后，才依据真实配售及必要法定交割条件执行受控Mint；不在发行确认时一次Mint最大额度。详见[R2-05决策记录（03已批准、整体一致性待审）](RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)与[V2.0需求池§3.11](RWA-SaaS-V2-0-Requirements-Backlog-and-Planning-Pool-v0.1.md)。
+
+### 5.6 R2-05完成与开发交接（2026-11-04）
+
+[R2-05 UI-Ready PRD](RWA-SaaS-C08-R2-05-Issuance-Readiness-UI-Ready-PRD-v0.1.md)承载单页七组检查、用户动作/提示/弹窗、企业责任声明与幂等任务、受控合约部署/复用的产品状态、Offering Published及投资端M申请/P审核、异常和可复验验收。R2-05最终一致性C01～C10全部A。跨R2-02～05产品文档审计见[审计报告](../00-governance/RWA-SaaS-C08-R2-02-to-R2-05-MVP-Cross-Module-Consistency-Audit-v0.1.md)；其G01旧M09资格规则冲突、G02主合约架构、G03真实资金/法律、G04 P/M/V独立开发范围仍须另行决策与实施。当前只授权Sandbox/Mock产品研发方案，不自动授权任何真实链执行或募资。
 
 ## 6. 不属于本次版本调整的事项
 
@@ -190,8 +194,8 @@ R2-05-03 R01～R10全部A，MVP用户侧仅需在准备检查通过后通过一�
 
 1. **R2-02 资产管理模块已完成**：房地产模板详细设计已通过；其他资产模板不在当前 MVP 重复设计范围。
 2. **R2-03 权益结构模块已完成**：MVP 三类权益、容量池、Token 映射、版本/状态及异常规则已通过。
-3. **R2-04产品设计审核全部完成**：R2-04-01～05及跨模块一致性C01～C08全部A；[R2-04 UI-Ready PRD](RWA-SaaS-C08-R2-04-Project-Offering-Token-UI-Ready-PRD-v0.1.md)已提交。R2-05-01～03已批准，整体一致性及UI-Ready收口仍待审，真实生产技术Gate仍未开放。
-4. **R2-05分批设计已确认**：R2-05-01～03共30项全部A，含发行准备、受控合约部署/复用、Offering发布、M渠道申请/审核和投资者认购后Mint；整体一致性C01～C10与UI-Ready收口仍待审核。
+3. **R2-04产品设计审核全部完成**：R2-04-01～05及跨模块一致性C01～C08全部A；[R2-04 UI-Ready PRD](RWA-SaaS-C08-R2-04-Project-Offering-Token-UI-Ready-PRD-v0.1.md)已提交。R2-05-01～03及整体一致性C01～C10全部A，UI-Ready PRD已提交，真实生产技术Gate仍未开放。
+4. **R2-05产品设计完成**：R2-05-01～03共30项及整体一致性C01～C10全部A；[R2-05 UI-Ready PRD](RWA-SaaS-C08-R2-05-Issuance-Readiness-UI-Ready-PRD-v0.1.md)已提交。跨R2-02～05文档审计完成，待转入Codex源码Audit Only与分批Sandbox MVP实施。
 5. 对 Project、Offering、发行准备进行跨模块一致性审计，再生成独立 Codex 开发任务。
 6. 对 V2.0 延后项按客户场景和业务优先级另行评审，不因本文件的候选列表自动进入开发。
 
@@ -211,4 +215,4 @@ R2-05-03 R01～R10全部A，MVP用户侧仅需在准备检查通过后通过一�
 
 ---
 
-**当前结论：MVP单账号、房地产资产模板、三类权益结构及R2-04 Project/Offering/Token全部已批准；R2-05-01～03共30项全部A，跨模块一致性C01～C10待审。企业最终确认仅生成受控执行任务；实际部署/复用须通过生产Gate，Mint在真实认购资金及配售确认后执行；M渠道仍须Issuer逐Offering申请、P审批。V2高级自动化与多级审批已进入补充需求池，不改变193项正式版本归属、历史DEC或生产Gate。**
+**当前结论：MVP单账号、房地产资产模板、三类权益结构、R2-04 Project/Offering/Token及R2-05发行准备均已完成产品审核与UI-Ready；R2-05-01～03共30项与一致性C01～C10全部A。企业最终确认生成受控执行任务，真实合约部署/复用、资金/Token交付和M渠道审批均为独立受权业务事实。下一步Codex先Audit Only再实施Sandbox UI/Mock，G01～G04及真实生产Gate继续Open；不改193项正式归属。**

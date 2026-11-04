@@ -274,7 +274,9 @@ MVP采用简单的线性生命周期：Draft → Confirmed → Published → Act
 
 **版本冲突保留**：旧Step05-03/DEC-032曾要求Offering-specific Eligible，C08-R2现批准KYC核验通过自动获得MVP基础认购资格并移除企业独立Offering资格配置；这只收敛MVP交互，**不撤销强制法域适格性**，不得私自改写历史DEC、M09原V1功能ID及193项正式版号。后续在一致性审核及独立正式变更门解决适用边界和版本优先关系。
 
-关联：[R2-05-01～03批准决策与一致性审核待审](RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)。
+关联：[R2-05全部批准决策](RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)、[R2-05 UI-Ready PRD](RWA-SaaS-C08-R2-05-Issuance-Readiness-UI-Ready-PRD-v0.1.md)。最终一致性C01～C10全部A；与旧DEC/版本归属差异继续单独治理。
+
+**R2-05最终一致性审核（2026-11-04）：** 用户批准C01～C10全部A。MVP只保留一页发行准备、七组权威检查、企业单账号声明、唯一受控执行任务、Offering独立发布、Issuer逐Offering申请M平台渠道及P审核、KYC通过后的基础认购与实际资金/配售确认后的受控Mint。这些是已批准MVP主流程，不属于全部延后到V2的复杂能力。复杂联合审批、规则引擎、多市场分发和高级合约调度作为本池补充候选继续保留。跨模块[最终文档审计与G01～G04未决门](../00-governance/RWA-SaaS-C08-R2-02-to-R2-05-MVP-Cross-Module-Consistency-Audit-v0.1.md)单列；旧Step05资格规则与新KYC简化的正式版本治理冲突不可通过本池直接覆盖。已确认的正式22项和V3/TBD归属均不变。
 
 ## 4. 不属于正式 V2.0 的明确边界
 
@@ -341,7 +343,7 @@ V2.0内部优先级、实施批次、客户试点、工作量和发布日期均�
 - R2-02 资产管理：完成；MVP房地产四类已建成物业模板已形成UI-Ready PRD。
 - R2-03 权益结构：完成；MVP三类权益、容量池、Token映射、状态和版本规则已形成UI-Ready PRD。
 - R2-04 Project、Offering、Token/Contract：R2-04-01～05及一致性审核C01～C08全部A，完整UI-Ready PRD已提交；不代表真实生产合约及Provider/Signer准入。
-- R2-05 发行准备：R2-05-01～03各R01～R10全部A；跨模块一致性审核C01～C10待批准；UI-Ready整体收口尚未完成。
+- R2-05 发行准备：R2-05-01～03各R01～R10全部A，跨模块一致性C01～C10全部A；UI-Ready PRD已提交。真实生产合约/法域/资金/Signer/Provider仍Draft/Open。
 - V2.0：正式22项已建立统一需求池；补充候选能力单独标记，等待后续产品评审，不进入当前MVP开发。
 
 **当前开发顺序仍以已批准的MVP/V1范围为准。V2.0需求池用于保留未来产品需求，不得成为提前扩张当前开发范围的依据。**

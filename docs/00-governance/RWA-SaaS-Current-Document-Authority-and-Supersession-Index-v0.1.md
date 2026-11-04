@@ -11,8 +11,9 @@
 3. **R2-02资产管理详细规格**：[房地产资产管理UI-Ready PRD](../03-product-prd/RWA-SaaS-C08-R2-02-Asset-Management-Real-Estate-UI-Ready-PRD-v0.1.md)。
 4. **R2-03权益结构详细规格**：[权益结构UI-Ready PRD](../03-product-prd/RWA-SaaS-C08-R2-03-Rights-Structure-UI-Ready-PRD-v0.1.md)。
 5. **R2-04 Project/Offering/Token详细规格**：[R2-04 UI-Ready PRD](../03-product-prd/RWA-SaaS-C08-R2-04-Project-Offering-Token-UI-Ready-PRD-v0.1.md)。
-6. **V2.0未来需求集中入口**：[V2.0产品需求池与版本规划台账](../03-product-prd/RWA-SaaS-V2-0-Requirements-Backlog-and-Planning-Pool-v0.1.md)。
-7. **仓库治理与清理记录**：[GitHub仓库文件、分支与文档权威审计](RWA-SaaS-Repository-Document-and-Branch-Audit-v0.1.md)。
+6. **R2-05发行准备已批准分批决策**：[R2-05决策记录](../03-product-prd/RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)，仅R2-05-01已批，后续详细规则Draft。
+7. **V2.0未来需求集中入口**：[V2.0产品需求池与版本规划台账](../03-product-prd/RWA-SaaS-V2-0-Requirements-Backlog-and-Planning-Pool-v0.1.md)。
+8. **仓库治理与清理记录**：[GitHub仓库文件、分支与文档权威审计](RWA-SaaS-Repository-Document-and-Branch-Audit-v0.1.md)。
 
 ### 当前阶段及版本边界
 
@@ -20,7 +21,7 @@
 - R2-02：资产管理产品设计完成；当前MVP仅房地产四种已建成物业模板完成详细设计。
 - R2-03：权益结构MVP设计完成；正式支持Equity、Debt、Income Participation三类，容量池、Token映射、版本和状态规则已形成UI-Ready规格。
 - R2-04：Project、Offering、Token/合约关系分批设计R2-04-01～05及整体一致性C01～C08全部A；[R2-04 UI-Ready PRD](../03-product-prd/RWA-SaaS-C08-R2-04-Project-Offering-Token-UI-Ready-PRD-v0.1.md)是当前MVP交接依据，[决策记录](../03-product-prd/RWA-SaaS-C08-R2-04-Project-Offering-Token-Decision-Log-Draft-v0.1.md)保留审核证据。Token主合约实现、法律与生产Gate仍Draft/Open。
-- R2-05：发行准备尚待详细设计。
+- R2-05：R2-05-01单一发行准备页面、七组系统检查、投资者预览、企业单账号最终声明R01～R10全部A；[R2-05决策记录](../03-product-prd/RWA-SaaS-C08-R2-05-Issuance-Readiness-Decision-Log-Draft-v0.1.md)已写入；R2-05-02检查细则及后续批次仍Draft。
 - DEC-017正式版本分配仍为V1.0 146、V2.0 22、V3.0 20、TBD 5。V2需求池中的补充候选不得擅自改变该分配；与既有V1 ID映射存在冲突的候选必须单独审议。
 
 ### 历史文档与仓库清理规则

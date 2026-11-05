@@ -1,0 +1,35 @@
+# 旧规则废止映射及现有源码差异（只读抽样）
+> 2026-11-06｜产品新基线对冲突旧规则优先；历史DEC/文档保留，不在旧位置直接擦除。**下表的“代码现状”仅基于本轮读取的远端 ui/issuer-asset-issuance-complete-v1 分支部分文件；不代表本地最新、完整功能、浏览器验收或生产状态。**
+
+## 旧规则废止/覆盖
+| 旧规则/实现假设 | R2 最新规则 | 处理 |
+|---|---|---|
+| 单账号关联多个企业、选择/切换企业、创建新企业 | V1一个账号最多一个企业，无企业选择/切换 | 废止V1多Tenant交互；数据迁移先审 |
+| 角色管理员、普通成员、订阅管理员等V1分权 | V1单账号、不做团队成员/角色权限配置 | 废止V1角色交互，后续版本另评 |
+| 创建企业即Free，KYB可后补 | 创建并认证为一体入驻；KYB通过才开启Free业务 | 废止旧准入顺序 |
+| 未有Tenant就无法进入工作台 | 邮箱成功即进工作台，可浏览导航但业务详情受限 | 废止旧阻塞 |
+| KYB旧单页复杂字段/条件必填 | 五步中文MVP表单、明确必填/选填、简化联系人 | 以U01新表覆盖 |
+| Free只用模拟MPC或先让企业选择MPC/自有二选一 | KYB过后**自动开通真实MPC**；允许多个已验证自有钱包 | 废止模拟MPC与单钱包二选一 |
+| 默认钱包就是唯一钱包或切换默认等于换钱包 | 默认只是标记；发行可选其它已验证钱包，已有发行快照不变 | 废止 |
+| 只有Standard可配置钱包 | Free、Standard相同钱包功能 | 废止 |
+| 商业订阅只能手动续费且仅USDT | 月/年固定价，USDT和法币；默认关闭可主动开启有授权的自动续费 | 覆盖历史商业方案 |
+| 过期仅暂停新发行但企业仍可正常操作 | 7天宽限暂停新真实发行但已有必要存续可管理；降级后业务历史只读，独立保障投资者义务 | 细分状态，覆盖模糊旧规则 |
+| Free与Standard可以把模拟结果转真实 | 严禁模拟交易/资金/Token自动转生产 | 持续生效未废止 |
+
+## 抽样已核验源码证据
+- `prototypes/website-ui-preview/src/pages/Login.tsx`：存在 role 场景判断、多个Tenant跳转组织选择、新账号另设被禁用的确认流程；与自动注册直达工作台冲突。
+- `prototypes/website-ui-preview/src/pages/IssuerWorkspace.tsx`：如果没有Tenant直接“无法进入企业工作台”；顶部有切换企业、新建企业、角色信息；业务页面由路径直接渲染，未见统一KYB级内容拦截；企业设置仅信息、认证、订阅三选项，未见钱包管理。
+- `prototypes/website-ui-preview/src/pages/IssuerSettings.tsx`：KYB仍用旧字段（如签约代表、授权依据、职责等）与旧单页表单，文件标“模拟已上传”；订阅价格未公布、正式购买按钮禁用，未见月/年、法币/USDT真实账单生命周期。
+- `prototypes/website-ui-preview/src/issuerDemo.ts`：浏览器 sessionStorage 场景数据，含 multiple、members、role、tenant切换及演示套餐权益；不是可靠生产服务。
+- `prototypes/website-ui-preview/src/issuerNavigation.ts`：导航框架与部分空白路由存在；一级子菜单布局部分仍为旧结构，最终导航须与后续 R2 IA 核对。
+- `prototypes/website-ui-preview/src/pages/IssuerIssuance.tsx`：已有Project/Offering与Free Sandbox逻辑；需要进一步审计钱包关联字段/校验及真实资金隔离，不能假定缺失的完整范围。
+- `prototypes/website-ui-preview/src/config.ts`：仍保留旧 /organizations、/free-onboarding 路由常量，应在后续开发确定兼容重定向或废止策略。
+
+## 已完成与未核验的边界
+已完成：上述远端文件只读抽样，发现明确的结构冲突，已确定“移除旧准入/角色/多Tenant交互、替换KYB、增加钱包与新订阅状态”方向。
+**未完成：** 本地Codex工作区最新HEAD、未提交改动、完整全仓代码搜索、服务端鉴权/API、所有路由组件、数据库迁移、Provider/Signer真实实现、浏览器/截图/构建测试、PR#6最新状态复核。故不能宣称“所有钱包代码不存在”或“全部新规则都未实现”；正式DEV-U01-00必须开展差异详审。
+## 旧数据污染防控
+- 不修改旧Frozen、193项历史归属、README、旧Master正文及旧PR#6；使用新的权威索引说明覆盖关系。
+- 实施前只读枚举旧浏览器存储、演示fixture、账户与租户真实数据，给出数据迁移/隔离表；未经授权不清空、不自动合并Tenant、不强制删除。
+- Free模拟订单/Token/资金必须强隔离；企业真实MPC钱包不作为Sandbox募资许可。
+- 合并需用户单独批准；新开发应先核实工作区和基线commit；不能直接用旧代码行为否定新PRD。

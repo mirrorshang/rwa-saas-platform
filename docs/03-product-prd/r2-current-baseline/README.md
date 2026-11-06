@@ -18,6 +18,7 @@
 - [U02-04-REAL-ESTATE-UI-READY-APPROVED-2026-11-06.md](U02-04-REAL-ESTATE-UI-READY-APPROVED-2026-11-06.md)：**U02-04 R28～R33 全部批准**：五步向导与资产创建的 UI-Ready 规范，涵盖开放类别、草稿保存/恢复、Draft 换类保护、Ready 完整性校验、文件上传/异常/历史、四 TAB 下一步及最低验收矩阵；并不授权开发或真实生产执行。
 - [U02-04-ASSET-FILE-REFERENCE-CLOSEOUT-APPROVED-2026-11-06.md](U02-04-ASSET-FILE-REFERENCE-CLOSEOUT-APPROVED-2026-11-06.md)：**资产字段对比最终收口**：授权/委托关系文件可按需添加、Asset 文书在 Instrument/Offering 内固定版本引用；未授权新通用必需文件或自动法律批准。
 - [U02-05-INSTRUMENT-FOUNDATION-APPROVED-2026-11-06.md](U02-05-INSTRUMENT-FOUNDATION-APPROVED-2026-11-06.md)：**U02-05 R01～R06 全部批准，R01 后续正式修订**：Asset 详情「权益结构」TAB，**MVP 一项 Asset 最多一项有效 Instrument、三类权益三选一、允许多期 Offering，共享同一权益容量**；四步向导、固定 Token 映射、Asset 文件固定版本引用；**多 Instrument/混合分层推迟 V2.0，具体字段/Token 精度/真实生产准入仍待审**。
+- [U02-05-INSTRUMENT-FIELD-GROUPS-APPROVED-2026-11-06.md](U02-05-INSTRUMENT-FIELD-GROUPS-APPROVED-2026-11-06.md)：**U02-05 R07～R12 全部 A（字段组级 Approved）**：权益公共字段、股权/债权/收益参与专属字段方向、授权容量/Token 映射、权益法律文件与资产文件固定版本引用；**具体必填条件/计算精度/法律文件清单/四步 UI-Ready 仍待逐项审核**。
 - [DELIVERY-AND-ACCEPTANCE.md](DELIVERY-AND-ACCEPTANCE.md)：开发分层、技术门、测试矩阵、交付顺序。
 - [MOCK-CONTROL-CONSOLE-UI-SPEC.md](MOCK-CONTROL-CONSOLE-UI-SPEC.md)：R2 独立 Mock 控制台，M01～M12 全部批准。
 - [SUPERSEDED-RULES-AND-CODE-GAPS.md](SUPERSEDED-RULES-AND-CODE-GAPS.md)：明确废止旧规则、远端源码抽样证据、仍需 Codex 本地详审的未知项。

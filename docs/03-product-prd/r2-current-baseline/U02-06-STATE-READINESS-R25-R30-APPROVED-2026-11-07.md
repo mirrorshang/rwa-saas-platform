@@ -58,6 +58,11 @@
 7. Free、Standard、Standard 宽限与降级后的权限矩阵，独立 Mock 场景测试，不得混淆。
 8. 需要定义 Browser 验收矩阵，覆盖未开始错报在售、暂停误接新单、关闭错放额度、退款在途丢失、钱包/文件快照漂移、跨租户和并发重复认购等。
 
+## 4A. 2026-11-08 后续确认与交付候选链接
+> 用户随后已明确 **R31～R36 全部 A**，见 [Offering R31～R36 Approved](U02-06-OFFERING-UI-DETAIL-R31-R36-APPROVED-2026-11-08.md)。本文件当时提及「R01～R30」是撰写时的已批准进度，不代表后续批次未批准。当前 R01～R36 已全部批准**产品原则**。
+- 详细开发交接材料已编制为**候选**：[字段级 UI-Ready](U02-06-OFFERING-UI-READY-PRD-2026-11-08.md)、[状态与异常表](U02-06-OFFERING-STATE-EXCEPTION-MATRIX-2026-11-08.md)、[DEV-05 T01～T36 浏览器验收表](U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md)。
+- 不得由「R31～R36 Approved」推断全部精确状态枚举、合约 DvP、钱包资金法律责任、Provider/Signer/生产支付或 DEV-05 源码已经获准；上述候选细节需要后续核准/技术准入。
+
 ## 5. 产品交付状态及保护范围
 - **U02-06 R01～R30 产品方向已逐批 Approved**；此处状态机是批准的**基本生命周期与 UX 原则**，不宣称完整字段级 UI-Ready 已完成，更不代表合约/支付/Token 生产服务可执行。
 - 本批只更改 R2 docs 当前分支及必要目录索引；保持 **PR #8 Draft / Open / Unmerged**，不修改旧 Master、四份 Frozen、193 项历史归属、DEC/SCOPE、仓库根 README、PR #6 或应用源码。

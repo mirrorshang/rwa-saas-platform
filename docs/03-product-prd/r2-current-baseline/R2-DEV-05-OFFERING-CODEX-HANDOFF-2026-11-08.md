@@ -1,4 +1,4 @@
-# RWA SaaS R2｜DEV-05 Offering 开发交接包（待独立验收完成后启用）
+# RWA SaaS R2｜DEV-05 Offering 开发交接包（DEV-05A/B 已授权启动）
 
 > **编制日期：2026-11-08｜最新状态：用户已授权启动 DEV-05A/B（前端业务准备 + 隔离 Mock）**  
 > U02-06 R01～R36 与 DEV-05-01 均为 Approved。DEV-03/04 独立 Audit Only 发现的文件版本/Ready P1、Token 输入 P2 已修复；两个审计提交 `e8506cd2c8d8af614aa092bf6c8f788af62ded4f`、`82dac7fd897242c5b3c9140ee3dab3b5a74f540c` 已由 ChatGPT 独立复核，P1 修复与编辑页 Ready 徽标修复通过针对性复核。用户于 2026-11-08 明确决定**暂不进行 DEV-01～04 整体验收，直接进入 DEV-05**，据此授权 DEV-05A/B。**DEV-03/04 阶段验收仍非 A**；跳过整体验收不等于宣告其通过。只允许 Offering 前端业务准备、内部预览与隔离 Mock；真实发行/资金/合约/公开门户生产能力仍 NO-GO。

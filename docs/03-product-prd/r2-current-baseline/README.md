@@ -41,15 +41,11 @@
 
 - **Instrument MVP 最新收敛规则**：单 Asset 最多一项当前有效权益结构，可有多期 Offering 共享其容量；三种类型只可选择其一，多权益结构推迟 V2.0（不改历史版本主表）。
 
-## 开发前现行门（2026-11-08）
-- [DEV-05 规格审计](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md) 已核对 R01～R36 批准原则及三个候选交接材料；已校正验收用例 T02/T23。**纯前端与隔离 Mock 原本可条件进入，但 DEV-03/04 独立审计现已发现未关闭 P1**，须先完成 [P1 修复与复验](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md)，再确认本地最新 HEAD/未提交改动，并经用户独立授权 DEV-05 开发。
-- 真实公开发行、资金/合约 USDT 支付、Mint/自动分账及生产 Investor Portal **NO-GO**；使用测试 Fixture 不能出示生产批准的虚假绿灯。
-
-## DEV-03/04 与 DEV-05 当前交接门（2026-11-08）
-- DEV-03/04 独立 Audit Only 已收到：无 P0，但发现 P1「Asset 文件换版后 Instrument Ready 未重新复核」；阶段验收暂不为 A。P2 数值误导与证据覆盖也需收口。
-- [P1 修复交接](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md)已准备；Codex 执行与独立复验完成前，不启动 DEV-05。
-- 用户已批准 DEV-05-01：Instrument Ready 才能创建 Offering。DEV-05 交接包已准备，但必须等 DEV-03/04 P1/P2 修复复验、用户阶段验收及 DEV-05 明确授权后再开始。
-- 真实链上发行、USDT 资金支付、合约部署/Mint、分账/退款、生产 KYC/Signer/Provider 继续 NO-GO。
+## DEV-05 当前执行门（2026-11-08）
+- DEV-03/04 初始独立 Audit Only 发现的 P1 文件版本/Ready 联动与 P2 Token 输入展示问题，已修复并由 ChatGPT 对两个独立审计归档进行定向复核；编辑页 Ready 徽标一致性 follow-up 也已复核通过。相关审计证据见上方归档链接。
+- **DEV-03/04 整体阶段验收仍未判 A**，U01～DEV-04 整体浏览器验收与用户人工验收暂缓。用户于 2026-11-08 明确决定跳过当前整体验收，直接启动 DEV-05A/B；这是开发顺序决定，不代表 DEV-03/04 阶段验收通过。
+- [DEV-05 开发交接](R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md)已更新为当前授权版本：DEV-05A Offering 前端业务准备、内部投资者预览，以及 DEV-05B 隔离 Mock/Fixture 可以启动；执行前仍须核实本地真实分支/HEAD/未提交修改并保护原有探针文件。
+- **DEV-05C 真实生产发行、OP Mainnet USDT 支付、合约部署/Mint、分账/退款、公开 Investor Portal、生产 KYC/Signer/Provider 继续 NO-GO**；DEV-05A/B 的 PASS 不等于生产准入。
 
 ## 适用约束
 - V1 中文 UI；V2 多语言及法域语言/资料适配；V1 账号仅一个 Tenant、一个账户操作，无团队角色配置。

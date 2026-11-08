@@ -177,6 +177,10 @@ C. 法律文件
 
 > 上表 T01～T20 **尚未运行**，且包含若干待明确的类型切换/版本精度候选保护细则。正式开发前必须以本文件的 Approved/Open 区分以及真实 Code/Build/Test/Browser/Route/Screenshot/边界证据逐项验收，不能自称 20/20 PASS。
 
+## 7.1 Offering 创建前置条件（后续 U02-06 已正式批准）
+- 用户于 2026-11-08 在 U02-06 DEV-05-01 选择 A：当前有效 Instrument 必须 Ready，才能创建 Offering Draft。完整规则见 [DEV-05-01 Approved 决策](U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md)。
+- 本文件 T16「Ready → 创建 Offering」应理解为：只有当前确定版本处于 Ready 才开放入口；Instrument Draft、检查失败或 Ready 失效时禁止创建 Offering，且不得通过深链绕过。
+
 ## 8. UI-Ready 交付判定、Offering 的承接及未决清单
 ### 已可作为 U02-06 Offering 产品设计输入（是）
 - 已确定 Asset→一套当前 Instrument→多期 Offering 的对象关系、版本引用、单页字段/区块、三类基础权利、Token 拆分的业务输入输出、同池共享防超额，以及创建 Offering 的页面入口。

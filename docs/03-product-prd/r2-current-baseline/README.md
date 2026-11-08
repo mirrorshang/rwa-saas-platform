@@ -32,6 +32,8 @@
 - [U02-06-OFFERING-STATE-EXCEPTION-MATRIX-2026-11-08.md](U02-06-OFFERING-STATE-EXCEPTION-MATRIX-2026-11-08.md)：**状态/订单/资金/Token/容量与异常交接候选**，包含迁移前置守卫、份额不变量、关停与退款在途保护；精确事件、合约资金权责及链上参数仍 Open。
 - [U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md](U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md)：**DEV-05 T01～T36 待执行验收矩阵**，覆盖 Browser/Route/UX/权限/边界/Mock 支付异常及跨期容量；全部 NOT RUN，不代表已授权开始 DEV-05 或生产通过。
 - [U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md)：**DEV-05 开发前规格审计结论 CONDITIONAL GO（仅前端 Offering Draft/内部预览/隔离 Mock），真实发行/支付/Token NO-GO**。已按 R27 更正候选 T23「在途订单未结不能 Closed」并移除 T02 未获批准的「Instrument 未 Ready 一律不可建 Offering Draft」硬性断言；真实源码/DEV-03/04 独立审计待核，用户未授权 DEV-05 编码。
+- [U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md](U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md)：**用户 2026-11-08 选择 A 并正式批准：当前 Asset 的 Instrument 必须 Ready，才允许创建 Offering Draft**；无 Instrument/Draft/检查失败/文件待扫描或失败/Ready 失效均禁止新建，创建动作服务层复核并固定 InstrumentVersion。
+- [R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md](R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md)：**DEV-05 Codex 开发交接包已准备（Prepared / Not Started）**，包含开发范围、A/B/C 单页、Free/Standard、Ready 前置门、T01～T36 验收与完整提示词。必须等待 DEV-03/04 独立 Audit Only 结果复核及用户明确授权后再发送；DEV-05A/B 未开始，DEV-05C 生产真实发行 NO-GO。
 - [DELIVERY-AND-ACCEPTANCE.md](DELIVERY-AND-ACCEPTANCE.md)：开发分层、技术门、测试矩阵、交付顺序。
 - [MOCK-CONTROL-CONSOLE-UI-SPEC.md](MOCK-CONTROL-CONSOLE-UI-SPEC.md)：R2 独立 Mock 控制台，M01～M12 全部批准。
 - [SUPERSEDED-RULES-AND-CODE-GAPS.md](SUPERSEDED-RULES-AND-CODE-GAPS.md)：明确废止旧规则、远端源码抽样证据、仍需 Codex 本地详审的未知项。
@@ -41,6 +43,11 @@
 ## 开发前现行门（2026-11-08）
 - [DEV-05 规格审计](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md) 已核对 R01～R36 批准原则及三个候选交接材料；已校正验收用例 T02/T23。**纯前端与隔离 Mock 可条件进入**，但还须收到 DEV-03/04 独立审计结果、确认本地最新 HEAD/未提交改动，并经用户独立授权 DEV-05 开发。
 - 真实公开发行、资金/合约 USDT 支付、Mint/自动分账及生产 Investor Portal **NO-GO**；使用测试 Fixture 不能出示生产批准的虚假绿灯。
+
+## DEV-05 当前交接门（2026-11-08）
+- 用户已批准 DEV-05-01：Instrument Ready 才能创建 Offering。决策、UI-Ready、状态矩阵与 T02 测试已同步。
+- DEV-05 Codex 交接包已准备，但 DEV-03/04 独立 Audit Only 结果仍待复核，当前不并发修改本地工作树，也不发送编码任务；DEV-05A/B 需用户明确授权。
+- 真实链上发行、USDT 资金支付、合约部署/Mint、分账/退款、生产 KYC/Signer/Provider 继续 NO-GO。
 
 ## 适用约束
 - V1 中文 UI；V2 多语言及法域语言/资料适配；V1 账号仅一个 Tenant、一个账户操作，无团队角色配置。

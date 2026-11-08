@@ -92,5 +92,12 @@
 - Offering 的 **R01～R06 基础字段/单页原则已于 2026-11-07 批准**；内部二级 TAB 的最终名称/数量、记录列表列与筛选、认购资金/容量预留/版本与并发规则、发行后精确状态和操作边界、预览字段映射/设备适配、套餐用量配额和商业价格，均须后续审核确认。
 - 当前**没有批准**变更任何历史 Frozen、193 项版本归属、旧 Master、PR #6，未授权代码开发、真实链或支付生产执行。
 
+## 5.1 2026-11-08 补充批准｜Offering 创建前置条件
+> 用户在 U02-06 DEV-05-01 明确选择 A，详见 [正式批准记录](U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md)。
+- Asset 必须先存在并属于当前 Tenant；该 Asset 唯一当前有效 Instrument 必须完成 Ready 检查，才开放「发行管理 → 新建发行方案」。
+- 无 Instrument、Instrument Draft、检查失败、核心文件待扫描/失败或 Ready 失效时，只提供创建/继续编辑/修复权益结构入口，不允许创建 Offering Draft。
+- 创建时再次校验当前 Ready 确定版本；Offering 固定引用该版本，后续 Instrument 修改不得静默改变历史 Offering。
+- 该规则不改变 Free/Standard 权限：新 Free 与 Standard 均可在 Instrument Ready 后创建正式 Offering Draft；Free 仅内部只读预览，不得真实发布、上架、募资或 Mint。Standard 真实发布仍须全部生产准入。
+
 ## 6. 交付与审计口径
 本文件作为后续 U02 设计与实施的**已批准页面/流程基线**；不将“已批准”误解为“代码已实现”。后续每批产品字段/状态审查只追加本批批准的结论，待定事项保持 Draft。PR #8 不合并，不修改应用代码；上线验收另须真实 Browser/Route/State/Permission 证据。

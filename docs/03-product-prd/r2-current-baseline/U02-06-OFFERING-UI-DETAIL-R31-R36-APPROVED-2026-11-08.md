@@ -45,6 +45,10 @@ C 发行准备：
 4. OP Mainnet USDT 2026-09 合约迁移后官方地址及合约兼容性需重新核验，不准硬编码旧支付资产。
 5. 用户本轮只批准六项产品规则，**没有批准 Codex 立即进行 DEV-05 开发**。后续字段级 UI-Ready、状态与异常矩阵、浏览器验收清单可作为交接候选文档先编制，未再批准的具体实现细则标 Candidate/Open。
 
+## 四A. 后续补充批准｜DEV-05-01 Instrument Ready 前置门
+- 用户于 2026-11-08 选择 A，批准当前 Asset 的 Instrument 必须 Ready 才能创建 Offering Draft。详情见 [DEV-05-01 正式决策](U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md)。
+- 此决定细化 R31 的创建入口守卫，不改变 R31～R36 的其他已批准内容；字段级、状态矩阵与 T02 验收已同步。
+
 ## 五、变更保护
 - 本次仅 R2 docs 分支内文档与索引变动；旧 Master、Frozen、历史 DEC/SCOPE、193 项历史归属、根 README、PR #6 和现有代码不改。
 - PR #8 保持 Draft / Open / Unmerged。DEV-03/04 本地 Codex 的自测不自动构成总控/用户最终人工验收，也不自动授权 Offering 生产执行。

@@ -1,0 +1,146 @@
+{
+  "head": "39e200c7df40647eed66eb579b4cc7e164e28acd",
+  "at": "2026-11-08T14:41:21.864Z",
+  "browser": "Chrome headless, isolated context",
+  "fixture": {
+    "email": "p1-fix-1794148876926@example.com",
+    "assetId": "asset-p1-fixture",
+    "instrumentId": "instrument-p1-fixture"
+  },
+  "results": [
+    {
+      "id": "P1-01 baseline Ready and CTA",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:17.813Z"
+    },
+    {
+      "id": "P1-02 replacement retained V1 and blocked CTA",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:18.044Z"
+    },
+    {
+      "id": "F Asset not Ready blocks editor green badge",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:18.292Z"
+    },
+    {
+      "id": "P1-03 pending scan blocked Asset Ready",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/edit",
+      "at": "2026-11-08T14:41:18.436Z"
+    },
+    {
+      "id": "P1-04 Asset re-Ready kept Instrument blocked",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:18.906Z"
+    },
+    {
+      "id": "A detail and editor agree on review",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:19.092Z"
+    },
+    {
+      "id": "B editor has no green Ready and keeps action",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:19.259Z"
+    },
+    {
+      "id": "P1-05 refresh TAB and direct URL remained blocked",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:19.382Z"
+    },
+    {
+      "id": "P1-06 cancel old-version review stayed blocked",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:19.591Z"
+    },
+    {
+      "id": "C cancelled review remains blocked in editor",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:19.792Z"
+    },
+    {
+      "id": "P1-07 explicit old-version review restored Ready",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:20.055Z"
+    },
+    {
+      "id": "D old-version review restores both badges",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:20.261Z"
+    },
+    {
+      "id": "P1-08 second replacement and explicit new version",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:21.124Z"
+    },
+    {
+      "id": "E new-version review restores both badges",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:21.308Z"
+    },
+    {
+      "id": "P2-01 zero",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:21.411Z"
+    },
+    {
+      "id": "P2-02 negative",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:21.427Z"
+    },
+    {
+      "id": "P2-03 decimal",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:21.444Z"
+    },
+    {
+      "id": "P2-04 empty/non-numeric",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:21.477Z"
+    },
+    {
+      "id": "P2 recovery",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:21.490Z"
+    },
+    {
+      "id": "G ordinary dirty editor remains draft",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:21.604Z"
+    },
+    {
+      "id": "new browser context persistence",
+      "result": "BLOCKED",
+      "at": "2026-11-08T14:41:21.857Z",
+      "url": "http://127.0.0.1:4178/issuer-r2/login",
+      "observation": {
+        "assetsPresent": false,
+        "instrumentsPresent": false
+      },
+      "reason": "Existing U01/Asset/Instrument stores use sessionStorage; a new browser context does not retain those demo records."
+    }
+  ],
+  "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:4178/favicon.ico"
+  ]
+}

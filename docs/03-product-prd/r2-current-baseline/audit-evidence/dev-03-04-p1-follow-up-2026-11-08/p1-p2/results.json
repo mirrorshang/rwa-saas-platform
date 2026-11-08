@@ -1,0 +1,104 @@
+{
+  "head": "39e200c7df40647eed66eb579b4cc7e164e28acd",
+  "at": "2026-11-08T14:41:40.424Z",
+  "browser": "Chrome headless, isolated context",
+  "fixture": {
+    "email": "p1-fix-1794148896801@example.com",
+    "assetId": "asset-p1-fixture",
+    "instrumentId": "instrument-p1-fixture"
+  },
+  "results": [
+    {
+      "id": "P1-01 baseline Ready and CTA",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:37.659Z"
+    },
+    {
+      "id": "P1-02 replacement retained V1 and blocked CTA",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:37.901Z"
+    },
+    {
+      "id": "P1-03 pending scan blocked Asset Ready",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/edit",
+      "at": "2026-11-08T14:41:38.054Z"
+    },
+    {
+      "id": "P1-04 Asset re-Ready kept Instrument blocked",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:38.537Z"
+    },
+    {
+      "id": "P1-05 refresh TAB and direct URL remained blocked",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:38.663Z"
+    },
+    {
+      "id": "P1-06 cancel old-version review stayed blocked",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:38.848Z"
+    },
+    {
+      "id": "P1-07 explicit old-version review restored Ready",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:39.118Z"
+    },
+    {
+      "id": "P1-08 second replacement and explicit new version",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture?tab=instrument",
+      "at": "2026-11-08T14:41:39.986Z"
+    },
+    {
+      "id": "P2-01 zero",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:40.061Z"
+    },
+    {
+      "id": "P2-02 negative",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:40.080Z"
+    },
+    {
+      "id": "P2-03 decimal",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:40.096Z"
+    },
+    {
+      "id": "P2-04 empty/non-numeric",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:40.138Z"
+    },
+    {
+      "id": "P2 recovery",
+      "result": "PASS",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-p1-fixture/instrument",
+      "at": "2026-11-08T14:41:40.151Z"
+    },
+    {
+      "id": "new browser context persistence",
+      "result": "BLOCKED",
+      "at": "2026-11-08T14:41:40.417Z",
+      "url": "http://127.0.0.1:4178/issuer-r2/login",
+      "observation": {
+        "assetsPresent": false,
+        "instrumentsPresent": false
+      },
+      "reason": "Existing U01/Asset/Instrument stores use sessionStorage; a new browser context does not retain those demo records."
+    }
+  ],
+  "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:4178/favicon.ico"
+  ]
+}

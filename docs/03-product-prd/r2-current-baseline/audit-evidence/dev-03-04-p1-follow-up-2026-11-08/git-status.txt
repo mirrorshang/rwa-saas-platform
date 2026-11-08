@@ -1,0 +1,92 @@
+$ git status --porcelain=v2 --branch
+exit_code=0
+# branch.oid 39e200c7df40647eed66eb579b4cc7e164e28acd
+# branch.head feat/issuer-r2-rebuild
+1 .M N... 100644 100644 100644 59f5090b26c105924f2ff6acb710eb3f731953c5 59f5090b26c105924f2ff6acb710eb3f731953c5 prototypes/website-ui-preview/src/issuer-r2/InstrumentPage.tsx
+1 .M N... 100644 100644 100644 d276c46a4141a3663ab84bad820f04815d590c86 d276c46a4141a3663ab84bad820f04815d590c86 prototypes/website-ui-preview/src/issuer-r2/data/instruments.ts
+? evidence/dev-02b-r1/direct-pdf-chrome.png
+? evidence/dev-02b-r1/direct-test.pdf
+? evidence/dev-02b-r1/kyb-test-document.pdf
+? evidence/dev-02b-r1/mpc-address.txt
+? evidence/dev-02b-r1/pdf-render-probe.cjs
+? evidence/dev-02b-r1/probe-embed.png
+? evidence/dev-02b-r1/probe-iframe.png
+? evidence/dev-02b-r1/probe-object.png
+? evidence/dev-02d/debug-legacy.png
+? evidence/dev-02d/debug-preview.png
+? evidence/dev-03-04-p1-fix-2026-11-08/
+
+
+$ git status --short
+exit_code=0
+ M prototypes/website-ui-preview/src/issuer-r2/InstrumentPage.tsx
+ M prototypes/website-ui-preview/src/issuer-r2/data/instruments.ts
+?? evidence/dev-02b-r1/direct-pdf-chrome.png
+?? evidence/dev-02b-r1/direct-test.pdf
+?? evidence/dev-02b-r1/kyb-test-document.pdf
+?? evidence/dev-02b-r1/mpc-address.txt
+?? evidence/dev-02b-r1/pdf-render-probe.cjs
+?? evidence/dev-02b-r1/probe-embed.png
+?? evidence/dev-02b-r1/probe-iframe.png
+?? evidence/dev-02b-r1/probe-object.png
+?? evidence/dev-02d/debug-legacy.png
+?? evidence/dev-02d/debug-preview.png
+?? evidence/dev-03-04-p1-fix-2026-11-08/
+
+
+$ git ls-files -m
+exit_code=0
+prototypes/website-ui-preview/src/issuer-r2/InstrumentPage.tsx
+prototypes/website-ui-preview/src/issuer-r2/data/instruments.ts
+
+
+$ git ls-files --others --exclude-standard
+exit_code=0
+evidence/dev-02b-r1/direct-pdf-chrome.png
+evidence/dev-02b-r1/direct-test.pdf
+evidence/dev-02b-r1/kyb-test-document.pdf
+evidence/dev-02b-r1/mpc-address.txt
+evidence/dev-02b-r1/pdf-render-probe.cjs
+evidence/dev-02b-r1/probe-embed.png
+evidence/dev-02b-r1/probe-iframe.png
+evidence/dev-02b-r1/probe-object.png
+evidence/dev-02d/debug-legacy.png
+evidence/dev-02d/debug-preview.png
+evidence/dev-03-04-p1-fix-2026-11-08/01-affected.png
+evidence/dev-03-04-p1-fix-2026-11-08/02-old-version-reviewed.png
+evidence/dev-03-04-p1-fix-2026-11-08/03-new-version-reviewed.png
+evidence/dev-03-04-p1-fix-2026-11-08/evidence-manifest.cjs
+evidence/dev-03-04-p1-fix-2026-11-08/evidence-manifest.json
+evidence/dev-03-04-p1-fix-2026-11-08/matrix-ASSET-1.png
+evidence/dev-03-04-p1-fix-2026-11-08/matrix-ASSET-2.png
+evidence/dev-03-04-p1-fix-2026-11-08/matrix-ASSET-3.png
+evidence/dev-03-04-p1-fix-2026-11-08/matrix-ASSET-4.png
+evidence/dev-03-04-p1-fix-2026-11-08/matrix-INSTRUMENT-1.png
+evidence/dev-03-04-p1-fix-2026-11-08/matrix-INSTRUMENT-2.png
+evidence/dev-03-04-p1-fix-2026-11-08/matrix-INSTRUMENT-3.png
+evidence/dev-03-04-p1-fix-2026-11-08/matrix-results.json
+evidence/dev-03-04-p1-fix-2026-11-08/ready-matrix.cjs
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-03/01-empty.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-03/02-categories.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-03/03-draft.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-03/04-ready.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-03/05-offering-empty.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-03/06-file-version.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-03/07-subtypes.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-03/08-gallery.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-03/results.json
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-03/verify.cjs
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-04/01-single-page.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-04/02-draft.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-04/03-file-reference.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-04/04-ready.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-04/05-offering-empty.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-04/06-downgraded.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-04/07-fixed-version.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-04/08-mobile.png
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-04/results.json
+evidence/dev-03-04-p1-fix-2026-11-08/regression-dev-04/verify.cjs
+evidence/dev-03-04-p1-fix-2026-11-08/results.json
+evidence/dev-03-04-p1-fix-2026-11-08/trace.zip
+evidence/dev-03-04-p1-fix-2026-11-08/verify.cjs
+

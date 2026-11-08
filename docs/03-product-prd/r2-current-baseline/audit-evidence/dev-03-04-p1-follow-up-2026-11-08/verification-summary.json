@@ -1,0 +1,453 @@
+{
+  "head": "39e200c7df40647eed66eb579b4cc7e164e28acd",
+  "generatedAt": "2026-11-08T14:46:19.343Z",
+  "origin": "http://127.0.0.1:4178",
+  "browser": "headless Chrome, isolated contexts; Mock fixtures",
+  "checks": [
+    {
+      "name": "TypeScript",
+      "command": "node node_modules/typescript/bin/tsc -p tsconfig.json",
+      "exitCode": 0,
+      "log": "logs/typescript.log"
+    },
+    {
+      "name": "ESLint",
+      "command": "node node_modules/eslint/bin/eslint.js .",
+      "exitCode": 0,
+      "log": "logs/eslint.log"
+    },
+    {
+      "name": "formal Build",
+      "command": "node node_modules/vite/bin/vite.js build",
+      "exitCode": 0,
+      "log": "logs/formal-build.log"
+    },
+    {
+      "name": "Demo Build",
+      "command": "node node_modules/vite/bin/vite.js build --mode demo --outDir dist-demo",
+      "exitCode": 0,
+      "log": "logs/demo-build.log"
+    }
+  ],
+  "requested": {
+    "A": {
+      "id": "A detail and editor agree on review",
+      "result": "PASS",
+      "screenshot": "editor-ui/A-both-review.png",
+      "script": "editor-ui/verify.cjs"
+    },
+    "B": {
+      "id": "B editor has no green Ready and keeps action",
+      "result": "PASS",
+      "screenshot": "editor-ui/B-editor-review-action.png",
+      "script": "editor-ui/verify.cjs"
+    },
+    "C": {
+      "id": "C cancelled review remains blocked in editor",
+      "result": "PASS",
+      "screenshot": "editor-ui/C-cancelled-review.png",
+      "script": "editor-ui/verify.cjs"
+    },
+    "D": {
+      "id": "D old-version review restores both badges",
+      "result": "PASS",
+      "screenshot": "editor-ui/D-old-version-ready.png",
+      "script": "editor-ui/verify.cjs"
+    },
+    "E": {
+      "id": "E new-version review restores both badges",
+      "result": "PASS",
+      "screenshot": "editor-ui/E-new-version-ready.png",
+      "script": "editor-ui/verify.cjs"
+    },
+    "F": {
+      "id": "F Asset not Ready blocks editor green badge",
+      "result": "PASS",
+      "screenshot": "editor-ui/F-asset-not-ready.png",
+      "script": "editor-ui/verify.cjs"
+    }
+  },
+  "runs": [
+    {
+      "name": "editor-ui",
+      "file": "editor-ui/results.json",
+      "script": "editor-ui/verify.cjs",
+      "command": "node editor-ui/verify.cjs",
+      "exitCode": 0,
+      "at": "2026-11-08T14:41:21.864Z",
+      "head": "39e200c7df40647eed66eb579b4cc7e164e28acd",
+      "pass": 20,
+      "fail": 0,
+      "blocked": 1,
+      "cases": [
+        {
+          "id": "P1-01 baseline Ready and CTA",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-02 replacement retained V1 and blocked CTA",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "F Asset not Ready blocks editor green badge",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-03 pending scan blocked Asset Ready",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-04 Asset re-Ready kept Instrument blocked",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "A detail and editor agree on review",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "B editor has no green Ready and keeps action",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-05 refresh TAB and direct URL remained blocked",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-06 cancel old-version review stayed blocked",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "C cancelled review remains blocked in editor",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-07 explicit old-version review restored Ready",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "D old-version review restores both badges",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-08 second replacement and explicit new version",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "E new-version review restores both badges",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P2-01 zero",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P2-02 negative",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P2-03 decimal",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P2-04 empty/non-numeric",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P2 recovery",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "G ordinary dirty editor remains draft",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "new browser context persistence",
+          "result": "BLOCKED",
+          "screenshot": null
+        }
+      ]
+    },
+    {
+      "name": "p1-p2",
+      "file": "p1-p2/results.json",
+      "script": "p1-p2/verify.cjs",
+      "command": "node p1-p2/verify.cjs",
+      "exitCode": 0,
+      "at": "2026-11-08T14:41:40.424Z",
+      "head": "39e200c7df40647eed66eb579b4cc7e164e28acd",
+      "pass": 13,
+      "fail": 0,
+      "blocked": 1,
+      "cases": [
+        {
+          "id": "P1-01 baseline Ready and CTA",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-02 replacement retained V1 and blocked CTA",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-03 pending scan blocked Asset Ready",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-04 Asset re-Ready kept Instrument blocked",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-05 refresh TAB and direct URL remained blocked",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-06 cancel old-version review stayed blocked",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-07 explicit old-version review restored Ready",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P1-08 second replacement and explicit new version",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P2-01 zero",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P2-02 negative",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P2-03 decimal",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P2-04 empty/non-numeric",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "P2 recovery",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "new browser context persistence",
+          "result": "BLOCKED",
+          "screenshot": null
+        }
+      ]
+    },
+    {
+      "name": "regression-dev03",
+      "file": "regression-dev03/results.json",
+      "script": "regression-dev03/verify.cjs",
+      "command": "node regression-dev03/verify.cjs",
+      "exitCode": 0,
+      "at": "2026-11-08T14:41:58.968Z",
+      "head": "39e200c7df40647eed66eb579b4cc7e164e28acd",
+      "pass": 10,
+      "fail": 0,
+      "blocked": 0,
+      "cases": [
+        {
+          "id": "U01 认证进入资产列表与空状态",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "8 大类 24 子类与四模板开放",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "住宅草稿保存与刷新恢复",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "Draft 改子类确认及公共字段保留",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "已输入非法面积阻止保存",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "资料缺项定位、文件待扫描、Mock 扫描、Ready",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "资产四 TAB 与发行管理空状态",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "Ready 禁止换类及文件版本更换",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "写字楼、商铺、工业园模板动态字段与 Ready 缺项",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "资产多图添加、排序、移除及草稿恢复",
+          "result": "PASS",
+          "screenshot": null
+        }
+      ]
+    },
+    {
+      "name": "regression-dev04",
+      "file": "regression-dev04/results.json",
+      "script": "regression-dev04/verify.cjs",
+      "command": "node regression-dev04/verify.cjs",
+      "exitCode": 0,
+      "at": "2026-11-08T14:42:12.821Z",
+      "head": "39e200c7df40647eed66eb579b4cc7e164e28acd",
+      "pass": 10,
+      "fail": 0,
+      "blocked": 0,
+      "cases": [
+        {
+          "id": "Asset Ready 后创建一项权益结构",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "三种权益类型动态字段与单页结构",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "精确拆分及非法数值阻止 Ready",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "Draft 保存、刷新恢复及重复创建防护",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "资产文件固定版本引用与核心文件扫描",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "资料 Ready、一资产一结构与发行管理空状态",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "Free / Standard 及降级历史只读",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "Ready 类型保护与资产文件更换后引用不漂移",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "官网与旧 Issuer 基本路由",
+          "result": "PASS",
+          "screenshot": null
+        },
+        {
+          "id": "移动端权益页面无横向溢出",
+          "result": "PASS",
+          "screenshot": null
+        }
+      ]
+    },
+    {
+      "name": "ready-matrix",
+      "file": "ready-matrix/matrix-results.json",
+      "script": "ready-matrix/ready-matrix.cjs",
+      "command": "node ready-matrix/ready-matrix.cjs",
+      "exitCode": 0,
+      "at": "2026-11-08T14:42:26.170Z",
+      "head": "39e200c7df40647eed66eb579b4cc7e164e28acd",
+      "pass": 7,
+      "fail": 0,
+      "blocked": 0,
+      "cases": [
+        {
+          "id": "ASSET-1",
+          "result": "PASS",
+          "screenshot": "matrix-ASSET-1.png"
+        },
+        {
+          "id": "ASSET-2",
+          "result": "PASS",
+          "screenshot": "matrix-ASSET-2.png"
+        },
+        {
+          "id": "ASSET-3",
+          "result": "PASS",
+          "screenshot": "matrix-ASSET-3.png"
+        },
+        {
+          "id": "ASSET-4",
+          "result": "PASS",
+          "screenshot": "matrix-ASSET-4.png"
+        },
+        {
+          "id": "INSTRUMENT-1",
+          "result": "PASS",
+          "screenshot": "matrix-INSTRUMENT-1.png"
+        },
+        {
+          "id": "INSTRUMENT-2",
+          "result": "PASS",
+          "screenshot": "matrix-INSTRUMENT-2.png"
+        },
+        {
+          "id": "INSTRUMENT-3",
+          "result": "PASS",
+          "screenshot": "matrix-INSTRUMENT-3.png"
+        }
+      ]
+    }
+  ],
+  "limitation": "The preexisting sessionStorage cross-context persistence limitation is unchanged. No production backend or true file scan was tested."
+}

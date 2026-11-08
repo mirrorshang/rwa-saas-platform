@@ -1,0 +1,28 @@
+capture_time_utc=2026-11-08T14:43:34.539Z
+$ git rev-parse HEAD
+exit_code=0
+39e200c7df40647eed66eb579b4cc7e164e28acd
+
+
+$ git branch --show-current
+exit_code=0
+feat/issuer-r2-rebuild
+
+
+$ git diff --stat HEAD
+exit_code=0
+ .../src/issuer-r2/InstrumentPage.tsx               | 25 +++++++++++++--------
+ .../src/issuer-r2/data/instruments.ts              | 26 ++++++++++++++++++----
+ 2 files changed, 38 insertions(+), 13 deletions(-)
+[stderr]
+warning: in the working copy of 'prototypes/website-ui-preview/src/issuer-r2/InstrumentPage.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'prototypes/website-ui-preview/src/issuer-r2/data/instruments.ts', LF will be replaced by CRLF the next time Git touches it
+
+
+before_snapshot=D:\RWA-SAAS-DEV-03-04-P1-Audit\docs\03-product-prd\r2-current-baseline\audit-evidence\dev-03-04-p1-fix-2026-11-08\InstrumentPage.tsx
+before_sha256=dbf2fdad41e259339b66b076411bd6d336d80adc8a092419bfa8f6fd50608686
+
+after_snapshot=D:\RWA-SAAS-DEV-03-04-P1-Audit\docs\03-product-prd\r2-current-baseline\audit-evidence\dev-03-04-p1-follow-up-2026-11-08\InstrumentPage.tsx
+after_sha256=ada61e42082e19593bbde4aa9b11fdf4e67dce074b83bfecc88d66644c3dcda8
+
+Only InstrumentPage.tsx was edited in this follow-up; preexisting uncommitted changes to instruments.ts remain untouched.

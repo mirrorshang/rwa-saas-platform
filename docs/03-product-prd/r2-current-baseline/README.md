@@ -34,7 +34,7 @@
 - [U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md)：**DEV-05 规格本身 CONDITIONAL GO（仅前端 Offering Draft/内部预览/隔离 Mock），真实发行/支付/Token NO-GO**。已校正 T02/T23；后续收到 DEV-03/04 独立 Audit Only 报告，发现文件换版后 Instrument Ready 未复核的 P1，故当前 DEV-05 被阻断，须先完成 P1 修复与独立复验。
 - [U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md](U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md)：**用户 2026-11-08 选择 A 并正式批准：当前 Asset 的 Instrument 必须 Ready，才允许创建 Offering Draft**；无 Instrument/Draft/检查失败/文件待扫描或失败/Ready 失效均禁止新建，创建动作服务层复核并固定 InstrumentVersion。
 - [R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md)：**DEV-03/04 独立审计 P1 修复交接**：Asset 权属文件换版后，固定引用旧版本的 Instrument 必须识别影响并重新复核 Ready；同时收口无效 Token 份数误导与关键验收证据覆盖。包含验收标准和完整 Codex 提示词，待执行/独立复验。
-- [R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md](R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md)：**DEV-05 Codex 开发交接包已准备，但当前被 DEV-03/04 P1 阻断**，包含开发范围、A/B/C 单页、Free/Standard、Ready 前置门、T01～T36 验收与完整提示词。必须先完成 P1/P2 修复与独立复验、用户阶段验收及 DEV-05 明确授权后再发送；DEV-05A/B 未开始，DEV-05C 生产真实发行 NO-GO。
+- [R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md](R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md)：**DEV-05A/B 已获用户明确授权启动**，包含 Offering 前端业务准备、单页 A/B/C、Free/Standard、Instrument Ready 前置门、内部投资者预览、隔离 Mock 与 T01～T36 验收。DEV-03/04 整体阶段验收仍非 A，但按用户决定不再作为本次 DEV-05A/B 的启动阻断；DEV-05C 真实生产发行/资金/Token 继续 NO-GO。
 - [DELIVERY-AND-ACCEPTANCE.md](DELIVERY-AND-ACCEPTANCE.md)：开发分层、技术门、测试矩阵、交付顺序。
 - [MOCK-CONTROL-CONSOLE-UI-SPEC.md](MOCK-CONTROL-CONSOLE-UI-SPEC.md)：R2 独立 Mock 控制台，M01～M12 全部批准。
 - [SUPERSEDED-RULES-AND-CODE-GAPS.md](SUPERSEDED-RULES-AND-CODE-GAPS.md)：明确废止旧规则、远端源码抽样证据、仍需 Codex 本地详审的未知项。

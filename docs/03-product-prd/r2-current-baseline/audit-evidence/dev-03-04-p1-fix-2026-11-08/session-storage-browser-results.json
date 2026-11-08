@@ -1,0 +1,73 @@
+{
+  "account": "storage-review-1794144795079@example.com",
+  "origin": "http://127.0.0.1:4178",
+  "startedAt": "2026-11-08T13:33:15.462Z",
+  "fixture": {
+    "assetId": "asset-session-review",
+    "instrumentId": "instrument-session-review",
+    "method": "Mock KYB approval and direct sessionStorage fixture seed; actual UI used for every read assertion"
+  },
+  "results": [
+    {
+      "id": "A same-context refresh",
+      "status": "PASS",
+      "at": "2026-11-08T13:33:16.404Z",
+      "account": "storage-review-1794144795079@example.com",
+      "browserContext": "original isolated context",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-session-review?tab=instrument",
+      "details": "asset and instrument store plus UI restored after reload",
+      "screenshot": "session-A-refresh.png"
+    },
+    {
+      "id": "B same-context TAB return",
+      "status": "PASS",
+      "at": "2026-11-08T13:33:16.605Z",
+      "account": "storage-review-1794144795079@example.com",
+      "browserContext": "original isolated context",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-session-review?tab=instrument",
+      "details": "asset and instrument still present",
+      "screenshot": "session-B-tab-return.png"
+    },
+    {
+      "id": "C same-context direct route",
+      "status": "PASS",
+      "at": "2026-11-08T13:33:16.731Z",
+      "account": "storage-review-1794144795079@example.com",
+      "browserContext": "original isolated context",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-session-review?tab=instrument",
+      "details": "direct detail route shows same asset and instrument",
+      "screenshot": "session-C-direct-route.png"
+    },
+    {
+      "id": "D same-context logout and relogin",
+      "status": "PASS",
+      "at": "2026-11-08T13:33:17.046Z",
+      "account": "storage-review-1794144795079@example.com",
+      "browserContext": "original isolated context",
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-session-review?tab=instrument",
+      "details": "same account and same context restored business data",
+      "screenshot": "session-D-same-context-relogin.png"
+    },
+    {
+      "id": "E new isolated context same account",
+      "status": "FAIL",
+      "at": "2026-11-08T13:33:17.575Z",
+      "account": "storage-review-1794144795079@example.com",
+      "browserContext": "new isolated context",
+      "url": "http://127.0.0.1:4178/issuer-r2",
+      "details": "after login: {\"asset\":null,\"instrument\":null}",
+      "screenshot": "session-E-new-context.png"
+    },
+    {
+      "id": "F close and reopen context same account",
+      "status": "FAIL",
+      "at": "2026-11-08T13:33:18.136Z",
+      "account": "storage-review-1794144795079@example.com",
+      "browserContext": "reopened after original closed",
+      "url": "http://127.0.0.1:4178/issuer-r2",
+      "details": "after login: {\"asset\":null,\"instrument\":null}",
+      "screenshot": "session-F-reopened-context.png"
+    }
+  ],
+  "finishedAt": "2026-11-08T13:33:18.142Z"
+}

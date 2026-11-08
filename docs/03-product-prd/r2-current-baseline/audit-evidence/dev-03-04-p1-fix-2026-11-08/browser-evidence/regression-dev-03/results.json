@@ -1,0 +1,42 @@
+[
+  {
+    "name": "U01 认证进入资产列表与空状态",
+    "result": "PASS"
+  },
+  {
+    "name": "8 大类 24 子类与四模板开放",
+    "result": "PASS"
+  },
+  {
+    "name": "住宅草稿保存与刷新恢复",
+    "result": "PASS"
+  },
+  {
+    "name": "Draft 改子类确认及公共字段保留",
+    "result": "PASS"
+  },
+  {
+    "name": "已输入非法面积阻止保存",
+    "result": "PASS"
+  },
+  {
+    "name": "资料缺项定位、文件待扫描、Mock 扫描、Ready",
+    "result": "PASS"
+  },
+  {
+    "name": "资产四 TAB 与发行管理空状态",
+    "result": "PASS"
+  },
+  {
+    "name": "Ready 禁止换类及文件版本更换",
+    "result": "PASS"
+  },
+  {
+    "name": "写字楼、商铺、工业园模板动态字段与 Ready 缺项",
+    "result": "PASS"
+  },
+  {
+    "name": "资产多图添加、排序、移除及草稿恢复",
+    "result": "PASS"
+  }
+]

@@ -1,0 +1,7 @@
+$ git diff --check
+exit_code=0
+
+[stderr]
+warning: in the working copy of 'prototypes/website-ui-preview/src/issuer-r2/InstrumentPage.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'prototypes/website-ui-preview/src/issuer-r2/data/instruments.ts', LF will be replaced by CRLF the next time Git touches it
+

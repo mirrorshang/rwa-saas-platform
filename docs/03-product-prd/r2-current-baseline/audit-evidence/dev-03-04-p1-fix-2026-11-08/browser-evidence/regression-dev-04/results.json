@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Asset Ready 后创建一项权益结构",
+    "result": "PASS"
+  },
+  {
+    "name": "三种权益类型动态字段与单页结构",
+    "result": "PASS"
+  },
+  {
+    "name": "精确拆分及非法数值阻止 Ready",
+    "result": "PASS"
+  },
+  {
+    "name": "Draft 保存、刷新恢复及重复创建防护",
+    "result": "PASS"
+  },
+  {
+    "name": "资产文件固定版本引用与核心文件扫描",
+    "result": "PASS"
+  },
+  {
+    "name": "资料 Ready、一资产一结构与发行管理空状态",
+    "result": "PASS"
+  },
+  {
+    "name": "Free / Standard 及降级历史只读",
+    "result": "PASS"
+  },
+  {
+    "name": "Ready 类型保护与资产文件更换后引用不漂移",
+    "result": "PASS"
+  },
+  {
+    "name": "官网与旧 Issuer 基本路由",
+    "result": "PASS"
+  },
+  {
+    "name": "移动端权益页面无横向溢出",
+    "result": "PASS"
+  }
+]

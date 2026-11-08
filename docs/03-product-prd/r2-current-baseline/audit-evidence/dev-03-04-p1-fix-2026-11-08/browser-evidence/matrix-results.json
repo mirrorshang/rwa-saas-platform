@@ -1,0 +1,109 @@
+{
+  "head": "39e200c7df40647eed66eb579b4cc7e164e28acd",
+  "at": "2026-11-08T12:29:28.666Z",
+  "browser": "isolated Chrome context per fixture",
+  "note": "Preseeded Mock file scan=passed; Ready action executed through actual UI",
+  "results": [
+    {
+      "id": "ASSET-1",
+      "result": "PASS",
+      "at": "2026-11-08T12:29:22.624Z",
+      "fixture": {
+        "id": "ASSET-1",
+        "subtype": "住宅",
+        "email": "matrix-1794140961467-0@example.com",
+        "assetId": "asset-matrix-0",
+        "instrumentId": "instrument-matrix-0"
+      },
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-matrix-0",
+      "screenshot": "matrix-ASSET-1.png"
+    },
+    {
+      "id": "ASSET-2",
+      "result": "PASS",
+      "at": "2026-11-08T12:29:23.595Z",
+      "fixture": {
+        "id": "ASSET-2",
+        "subtype": "写字楼",
+        "email": "matrix-1794140962635-1@example.com",
+        "assetId": "asset-matrix-1",
+        "instrumentId": "instrument-matrix-1"
+      },
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-matrix-1",
+      "screenshot": "matrix-ASSET-2.png"
+    },
+    {
+      "id": "ASSET-3",
+      "result": "PASS",
+      "at": "2026-11-08T12:29:24.551Z",
+      "fixture": {
+        "id": "ASSET-3",
+        "subtype": "商铺",
+        "email": "matrix-1794140963604-2@example.com",
+        "assetId": "asset-matrix-2",
+        "instrumentId": "instrument-matrix-2"
+      },
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-matrix-2",
+      "screenshot": "matrix-ASSET-3.png"
+    },
+    {
+      "id": "ASSET-4",
+      "result": "PASS",
+      "at": "2026-11-08T12:29:25.510Z",
+      "fixture": {
+        "id": "ASSET-4",
+        "subtype": "工业园／仓储物流",
+        "email": "matrix-1794140964559-3@example.com",
+        "assetId": "asset-matrix-3",
+        "instrumentId": "instrument-matrix-3"
+      },
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-matrix-3",
+      "screenshot": "matrix-ASSET-4.png"
+    },
+    {
+      "id": "INSTRUMENT-1",
+      "result": "PASS",
+      "at": "2026-11-08T12:29:26.539Z",
+      "fixture": {
+        "id": "INSTRUMENT-1",
+        "subtype": "住宅",
+        "instrumentType": "equity",
+        "email": "matrix-1794140965518-4@example.com",
+        "assetId": "asset-matrix-4",
+        "instrumentId": "instrument-matrix-4"
+      },
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-matrix-4?tab=instrument",
+      "screenshot": "matrix-INSTRUMENT-1.png"
+    },
+    {
+      "id": "INSTRUMENT-2",
+      "result": "PASS",
+      "at": "2026-11-08T12:29:27.512Z",
+      "fixture": {
+        "id": "INSTRUMENT-2",
+        "subtype": "住宅",
+        "instrumentType": "debt",
+        "email": "matrix-1794140966547-5@example.com",
+        "assetId": "asset-matrix-5",
+        "instrumentId": "instrument-matrix-5"
+      },
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-matrix-5?tab=instrument",
+      "screenshot": "matrix-INSTRUMENT-2.png"
+    },
+    {
+      "id": "INSTRUMENT-3",
+      "result": "PASS",
+      "at": "2026-11-08T12:29:28.470Z",
+      "fixture": {
+        "id": "INSTRUMENT-3",
+        "subtype": "住宅",
+        "instrumentType": "income",
+        "email": "matrix-1794140967521-6@example.com",
+        "assetId": "asset-matrix-6",
+        "instrumentId": "instrument-matrix-6"
+      },
+      "url": "http://127.0.0.1:4178/issuer-r2/assets/asset-matrix-6?tab=instrument",
+      "screenshot": "matrix-INSTRUMENT-3.png"
+    }
+  ]
+}

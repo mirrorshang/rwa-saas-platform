@@ -23,12 +23,17 @@ Closed：不可直接再次变为 Active；如需新一轮，应建立新 Offeri
 - 等待开始时暂停/提前结束、发行过期后立即关闭、起售时生产门临时失效，以及发布后延期属于**Candidate**，未批准可作为随意快捷操作。
 - 同一 Instrument 同时最多一个实际可开放认购的 Offering；**跨期预定窗口重叠、Paused/Waiting 是否占未来排他时段、自动到期触发的并发锁细节仍需审查**。最小实现必须保证服务器执行新单入口检查，不能只藏前端按钮。
 
+### 1.2 已批准的创建前置条件（DEV-05-01）
+- 2026-11-08 用户选择 A：当前 Asset 的 Instrument 必须处于 Ready，才能创建 Offering Draft。该条件是 Offering 对象创建守卫，不只是「业务资料完整」检查或生产发布门。
+- Offering 创建时固定绑定通过 Ready 检查的确定 InstrumentVersion；创建动作再次核验当前状态，不能只依赖前端按钮。
+- Instrument 后续编辑使当前版本 Ready 失效时，禁止创建新 Offering；既有 Offering 继续引用原固定版本。
+
 ## 2. Offering 生命周期迁移决策表
 约定：A=上游已批准核心规则；C=为开发验收建议的精确守卫；O=需生产法律/技术专项决定。**C/O 不代表全部得到用户批准。**
 
 | 源状态 | 触发 / 目标 | 前置守卫 | 后置事实与副作用 | 操作与反馈 | 级别 |
 |---|---|---|---|---|---|
-| 空白 | 从 Asset「发行管理」新建 → Draft | 本 Tenant Asset/InstrumentVersion 可引用，具备业务准备授权；未完成资料允许保存草稿 | 创建 Offering+必要 Project 关系；**不预留 Token** | 「创建发行方案」与表单区块 | A |
+| 空白 | 从 Asset「发行管理」新建 → Draft | 本 Tenant Asset 存在；其当前有效 Instrument 的确定版本已通过资料检查并处于 **Ready**；具备业务准备授权。**Instrument 不存在、Draft、检查失败、必要文件待扫描/失败或 Ready 已失效时，不允许创建 Offering Draft** | 创建 Offering+必要 Project 关系；固定引用 Ready 的 InstrumentVersion；**不预留 Token** | Ready 时显示「创建发行方案」；未 Ready 时引导创建/修复权益结构 | A |
 | Draft | 保存草稿 → Draft | Tenant/订阅/KYB 有权、数据结构可存、禁止跨 Asset 越权 | 保存填写字段与固定文件版本，不创建链上/资金/订单事实 | 保存成功时间；失败重试且保留输入 | A |
 | Draft | 资料检查 → Draft | 根据字段、文件/资产/钱包及准入状态逐项检查 | **不推进发行生命周期、不预留**；仅更新检查结果 | 两层检查/缺项定位 | A |
 | Draft | 预览 → Draft | 数据有可预览字段，缺项可展示「待补」 | 不生成真实公开链接/订单/上架 | 「内部预览」「非正式」 | A |

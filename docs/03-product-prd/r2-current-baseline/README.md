@@ -31,11 +31,16 @@
 - [U02-06-OFFERING-UI-READY-PRD-2026-11-08.md](U02-06-OFFERING-UI-READY-PRD-2026-11-08.md)：**字段级 UI-Ready 交接候选**，具体控件、Draft/检查条件、按钮文案、文件固定引用、权限矩阵；上游 Approved 与新增 Candidate/Open 明确分离，未声明完整细节已审批或实现。
 - [U02-06-OFFERING-STATE-EXCEPTION-MATRIX-2026-11-08.md](U02-06-OFFERING-STATE-EXCEPTION-MATRIX-2026-11-08.md)：**状态/订单/资金/Token/容量与异常交接候选**，包含迁移前置守卫、份额不变量、关停与退款在途保护；精确事件、合约资金权责及链上参数仍 Open。
 - [U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md](U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md)：**DEV-05 T01～T36 待执行验收矩阵**，覆盖 Browser/Route/UX/权限/边界/Mock 支付异常及跨期容量；全部 NOT RUN，不代表已授权开始 DEV-05 或生产通过。
+- [U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md)：**DEV-05 开发前规格审计结论 CONDITIONAL GO（仅前端 Offering Draft/内部预览/隔离 Mock），真实发行/支付/Token NO-GO**。已按 R27 更正候选 T23「在途订单未结不能 Closed」并移除 T02 未获批准的「Instrument 未 Ready 一律不可建 Offering Draft」硬性断言；真实源码/DEV-03/04 独立审计待核，用户未授权 DEV-05 编码。
 - [DELIVERY-AND-ACCEPTANCE.md](DELIVERY-AND-ACCEPTANCE.md)：开发分层、技术门、测试矩阵、交付顺序。
 - [MOCK-CONTROL-CONSOLE-UI-SPEC.md](MOCK-CONTROL-CONSOLE-UI-SPEC.md)：R2 独立 Mock 控制台，M01～M12 全部批准。
 - [SUPERSEDED-RULES-AND-CODE-GAPS.md](SUPERSEDED-RULES-AND-CODE-GAPS.md)：明确废止旧规则、远端源码抽样证据、仍需 Codex 本地详审的未知项。
 
 - **Instrument MVP 最新收敛规则**：单 Asset 最多一项当前有效权益结构，可有多期 Offering 共享其容量；三种类型只可选择其一，多权益结构推迟 V2.0（不改历史版本主表）。
+
+## 开发前现行门（2026-11-08）
+- [DEV-05 规格审计](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md) 已核对 R01～R36 批准原则及三个候选交接材料；已校正验收用例 T02/T23。**纯前端与隔离 Mock 可条件进入**，但还须收到 DEV-03/04 独立审计结果、确认本地最新 HEAD/未提交改动，并经用户独立授权 DEV-05 开发。
+- 真实公开发行、资金/合约 USDT 支付、Mint/自动分账及生产 Investor Portal **NO-GO**；使用测试 Fixture 不能出示生产批准的虚假绿灯。
 
 ## 适用约束
 - V1 中文 UI；V2 多语言及法域语言/资料适配；V1 账号仅一个 Tenant、一个账户操作，无团队角色配置。

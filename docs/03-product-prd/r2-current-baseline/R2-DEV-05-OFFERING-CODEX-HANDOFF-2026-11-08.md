@@ -1,13 +1,13 @@
 # RWA SaaS R2｜DEV-05 Offering 开发交接包（待独立验收完成后启用）
 
-> **编制日期：2026-11-08｜交接状态：Prepared / Not Started**  
-> U02-06 R01～R36 已批准；DEV-05-01「Instrument 必须 Ready 才能创建 Offering」已批准。此文档用于交接 Codex，不等于已启动开发。DEV-03/04 独立 Audit Only 结果目前尚未在本轮获得，**不得与该审计任务并发修改同一工作树**。真实发行/资金/合约生产能力不在本次授权范围。
+> **编制日期：2026-11-08｜交接状态：Prepared / Blocked by DEV-03/04 P1**  
+> U02-06 R01～R36 已批准；DEV-05-01「Instrument 必须 Ready 才能创建 Offering」已批准。DEV-03/04 独立 Audit Only 报告已收到，但发现文件换版后 Instrument Ready 未重新复核的 P1，故 **DEV-05 暂停，不得发送本交接包启动编码**。必须先按 [DEV-03/04 P1 修复交接](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md) 完成修复与独立复验，再由用户明确授权 DEV-05A/B。真实发行/资金/合约生产能力不在本次授权范围。
 
 ## 0. 启动门（必须按顺序）
 1. 用户已于 2026-11-07 报告 DEV-03/04 开发完成，源码工作区 `D:\RWA-SAAS-Issuer-R2`，分支 `feat/issuer-r2-rebuild`，报告时 HEAD 为 `39e200c7df40647eed66eb579b4cc7e164e28acd`；此前用户已将 DEV-03/04 **独立 Audit Only** 任务发送给 Codex。
-2. **当前独立 Audit Only 结果尚未在本轮对话中收到/复核。** 在拿到该结果前，不发送本交接包要求 Codex 开始编码。不能假定审计已经结束。
-3. 审计报告回来后，先检查 P0/P1 问题：若有影响数据完整性、跨 Tenant、文件/权益版本、Ready 状态、权限或核心业务流程的未解决问题，先停止 DEV-05 编码，提交问题与最小修复建议给用户；不得自己修改 DEV-03/04 来“顺手修复”。
-4. 还须用户明确授权开始 DEV-05A/B。准备本交接包不等于代码开发授权。
+2. **独立 Audit Only 报告已于 2026-11-08 收到**：未发现 P0，但发现 P1「Asset 权属文件换版后，Instrument 仍显示 Ready 且开放发行管理入口」。P2 还包括无效 Token 份数误导展示与测试证据覆盖不足。完整结论以用户提供的独立验收报告为准。
+3. **DEV-05 启动阻断**：先执行 [DEV-03/04 P1 修复与复验交接](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md)。P1 必须修复并通过独立复验；同时收口 P2 数值误导并补齐四种 Asset 模板/三种 Instrument 类型的证据。未关闭前不发送本文件的 DEV-05 编码提示词。
+4. 修复与复验完成后，还须用户明确判定 DEV-03/04 阶段验收并授权开始 DEV-05A/B。准备本交接包不等于代码开发授权。
 5. 真正开始时 Codex 必须重新读取本地真实 worktree 的分支、HEAD、git status、所有 tracked/untracked 改动及正在运行的任务；不得以历史 HEAD 当作当前值。
 
 ## 一、正式产品基线
@@ -128,7 +128,7 @@ GitHub 产品文档分支：docs/r2-current-product-baseline
 本任务状态：开发交接已准备；只有用户在 DEV-03/04 独立 Audit Only 报告复核后明确授权，才开始编码。
 
 【第 0 阶段：硬性启动门，先只读】
-1. 确认 DEV-03/04 独立 Audit Only 已结束，并取得完整报告/文件；若仍运行、未提供结果或用户尚未确认，立即停止。只报告「等待独立审计结果」，不得改源码、文档、测试、commit 或启动并发任务。
+1. 本交接包当前处于阻断状态。先确认 [DEV-03/04 P1 修复与复验交接](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md) 已完成，P1 与要求的 P2/证据补齐均经独立复验；若未完成，立即停止。不得跳过修复直接开始 DEV-05。
 2. 检查是否仍有 Codex 任务/进程正在操作同一工作树；有则停止，不并发修改。
 3. 读取真实分支、HEAD、git status、所有 tracked/untracked 改动；不得 reset/clean/stash/checkout 覆盖任何用户文件。特别保留已有未跟踪探针文件。若不是预期工作区/分支，先报告。
 4. 基线 HEAD 39e200c7... 仅为 2026-11-07 用户报告的历史值，不可假设仍是当前值。重新核实。
@@ -167,7 +167,10 @@ GitHub 产品文档分支：docs/r2-current-product-baseline
 | U02-06 R01～R36 | Approved |
 | DEV-05-01 Instrument Ready 前置门 | Approved |
 | 字段级 UI-Ready / 状态矩阵 / T01～T36 | 已准备，T02 已同步批准规则 |
-| DEV-03/04 独立 Audit Only | **等待结果；尚未复核** |
+| DEV-03/04 独立 Audit Only | **已收到：无 P0；P1 未关闭，阶段验收非 A** |
+| DEV-03/04 P1 文件换版/Ready 复核修复 | [修复交接已准备](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md)，待 Codex 执行与独立复验 |
+| P2 数值误导 / 证据覆盖 | 纳入同一修复任务，待复验 |
+| Codex DEV-05 提示词 | 已准备，**被 P1 阻断，不得发送** |
 | Codex DEV-05 提示词 | 已准备，**暂不发送** |
 | DEV-05A/B 编码 | 未开始、未授权 |
 | DEV-05C 真实生产资金/Token | NO-GO |

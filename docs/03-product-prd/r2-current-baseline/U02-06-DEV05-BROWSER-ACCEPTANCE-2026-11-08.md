@@ -2,7 +2,7 @@
 
 > 2026-11-08。根据已批准 R01～R36、[字段级 UI-Ready](U02-06-OFFERING-UI-READY-PRD-2026-11-08.md)和[状态及异常矩阵](U02-06-OFFERING-STATE-EXCEPTION-MATRIX-2026-11-08.md)编制。**本文件只是待执行的测试计划，全部用例初始为 NOT RUN；没有真实 DEV-05 构建、代码或浏览器测试证据。**具体智能合约与合规资金系统独立准入，不能以 Mock PASS 代替生产测试。
 
-> **2026-11-08 DEV-05 规格审计修正（非新产品决定）**：T23 原预期误把「仍有在途 200」与「已经关闭」合并，和 Approved R27 的“在途处理完成后才关闭”矛盾，现改为先验证关闭阻断、再结清后关闭释放；T02 不应将 Instrument Draft 一律不可创建 Offering Draft 误标为 Approved，现保留 Candidate/Open。详细审计参见 [开发前规格审计记录](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md)。其他用例仍全部 NOT RUN。
+> **2026-11-08 DEV-05 规格审计与后续批准**：T23 原预期误把「仍有在途 200」与「已经关闭」合并，现已按 R27 修正为先阻断关闭、结清后才允许关闭。T02 原先将 Instrument 未 Ready 时能否创建 Offering Draft 留为 Open；用户随后明确选择 A，已正式批准「Instrument Ready 是创建 Offering 的必要前置条件」，T02 现按 Approved 决策验收。详见 [开发前规格审计记录](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md) 与 [DEV-05-01 批准决策](U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md)。其他用例仍全部 NOT RUN。
 
 ## 1. 测试基线与方法
 - 产品基线：docs/r2-current-product-baseline 当前 Approved 规则；历史 Draft Master 与旧源码不可覆盖新 R2。PR #8 继续 Draft/Open/Unmerged。
@@ -16,7 +16,7 @@
 | ID | 实操场景 | 必须断言 | 当前 |
 |---|---|---|---|
 | T01 | Asset 详情「发行管理」从无 Offering 到新建 | 唯一创建入口；无独立 Project/发行准备左侧二级菜单 | NOT RUN |
-| T02 | 无 Instrument 或 Instrument 尚未 Ready 的 Asset 进入「发行管理」 | **无 Instrument**：明确引导先创建权益结构，不能关联不存在的版本。**Instrument 未 Ready**：不能通过资料完整检查或真实发布；能否先创建 Offering Draft 尚属 Candidate/Open，测试不得将「一律禁止建草稿」作为 Approved 强制断言 | NOT RUN |
+| T02 | 分别用无 Instrument、Instrument Draft、检查失败/文件扫描中、Ready 失效、Ready 的 Asset 进入「发行管理」 | 无 Instrument 时只提供「创建权益结构」；Draft/检查失败/文件待扫描/Ready 失效时不显示「新建发行方案」，提供继续编辑/修复；只有当前 Instrument Ready 才显示并允许创建 Offering Draft。创建时服务层复核 Tenant/Asset/确定版本/Ready；不能深链绕过 | NOT RUN |
 | T03 | 创建 Offering 查看所有分区 | 单页 A 发行信息、B 投资者认购条件、C 发行准备；Asset/InstrumentVersion 只读继承 | NOT RUN |
 | T04 | 自动建议名称后用户改名，保存刷新 | 用户改名保留；不覆盖历史期次 | NOT RUN |
 | T05 | 输入 3,000 Token、每 Token 120 U | 计划最高募集显示 360,000 U，而非 3,000 U；不是已募集金额 | NOT RUN |

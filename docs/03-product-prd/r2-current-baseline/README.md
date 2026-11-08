@@ -33,7 +33,8 @@
 - [U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md](U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md)：**DEV-05 T01～T36 待执行验收矩阵**，覆盖 Browser/Route/UX/权限/边界/Mock 支付异常及跨期容量；全部 NOT RUN，不代表已授权开始 DEV-05 或生产通过。
 - [U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md)：**DEV-05 开发前规格审计结论 CONDITIONAL GO（仅前端 Offering Draft/内部预览/隔离 Mock），真实发行/支付/Token NO-GO**。已按 R27 更正候选 T23「在途订单未结不能 Closed」并移除 T02 未获批准的「Instrument 未 Ready 一律不可建 Offering Draft」硬性断言；真实源码/DEV-03/04 独立审计待核，用户未授权 DEV-05 编码。
 - [U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md](U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md)：**用户 2026-11-08 选择 A 并正式批准：当前 Asset 的 Instrument 必须 Ready，才允许创建 Offering Draft**；无 Instrument/Draft/检查失败/文件待扫描或失败/Ready 失效均禁止新建，创建动作服务层复核并固定 InstrumentVersion。
-- [R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md](R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md)：**DEV-05 Codex 开发交接包已准备（Prepared / Not Started）**，包含开发范围、A/B/C 单页、Free/Standard、Ready 前置门、T01～T36 验收与完整提示词。必须等待 DEV-03/04 独立 Audit Only 结果复核及用户明确授权后再发送；DEV-05A/B 未开始，DEV-05C 生产真实发行 NO-GO。
+- [R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md)：**DEV-03/04 独立审计 P1 修复交接**：Asset 权属文件换版后，固定引用旧版本的 Instrument 必须识别影响并重新复核 Ready；同时收口无效 Token 份数误导与关键验收证据覆盖。包含验收标准和完整 Codex 提示词，待执行/独立复验。
+- [R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md](R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md)：**DEV-05 Codex 开发交接包已准备，但当前被 DEV-03/04 P1 阻断**，包含开发范围、A/B/C 单页、Free/Standard、Ready 前置门、T01～T36 验收与完整提示词。必须先完成 P1/P2 修复与独立复验、用户阶段验收及 DEV-05 明确授权后再发送；DEV-05A/B 未开始，DEV-05C 生产真实发行 NO-GO。
 - [DELIVERY-AND-ACCEPTANCE.md](DELIVERY-AND-ACCEPTANCE.md)：开发分层、技术门、测试矩阵、交付顺序。
 - [MOCK-CONTROL-CONSOLE-UI-SPEC.md](MOCK-CONTROL-CONSOLE-UI-SPEC.md)：R2 独立 Mock 控制台，M01～M12 全部批准。
 - [SUPERSEDED-RULES-AND-CODE-GAPS.md](SUPERSEDED-RULES-AND-CODE-GAPS.md)：明确废止旧规则、远端源码抽样证据、仍需 Codex 本地详审的未知项。
@@ -41,12 +42,13 @@
 - **Instrument MVP 最新收敛规则**：单 Asset 最多一项当前有效权益结构，可有多期 Offering 共享其容量；三种类型只可选择其一，多权益结构推迟 V2.0（不改历史版本主表）。
 
 ## 开发前现行门（2026-11-08）
-- [DEV-05 规格审计](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md) 已核对 R01～R36 批准原则及三个候选交接材料；已校正验收用例 T02/T23。**纯前端与隔离 Mock 可条件进入**，但还须收到 DEV-03/04 独立审计结果、确认本地最新 HEAD/未提交改动，并经用户独立授权 DEV-05 开发。
+- [DEV-05 规格审计](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md) 已核对 R01～R36 批准原则及三个候选交接材料；已校正验收用例 T02/T23。**纯前端与隔离 Mock 原本可条件进入，但 DEV-03/04 独立审计现已发现未关闭 P1**，须先完成 [P1 修复与复验](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md)，再确认本地最新 HEAD/未提交改动，并经用户独立授权 DEV-05 开发。
 - 真实公开发行、资金/合约 USDT 支付、Mint/自动分账及生产 Investor Portal **NO-GO**；使用测试 Fixture 不能出示生产批准的虚假绿灯。
 
-## DEV-05 当前交接门（2026-11-08）
-- 用户已批准 DEV-05-01：Instrument Ready 才能创建 Offering。决策、UI-Ready、状态矩阵与 T02 测试已同步。
-- DEV-05 Codex 交接包已准备，但 DEV-03/04 独立 Audit Only 结果仍待复核，当前不并发修改本地工作树，也不发送编码任务；DEV-05A/B 需用户明确授权。
+## DEV-03/04 与 DEV-05 当前交接门（2026-11-08）
+- DEV-03/04 独立 Audit Only 已收到：无 P0，但发现 P1「Asset 文件换版后 Instrument Ready 未重新复核」；阶段验收暂不为 A。P2 数值误导与证据覆盖也需收口。
+- [P1 修复交接](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md)已准备；Codex 执行与独立复验完成前，不启动 DEV-05。
+- 用户已批准 DEV-05-01：Instrument Ready 才能创建 Offering。DEV-05 交接包已准备，但必须等 DEV-03/04 P1/P2 修复复验、用户阶段验收及 DEV-05 明确授权后再开始。
 - 真实链上发行、USDT 资金支付、合约部署/Mint、分账/退款、生产 KYC/Signer/Provider 继续 NO-GO。
 
 ## 适用约束

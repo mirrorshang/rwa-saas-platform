@@ -1,13 +1,13 @@
 # RWA SaaS R2｜DEV-05 Offering 开发交接包（待独立验收完成后启用）
 
-> **编制日期：2026-11-08｜交接状态：Prepared / Blocked by DEV-03/04 P1**  
-> U02-06 R01～R36 已批准；DEV-05-01「Instrument 必须 Ready 才能创建 Offering」已批准。DEV-03/04 独立 Audit Only 报告已收到，但发现文件换版后 Instrument Ready 未重新复核的 P1，故 **DEV-05 暂停，不得发送本交接包启动编码**。必须先按 [DEV-03/04 P1 修复交接](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md) 完成修复与独立复验，再由用户明确授权 DEV-05A/B。真实发行/资金/合约生产能力不在本次授权范围。
+> **编制日期：2026-11-08｜最新状态：用户已授权启动 DEV-05A/B（前端业务准备 + 隔离 Mock）**  
+> U02-06 R01～R36 与 DEV-05-01 均为 Approved。DEV-03/04 独立 Audit Only 发现的文件版本/Ready P1、Token 输入 P2 已修复；两个审计提交 `e8506cd2c8d8af614aa092bf6c8f788af62ded4f`、`82dac7fd897242c5b3c9140ee3dab3b5a74f540c` 已由 ChatGPT 独立复核，P1 修复与编辑页 Ready 徽标修复通过针对性复核。用户于 2026-11-08 明确决定**暂不进行 DEV-01～04 整体验收，直接进入 DEV-05**，据此授权 DEV-05A/B。**DEV-03/04 阶段验收仍非 A**；跳过整体验收不等于宣告其通过。只允许 Offering 前端业务准备、内部预览与隔离 Mock；真实发行/资金/合约/公开门户生产能力仍 NO-GO。
 
 ## 0. 启动门（必须按顺序）
 1. 用户已于 2026-11-07 报告 DEV-03/04 开发完成，源码工作区 `D:\RWA-SAAS-Issuer-R2`，分支 `feat/issuer-r2-rebuild`，报告时 HEAD 为 `39e200c7df40647eed66eb579b4cc7e164e28acd`；此前用户已将 DEV-03/04 **独立 Audit Only** 任务发送给 Codex。
-2. **独立 Audit Only 报告已于 2026-11-08 收到**：未发现 P0，但发现 P1「Asset 权属文件换版后，Instrument 仍显示 Ready 且开放发行管理入口」。P2 还包括无效 Token 份数误导展示与测试证据覆盖不足。完整结论以用户提供的独立验收报告为准。
-3. **DEV-05 启动阻断**：先执行 [DEV-03/04 P1 修复与复验交接](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md)。P1 必须修复并通过独立复验；同时收口 P2 数值误导并补齐四种 Asset 模板/三种 Instrument 类型的证据。未关闭前不发送本文件的 DEV-05 编码提示词。
-4. 修复与复验完成后，还须用户明确判定 DEV-03/04 阶段验收并授权开始 DEV-05A/B。准备本交接包不等于代码开发授权。
+2. **独立 Audit Only 与修复复验已完成**：初始审计未发现 P0，发现 Asset 文件换版后 Instrument Ready 未复核的 P1，以及 Token 非法输入结果展示 P2。随后完成 P1/P2 修复；编辑页 Ready 徽标 follow-up 也已完成。ChatGPT 已直接复核两个独立审计提交（`e8506cd2...`、`82dac7fd...`）中的源码差异、状态逻辑、测试脚本、浏览器结果、截图与构建日志，针对性修复结论通过。审计材料：[P1 修复证据](https://github.com/mirrorshang/rwa-saas-platform/tree/e8506cd2c8d8af614aa092bf6c8f788af62ded4f/docs/03-product-prd/r2-current-baseline/audit-evidence/dev-03-04-p1-fix-2026-11-08)、[Ready 徽标 follow-up](https://github.com/mirrorshang/rwa-saas-platform/tree/82dac7fd897242c5b3c9140ee3dab3b5a74f540c/docs/03-product-prd/r2-current-baseline/audit-evidence/dev-03-04-p1-follow-up-2026-11-08)。
+3. **DEV-03/04 整体验收状态仍非 A**：40 PASS/0 FAIL/1 BLOCKED 等局部与针对性测试，不等于 DEV-01～04 整体浏览器验收或用户人工验收。已知原型限制包括跨浏览器上下文 sessionStorage 不共享；不擅自更换持久化模型。本轮用户明确选择暂缓整体验收，不将此选择记录为 DEV-03/04 通过。
+4. **最新启动授权**：用户于 2026-11-08 明确指示「先不进行验收，直接进入 DEV05」。据此现在授权 DEV-05A（Offering 前端业务准备）与 DEV-05B（独立隔离 Mock/Fixture）；无需等待 DEV-01～04 整体验收 A。Codex 仍须在当前工作区先做安全核对及只读承接审查；发现影响 DEV-05 的未解决 P0/P1 时停止报告，不扩大修复。
 5. 真正开始时 Codex 必须重新读取本地真实 worktree 的分支、HEAD、git status、所有 tracked/untracked 改动及正在运行的任务；不得以历史 HEAD 当作当前值。
 
 ## 一、正式产品基线
@@ -117,7 +117,7 @@
 - 验收：每项测试结果、实际输入/步骤/断言、截图/trace 路径；构建日志；已知问题和生产 BLOCKED 清单。
 - 最终状态：本地 commit SHA（如已获准 commit）；不得声称已推送/合并，除非确实执行且有用户授权。
 
-## 七、可交给 Codex 的完整任务提示词（**仅在 DEV-03/04 独立 Audit Only 已完成并由用户确认后发送**）
+## 七、可交给 Codex 的完整任务提示词（**当前已获用户明确授权 DEV-05A/B，可发送**）
 
 ```text
 任务：RWA SaaS R2｜DEV-05 Offering 发行管理前端与隔离 Mock
@@ -125,10 +125,10 @@
 工作区：D:\RWA-SAAS-Issuer-R2
 预期分支：feat/issuer-r2-rebuild
 GitHub 产品文档分支：docs/r2-current-product-baseline
-本任务状态：开发交接已准备；只有用户在 DEV-03/04 独立 Audit Only 报告复核后明确授权，才开始编码。
+本任务状态：用户已明确授权 DEV-05A/B。DEV-03/04 整体阶段验收仍未判 A；本次授权不代表 DEV-03/04 通过，也不授权 DEV-05C 生产能力。
 
 【第 0 阶段：硬性启动门，先只读】
-1. 本交接包当前处于阻断状态。先确认 [DEV-03/04 P1 修复与复验交接](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md) 已完成，P1 与要求的 P2/证据补齐均经独立复验；若未完成，立即停止。不得跳过修复直接开始 DEV-05。
+1. 用户已明确授权 DEV-05A/B；DEV-03/04 的 P1/P2 定向修复及编辑页徽标 follow-up 已完成并经 ChatGPT 独立复核。不要要求用户先完成 DEV-01～04 整体验收。但必须在当前 worktree 现场检查相关修复代码是否仍存在、Ready 共享判断是否有效；若本地源码与审计快照不一致或发现影响 DEV-05 的 P0/P1，立即停止并报告，不自行扩大修复。
 2. 检查是否仍有 Codex 任务/进程正在操作同一工作树；有则停止，不并发修改。
 3. 读取真实分支、HEAD、git status、所有 tracked/untracked 改动；不得 reset/clean/stash/checkout 覆盖任何用户文件。特别保留已有未跟踪探针文件。若不是预期工作区/分支，先报告。
 4. 基线 HEAD 39e200c7... 仅为 2026-11-07 用户报告的历史值，不可假设仍是当前值。重新核实。
@@ -138,7 +138,7 @@ GitHub 产品文档分支：docs/r2-current-product-baseline
 【第 1 阶段：确认当前代码可承接】
 7. 只读审计 DEV-03/04 实际源码：Asset 详情四 TAB、Instrument Ready 检查、InstrumentVersion、权益容量、固定文件版本、Tenant 权限、U01 订阅权限、企业钱包绑定状态、独立 Mock 控制台和投资者预览组件。
 8. 对照本交接文档，列出现有能力可复用、缺口、冲突和最小实现计划。如果需要新增后端服务/数据库迁移/权限策略而当前项目没有对应基础，先报告，不假造生产能力。
-9. 只有在独立 Audit Only 完成、无未解决阻断项且用户已明确授权 DEV-05A/B 后，才能进入编码。否则停在报告。
+9. 当前用户授权已经生效。完成上述只读承接审查后，如没有影响 Offering 创建前置门、Tenant 隔离、Asset/Instrument 固定版本与 Ready、钱包/套餐权限的未解决 P0/P1，即可直接进入 DEV-05A/B 编码；如有此类问题则停止报告。不得将 DEV-03/04 整体阶段验收标记为 A。
 
 【第 2 阶段：实现范围（用户授权后）】
 10. 实现 Asset 详情「发行管理」TAB 中 Offering 列表/空态/详情入口；不增加独立二级导航。
@@ -167,12 +167,13 @@ GitHub 产品文档分支：docs/r2-current-product-baseline
 | U02-06 R01～R36 | Approved |
 | DEV-05-01 Instrument Ready 前置门 | Approved |
 | 字段级 UI-Ready / 状态矩阵 / T01～T36 | 已准备，T02 已同步批准规则 |
-| DEV-03/04 独立 Audit Only | **已收到：无 P0；P1 未关闭，阶段验收非 A** |
-| DEV-03/04 P1 文件换版/Ready 复核修复 | [修复交接已准备](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md)，待 Codex 执行与独立复验 |
-| P2 数值误导 / 证据覆盖 | 纳入同一修复任务，待复验 |
-| Codex DEV-05 提示词 | 已准备，**被 P1 阻断，不得发送** |
-| Codex DEV-05 提示词 | 已准备，**暂不发送** |
-| DEV-05A/B 编码 | 未开始、未授权 |
+| DEV-03/04 独立 Audit Only | 已完成；未发现 P0；初始 P1/P2 已修复并针对性独立复核通过 |
+| DEV-03/04 整体阶段验收 | **未完成，非 A；用户决定暂缓，不阻断本次 DEV-05A/B** |
+| P1 文件换版/Ready 复核 | 已修复；审计提交 `e8506cd2...`，follow-up `82dac7fd...` |
+| 编辑页 Ready 徽标一致性 | 已修复并独立复核通过；sessionStorage 跨上下文限制保留为已知原型边界 |
+| DEV-05A Offering 前端业务准备 | **用户已授权启动** |
+| DEV-05B 隔离 Mock / Fixture | **用户已授权启动** |
+| DEV-05C 真实生产发行/支付/Token | **NO-GO，不在本次授权内** |
 | DEV-05C 真实生产资金/Token | NO-GO |
 | PR #8 | Draft / Open / Unmerged |
 

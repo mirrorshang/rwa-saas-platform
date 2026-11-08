@@ -174,6 +174,5 @@ GitHub 产品文档分支：docs/r2-current-product-baseline
 | DEV-05A Offering 前端业务准备 | **用户已授权启动** |
 | DEV-05B 隔离 Mock / Fixture | **用户已授权启动** |
 | DEV-05C 真实生产发行/支付/Token | **NO-GO，不在本次授权内** |
-| DEV-05C 真实生产资金/Token | NO-GO |
 | PR #8 | Draft / Open / Unmerged |
 

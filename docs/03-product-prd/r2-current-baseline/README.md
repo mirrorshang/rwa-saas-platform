@@ -3,7 +3,7 @@
 
 ## 统一产品总入口（2026-11-09）
 
-**[《RWA SaaS 产品总体架构与开发基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品设计与架构工作的统一入口，集中维护官网、企业管理、资产与发行、Issuer 九个一级导航、原 M01～M22 + 新增 M23/M24 模块、V1 157 项功能、端到端流程、开发进度及下一阶段路线；USDable 参考功能取舍以 DEC-058 和配套 UI-Ready 补充规格为准。新对话/新任务优先读取该文档；专项文件继续作为字段级和业务规则权威来源，不复制或覆盖历史 DEC、Frozen 与 193 项主表。
+**[《RWA SaaS 产品总体架构与开发基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品设计与架构工作的统一入口，集中维护官网、企业管理、资产与发行、Issuer 九个一级导航、原 M01～M22 + 新增 M23/M24 模块、V1 157 项功能、端到端流程、开发进度及下一阶段路线；USDable 参考功能取舍以 DEC-058 和配套 UI-Ready 补充规格为准；预期年化收益区间与债权周期付息按 DEC-059 执行。新对话/新任务优先读取该文档；专项文件继续作为字段级和业务规则权威来源，不复制或覆盖历史 DEC、Frozen 与 193 项主表。
 
 ## V1.0 最新批准范围（2026-11-09）
 
@@ -13,12 +13,13 @@
 - 五端页面组 IA 为 125 组（W14/I63/M16/V15/P17）；页面组纳入 V1 范围不代表字段级 UI-Ready、代码实现、独立验收或生产准入完成。
 - [DEC-057｜V1 五端完整范围与 M23/M24 新增功能批准](../../../decisions/DEC-057-v1-five-surface-scope-and-unified-marketplace-approved.md)
 - [DEC-058｜USDable 功能参考审计后的 V1 功能取舍与详细设计批准](../../../decisions/DEC-058-usdable-feature-reference-v1-scope-approved.md)
+- [DEC-059｜预期年化收益区间与债权周期付息纳入 V1](../../../decisions/DEC-059-expected-annualized-range-and-periodic-debt-coupon-v1-approved.md)
 - [USDable V1 采纳项与 UI-Ready 补充规格](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
 - [V1.0 产品基线与 157 项功能清单](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)
 - [USDable 整体产品功能差距审计（排除二级交易）](../RWA-SaaS-USDABLE-COMPETITIVE-GAP-ANALYSIS-2026-11-09.md)
 
 ## 读取顺序及优先级
-1. 当前最新已批准的 R2 产品决策（V1 五端范围及 M23/M24 新增 11 项以 DEC-057 为准；USDable 参考功能采纳/后置/排除以 DEC-058 为准；U01 企业KYB五步与动态规则以 [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md) 和 U01 PRD 的 B01～B08 **v0.3** 为准，覆盖旧五步字段版本；U02 资产与发行结构采用 [U02-02 批准记录](U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md)，资产分类与五步创建向导采用 [U02-03 批准记录](U02-03-ASSET-CLASSIFICATION-APPROVED-2026-11-06.md)；[U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md) 的 E09 最新套餐能力矩阵与 [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md) 优先于同目录或历史文件中的旧 Free 完整模拟闭环表述）。
+1. 当前最新已批准的 R2 产品决策（V1 五端范围及 M23/M24 新增 11 项以 DEC-057 为准；USDable 参考功能采纳/后置/排除以 DEC-058 为准；预期年化收益区间与债权周期付息以 DEC-059 为准；预期年化收益区间与债权周期付息以 DEC-059 为准；U01 企业KYB五步与动态规则以 [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md) 和 U01 PRD 的 B01～B08 **v0.3** 为准，覆盖旧五步字段版本；U02 资产与发行结构采用 [U02-02 批准记录](U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md)，资产分类与五步创建向导采用 [U02-03 批准记录](U02-03-ASSET-CLASSIFICATION-APPROVED-2026-11-06.md)；[U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md) 的 E09 最新套餐能力矩阵与 [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md) 优先于同目录或历史文件中的旧 Free 完整模拟闭环表述）。
 2. 本目录 DELIVERY-AND-ACCEPTANCE.md 开发任务和验收；SUPERSEDED-RULES-AND-CODE-GAPS.md 旧规则废止与证据。
 3. 旧 Master PRD 与历史 DEC、Frozen：仅在未被 R2 明确覆盖且不冲突时引用；历史仍保留原始事实，不静默重写。
 4. 旧代码与 Mock 仅是现状证据，不是需求权威。法定合规、安全控制、Provider/Signer/资金/链上生产准入门从不因产品规则覆盖而免除。
@@ -26,7 +27,8 @@
 ## 交付范围
 - [RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)：V1 五端完整产品范围与 157 项 V1 功能清单；整体 Frozen、详细 UI-Ready、独立验收和生产准入另行推进。
 - [../RWA-SaaS-USDABLE-COMPETITIVE-GAP-ANALYSIS-2026-11-09.md](../RWA-SaaS-USDABLE-COMPETITIVE-GAP-ANALYSIS-2026-11-09.md)：基于 2026-11-05 原始 USDable 审计报告更新的整体功能目录、V1 采纳项和版本取舍；不重新访问外网。
-- [USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)：M04 资产相关方、M12 持有人管理、M13 收益上报和清退/兑付的 V1 页面、字段、校验与流程补充。
+- [USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)：M04 资产相关方、M12 持有人管理、M13 收益上报和清退/兑付，以及债权周期付息与 M13 衔接的 V1 页面、字段、校验与流程补充。
+- [U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md](U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md)：权益结构单页 UI-Ready；已补充预期年化收益区间、债权周期付息字段、Ready 规则和验收用例。
 - [U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md)：A 邮箱登录、B 企业入驻/KYB、C 未认证工作台、D 企业钱包、E 订阅及 E09 最新 Free/Standard 权益矩阵；页面字段、流程、状态、校验、提示、异常。
 - [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md)：**R01～R10 均批准**：新版五步 KYB、UBO 控制路径、授权代表、动态文件要求和旧草稿/已提交版本保留；正式 UI 以 U01 B01～B08 v0.3 为准。
 - [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md)：最新用户确认的套餐权限变更决策与待定项，供 U02 流程/导航设计引用。

@@ -514,18 +514,16 @@ V1 产品功能包含真实资金、Token、登记和发行后管理的目标能
 ## 9. 当前开发与验收状态（仅作为状态标注）
 
 - **W 官网：** W-01～W-14 现有页面结构和前端实现作为基线，不因本次收口重新设计。
-- **U01：** 邮箱登录、KYB、Free/Standard、钱包、订阅及权限规则已有专项批准；DEV-01/02 已有开发与浏览器验收记录。
-- **U02 Asset / Instrument：** 产品规则和 UI-Ready 规格已批准并有开发记录；DEV-03/04 整体阶段验收按此前决定暂缓，不能标记为整体最终验收 A。
-- **U02 Offering：** R01～R36 产品规则已批准；DEV-05A/B 开发方报告已实现，但独立源码/证据审计尚未完成，不能将开发方自测直接记为独立验收通过。
-- **DEV-05C 真实生产发行、OP Mainnet USDT 生产支付、真实合约部署/Mint、分账/退款和公开门户生产发布：** 仍为 NO-GO，等待独立生产准入。
-- 本文只收口产品范围，不替代开发审计、浏览器验收或生产准入。
-
-- **M｜统一投资端：** 产品范围及 M23/M24 共 11 项功能已由 DEC-057 纳入 V1；M-01～M-16、I-67/I-68、P-15～P-17 已有页面组 IA。详细 UI-Ready、跨 Issuer 身份授权、M 渠道审核、共享订单路由、跨端状态、代码实现和独立验收尚未完成，不能标记为已交付。
+- **U01 企业入驻与管理：** 邮箱验证码、单账号单企业、KYB 五步 v0.3、企业钱包、Free/Standard 和订阅规则已批准，主要页面流程已有专项设计；官网旧注册/企业选择/升级文案仍需对齐。
+- **U02 资产管理：** 资产分类、首批模板、五步创建和主要字段已明确；子类单位/精度/控件及资产相关方整合仍需产品/UI 收口。
+- **U02 权益结构：** 单资产一套权益结构、三类模板、单页三区域及 Token 权益映射已明确；主体选择、收益参与期限、版本修改和 DEC-059 具体字段规则仍有 Candidate。
+- **U02 Offering：** R01～R36 业务规则已批准；单页信息结构、字段控件、状态操作、空态/错误态、弹窗和最终投资者预览仍需完成产品/UI 设计。
+- **统一投资端：** 11 项 V1 功能范围和页面组 IA 已批准；目录、账户、授权、资格、认购、持仓和收益页面尚未完成逐页产品设计。
 
 ## 10. 后续工作规则
 
 1. 本文依据 DEC-057 更新为 V1.0 产品范围唯一入口；V1 产品范围已 Approved，但整体 V1 Frozen 尚未发生。
-2. 当前 V1 为 157 项（原 146 + 新增 M23/M24 11 项）；完整追踪总数为 204 项（V1 157/V2 22/V3 20/TBD 5）。后续围绕五端 W/I/V/M/P 做模块详细设计、页面 PRD、跨端流程、开发任务与验收。
+2. 当前 V1 为 157 项（原 146 + 统一投资渠道/统一投资者身份相关 11 项）；完整追踪总数为 204 项（V1 157/V2 22/V3 20/TBD 5）。后续围绕五端逐模块完成产品规划、页面信息结构、业务流程、字段、状态、操作、异常和 UI。
 3. 已批准的 U01/U02 规则不反复确认；发现真实冲突时只列出冲突依据、影响和推荐修正，不重开整套架构。
 4. 任何 V1 新增功能必须先说明是否已有正式功能 ID；没有正式 ID 的新增事项不得擅自并入当前 157 项。
 5. 任何对正式 ID、首次交付版本、Frozen、X-01～X-13 或 PR 状态的变更，必须按既有 GitHub 治理单独批准。
@@ -539,7 +537,8 @@ V1 产品功能包含真实资金、Token、登记和发行后管理的目标能
 - [DEC-057：V1 五端完整范围及 M23/M24 新增功能批准](../../../decisions/DEC-057-v1-five-surface-scope-and-unified-marketplace-approved.md)
 - [DEC-058：USDable 功能参考审计后的 V1 功能取舍与详细设计批准](../../../decisions/DEC-058-usdable-feature-reference-v1-scope-approved.md)
 - [DEC-059：预期年化信息披露与债权周期付息纳入 V1（范围批准；详细规则待模块设计）](../../../decisions/DEC-059-expected-annualized-range-and-periodic-debt-coupon-v1-approved.md)
-- [USDable 功能参考｜RWA SaaS V1 采纳项与 UI-Ready 补充规格](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
+- [USDable 功能参考｜RWA SaaS V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
+- [V1 产品完整性收口与产品/UI 设计现状审计](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)
 - [USDable 整体产品功能差距审计（排除二级交易）](../RWA-SaaS-USDABLE-COMPETITIVE-GAP-ANALYSIS-2026-11-09.md)
 - [22 模块 Frozen 功能树与责任矩阵](../RWA-SaaS-Product-Function-Tree-and-Module-Responsibility-Matrix-v0.1.md)
 - [V1 146 项逐 ID 审核追踪台账](../RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md)
@@ -569,4 +568,4 @@ V1 产品功能包含真实资金、Token、登记和发行后管理的目标能
 
 ---
 
-**本文件状态：V1.0 产品范围 Approved（DEC-057）；DEC-058 已补充 M04 资产相关方、M12 持有人管理、M13 收益上报与清退/兑付 UI-Ready；DEC-059 已批准预期年化披露及债权周期付息；整体 V1 Frozen、独立验收与生产准入仍待后续工作。**
+**本文件状态：V1.0 功能范围 Approved（DEC-057）；DEC-058 已确认 USDable 参考功能采纳及版本取舍；DEC-059 已批准预期年化信息披露与债权周期付息纳入 V1（具体规则待模块设计）；V1 产品设计尚未整体完成或 Frozen。

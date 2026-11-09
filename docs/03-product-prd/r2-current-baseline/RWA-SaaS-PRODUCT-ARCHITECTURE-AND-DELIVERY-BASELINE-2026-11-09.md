@@ -1,6 +1,6 @@
 # RWA SaaS｜产品总体架构与开发基线（统一总入口）
 
-> **版本：v0.3｜日期：2026-11-09｜状态：Working Draft（V1 五端范围依据 DEC-057 已批准；USDable 功能取舍及 V1 UI-Ready 补充依据 DEC-058 已批准；整体仍未 Frozen）**
+> **版本：v0.4｜日期：2026-11-09｜状态：Working Draft（V1 五端范围依据 DEC-057 已批准；USDable 功能取舍依据 DEC-058 已批准；预期年化收益区间与债权周期付息依据 DEC-059 已批准；整体仍未 Frozen）**
 > **仓库：mirrorshang/rwa-saas-platform｜维护分支：docs/r2-current-product-baseline｜当前承载 PR：#8（Draft / Open / Unmerged）**
 >
 > 本文是 RWA SaaS 当前产品架构、已完成产品/前端模块、现行功能地图和后续产品设计的**统一阅读与维护入口**。它负责呈现当前有效结论、产品端边界、导航结构、模块责任、交付状态和下一步工作；不替代、不覆盖各专项 DEC、Frozen 文件、DEC-017 原 193 项正式功能主表及 UI-Ready PRD；DEC-057 追加的 M23/M24 11 项作为新增 V1 功能单独追踪。后续产品设计应先更新本文的总览/状态/索引，再在对应专项文件中补充获批细节。USDable 参考功能的采纳、后置和排除以 DEC-058 为准，字段级补充以本目录的 USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md 为准。
@@ -23,7 +23,7 @@
 
 ### 0.2 冲突时的优先级
 
-1. **用户最新明确批准的 R2 决策**：U01、U02 的最新批准文件、DEC-057/DEC-058 及后续修订优先，覆盖冲突的旧页面方案或旧套餐规则。
+1. **用户最新明确批准的 R2 决策**：U01、U02 的最新批准文件、DEC-057/DEC-058/DEC-059 及后续修订优先，覆盖冲突的旧页面方案或旧套餐规则。
 2. **正式 DEC / Frozen 基线**：未被后续明确决定覆盖的部分继续有效；不得静默改写原文。
 3. **DEC-017 原 193 项功能主表及原 22 模块 Frozen 功能树**：原正式功能 ID、首次交付版号和模块责任以原文件为准；新增 M23/M24 11 项及 V1 归属按 DEC-057 追加追踪；DEC-058 仅细化既有 M04/M12/M13 页面，不新增功能 ID。
 4. **历史 Master PRD**：用于追溯完整背景、其他产品端和跨端业务规则；与最新 R2 决策冲突时，不直接沿用旧描述。
@@ -202,6 +202,8 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - 股权、债权、收益参与权三类模板三选一；复杂混合、分层和多 Instrument 延后。
 - 权益结构采用单页面三区域：权益定义、Token 拆分、法律文件。
 - 用户填写权益总规模和 Token 份数，系统计算每 Token 对应权益量。
+- 股权/收益参与型可选配置发行方预期年化收益区间与测算依据；投资者端必须明确风险提示，且不参与 M13 结算计算。
+- 固定利率债权支持到期一次、月/季/半年/年度付息，配置首个付息日和计息日数规则；M13 根据 InstrumentVersion 生成周期付息事件，V1 仍为到期一次还本。
 - 计算不能整除或缺少可靠精度规则时拒绝静默舍入。
 - 多期 Offering 可引用同一 Instrument 的确定版本，并共享其授权容量；历史 Offering 不得因后续编辑而静默改变引用版本。
 
@@ -291,6 +293,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - **持有人管理**：放在既有「投资者与认购 → 持有人登记」页面责任内，补齐筛选列表、详情、法定登记/Token 对账、限制状态及受权处理入口；不允许普通 Issuer 用户直接改写法定登记或 Token 余额，不提供强制转账。
 - **收益上报**：放在「收益与分配 → 收益分配」中，补齐收益期间、Record Date、收益类型、金额 U、凭证、本期无收益声明和复核/分配批次衔接。
 - **清退/兑付**：放在「收益与分配 → 到期与退出」中，补齐有合同/合法公司行动依据的清退申请、每单位或总金额、材料、审核、注资和投资者结算进度；与 M11 认购退款分离。
+- **预期年化与债权周期付息（DEC-059）**：预期年化区间由 Instrument 配置并在投资者端披露；固定利率债权周期付息由 InstrumentVersion 定义，M13 生成事件、计算/复核并衔接资金批次。
 - 多收款方比例分账与 Usage Right 后置 V2；TOTP、套餐硬配额、强制转账不纳入 V1。详细字段/状态见 [DEC-058](../../../decisions/DEC-058-usdable-feature-reference-v1-scope-approved.md) 与 [V1 UI-Ready 补充规格](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)。
 
 ### 4.4 资产与发行导航变更说明
@@ -339,7 +342,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - M11 负责支付指令、到账证据、对账和退款状态。
 - M12 负责配售决定及权威持有人登记引用。
 - M07 负责 Token、合约和链上交易事实。
-- M13 负责发行后权益事件、收益上报、应付收益/本息、清退/兑付计划、分配与清偿核验。
+- M13 负责发行后权益事件、收益上报、应付收益/本息、基于 InstrumentVersion 的周期付息事件、清退/兑付计划、分配与清偿核验。
 - M01 负责 SaaS 商业订阅，绝不与 M11/M13 投资者资金混账。
 - M17/M18/M20/M21 负责协调、通知、审计和只读汇总，不覆盖上述领域主账。
 - M23 只维护 M 渠道申请、授权、审核、展示和渠道状态；M24 只维护 M 统一账户关系、合法资料授权与跨 Issuer 视图，不复制 M09/M10/M11/M12/M07/M13 主账。
@@ -448,7 +451,8 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - [U02 房地产子类与 MVP 开放范围](U02-04-REAL-ESTATE-SUBTYPES-APPROVED-2026-11-06.md)
 - [U02 房地产模板 UI-Ready](U02-04-REAL-ESTATE-UI-READY-APPROVED-2026-11-06.md)
 - [U02 Instrument 单页与自动拆分批准记录](U02-05-INSTRUMENT-SINGLE-PAGE-AUTO-SPLIT-APPROVED-2026-11-07.md)
-- [U02 Instrument UI-Ready](U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md)
+- [U02 Instrument UI-Ready（含 DEC-059 预期年化与债权周期付息）](U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md)
+- [DEC-059：预期年化收益区间与债权周期付息纳入 V1](../../../decisions/DEC-059-expected-annualized-range-and-periodic-debt-coupon-v1-approved.md)
 - [U02 Offering UI-Ready](U02-06-OFFERING-UI-READY-PRD-2026-11-08.md)
 - [R2 当前交付与验收索引](README.md)
 
@@ -458,6 +462,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - [DEC-017 原 193 项统一功能编号与首次交付版本主表](../RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md)
 - [DEC-057：V1 五端完整范围与 M23/M24 11 项新增功能批准](../../../decisions/DEC-057-v1-five-surface-scope-and-unified-marketplace-approved.md)
 - [DEC-058：USDable 功能参考审计后的 V1 功能取舍与详细设计批准](../../../decisions/DEC-058-usdable-feature-reference-v1-scope-approved.md)
+- [DEC-059：预期年化收益区间与债权周期付息纳入 V1](../../../decisions/DEC-059-expected-annualized-range-and-periodic-debt-coupon-v1-approved.md)
 - [USDable 功能参考｜RWA SaaS V1 采纳项与 UI-Ready 补充规格](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
 - [V1.0 产品基线与 157 项功能清单](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)
 - [USDable 整体产品功能差距审计（排除二级交易）](../RWA-SaaS-USDABLE-COMPETITIVE-GAP-ANALYSIS-2026-11-09.md)

@@ -1,5 +1,9 @@
 # R2 当前有效产品基线索引（Draft PR 待合并）
-> 2026-11-06｜RWA SaaS｜U01 产品决策已获用户逐批批准；2026-11-06 Free/Standard 功能边界经用户最新确认并覆盖旧 Free 完整模拟发行定义；文档为新设计权威候选基线，不代表代码或生产服务已实现。分支 docs/r2-current-product-baseline；未经用户单独批准不合并、不开发生产代码。
+> 2026-11-09｜RWA SaaS｜本目录维护 R2 最新产品决策、页面 PRD、开发交接与验收证据；文档不代表所有代码或生产服务已实现。分支 docs/r2-current-product-baseline；PR #8 保持 Draft / Open / Unmerged，未经用户单独批准不合并。
+
+## 统一产品总入口（2026-11-09）
+
+**[《RWA SaaS 产品总体架构与开发基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品设计与架构工作的统一入口，集中维护官网、企业管理、资产与发行、Issuer 九个一级导航、22 个业务模块、端到端流程、开发进度及下一阶段路线。新对话/新任务优先读取该文档；专项文件继续作为字段级和业务规则权威来源，不复制或覆盖历史 DEC、Frozen 与 193 项主表。
 
 ## 读取顺序及优先级
 1. 当前最新已批准的 R2 产品决策（U01 企业KYB五步与动态规则以 [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md) 和 U01 PRD 的 B01～B08 **v0.3** 为准，覆盖旧五步字段版本；U02 资产与发行结构采用 [U02-02 批准记录](U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md)，资产分类与五步创建向导采用 [U02-03 批准记录](U02-03-ASSET-CLASSIFICATION-APPROVED-2026-11-06.md)；[U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md) 的 E09 最新套餐能力矩阵与 [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md) 优先于同目录或历史文件中的旧 Free 完整模拟闭环表述）。

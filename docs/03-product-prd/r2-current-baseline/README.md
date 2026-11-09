@@ -1,5 +1,5 @@
 # R2 当前有效产品基线索引（Draft PR 待合并）
-> 2026-11-09｜RWA SaaS｜本目录维护 R2 最新产品决策、页面 PRD、开发交接与验收证据；文档不代表所有代码或生产服务已实现。分支 docs/r2-current-product-baseline；PR #8 保持 Draft / Open / Unmerged，未经用户单独批准不合并。
+> 2026-11-09｜RWA SaaS｜本目录维护 R2 最新产品决策、模块产品设计、页面流程字段与 UI 设计依据。历史开发交接和验收记录仅供背景追溯，不作为当前产品设计任务。分支 docs/r2-current-product-baseline；PR #8 保持 Draft / Open / Unmerged，未经用户单独批准不合并。
 
 ## 统一产品总入口（2026-11-09）
 
@@ -21,7 +21,7 @@
 
 ## 读取顺序及优先级
 1. 当前最新已批准的 R2 产品决策（V1 五端范围及 M23/M24 新增 11 项以 DEC-057 为准；USDable 参考功能采纳/后置/排除以 DEC-058 为准；预期年化信息披露与债权周期付息纳入 V1 的范围以 DEC-059 为准，具体字段规则待确认；U01 企业 KYB 五步与动态规则以 [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md) 和 U01 PRD 的 B01～B08 **v0.3** 为准，覆盖旧五步字段版本；U02 资产与发行结构采用 [U02-02 批准记录](U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md)，资产分类与五步创建向导采用 [U02-03 批准记录](U02-03-ASSET-CLASSIFICATION-APPROVED-2026-11-06.md)；[U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md) 的 E09 最新套餐能力矩阵与 [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md) 优先于同目录或历史文件中的旧 Free 完整模拟闭环表述）。
-2. 本目录 DELIVERY-AND-ACCEPTANCE.md 开发任务和验收；SUPERSEDED-RULES-AND-CODE-GAPS.md 旧规则废止与证据。
+2. 本轮产品工作优先读取《V1 产品完整性收口与产品/UI 设计现状审计》及对应 U01/U02 专项文件；不把历史开发交接或验收文档当作产品需求。
 3. 旧 Master PRD 与历史 DEC、Frozen：仅在未被 R2 明确覆盖且不冲突时引用；历史仍保留原始事实，不静默重写。
 4. 旧代码与 Mock 仅是现状证据，不是需求权威。法定合规、安全控制、Provider/Signer/资金/链上生产准入门从不因产品规则覆盖而免除。
 

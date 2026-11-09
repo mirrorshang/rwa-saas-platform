@@ -180,16 +180,16 @@ RWA SaaS 的 V1 产品范围为五端体系：W 官网、I Issuer 工作台、V 
 | 全部资产类别的可创建模板 | 我们有 8 大类/24 子类目录，但 V1 实际只开放四种房地产模板 | 其他资产模板按既有 V2 规划后置 |
 | AMM / C2C / 订单簿 / 流动性 / 公开二级交易 | 不属于 V1 | 排除 V1，沿用既有版本边界 |
 
-**已经通过补充设计、不再列为缺口的功能：** Issuer 收益上报、清退/兑付申请、持有人查询与管理视图、资产相关方字段、预期年化收益区间、债权周期付息。它们已分别补入 M04、M12、M13 的既有 V1 责任，不新增正式功能 ID。
+**功能范围采纳已完成、不再作为 USDable 差距反复讨论的功能：** Issuer 收益上报、清退/兑付申请、持有人查询与管理视图、资产相关方、预期年化信息披露、债权周期付息。它们均已归入既有 V1 模块且不新增正式功能 ID；但各模块页面、字段和操作设计的完成度不同，尤其预期年化和周期付息的详细规则仍待产品设计确认。
 
 ## 8. 最终结论与后续使用
 
-- **已批准并补齐 V1 详细设计**：M13 收益上报/清退兑付、M12 持有人管理、M04 资产相关方、预期年化收益区间及债权周期付息；详见 [DEC-058](../../decisions/DEC-058-usdable-feature-reference-v1-scope-approved.md)、[DEC-059](../../decisions/DEC-059-expected-annualized-range-and-periodic-debt-coupon-v1-approved.md)、[Instrument UI-Ready](r2-current-baseline/U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md) 与 [V1 UI-Ready 补充规格](r2-current-baseline/USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)。
+- **功能范围采纳已完成，模块级产品设计仍需按状态推进**：M04 资产相关方、M12 持有人管理、M13 收益上报/清退兑付已有详细设计补充；预期年化披露与债权周期付息仅已批准纳入 V1，具体字段/频率/计息和跨端呈现仍待确认。依据：[DEC-058](../../decisions/DEC-058-usdable-feature-reference-v1-scope-approved.md)、[DEC-059](../../decisions/DEC-059-expected-annualized-range-and-periodic-debt-coupon-v1-approved.md)、[Instrument 详细产品设计](r2-current-baseline/U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md) 与 [V1 功能采纳和模块产品设计补充](r2-current-baseline/USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)。
 - **明确后置 V2**：多收款方名录/比例分账、Usage 使用型权益。
 - **明确不纳入 V1**：TOTP、密码体系照搬、USDable 套餐资产硬配额、强制转账。
 - **继续排除 V1**：AMM、C2C、订单簿、公开二级交易及平台自营流动性。
 - Free / Standard 严格执行 U01 E09，不参考 USDable 资产数量限制。
-- 所有状态必须区分：Product Approved、UI-Ready、Implemented、Independently Accepted、Production Ready。
+- 后续产品工作区分：功能范围已批准、模块规划完成、页面/流程/字段设计完成、UI 设计稿完成。不要因功能采纳完成就宣称整个模块已设计完成。
 
 ## 9. 依据文件
 
@@ -200,7 +200,7 @@ RWA SaaS 的 V1 产品范围为五端体系：W 官网、I Issuer 工作台、V 
 5. RWA SaaS：DEC-046《五端 125 页面组候选信息架构方向确认》。
 6. RWA SaaS：U01 Free/Standard 最新权益决策、U02 资产/Instrument/Offering UI-Ready、Step04 M08/M11/M12/M13/M17～M22 功能设计。
 7. DEC-058《USDable 功能参考审计后的 V1 功能取舍与详细设计批准》。
-8. 《USDable 功能参考｜RWA SaaS V1 采纳项与 UI-Ready 补充规格》。
-9. DEC-059《预期年化收益区间与债权周期付息纳入 V1》。
+8. 《USDable 功能参考｜RWA SaaS V1 功能采纳与模块产品设计补充》。
+9. DEC-059《预期年化信息披露与债权周期付息纳入 V1（范围批准）》。
 
 **审计边界：** 本报告是产品功能与 UX 差距分析，不是 USDable 生产能力认证、法律合规意见或 RWA SaaS 生产就绪声明。

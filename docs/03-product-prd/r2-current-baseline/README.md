@@ -35,11 +35,17 @@
 - [U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md](U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md)：**用户 2026-11-08 选择 A 并正式批准：当前 Asset 的 Instrument 必须 Ready，才允许创建 Offering Draft**；无 Instrument/Draft/检查失败/文件待扫描或失败/Ready 失效均禁止新建，创建动作服务层复核并固定 InstrumentVersion。
 - [R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md](R2-DEV03-04-P1-FILE-VERSION-READINESS-REMEDIATION-2026-11-08.md)：**DEV-03/04 独立审计 P1 修复交接**：Asset 权属文件换版后，固定引用旧版本的 Instrument 必须识别影响并重新复核 Ready；同时收口无效 Token 份数误导与关键验收证据覆盖。包含验收标准和完整 Codex 提示词，待执行/独立复验。
 - [R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md](R2-DEV-05-OFFERING-CODEX-HANDOFF-2026-11-08.md)：**DEV-05A/B 已获用户明确授权启动**，包含 Offering 前端业务准备、单页 A/B/C、Free/Standard、Instrument Ready 前置门、内部投资者预览、隔离 Mock 与 T01～T36 验收。DEV-03/04 整体阶段验收仍非 A，但按用户决定不再作为本次 DEV-05A/B 的启动阻断；DEV-05C 真实生产发行/资金/Token 继续 NO-GO。
+- [R2-DEV-05A-B-INDEPENDENT-AUDIT-HANDOFF-2026-11-09.md](R2-DEV-05A-B-INDEPENDENT-AUDIT-HANDOFF-2026-11-09.md)：**2026-11-09 DEV-05A/B 开发方报告已实现与自测（尚未独立复核、未验收 A）**：31 Chrome PASS/0 FAIL；T01～T36=25 PASS/11 BLOCKED；回归 40 PASS/1 BLOCKED。包含 11 项 BLOCKED 分类、核心风险源码/浏览器审计门、独立 GitHub 证据归档要求。产品源码仍本地未提交；**不得把自测通过记成阶段验收通过**。
 - [DELIVERY-AND-ACCEPTANCE.md](DELIVERY-AND-ACCEPTANCE.md)：开发分层、技术门、测试矩阵、交付顺序。
 - [MOCK-CONTROL-CONSOLE-UI-SPEC.md](MOCK-CONTROL-CONSOLE-UI-SPEC.md)：R2 独立 Mock 控制台，M01～M12 全部批准。
 - [SUPERSEDED-RULES-AND-CODE-GAPS.md](SUPERSEDED-RULES-AND-CODE-GAPS.md)：明确废止旧规则、远端源码抽样证据、仍需 Codex 本地详审的未知项。
 
 - **Instrument MVP 最新收敛规则**：单 Asset 最多一项当前有效权益结构，可有多期 Offering 共享其容量；三种类型只可选择其一，多权益结构推迟 V2.0（不改历史版本主表）。
+
+## DEV-05A/B 开发报告（2026-11-09）
+- Codex 报告 Offering 前端/内部预览/独立 Mock 已实现，TypeScript/ESLint/Build 及 Chrome 主用例自测通过；报告和本地证据均未在本次 GitHub 文档写入中直接核验。
+- **当前状态：Reported Implemented / Independent Audit Pending / 未验收 A**。须先将本地 DEV-05 源码差异、测试脚本、原始结果和截图按 [独立审计交接](R2-DEV-05A-B-INDEPENDENT-AUDIT-HANDOFF-2026-11-09.md) 上传隔离审计分支，再由 ChatGPT 复核 25 PASS、11 BLOCKED 的真实范围。
+- DEV-01～04 整体验收仍按用户决定暂缓；DEV-05C 生产支付、部署/Mint、资金分账与公开门户仍 NO-GO。
 
 ## DEV-05 当前执行门（2026-11-08）
 - DEV-03/04 初始独立 Audit Only 发现的 P1 文件版本/Ready 联动与 P2 Token 输入展示问题，已修复并由 ChatGPT 对两个独立审计归档进行定向复核；编辑页 Ready 徽标一致性 follow-up 也已复核通过。相关审计证据见上方归档链接。

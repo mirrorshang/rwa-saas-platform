@@ -1,7 +1,7 @@
 # R2 当前有效产品基线索引（Draft PR 待合并）
-> 2026-11-09｜RWA SaaS｜本目录维护 R2 最新产品决策、模块产品设计、页面流程字段与 UI 设计依据。历史开发交接和验收记录仅供背景追溯，不作为当前产品设计任务。分支 docs/r2-current-product-baseline；PR #8 保持 Draft / Open / Unmerged，未经用户单独批准不合并。
+> 2026-11-10｜RWA SaaS｜本目录维护 R2 最新产品决策、模块产品设计、页面流程字段与 UI 设计依据。历史开发交接和验收记录仅供背景追溯，不作为当前产品设计任务。分支 docs/r2-current-product-baseline；PR #8 保持 Draft / Open / Unmerged，未经用户单独批准不合并。
 
-## 统一产品总入口（2026-11-09）
+## 统一产品总入口（2026-11-10）
 
 **[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，具体字段规则待模块产品设计确认。新对话/新任务优先读取这两份文件；专项文件继续作为已批准业务规则权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
 

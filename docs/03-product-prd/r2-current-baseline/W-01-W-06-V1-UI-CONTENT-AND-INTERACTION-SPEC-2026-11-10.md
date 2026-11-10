@@ -1,7 +1,7 @@
 # W-01～W-06｜官网 V1 页面内容与交互收口规格（第一批）
 
 > 日期：2026-11-10  
-> 上位决策：[DEC-060｜官网 V1 内容、入口与用户流程对齐批准](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)  
+> 上位决策：[DEC-060｜官网 V1 内容与入口方向批准](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)；[DEC-061｜W-01～W-06 页面内容与交互批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)  
 > **页面内容结构与核心交互：Approved（W-UI-R07～R12 全部 A）｜最终视觉稿、响应式细节与实现验收：待后续 UI 收口**  
 > 维护分支：docs/r2-current-product-baseline｜PR #8 Draft / Open / Unmerged  
 > **工作边界：产品/UI 设计，不是技术开发任务；本文件不授权修改官网源代码。**

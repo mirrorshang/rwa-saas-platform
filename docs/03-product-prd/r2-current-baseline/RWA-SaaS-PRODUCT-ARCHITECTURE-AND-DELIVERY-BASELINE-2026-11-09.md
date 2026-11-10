@@ -150,7 +150,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 来源：
 - [官网实施进度](https://github.com/mirrorshang/rwa-saas-platform/blob/ui/wdex-saas-website-v1/prototypes/website-ui-preview/IMPLEMENTATION_PROGRESS.md)
 - [官网 UI 核查记录](https://github.com/mirrorshang/rwa-saas-platform/blob/ui/wdex-saas-website-v1/prototypes/website-ui-preview/QA_REPORT.md)
-- [DEC-060｜官网 V1 内容与入口方向批准](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)；[DEC-061｜W-01～W-06 页面内容与交互批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)；[DEC-062｜注册入口统一](../../../decisions/DEC-062-website-registration-entry-unified-with-email-login-approved.md)；[DEC-063｜历史注册/邮箱验证链接直达统一登录](../../../decisions/DEC-063-legacy-registration-and-email-verification-links-direct-to-unified-login-approved.md)；[DEC-064｜企业邮箱验证码登录页面批准](../../../decisions/DEC-064-enterprise-email-login-page-approved.md)；[DEC-065｜登录后企业创建与 KYB 引导页面批准](../../../decisions/DEC-065-enterprise-onboarding-and-kyb-entry-guidance-approved.md)；[DEC-066｜五步企业认证页面字段与交互批准](../../../decisions/DEC-066-enterprise-kyb-five-step-ui-fields-and-interactions-approved.md)；[DEC-067｜待补件与未通过统一原资料编辑及重新提交](../../../decisions/DEC-067-kyb-supplement-and-rejected-states-share-one-edit-and-resubmit-flow-approved.md)；[W-01～W-14 V1 内容、入口与流程对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)；[W-01～W-06 页面内容与交互规格（Approved）](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)；[W-07～W-14 与 M 统一投资端页面规格（Candidate）](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)
+- [DEC-060｜官网 V1 内容与入口方向批准](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)；[DEC-061｜W-01～W-06 页面内容与交互批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)；[DEC-062｜注册入口统一](../../../decisions/DEC-062-website-registration-entry-unified-with-email-login-approved.md)；[DEC-063｜历史注册/邮箱验证链接直达统一登录](../../../decisions/DEC-063-legacy-registration-and-email-verification-links-direct-to-unified-login-approved.md)；[DEC-064｜企业邮箱验证码登录页面批准](../../../decisions/DEC-064-enterprise-email-login-page-approved.md)；[DEC-065｜登录后企业创建与 KYB 引导页面批准](../../../decisions/DEC-065-enterprise-onboarding-and-kyb-entry-guidance-approved.md)；[DEC-066｜五步企业认证页面字段与交互批准](../../../decisions/DEC-066-enterprise-kyb-five-step-ui-fields-and-interactions-approved.md)；[DEC-067｜待补件与未通过统一原资料编辑及重新提交](../../../decisions/DEC-067-kyb-supplement-and-rejected-states-share-one-edit-and-resubmit-flow-approved.md)；[DEC-068｜企业钱包管理页面结构与核心业务规则批准](../../../decisions/DEC-068-enterprise-wallet-management-ui-and-business-rules-approved.md)；[W-01～W-14 V1 内容、入口与流程对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)；[W-01～W-06 页面内容与交互规格（Approved）](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)；[W-07～W-14 与 M 统一投资端页面规格（Candidate）](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)
 - [历史 Master PRD：W-01～W-14 页面详细规格](../RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)
 
 ### 3.2 U01｜企业管理、账号、KYB、钱包与订阅
@@ -163,7 +163,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 4. 企业 KYB 采用五步：企业基本信息 → 企业业务信息 → 企业关联人员 → 企业证明材料 → 预览与确认提交；支持草稿、提交、审核、补件和版本追溯。
 5. Free 与 Standard 共用工作台结构；KYB 均需完成。Free 可真实创建和保存资产、权益结构、发行方案等准备资料，但不能真实部署/Mint、公开上架、生成对外投资者门户、开展认购募资、持仓或收益运营。
 6. Standard 在订阅有效且满足适用法律、发行、资金、Provider、Signer、网络和安全生产准入后，才开放对应真实业务能力；付费不等于发行许可。
-7. KYB 通过后按已批准规则启动企业 MPC 钱包分配；可关联并验证企业自有钱包，发行时必须明确选择收款钱包。真实 MPC Provider 与密钥/Signer 生产准入独立于页面实现。
+7. 企业钱包规则按 DEC-068 执行：KYB 通过后自动启动真实 MPC 钱包分配；一个列表页管理 MPC 与多个签名验证的自有钱包；同一企业同一时刻仅一个默认钱包且可切换；每个 Offering 独立选择有效收款钱包，默认预选企业默认钱包。真实 MPC Provider 与密钥/Signer 生产准入独立于页面实现。
 8. SaaS 订阅支持月/年周期、USDT/法币选择、自动续费、提醒、宽限期和降级/恢复规则；订阅资金与投资者认购资金隔离。
 
 **当前产品设计判断：**
@@ -171,12 +171,13 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - U01 的账号、KYB、企业管理、钱包和订阅业务规则及主要页面流程已基本完整；本轮不重新设计其业务模型和企业管理导航。
 - KYB 页面字段以已批准的 v0.3 五步版本为准，旧五步字段版本不再作为当前产品依据。
 - 官网旧注册、企业开通、多企业选择和 Standard 升级说明与现行 U01 规则存在差异，须按单账号单企业、邮箱验证码首次自动建号、创建企业即进入 KYB、KYB 通过后激活 Free、月/年及 USDT/法币订阅进行统一。
-- U01 专项 PRD 是企业入驻流程的规则权威；官网入口和营销说明必须引用该流程，不另造第二套注册/KYB/订阅路径。
+- U01 专项 PRD 是企业入驻、钱包和订阅流程的规则权威；企业钱包页面结构与五项核心规则已由 DEC-068 批准。官网入口和营销说明必须引用该流程，不另造第二套注册/KYB/订阅路径。
 
 **权威详细文件：**
 
 - [U01 UI-Ready PRD](U01-UI-Ready-PRD.md)
 - [U01 KYB v0.3 批准记录](U01-KYB-V03-APPROVED-2026-11-06.md)
+- [DEC-068 企业钱包管理页面结构与核心业务规则批准](../../../decisions/DEC-068-enterprise-wallet-management-ui-and-business-rules-approved.md)
 - [U01 Free/Standard 最新权益决策](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md)
 
 ### 3.3 U02｜资产管理、权益结构与发行

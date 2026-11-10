@@ -15,6 +15,7 @@
 - [DEC-058｜USDable 功能参考审计后的 V1 功能取舍与详细设计批准](../../../decisions/DEC-058-usdable-feature-reference-v1-scope-approved.md)
 - [DEC-059｜预期年化信息披露与债权周期付息纳入 V1（范围批准）](../../../decisions/DEC-059-expected-annualized-range-and-periodic-debt-coupon-v1-approved.md)
 - [DEC-060｜官网 V1 内容、入口与用户流程对齐（W-V1-R01～R06 全部 A）](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)
+- [DEC-061｜W-01～W-06 页面内容与交互收口（W-UI-R07～R12 全部 A）](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)
 - [USDable V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
 - [V1 产品完整性收口与产品/UI 设计现状审计](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)
 - [V1.0 产品基线与 157 项功能清单](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)
@@ -22,9 +23,11 @@
 
 ## 官网 V1 内容与流程设计（2026-11-10）
 
-- [DEC-060｜官网 V1 内容、入口与用户流程对齐](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)：W-V1-R01～R06 **全部 A，6/6 Approved，B=0**；批准保留现有官网结构并统一当前 V1 内容、套餐、账号/KYB、订阅与 M 筹备状态。
-- [W-01～W-14 官网 V1 内容、CTA 与跨端入口对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)：全站范围和主流程已 Approved；具体微文案、控件与交互按 UI 批次继续审核。
-- [W-01～W-06 V1 页面内容与交互收口规格](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)：第一批页面级候选规格，待 W-UI-R07～R12 审核；包括首页、产品功能、解决方案、订阅、帮助中心和联系我们。
+- [DEC-060｜官网 V1 内容、入口与用户流程对齐](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)：W-V1-R01～R06 **全部 A，6/6 Approved，B=0**。
+- [DEC-061｜W-01～W-06 页面内容与交互收口批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)：W-UI-R07～R12 **全部 A，6/6 Approved，B=0**。
+- [W-01～W-14 官网 V1 内容、CTA 与跨端入口对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)：全站范围和主流程 Approved；具体页面状态见 DEC-060/061 与页面规格。
+- [W-01～W-06 页面内容与交互规格](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)：第一批页面内容结构与核心交互 Approved；最终视觉稿、响应式和实现验收待后续收口。
+- [W-07～W-14 与 M 统一投资端介绍页面规格](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)：第二批页面级 Candidate，待 W-UI-R13～R20 审核。
 - **用户确认的产品/UI 顺序**：先功能范围和流程、再模块与页面/字段/状态、最后 UI；V1 简化、易用，不将技术开发作为本阶段工作。
 
 ## 读取顺序及优先级

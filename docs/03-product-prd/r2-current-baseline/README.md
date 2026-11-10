@@ -22,7 +22,9 @@
 
 ## 官网 V1 内容与流程设计（2026-11-10）
 
-- [W-01～W-14 官网 V1 文案、CTA 与跨端入口对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)：按当前官网源码逐页核对 Free/Standard、Asset/Instrument/Offering、邮箱验证码、企业创建/KYB、单企业、订阅、M 投资者入口、FAQ 和历史 URL 兼容；附 W-V1-R01～R06 六项批量审核题。**当前状态 Candidate，未经用户逐项批准的精确文案不可当作已确认 UI。**
+- [DEC-060｜官网 V1 内容、入口与用户流程对齐](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)：W-V1-R01～R06 **全部 A，6/6 Approved，B=0**；批准保留现有官网结构并统一当前 V1 内容、套餐、账号/KYB、订阅与 M 筹备状态。
+- [W-01～W-14 官网 V1 内容、CTA 与跨端入口对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)：全站范围和主流程已 Approved；具体微文案、控件与交互按 UI 批次继续审核。
+- [W-01～W-06 V1 页面内容与交互收口规格](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)：第一批页面级候选规格，待 W-UI-R07～R12 审核；包括首页、产品功能、解决方案、订阅、帮助中心和联系我们。
 - **用户确认的产品/UI 顺序**：先功能范围和流程、再模块与页面/字段/状态、最后 UI；V1 简化、易用，不将技术开发作为本阶段工作。
 
 ## 读取顺序及优先级

@@ -143,14 +143,14 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - 真实账号服务、邮箱发送与认证授权、企业工作台真实服务、咨询信息真实接收、商业 KYB、合同、价格、订阅付款及权益服务尚需独立接入和验收。
 - 正式法律政策正文、企业主体/品牌信息、Cookie 合规机制、响应式全视口、可访问性、SEO、生产部署与发布验收不能由 Mock 页面 Tested 推断为完成。
 
-**V1 对齐项：** W-01～03 修订 Free 正式业务准备、Project 内部对象和统一投资端说明；W-04/W-13 修订 Free/Standard、月/年订阅及 USDT/法币口径；W-05/W-06 修订 FAQ 与咨询分类；W-08～W-12 统一邮箱验证码、单账号单企业和五步 KYB 流程，W-12 不再作为多企业选择；W-14 保留当前本地存储说明，是否需要完整 Cookie 同意管理另按实际使用情况判断。官网统一投资端介绍入口保持筹备态，不展示尚未开放的真实 Offering/认购。
+**V1 内容与入口方向已由 DEC-060 批准（W-V1-R01～R06 全部 A）：** 保留现有官网结构；W-01～03 按 Asset → Instrument（权益结构）→ Offering（发行方案）及 Free 正式资料准备口径收口；W-04/W-13 按 U01 E09 更新 Free/Standard、月/年订阅及 USDT/法币；W-05/W-06/07/14 更新 FAQ、教程、咨询、政策与本地存储说明；W-08～W-12 统一邮箱验证码、单账号单企业、五步 KYB 和 Free 激活，历史注册/验证/企业选择 URL 仅作兼容引导；M 统一投资端属于 V1，当前公开入口仍筹备中。**页面逐句微文案、控件、异常、响应式和视觉细节尚未全部 Approved，按 W-UI 批次继续审核。**
 
 **维护原则：** 官网作为现有页面与 UI 基线保留；后续只做上述 V1 内容、流程和入口对齐，不重新设计已完成的官网结构。
 
 来源：
 - [官网实施进度](https://github.com/mirrorshang/rwa-saas-platform/blob/ui/wdex-saas-website-v1/prototypes/website-ui-preview/IMPLEMENTATION_PROGRESS.md)
 - [官网 UI 核查记录](https://github.com/mirrorshang/rwa-saas-platform/blob/ui/wdex-saas-website-v1/prototypes/website-ui-preview/QA_REPORT.md)
-- [官网 W-01～W-14 V1 内容、入口与用户流程对齐方案（Candidate，2026-11-10）](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)
+- [DEC-060｜官网 V1 内容与入口方向批准](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)；[W-01～W-14 V1 内容、入口与流程对齐方案（方向 Approved，微文案 Candidate）](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)；[W-01～W-06 页面内容与交互收口规格（Candidate）](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)
 - [历史 Master PRD：W-01～W-14 页面详细规格](../RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)
 
 ### 3.2 U01｜企业管理、账号、KYB、钱包与订阅

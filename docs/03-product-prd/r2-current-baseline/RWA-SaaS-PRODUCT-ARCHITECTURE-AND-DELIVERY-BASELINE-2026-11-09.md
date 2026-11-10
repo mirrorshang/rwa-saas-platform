@@ -1,6 +1,6 @@
 # RWA SaaS｜产品总体架构与产品设计基线（统一总入口）
 
-> **版本：v0.6｜日期：2026-11-10｜状态：Working Draft（V1 功能范围依据 DEC-057 已批准；USDable 功能取舍依据 DEC-058 已确认；预期年化信息披露与债权周期付息纳入 V1 的范围依据 DEC-059 已批准；官网 V1 内容与入口方向依据 DEC-060 已批准；整体产品设计尚未完成）**
+> **版本：v0.7｜日期：2026-11-10｜状态：Working Draft（V1 功能范围依据 DEC-057 已批准；USDable 功能取舍依据 DEC-058 已确认；预期年化信息披露与债权周期付息纳入 V1 的范围依据 DEC-059 已批准；官网 V1 内容与入口方向依据 DEC-060、W-01～W-06 页面内容与交互依据 DEC-061 已批准；W-07～W-14 与 M 介绍页细节仍待审核；整体产品设计尚未完成）**
 > **仓库：mirrorshang/rwa-saas-platform｜维护分支：docs/r2-current-product-baseline｜当前承载 PR：#8（Draft / Open / Unmerged）**
 >
 > 本文是 RWA SaaS 当前产品架构、V1 功能地图、产品设计状态和后续产品/UI 工作的**统一阅读与维护入口**。它负责呈现当前有效结论、产品端边界、导航结构、模块责任、页面设计进度和下一步工作；不替代、不覆盖各专项 DEC、Frozen 文件及 DEC-017 原 193 项正式功能主表；DEC-057 追加的统一投资渠道与统一投资者身份功能作为新增 V1 功能单独追踪。后续产品设计应先更新本文的总览/状态/索引，再在对应专项文件中补充用户批准的细节。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，具体字段和规则待对应模块设计。
@@ -143,14 +143,14 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - 真实账号服务、邮箱发送与认证授权、企业工作台真实服务、咨询信息真实接收、商业 KYB、合同、价格、订阅付款及权益服务尚需独立接入和验收。
 - 正式法律政策正文、企业主体/品牌信息、Cookie 合规机制、响应式全视口、可访问性、SEO、生产部署与发布验收不能由 Mock 页面 Tested 推断为完成。
 
-**V1 内容与入口方向已由 DEC-060 批准（W-V1-R01～R06 全部 A）：** 保留现有官网结构；W-01～03 按 Asset → Instrument（权益结构）→ Offering（发行方案）及 Free 正式资料准备口径收口；W-04/W-13 按 U01 E09 更新 Free/Standard、月/年订阅及 USDT/法币；W-05/W-06/07/14 更新 FAQ、教程、咨询、政策与本地存储说明；W-08～W-12 统一邮箱验证码、单账号单企业、五步 KYB 和 Free 激活，历史注册/验证/企业选择 URL 仅作兼容引导；M 统一投资端属于 V1，当前公开入口仍筹备中。**页面逐句微文案、控件、异常、响应式和视觉细节尚未全部 Approved，按 W-UI 批次继续审核。**
+**V1 内容与入口方向已由 DEC-060 批准（W-V1-R01～R06 全部 A）；W-01～W-06 页面内容结构与核心交互已由 DEC-061 批准（W-UI-R07～R12 全部 A）：** 保留现有官网结构；W-01～03 按 Asset → Instrument（权益结构）→ Offering（发行方案）及 Free 正式资料准备口径收口；W-04 按 U01 E09 展示 Free/Standard、月/年订阅及 USDT/法币；W-05/W-06 更新 FAQ、教程与咨询边界。W-07～W-14 与 M 介绍页的页面级内容、状态、CTA 和交互正在第二批审核，详见 W-UI-R13～R20；W-08～W-12 统一邮箱验证码、单账号单企业、五步 KYB 和 Free 激活，历史注册/验证/企业选择 URL 仅作兼容引导；W-13 不设重复商业 KYB或固定订阅网络；M 当前公开入口仍筹备中。**最终视觉稿、响应式细节与真实服务可用性验收仍未完成。**
 
 **维护原则：** 官网作为现有页面与 UI 基线保留；后续只做上述 V1 内容、流程和入口对齐，不重新设计已完成的官网结构。
 
 来源：
 - [官网实施进度](https://github.com/mirrorshang/rwa-saas-platform/blob/ui/wdex-saas-website-v1/prototypes/website-ui-preview/IMPLEMENTATION_PROGRESS.md)
 - [官网 UI 核查记录](https://github.com/mirrorshang/rwa-saas-platform/blob/ui/wdex-saas-website-v1/prototypes/website-ui-preview/QA_REPORT.md)
-- [DEC-060｜官网 V1 内容与入口方向批准](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)；[W-01～W-14 V1 内容、入口与流程对齐方案（方向 Approved，微文案 Candidate）](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)；[W-01～W-06 页面内容与交互收口规格（Candidate）](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)
+- [DEC-060｜官网 V1 内容与入口方向批准](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)；[DEC-061｜W-01～W-06 页面内容与交互批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)；[W-01～W-14 V1 内容、入口与流程对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)；[W-01～W-06 页面内容与交互规格（Approved）](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)；[W-07～W-14 与 M 统一投资端页面规格（Candidate）](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)
 - [历史 Master PRD：W-01～W-14 页面详细规格](../RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)
 
 ### 3.2 U01｜企业管理、账号、KYB、钱包与订阅
@@ -461,7 +461,11 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 
 ### 10.1 当前 R2 权威产品基线
 
-- [官网 W-01～W-14 V1 文案与流程候选稿（待审核）](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)
+- [DEC-060：官网 V1 内容与入口方向批准](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)
+- [DEC-061：W-01～W-06 页面内容与交互批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)
+- [官网 W-01～W-14 V1 内容与流程对齐](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)
+- [W-01～W-06 页面内容与交互规格（Approved）](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)
+- [W-07～W-14 与 M 统一投资端页面规格（Candidate）](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)
 - [U01 企业入驻、认证、钱包与订阅 UI-Ready PRD](U01-UI-Ready-PRD.md)
 - [U01 KYB v0.3 批准记录](U01-KYB-V03-APPROVED-2026-11-06.md)
 - [U01 Free/Standard 最新权益决策](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md)

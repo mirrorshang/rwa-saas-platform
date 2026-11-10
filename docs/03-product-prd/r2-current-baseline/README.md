@@ -19,6 +19,11 @@
 - [V1.0 产品基线与 157 项功能清单](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)
 - [USDable 整体产品功能差距审计（排除二级交易）](../RWA-SaaS-USDABLE-COMPETITIVE-GAP-ANALYSIS-2026-11-09.md)
 
+## 官网 V1 内容与流程设计（2026-11-10）
+
+- [W-01～W-14 官网 V1 文案、CTA 与跨端入口对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)：按当前官网源码逐页核对 Free/Standard、Asset/Instrument/Offering、邮箱验证码、企业创建/KYB、单企业、订阅、M 投资者入口、FAQ 和历史 URL 兼容；附 W-V1-R01～R06 六项批量审核题。**当前状态 Candidate，未经用户逐项批准的精确文案不可当作已确认 UI。**
+- **用户确认的产品/UI 顺序**：先功能范围和流程、再模块与页面/字段/状态、最后 UI；V1 简化、易用，不将技术开发作为本阶段工作。
+
 ## 读取顺序及优先级
 1. 当前最新已批准的 R2 产品决策（V1 五端范围及 M23/M24 新增 11 项以 DEC-057 为准；USDable 参考功能采纳/后置/排除以 DEC-058 为准；预期年化信息披露与债权周期付息纳入 V1 的范围以 DEC-059 为准，具体字段规则待确认；U01 企业 KYB 五步与动态规则以 [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md) 和 U01 PRD 的 B01～B08 **v0.3** 为准，覆盖旧五步字段版本；U02 资产与发行结构采用 [U02-02 批准记录](U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md)，资产分类与五步创建向导采用 [U02-03 批准记录](U02-03-ASSET-CLASSIFICATION-APPROVED-2026-11-06.md)；[U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md) 的 E09 最新套餐能力矩阵与 [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md) 优先于同目录或历史文件中的旧 Free 完整模拟闭环表述）。
 2. 本轮产品工作优先读取《V1 产品完整性收口与产品/UI 设计现状审计》及对应 U01/U02 专项文件；不把历史开发交接或验收文档当作产品需求。

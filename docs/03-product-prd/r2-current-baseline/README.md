@@ -21,6 +21,7 @@
 - [DEC-064｜企业邮箱验证码登录页面设计批准](../../../decisions/DEC-064-enterprise-email-login-page-approved.md)
 - [DEC-065｜登录后企业创建与 KYB 引导页面批准](../../../decisions/DEC-065-enterprise-onboarding-and-kyb-entry-guidance-approved.md)
 - [DEC-066｜五步企业认证页面字段与交互批准](../../../decisions/DEC-066-enterprise-kyb-five-step-ui-fields-and-interactions-approved.md)
+- [DEC-067｜待补件与未通过统一载入原资料、编辑并重新提交](../../../decisions/DEC-067-kyb-supplement-and-rejected-states-share-one-edit-and-resubmit-flow-approved.md)
 - [USDable V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
 - [V1 产品完整性收口与产品/UI 设计现状审计](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)
 - [V1.0 产品基线与 157 项功能清单](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)
@@ -32,7 +33,7 @@
 - [DEC-061｜W-01～W-06 页面内容与交互收口批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)：W-UI-R07～R12 **全部 A，6/6 Approved，B=0**。
 - [W-01～W-14 官网 V1 内容、CTA 与跨端入口对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)：全站范围和主流程 Approved；具体页面状态见 DEC-060/061 与页面规格。
 - [W-01～W-06 页面内容与交互规格](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)：第一批页面内容结构与核心交互 Approved；最终视觉稿、响应式和实现验收待后续收口。
-- [W-07～W-14 与 M 统一投资端介绍页面规格](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)：第二批页面级 Candidate；**W-08/W-09 历史入口已由 DEC-062/063 批准直接进入统一邮箱登录，不再显示独立说明页；W-10 邮箱登录页已由 DEC-064 批准，W-11 企业创建/KYB 引导页已由 DEC-065 批准；五步 KYB 字段及页面交互已由 DEC-066 批准，详细规则以 U01 v0.3 为准；W-07、W-13、W-14 与 M 介绍页仍逐页待审核，W-12 历史入口兼容待审核。
+- [W-07～W-14 与 M 统一投资端介绍页面规格](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)：第二批页面级 Candidate；**W-08/W-09 历史入口已由 DEC-062/063 批准直接进入统一邮箱登录，不再显示独立说明页；W-10 邮箱登录页已由 DEC-064 批准，W-11 企业创建/KYB 引导页已由 DEC-065 批准；五步 KYB 字段及页面交互已由 DEC-066 批准；待补件与未通过统一载入完整原提交资料、允许任意字段编辑并重新提交，按 DEC-067 执行；详细规则以 U01 v0.3 为准；W-07、W-13、W-14 与 M 介绍页仍逐页待审核，W-12 历史入口兼容待审核。
 - **用户确认的产品/UI 顺序**：先功能范围和流程、再模块与页面/字段/状态、最后 UI；V1 简化、易用，不将技术开发作为本阶段工作。
 
 ## 读取顺序及优先级

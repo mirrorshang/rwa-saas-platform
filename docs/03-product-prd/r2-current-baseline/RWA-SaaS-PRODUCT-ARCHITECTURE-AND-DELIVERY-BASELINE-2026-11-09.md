@@ -143,14 +143,14 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - 真实账号服务、邮箱发送与认证授权、企业工作台真实服务、咨询信息真实接收、正式 SaaS 服务条款/合同、价格、订阅付款及权益服务尚需独立接入和验收；V1 不另设重复商业 KYB，企业 KYB 规则以 U01 为准。
 - 正式法律政策正文、企业主体/品牌信息、Cookie 合规机制、响应式全视口、可访问性、SEO、生产部署与发布验收不能由 Mock 页面 Tested 推断为完成。
 
-**V1 内容与入口方向已由 DEC-060 批准（W-V1-R01～R06 全部 A）；W-01～W-06 页面内容结构与核心交互已由 DEC-061 批准（W-UI-R07～R12 全部 A）；企业注册入口、历史注册/邮箱验证链接与统一邮箱登录分别由 DEC-062、DEC-063、DEC-064 批准：** 保留现有官网结构；W-01～03 按 Asset → Instrument（权益结构）→ Offering（发行方案）及 Free 正式资料准备口径收口；W-04 按 U01 E09 展示 Free/Standard、月/年订阅及 USDT/法币；W-05/W-06 更新 FAQ、教程与咨询边界。W-07、W-11～W-14 与 M 介绍页的页面级内容、状态、CTA 和交互仍逐项审核，详见第二批页面规格；W-08/W-09 历史 URL 直接进入统一登录，W-10 采用已批准的极简邮箱验证码流程；登录后企业创建、单账号单企业、五步 KYB 和 Free 激活按 U01 已批准规则执行；W-13 不设重复商业 KYB或固定订阅网络；M 当前公开入口仍筹备中。**最终视觉稿、响应式细节与真实服务可用性验收仍未完成。**
+**V1 内容与入口方向已由 DEC-060 批准（W-V1-R01～R06 全部 A）；W-01～W-06 页面内容结构与核心交互已由 DEC-061 批准（W-UI-R07～R12 全部 A）；企业注册入口、历史注册/邮箱验证链接与统一邮箱登录分别由 DEC-062、DEC-063、DEC-064 批准：** 保留现有官网结构；W-01～03 按 Asset → Instrument（权益结构）→ Offering（发行方案）及 Free 正式资料准备口径收口；W-04 按 U01 E09 展示 Free/Standard、月/年订阅及 USDT/法币；W-05/W-06 更新 FAQ、教程与咨询边界。W-07、W-11～W-14 与 M 介绍页的页面级内容、状态、CTA 和交互仍逐项审核，详见第二批页面规格；W-08/W-09 历史 URL 直接进入统一登录，W-10 采用已批准的极简邮箱验证码流程；登录后企业创建/KYB 引导由 DEC-065 批准，五步 KYB 字段及条件规则仍以 U01 v0.3 已批准版本为准；单账号单企业和 Free 激活按 U01 执行；W-13 不设重复商业 KYB或固定订阅网络；M 当前公开入口仍筹备中。**最终视觉稿、响应式细节与真实服务可用性验收仍未完成。**
 
 **维护原则：** 官网作为现有页面与 UI 基线保留；后续只做上述 V1 内容、流程和入口对齐，不重新设计已完成的官网结构。
 
 来源：
 - [官网实施进度](https://github.com/mirrorshang/rwa-saas-platform/blob/ui/wdex-saas-website-v1/prototypes/website-ui-preview/IMPLEMENTATION_PROGRESS.md)
 - [官网 UI 核查记录](https://github.com/mirrorshang/rwa-saas-platform/blob/ui/wdex-saas-website-v1/prototypes/website-ui-preview/QA_REPORT.md)
-- [DEC-060｜官网 V1 内容与入口方向批准](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)；[DEC-061｜W-01～W-06 页面内容与交互批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)；[DEC-062｜注册入口统一](../../../decisions/DEC-062-website-registration-entry-unified-with-email-login-approved.md)；[DEC-063｜历史注册/邮箱验证链接直达统一登录](../../../decisions/DEC-063-legacy-registration-and-email-verification-links-direct-to-unified-login-approved.md)；[DEC-064｜企业邮箱验证码登录页面批准](../../../decisions/DEC-064-enterprise-email-login-page-approved.md)；[W-01～W-14 V1 内容、入口与流程对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)；[W-01～W-06 页面内容与交互规格（Approved）](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)；[W-07～W-14 与 M 统一投资端页面规格（Candidate）](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)
+- [DEC-060｜官网 V1 内容与入口方向批准](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)；[DEC-061｜W-01～W-06 页面内容与交互批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)；[DEC-062｜注册入口统一](../../../decisions/DEC-062-website-registration-entry-unified-with-email-login-approved.md)；[DEC-063｜历史注册/邮箱验证链接直达统一登录](../../../decisions/DEC-063-legacy-registration-and-email-verification-links-direct-to-unified-login-approved.md)；[DEC-064｜企业邮箱验证码登录页面批准](../../../decisions/DEC-064-enterprise-email-login-page-approved.md)；[DEC-065｜登录后企业创建与 KYB 引导页面批准](../../../decisions/DEC-065-enterprise-onboarding-and-kyb-entry-guidance-approved.md)；[W-01～W-14 V1 内容、入口与流程对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)；[W-01～W-06 页面内容与交互规格（Approved）](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)；[W-07～W-14 与 M 统一投资端页面规格（Candidate）](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)
 - [历史 Master PRD：W-01～W-14 页面详细规格](../RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)
 
 ### 3.2 U01｜企业管理、账号、KYB、钱包与订阅
@@ -466,6 +466,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - [DEC-062：企业注册入口并入统一邮箱登录](../../../decisions/DEC-062-website-registration-entry-unified-with-email-login-approved.md)
 - [DEC-063：历史注册/邮箱验证链接直接进入统一登录](../../../decisions/DEC-063-legacy-registration-and-email-verification-links-direct-to-unified-login-approved.md)
 - [DEC-064：企业邮箱验证码登录页面设计批准](../../../decisions/DEC-064-enterprise-email-login-page-approved.md)
+- [DEC-065：登录后企业创建与 KYB 引导页面批准](../../../decisions/DEC-065-enterprise-onboarding-and-kyb-entry-guidance-approved.md)
 - [官网 W-01～W-14 V1 内容与流程对齐](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)
 - [W-01～W-06 页面内容与交互规格（Approved）](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)
 - [W-07～W-14 与 M 统一投资端页面规格（Candidate）](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)

@@ -50,6 +50,8 @@
 - 不规划 API、数据库、合约、Provider、Signer、部署、工程架构或开发排期；这些由后续专业同事负责。
 - 一个模块必须先完成产品规划和业务流程，再做页面/字段设计，最后做 UI；不得把功能范围 Approved 或局部字段稿称为整个 SaaS 已 UI-Ready。
 
+**2026-11-10 用户再次确认的固定工作顺序：** V1 范围核对 → 已有官网与 U01/U02 设计收口 → Issuer SaaS 架构与导航/功能完整性 → 逐模块业务流程 → 页面、字段、交互和异常 → 可审核 UI → 全局体验统一。以用户为中心，优先实现简洁、常见、基础的 V1 闭环，不提前抽象 V2 复杂能力；所有新页面文案与交互建议先区分 Approved/Candidate，再进入 UI。此工作原则适用于本项目后续对话。
+
 ---
 
 ## 1. 产品定位与总体原则
@@ -148,6 +150,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 来源：
 - [官网实施进度](https://github.com/mirrorshang/rwa-saas-platform/blob/ui/wdex-saas-website-v1/prototypes/website-ui-preview/IMPLEMENTATION_PROGRESS.md)
 - [官网 UI 核查记录](https://github.com/mirrorshang/rwa-saas-platform/blob/ui/wdex-saas-website-v1/prototypes/website-ui-preview/QA_REPORT.md)
+- [官网 W-01～W-14 V1 内容、入口与用户流程对齐方案（Candidate，2026-11-10）](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)
 - [历史 Master PRD：W-01～W-14 页面详细规格](../RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)
 
 ### 3.2 U01｜企业管理、账号、KYB、钱包与订阅
@@ -458,6 +461,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 
 ### 10.1 当前 R2 权威产品基线
 
+- [官网 W-01～W-14 V1 文案与流程候选稿（待审核）](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)
 - [U01 企业入驻、认证、钱包与订阅 UI-Ready PRD](U01-UI-Ready-PRD.md)
 - [U01 KYB v0.3 批准记录](U01-KYB-V03-APPROVED-2026-11-06.md)
 - [U01 Free/Standard 最新权益决策](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md)

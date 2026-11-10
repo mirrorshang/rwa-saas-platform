@@ -1,7 +1,5 @@
-# W-07～W-14 与 M 统一投资端介绍｜V1 页面内容与交互收口规格（第二批）
-
-> 日期：2026-11-10  
-> 上位决策：[DEC-060｜官网 V1 内容与入口方向批准](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)；[DEC-061｜W-01～W-06 页面内容与交互批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)  
+| KYB 待补件 | 显示审核意见及此前提交的完整资料 | 「修改资料并重新提交」→ 原五步资料编辑流程 |
+| KYB 未通过 | 显示未通过原因及此前提交的完整资料 | 「修改资料并重新提交」→ 同一五步资料编辑流程 |ns/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)；[DEC-061｜W-01～W-06 页面内容与交互批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)  
 > **总体页面方向：Approved（DEC-060）｜W-08/W-09 历史入口直达统一登录（DEC-062/063）、W-10 企业邮箱验证码登录（DEC-064）、W-11 登录后企业创建与 KYB 引导（DEC-065）均已批准；待补件与未通过统一编辑和重新提交流程由 DEC-067 补充批准。W-07、W-13、W-14 与 M 页面仍逐页审核；W-12 历史企业入口兼容待审核。**  
 > 维护分支：docs/r2-current-product-baseline｜PR #8 Draft / Open / Unmerged  
 > **工作边界：产品/UI 设计，不是技术开发任务；本文件不授权修改官网源代码。**

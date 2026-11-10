@@ -16,7 +16,8 @@
 - [DEC-059｜预期年化信息披露与债权周期付息纳入 V1（范围批准）](../../../decisions/DEC-059-expected-annualized-range-and-periodic-debt-coupon-v1-approved.md)
 - [DEC-060｜官网 V1 内容、入口与用户流程对齐（W-V1-R01～R06 全部 A）](../../../decisions/DEC-060-website-v1-content-and-entry-flow-alignment-approved.md)
 - [DEC-061｜W-01～W-06 页面内容与交互收口（W-UI-R07～R12 全部 A）](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)
-- [DEC-062｜企业注册入口并入统一邮箱登录（W-08 选择 A）](../../../decisions/DEC-062-website-registration-entry-unified-with-email-login-approved.md)
+- [DEC-062｜企业注册入口并入统一邮箱登录](../../../decisions/DEC-062-website-registration-entry-unified-with-email-login-approved.md)
+- [DEC-063｜历史注册/邮箱验证链接直接进入统一登录，不展示迁移说明](../../../decisions/DEC-063-legacy-registration-and-email-verification-links-direct-to-unified-login-approved.md)
 - [USDable V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
 - [V1 产品完整性收口与产品/UI 设计现状审计](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)
 - [V1.0 产品基线与 157 项功能清单](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)
@@ -28,7 +29,7 @@
 - [DEC-061｜W-01～W-06 页面内容与交互收口批准](../../../decisions/DEC-061-website-w01-w06-ui-content-and-interaction-approved.md)：W-UI-R07～R12 **全部 A，6/6 Approved，B=0**。
 - [W-01～W-14 官网 V1 内容、CTA 与跨端入口对齐方案](W-01-W-14-V1-CONTENT-AND-ENTRY-FLOW-ALIGNMENT-2026-11-10.md)：全站范围和主流程 Approved；具体页面状态见 DEC-060/061 与页面规格。
 - [W-01～W-06 页面内容与交互规格](W-01-W-06-V1-UI-CONTENT-AND-INTERACTION-SPEC-2026-11-10.md)：第一批页面内容结构与核心交互 Approved；最终视觉稿、响应式和实现验收待后续收口。
-- [W-07～W-14 与 M 统一投资端介绍页面规格](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)：第二批页面级 Candidate；**W-08 企业注册入口已由 DEC-062 单独批准**，W-07、W-09～W-14 与 M 介绍页仍逐页待审核。
+- [W-07～W-14 与 M 统一投资端介绍页面规格](W-07-W-14-AND-M-V1-UI-CONTENT-INTERACTION-SPEC-2026-11-10.md)：第二批页面级 Candidate；**W-08/W-09 历史入口已由 DEC-062/063 批准直接进入统一邮箱登录，不再显示独立说明页；W-07、W-10～W-14 与 M 介绍页仍逐页待审核。
 - **用户确认的产品/UI 顺序**：先功能范围和流程、再模块与页面/字段/状态、最后 UI；V1 简化、易用，不将技术开发作为本阶段工作。
 
 ## 读取顺序及优先级

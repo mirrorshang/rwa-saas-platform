@@ -160,3 +160,9 @@
 
 ## 11. 本轮保护清单
 不修改旧四份 Frozen、不重排 193 项版本主表、不篡改历史 DEC/SCOPE/旧 Master、不合并 PR #6 或 PR #8、不修改源码或部署真实外部服务。当前 U02-04 资产创建模块完成产品 UI-Ready 候选基线，并可在后续获明确开发授权后交 Codex 以本文件及上游批准文档实现和验收。
+
+
+## 11. 2026-11-11 补充｜资产列表与相关方 UI-Ready（DEC-070）
+
+- 资产列表、资产概览唯一下一步、资产相关方字段与卡片、披露位置和房地产模板控件的后续细化，以 [DEC-070](../../../decisions/DEC-070-asset-management-related-parties-ui-ready-v1-approved.md) 与 [U02-07](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md) 为准。
+- 原 R28～R33 的五步向导、草稿/Ready、文件、权限与状态保护继续有效；本补充不代表代码已实现或浏览器验收通过。

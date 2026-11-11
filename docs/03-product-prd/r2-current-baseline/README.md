@@ -38,7 +38,7 @@
 - [DEC-081｜收益与分配模块 UI-Ready 设计收口](../../../decisions/DEC-081-yield-and-distribution-ui-ready-v1-closeout.md)
 - [收益与分配 I-54～I-58 UI-Ready 最终规格](YIELD-AND-DISTRIBUTION-UI-READY-CLOSEOUT-2026-11-11.md)
 - [DEC-082｜数据与共享能力 UI-Ready 设计收口](../../../decisions/DEC-082-data-and-shared-capabilities-ui-ready-v1-closeout.md)
-- [数据与共享能力八页面 UI-Ready 最终规格](DATA-AND-SHARED-CAPABILITIES-UI-READY-CLOSEOUT-2026-11-11.md)\n- [I-13 Issuer 标准投资者门户管理 UI-Ready 收口](I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)\n- [Issuer 157 项正式功能—页面双向映射审计](ISSUER-SAAS-V1-FUNCTION-TO-PAGE-BIDIRECTIONAL-CROSSWALK-2026-11-11.md)\n- [Issuer 企业 SaaS 全局一致性审计](ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md)
+- [数据与共享能力八页面 UI-Ready 最终规格](DATA-AND-SHARED-CAPABILITIES-UI-READY-CLOSEOUT-2026-11-11.md)\n- [I-13 Issuer 标准投资者门户管理 UI-Ready 收口](I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)\n- [Issuer 157 项正式功能—页面双向映射审计](ISSUER-SAAS-V1-FUNCTION-TO-PAGE-BIDIRECTIONAL-CROSSWALK-2026-11-11.md)\n- [Issuer 企业 SaaS 全局一致性审计](ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md)\n- [Issuer 端到端业务链路与字段完整性审计（进行中）](END-TO-END-ISSUER-FLOW-AND-FIELD-COMPLETENESS-AUDIT-2026-11-11.md)
 - [Issuer SaaS V1 导航与页面覆盖静态审计](ISSUER-SAAS-V1-NAVIGATION-AND-PAGE-COVERAGE-AUDIT-2026-11-11.md)
 - [U02-07｜资产列表、相关方与房地产模板控件 UI-Ready](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)
 - [USDable V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
@@ -53,7 +53,7 @@
 - **资产与发行一致性审核**：已按 DEC-080 收口。
 - **收益与分配**：五个页面组已按 DEC-081 完成 UI-Ready；M13-F001～F007、F009 映射完整，M13-F008 仍为 V3。
 - **数据与共享能力**：八个页面组已按 DEC-082 完成 UI-Ready；复用 M17～M22 共 39 个既有 V1 功能 ID，不新增功能。
-- **当前状态**：Issuer 九个一级导航、157 项功能映射和跨模块文档一致性审计已完成；不扩展 V 投资者前台、M 统一投资端或 P 平台运营后台。下一阶段需另行决定是否进入视觉稿/原型或代码开发。
+- **当前状态**：导航、页面责任、157 项功能映射及模块级跨页面一致性审计已完成；端到端字段、对象和数据传递完整性正在进一步核验。当前不设计 V 投资者前台、M 统一投资端或 P 平台运营后台页面。
 - 当前工作仅聚焦 Issuer 企业 SaaS；平台运营后台、统一投资端和独立投资者门户暂不纳入本轮。
 - UI-Ready 仅表示产品页面规格完整，不代表代码开发、浏览器验收、真实资金、法定登记、Token 或收益生产执行已完成。
 

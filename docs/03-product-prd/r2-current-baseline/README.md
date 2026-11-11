@@ -3,7 +3,7 @@
 
 ## 统一产品总入口（2026-11-10）
 
-**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，权益结构具体字段和 UI 规则以 DEC-071/U02-08 为准；投资者统一 KYC 与企业端脱敏管理以 DEC-069 为准；资产列表、资产相关方和房地产四模板控件 UI-Ready 以 DEC-070/U02-07 为准；Offering 模块完整 UI-Ready 以 DEC-072/U02-09 为准；认购记录只读查询视图以 DEC-073/U02-10 为准；投资者管理模块 UI-Ready 以 DEC-074/U02-11 为准；认购订单模块 UI-Ready 以 DEC-075/U02-12 为准；配售与持有人 UI-Ready 以 DEC-076/U02-13 为准；资金与结算 UI-Ready 以 DEC-077/U02-14 为准。新对话/新任务优先读取这两份文件；专项文件继续作为已批准业务规则权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
+**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，权益结构具体字段和 UI 规则以 DEC-071/U02-08 为准；投资者统一 KYC 与企业端脱敏管理以 DEC-069 为准；资产列表、资产相关方和房地产四模板控件 UI-Ready 以 DEC-070/U02-07 为准；Offering 模块完整 UI-Ready 以 DEC-072/U02-09 为准；认购记录只读查询视图以 DEC-073/U02-10 为准；投资者管理模块 UI-Ready 以 DEC-074/U02-11 为准；认购订单模块 UI-Ready 以 DEC-075/U02-12 为准；配售与持有人 UI-Ready 以 DEC-076/U02-13 为准；资金与结算 UI-Ready 以 DEC-077/U02-14 为准；Token 管理 UI-Ready 以 DEC-078 及 Token 管理 UI-Ready 最终规格为准。新对话/新任务优先读取这两份文件；专项文件继续作为已批准业务规则权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
 
 ## V1.0 最新批准范围（截至 2026-11-11）
 
@@ -32,6 +32,7 @@
 - [DEC-075｜V1 认购订单模块 UI-Ready 收口](../../../decisions/DEC-075-subscription-orders-ui-ready-v1-closeout-approved.md)
 - [DEC-076｜配售与持有人 UI-Ready 收口](../../../decisions/DEC-076-allocation-and-holders-ui-ready-v1-closeout-approved.md)
 - [DEC-077｜资金与结算 UI-Ready 收口](../../../decisions/DEC-077-funds-and-settlement-ui-ready-v1-closeout-approved.md)
+- [DEC-078｜Token 管理 UI-Ready 收口](../../../decisions/DEC-078-token-management-ui-ready-v1-closeout-approved.md)
 - [U02-07｜资产列表、相关方与房地产模板控件 UI-Ready](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)
 - [USDable V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
 - [V1 产品完整性收口与产品/UI 设计现状审计](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)
@@ -87,6 +88,7 @@
 - [U02-12｜认购订单模块 UI-Ready 最终规格](U02-12-SUBSCRIPTION-ORDERS-UI-READY-CLOSEOUT-2026-11-11.md)：覆盖订单列表、详情六分组、报价/签署/内部预留、付款/配售/登记/Token 独立状态、基础取消、到期、退款异常与跨模块责任。
 - [U02-13｜配售与持有人 UI-Ready 最终规格](U02-13-ALLOCATION-AND-HOLDERS-UI-READY-CLOSEOUT-2026-11-11.md)：共享权益容量、合法基础配售、法定持有人登记三模式、精确 Token 映射对账、差异与受权限制申请的完整页面规格。
 - [U02-14｜资金与结算 UI-Ready 最终规格](U02-14-FUNDS-AND-SETTLEMENT-UI-READY-CLOSEOUT-2026-11-11.md)：收款方案、付款指令、到账最终性/订单对账、退款与异常、募集款受限/释放资格、受权划拨与真实到账核验。
+- [Token 管理 UI-Ready 最终规格](TOKEN-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)：Token 方案、合约部署申请、Mint/交付、限制与暂停、条件性 Burn、链上事件、配售/法定登记对账及异常处理。
 - [U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md](U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md)：**DEV-05 T01～T36 待执行验收矩阵**，覆盖 Browser/Route/UX/权限/边界/Mock 支付异常及跨期容量；全部 NOT RUN，不代表已授权开始 DEV-05 或生产通过。
 - [U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md)：**DEV-05 规格本身 CONDITIONAL GO（仅前端 Offering Draft/内部预览/隔离 Mock），真实发行/支付/Token NO-GO**。已校正 T02/T23；后续收到 DEV-03/04 独立 Audit Only 报告，发现文件换版后 Instrument Ready 未复核的 P1，故当前 DEV-05 被阻断，须先完成 P1 修复与独立复验。
 - [U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md](U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md)：**用户 2026-11-08 选择 A 并正式批准：当前 Asset 的 Instrument 必须 Ready，才允许创建 Offering Draft**；无 Instrument/Draft/检查失败/文件待扫描或失败/Ready 失效均禁止新建，创建动作服务层复核并固定 InstrumentVersion。
@@ -180,7 +182,7 @@
 - [DEC-076｜配售与持有人 UI-Ready 收口](../../../decisions/DEC-076-allocation-and-holders-ui-ready-v1-closeout-approved.md)：在既有「投资者与认购 → 配售与持有人」内形成配售管理、持有人登记、差异与限制三个视图，不改变二级导航。
 - [U02-13｜配售与持有人 UI-Ready 最终规格](U02-13-ALLOCATION-AND-HOLDERS-UI-READY-CLOSEOUT-2026-11-11.md)：容量与基础配售、登记结果/有权责任主体、持有人列表详情、非 1:1 Token 权益映射、法定与链对账、限制/解除复核、状态、弹窗、异常与权限。
 - 模块产品/UI 规格完成，不代表实际法定登记、资金或 Token 执行权限获得批准，不表示代码或浏览器验收通过。
-- 资金与结算已按 DEC-077/U02-14 完成 UI-Ready；下一模块：**Token 管理**。资产与发行下「锁仓记录」仍保持独立待收口任务。
+- 资金与结算已按 DEC-077/U02-14 完成 UI-Ready；Token 管理已按 DEC-078 完成 UI-Ready。**下一项：资产与发行 → 锁仓记录**，仍作为独立待收口页面。
 
 ## 资金与结算 UI-Ready 收口（2026-11-11）
 
@@ -189,3 +191,13 @@
 - V1 投资者支付仅 USDT / OP Mainnet；M11-F011 法币/多通道仍为 V3.0；多方比例分账仍为 V2。M01 SaaS 订阅、M11 认购资金、M13 收益/本息资金分离。
 - 本次仅完成企业端产品/UI 规格；真实收款、退款、托管、Signer、募集款释放和生产执行未因此获准，代码/浏览器验收未执行。
 - **下一模块：Token 管理**；「资产与发行 → 锁仓记录」仍作为独立待收口页面。
+
+## Token 管理 UI-Ready 收口（2026-11-11）
+
+- [DEC-078｜Token 管理 UI-Ready 收口](../../../decisions/DEC-078-token-management-ui-ready-v1-closeout-approved.md)：承接既有批准的 Token 方案、合约部署、Mint/交付、限制/暂停、条件性 Burn 和链上对账原则，不新增正式功能 ID。
+- [Token 管理 UI-Ready 最终规格](TOKEN-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)：固定「合约管理｜Token 操作｜链上记录与对账」三个二级入口，完整覆盖字段、表单、状态、异常、权限、跨模块关系和 28 项 UI 验收目标。
+- Token 发行网络与投资者支付网络分离；OP Mainnet USDT 仅为 V1 投资者支付范围，不自动成为 Token 部署网络。
+- Free 可准备 Token 方案资料但不能真实部署/Mint/Burn；Standard 订阅、KYB 通过也不自动等于生产授权。真实操作仍需合法主体、受权 Signer、安全/网络/模板和生产准入。
+- Token 数量与法律权益映射继承 InstrumentVersion；资金、配售/法定登记、Token 链上事实彼此独立；锁仓业务记录仍归「资产与发行 → 锁仓记录」。
+- 本次只完成企业端产品/UI 规格；源码、Build、Browser、真实合约/Signer/链上执行和人工 UAT 未执行。
+- **下一项：资产与发行 → 锁仓记录**；不将其并入 Token 管理或重复创建锁仓主账。

@@ -21,7 +21,7 @@
 | [Issuer 导航与页面覆盖审计](docs/03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-NAVIGATION-AND-PAGE-COVERAGE-AUDIT-2026-11-11.md) | 九个一级导航、页面入口、历史冲突及当前页面覆盖状态的静态审计 |
 | [DEC-082 数据与共享能力 UI-Ready 收口](decisions/DEC-082-data-and-shared-capabilities-ui-ready-v1-closeout.md) | 记录八个共享能力页面组的设计收口与版本/责任边界 |
 | [数据与共享能力八页面最终规格](docs/03-product-prd/r2-current-baseline/DATA-AND-SHARED-CAPABILITIES-UI-READY-CLOSEOUT-2026-11-11.md) | 我的待办、异常工单、消息通知、规则设置、审计记录、业务报表、外部服务、安全与服务状态 |
-| [I-13 Issuer 标准门户管理 UI-Ready 规格](docs/03-product-prd/r2-current-baseline/I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md) | Issuer 自有标准投资者门户管理；Free 内部只读预览，Standard 配置/发布受独立准入约束 |\n| [Issuer 157 项功能—页面双向映射](docs/03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-FUNCTION-TO-PAGE-BIDIRECTIONAL-CROSSWALK-2026-11-11.md) | 157 项 V1 正式功能逐项标明产品端、页面责任与当前 Issuer 承载边界 |
+| [I-13 Issuer 标准门户管理 UI-Ready 规格](docs/03-product-prd/r2-current-baseline/I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md) | Issuer 自有标准投资者门户管理；Free 内部只读预览，Standard 配置/发布受独立准入约束 |\n| [Issuer 157 项功能—页面双向映射](docs/03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-FUNCTION-TO-PAGE-BIDIRECTIONAL-CROSSWALK-2026-11-11.md) | 157 项 V1 正式功能逐项标明产品端、页面责任与当前 Issuer 承载边界 |\n| [Issuer 企业 SaaS 全局一致性审计](docs/03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md) | 九个一级导航、157 项映射、端到端流程、唯一主账、套餐边界及跨模块状态最终审计 |
 | [当前文档状态索引](docs/Document-Status-Index.md) | 当前专项文档、决策与状态的索引入口 |
 | [R2 当前产品基线目录](docs/03-product-prd/r2-current-baseline/README.md) | 企业 SaaS 各模块 UI-Ready 专项规格与当前工作衔接入口 |
 
@@ -39,14 +39,14 @@
 | 数据与共享能力八个页面组 | 已按 DEC-082 完成 UI-Ready |
 | 投资者门户管理 I-13 | 已 UI-Ready；Free 内部只读预览，Standard 基础配置/发布受独立准入约束；不包含投资者前台 |
 | Issuer 正式功能 ID ↔ 现行页面双向映射 | 待完成统一矩阵 |
-| 企业 SaaS 跨模块体验总审计 | 待完成；重点核对状态、空态、异常、Unknown、部分成功、权限撤销、回源跳转与下一步引导 |
+| 企业 SaaS 跨模块体验总审计 | 已完成文档层面收口；未包含源码、Browser、UAT 或生产验收 |
 
 ## 后续执行顺序
 
-1. 形成 Issuer 端正式功能 ID 与现行页面的逐项双向映射，明确唯一责任页面及页面功能来源。
-2. 对九个一级导航及全局入口做完整性、重复页面、遗漏功能和主账唯一性审核。
-3. 统一审计跨模块状态、空态、异常、Unknown、部分成功、撤权、退租、跨页返回和用户下一步引导。
-4. 对跨模块审计发现的普通页面缺口直接修正产品文档；涉及商业、法律、资金、Token 或生产权限的重大决策另行提交用户。
+1. Issuer 九个一级导航、23 个二级入口及全局横向入口已核对；157 项正式功能逐 ID 映射已完成。
+2. 端到端业务链、对象关系、唯一主账、Free/Standard、状态/异常/Unknown 和下一步引导已完成文档层面审计。
+3. 发现的 I-13 Free/Standard 冲突与 M18-F005 通知重发归属重复已修正并同步专项文档。
+4. 当前 Issuer SaaS 产品/UI 规格阶段完成；后续视觉稿、源码开发、Browser/UAT 或生产准入须另行授权。
 5. 由用户另行决定是否进入视觉稿、代码开发、浏览器验收或 V1 整体冻结；本轮 UI-Ready 不自动授权上述工作。
 
 > **历史记录说明：** 以下章节保留此前阶段的审批、审计和工作记录，用于追溯当时的决策背景。历史章节中出现的“下一步”“待审核”“页面未完成”等表述，仅代表其记录日期的状态；如与上方当前状态冲突，以本节权威入口、最新专项规格、DEC 和文档状态索引为准。

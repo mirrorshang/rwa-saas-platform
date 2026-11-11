@@ -1,6 +1,6 @@
 # RWA SaaS｜产品总体架构与产品设计基线（统一总入口）
 
-> **版本：v0.9｜日期：2026-11-11｜状态：Working Draft（V1 功能范围依据 DEC-057 已批准；USDable 功能取舍依据 DEC-058 已确认；预期年化信息披露与债权周期付息纳入 V1 的范围依据 DEC-059 已批准；官网与 U01/U02 规则按 DEC-060～068 执行；投资者统一 KYC、Issuer 脱敏管理及 V1 资格流程简化依据 DEC-069 已批准；资产列表、资产相关方与房地产模板控件 UI-Ready 收口依据 DEC-070 已批准；整体产品设计尚未完成）**
+> **版本：v1.0｜日期：2026-11-11｜状态：Working Draft（V1 功能范围依据 DEC-057 已批准；USDable 功能取舍依据 DEC-058 已确认；预期年化信息披露与债权周期付息纳入 V1 的范围依据 DEC-059 已批准；官网与 U01/U02 规则按 DEC-060～068 执行；投资者统一 KYC、Issuer 脱敏管理及 V1 资格流程简化依据 DEC-069 已批准；资产列表、资产相关方与房地产模板控件 UI-Ready 收口依据 DEC-070 已批准；权益结构单页字段、债权付息、预期年化披露与版本规则依据 DEC-071 已收口；整体产品设计尚未完成）**
 > **仓库：mirrorshang/rwa-saas-platform｜维护分支：docs/r2-current-product-baseline｜当前承载 PR：#8（Draft / Open / Unmerged）**
 >
 > 本文是 RWA SaaS 当前产品架构、V1 功能地图、产品设计状态和后续产品/UI 工作的**统一阅读与维护入口**。它负责呈现当前有效结论、产品端边界、导航结构、模块责任、页面设计进度和下一步工作；不替代、不覆盖各专项 DEC、Frozen 文件及 DEC-017 原 193 项正式功能主表；DEC-057 追加的统一投资渠道与统一投资者身份功能作为新增 V1 功能单独追踪。后续产品设计应先更新本文的总览/状态/索引，再在对应专项文件中补充用户批准的细节。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，具体字段和规则待对应模块设计。
@@ -343,6 +343,14 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - 房地产四个开放模板统一面积单位、精度、百分比/数量校验及交叉校验；酒店、土地和其他类别继续暂未开放。
 - 本阶段不调整九个 Issuer 一级导航、资产与发行三个二级入口或资产详情四 TAB；详细规格见 [DEC-070](../../../decisions/DEC-070-asset-management-related-parties-ui-ready-v1-approved.md) / [U02-07](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)。
 
+
+### 4.8 权益结构 UI-Ready 收口（DEC-071）
+
+- 权益结构仍位于资产详情「权益结构」TAB，不新增导航；保持一资产一套当前有效 Instrument、股权/债权/收益参与三选一、单页三区域和多期 Offering 共享容量。
+- 公共字段、三类权益条件字段、主体选择与复用、债权无息/固定利率/周期付息、计息规则、预期年化区间披露、权益精确拆分、核心文件、Draft/Ready 和修订版本保护，均以 DEC-071/U02-08 为当前 UI-Ready 依据。
+- 本次不授权复杂权益、分数股、浮动/阶梯利率、复利、复杂收益瀑布、自动法律核验或生产发行执行。
+- 本次产品规格完成不代表代码开发、Build、浏览器验收或生产准入完成。
+
 ## 5. 现行模块目录与五端功能地图
 
 原 M01～M22 是 Frozen 产品逻辑责任模块，不等于独立导航或系统。DEC-057 在原模块体系上追加 M23/M24 两个逻辑模块；当前模块目录为 M01～M24，原 22 模块 Frozen 正文保持不变。原 193 项功能主表保留历史原貌，新增 11 项按 DEC-057 追加追踪。
@@ -411,8 +419,8 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 |---|---|---|---|
 | 官网 | W-01～W-14 页面组、导航与基础页面结构；另有统一投资端筹备介绍入口 | 页面结构已有基础，**需要按最新 V1 规则校对文案和入口流程** | 重点校正 Free/Standard、企业登录/KYB、订阅方式、内部 Project 表述及 M 统一投资端说明 |
 | 企业登录与企业管理 | 邮箱验证码、单账号单企业、五步 KYB v0.3、KYB 状态、Free/Standard、企业钱包、订阅管理均有批准规则和专项 PRD | **产品规则与主要页面流程已基本完整**；官网旧入口和历史页面说明仍有冲突 | 统一官网入口、企业创建/KYB启动、Free激活和Standard订阅的跨页面流程 |
-| 资产管理 | 8 大类/24 子类目录、房地产四个首批模板、五步创建、公共字段、文件规则、资产详情四 TAB；资产列表、资产相关方和房地产模板控件已按 DEC-070/U02-07 完成 UI-Ready 细化 | **产品页面结构与资产相关方细节已收口**；原有资产五步、字段与文件规则继续有效 | 后续在整体 U02 收口中复核跨页一致性；再进入权益结构、Offering 与最终预览设计 |
-| 权益结构 | 一资产一套 Instrument、股权/债权/收益参与三类、单页三区域、Token 权益映射、文件引用 | **核心业务规则已明确，详细页面仍有 Candidate** | 完成主体选择、收益参与期限、预期年化披露和周期付息字段，以及编辑/版本保护等用户可见规则 |
+| 资产管理 | 8 大类/24 子类目录、房地产四个首批模板、五步创建、公共字段、文件规则、资产详情四 TAB；资产列表、资产相关方和房地产模板控件已按 DEC-070/U02-07 完成 UI-Ready 细化 | **产品页面结构与资产相关方细节已收口**；原有资产五步、字段与文件规则继续有效 | 后续与权益结构/Offering 做跨页一致性复核；再进入 Offering 与最终预览设计 |
+| 权益结构 | 一资产一套 Instrument、股权/债权/收益参与三类、单页三区域、Token 权益映射、文件固定版本、债权周期付息、预期年化披露及版本保护均已按 DEC-071/U02-08 完成 UI-Ready | **权益结构产品/UI 规格已收口**；法律/生产准入与代码验收仍独立 | 后续与 Offering 做跨页字段和版本引用一致性核对；再进入 Offering 页面详细设计 |
 | Offering 发行方案 | R01～R36 业务规则已批准；创建前置、单页分区、发行准备、收款钱包、最终投资者预览、Free/Standard 边界已有设计 | **业务规则完整度较高，但页面级产品设计尚未最终确认** | 完成页面信息结构、字段与控件、默认值、空态、错误态、状态操作、页面跳转及最终预览 |
 | 投资者门户管理与投资者前台 | V1 功能范围已纳入，Issuer 管理入口和 V 前台职责已明确 | 尚未完成端到端页面规划 | 逐页面规划门户配置、投资者访问、资料、资格、认购和投资者本人信息 |
 | 投资者与认购 | 导航与业务范围已按 DEC-069 简化 | 尚未完成完整页面/字段/操作设计 | 投资者脱敏档案与 KYC 状态、认购订单、配售与持有人；不设计企业端人工 KYC 审核或资格配置 |
@@ -501,10 +509,13 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - [U02 房地产子类与 MVP 开放范围](U02-04-REAL-ESTATE-SUBTYPES-APPROVED-2026-11-06.md)
 - [U02 房地产模板 UI-Ready](U02-04-REAL-ESTATE-UI-READY-APPROVED-2026-11-06.md)
 - [U02 Instrument 单页与自动拆分批准记录](U02-05-INSTRUMENT-SINGLE-PAGE-AUTO-SPLIT-APPROVED-2026-11-07.md)
-- [U02 Instrument 单页详细产品设计（含 DEC-059 V1 功能范围；具体字段规则待确认）](U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md)
+- [U02 Instrument 单页详细产品设计（历史候选稿）](U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md)
+- [U02-08 权益结构单页 UI-Ready 最终细化规格](U02-08-INSTRUMENT-UI-READY-CLOSEOUT-2026-11-11.md)
+- [DEC-071 权益结构详细规则收口](../../../decisions/DEC-071-instrument-ui-ready-v1-approved.md)
 - [DEC-059：预期年化信息披露与债权周期付息纳入 V1（范围批准）](../../../decisions/DEC-059-expected-annualized-range-and-periodic-debt-coupon-v1-approved.md)
 - [DEC-069：投资者统一 KYC、Issuer 脱敏管理与 V1 资格流程简化](../../../decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md)
 - [DEC-070：资产管理列表、资产相关方与房地产模板控件 UI-Ready 收口](../../../decisions/DEC-070-asset-management-related-parties-ui-ready-v1-approved.md)
+- [DEC-071：V1 权益结构单页 UI-Ready 详细规则收口](../../../decisions/DEC-071-instrument-ui-ready-v1-approved.md)
 - [U02-07：资产列表、相关方与房地产模板控件 UI-Ready](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)
 - [U02 Offering UI-Ready](U02-06-OFFERING-UI-READY-PRD-2026-11-08.md)
 - [R2 当前交付与验收索引](README.md)

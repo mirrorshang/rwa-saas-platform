@@ -486,7 +486,7 @@ Offering 详情
 ### 5.5 关联记录入口
 
 - 「查看认购记录」跳转至企业 SaaS「认购记录」，自动带入当前 Asset 和 Offering 筛选条件。
-- 「查看锁仓记录」跳转至企业 SaaS「锁仓记录」，自动带入当前 Asset 和 Offering 筛选条件。
+- 「查看锁仓记录」跳转至企业 SaaS「锁仓记录」，自动带入当前 Asset 和 Offering 筛选条件；锁仓记录字段、状态、到期与链上核验以 [DEC-079](../../../decisions/DEC-079-lockup-records-ui-ready-v1-closeout-approved.md) / [锁仓记录 UI-Ready 最终规格](LOCKUP-RECORDS-UI-READY-CLOSEOUT-2026-11-11.md) 为准。
 - Offering 不复制订单、支付、退款、Token、持仓或锁仓主账；仅展示可信摘要和跳转入口。
 - 持有人管理、收益上报、清退等发行后业务由各自模块承载，不在本模块重复建设。
 

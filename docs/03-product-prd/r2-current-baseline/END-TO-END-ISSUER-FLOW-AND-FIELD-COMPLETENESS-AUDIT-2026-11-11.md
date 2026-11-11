@@ -191,7 +191,7 @@
 - Offering 页面已批准的单笔数量上限及本期累计金额上限仍由 Offering 配置并固定版本；
 - 共享「规则设置」只读展示该规则来源，不提供第二套编辑入口。
 
-文件：[数据与共享能力](DATA-AND-SHARED-CAPABILITIES-UI-READY-CLOSEOUT-2026-11-11.md)、[Offering](U02-09-OFFERING-MODULE-UI-READY-CLOSEOUT-2026-11-11.md)。
+文件：[V1 产品范围基线](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)、[数据与共享能力](DATA-AND-SHARED-CAPABILITIES-UI-READY-CLOSEOUT-2026-11-11.md)、[Offering](U02-09-OFFERING-MODULE-UI-READY-CLOSEOUT-2026-11-11.md)。现行 V1 基线 M05/M10 范围说明已澄清：普通 Offering 交易额度保留，复杂投资者资格配置不纳入 V1。
 
 ## 6. 本轮已发现并直接修正的普通字段缺口
 

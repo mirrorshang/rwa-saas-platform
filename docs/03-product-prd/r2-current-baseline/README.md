@@ -1,11 +1,11 @@
 # R2 当前有效产品基线索引（Draft PR 待合并）
-> 2026-11-10｜RWA SaaS｜本目录维护 R2 最新产品决策、模块产品设计、页面流程字段与 UI 设计依据。历史开发交接和验收记录仅供背景追溯，不作为当前产品设计任务。分支 docs/r2-current-product-baseline；PR #8 保持 Draft / Open / Unmerged，未经用户单独批准不合并。
+> 2026-11-11｜RWA SaaS｜本目录维护 R2 最新产品决策、模块产品设计、页面流程字段与 UI 设计依据。历史开发交接和验收记录仅供背景追溯，不作为当前产品设计任务。分支 docs/r2-current-product-baseline；PR #8 保持 Draft / Open / Unmerged，未经用户单独批准不合并。
 
 ## 统一产品总入口（2026-11-10）
 
-**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，具体字段规则待模块产品设计确认。新对话/新任务优先读取这两份文件；专项文件继续作为已批准业务规则权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
+**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，具体字段规则待模块产品设计确认；投资者统一 KYC、Issuer 脱敏管理、取消 V1 企业资格配置及投资者与认购导航精简以 DEC-069 为准。新对话/新任务优先读取这两份文件；专项文件继续作为已批准业务规则权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
 
-## V1.0 最新批准范围（2026-11-09）
+## V1.0 最新批准范围（截至 2026-11-11）
 
 - **V1 产品范围已由 DEC-057 批准为五端：W 官网、I Issuer SaaS、V Issuer 独立投资者门户、M 平台统一投资端、P 平台运营后台；X 为外部责任主体泳道。**
 - M 统一投资端是跨 Issuer 的一级发行聚合与分发，不是二级交易市场。M23/M24 共 11 项已正式纳入 V1；Issuer 按 Offering 自愿申请上架，P 独立审核，M/V 共享唯一订单、支付、配售、法定登记、Token 和收益主账。
@@ -23,6 +23,7 @@
 - [DEC-066｜五步企业认证页面字段与交互批准](../../../decisions/DEC-066-enterprise-kyb-five-step-ui-fields-and-interactions-approved.md)
 - [DEC-067｜待补件与未通过统一载入原资料、编辑并重新提交](../../../decisions/DEC-067-kyb-supplement-and-rejected-states-share-one-edit-and-resubmit-flow-approved.md)
 - [DEC-068｜企业钱包管理页面结构与核心业务规则批准](../../../decisions/DEC-068-enterprise-wallet-management-ui-and-business-rules-approved.md)
+- [DEC-069｜投资者统一 KYC、Issuer 脱敏管理与 V1 资格流程简化](../../../decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md)
 - [USDable V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
 - [V1 产品完整性收口与产品/UI 设计现状审计](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)
 - [V1.0 产品基线与 157 项功能清单](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)
@@ -38,7 +39,7 @@
 - **用户确认的产品/UI 顺序**：先功能范围和流程、再模块与页面/字段/状态、最后 UI；V1 简化、易用，不将技术开发作为本阶段工作。
 
 ## 读取顺序及优先级
-1. 当前最新已批准的 R2 产品决策（V1 五端范围及 M23/M24 新增 11 项以 DEC-057 为准；USDable 参考功能采纳/后置/排除以 DEC-058 为准；预期年化信息披露与债权周期付息纳入 V1 的范围以 DEC-059 为准，具体字段规则待确认；U01 企业 KYB 五步与动态规则以 [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md) 和 U01 PRD 的 B01～B08 **v0.3** 为准，覆盖旧五步字段版本；企业钱包管理页面结构及五项核心规则以 DEC-068 和 U01 PRD 的 D 企业钱包章节为准；U02 资产与发行结构采用 [U02-02 批准记录](U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md)，资产分类与五步创建向导采用 [U02-03 批准记录](U02-03-ASSET-CLASSIFICATION-APPROVED-2026-11-06.md)；[U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md) 的 E09 最新套餐能力矩阵与 [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md) 优先于同目录或历史文件中的旧 Free 完整模拟闭环表述）。
+1. 当前最新已批准的 R2 产品决策（V1 五端范围及 M23/M24 新增 11 项以 DEC-057 为准；USDable 参考功能采纳/后置/排除以 DEC-058 为准；预期年化信息披露与债权周期付息纳入 V1 的范围以 DEC-059 为准，具体字段规则待确认；投资者统一 KYC、Issuer 脱敏管理及 V1 资格流程简化以 DEC-069 为准；U01 企业 KYB 五步与动态规则以 [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md) 和 U01 PRD 的 B01～B08 **v0.3** 为准，覆盖旧五步字段版本；企业钱包管理页面结构及五项核心规则以 DEC-068 和 U01 PRD 的 D 企业钱包章节为准；U02 资产与发行结构采用 [U02-02 批准记录](U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md)，资产分类与五步创建向导采用 [U02-03 批准记录](U02-03-ASSET-CLASSIFICATION-APPROVED-2026-11-06.md)；[U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md) 的 E09 最新套餐能力矩阵与 [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md) 优先于同目录或历史文件中的旧 Free 完整模拟闭环表述）。
 2. 本轮产品工作优先读取《V1 产品完整性收口与产品/UI 设计现状审计》及对应 U01/U02 专项文件；不把历史开发交接或验收文档当作产品需求。
 3. 旧 Master PRD 与历史 DEC、Frozen：仅在未被 R2 明确覆盖且不冲突时引用；历史仍保留原始事实，不静默重写。
 4. 旧代码与 Mock 仅是现状证据，不是需求权威。法定合规、安全控制、Provider/Signer/资金/链上生产准入门从不因产品规则覆盖而免除。

@@ -12,8 +12,8 @@
 - **全链路一致性审核**：[DEC-080](../decisions/DEC-080-asset-and-issuance-cross-module-consistency-audit-closeout.md)｜[资产与发行全链路审核报告](03-product-prd/r2-current-baseline/ASSET-AND-ISSUANCE-CROSS-MODULE-CONSISTENCY-AUDIT-2026-11-11.md)；确认对象主账、状态时序、容量、付款、配售/登记、Token、锁仓及跨模块跳转的一致性。
 - **收益与分配**：[DEC-081](../decisions/DEC-081-yield-and-distribution-ui-ready-v1-closeout.md)｜[I-54～I-58 UI-Ready 最终规格](03-product-prd/r2-current-baseline/YIELD-AND-DISTRIBUTION-UI-READY-CLOSEOUT-2026-11-11.md)；覆盖存续档案、权益快照、收益上报、计算/复核、分配批次、注资核验、领取/支付对账、到期/逾期与合法退出。
 - **数据与共享能力**：[DEC-082](../decisions/DEC-082-data-and-shared-capabilities-ui-ready-v1-closeout.md)｜[八页面 UI-Ready 最终规格](03-product-prd/r2-current-baseline/DATA-AND-SHARED-CAPABILITIES-UI-READY-CLOSEOUT-2026-11-11.md)；八个页面组已完成 UI-Ready，沿用 M17～M22 共 39 个既有 V1 功能 ID，并严格保持单账号单企业、不新增内部角色/审批人。
-- **Issuer 导航与页面覆盖静态审计**：[审计报告](03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-NAVIGATION-AND-PAGE-COVERAGE-AUDIT-2026-11-11.md)；已核对九个一级导航、页面入口和当前 UI-Ready 专项，识别 I-13 标准门户管理页为当前优先收口项。
-- **当前优先项**：完成 I-13 标准投资者门户管理页 V1 最终收口；随后完成 Issuer 正式功能逐 ID 双向映射与跨模块体验总审计。当前设计轮次只聚焦 Issuer 企业 SaaS。
+- **Issuer 导航与页面覆盖静态审计**：[审计报告](03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-NAVIGATION-AND-PAGE-COVERAGE-AUDIT-2026-11-11.md)；已核对九个一级导航、页面入口和当前 UI-Ready 专项，I-13 标准门户管理页现已按 U01 E09 完成 UI-Ready 收口。
+- **当前优先项**：Issuer 正式功能逐 ID 双向映射与跨模块体验总审计。当前设计轮次只聚焦 Issuer 企业 SaaS。
 - **重要边界**：以上 UI-Ready 只表示企业端页面、字段、交互、状态、异常、权限和跨模块责任已完成产品设计；不代表真实法域/法律责任、资金托管、合约模板/安全审计、Provider/Signer、真实链上执行、代码/Build/Browser/UAT 或生产准入完成。
 - **治理保持**：Frozen、193 项正式功能 ID/首次交付版本归属、历史 DEC/SCOPE、X-01～X-13 均不因本节改变；PR #6、PR #8 仍 Draft / Open / Unmerged，V1 整体未 Frozen。
 

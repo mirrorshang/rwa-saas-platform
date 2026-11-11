@@ -127,3 +127,10 @@
 
 ## 6. 保护性约束
 仅本目录 R2 文档记录用户批准结果；**不修改旧 Master / Frozen / 193 项版本归属 / 历史 DEC/SCOPE / PR #6，不合并 PR #8，不修改任何前后端生产或演示源码，不授权真实支付、链上合约部署、Signer/Mint 或对外上架**。
+
+
+## 7. 2026-11-11 补充｜资产相关方与房地产字段控件（DEC-070）
+
+- 资产相关方的角色、主体卡片字段、文件、Ready、编辑保护及 Offering 级投资者披露，以 [DEC-070](../../../decisions/DEC-070-asset-management-related-parties-ui-ready-v1-approved.md) 和 [U02-07](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md) 为准。
+- 房地产四个首批开放模板的面积单位、精度、百分比/数量控件及交叉校验，以 U02-07 第 6 节为准；本补充不改变 R15～R20 已批准字段及固定必需文件规则。
+- 原文件中的候选细节仅在与 U02-07 不冲突时继续适用；Asset Ready 仍不等于法律权属或发行准入通过。

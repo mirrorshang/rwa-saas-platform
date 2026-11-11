@@ -175,14 +175,14 @@
 - [DEC-075｜V1 认购订单模块 UI-Ready 收口](../../../decisions/DEC-075-subscription-orders-ui-ready-v1-closeout-approved.md)：按用户授权收口 Issuer 全生命周期订单工作台，保留资金、容量、配售、法定登记和 Token 独立事实。
 - [U02-12｜认购订单模块 UI-Ready 最终规格](U02-12-SUBSCRIPTION-ORDERS-UI-READY-CLOSEOUT-2026-11-11.md)：列表、详情、报价/签署、预留、真实付款、配售/登记/交付、取消/到期、退款异常、权限、空态与跨模块跳转。
 - 订单模块已达到产品/UI 设计 UI-Ready；真实付款/退款、配售/法定登记、Token 执行及代码/浏览器验收未因此完成或获得授权。
-- 配售与持有人、资金与结算完成 UI-Ready 后，Token 管理已按 DEC-078 完成 UI-Ready；当前下一项：**资产与发行 → 锁仓记录**。
+- 配售与持有人、资金与结算完成 UI-Ready 后，Token 管理随后按 DEC-078 收口；锁仓记录现已按 DEC-079 完成独立 UI-Ready。
 
 ## 配售与持有人 UI-Ready 收口（2026-11-11）
 
 - [DEC-076｜配售与持有人 UI-Ready 收口](../../../decisions/DEC-076-allocation-and-holders-ui-ready-v1-closeout-approved.md)：在既有「投资者与认购 → 配售与持有人」内形成配售管理、持有人登记、差异与限制三个视图，不改变二级导航。
 - [U02-13｜配售与持有人 UI-Ready 最终规格](U02-13-ALLOCATION-AND-HOLDERS-UI-READY-CLOSEOUT-2026-11-11.md)：容量与基础配售、登记结果/有权责任主体、持有人列表详情、非 1:1 Token 权益映射、法定与链对账、限制/解除复核、状态、弹窗、异常与权限。
 - 模块产品/UI 规格完成，不代表实际法定登记、资金或 Token 执行权限获得批准，不表示代码或浏览器验收通过。
-- 资金与结算已按 DEC-077/U02-14 完成 UI-Ready；Token 管理已按 DEC-078 完成 UI-Ready。**下一项：资产与发行 → 锁仓记录**，仍作为独立待收口页面。
+- 资金与结算已按 DEC-077/U02-14 完成 UI-Ready；Token 管理已按 DEC-078 完成 UI-Ready；锁仓记录随后按 DEC-079 独立收口，不并入 Token 管理。
 
 ## 资金与结算 UI-Ready 收口（2026-11-11）
 
@@ -190,7 +190,7 @@
 - [U02-14｜资金与结算 UI-Ready 最终规格](U02-14-FUNDS-AND-SETTLEMENT-UI-READY-CLOSEOUT-2026-11-11.md)：完整覆盖 Offering 收款安排、OP Mainnet USDT 付款指令、真实到账/FinalMatched、退款与异常、募集款受限/释放资格、受权划拨、实际出款及受领到账核验。
 - V1 投资者支付仅 USDT / OP Mainnet；M11-F011 法币/多通道仍为 V3.0；多方比例分账仍为 V2。M01 SaaS 订阅、M11 认购资金、M13 收益/本息资金分离。
 - 本次仅完成企业端产品/UI 规格；真实收款、退款、托管、Signer、募集款释放和生产执行未因此获准，代码/浏览器验收未执行。
-- **下一模块：Token 管理**；「资产与发行 → 锁仓记录」仍作为独立待收口页面。
+- 当时下一模块为 Token 管理，现已按 DEC-078 完成 UI-Ready；锁仓记录继续作为独立页面，不并入 Token 管理。
 
 ## Token 管理 UI-Ready 收口（2026-11-11）
 
@@ -200,4 +200,16 @@
 - Free 可准备 Token 方案资料但不能真实部署/Mint/Burn；Standard 订阅、KYB 通过也不自动等于生产授权。真实操作仍需合法主体、受权 Signer、安全/网络/模板和生产准入。
 - Token 数量与法律权益映射继承 InstrumentVersion；资金、配售/法定登记、Token 链上事实彼此独立；锁仓业务记录仍归「资产与发行 → 锁仓记录」。
 - 本次只完成企业端产品/UI 规格；源码、Build、Browser、真实合约/Signer/链上执行和人工 UAT 未执行。
-- **下一项：资产与发行 → 锁仓记录**；不将其并入 Token 管理或重复创建锁仓主账。
+- 锁仓记录随后已按 DEC-079 完成 UI-Ready；不将其并入 Token 管理或重复创建锁仓主账。
+
+
+## 锁仓记录 UI-Ready 收口（2026-11-11）
+
+- [DEC-079｜V1 锁仓记录 UI-Ready 收口](../../../decisions/DEC-079-lockup-records-ui-ready-v1-closeout-approved.md)：在既有「资产与发行 → 锁仓记录」入口内完成独立页面收口，不新增导航和正式功能 ID。
+- [锁仓记录 UI-Ready 最终规格](LOCKUP-RECORDS-UI-READY-CLOSEOUT-2026-11-11.md)：覆盖 Offering 规则快照、待交付预期事项、真实 Token 交付起算、列表/详情、到期与解除状态、链上核验、法律限制分离、异常和 28 项 UI 验收目标。
+- V1 继续使用 Offering 的「不锁仓 / 固定天数」；固定天数 1～36,500 天，从 Token 实际交付时点起算；不支持分期、多段或投资者等级差异化锁仓。
+- 业务锁仓期限、链上转让限制、法律/管理限制分开显示；Offering 关闭不自动解除既有锁仓；到期不等于链上已解锁或法律权利终止。
+- Token 管理只维护真实链上锁仓/解除执行和事件事实；锁仓记录页维护业务锁仓记录，不重复建账。显式链上解除须跳转 Token 管理，由真实有权主体执行。
+- 本次只完成企业端产品/UI 规格；真实合约锁仓/解锁、Signer、代码/Build/Browser/自动化和人工 UAT 未执行。
+- **资产与发行下的三个二级入口均已有对应 UI-Ready 专项规格**；下一步应进行跨页面一致性复核，再按 V1 总表推进其他模块。
+

@@ -66,3 +66,14 @@ C. 发行准备
 
 ## 5. 文档边界
 - 当前仅写入 R2 文档工作分支；不修改任何源码、旧 Frozen、历史 Master、DEC/SCOPE、193项历史版本归属、根 README 或 PR #6；PR #8 **Draft / Open / Unmerged**。外部资金/Token 实际业务与法律责任继续有独立技术/法律/生产准入门。
+
+
+## 6. 2026-11-11 DEC-069 补充｜R10 投资者准入字段的当前执行口径
+
+R10 原批准的「投资者类型/地区/KYC」候选配置，按 DEC-069 收敛如下：
+
+- 「个人/机构」和「允许认购地区」不再作为 Issuer 可配置字段，不在 V1/MVP Offering 表单显示。
+- KYC 不提供等级或可选开关；改为平台统一固定前置条件，投资者 KYC 状态必须为「通过」才可进入认购确认/付款。
+- Issuer 不进行额外资格审核、批准/拒绝或资格覆盖。
+- 普通 Offering 交易条件（时间、额度、最低认购、锁仓）继续保留。
+- 该补充优先于本文原 R10 字段示例及「待确认地区/KYC 等级」候选项；不改变其他 R07～R12 已批准规则。详见 [DEC-069](../../../decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md)。

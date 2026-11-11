@@ -504,7 +504,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - I-13 标准投资者门户管理页现已按 U01 E09、单账号单企业及生产准入边界完成当前 V1 UI-Ready 收口；当前 Issuer 企业 SaaS 各既有页面组均已有 UI-Ready 专项规格。
 - 历史 Master 中团队成员/角色管理、独立 KYC/资格页面、旧五菜单及 M 渠道候选页面不得误认为当前 Issuer V1 有效页面。
 - 共享页面入口按现行架构分布：I-59/I-60/I-61/I-66 为全局横向入口；I-62/I-65 归企业管理；I-63/I-64 归数据与报表。
-- 当前静态审计报告：[Issuer SaaS V1 导航与页面覆盖审计](ISSUER-SAAS-V1-NAVIGATION-AND-PAGE-COVERAGE-AUDIT-2026-11-11.md)；I-13 详细规格：[I-13 UI-Ready 收口](I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)。
+- 当前静态审计报告：[Issuer SaaS V1 导航与页面覆盖审计](ISSUER-SAAS-V1-NAVIGATION-AND-PAGE-COVERAGE-AUDIT-2026-11-11.md)；I-13 详细规格：[I-13 UI-Ready 收口](I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)；157 项功能双向映射：[Issuer 功能—页面矩阵](ISSUER-SAAS-V1-FUNCTION-TO-PAGE-BIDIRECTIONAL-CROSSWALK-2026-11-11.md)。
 - **当前下一阶段：Issuer 正式功能逐 ID 双向映射及跨模块体验总审计。**
 
 ## 5. 现行模块目录与五端功能地图

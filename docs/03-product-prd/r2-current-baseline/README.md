@@ -175,7 +175,7 @@
 - [DEC-075｜V1 认购订单模块 UI-Ready 收口](../../../decisions/DEC-075-subscription-orders-ui-ready-v1-closeout-approved.md)：按用户授权收口 Issuer 全生命周期订单工作台，保留资金、容量、配售、法定登记和 Token 独立事实。
 - [U02-12｜认购订单模块 UI-Ready 最终规格](U02-12-SUBSCRIPTION-ORDERS-UI-READY-CLOSEOUT-2026-11-11.md)：列表、详情、报价/签署、预留、真实付款、配售/登记/交付、取消/到期、退款异常、权限、空态与跨模块跳转。
 - 订单模块已达到产品/UI 设计 UI-Ready；真实付款/退款、配售/法定登记、Token 执行及代码/浏览器验收未因此完成或获得授权。
-- 配售与持有人、资金与结算均已完成 UI-Ready；当前下一模块：**Token 管理**。
+- 配售与持有人、资金与结算完成 UI-Ready 后，Token 管理已按 DEC-078 完成 UI-Ready；当前下一项：**资产与发行 → 锁仓记录**。
 
 ## 配售与持有人 UI-Ready 收口（2026-11-11）
 

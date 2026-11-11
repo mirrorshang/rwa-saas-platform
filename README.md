@@ -21,7 +21,7 @@
 | [Issuer 导航与页面覆盖审计](docs/03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-NAVIGATION-AND-PAGE-COVERAGE-AUDIT-2026-11-11.md) | 九个一级导航、页面入口、历史冲突及当前页面覆盖状态的静态审计 |
 | [DEC-082 数据与共享能力 UI-Ready 收口](decisions/DEC-082-data-and-shared-capabilities-ui-ready-v1-closeout.md) | 记录八个共享能力页面组的设计收口与版本/责任边界 |
 | [数据与共享能力八页面最终规格](docs/03-product-prd/r2-current-baseline/DATA-AND-SHARED-CAPABILITIES-UI-READY-CLOSEOUT-2026-11-11.md) | 我的待办、异常工单、消息通知、规则设置、审计记录、业务报表、外部服务、安全与服务状态 |
-| [I-13 Issuer 标准门户管理 UI-Ready 规格](docs/03-product-prd/r2-current-baseline/I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md) | Issuer 自有标准投资者门户管理；Free 内部只读预览，Standard 配置/发布受独立准入约束 |
+| [I-13 Issuer 标准门户管理 UI-Ready 规格](docs/03-product-prd/r2-current-baseline/I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md) | Issuer 自有标准投资者门户管理；Free 内部只读预览，Standard 配置/发布受独立准入约束 |\n| [Issuer 157 项功能—页面双向映射](docs/03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-FUNCTION-TO-PAGE-BIDIRECTIONAL-CROSSWALK-2026-11-11.md) | 157 项 V1 正式功能逐项标明产品端、页面责任与当前 Issuer 承载边界 |
 | [当前文档状态索引](docs/Document-Status-Index.md) | 当前专项文档、决策与状态的索引入口 |
 | [R2 当前产品基线目录](docs/03-product-prd/r2-current-baseline/README.md) | 企业 SaaS 各模块 UI-Ready 专项规格与当前工作衔接入口 |
 

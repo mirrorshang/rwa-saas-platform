@@ -63,3 +63,13 @@
 ## 5. 实施和版本保护
 - 当前只更新 R2 docs 分支及本目录索引；**不更改任何源码、Frozen、旧 Master、历史 DEC/SCOPE、193项历史归属、根 README 或 PR #6**；PR #8 始终 **Draft/Open/Unmerged**。
 - Codex 现阶段开发 DEV-03 Asset / DEV-04 Instrument，不得因本文件的产品批准擅自开始完整 Offering 开发。真实开发授权/生产准入独立进行。
+
+
+## 5. 2026-11-11 DEC-069 补充｜投资者资格字段收敛
+
+本补充优先于本文件 R04 及后文中「个人/机构、地区、基础 KYC 要求」作为 Issuer 可配置字段的旧批准表述：
+
+- V1/MVP 不再向 Issuer 提供投资者类型、允许地区、KYC 等级或 Offering 级资格条件配置。
+- KYC 保留为平台统一强制前置条件：第三方服务商核验，平台维护权威结果；只有 KYC 状态为「通过」才可进入认购确认/付款。
+- Offering 仍配置普通交易条件（认购时间、最低认购金额、发行数量、锁仓等），不将这些交易条件称为投资者资格。
+- 本补充仅收敛 Issuer 可见的产品配置，不取消适用法律要求的平台级强制阻断。完整规则见 [DEC-069](../../../decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md)。

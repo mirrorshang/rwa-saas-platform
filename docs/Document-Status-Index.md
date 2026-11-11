@@ -1,5 +1,18 @@
 # RWA SaaS Platform｜现行文档状态和决策索引
 
+## 当前 V1 企业 SaaS 产品/UI 收口状态（2026-11-11）
+
+> 本节是当前 V1 企业 SaaS 产品/UI 设计状态的增量索引；旧 Step04/Step05/Step06 记录保留为历史审批和阶段快照。当前导航、范围和后续顺序以最新产品总体架构及 V1 完整性审计为准。
+
+- **当前统一入口**：[产品总体架构与交付基线](03-product-prd/r2-current-baseline/RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)｜[V1 产品完整性与 UI 设计现状](03-product-prd/r2-current-baseline/RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)｜[专项文档索引](03-product-prd/r2-current-baseline/README.md)。
+- **资产与发行/投资者与认购**：资产管理、权益结构、Offering、认购记录、投资者管理、认购订单、配售与持有人均已按对应专项 DEC 完成企业端 UI-Ready；具体以各专项当前最终规格为准。
+- **资金与结算**：[DEC-077](../decisions/DEC-077-funds-and-settlement-ui-ready-v1-closeout-approved.md)｜[资金与结算 UI-Ready 最终规格](03-product-prd/r2-current-baseline/U02-14-FUNDS-AND-SETTLEMENT-UI-READY-CLOSEOUT-2026-11-11.md)；覆盖收款/对账、退款/异常、募集款释放/划拨。
+- **Token 管理**：[DEC-078](../decisions/DEC-078-token-management-ui-ready-v1-closeout-approved.md)｜[Token 管理 UI-Ready 最终规格](03-product-prd/r2-current-baseline/TOKEN-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)；覆盖合约管理、Token 操作、链上记录与对账。
+- **重要边界**：以上 UI-Ready 只表示企业端页面、字段、交互、状态、异常、权限和跨模块责任已完成产品设计；不代表真实法域/法律责任、资金托管、合约模板/安全审计、Provider/Signer、真实链上执行、代码/Build/Browser/UAT 或生产准入完成。
+- **下一项产品设计**：独立收口「资产与发行 → 锁仓记录」页面；该业务锁仓记录与 Token 管理中的链上限制/执行事实分开，不重复建账。
+- **治理保持**：Frozen、193 项正式功能 ID/首次交付版本归属、历史 DEC/SCOPE、X-01～X-13 均不因本节改变；PR #6、PR #8 仍 Draft / Open / Unmerged，V1 整体未 Frozen。
+
+
 ## 最新：DEC-044～046统一投资端五端战略与125页候选架构（2026-10-28）
 
 [Master PRD v0.2](03-product-prd/RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)作为新五端Draft总入口；[五端125组候选地图](03-product-prd/RWA-SaaS-Step-06-Five-Surface-125-Page-Inventory-Draft-v0.1.md)；[M23/M24功能去重附表](03-product-prd/RWA-SaaS-Step-B-M23-M24-Function-Crosswalk-Draft-v0.1.md)。

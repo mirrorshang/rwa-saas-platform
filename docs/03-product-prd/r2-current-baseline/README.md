@@ -140,7 +140,7 @@
 - [DEC-072｜V1 Offering 发行方案模块 UI-Ready 收口](../../../decisions/DEC-072-offering-module-ui-ready-v1-closeout-approved.md)：依据用户对列表方案 A 的明确批准及产品负责人独立完成 MVP 闭环的授权，收口 Offering 模块页面设计。
 - [U02-09｜Offering 发行方案模块 UI-Ready 最终规格](U02-09-OFFERING-MODULE-UI-READY-CLOSEOUT-2026-11-11.md)：当前权威详细设计，覆盖列表、创建/编辑、发行准备、投资者预览、最终确认、详情与生命周期。
 - Offering 模块产品/UI 规格已达到 UI-Ready；开发、Build、Browser、Route、真实支付/Mint 与生产准入仍独立。
-- Offering 模块产品/UI 规格已达到 UI-Ready；认购记录页面随后完成独立收口，下一模块进入「投资者管理」。
+- Offering 模块产品/UI 规格已达到 UI-Ready；认购记录与投资者管理随后完成独立收口，当前下一模块进入「认购订单」。
 
 
 

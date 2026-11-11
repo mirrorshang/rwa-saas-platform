@@ -25,6 +25,7 @@
 - [DEC-068｜企业钱包管理页面结构与核心业务规则批准](../../../decisions/DEC-068-enterprise-wallet-management-ui-and-business-rules-approved.md)
 - [DEC-069｜投资者统一 KYC、Issuer 脱敏管理与 V1 资格流程简化](../../../decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md)
 - [DEC-070｜资产管理列表、资产相关方与房地产模板控件 UI-Ready 收口](../../../decisions/DEC-070-asset-management-related-parties-ui-ready-v1-approved.md)
+- [DEC-071｜V1 权益结构单页 UI-Ready 详细规则收口](../../../decisions/DEC-071-instrument-ui-ready-v1-approved.md)
 - [U02-07｜资产列表、相关方与房地产模板控件 UI-Ready](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)
 - [USDable V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
 - [V1 产品完整性收口与产品/UI 设计现状审计](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)
@@ -49,8 +50,8 @@
 ## 交付范围
 - [RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)：V1 五端完整产品范围与 157 项 V1 功能清单；整体产品设计尚未完成。
 - [../RWA-SaaS-USDABLE-COMPETITIVE-GAP-ANALYSIS-2026-11-09.md](../RWA-SaaS-USDABLE-COMPETITIVE-GAP-ANALYSIS-2026-11-09.md)：基于 2026-11-05 原始 USDable 审计报告更新的整体功能目录、V1 采纳项和版本取舍；功能对照已完成，不重复进行竞品对照。
-- [USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)：M04 资产相关方、M12 持有人管理、M13 收益上报和清退/兑付的模块产品设计补充；M04 资产相关方字段与页面细节以 DEC-070/U02-07 为准；预期年化和周期付息的具体字段/规则仍待后续收口。
-- [U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md](U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md)：权益结构单页详细产品设计稿；预期年化和债权周期付息已纳入 V1，但适用范围、字段和具体规则仍 Candidate。
+- [USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)：M04 资产相关方、M12 持有人管理、M13 收益上报和清退/兑付的模块产品设计补充；M04 资产相关方字段与页面细节以 DEC-070/U02-07 为准；Instrument 预期年化和债权周期付息字段/规则已按 DEC-071/U02-08 收口。
+- [U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md](U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md)：权益结构历史详细设计稿，保留原 Candidate 形成过程；当前执行细则以 [DEC-071](../../../decisions/DEC-071-instrument-ui-ready-v1-approved.md) 与 [U02-08](U02-08-INSTRUMENT-UI-READY-CLOSEOUT-2026-11-11.md) 为准。
 - [U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md)：A 邮箱登录、B 企业入驻/KYB、C 未认证工作台、D 企业钱包（五项核心规则已由 DEC-068 批准）、E 订阅及 E09 最新 Free/Standard 权益矩阵；页面字段、流程、状态、校验、提示、异常。
 - [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md)：**R01～R10 均批准**：新版五步 KYB、UBO 控制路径、授权代表、动态文件要求和旧草稿/已提交版本保留；正式 UI 以 U01 B01～B08 v0.3 为准。
 - [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md)：最新用户确认的套餐权限变更决策与待定项，供 U02 流程/导航设计引用。
@@ -65,6 +66,7 @@
 - [U02-05-INSTRUMENT-SINGLE-PAGE-AUTO-SPLIT-APPROVED-2026-11-07.md](U02-05-INSTRUMENT-SINGLE-PAGE-AUTO-SPLIT-APPROVED-2026-11-07.md)：**2026-11-07 用户批准的最新 Instrument UX**：覆盖原 R03 四步向导为单页三区域；R05/R11 保留后台容量，用户只填总权益规模＋Token 拆分份数，系统算每份权益；**后续 R13～R18 已确认字段与基本校验，生产级精度/额外法定证明/版本规则仍 Draft**。
 - [U02-05-INSTRUMENT-FIELDS-R13-R18-APPROVED-2026-11-07.md](U02-05-INSTRUMENT-FIELDS-R13-R18-APPROVED-2026-11-07.md)：**U02-05 R13～R18 全部 A**：公共/三类型字段 Ready 条件、Token 总份数与自动每份权益计算、无可批准精度时拒绝静默取整、三类核心权益法律文件、Draft/资料已完备与 Offering 历史权利保护。
 - [U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md](U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md)：权益结构单页详细产品设计稿；主体选择、收益参与期限、类型切换/版本保护、权益精度及 DEC-059 两项能力的具体字段规则仍需逐项确认。
+- [U02-08｜权益结构单页 UI-Ready 最终细化规格](U02-08-INSTRUMENT-UI-READY-CLOSEOUT-2026-11-11.md)：当前 V1 权益结构唯一权威详细设计，覆盖三类权益字段、主体选择、债权付息、预期年化披露、Token 精确拆分、文件、Ready 与版本保护。
 - [U02-06-OFFERING-FOUNDATION-R01-R06-APPROVED-2026-11-07.md](U02-06-OFFERING-FOUNDATION-R01-R06-APPROVED-2026-11-07.md)：**U02-06 R01～R06 全部 Approved（USDable Offering 实测对照后修订）**：资产/权益确定版本自动关联，单页分区编辑，本期数量×单价 U 自动计算募集上限，最低认购与时间、基础投资者准入及锁仓、OP Mainnet USDT 投资者支付范围、发行前预览与受控发布。**此处为第一批历史批准口径**；后续 R13～R36 已确认单期开放互斥、企业结算钱包和 UI 状态原则；真实资金/合约/分账生产执行仍 Open，Codex DEV-03/04 不包含 Offering 开发。
 - [U02-06-OFFERING-FIELDS-R07-R12-APPROVED-2026-11-07.md](U02-06-OFFERING-FIELDS-R07-R12-APPROVED-2026-11-07.md)：**U02-06 R07～R12 用户全部 A**：发行名自动建议/简介、Token 数量与单价 U/单笔最低认购额及自动募集上限、含时区认购起止及未来开售状态、个人/机构/地区/KYC 基础准入、不锁仓或固定天数、只读 OP Mainnet USDT 支付配置；**后续 R13～R18 已获批基础容量/状态及企业收款账户规则；实际合约付款/Mint/分账、技术精度、退款及完整状态机仍 Open，暂不开发 Offering**。
 - [U02-06-OFFERING-LIFECYCLE-R13-R18-APPROVED-2026-11-07.md](U02-06-OFFERING-LIFECYCLE-R13-R18-APPROVED-2026-11-07.md)：**R13～R18 全部 Approved（含用户收款钱包补充）**：同一 Instrument 同时最多一轮开放认购、发布时预留份额、完成分配转已发行、关闭释放无待处理义务的未分配预留、支付与 Token 配售分层、等待开始/在售/暂停/结束/关闭状态、资料/协议及投资者最终预览；企业在 Offering 中选择已绑定 MPC 或自连接钱包作为**最终结算收款账户**。投资者向认购合约支付→Mint/交付→资金分账是**优先研究候选（非生产批准）**；收款/退款/费用/Provider/Signer/DvP 精确路径仍 Open，注意 2026-09 OP USDT 合约迁移核验风险。
@@ -117,3 +119,11 @@
 - 资产相关方不新增导航；并入资产创建第三步「法律与估值」及资产详情「资产资料」。Offering 级披露按每期单独选择，并进入该期最终投资者预览。
 - 本次仅表示产品/UI 规格完成，不代表代码实现、浏览器验收、产权/牌照核验或生产发行准入完成。
 
+
+
+## 权益结构 UI-Ready 收口（2026-11-11）
+
+- [DEC-071｜V1 权益结构单页 UI-Ready 详细规则收口](../../../decisions/DEC-071-instrument-ui-ready-v1-approved.md)：收敛三类权益字段、债权周期付息、预期年化披露、权益拆分精度、文件、Ready 与版本规则。
+- [U02-08｜权益结构单页 UI-Ready 最终细化规格](U02-08-INSTRUMENT-UI-READY-CLOSEOUT-2026-11-11.md)：当前 UI-Ready 详细设计依据；资产详情四 TAB 和单页三区域不变。
+- 资产管理与权益结构的产品/UI 规格已分别完成独立收口；下一步单独进入 Offering 发行方案详细设计，不在本批次提前扩展。
+- 本次仅表示产品/UI 规格完成，不代表 Codex 开发、Build、浏览器验收或生产发行准入完成。

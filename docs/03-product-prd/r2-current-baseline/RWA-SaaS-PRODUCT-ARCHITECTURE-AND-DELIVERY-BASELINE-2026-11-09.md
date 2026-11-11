@@ -431,7 +431,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - M01 SaaS 订阅费、M11 认购款/退款/募集款、M13 收益/本息资金严格分离；FinalMatched 不等于配售/登记，Eligible 不等于批准或已划拨，批准不等于真实结算。
 - 不新增财务/审批角色矩阵；MVP 单账号企业模型下记录真实有权主体及授权证据，没有合法授权不得执行。平台不默认托管或控制客户资金。
 - 当前权威规格：[DEC-077](../../../decisions/DEC-077-funds-and-settlement-ui-ready-v1-closeout-approved.md) / [U02-14](U02-14-FUNDS-AND-SETTLEMENT-UI-READY-CLOSEOUT-2026-11-11.md)。
-- 本次只完成企业端产品/UI 规格，不代表真实资金生产准入或源码验收。下一模块：**Token 管理**。
+- 本次只完成企业端产品/UI 规格，不代表真实资金生产准入或源码验收。当时下一模块为 Token 管理，现已按 DEC-078 完成 UI-Ready；当前下一项为「资产与发行 → 锁仓记录」。
 
 
 ### 4.15 Token 管理 UI-Ready 收口（DEC-078）

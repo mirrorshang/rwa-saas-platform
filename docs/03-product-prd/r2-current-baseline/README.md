@@ -3,7 +3,7 @@
 
 ## 统一产品总入口（2026-11-10）
 
-**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，权益结构具体字段和 UI 规则以 DEC-071/U02-08 为准；投资者统一 KYC 与企业端脱敏管理以 DEC-069 为准；资产列表、资产相关方和房地产四模板控件 UI-Ready 以 DEC-070/U02-07 为准；Offering 模块完整 UI-Ready 以 DEC-072/U02-09 为准；认购记录只读查询视图以 DEC-073/U02-10 为准；投资者管理模块 UI-Ready 以 DEC-074/U02-11 为准。新对话/新任务优先读取这两份文件；专项文件继续作为已批准业务规则权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
+**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，权益结构具体字段和 UI 规则以 DEC-071/U02-08 为准；投资者统一 KYC 与企业端脱敏管理以 DEC-069 为准；资产列表、资产相关方和房地产四模板控件 UI-Ready 以 DEC-070/U02-07 为准；Offering 模块完整 UI-Ready 以 DEC-072/U02-09 为准；认购记录只读查询视图以 DEC-073/U02-10 为准；投资者管理模块 UI-Ready 以 DEC-074/U02-11 为准；认购订单模块 UI-Ready 以 DEC-075/U02-12 为准。新对话/新任务优先读取这两份文件；专项文件继续作为已批准业务规则权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
 
 ## V1.0 最新批准范围（截至 2026-11-11）
 
@@ -29,6 +29,7 @@
 - [DEC-072｜V1 Offering 发行方案模块 UI-Ready 收口](../../../decisions/DEC-072-offering-module-ui-ready-v1-closeout-approved.md)
 - [DEC-073｜V1 认购记录与认购订单入口分工及 UI-Ready 收口](../../../decisions/DEC-073-subscription-records-read-only-view-v1-approved.md)
 - [DEC-074｜V1 投资者管理模块 UI-Ready 收口](../../../decisions/DEC-074-investor-management-ui-ready-v1-closeout-approved.md)
+- [DEC-075｜V1 认购订单模块 UI-Ready 收口](../../../decisions/DEC-075-subscription-orders-ui-ready-v1-closeout-approved.md)
 - [U02-07｜资产列表、相关方与房地产模板控件 UI-Ready](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)
 - [USDable V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
 - [V1 产品完整性收口与产品/UI 设计现状审计](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)
@@ -81,6 +82,7 @@
 - [U02-09｜Offering 发行方案模块 UI-Ready 最终规格](U02-09-OFFERING-MODULE-UI-READY-CLOSEOUT-2026-11-11.md)：当前唯一权威执行规格，覆盖发行管理列表、创建/编辑单页、字段校验、两层准备检查、投资者端预览、最终发布确认、详情、生命周期、异常与跨模块关系。
 - [U02-10｜认购记录页面 UI-Ready 最终规格](U02-10-SUBSCRIPTION-RECORDS-UI-READY-CLOSEOUT-2026-11-11.md)：已完成认购的跨资产只读历史视图；与投资者与认购下的全生命周期「认购订单」明确分工，复用同一订单主账。
 - [U02-11｜投资者管理模块 UI-Ready 最终规格](U02-11-INVESTOR-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)：本企业投资者关系脱敏只读视图，包含列表、详情、统一 KYC 状态、业务关联、授权隔离和异常处理。
+- [U02-12｜认购订单模块 UI-Ready 最终规格](U02-12-SUBSCRIPTION-ORDERS-UI-READY-CLOSEOUT-2026-11-11.md)：覆盖订单列表、详情六分组、报价/签署/内部预留、付款/配售/登记/Token 独立状态、基础取消、到期、退款异常与跨模块责任。
 - [U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md](U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md)：**DEV-05 T01～T36 待执行验收矩阵**，覆盖 Browser/Route/UX/权限/边界/Mock 支付异常及跨期容量；全部 NOT RUN，不代表已授权开始 DEV-05 或生产通过。
 - [U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md)：**DEV-05 规格本身 CONDITIONAL GO（仅前端 Offering Draft/内部预览/隔离 Mock），真实发行/支付/Token NO-GO**。已校正 T02/T23；后续收到 DEV-03/04 独立 Audit Only 报告，发现文件换版后 Instrument Ready 未复核的 P1，故当前 DEV-05 被阻断，须先完成 P1 修复与独立复验。
 - [U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md](U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md)：**用户 2026-11-08 选择 A 并正式批准：当前 Asset 的 Instrument 必须 Ready，才允许创建 Offering Draft**；无 Instrument/Draft/检查失败/文件待扫描或失败/Ready 失效均禁止新建，创建动作服务层复核并固定 InstrumentVersion。
@@ -131,7 +133,7 @@
 
 - [DEC-071｜V1 权益结构单页 UI-Ready 详细规则收口](../../../decisions/DEC-071-instrument-ui-ready-v1-approved.md)：收敛三类权益字段、债权周期付息、预期年化披露、权益拆分精度、文件、Ready 与版本规则。
 - [U02-08｜权益结构单页 UI-Ready 最终细化规格](U02-08-INSTRUMENT-UI-READY-CLOSEOUT-2026-11-11.md)：当前 UI-Ready 详细设计依据；资产详情四 TAB 和单页三区域不变。
-- 资产管理、权益结构、Offering、认购记录和投资者管理均已完成独立 UI-Ready 收口；下一模块进入「认购订单」。
+- 资产管理、权益结构、Offering、认购记录、投资者管理和认购订单均已完成独立 UI-Ready 收口；下一模块进入「配售与持有人」。
 - 本次仅表示产品/UI 规格完成，不代表 Codex 开发、Build、浏览器验收或生产发行准入完成。
 
 
@@ -140,7 +142,7 @@
 - [DEC-072｜V1 Offering 发行方案模块 UI-Ready 收口](../../../decisions/DEC-072-offering-module-ui-ready-v1-closeout-approved.md)：依据用户对列表方案 A 的明确批准及产品负责人独立完成 MVP 闭环的授权，收口 Offering 模块页面设计。
 - [U02-09｜Offering 发行方案模块 UI-Ready 最终规格](U02-09-OFFERING-MODULE-UI-READY-CLOSEOUT-2026-11-11.md)：当前权威详细设计，覆盖列表、创建/编辑、发行准备、投资者预览、最终确认、详情与生命周期。
 - Offering 模块产品/UI 规格已达到 UI-Ready；开发、Build、Browser、Route、真实支付/Mint 与生产准入仍独立。
-- Offering 模块产品/UI 规格已达到 UI-Ready；认购记录与投资者管理随后完成独立收口，当前下一模块进入「认购订单」。
+- Offering 模块产品/UI 规格已达到 UI-Ready；认购记录与投资者管理随后完成独立收口，认购订单随后也已完成；当前下一模块进入「配售与持有人」。
 
 
 
@@ -148,8 +150,8 @@
 
 - [DEC-073｜认购记录与认购订单入口分工](../../../decisions/DEC-073-subscription-records-read-only-view-v1-approved.md)：认购记录仅查询已完成认购；认购订单承载全生命周期。
 - [U02-10｜认购记录页面 UI-Ready 最终规格](U02-10-SUBSCRIPTION-RECORDS-UI-READY-CLOSEOUT-2026-11-11.md)：覆盖列表、详情、脱敏信息、付款/Token/法定登记事实分离、导出、权限、空态与异常。
-- 认购记录页面已达到 UI-Ready；完整认购订单工作台尚未完成设计。
-- 投资者管理随后完成独立 UI-Ready 收口；当前下一模块为「认购订单」。
+- 认购记录页面已达到 UI-Ready；认购订单工作台随后也按 DEC-075/U02-12 完成 UI-Ready；两者仍共用同一订单主账。
+- 投资者管理与认购订单随后完成独立 UI-Ready 收口；当前下一模块为「配售与持有人」。
 
 
 
@@ -159,4 +161,12 @@
 - [U02-11｜投资者管理模块 UI-Ready 最终规格](U02-11-INVESTOR-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)：覆盖投资者列表、详情、KYC 状态及历史、本企业认购/持有人关系、隐私授权、套餐、空态和异常。
 - 企业端不承担人工 KYC 审核；投资者本人在投资者端完成 KYC、补件和重新核验。企业端只查看当前 Tenant 授权范围内的脱敏状态。
 - 投资者管理模块产品/UI 规格已达到 UI-Ready；真实 Provider、法律合规、生产核验和源码开发仍独立。
-- 下一模块：投资者与认购 → 认购订单（全生命周期订单工作台）。
+- 认购订单全生命周期工作台随后已按 DEC-075/U02-12 收口；当前下一模块：投资者与认购 → 配售与持有人。
+
+
+## 认购订单模块 UI-Ready 收口（2026-11-11）
+
+- [DEC-075｜V1 认购订单模块 UI-Ready 收口](../../../decisions/DEC-075-subscription-orders-ui-ready-v1-closeout-approved.md)：按用户授权收口 Issuer 全生命周期订单工作台，保留资金、容量、配售、法定登记和 Token 独立事实。
+- [U02-12｜认购订单模块 UI-Ready 最终规格](U02-12-SUBSCRIPTION-ORDERS-UI-READY-CLOSEOUT-2026-11-11.md)：列表、详情、报价/签署、预留、真实付款、配售/登记/交付、取消/到期、退款异常、权限、空态与跨模块跳转。
+- 订单模块已达到产品/UI 设计 UI-Ready；真实付款/退款、配售/法定登记、Token 执行及代码/浏览器验收未因此完成或获得授权。
+- 下一模块：**投资者与认购 → 配售与持有人**。

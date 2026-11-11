@@ -67,3 +67,12 @@
 - **U02-06 R01～R30 产品方向已逐批 Approved**；此处状态机是批准的**基本生命周期与 UX 原则**，不宣称完整字段级 UI-Ready 已完成，更不代表合约/支付/Token 生产服务可执行。
 - 本批只更改 R2 docs 当前分支及必要目录索引；保持 **PR #8 Draft / Open / Unmerged**，不修改旧 Master、四份 Frozen、193 项历史归属、DEC/SCOPE、仓库根 README、PR #6 或应用源码。
 - DEV-03/04 已由 Codex 报告完成并另行开展独立审计；**本批不授权 Codex 开发 DEV-05 Offering**，后续待 UI-Ready 收口及用户明确开发指令。
+
+
+## 6. 2026-11-11 DEC-069 补充｜状态与预览中的 KYC 口径
+
+- 本文件中「资格限制」「资格校验」若指 Issuer 可配置的 Offering 级投资者类型/地区/资格规则，V1/MVP 不再提供该配置。
+- 认购状态守卫读取平台统一 KYC 权威状态；只有「通过」可进入认购确认/付款，其他状态均阻断。
+- 投资者端预览展示平台统一 KYC 前置说明和普通认购交易条件，不展示由 Issuer 配置的资格等级/地区规则。
+- 适用法律要求的平台级强制限制仍独立存在，不转化为 Issuer 自定义资格页面。
+- 以上按 [DEC-069](../../../decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md) 执行。

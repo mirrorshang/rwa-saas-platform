@@ -420,7 +420,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - 按确定 InstrumentVersion「每 Token 对应法律权益」精确换算并在可比较的主体、范围、时点核对登记与 Token，Unknown 不自动标一致。
 - 差异与限制覆盖差异列表与证据、受权限制/解除限制申请、来源与状态；锁仓/解锁仍跳转锁仓记录，赎回/清退仍在收益与分配，强制转让不纳入 V1。
 - 现行唯一 UI-Ready 依据：[DEC-076](../../../decisions/DEC-076-allocation-and-holders-ui-ready-v1-closeout-approved.md) / [U02-13](U02-13-ALLOCATION-AND-HOLDERS-UI-READY-CLOSEOUT-2026-11-11.md)。
-- 本次只完成企业端产品/UI 规格；法定登记/资金/Token 生产执行和源码验收均未因此批准。下一模块：**Token 管理**（现已完成 UI-Ready）。
+- 本次只完成企业端产品/UI 规格；法定登记/资金/Token 生产执行和源码验收均未因此批准。当时下一模块为 Token 管理，现已按 DEC-078 完成 UI-Ready；当前下一项为「资产与发行 → 锁仓记录」。
 
 
 ### 4.14 资金与结算 UI-Ready 收口（DEC-077）

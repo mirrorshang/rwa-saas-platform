@@ -164,7 +164,7 @@
 - 列表、筛选、详情、订单快照、投资者脱敏、付款/Token/法定登记事实分离、导出、权限、空态和异常已完成 UI-Ready。
 - 当前权威文件：[DEC-073](../../../decisions/DEC-073-subscription-records-read-only-view-v1-approved.md)｜[U02-10](U02-10-SUBSCRIPTION-RECORDS-UI-READY-CLOSEOUT-2026-11-11.md)。
 
-**判断：认购记录只读查询页面已达到 UI-Ready；完整认购订单工作台、投资者管理、资金/退款、配售/法定登记和 Token 操作仍需独立设计。**
+**判断：认购记录只读查询页面已达到 UI-Ready；完整认购订单工作台、配售/法定登记、资金/退款和 Token 操作仍需独立设计。投资者管理已在后续按 DEC-074/U02-11 完成 UI-Ready。
 
 ### 4.5 投资者管理
 

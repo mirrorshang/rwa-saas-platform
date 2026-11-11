@@ -28,7 +28,9 @@
 - U01：邮箱验证码登录、单账号单企业、KYB 五步 v0.3、KYB 通过后激活 Free、企业 MPC 钱包、Free/Standard E09 权益矩阵为现行规则。
 - U02：资产集中入口、三项二级导航、四个资产 TAB、房地产首批四模板、单资产一套 Instrument、三类权益、Offering 单页及发行准备边界为现行规则。
 
-**已完成 Issuer 企业 SaaS 九个一级导航和页面入口的静态覆盖审计；I-13 已按 U01 E09 完成当前 V1 UI-Ready 收口。157 项正式功能已形成逐 ID 产品端/页面责任矩阵（其中 132 项属于 Issuer 业务或共享责任范围，25 项归属 V/M/P 其他产品端）。文档层面全局一致性审计已完成；详见 [Issuer 全局一致性审计](ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md)。**\n\n**当前进行中：** [端到端业务链路与字段完整性审计](END-TO-END-ISSUER-FLOW-AND-FIELD-COMPLETENESS-AUDIT-2026-11-11.md)。已修正认购额度与 M10/M12 双预留、付款来源/主体关联、投资者接收钱包快照、债权未偿本金及收益参与比例口径；仍待付款目标主路径、InvestorRef 与钱包验证映射、降级存续履约通道三项重大契约/决策收口。
+**已完成 Issuer 企业 SaaS 九个一级导航和页面入口的静态覆盖审计；I-13 已按 U01 E09 完成当前 V1 UI-Ready 收口。157 项正式功能已形成逐 ID 产品端/页面责任矩阵（其中 132 项属于 Issuer 业务或共享责任范围，25 项归属 V/M/P 其他产品端）。文档层面全局一致性审计已完成；详见 [Issuer 全局一致性审计](ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md)。**
+
+**当前进行中：** [端到端业务链路与字段完整性审计](END-TO-END-ISSUER-FLOW-AND-FIELD-COMPLETENESS-AUDIT-2026-11-11.md)。已修正认购额度与 M10/M12 双预留、付款来源/主体关联、投资者接收钱包快照、债权未偿本金及收益参与比例口径；仍待付款目标主路径、InvestorRef 与钱包验证映射、降级存续履约通道三项重大契约/决策收口。
 
 以上不新增正式功能 ID，不修改 DEC-017 原 193 项主表、原 M01～M22 Frozen 正文和历史版本归属。
 

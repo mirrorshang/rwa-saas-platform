@@ -3,7 +3,7 @@
 
 ## 统一产品总入口（2026-11-10）
 
-**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，具体字段规则待模块产品设计确认；投资者统一 KYC、Issuer 脱敏管理、取消 V1 企业资格配置及投资者与认购导航精简以 DEC-069 为准。新对话/新任务优先读取这两份文件；专项文件继续作为已批准业务规则权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
+**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准；投资者统一 KYC 与企业端脱敏管理以 DEC-069 为准；资产列表、资产相关方和房地产四模板控件 UI-Ready 以 DEC-070/U02-07 为准。新对话/新任务优先读取这两份文件；专项文件继续作为已批准业务规则权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
 
 ## V1.0 最新批准范围（截至 2026-11-11）
 
@@ -24,6 +24,8 @@
 - [DEC-067｜待补件与未通过统一载入原资料、编辑并重新提交](../../../decisions/DEC-067-kyb-supplement-and-rejected-states-share-one-edit-and-resubmit-flow-approved.md)
 - [DEC-068｜企业钱包管理页面结构与核心业务规则批准](../../../decisions/DEC-068-enterprise-wallet-management-ui-and-business-rules-approved.md)
 - [DEC-069｜投资者统一 KYC、Issuer 脱敏管理与 V1 资格流程简化](../../../decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md)
+- [DEC-070｜资产管理列表、资产相关方与房地产模板控件 UI-Ready 收口](../../../decisions/DEC-070-asset-management-related-parties-ui-ready-v1-approved.md)
+- [U02-07｜资产列表、相关方与房地产模板控件 UI-Ready](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)
 - [USDable V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
 - [V1 产品完整性收口与产品/UI 设计现状审计](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)
 - [V1.0 产品基线与 157 项功能清单](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)
@@ -39,7 +41,7 @@
 - **用户确认的产品/UI 顺序**：先功能范围和流程、再模块与页面/字段/状态、最后 UI；V1 简化、易用，不将技术开发作为本阶段工作。
 
 ## 读取顺序及优先级
-1. 当前最新已批准的 R2 产品决策（V1 五端范围及 M23/M24 新增 11 项以 DEC-057 为准；USDable 参考功能采纳/后置/排除以 DEC-058 为准；预期年化信息披露与债权周期付息纳入 V1 的范围以 DEC-059 为准，具体字段规则待确认；投资者统一 KYC、Issuer 脱敏管理及 V1 资格流程简化以 DEC-069 为准；U01 企业 KYB 五步与动态规则以 [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md) 和 U01 PRD 的 B01～B08 **v0.3** 为准，覆盖旧五步字段版本；企业钱包管理页面结构及五项核心规则以 DEC-068 和 U01 PRD 的 D 企业钱包章节为准；U02 资产与发行结构采用 [U02-02 批准记录](U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md)，资产分类与五步创建向导采用 [U02-03 批准记录](U02-03-ASSET-CLASSIFICATION-APPROVED-2026-11-06.md)；[U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md) 的 E09 最新套餐能力矩阵与 [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md) 优先于同目录或历史文件中的旧 Free 完整模拟闭环表述）。
+1. 当前最新已批准的 R2 产品决策（V1 五端范围及 M23/M24 新增 11 项以 DEC-057 为准；USDable 参考功能采纳/后置/排除以 DEC-058 为准；预期年化信息披露与债权周期付息纳入 V1 的范围以 DEC-059 为准，具体字段规则待确认；投资者统一 KYC、Issuer 脱敏管理及 V1 资格流程简化以 DEC-069 为准；资产管理列表、资产相关方、房地产模板控件及 Offering 级相关方披露以 DEC-070/U02-07 为准；U01 企业 KYB 五步与动态规则以 [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md) 和 U01 PRD 的 B01～B08 **v0.3** 为准，覆盖旧五步字段版本；企业钱包管理页面结构及五项核心规则以 DEC-068 和 U01 PRD 的 D 企业钱包章节为准；U02 资产与发行结构采用 [U02-02 批准记录](U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md)，资产分类与五步创建向导采用 [U02-03 批准记录](U02-03-ASSET-CLASSIFICATION-APPROVED-2026-11-06.md)；[U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md) 的 E09 最新套餐能力矩阵与 [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md) 优先于同目录或历史文件中的旧 Free 完整模拟闭环表述）。
 2. 本轮产品工作优先读取《V1 产品完整性收口与产品/UI 设计现状审计》及对应 U01/U02 专项文件；不把历史开发交接或验收文档当作产品需求。
 3. 旧 Master PRD 与历史 DEC、Frozen：仅在未被 R2 明确覆盖且不冲突时引用；历史仍保留原始事实，不静默重写。
 4. 旧代码与 Mock 仅是现状证据，不是需求权威。法定合规、安全控制、Provider/Signer/资金/链上生产准入门从不因产品规则覆盖而免除。
@@ -47,12 +49,12 @@
 ## 交付范围
 - [RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md](RWA-SaaS-V1-PRODUCT-BASELINE-AND-FUNCTION-SCOPE-2026-11-09.md)：V1 五端完整产品范围与 157 项 V1 功能清单；整体产品设计尚未完成。
 - [../RWA-SaaS-USDABLE-COMPETITIVE-GAP-ANALYSIS-2026-11-09.md](../RWA-SaaS-USDABLE-COMPETITIVE-GAP-ANALYSIS-2026-11-09.md)：基于 2026-11-05 原始 USDable 审计报告更新的整体功能目录、V1 采纳项和版本取舍；功能对照已完成，不重复进行竞品对照。
-- [USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)：M04 资产相关方、M12 持有人管理、M13 收益上报和清退/兑付的模块产品设计补充；预期年化和周期付息仅批准纳入 V1，具体规则待后续设计。
+- [USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)：M04 资产相关方、M12 持有人管理、M13 收益上报和清退/兑付的模块产品设计补充；M04 资产相关方字段与页面细节以 DEC-070/U02-07 为准；预期年化和周期付息的具体字段/规则仍待后续收口。
 - [U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md](U02-05-INSTRUMENT-SINGLE-PAGE-UI-READY-2026-11-07.md)：权益结构单页详细产品设计稿；预期年化和债权周期付息已纳入 V1，但适用范围、字段和具体规则仍 Candidate。
 - [U01-UI-Ready-PRD.md](U01-UI-Ready-PRD.md)：A 邮箱登录、B 企业入驻/KYB、C 未认证工作台、D 企业钱包（五项核心规则已由 DEC-068 批准）、E 订阅及 E09 最新 Free/Standard 权益矩阵；页面字段、流程、状态、校验、提示、异常。
 - [U01-KYB-V03-APPROVED-2026-11-06.md](U01-KYB-V03-APPROVED-2026-11-06.md)：**R01～R10 均批准**：新版五步 KYB、UBO 控制路径、授权代表、动态文件要求和旧草稿/已提交版本保留；正式 UI 以 U01 B01～B08 v0.3 为准。
 - [U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md)：最新用户确认的套餐权限变更决策与待定项，供 U02 流程/导航设计引用。
-- [U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md](U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md)：**U02-02 R01～R08 全部批准**：集中式资产管理、三二级导航、资产四 TAB、Offering 内嵌发行准备、投资者端预览与 Free 发布升级拦截；资产字段/模板/Offering 细项留待 U02 后续审核。
+- [U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md](U02-02-ASSET-ISSUANCE-FLOW-IA-APPROVED-2026-11-06.md)：**U02-02 R01～R08 全部批准**：集中式资产管理、三二级导航、资产四 TAB、Offering 内嵌发行准备、投资者端预览与 Free 发布升级拦截；后续 U02-07 已补齐资产列表、相关方与房地产模板控件的 UI-Ready 细节。
 - [U02-03-ASSET-CLASSIFICATION-APPROVED-2026-11-06.md](U02-03-ASSET-CLASSIFICATION-APPROVED-2026-11-06.md)：**U02-03 R01～R20 已批准**：8 大类 / 24 子类、五步创建、三级字段继承；房地产六类子模板和首批开放范围以后续 U02-04 批准文件为准。
 - [U02-03-REAL-ESTATE-COMMON-FIELDS-UI-READY-APPROVED-2026-11-06.md](U02-03-REAL-ESTATE-COMMON-FIELDS-UI-READY-APPROVED-2026-11-06.md)：**R15～R20 房地产公共字段详情**、控件、必填与草稿/Ready 门槛、固定必需文件逐行上传和其他文件按需添加、第五步检查与预览。
 - [U02-04-REAL-ESTATE-SUBTYPES-APPROVED-2026-11-06.md](U02-04-REAL-ESTATE-SUBTYPES-APPROVED-2026-11-06.md)：**U02-04 R21～R27 全部批准**：六个房地产子类精简字段，首批四个模板（住宅、写字楼、商铺、工业园／仓储物流）；酒店、土地暂缓。
@@ -106,3 +108,12 @@
 
 ## 合并/实施关口
 当前只允许审查文档。正式合并该 Draft PR、修改生产或演示代码、外部真实支付/钱包集成及发布均需用户单独授权。不同分支可能存在更新；正式开发前必须核实真实工作分支和未提交改动，禁止基于旧快照覆盖。
+
+
+## 资产管理 UI-Ready 收口（2026-11-11）
+
+- [DEC-070｜资产管理列表、资产相关方与房地产模板控件 UI-Ready 收口](../../../decisions/DEC-070-asset-management-related-parties-ui-ready-v1-approved.md)：资产列表、资产概览唯一下一步、相关方角色/字段/文件/Ready/披露及四个开放房地产模板控件已完成产品设计收口。
+- [U02-07｜资产列表、相关方与房地产模板控件 UI-Ready](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)：当前资产管理列表与相关方 UI-Ready 权威细则。
+- 资产相关方不新增导航；并入资产创建第三步「法律与估值」及资产详情「资产资料」。Offering 级披露按每期单独选择，并进入该期最终投资者预览。
+- 本次仅表示产品/UI 规格完成，不代表代码实现、浏览器验收、产权/牌照核验或生产发行准入完成。
+

@@ -124,9 +124,9 @@
 | Instrument → Offering | Instrument/InstrumentVersion、权益类型、法律单位/总规模、Token 总份数及每 Token 精确映射、责任主体、债权付息/到期计划、核心权益文件版本 | Offering 固定 InstrumentVersion；继承权益说明、法律单位、权利映射、文件和相关条款 | 新 Instrument 版本不得覆盖旧 Offering；不得通过新版本重置权益池 |
 | Offering → 投资者展示/报价 | Asset/Instrument/Offering 版本、价格 U、发行 Token 数、认购窗口及明确时区、最低金额、单笔最高 Token（如设）、个人累计最高金额（如设）、锁仓规则、披露/协议文件版本、已批准付款安排 | 投资者端展示快照、报价快照、订单规则快照 | 草稿不能生成公开发行；不得用当前编辑值覆盖已发布版本 |
 | Investor/KYC → Quote/Order | 平台 InvestorRef、当前 Tenant 关系、KYC 决策引用/状态/有效期、适用强制限制结果 | 报价/订单固定投资者引用和下单时 KYC 事实，并在需要时核验当前状态 | KYC 通过不代表所有 Offering 自动合格；Issuer 不得改写身份或资格 |
-| Quote → Order | QuoteSnapshot 引用/版本、Token 数量、单价/应付 U、个人累计额度占用/剩余、协议/披露版本、签署证据、订单幂等引用 | 唯一 Order、历史报价/条款快照、订单预留引用 | 订单不得读取最新 Offering 值覆盖历史；重复提交不得创建第二订单 |
+| Quote → Order | QuoteSnapshot 引用/版本、Token 数量、单价/应付 U、M10 个人累计额度权威占用/剩余及幂等引用、协议/披露版本、签署证据、订单幂等引用 | 唯一 Order、历史报价/条款快照、订单预留引用 | 订单不得读取最新 Offering 值覆盖历史；重复提交不得创建第二订单 |
 | Order → Payment | Order 引用、QuoteSnapshot、应付金额 U、OP Mainnet/USDT、批准付款目标/配置版本 | PaymentIntent、真实付款事件、from/to、tx/event、金额、最终性、资金匹配状态、付款主体关联状态 | 付款来源地址不自动等于投资者；付款指令/Hash/广播不等于 FinalMatched |
-| Payment + Order + Capacity → Allocation | FinalMatched 资金事实、订单唯一引用、有效 Offering 内部预留、Instrument 授权剩余容量、KYC/强制限制结果 | 唯一 AllocationDecision、法律权利数量/单位、Token 份数、规则/授权依据 | 同一订单不重复配售；不重复扣 Instrument 容量；候选不等于决定 |
+| Payment + Order + Capacity → Allocation | FinalMatched 资金事实、订单唯一引用、M10 个人累计额度占用有效、M12 有效 Offering 内部预留/Instrument 授权剩余容量、KYC/强制限制结果 | 唯一 AllocationDecision、法律权利数量/单位、Token 份数、规则/授权依据 | 同一订单不重复配售；不重复扣 Instrument 容量；候选不等于决定 |
 | Allocation → Legal Register | AllocationDecision、合法持有人主体引用、登记模式/责任主体、法律权益单位/数量、依据文件版本 | 权威登记记录、回执/名册编号、生效时间、历史更正版本 | InvestorRef/付款钱包/Token 接收钱包不自动等于合法持有人；提交不等于生效 |
 | Allocation/Register → Mint | 唯一配售决定、适用法定登记前置、Token 方案/合约版本、Token 数量、经核验接收钱包引用、真实生产授权 | 唯一 MintIntent、接收地址快照、实际链上事件、TxHash、最终性和失败/Unknown | 不从付款来源地址静默推导接收钱包；不重复 Mint；Mint 不替代法定登记 |
 | Mint → Lockup/Holdings | 已最终确认 Mint 事件、实际交付时间、Offering 锁仓快照、法定持有人登记引用 | 锁仓记录、起算/预计到期、链上执行状态、持仓对账 | 不以付款/配售时间起算；业务锁仓到期不等于链上或法律限制解除 |

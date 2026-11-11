@@ -405,5 +405,17 @@ Issuer「投资者与认购」二级导航由原候选五项收敛为三项：
 - 当前权威文件：[DEC-079](../../../decisions/DEC-079-lockup-records-ui-ready-v1-closeout-approved.md)｜[锁仓记录 UI-Ready 最终规格](LOCKUP-RECORDS-UI-READY-CLOSEOUT-2026-11-11.md)。
 - [Token 管理 UI-Ready 最终规格](TOKEN-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)已补充与锁仓记录的链上执行衔接；Token 管理不重复创建业务锁仓主账。
 - 本次仅完成企业端产品/UI 规格；真实合约锁仓/解锁、Signer、生产链上执行、代码/Build/Browser/自动化及人工 UAT 未执行。
-- **资产与发行三个二级入口均已完成 UI-Ready 专项规格**；下一步进行跨页面一致性复核，并继续收益与分配、投资者门户、数据与共享能力、平台运营后台和统一投资端等未完成模块。
+- **资产与发行三个二级入口均已完成 UI-Ready 专项规格**；全链路跨模块一致性审核现已按 DEC-080 完成，下一模块进入收益与分配。
+
+
+## 19. 2026-11-11 资产与发行全链路一致性审核收口（DEC-080）
+
+- 已对资产管理、权益结构、Offering、认购订单、配售与持有人、资金与结算、Token 管理、锁仓记录八份 UI-Ready 规格完成跨模块核对；对象归属、容量、资金、配售、法定登记、Token、锁仓和跳转责任已形成统一口径。
+- 本轮回写五项页面级修正：订单列表增加独立法定登记状态；Offering 关闭守卫纳入适用法定登记待核；Token Mint 严格要求 FinalMatched；持有人详情拆分业务锁仓/链上执行/法律限制；募集款释放资格与 Token 锁仓状态分离。
+- 经原始决策核实，房地产 V1 首批仍只开放住宅、写字楼、商铺、工业园/仓储物流四模板；酒店、土地保留字段设计但暂缓开放，不属于冲突，不扩大范围。
+- 经 DEC-053 核实，受审智能合约收款仍为优先评估方向，同时保留依法适用 Issuer 有权钱包/适格第三方收款方式；企业最终结算收款钱包与投资者付款目标继续分列。
+- 当前权威文件：[DEC-080](../../../decisions/DEC-080-asset-and-issuance-cross-module-consistency-audit-closeout.md)｜[全链路跨模块一致性审核报告](ASSET-AND-ISSUANCE-CROSS-MODULE-CONSISTENCY-AUDIT-2026-11-11.md)。
+- 本轮只完成产品/UI 规格一致性收口；未执行源码、Build、Browser、自动化、真实资金/链上操作或人工 UAT。
+- **资产与发行主链路一致性审核完成；下一模块：收益与分配。** 后续投资者门户、数据与共享能力、平台运营后台和统一投资端仍按 V1 总体进度推进。
+- Frozen、193 项正式功能 ID/首次交付版本归属、历史 DEC/SCOPE、X-01～X-13 不变；PR #6、PR #8 均保持 Draft / Open / Unmerged，V1 整体未 Frozen。
 

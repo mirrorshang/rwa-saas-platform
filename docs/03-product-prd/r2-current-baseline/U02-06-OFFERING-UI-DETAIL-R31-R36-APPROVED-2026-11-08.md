@@ -52,3 +52,12 @@ C 发行准备：
 ## 五、变更保护
 - 本次仅 R2 docs 分支内文档与索引变动；旧 Master、Frozen、历史 DEC/SCOPE、193 项历史归属、根 README、PR #6 和现有代码不改。
 - PR #8 保持 Draft / Open / Unmerged。DEV-03/04 本地 Codex 的自测不自动构成总控/用户最终人工验收，也不自动授权 Offering 生产执行。
+
+
+## 4. 2026-11-11 DEC-069/070 补充｜Offering 页面分区与披露
+
+- 原 B 区「投资者认购条件」在 V1 UI 中简化命名为 **「认购规则」**；不显示个人/机构、可认购地区、KYC 等级或企业资格配置。
+- 平台统一 KYC 是固定只读认购前置条件；通过状态才可进入认购确认/付款。
+- C 区「发行准备」增加「投资者披露 → 资产相关方」折叠分组；从当前 Asset 相关方中按本 Offering 选择需要披露的主体，并在最终投资者端预览中展示。
+- 选择结果在本期 Offering 最终确认时形成披露快照；不回写或自动改变已发布 Offering。
+- 详细规则分别见 [DEC-069](../../../decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md)、[DEC-070](../../../decisions/DEC-070-asset-management-related-parties-ui-ready-v1-approved.md) 与 [U02-07](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)。

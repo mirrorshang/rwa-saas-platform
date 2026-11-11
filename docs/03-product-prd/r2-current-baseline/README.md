@@ -3,7 +3,7 @@
 
 ## 统一产品总入口（2026-11-10）
 
-**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，权益结构具体字段和 UI 规则以 DEC-071/U02-08 为准；投资者统一 KYC 与企业端脱敏管理以 DEC-069 为准；资产列表、资产相关方和房地产四模板控件 UI-Ready 以 DEC-070/U02-07 为准；Offering 模块完整 UI-Ready 以 DEC-072/U02-09 为准。新对话/新任务优先读取这两份文件；专项文件继续作为已批准业务规则权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
+**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，权益结构具体字段和 UI 规则以 DEC-071/U02-08 为准；投资者统一 KYC 与企业端脱敏管理以 DEC-069 为准；资产列表、资产相关方和房地产四模板控件 UI-Ready 以 DEC-070/U02-07 为准；Offering 模块完整 UI-Ready 以 DEC-072/U02-09 为准；认购记录只读查询视图以 DEC-073/U02-10 为准。新对话/新任务优先读取这两份文件；专项文件继续作为已批准业务规则权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
 
 ## V1.0 最新批准范围（截至 2026-11-11）
 
@@ -27,6 +27,7 @@
 - [DEC-070｜资产管理列表、资产相关方与房地产模板控件 UI-Ready 收口](../../../decisions/DEC-070-asset-management-related-parties-ui-ready-v1-approved.md)
 - [DEC-071｜V1 权益结构单页 UI-Ready 详细规则收口](../../../decisions/DEC-071-instrument-ui-ready-v1-approved.md)
 - [DEC-072｜V1 Offering 发行方案模块 UI-Ready 收口](../../../decisions/DEC-072-offering-module-ui-ready-v1-closeout-approved.md)
+- [DEC-073｜V1 认购记录与认购订单入口分工及 UI-Ready 收口](../../../decisions/DEC-073-subscription-records-read-only-view-v1-approved.md)
 - [U02-07｜资产列表、相关方与房地产模板控件 UI-Ready](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)
 - [USDable V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
 - [V1 产品完整性收口与产品/UI 设计现状审计](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)
@@ -77,6 +78,7 @@
 - [U02-06-OFFERING-UI-READY-PRD-2026-11-08.md](U02-06-OFFERING-UI-READY-PRD-2026-11-08.md)：历史字段级候选稿，保留 R01～R36 与 DEC-069/070 的形成过程；当前最终页面执行规格以 [DEC-072](../../../decisions/DEC-072-offering-module-ui-ready-v1-closeout-approved.md) / [U02-09](U02-09-OFFERING-MODULE-UI-READY-CLOSEOUT-2026-11-11.md) 为准。
 - [U02-06-OFFERING-STATE-EXCEPTION-MATRIX-2026-11-08.md](U02-06-OFFERING-STATE-EXCEPTION-MATRIX-2026-11-08.md)：**历史状态/订单/资金/Token/容量与异常交接候选**，包含迁移前置守卫、份额不变量、关停与退款在途保护；当前 Offering 页面状态与用户操作以 U02-09 为准；精确事件、合约资金权责及链上参数仍 Open。
 - [U02-09｜Offering 发行方案模块 UI-Ready 最终规格](U02-09-OFFERING-MODULE-UI-READY-CLOSEOUT-2026-11-11.md)：当前唯一权威执行规格，覆盖发行管理列表、创建/编辑单页、字段校验、两层准备检查、投资者端预览、最终发布确认、详情、生命周期、异常与跨模块关系。
+- [U02-10｜认购记录页面 UI-Ready 最终规格](U02-10-SUBSCRIPTION-RECORDS-UI-READY-CLOSEOUT-2026-11-11.md)：已完成认购的跨资产只读历史视图；与投资者与认购下的全生命周期「认购订单」明确分工，复用同一订单主账。
 - [U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md](U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md)：**DEV-05 T01～T36 待执行验收矩阵**，覆盖 Browser/Route/UX/权限/边界/Mock 支付异常及跨期容量；全部 NOT RUN，不代表已授权开始 DEV-05 或生产通过。
 - [U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md](U02-06-DEV05-PREDEV-SPEC-AUDIT-2026-11-08.md)：**DEV-05 规格本身 CONDITIONAL GO（仅前端 Offering Draft/内部预览/隔离 Mock），真实发行/支付/Token NO-GO**。已校正 T02/T23；后续收到 DEV-03/04 独立 Audit Only 报告，发现文件换版后 Instrument Ready 未复核的 P1，故当前 DEV-05 被阻断，须先完成 P1 修复与独立复验。
 - [U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md](U02-06-DEV05-01-INSTRUMENT-READY-GATE-APPROVED-2026-11-08.md)：**用户 2026-11-08 选择 A 并正式批准：当前 Asset 的 Instrument 必须 Ready，才允许创建 Offering Draft**；无 Instrument/Draft/检查失败/文件待扫描或失败/Ready 失效均禁止新建，创建动作服务层复核并固定 InstrumentVersion。
@@ -137,3 +139,12 @@
 - [U02-09｜Offering 发行方案模块 UI-Ready 最终规格](U02-09-OFFERING-MODULE-UI-READY-CLOSEOUT-2026-11-11.md)：当前权威详细设计，覆盖列表、创建/编辑、发行准备、投资者预览、最终确认、详情与生命周期。
 - Offering 模块产品/UI 规格已达到 UI-Ready；开发、Build、Browser、Route、真实支付/Mint 与生产准入仍独立。
 - 下一模块按企业 SaaS 业务顺序进入「认购记录」，不新增导航入口。
+
+
+
+## 认购记录页面 UI-Ready 收口（2026-11-11）
+
+- [DEC-073｜认购记录与认购订单入口分工](../../../decisions/DEC-073-subscription-records-read-only-view-v1-approved.md)：认购记录仅查询已完成认购；认购订单承载全生命周期。
+- [U02-10｜认购记录页面 UI-Ready 最终规格](U02-10-SUBSCRIPTION-RECORDS-UI-READY-CLOSEOUT-2026-11-11.md)：覆盖列表、详情、脱敏信息、付款/Token/法定登记事实分离、导出、权限、空态与异常。
+- 认购记录页面已达到 UI-Ready；完整认购订单工作台尚未完成设计。
+- 下一模块按导航和业务依赖进入「投资者管理」，统一 KYC 结果与企业端脱敏视图合并设计。

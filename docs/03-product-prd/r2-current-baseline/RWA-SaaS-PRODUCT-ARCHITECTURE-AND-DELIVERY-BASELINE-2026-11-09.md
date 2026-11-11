@@ -506,7 +506,7 @@ Issuer 的 I-13 是管理自身 V 门户的后台入口，不等于 M 平台运�
 - 共享页面入口按现行架构分布：I-59/I-60/I-61/I-66 为全局横向入口；I-62/I-65 归企业管理；I-63/I-64 归数据与报表。
 - 当前静态审计报告：[Issuer SaaS V1 导航与页面覆盖审计](ISSUER-SAAS-V1-NAVIGATION-AND-PAGE-COVERAGE-AUDIT-2026-11-11.md)；I-13 详细规格：[I-13 UI-Ready 收口](I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)；157 项功能双向映射：[Issuer 功能—页面矩阵](ISSUER-SAAS-V1-FUNCTION-TO-PAGE-BIDIRECTIONAL-CROSSWALK-2026-11-11.md)。
 - 全局一致性结论：[Issuer 企业 SaaS 全局一致性审计](ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md)。
-- **Issuer 企业 SaaS 文档层面全局一致性审计已完成**：九个一级导航、23 个二级入口、157 项正式功能映射、端到端业务链、唯一主账、Free/Standard 与状态/异常已核对；详见 [全局一致性审计报告](ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md)。下一阶段视觉稿/原型或代码开发需另行授权。
+- **Issuer 企业 SaaS 模块级全局一致性审计已完成**：九个一级导航、23 个二级入口、157 项正式功能映射、页面责任、唯一主账、Free/Standard 与跨模块状态已核对；详见 [模块级全局一致性审计报告](ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md)。当前继续进行 [端到端业务链路与字段完整性审计](END-TO-END-ISSUER-FLOW-AND-FIELD-COMPLETENESS-AUDIT-2026-11-11.md)，该审计通过后再进入统一视觉/交互规范、原型及开发交接准备。
 
 ## 5. 现行模块目录与五端功能地图
 

@@ -1,6 +1,6 @@
-# RWA SaaS R2 U02-06｜Offering 单页 UI-Ready 字段、交互、文案与权限规格（开发交接候选 v0.1）
+# RWA SaaS V1｜Offering 单页 UI-Ready 字段、交互、文案与权限规格（DEC-069/070 补充版）
 
-> 2026-11-08｜**上位 R01～R36 产品方向全部 Approved**；本文是将已批准原则落实到 UI 字段/按钮/验证的**交付候选细则**，只有明确引用 Approved 的内容可作为不可变产品约束；本文中用 **Candidate / Open** 标出的实现参数不得自动当成用户批准。**没有执行源码/Build/Test/Browser，也没有生产支付/Mint/合约部署权限。** PR #8 Draft/Open/Unmerged。
+> 原始 Offering 方向 R01～R36 于 2026-11-08 批准；2026-11-11 按 DEC-069 收敛投资者准入字段，并按 DEC-070 增加 Offering 级资产相关方披露。本文是当前 V1 UI-Ready 细化基线；未被明确批准的技术/法律参数仍保持 Candidate / Open。**没有执行源码/Build/Test/Browser，也没有生产支付/Mint/合约部署权限。** PR #8 Draft/Open/Unmerged。
 
 ## 0. 依据与执行范围
 - [Offering UI R31～R36 Approved](U02-06-OFFERING-UI-DETAIL-R31-R36-APPROVED-2026-11-08.md)，及 [R01～R06](U02-06-OFFERING-FOUNDATION-R01-R06-APPROVED-2026-11-07.md)、[R07～R12](U02-06-OFFERING-FIELDS-R07-R12-APPROVED-2026-11-07.md)、[R13～R18](U02-06-OFFERING-LIFECYCLE-R13-R18-APPROVED-2026-11-07.md)、[R19～R24](U02-06-SUBSCRIPTION-SETTLEMENT-R19-R24-APPROVED-2026-11-07.md)、[R25～R30](U02-06-STATE-READINESS-R25-R30-APPROVED-2026-11-07.md)。
@@ -12,7 +12,7 @@
 | 页面/区域 | 来源/内容 | 主操作 | 状态依赖 |
 |---|---|---|---|
 | Asset 详情「发行管理」TAB | 所属资产下 Offering 清单，期次、状态、计划份数/金额（只读），仅有可信业务事实才显示已募/已发 | 仅当前有效 Instrument Ready 时显示「新建发行方案」；已有 Offering 可「查看/继续编辑」 | 必须绑定本 Tenant Asset；无 Instrument、Draft、检查失败、文件待扫描/失败或 Ready 失效时禁止新建，显示创建/修复权益结构入口 |
-| Offering **创建/编辑同一单页** | 顶部路径/当前企业/Asset/InstrumentVersion/状态与保存提示；A 发行信息、B 投资者认购条件、C 发行准备 | 「保存草稿」「检查准备情况」「预览投资者端」；受控「发布发行」 | Free/Standard 的新业务准备权限按 U01，发布门另行守卫 |
+| Offering **创建/编辑同一单页** | 顶部路径/当前企业/Asset/InstrumentVersion/状态与保存提示；A 发行信息、B 认购规则、C 发行准备与投资者披露 | 「保存草稿」「检查准备情况」「预览投资者端」；受控「发布发行」 | Free/Standard 的新业务准备权限按 U01，发布门另行守卫 |
 | Offering 详情（发布后延续同一业务对象） | 发行条款只读快照、实际生命周期/额度、关联认购与锁仓记录入口、生产检查结果 | 暂停/恢复/受控结束/查看关闭进度等 | 不复制订单/资金/Token 主账；具体按钮由状态矩阵限定 |
 | 投资者端内部预览 | 资产卡片、详情、权益、认购规则、支付范围、文件与风险；不生成真实订单 | 关闭预览、返回指定字段；发布前再次确认 | Free 仅标准只读内部预览，无公开链接/认购写入 |
 | 发行前确认层 | 快照摘要、金额/份数/期限/限制、文件确定版本、企业最终结算钱包及明确的生产准入 | 确认 / 取消 | **仅真实生产全部通过**时能执行发布；未通过给出原因而非假成功 |
@@ -46,16 +46,16 @@
 | A | `max_raise_u` 计划最高募集额 | 系统只读计算 **offering_token_count × price_per_token_u** | 不允许第三个等义募资金额编辑框，不与 Token 总量/已到账金额混淆 | A |
 | A | `start_at` / `end_at` 认购起止 | 日期+时间控件，明确显示所选时区；跨区保存机制 C | **start < end**；未来开售不能显示在售，非法日期/时区缺失不可检查通过 | A |
 | A | `time_zone` 时区 | 显式显示所选时区，默认值来源/是否允许更换 C | 时间输入、预览、详情一致；跨 DST 边界的具体处理 O | A/C/O |
-| B | `investor_types` 投资者类型 | 个人、机构（多选） | 至少有适用受众；仅选类型不等于合规准入通过 | A/C |
-| B | `allowed_regions` 可认购地区 | 受限列表选择 / 许可地区摘要（具体清单与规则源 O） | **不默认「全球不限」**；不能以无来源的本地国别列表宣称合法，未配置适用规则时阻断真实发布 | A/O |
-| B | `kyc_requirement` KYC 要求 | 展示选择的适用基础 KYC 规则（合法来源/等级 O） | 无已确认 Provider/审核状态不能自动显示「合规已通过」 | A/O |
+| B | `investor_types` 投资者类型 | **V1/MVP 不展示、不配置**；Issuer 不选择个人/机构类型 | 按 DEC-069 移出 V1 企业端配置，复杂类型限制后置 V2 | Removed |
+| B | `allowed_regions` 可认购地区 | **V1/MVP 不展示、不由 Issuer 配置** | 适用法域的强制性平台级限制仍由平台/有权责任主体处理，不形成企业自定义地区资格表 | Removed |
+| B | `kyc_status` 平台统一 KYC 状态 | **只读固定规则：投资者必须完成平台统一 KYC 且状态为「通过」**；不提供企业选择等级或关闭 KYC 的控件 | 读取平台权威状态；未开始/核验中/未通过/需重新核验/Unknown 均阻断认购确认与付款 | A（DEC-069） |
 | B | `lock_mode` / `lock_days` 锁仓 | 不锁仓、固定天数二选一；选择天数才出现整数天输入 | 固定天数需为正整数；实际起算事件/最长天数/链执行仍 Open，不能将「不锁仓」解释为免除转让限制 | A/C/O |
 | B | `pay_network` / `pay_asset` 支付范围 | **只读：OP Mainnet · USDT** | 仅产品范围；真实 Token 地址及官方支持须经准入，不能在 Mock 中认定已完成主网支持 | A |
 | C | `beneficiary_wallet_id` 企业最终收款钱包 | 从本 Tenant 已完成绑定/控制权验证的钱包（MPC 或已连接自有钱包）选择；展示缩略地址/网络/来源 | 允许 Draft 未选；业务完整检查必须选可用且相容的地址；钱包失效/解绑须重新检查；**不是投资者支付合约地址** | A |
 | C | `subscription_agreement_ref` 认购协议 | 上传或引用当前授权文件固定 `file_id+version_id`；展示名/版/状态 | 业务准备应展示协议及适用披露；扫描失败/无权引用不可判完整；是否签署/额外法定版本 O | A/C/O |
 | C | `risk_disclosure_refs` 风险披露 | 文件行、说明、固定版引用；可预览实际投资者披露效果 | 缺少适用风险披露时提示补齐，法域有效性与签署流程 O | A/C/O |
 | C | `asset_instrument_evidence_refs` 资产/权益关联文件 | 继承和引用确定的 Asset/Instrument 文件版本，不要求上传重复材料 | 引用失效/无权限/文件扫描中/不匹配阻断业务完整；新上传新版不静默覆写已引用旧版本 | A |
-| C | `business_readiness` 业务资料完整性 | 检查摘要：资产/权益、发行参数、投资者条件、法律资料、企业钱包 | 每行显示「通过/待补/检查中/失败」与下一步跳转（具体内部键 C） | A/C |
+| C | `business_readiness` 业务资料完整性 | 检查摘要：资产/权益、发行参数、认购规则、平台 KYC 状态、法律资料、企业钱包 | 每行显示「通过/待补/检查中/失败」与下一步跳转（具体内部键 C） | A/C |
 | C | `production_gate` 真实生产准入 | 与业务完整性**完全分开**：订阅、KYB、网络/钱包、合规、Provider/Signer、合约、支付、资金/法律责任等 | Unknown/未通过一律不得执行真实发布；不能给生产绿灯假数据 | A/C/O |
 | 系统 | `publication_snapshot` 发布快照 | 确定的 Asset/InstrumentVersion/本期价格数量限制/文件版本/最终收款钱包等 | 发布成功才写已批准真实快照；后续编辑不得静默更改历史订单或收款主体 | A |
 
@@ -107,10 +107,31 @@
 
 ## 6. 仍待审批的 UI 参数 / 技术门
 - 字符上限、最大整数/USDT 金额精度、最低认购转换尾差、边界时间（结束时刻等于起始时刻不允许；精确毫秒界限待实现规格）、订单超时、代币 decimals、实链 gas/确认数。
-- 法域准入、KYC 等级、锁仓生效时刻与转让限制、签署/风险披露法定文本和最终责任主体。
+- 法域强制性平台准入、锁仓生效时刻与转让限制、签署/风险披露法定文本和最终责任主体仍需独立确认；不向 Issuer 提供 Offering 级资格配置。
 - 实际合约、资产代币标准、Mint/预铸路径、资金托管/分账费率、退款服务、钱包控制权限、生产 OP USDT 合约地址与兼容性，均 **Open**。
 - 发布后受控修改/延期/提前结束的字段白名单、持久状态快照、法律/投资者通知规则待另批授权；本 UI-Ready 只保证现有历史不可被直接覆写。
 - 独立的 [状态迁移与异常矩阵](U02-06-OFFERING-STATE-EXCEPTION-MATRIX-2026-11-08.md) 和 [DEV-05 验收矩阵](U02-06-DEV05-BROWSER-ACCEPTANCE-2026-11-08.md) 是后续交接候选；不可把候选自动视为已经实测。
 
 ## 7. 版本保护
 本文件只有文档，没有 Codex 执行/源码变动/生产授权；本目录文档分支内维护，PR #8 Draft/Open/Unmerged，不动历史 Frozen、Master、DEC/SCOPE、193 项版本表、仓库根 README 或 PR #6。
+
+
+## 8. 2026-11-11 补充｜统一 KYC 与资产相关方披露（DEC-069 / DEC-070）
+
+### 8.1 投资者准入规则按 DEC-069 收敛
+
+- 投资者在 V/M 投资者端完成平台统一 KYC；第三方服务商核验，平台维护权威结果。
+- Issuer 不配置投资者类型、地区、KYC 等级或 Offering 级资格条件，不人工批准/拒绝投资者。
+- 本 Offering 的认购前置只读取平台统一 KYC 状态：**通过**才可进入认购确认；未开始、核验中、未通过、需重新核验或 Unknown 均阻断。
+- Offering 仍可配置普通认购交易条件：认购起止时间、单笔最低认购金额、可发行 Token 数量、锁仓规则及其他已批准交易参数。这些不是额外投资者资格配置。
+- 原表中的 `investor_types` 与 `allowed_regions` 为历史候选字段，V1/MVP 已移除；`kyc_requirement` 改为平台固定只读状态，不得作为企业配置项。
+
+### 8.2 资产相关方披露按 DEC-070 增补
+
+- 在 C「发行准备」增加折叠分组「投资者披露 → 资产相关方」。
+- 从当前 Asset 相关方记录中选择本期需要披露的主体；每个 Offering 独立选择，不修改 Asset 的内部资料。
+- 投资者端仅展示所选主体的名称、角色、简要职责说明及可披露的注册地区；注册编号、联系人、电话、邮箱、许可编号、内部备注、原始附件不对投资者显示。
+- 没有选择主体时，投资者端不显示空白区块；Issuer 最终预览提示确认本期是否存在适用披露义务。
+- 最终发布确认时固化本 Offering 的披露快照；Asset 资料后续变化不得自动回写已发布 Offering。
+- 详细来源：[DEC-069](../../../decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md)、[DEC-070](../../../decisions/DEC-070-asset-management-related-parties-ui-ready-v1-approved.md)、[U02-07](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)。
+

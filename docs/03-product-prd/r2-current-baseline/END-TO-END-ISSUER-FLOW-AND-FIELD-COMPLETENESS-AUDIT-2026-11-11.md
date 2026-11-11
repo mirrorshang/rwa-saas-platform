@@ -91,6 +91,51 @@
 
 **初步结论：** Issuer 侧已具备主要权威来源页面；跨端页面本身不属于当前范围。后续仍须逐项核对字段是否有稳定引用、快照版本、状态更新时间和来源证据，不能仅凭上述对象名称存在就判定数据契约完整。
 
+### 5.1 业务对象与唯一引用链（待逐字段核验）
+
+`Tenant → Asset/AssetVersion → Instrument/InstrumentVersion → Offering/OfferingVersion → InvestorRef/KYCDecision → QuoteSnapshot → Order → PaymentIntent/ChainEvent/FinalMatched → AllocationDecision → LegalRegisterRecord → TokenContractVersion/MintIntent/TokenEvent → LockupRecord → RecordDateSnapshot/YieldEvent → DistributionBatch/PayoutResult → ExitPlan`
+
+| 对象 | 必须稳定引用的标识/版本 | 后续消费方 |
+|---|---|---|
+| Tenant | tenant_id、当前企业状态、套餐/准入状态 | 全部企业业务对象 |
+| Asset | asset_id、Asset 资料版本、文件 file_id/version_id | Instrument、Offering、披露 |
+| Instrument | instrument_id、InstrumentVersion、权益类型、法律单位/总量、Token 映射 | Offering、配售、Token、收益 |
+| Offering | offering_id、OfferingVersion、Asset/Instrument 固定版本、价格/数量/上限/时间/锁仓/披露快照 | 投资者展示、报价、订单、资金 |
+| InvestorRef / KYCDecision | 当前企业授权的投资者引用、KYC 决策引用/状态/有效时间 | 报价、订单、配售、持有人 |
+| QuoteSnapshot / Order | quote_id、order_id、Offering/Instrument/文件版本、数量、价格/金额、签署证据、认购限额快照 | 付款、容量、配售 |
+| PaymentIntent / ChainEvent | payment_intent_id、chain/network、token_contract、from/to、tx_hash、event_id、amount、finality、match status | FinalMatched、退款、募集款 |
+| AllocationDecision | allocation_id、order_id、Offering、法律单位数量、Token 数量、容量事件 | 法定登记、Token 交付 |
+| LegalRegisterRecord | register_record_id、合法持有人引用、法律单位/数量、生效时间、登记主体/回执版本 | 持有人、Record Date、退出 |
+| MintIntent / TokenEvent | mint_intent_id、配售引用、合约版本、接收钱包、tx_hash、实际数量、最终性 | 持仓、锁仓、Token 对账 |
+| LockupRecord | lockup_record_id、Token 交付事件、Offering 锁仓快照、起算/到期、链上解除状态 | 持有人查看、收益/退出 |
+| RecordDateSnapshot / DistributionBatch | record_date_snapshot_id、权威持有人登记版本、权益单位、计算版本、批次号 | 应付计算、注资、Claim/Push |
+| PayoutResult / ExitPlan | payment/payout 引用、实际到账证据、exit_plan_id、法律依据、登记/Token 处置结果 | 投资者收益/退出结果、存续档案 |
+
+任何下游对象不得只保存可变名称或当前值；必须保存上游唯一 ID 和当时有效版本。状态变化追加事件，不覆盖历史事实。
+
+### 5.2 文档逻辑场景演练（非代码/浏览器测试）
+
+| 场景 | 预期结果 | 当前规格覆盖 |
+|---|---|---|
+| Standard 企业完整发行与投资者认购 | KYB/订阅/钱包/Asset/Instrument/Offering/门户/KYC/订单/付款/配售/登记/Mint 按权威状态推进 | 主要步骤已有专项规格；本轮继续核验跨模块字段和引用 |
+| Free 企业尝试真实发布 | 仅内部预览；阻断真实门户、认购、收款、Mint | U01、I-13、U02-09 已明确 |
+| KYB 或 Standard 生产准入未通过 | 允许资料准备/查询；阻断真实发行 | U01、Offering 生产准入已有 |
+| 投资者 KYC Pending/Failed/Expired/Unknown | 不进入有效认购确认/付款；Issuer 只读查看脱敏状态 | DEC-069、U02-11、U02-12 已明确 |
+| Offering 未开始/已结束/暂停/售罄 | 阻断新增订单；保留在途订单和义务 | U02-09、U02-12 已明确 |
+| 单笔最高数量或投资者累计额度超限 | 拒绝新订单并显示可用数量/剩余额度；不改变历史订单 | U02-09、U02-12 已补齐；跨端下单页面不在本轮设计 |
+| 付款已观察但 FinalMatched Unknown | 不配售、不释放预留/个人额度、不重复要求付款 | U02-12、U02-14 已明确 |
+| 少付/多付/错链/迟到账/重复回调 | 资金异常调查，保留原事件与订单关系；不手工确认 | U02-14 已明确 |
+| FinalMatched 但配售/登记受阻 | 保留实收事实；不自动配售/Mint | U02-12、U02-13、Token 规格已明确 |
+| 登记回执 Unknown 或法律时序不同 | 并列展示登记/Token 状态，按 Instrument/法域适用顺序执行 | U02-13、Token 规格已明确；具体法域仍为生产门 |
+| Mint 已提交但链上 Unknown | 查询原 MintIntent，不重复 Mint，不开始锁仓计时 | Token、锁仓记录已明确 |
+| 锁仓到期但链上/法律限制仍有效 | 分开显示业务期限、链上状态、法律限制；不提前显示完全可转让 | 锁仓记录、Token、持有人页已明确 |
+| Record Date/收益分配 | 以权威法定持有人快照计算；注资不足/Unknown 不开放整批 Claim | I-54～I-57 已明确 |
+| 到期/清退 | 法律依据、应付计算、实际付款、登记变更、Token 处置分别确认 | I-58、资金、M12、Token 已明确 |
+| Standard 降级/退租 | 历史只读、未结义务和持有人权益保留；不自动解锁/删除/转移责任 | U01、锁仓、I-58 已明确 |
+| 持有人间转让 | V1 不提供转让业务流程；只观察非预期 Transfer 并核对登记/链上限制 | DEC-011 已明确，属于 V1 排除项 |
+
+以上是基于产品规格的纸面场景演练，不等于 Browser、代码或真实服务执行测试。下一轮将逐场景核验每个输入字段、输出字段、唯一 ID、状态、责任模块和下一步入口。
+
 ## 6. 本轮已发现并直接修正的普通字段缺口
 
 ### E2E-F01｜Offering 缺少已批准的单投资者累计最高认购金额

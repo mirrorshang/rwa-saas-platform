@@ -11,7 +11,8 @@
 - **锁仓记录**：[DEC-079](../decisions/DEC-079-lockup-records-ui-ready-v1-closeout-approved.md)｜[锁仓记录 UI-Ready 最终规格](03-product-prd/r2-current-baseline/LOCKUP-RECORDS-UI-READY-CLOSEOUT-2026-11-11.md)；覆盖 Offering 规则快照、待交付事项、真实 Token 交付起算、期限、链上解除核验和异常处理。
 - **全链路一致性审核**：[DEC-080](../decisions/DEC-080-asset-and-issuance-cross-module-consistency-audit-closeout.md)｜[资产与发行全链路审核报告](03-product-prd/r2-current-baseline/ASSET-AND-ISSUANCE-CROSS-MODULE-CONSISTENCY-AUDIT-2026-11-11.md)；确认对象主账、状态时序、容量、付款、配售/登记、Token、锁仓及跨模块跳转的一致性。
 - **收益与分配**：[DEC-081](../decisions/DEC-081-yield-and-distribution-ui-ready-v1-closeout.md)｜[I-54～I-58 UI-Ready 最终规格](03-product-prd/r2-current-baseline/YIELD-AND-DISTRIBUTION-UI-READY-CLOSEOUT-2026-11-11.md)；覆盖存续档案、权益快照、收益上报、计算/复核、分配批次、注资核验、领取/支付对账、到期/逾期与合法退出。
-- **当前下一模块**：数据与共享能力（待办、异常、通知、受控规则、审计、业务报表、外部服务连接与安全支持）；当前设计轮次只聚焦 Issuer 企业 SaaS。
+- **数据与共享能力**：[DEC-082](../decisions/DEC-082-data-and-shared-capabilities-ui-ready-v1-closeout.md)｜[八页面 UI-Ready 最终规格](03-product-prd/r2-current-baseline/DATA-AND-SHARED-CAPABILITIES-UI-READY-CLOSEOUT-2026-11-11.md)；八个页面组已完成 UI-Ready，沿用 M17～M22 共 39 个既有 V1 功能 ID，并严格保持单账号单企业、不新增内部角色/审批人。
+- **当前下一阶段**：Issuer 企业 SaaS 全量导航、页面与正式功能映射及跨模块体验总审计；当前设计轮次只聚焦 Issuer 企业 SaaS。
 - **重要边界**：以上 UI-Ready 只表示企业端页面、字段、交互、状态、异常、权限和跨模块责任已完成产品设计；不代表真实法域/法律责任、资金托管、合约模板/安全审计、Provider/Signer、真实链上执行、代码/Build/Browser/UAT 或生产准入完成。
 - **治理保持**：Frozen、193 项正式功能 ID/首次交付版本归属、历史 DEC/SCOPE、X-01～X-13 均不因本节改变；PR #6、PR #8 仍 Draft / Open / Unmerged，V1 整体未 Frozen。
 

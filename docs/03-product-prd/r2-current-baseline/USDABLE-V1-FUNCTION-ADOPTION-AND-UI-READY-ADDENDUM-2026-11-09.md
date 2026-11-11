@@ -13,7 +13,7 @@
 - USDable 仅作为功能列表、页面结构、字段和交互参考；是否为 Demo、是否完成真实资金或链上流程，不影响本文件的功能取舍。
 - 本文件继承 [DEC-058](../../../decisions/DEC-058-usdable-feature-reference-v1-scope-approved.md)、[DEC-059](../../../decisions/DEC-059-expected-annualized-range-and-periodic-debt-coupon-v1-approved.md)、U01 E09、U02-03 Asset 公共字段、Step04 S04-03/S04-04/S04-05/S04-06、Step05-04 的既有权责与业务规则。
 - 不改写原 Step04/Step05 Approved 文件，不新增正式功能 ID，不改变 DEC-017 原 193 项主表或 DEC-057 后的 157 项 V1 范围。
-- Asset 相关方、预期年化区间及 Instrument 付息条款归 M04 既有功能；持有人管理视图归 M12-F006～F008 并引用 M07/M09/M10/M20/M21；收益上报、周期付息事件与清退归 M13 既有功能。
+- Asset 相关方、预期年化区间及 Instrument 付息条款归 M04 既有功能；资产相关方页面字段、角色、文件、Ready 与披露规则已由 DEC-070/U02-07 收口；持有人管理视图归 M12-F006～F008 并引用 M07/M09/M10/M20/M21；收益上报、周期付息事件与清退归 M13 既有功能。
 - 本文件是 M04/M12/M13 的模块级产品设计补充，不代表整个 SaaS 端产品规划完成或整体 UI-Ready。字段与页面行为仍须按各段 Approved / Candidate 标识区分；本文件不涉及技术方案或生产准入。
 
 ## 1. 页面归属与导航约束
@@ -31,6 +31,9 @@
 不得将持有人管理另建为与「投资者与认购」并列的新一级导航；不得将收益上报和清退申请移到 M11 认购资金/退款模块。
 
 ## 2. M04｜Asset 相关方信息补充
+
+> **2026-11-11 细节收口：** 本节 2.2～2.4 的候选角色与字段已按用户授权完成 V1 精简和 UI-Ready 细化。角色卡片、字段分层、文件、Ready、编辑保护和投资者披露以 [DEC-070](../../../decisions/DEC-070-asset-management-related-parties-ui-ready-v1-approved.md) 与 [U02-07](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md) 为准；本文件保留原始 USDable 采纳来源和模块责任说明。
+
 
 ### 2.1 设计原则
 

@@ -129,7 +129,7 @@
 
 - [DEC-071｜V1 权益结构单页 UI-Ready 详细规则收口](../../../decisions/DEC-071-instrument-ui-ready-v1-approved.md)：收敛三类权益字段、债权周期付息、预期年化披露、权益拆分精度、文件、Ready 与版本规则。
 - [U02-08｜权益结构单页 UI-Ready 最终细化规格](U02-08-INSTRUMENT-UI-READY-CLOSEOUT-2026-11-11.md)：当前 UI-Ready 详细设计依据；资产详情四 TAB 和单页三区域不变。
-- 资产管理与权益结构的产品/UI 规格已分别完成独立收口；下一步单独进入 Offering 发行方案详细设计，不在本批次提前扩展。
+- 资产管理、权益结构、Offering 和认购记录均已完成独立 UI-Ready 收口；下一模块进入「投资者管理」。
 - 本次仅表示产品/UI 规格完成，不代表 Codex 开发、Build、浏览器验收或生产发行准入完成。
 
 
@@ -138,7 +138,7 @@
 - [DEC-072｜V1 Offering 发行方案模块 UI-Ready 收口](../../../decisions/DEC-072-offering-module-ui-ready-v1-closeout-approved.md)：依据用户对列表方案 A 的明确批准及产品负责人独立完成 MVP 闭环的授权，收口 Offering 模块页面设计。
 - [U02-09｜Offering 发行方案模块 UI-Ready 最终规格](U02-09-OFFERING-MODULE-UI-READY-CLOSEOUT-2026-11-11.md)：当前权威详细设计，覆盖列表、创建/编辑、发行准备、投资者预览、最终确认、详情与生命周期。
 - Offering 模块产品/UI 规格已达到 UI-Ready；开发、Build、Browser、Route、真实支付/Mint 与生产准入仍独立。
-- 下一模块按企业 SaaS 业务顺序进入「认购记录」，不新增导航入口。
+- Offering 模块产品/UI 规格已达到 UI-Ready；认购记录页面随后完成独立收口，下一模块进入「投资者管理」。
 
 
 

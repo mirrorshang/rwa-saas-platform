@@ -113,7 +113,28 @@
 
 任何下游对象不得只保存可变名称或当前值；必须保存上游唯一 ID 和当时有效版本。状态变化追加事件，不覆盖历史事实。
 
-### 5.2 文档逻辑场景演练（非代码/浏览器测试）
+### 5.2 跨模块字段交接矩阵（产品数据契约）
+
+以下是服务端与前端需要共同遵守的业务字段交接，不规定数据库表名或 API 实现。每个交接必须保留来源对象引用、当时有效版本、状态更新时间和证据来源；不可只传展示名称或当前值。
+
+| 交接 | 上游必须提供 | 下游必须固定/消费 | 不能推断或覆盖 |
+|---|---|---|---|
+| Tenant → Asset | Tenant 引用、KYB 当前状态、套餐/历史状态、业务写权限结果 | Asset 归属 Tenant、创建/编辑来源 | 登录成功不等于 KYB 通过；新 Free 与降级 Free 权限不同 |
+| Asset → Instrument | Asset 引用及资料版本、登记权利人/关系、核心权属文件版本、相关方披露资料 | Instrument 固定 Asset 引用及必要文件版本 | 资产相关方不自动等于债务人、收益责任主体或法定登记人 |
+| Instrument → Offering | Instrument/InstrumentVersion、权益类型、法律单位/总规模、Token 总份数及每 Token 精确映射、责任主体、债权付息/到期计划、核心权益文件版本 | Offering 固定 InstrumentVersion；继承权益说明、法律单位、权利映射、文件和相关条款 | 新 Instrument 版本不得覆盖旧 Offering；不得通过新版本重置权益池 |
+| Offering → 投资者展示/报价 | Asset/Instrument/Offering 版本、价格 U、发行 Token 数、认购窗口及明确时区、最低金额、单笔最高 Token（如设）、个人累计最高金额（如设）、锁仓规则、披露/协议文件版本、已批准付款安排 | 投资者端展示快照、报价快照、订单规则快照 | 草稿不能生成公开发行；不得用当前编辑值覆盖已发布版本 |
+| Investor/KYC → Quote/Order | 平台 InvestorRef、当前 Tenant 关系、KYC 决策引用/状态/有效期、适用强制限制结果 | 报价/订单固定投资者引用和下单时 KYC 事实，并在需要时核验当前状态 | KYC 通过不代表所有 Offering 自动合格；Issuer 不得改写身份或资格 |
+| Quote → Order | QuoteSnapshot 引用/版本、Token 数量、单价/应付 U、个人累计额度占用/剩余、协议/披露版本、签署证据、订单幂等引用 | 唯一 Order、历史报价/条款快照、订单预留引用 | 订单不得读取最新 Offering 值覆盖历史；重复提交不得创建第二订单 |
+| Order → Payment | Order 引用、QuoteSnapshot、应付金额 U、OP Mainnet/USDT、批准付款目标/配置版本 | PaymentIntent、真实付款事件、from/to、tx/event、金额、最终性、资金匹配状态、付款主体关联状态 | 付款来源地址不自动等于投资者；付款指令/Hash/广播不等于 FinalMatched |
+| Payment + Order + Capacity → Allocation | FinalMatched 资金事实、订单唯一引用、有效 Offering 内部预留、Instrument 授权剩余容量、KYC/强制限制结果 | 唯一 AllocationDecision、法律权利数量/单位、Token 份数、规则/授权依据 | 同一订单不重复配售；不重复扣 Instrument 容量；候选不等于决定 |
+| Allocation → Legal Register | AllocationDecision、合法持有人主体引用、登记模式/责任主体、法律权益单位/数量、依据文件版本 | 权威登记记录、回执/名册编号、生效时间、历史更正版本 | InvestorRef/付款钱包/Token 接收钱包不自动等于合法持有人；提交不等于生效 |
+| Allocation/Register → Mint | 唯一配售决定、适用法定登记前置、Token 方案/合约版本、Token 数量、经核验接收钱包引用、真实生产授权 | 唯一 MintIntent、接收地址快照、实际链上事件、TxHash、最终性和失败/Unknown | 不从付款来源地址静默推导接收钱包；不重复 Mint；Mint 不替代法定登记 |
+| Mint → Lockup/Holdings | 已最终确认 Mint 事件、实际交付时间、Offering 锁仓快照、法定持有人登记引用 | 锁仓记录、起算/预计到期、链上执行状态、持仓对账 | 不以付款/配售时间起算；业务锁仓到期不等于链上或法律限制解除 |
+| Legal Register → Record Date | 有效登记版本、合法持有人、法律权益单位/数量、生效期间、适用限制/争议、Record Date 与时区依据 | 不可变 RecordDateSnapshot 版本、符合条件单位和来源时间 | 不以 Token 余额替代法定名册；登记 Unknown/争议不能进入正式收益计算 |
+| Record Date/Event → Distribution | InstrumentVersion、事件/合同依据、每位持有人计息/应付单位、计算期间/规则、扣项依据、已核验快照 | 计算版本、毛额/扣项/净额、唯一分配批次、注资证据、Claim/Push/外部实付结果 | 预期年化不参与计算；未发行授权本金不计息；已批准不等于已注资/已支付 |
+| ExitPlan → Payment/Register/Token | 合法退出依据、受影响权益范围、Record Date/余额、应付金额、合法付款主体 | 实际清偿事实、登记变更、Token 限制/Burn、未结义务和最终结清证据 | 计划不等于付款；付款不等于登记变更；Burn 不等于债务清偿 |
+
+### 5.3 文档逻辑场景演练（非代码/浏览器测试）
 
 | 场景 | 预期结果 | 当前规格覆盖 |
 |---|---|---|
@@ -136,7 +157,7 @@
 
 以上是基于产品规格的纸面场景演练，不等于 Browser、代码或真实服务执行测试。下一轮将逐场景核验每个输入字段、输出字段、唯一 ID、状态、责任模块和下一步入口。
 
-### 5.3 钱包、身份与法律持有人的分离关系（重点跨端契约）
+### 5.4 钱包、身份与法律持有人的分离关系（重点跨端契约）
 
 现行文档已经明确以下对象不能合并，但目前缺少一个完整、统一的跨端字段契约：
 
@@ -160,7 +181,7 @@
 
 **审计结论：** Issuer 现有页面能够分别显示付款来源地址、Token 接收钱包摘要、合法持有人和企业收款钱包；但投资者端如何建立和更新「Investor Account → 已验证钱包 → Token 接收目标」关联尚未形成可核验的统一契约。此项列为跨端重大待确认项，不得用 Mock 绑定或人工填写代替真实权威验证。
 
-### 5.4 Offering 交易额度与平台投资者资格规则的边界
+### 5.5 Offering 交易额度与平台投资者资格规则的边界
 
 **发现：** Offering 已批准单笔最高 Token 份数及单投资者本期累计最高认购金额；共享能力「规则设置」原文却笼统写为 Issuer 不得配置「投资者限额」，可能被理解为与 Offering 交易额度冲突。
 

@@ -3,7 +3,7 @@
 
 ## 统一产品总入口（2026-11-10）
 
-**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，权益结构具体字段和 UI 规则以 DEC-071/U02-08 为准；投资者统一 KYC 与企业端脱敏管理以 DEC-069 为准；资产列表、资产相关方和房地产四模板控件 UI-Ready 以 DEC-070/U02-07 为准；Offering 模块完整 UI-Ready 以 DEC-072/U02-09 为准；认购记录只读查询视图以 DEC-073/U02-10 为准；投资者管理模块 UI-Ready 以 DEC-074/U02-11 为准；认购订单模块 UI-Ready 以 DEC-075/U02-12 为准；配售与持有人 UI-Ready 以 DEC-076/U02-13 为准；资金与结算 UI-Ready 以 DEC-077/U02-14 为准；Token 管理 UI-Ready 以 DEC-078 及 Token 管理 UI-Ready 最终规格为准；锁仓记录以 DEC-079 为准；资产与发行全链路一致性以 DEC-080 为准；收益与分配 I-54～I-58 五个页面组 UI-Ready 以 DEC-081 及专项规格为准；数据与共享能力八个页面组 UI-Ready 以 DEC-082 及专项规格为准。当前已完成 Issuer 导航/页面覆盖静态审计、157 项功能逐 ID 双向映射及模块级全局一致性审计；I-13 标准门户管理页已按 U01 E09 完成 UI-Ready 收口。当前继续进行企业注册至发行、购买、付款、持仓和发行后管理的端到端字段与数据传递审计。审计已修正/补齐认购额度及 M10/M12 双预留、付款来源与主体关联、投资者接收钱包订单快照、债权未偿本金、收益参与比例等跨模块规则；付款目标主路径、M24 InvestorRef 与 M08/M07 钱包验证结果映射、降级后的存续履约通道仍待重大决策/契约收口。新对话/新任务优先读取总体架构、V1 完整性审计及端到端审计工作稿；专项文件继续作为业务/UI 详细规格权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
+**[《RWA SaaS 产品总体架构与产品设计基线》](RWA-SaaS-PRODUCT-ARCHITECTURE-AND-DELIVERY-BASELINE-2026-11-09.md)** 是当前产品架构与产品/UI 工作的统一入口；[《V1 产品完整性收口与产品/UI 设计现状审计》](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) 记录当前范围、官网/U01/U02 审计结论和待完成设计。V1 157 项范围已批准，但不代表所有模块已完成规划、页面字段设计或 UI。USDable 参考功能取舍以 DEC-058 为准；预期年化信息披露与债权周期付息的 V1 范围以 DEC-059 为准，权益结构具体字段和 UI 规则以 DEC-071/U02-08 为准；投资者统一 KYC 与企业端脱敏管理以 DEC-069 为准；资产列表、资产相关方和房地产四模板控件 UI-Ready 以 DEC-070/U02-07 为准；Offering 模块完整 UI-Ready 以 DEC-072/U02-09 为准；认购记录只读查询视图以 DEC-073/U02-10 为准；投资者管理模块 UI-Ready 以 DEC-074/U02-11 为准；认购订单模块 UI-Ready 以 DEC-075/U02-12 为准；配售与持有人 UI-Ready 以 DEC-076/U02-13 为准；资金与结算 UI-Ready 以 DEC-077/U02-14 为准；Token 管理 UI-Ready 以 DEC-078 及 Token 管理 UI-Ready 最终规格为准；锁仓记录以 DEC-079 为准；资产与发行全链路一致性以 DEC-080 为准；收益与分配 I-54～I-58 五个页面组 UI-Ready 以 DEC-081 及专项规格为准；数据与共享能力八个页面组 UI-Ready 以 DEC-082 及专项规格为准。当前已完成 Issuer 导航/页面覆盖静态审计、157 项功能逐 ID 双向映射及模块级全局一致性审计；I-13 标准门户管理页已按 U01 E09 完成 UI-Ready 收口。截至 2026-11-12，Issuer 企业 SaaS 的端到端产品文档与字段完整性审计已通过（有外部依赖），[DEC-083](../../../decisions/DEC-083-issuer-v1-payment-default-and-continuity-servicing-approved.md) 已批准默认合约收款与降级存续服务。认购额度及 M10/M12 双预留、付款来源/主体关联、接收钱包订单快照、债权实际未偿本金及收益参与比例口径已收口。InvestorRef 与 M08/M07 钱包验证结果映射、真实法律/资金/Token 生产准入仍为跨端及外部验收条件。下一阶段可依据已完成规格规划统一视觉和交互 Mock 原型。新对话/新任务优先读取总体架构、V1 完整性审计及端到端审计工作稿；专项文件继续作为业务/UI 详细规格权威来源，不覆盖历史 DEC、Frozen 与 193 项主表。
 
 ## V1.0 最新批准范围（截至 2026-11-11）
 
@@ -42,7 +42,7 @@
 - [I-13 Issuer 标准投资者门户管理 UI-Ready 收口](I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md)
 - [Issuer 157 项正式功能—页面双向映射审计](ISSUER-SAAS-V1-FUNCTION-TO-PAGE-BIDIRECTIONAL-CROSSWALK-2026-11-11.md)
 - [Issuer 企业 SaaS 全局一致性审计](ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md)
-- [Issuer 端到端业务链路与字段完整性审计（进行中）](END-TO-END-ISSUER-FLOW-AND-FIELD-COMPLETENESS-AUDIT-2026-11-11.md)
+- [Issuer 端到端业务链路与字段完整性审计（产品文档阶段已通过，外部依赖开放）](END-TO-END-ISSUER-FLOW-AND-FIELD-COMPLETENESS-AUDIT-2026-11-11.md)
 - [Issuer SaaS V1 导航与页面覆盖静态审计](ISSUER-SAAS-V1-NAVIGATION-AND-PAGE-COVERAGE-AUDIT-2026-11-11.md)
 - [U02-07｜资产列表、相关方与房地产模板控件 UI-Ready](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)
 - [USDable V1 功能采纳与模块产品设计补充](USDABLE-V1-FUNCTION-ADOPTION-AND-UI-READY-ADDENDUM-2026-11-09.md)
@@ -57,7 +57,7 @@
 - **资产与发行一致性审核**：已按 DEC-080 收口。
 - **收益与分配**：五个页面组已按 DEC-081 完成 UI-Ready；M13-F001～F007、F009 映射完整，M13-F008 仍为 V3。
 - **数据与共享能力**：八个页面组已按 DEC-082 完成 UI-Ready；复用 M17～M22 共 39 个既有 V1 功能 ID，不新增功能。
-- **当前状态**：导航、页面责任、157 项功能映射及模块级跨页面一致性审计已完成；端到端字段、对象和数据传递完整性正在进一步核验。当前不设计 V 投资者前台、M 统一投资端或 P 平台运营后台页面。
+- **当前状态**：导航、页面责任、157 项功能映射及模块级跨页面一致性审计已完成；端到端产品文档/字段与业务逻辑审计已于 2026-11-12 通过（有外部依赖），不代表真实系统联调或浏览器测试通过。当前不设计 V 投资者前台、M 统一投资端或 P 平台运营后台页面。
 - 当前工作仅聚焦 Issuer 企业 SaaS；平台运营后台、统一投资端和独立投资者门户暂不纳入本轮。
 - UI-Ready 仅表示产品页面规格完整，不代表代码开发、浏览器验收、真实资金、法定登记、Token 或收益生产执行已完成。
 

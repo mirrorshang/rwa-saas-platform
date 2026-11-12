@@ -2,7 +2,7 @@
 
 ## DEC-044～046五端统一投资端：当前后续生效方向（2026-10-28）
 
-**新主阅读入口：** [Master PRD v0.2（Draft）](../03-product-prd/RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.2.md)、[五端125页组候选地图](../03-product-prd/RWA-SaaS-Step-06-Five-Surface-125-Page-Inventory-Draft-v0.1.md)、[M23/M24功能去重附表](../03-product-prd/RWA-SaaS-Step-B-M23-M24-Function-Crosswalk-Draft-v0.1.md)。
+**新主阅读入口：** Master PRD v0.2（Draft）（已从当前分支清理；详见文档清理记录）、[五端125页组候选地图](../03-product-prd/RWA-SaaS-Step-06-Five-Surface-125-Page-Inventory-Draft-v0.1.md)、[M23/M24功能去重附表](../03-product-prd/RWA-SaaS-Step-B-M23-M24-Function-Crosswalk-Draft-v0.1.md)。
 
 - [DEC-044](../../decisions/DEC-044-rwa-saas-unified-investor-platform-strategy-approved.md)正式记录R01～16全部A：增加M统一投资端，不再把旧纯ToB/仅Issuer门户描述当成完整当前目标；Issuer发行合规与平台自己涉及的投资展示/招揽/受理责任分离。
 - [DEC-045](../../decisions/DEC-045-rwa-saas-marketplace-function-scope-approved.md)记录B01～17全部A及M23/M24的11个拟议ID；首次版本仍Draft，原193（V1 146/V2 22/V3 20/TBD5）完全保持。
@@ -18,13 +18,13 @@
 
 ## Master PRD主交付阅读入口（2026-10-26，Draft；不是新批准或Frozen）
 
-**[RWA SaaS Master PRD开发移交主文档](../03-product-prd/RWA-SaaS-Master-Product-PRD-Development-Handoff-Draft-v0.1.md)**汇集现有明确批准业务方向、正式193功能ID和首交付版号（146/22/20/TBD5）、四端104候选页组、146V1静态页面关联、11步旅程、状态权限/运营/NFR/QA交付标准及所有仍待完成的页面PRD内容。**此总文档仅为索引与现行产品证据汇总，不能通过重述提升Draft为Approved，也不能替代源DEC、四份Frozen、正式功能主表或法律/实际生产审批。** 全部详细页PRD、V/P IA复核、合规技术与QA证据仍待完成。用户要求本轮暂停下一阶段，只整理此工作文档；X-01～X-13 Open、V1未Frozen、PR #6 Draft/Open/Unmerged不变。
+**RWA SaaS Master PRD开发移交主文档（已从当前分支清理；详见文档清理记录）**汇集现有明确批准业务方向、正式193功能ID和首交付版号（146/22/20/TBD5）、四端104候选页组、146V1静态页面关联、11步旅程、状态权限/运营/NFR/QA交付标准及所有仍待完成的页面PRD内容。**此总文档仅为索引与现行产品证据汇总，不能通过重述提升Draft为Approved，也不能替代源DEC、四份Frozen、正式功能主表或法律/实际生产审批。** 全部详细页PRD、V/P IA复核、合规技术与QA证据仍待完成。用户要求本轮暂停下一阶段，只整理此工作文档；X-01～X-13 Open、V1未Frozen、PR #6 Draft/Open/Unmerged不变。
 
 ## DEC-043｜I-R19独立投资者门户一级导航正式批准（2026-10-26）
 
 **[DEC-043 I-R19=A](../../decisions/DEC-043-step06-issuer-i-r19-standalone-investor-portal-navigation-approved.md)**是对DEC-040最初8一级菜单与DEC-042“I-R19提案仍Draft”之**后续局部批准**：I端现在**9个独立一级导航**，新设「投资者门户」，将原I-13从企业设置迁入该独立模块，不增加逻辑页组或正式功能ID。标准门户基础实例、品牌名称Logo、法律链接、受权Offering展示策略、预览/发布仍属于已批准V1 **M01-F009**，不能把高级白标/独立域名或任意页面编辑器推定为已批V1。标准模板的首页板块/Banner/导航编辑、配置发布流程和权限仍Draft、逐页PRD/正式范围审核。**M15-F004高级白标域名维持V2、M08-F010高级个性化营销维持TBD**。
 
-本次只改变导航与页面归属，其他DEC-040/041/042已批业务分类仍有效；[I端61/四端104候选页面地图](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)和[146功能静态覆盖](../03-product-prd/RWA-SaaS-Step-06-09A-V1-146-Function-to-Page-Coverage-Audit-Draft-v0.1.md)保留Draft，193正式版号146/22/20/TBD5不变。历史Frozen/DEC/SCOPE不改，X01～13全Open，V1未Frozen，PR #6 Draft/Open/Unmerged。
+本次只改变导航与页面归属，其他DEC-040/041/042已批业务分类仍有效；I端61/四端104候选页面地图（已从当前分支清理；详见文档清理记录）和146功能静态覆盖（已从当前分支清理；详见文档清理记录）保留Draft，193正式版号146/22/20/TBD5不变。历史Frozen/DEC/SCOPE不改，X01～13全Open，V1未Frozen，PR #6 Draft/Open/Unmerged。
 
 ## DEC-042｜I端运营导航局部批准及门户页面配置缺口（2026-10-26）
 
@@ -34,13 +34,13 @@
 
 ## DEC-041 I端二级菜单与Project/Offering产品方向（2026-10-26）
 
-**[DEC-041 I-R07～I-R12已明确批准A](../../decisions/DEC-041-step06-issuer-i-r07-r12-secondary-navigation-project-offering-approved.md)**，接续[DEC-040](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)并只增加「资产与发行」二级菜单、Asset/Instrument独立列表/创建/详情、Project统一新建向导及工作空间页签、Offering从Project创建/全企业列表和必须归属Project、Offering详情分区六个产品页面组织方向。详细映射参见[四端IA候选页面清单](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)。
+**[DEC-041 I-R07～I-R12已明确批准A](../../decisions/DEC-041-step06-issuer-i-r07-r12-secondary-navigation-project-offering-approved.md)**，接续[DEC-040](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)并只增加「资产与发行」二级菜单、Asset/Instrument独立列表/创建/详情、Project统一新建向导及工作空间页签、Offering从Project创建/全企业列表和必须归属Project、Offering详情分区六个产品页面组织方向。详细映射参见四端IA候选页面清单（已从当前分支清理；详见文档清理记录）。
 
 **批准效力限于上述IA与入口/页面分组规则**：不代表I端61组逐页PRD或四端104组全部批准、UI/字段/技术完成；**一Project是否同时可关联多项Asset仍Draft**。其他一级模块二级菜单待下一批审核。193项首次归属146/22/20/TBD5、旧Frozen/DEC/SCOPE、X-01～X-13 Open、V1未Frozen、PR #6 Draft/Open/Unmerged均不变。
 
 ## DEC-040 I端工作台信息架构局部批准（2026-10-26）
 
-[DEC-040：I-R01～I-R06六项方案A Approved](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)。现行**I端一级导航/首页/Free-Standard展示/企业设置/Asset-Instrument-Project-Offering分组/订单资金Token收益报表分组**的产品方向由该DEC决定；I-R05明确支持同Tenant多资产类别、多资产、多项目、多Offering并行管理、筛选且不按资产类型拆一级导航。**一Project可否同时关联多底层Asset仍Draft**；完整I端二级导航、61候选页面逐页PRD及四端总104页组的完整审核均未完成。[四端页面地图](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)是局部已批规则的索引与剩余Draft候选，不取代DEC。
+[DEC-040：I-R01～I-R06六项方案A Approved](../../decisions/DEC-040-step06-issuer-i-r01-r06-information-architecture-multiasset-approved.md)。现行**I端一级导航/首页/Free-Standard展示/企业设置/Asset-Instrument-Project-Offering分组/订单资金Token收益报表分组**的产品方向由该DEC决定；I-R05明确支持同Tenant多资产类别、多资产、多项目、多Offering并行管理、筛选且不按资产类型拆一级导航。**一Project可否同时关联多底层Asset仍Draft**；完整I端二级导航、61候选页面逐页PRD及四端总104页组的完整审核均未完成。四端页面地图（已从当前分支清理；详见文档清理记录）是局部已批规则的索引与剩余Draft候选，不取代DEC。
 
 该决定不覆盖[DEC-039官网第3批](../../decisions/DEC-039-step06-website-w-r08-r13-help-contact-policy-login-sandbox-approved.md)、[DEC-038官网第2批](../../decisions/DEC-038-step06-website-w-r02-r07-navigation-content-entry-approved.md)、[DEC-037永久Free/Standard](../../decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)或原Frozen历史权威；不改变DEC-017 193项首次版本146/22/20/TBD5、X01～13 Open、V1产品未Frozen与PR #6 Draft/Open/Unmerged。下轮I-R07～I-R12、再B01～B05逐页PRD。
 
@@ -50,17 +50,17 @@
 
 ## 当前W官网已批局部产品方向（DEC-038，2026-10-26）
 
-- [DEC-038 W-R02～R07全部A Approved](../../decisions/DEC-038-step06-website-w-r02-r07-navigation-content-entry-approved.md)：首页、功能介绍、解决方案、双版本价格（未确定Standard价格时联系销售）、邮箱验证注册永久免费Free、从W进入I企业SaaS工作台并在I内完成商业KYB/订阅。先前W-NAV-R01=A顶部导航见[Step06-6.1页面地图Draft](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md)。
+- [DEC-038 W-R02～R07全部A Approved](../../decisions/DEC-038-step06-website-w-r02-r07-navigation-content-entry-approved.md)：首页、功能介绍、解决方案、双版本价格（未确定Standard价格时联系销售）、邮箱验证注册永久免费Free、从W进入I企业SaaS工作台并在I内完成商业KYB/订阅。先前W-NAV-R01=A顶部导航见Step06-6.1页面地图Draft（已从当前分支清理；详见文档清理记录）。
 - **批准边界**：仅局部官网页面产品方向，不等于W/I/V/P全部104页面组Approved、逐页PRD完成或V1 Frozen；营销内容型官网页面如需新CMS/CRM/销售线索后台必须单独范围决定。193版号、四份Frozen/历史DEC/SCOPE与X-01～13 Open状态不改；PR #6 Draft/Open/Unmerged。
 
 ## 2026-10-26最新产品工作方法/阅读入口：优先页面级PRD，W官网纳入候选产品端
 
 | 当前先读 | 状态与批准范围 |
 |---|---|
-| [Step06-6.1 W/I/V/P全局信息架构与104个候选页面组Draft](../03-product-prd/RWA-SaaS-Step-06-09-Four-Surface-IA-Page-Inventory-Draft-v0.1.md) | **Draft**：新增官网作为第四实际产品端的页面规划，产品经理关注中文表单/展示/交互和页面间旅程；当前页面数量/导航未冻结 |
-| [Step06-6.1A 146项正式V1功能→页面交叉核验Draft](../03-product-prd/RWA-SaaS-Step-06-09A-V1-146-Function-to-Page-Coverage-Audit-Draft-v0.1.md) | **Draft静态审计**：146/146至少有页面关联；7个营销/帮助/法律W页面没有已批准金融/业务ID，若需新增系统能力须另审版本 |
+| Step06-6.1 W/I/V/P全局信息架构与104个候选页面组Draft（已从当前分支清理；详见文档清理记录） | **Draft**：新增官网作为第四实际产品端的页面规划，产品经理关注中文表单/展示/交互和页面间旅程；当前页面数量/导航未冻结 |
+| Step06-6.1A 146项正式V1功能→页面交叉核验Draft（已从当前分支清理；详见文档清理记录） | **Draft静态审计**：146/146至少有页面关联；7个营销/帮助/法律W页面没有已批准金融/业务ID，若需新增系统能力须另审版本 |
 | [Step05-01现行永久Free/Standard PRD](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md) | **DEC-037业务规则Approved**，W/I上的具体页面设计仍Draft |
-| [Step06字段/状态/逻辑API辅助底稿](../03-product-prd/RWA-SaaS-Step-06-07-B01-Free-Standard-Domain-Field-State-Permission-API-PRD-Draft-v0.1.md) | **仅参考**，不等于真实逐页页面结构/用户交互/字段中文显示和产品验收已通过 |
+| Step06字段/状态/逻辑API辅助底稿（已从当前分支清理；详见文档清理记录） | **仅参考**，不等于真实逐页页面结构/用户交互/字段中文显示和产品验收已通过 |
 
 **方法上的最新产品约定**：依产品负责人的明确指示，Step06首先审全端页面地图，随后B01→B05逐页面完成标准PRD与单批产品审核，最终146ID×11步×四端一致性和V1产品冻结另批审批。系统字段`xxxRef`、Schema与API留技术团队后期完成，产品设计以**信息结构/表单/按钮/交互/状态/异常/角色/验收**为主。此优先级调整不回写历史DEC和Frozen、未形成新的正式DEC、未修改193正式功能归属；X13项均Open，PR #6 Draft/Open/Unmerged。
 
@@ -68,8 +68,8 @@
 
 | 新增Draft | 已形成的可读工作成果 | 权威和状态 |
 |---|---|---|
-| [B01 Free/Standard商业权益与配额的领域字段级PRD](../03-product-prd/RWA-SaaS-Step-06-07-B01-Free-Standard-Domain-Field-State-Permission-API-PRD-Draft-v0.1.md) | 8业务对象组、候选字段、Free/Standard与Sandbox/生产的独立状态、P/I/V/X、逻辑API、Quota与UAT准备 | **Draft；DEC-037批准商业方向，不批准配额数字、收费周期/金额或字段/Schema** |
-| [B02 33项正式V1功能ID逐行字段/状态/权限/API矩阵](../03-product-prd/RWA-SaaS-Step-06-08-B02-33-V1-Functions-Field-State-Permission-API-Crosswalk-Draft-v0.1.md) | M04 8、M05 10、M06 6、M07 9；33/33静态映射、真实发布P01～07及模拟/生产Guard | **Draft；原Step04逐ID产品批准不扩为技术字段Approved；且未覆盖其余113项V1及后续B03～B05** |
+| B01 Free/Standard商业权益与配额的领域字段级PRD（已从当前分支清理；详见文档清理记录） | 8业务对象组、候选字段、Free/Standard与Sandbox/生产的独立状态、P/I/V/X、逻辑API、Quota与UAT准备 | **Draft；DEC-037批准商业方向，不批准配额数字、收费周期/金额或字段/Schema** |
+| B02 33项正式V1功能ID逐行字段/状态/权限/API矩阵（已从当前分支清理；详见文档清理记录） | M04 8、M05 10、M06 6、M07 9；33/33静态映射、真实发布P01～07及模拟/生产Guard | **Draft；原Step04逐ID产品批准不扩为技术字段Approved；且未覆盖其余113项V1及后续B03～B05** |
 
 **文档优先级**：DEC-037与[Step05-01当前Free/Standard PRD](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md)覆盖历史Trial时限；Step06-07为当前B01字段深度，Step06-08为当前B02 33正式功能的字段*候选*入口。不能因标题写“33/33”推定B02可交付研发或已经执行了QA。下一阶段仍须B03～B05与146全量交叉审核；DEC-028 X01～13全Open，V1未Frozen，PR #6 Draft/Open/Unmerged。
 
@@ -83,7 +83,7 @@
 | [Step05-01 Free/Standard PRD v0.4](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Onboarding-Product-PRD-Approved-v0.4.md) | **现行产品级PRD，Approved范围限DEC** | 取代旧Trial-v0.3作为当前Step05-01业务入口，原稿仍历史有效 |
 | [Step05-01 Free/Standard跨端状态v0.3](../03-product-prd/RWA-SaaS-Step-05-01-Free-Standard-Cross-Lane-States-Exceptions-Approved-v0.3.md) | **当前产品状态语义，技术Draft** | 原Trial到期/恢复迁移不再生效，英文状态名/真实执行仍待审 |
 | [22模块Free/Standard能力矩阵](../03-product-prd/RWA-SaaS-Step-06-Free-Standard-Capability-Entitlement-Matrix-Draft-v0.1.md) | **Draft** | 不提前将V2/3/TBD功能升V1，额度与第三方可用性待审 |
-| [原65行字段新商业版本逐条映射](../03-product-prd/RWA-SaaS-Step-06-06-B01-Free-Standard-Field-Migration-Review-Draft-v0.1.md) | **Draft** | 原65行仍可追溯，trialExpiresAt等旧时间字段不可控制免费Tenant |
+| 原65行字段新商业版本逐条映射（已从当前分支清理；详见文档清理记录） | **Draft** | 原65行仍可追溯，trialExpiresAt等旧时间字段不可控制免费Tenant |
 
 **关系**：DEC-035 R01被DEC-036调整顺序；DEC-036已批准SaaS技术优先与Issuer合规分责；**DEC-037进一步改变SaaS商业版本**。这不修改四份Frozen、历史DEC/SCOPE、DEC-017正式193项首次版号；Step04 146与Step05 29项历史规则仍可追踪，**具体被DEC-037明确覆盖的Trial时限不再是现行执行规则**；X-01～X-13全Open、V1未Frozen、PR #6 Draft/Open/Unmerged。
 
@@ -93,8 +93,8 @@
 |---|---|---|
 | **[DEC-036：Step06-R04=A通用技术SaaS优先](../../decisions/DEC-036-step06-r04-a-technology-saas-product-first-and-regulated-activity-production-gate-approved.md)** | **Approved：工作优先级和责任边界** | 后续调整[DEC-035](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md) R01：**选择法域×Instrument不再是通用V1字段PRD及产品冻结的前置**。旧DEC保留；R02募集款专项和R03分层评审继续 |
 | [Step06最新执行计划Draft](RWA-SaaS-Step-06-Technology-SaaS-First-Execution-Plan-Draft-v0.1.md) | **Draft计划，非Frozen** | 通用SaaS字段B01→B05、状态/权限/API、146ID×11步四端交叉审查、PG产品冻结与RG独立真实金融生产 |
-| [Step06-04 B01/B02第一批字段PRD](../03-product-prd/RWA-SaaS-Step-06-04-Generic-SaaS-B01-B02-Field-States-Permissions-API-Draft-v0.1.md) | **Draft内容，Not Executed** | Tenant/商业KYB与Issuer/Asset/Offering对象、状态/权限和逻辑API候选；不代替上游Approved PRD，不批准字段Schema |
-| [Step06-03统一矩阵Draft](../03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md)、[02资金专项Draft](../03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md) | **Draft** | 现行字段/跨端/资金工作底稿，已添加DEC-036 SaaS平台与Issuer/X分责说明 |
+| Step06-04 B01/B02第一批字段PRD（已从当前分支清理；详见文档清理记录） | **Draft内容，Not Executed** | Tenant/商业KYB与Issuer/Asset/Offering对象、状态/权限和逻辑API候选；不代替上游Approved PRD，不批准字段Schema |
+| Step06-03统一矩阵Draft（已从当前分支清理；详见文档清理记录）、02资金专项Draft（已从当前分支清理；详见文档清理记录） | **Draft** | 现行字段/跨端/资金工作底稿，已添加DEC-036 SaaS平台与Issuer/X分责说明 |
 | [Step06-01合规验证Draft](../03-product-prd/RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md)、[01A日本/ADGM/新候选Draft](../03-product-prd/RWA-SaaS-Step-06-01A-Jurisdiction-Instrument-Candidate-Comparison-Draft-v0.1.md) | **降为可选研究，不是产品前置或批准法域** | 保留原研究事实与历史建议，客户实际发行及平台自身受监管运营RG视情况独立调用；不得要求用户现在必须先选国家 |
 
 **责任解释**：Issuer自行负责各自发行的法律合规和受权外部机构；平台运营主体仍对**自身软件、数据、技术控制以及其实际参与的销售、接单、持款、Signer等受监管活动**负责。**客户声明不能自动消除平台可能受到的监管义务**。PG产品冻结可与特定客户发行资格解耦，但真实资金/Token销售RG未通过不得开放。**DEC-028 X01～X13均Open**，没有调整193ID首次版本归属或4份Frozen。PR #6持续Draft/Open/Unmerged。
@@ -123,7 +123,7 @@
 | 主题 | 当前默认入口 | 审核状态/用途 |
 |---|---|---|
 | 核心业务与产品背景 | 四份 Frozen + [README](../../README.md) | 原则 Frozen；README只作导览 |
-| 六批详细业务原则 | [现行状态索引第三节](../Document-Status-Index.md)的六份 Batch 正文与对应 SCOPE；[旧六批路线](../03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md)为历史执行记录 | 六批 **原则Approved**；旧路线内阶段计划按历史时点解读 |
+| 六批详细业务原则 | [现行状态索引第三节](../Document-Status-Index.md)的六份 Batch 正文与对应 SCOPE；旧六批路线（已从当前分支清理；详见文档清理记录）为历史执行记录 | 六批 **原则Approved**；旧路线内阶段计划按历史时点解读 |
 | 已批准11步核心主流程 | [Step02 v0.3](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Approved-CR-v0.3-Draft.md) + [DEC-014](../../decisions/DEC-014-step02-issuer-core-eleven-step-flow-reviewed-approved.md) | **11/11核心业务Approved**；v0.3技术异常/字段仍Draft |
 | 187历史ID源账 | [187原始功能清单](../03-product-prd/RWA-SaaS-Module-Function-Inventory-and-V1-Scope-Matrix-v0.1.md) | **功能编号保持**；P0/P1/P2仅历史，原文审批记录不重写 |
 | 对应新流程的逐ID核验 | [Step03 187交叉审核矩阵](../03-product-prd/RWA-SaaS-Step-03-187-Function-Bidirectional-Flow-Audit-Matrix-v0.1.md) | 纸面核验完成、处理原则Approved；非软件测试Pass |
@@ -131,7 +131,7 @@
 | 缺口、职责和待拆功能 | [Step03历史12缺口/8重叠/11 PROP](../03-product-prd/RWA-SaaS-Step-03-Cross-Domain-Gaps-Duplications-and-Decision-Gates-v0.1.md) + [DEC-015](../../decisions/DEC-015-step03-xchk01-10-approved-a-function-audit.md) + [DEC-016](../../decisions/DEC-016-prop01-11-six-formal-function-ids-approved-version-assignments-draft.md) | XCHK及PROP处理均已Approved；具体字段/接口/资金技术依旧需要Step05审核 |
 | 逐项正式首次交付版号 | [193项当前主表](../03-product-prd/RWA-SaaS-Step-03-Unified-193-Function-Release-Assignment-Draft-v0.1.md) + [DEC-017](../../decisions/DEC-017-step03-r01-06-approved-193-release-assignments.md) | **193/193项版号或TBD已Approved（146/22/20/TBD5）**；文件名仍沿用历史Draft-v0.1，内容已更新。非整体V1 Frozen。 |
 | Step04 Issuer基础、资产/Instrument、Offering/Token、认购/登记与146项逐ID跟踪 | [S04-01 v0.2](../03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Trial-Subscription-Approved-v0.2.md)＋[DEC-020/S04-02](../../decisions/DEC-020-step04-s0402-issuer-asset-instrument-documents-review-approved.md)＋[DEC-021/S04-03](../../decisions/DEC-021-step04-s0403-issuer-offering-token-approved.md)＋[DEC-022](../../decisions/DEC-022-step04-s0404-investor-subscription-allocation-registration-approved.md)＋[S04-04完整设计](../03-product-prd/RWA-SaaS-Step-04-S04-04-Issuer-Investor-Subscription-Allocation-Approved-v0.1.md)＋[合法登记/地址绑定澄清](../03-product-prd/RWA-SaaS-Step-04-Legal-Register-Authority-Token-Address-Binding-Approved-v0.1.md)＋[DEC-023 S04-05](../../decisions/DEC-023-step04-s0405-funds-lifecycle-approved.md)＋[S04-05资金/收益存续批准设计](../03-product-prd/RWA-SaaS-Step-04-S04-05-Issuer-Funds-Lifecycle-Approved-v0.1.md)＋[146项追踪账](../03-product-prd/RWA-SaaS-Step-04-V1-146-Function-Terminal-Traceability-Register-v0.1.md)；S04-01仍由DEC-018/019共同批准 | **S04-01共16项＋S04-02共14项＋S04-03共19项＋S04-04共24项＋S04-05共20项，累计93/146 Step04设计Approved**；余53未审，非整体V1 Frozen；外部责任与文书法律效力仍按Instrument决定 |
-| 面向产品负责人的可读版号规划 | [可读三版本业务规划](../03-product-prd/RWA-SaaS-Step-03-Release-Plan-V1.0-V2.0-V3.0-Readable-Review-v0.1.md) | **依据DEC-017版号Approved的只读业务摘要**，以193逐ID主表为权威，不另造第二套版本分配 |
+| 面向产品负责人的可读版号规划 | 可读三版本业务规划（已从当前分支清理；详见文档清理记录） | **依据DEC-017版号Approved的只读业务摘要**，以193逐ID主表为权威，不另造第二套版本分配 |
 | A/B债权及SPV权益、CDE拓展 | [Document-Status-Index](../Document-Status-Index.md)内权利体系/样本专题章节及对应Approved SCOPE | 产品工具家族原则Approved，具体实现/合法有效性/验证未完成 |
 | 文档审计及归档建议 | [Step03.5全仓首轮审计](RWA-SaaS-Step-03.5-Document-Governance-Audit-and-Disposition-Proposal-v0.1.md) | 95项逐文件核查、14项治理风险；审计证据并非新产品需求 |
 
@@ -163,17 +163,17 @@
 
 这些文件**继续存在于原路径**，其中审计证据、曾获批准的SCOPE引用继续有效；只是**当前阶段的阅读入口**已被更晚材料取代。勿再用其当时的“待批准”“下一步做什么”推断当前进度：
 
-1. [`Strategy-Freeze-Readiness-Checklist-v01.md`](../../docs/02-product-strategy/Strategy-Freeze-Readiness-Checklist-v01.md) — `Historical / Superseded as current entry`
-2. [`RWA-SaaS-Issuer-V1-Conditional-P1-Assessment-v0.1.md`](../../docs/03-product-prd/RWA-SaaS-Issuer-V1-Conditional-P1-Assessment-v0.1.md) — `Historical / Superseded as current entry`
-3. [`RWA-SaaS-Issuer-V1-Core-and-Shared-UI-Audit-v0.1.md`](../../docs/03-product-prd/RWA-SaaS-Issuer-V1-Core-and-Shared-UI-Audit-v0.1.md) — `Historical / Superseded as current entry`
-4. [`RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md`](../../docs/03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md) — `Historical / Superseded as current entry`
-5. [`RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md`](../../docs/03-product-prd/RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md) — `Historical / Superseded as current entry`
-6. [`RWA-SaaS-Issuer-V1-External-Execution-and-Authority-Audit-v0.1.md`](../../docs/03-product-prd/RWA-SaaS-Issuer-V1-External-Execution-and-Authority-Audit-v0.1.md) — `Historical / Superseded as current entry`
-7. [`RWA-SaaS-Issuer-V1-Nondefault-46-Item-Exclusion-and-Roadmap-Audit-v0.1.md`](../../docs/03-product-prd/RWA-SaaS-Issuer-V1-Nondefault-46-Item-Exclusion-and-Roadmap-Audit-v0.1.md) — `Historical / Superseded as current entry`
-8. [`RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md`](../../docs/03-product-prd/RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md) — `Historical / Superseded as current entry`
-9. [`RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md`](../../docs/03-product-prd/RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md) — `Historical / Superseded as current entry`
-10. [`RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md`](../../docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md) — `Historical / Superseded as current entry`
-11. [`RWA-SaaS-Step-02-Four-Lane-End-to-End-Workflow-Draft-v0.1.md`](../../docs/04-business-workflows/RWA-SaaS-Step-02-Four-Lane-End-to-End-Workflow-Draft-v0.1.md) — `Historical / Superseded as current entry`
+1. `Strategy-Freeze-Readiness-Checklist-v01.md`（已从当前分支清理；详见文档清理记录） — `Historical / Superseded as current entry`
+2. `RWA-SaaS-Issuer-V1-Conditional-P1-Assessment-v0.1.md`（已从当前分支清理；详见文档清理记录） — `Historical / Superseded as current entry`
+3. `RWA-SaaS-Issuer-V1-Core-and-Shared-UI-Audit-v0.1.md`（已从当前分支清理；详见文档清理记录） — `Historical / Superseded as current entry`
+4. `RWA-SaaS-Issuer-V1-Delivery-Candidate-Categorization-v0.1.md`（已从当前分支清理；详见文档清理记录） — `Historical / Superseded as current entry`
+5. `RWA-SaaS-Issuer-V1-Delivery-Depth-Batch-Review-Roadmap-v0.1.md`（已从当前分支清理；详见文档清理记录） — `Historical / Superseded as current entry`
+6. `RWA-SaaS-Issuer-V1-External-Execution-and-Authority-Audit-v0.1.md`（已从当前分支清理；详见文档清理记录） — `Historical / Superseded as current entry`
+7. `RWA-SaaS-Issuer-V1-Nondefault-46-Item-Exclusion-and-Roadmap-Audit-v0.1.md`（已从当前分支清理；详见文档清理记录） — `Historical / Superseded as current entry`
+8. `RWA-SaaS-Step-01-Batch-04-06-Business-Rules-Closure-v0.1.md`（已从当前分支清理；详见文档清理记录） — `Historical / Superseded as current entry`
+9. `RWA-SaaS-V1-Minimum-Deliverable-Scope-and-Decision-Gates-v0.1.md`（已从当前分支清理；详见文档清理记录） — `Historical / Superseded as current entry`
+10. `RWA-SaaS-Step-02-Four-Lane-Core-Flow-Expanded-v0.2-Draft.md`（已从当前分支清理；详见文档清理记录） — `Historical / Superseded as current entry`
+11. `RWA-SaaS-Step-02-Four-Lane-End-to-End-Workflow-Draft-v0.1.md`（已从当前分支清理；详见文档清理记录） — `Historical / Superseded as current entry`
 
 > 历史归档策略：本轮只在上述文件顶部加说明，与本权威索引双向链接。**不创建archive副本、不改名、不移动、不删除**。未来若批准物理迁移，要逐文件重新确认相对引用并一次性重写所有路径；在此之前旧文链接保持有效。
 
@@ -219,14 +219,14 @@
 ## 10. 2026-10-25 DEC-027与Step04全量审计Draft（当前阅读权威）
 
 - [DEC-027 S04-09六项A](../../decisions/DEC-027-step04-s0409-external-authority-services-approved.md)批准M22外部适配F001～F008八个V1.0功能，详见[批准版设计](../03-product-prd/RWA-SaaS-Step-04-S04-09-External-Authority-Service-Adapters-Approved-v0.1.md)。截至本批**146/146唯一V1.0 ID逐项Approved、0待审**，DEC-017的193/146/22/20/TBD5原版号不变。
-- [全量146功能×四端P/I/V/X×11步静态一致性审计Draft](../03-product-prd/RWA-SaaS-Step-04-146-Functions-Four-Lanes-11-Steps-Cross-Audit-Draft-v0.1.md)为**另立审核对象**，虽已执行逐ID/步骤/参与端核查并形成13项待跟踪门，但**尚未经用户批准**，不可将审计结论、字段PRD或整体V1.0范围标为Frozen。
+- 全量146功能×四端P/I/V/X×11步静态一致性审计Draft（已从当前分支清理；详见文档清理记录）为**另立审核对象**，虽已执行逐ID/步骤/参与端核查并形成13项待跟踪门，但**尚未经用户批准**，不可将审计结论、字段PRD或整体V1.0范围标为Frozen。
 - 本页先前章节“DEC-023时93/146、DEC-025时135/146、DEC-026时138/146”均为历史审批快照，**最新当前状态以本节、146项台账和文档状态索引为准**。
 - 四份Frozen、旧DEC/SCOPE正文不更改；PR #6 Draft/Open/Unmerged。实际法域/外部资金控制、Token Signer、合约/KYC服务供应商、真实生产操作、UI与研发均未获授权。
 
 
 ## 11. 当前权威：DEC-028及Step05场景式审核（2026-10-25）
 
-- [DEC-028](../../decisions/DEC-028-step04-cross-audit-conditional-acceptance-and-step05-visual-review.md)仅对**146/146功能与P/I/V/X四端11步的静态产品功能覆盖有条件认可**；[全量审计Draft](../03-product-prd/RWA-SaaS-Step-04-146-Functions-Four-Lanes-11-Steps-Cross-Audit-Draft-v0.1.md)的13项风险/实施门继续Open，不代表审计全文已Approved，且V1范围仍未Frozen。
+- [DEC-028](../../decisions/DEC-028-step04-cross-audit-conditional-acceptance-and-step05-visual-review.md)仅对**146/146功能与P/I/V/X四端11步的静态产品功能覆盖有条件认可**；全量审计Draft（已从当前分支清理；详见文档清理记录）的13项风险/实施门继续Open，不代表审计全文已Approved，且V1范围仍未Frozen。
 - 企业入驻时序以[DEC-019](../../decisions/DEC-019-step04-s0401-trial-kyb-subscription-supplement-approved.md)及[S04-01 v0.2](../03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Trial-Subscription-Approved-v0.2.md)为正式权威；[Step02 v0.4四端新图](../04-business-workflows/RWA-SaaS-Step-02-Four-Lane-Core-Flow-DEC019-Onboarding-Corrected-v0.4-Draft.md)替代历史v0.3中“先KYB/付款，再创建Tenant”的过期时序，历史稿保留。正确流程邮箱验证即开14天受限Trial，商业KYB通过、Standard合同与实际商业付款后在原Tenant转Paid，受限Trial有30天恢复窗口，金融生产另行合法Gate。
 - [Step05-01企业商业开通可视化PRD Draft](../03-product-prd/RWA-SaaS-Step-05-01-Onboarding-Trial-KYB-Subscription-Visual-PRD-Draft-v0.1.md)已供用户审核，采用业务图、四端交接、对象状态、异常和字段待补清单；**尚未Approved且不授权UI/研发**。
 - DEC-017 193项版号、四份Frozen、旧DEC/SCOPE正文均不改；PR #6 Draft/Open/Unmerged。
@@ -296,7 +296,12 @@
 |---|---|---|
 | [DEC-035：R01、R02、R03均A](../../decisions/DEC-035-step06-r01-r03-pre-freeze-workstream-method-approved.md) | **Approved：仅方法/专项工作安排** | 先选一个“法域×Instrument”作验证锚点、独立细化M11-F012/F013、分层审核只上报重大产品差异；不是实际发行法域、Instrument、资金方或技术决策 |
 | [Step06-01 法域和Instrument验证矩阵](../03-product-prd/RWA-SaaS-Step-06-01-Jurisdiction-Instrument-Legal-Validation-Anchor-Draft-v0.1.md) | **Draft** | J0×I0及其附属法律连接点全部待定，不能取代适格法律审查；X-01/02等Open |
-| [Step06-02 M11募集款释放/划拨PRD](../03-product-prd/RWA-SaaS-Step-06-02-M11-Funds-Release-Settlement-Field-Cross-Lane-PRD-Draft-v0.1.md) | **Draft** | 原Step04 M11-F012/F013功能已Approved，本稿新增的候选字段/接口/Signer、结算定义及异常测试仍未批 |
-| [Step06-03 五场景对象/状态/权限/API审核矩阵](../03-product-prd/RWA-SaaS-Step-06-03-Field-State-Permission-API-Review-Matrix-Draft-v0.1.md) | **Draft** | 仅规范审查工作顺序；不等于全字段Schema/API/权限码或技术安全实现通过 |
+| Step06-02 M11募集款释放/划拨PRD（已从当前分支清理；详见文档清理记录） | **Draft** | 原Step04 M11-F012/F013功能已Approved，本稿新增的候选字段/接口/Signer、结算定义及异常测试仍未批 |
+| Step06-03 五场景对象/状态/权限/API审核矩阵（已从当前分支清理；详见文档清理记录） | **Draft** | 仅规范审查工作顺序；不等于全字段Schema/API/权限码或技术安全实现通过 |
 
 **不可破坏的基线**：四份Frozen、历史DEC/SCOPE原文与193项版本主表不改（V1 146、V2 22、V3 20、TBD 5）；Step04 146/146功能Approved、Step05 29条产品规则Approved、DEC-028的X-01～X-13仍13/13 Open；V1.0整体未Frozen、PR #6 Draft/Open/Unmerged、不启动UI/研发或真实金融/Token生产。
+
+
+## 2026-11-12 文档清理记录
+
+[逐文件删除清单、引用检查与保留范围](RWA-SaaS-GitHub-Document-Cleanup-2026-11-12.md)。旧工作稿和过期审计文件按该清单从当前分支文件树清理；DEC、SCOPE、Frozen 与 193 项正式版本归属记录保持不变。

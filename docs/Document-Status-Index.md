@@ -15,8 +15,8 @@
 - **Issuer 导航与页面覆盖静态审计**：[审计报告](03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-NAVIGATION-AND-PAGE-COVERAGE-AUDIT-2026-11-11.md)；已核对九个一级导航、页面入口和当前 UI-Ready 专项，I-13 标准门户管理页现已按 U01 E09 完成 UI-Ready 收口。
 - **Issuer 正式功能双向映射**：[157 项逐 ID 映射矩阵](03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-FUNCTION-TO-PAGE-BIDIRECTIONAL-CROSSWALK-2026-11-11.md)；覆盖全部 157 项 V1 正式功能的产品端归属、页面责任及 Issuer 当前承载边界。
 - **Issuer 全局一致性审计**：[模块级最终审计报告](03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md)；九个导航、页面责任、唯一主账、Free/Standard 与跨模块状态已完成文档层面核对。
-- **端到端业务链路与字段完整性审计**：[当前审计工作稿](03-product-prd/r2-current-baseline/END-TO-END-ISSUER-FLOW-AND-FIELD-COMPLETENESS-AUDIT-2026-11-11.md)；已建立跨模块字段交接矩阵和纸面成功/异常场景，已修正认购额度与 M10/M12 双预留、付款来源/主体关联、投资者接收钱包订单快照、债权未偿本金及收益参与比例口径；仍在核验全链路字段和状态。
-- **当前状态**：Issuer 页面级 UI-Ready 与模块级全局一致性审计已完成；端到端字段完整性审计尚在进行，付款目标主路径、投资者钱包身份关联及降级存续履约通道仍待收口，未通过前不进入视觉规范/原型阶段。
+- **端到端业务链路与字段完整性审计**：[第一阶段完成报告](03-product-prd/r2-current-baseline/END-TO-END-ISSUER-FLOW-AND-FIELD-COMPLETENESS-AUDIT-2026-11-11.md)；2026-11-12 产品文档层面通过（有外部依赖），含正向节点、异常矩阵、字段契约与问题分类；不是 Browser/生产验收。
+- **当前状态**：Issuer UI-Ready、功能映射、模块全局一致性与端到端产品文档审计均已完成；[DEC-083](../decisions/DEC-083-issuer-v1-payment-default-and-continuity-servicing-approved.md) 确认默认合约收款 A 与降级存续服务 B。跨端钱包身份映射/法律资金生产准入继续独立开放；可进入统一视觉与交互原型阶段。
 - **重要边界**：以上 UI-Ready 只表示企业端页面、字段、交互、状态、异常、权限和跨模块责任已完成产品设计；不代表真实法域/法律责任、资金托管、合约模板/安全审计、Provider/Signer、真实链上执行、代码/Build/Browser/UAT 或生产准入完成。
 - **治理保持**：Frozen、193 项正式功能 ID/首次交付版本归属、历史 DEC/SCOPE、X-01～X-13 均不因本节改变；PR #6、PR #8 仍 Draft / Open / Unmerged，V1 整体未 Frozen。
 

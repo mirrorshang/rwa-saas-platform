@@ -28,7 +28,7 @@
 | 模块 | 当前权威规格 |
 |---|---|
 | 企业登录、创建、KYB、钱包、订阅 | [U01 UI-Ready PRD](U01-UI-Ready-PRD.md)、[Free/Standard 权益决策](U01-FREE-STANDARD-ENTITLEMENT-DEC-2026-11-06.md)、[KYB 补件规则](U01-KYB-V03-APPROVED-2026-11-06.md) |
-| 资产管理、房地产模板、资产相关方 | [U02-07 资产与相关方 UI-Ready](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)、[房地产模板最终规则](U02-04-REAL-ESTATE-UI-READY-APPROVED-2026-11-06.md) |
+| 资产分类（7 大类/23 子类）与股权、企业借款债权基础模板 | [2026-11-12 目录重构与新增基础模板 UI-Ready](ASSET-TAXONOMY-AND-EQUITY-DEBT-TEMPLATES-V1-2026-11-12.md)；V1 六个可创建模板（房地产四 + 股权一 + 债权一），其余目录保留未开放；不覆盖既有房地产详规 |\n| 资产管理、房地产模板、资产相关方 | [U02-07 资产与相关方 UI-Ready](U02-07-ASSET-RELATED-PARTIES-AND-LIST-UI-READY-2026-11-11.md)、[房地产模板最终规则](U02-04-REAL-ESTATE-UI-READY-APPROVED-2026-11-06.md) |
 | 权益结构 | [U02-08 权益结构 UI-Ready](U02-08-INSTRUMENT-UI-READY-CLOSEOUT-2026-11-11.md) |
 | Offering | [U02-09 Offering UI-Ready](U02-09-OFFERING-MODULE-UI-READY-CLOSEOUT-2026-11-11.md) |
 | 认购记录 | [U02-10 认购记录 UI-Ready](U02-10-SUBSCRIPTION-RECORDS-UI-READY-CLOSEOUT-2026-11-11.md) |

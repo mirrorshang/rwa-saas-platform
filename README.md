@@ -1,8 +1,8 @@
 # RWA SaaS Platform｜产品规划与项目交接总览
 
-> **更新日期：2026-11-11** · **当前工作阶段：Issuer 企业 SaaS V1 端到端业务链路与字段完整性审计（进行中）** · **本 README 是开发、产品、设计、测试及运营团队的项目交接总入口**
+> **更新日期：2026-11-12** · **当前工作阶段：Issuer 企业 SaaS V1 第一阶段产品文档审计通过（含外部依赖），可进入视觉与交互原型设计** · **本 README 是开发、产品、设计、测试及运营团队的项目交接总入口**
 >
-> **当前结论：** 企业 SaaS 九个一级导航、23 个二级入口、157 项功能映射及模块级页面/主账一致性审计已完成；各 Issuer 页面已形成 UI-Ready 规格。当前正在进行**企业注册→发行→投资者购买→付款→配售/登记→Token/持仓→收益/退出的端到端字段与数据完整性审计**，未通过前不进入视觉规范与原型阶段。
+> **当前结论：** 企业 SaaS 九个一级导航、23 个二级入口、157 项功能映射及模块级页面/主账一致性审计已完成；各 Issuer 页面已形成 UI-Ready 规格。**企业注册→发行→投资者购买→付款→配售/登记→Token/持仓→收益/退出的端到端产品文档与字段完整性审计已通过（保留跨端钱包映射与外部生产准入）**；不代表 Browser/UAT/真实生产通过。
 >
 > **范围边界：** 当前实际产品设计工作聚焦 Issuer 企业 SaaS；本轮不自动扩展到 Issuer 投资者前台、平台统一投资端、平台运营后台或二级市场。企业 SaaS 继续执行**一个账号对应一个企业**，不增加企业内部成员、角色配置或多级审批。
 >
@@ -20,11 +20,12 @@
 | [V1 产品完整性与 UI 设计现状](docs/03-product-prd/r2-current-baseline/RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md) | 已完成/待完成模块、当前设计优先级及整体状态 |
 | [Issuer 导航与页面覆盖审计](docs/03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-NAVIGATION-AND-PAGE-COVERAGE-AUDIT-2026-11-11.md) | 九个一级导航、页面入口、历史冲突及当前页面覆盖状态的静态审计 |
 | [DEC-082 数据与共享能力 UI-Ready 收口](decisions/DEC-082-data-and-shared-capabilities-ui-ready-v1-closeout.md) | 记录八个共享能力页面组的设计收口与版本/责任边界 |
+| [DEC-083 默认合约收款与降级存续服务](decisions/DEC-083-issuer-v1-payment-default-and-continuity-servicing-approved.md) | 已批准付款路径 A、存续模式 B；不涉及真实生产授权 |
 | [数据与共享能力八页面最终规格](docs/03-product-prd/r2-current-baseline/DATA-AND-SHARED-CAPABILITIES-UI-READY-CLOSEOUT-2026-11-11.md) | 我的待办、异常工单、消息通知、规则设置、审计记录、业务报表、外部服务、安全与服务状态 |
 | [I-13 Issuer 标准门户管理 UI-Ready 规格](docs/03-product-prd/r2-current-baseline/I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md) | Issuer 自有标准投资者门户管理；Free 内部只读预览，Standard 配置/发布受独立准入约束 |
 | [Issuer 157 项功能—页面双向映射](docs/03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-FUNCTION-TO-PAGE-BIDIRECTIONAL-CROSSWALK-2026-11-11.md) | 157 项 V1 正式功能逐项标明产品端、页面责任与当前 Issuer 承载边界 |
 | [Issuer 企业 SaaS 全局一致性审计](docs/03-product-prd/r2-current-baseline/ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md) | 九个一级导航、157 项映射、唯一主账、套餐边界及跨模块状态的模块级文档审计 |
-| [Issuer 端到端业务链路与字段完整性审计](docs/03-product-prd/r2-current-baseline/END-TO-END-ISSUER-FLOW-AND-FIELD-COMPLETENESS-AUDIT-2026-11-11.md) | 从企业注册、发行、购买、付款、持仓到收益/退出的字段与数据传递核验；进行中 |
+| [Issuer 端到端业务链路与字段完整性审计](docs/03-product-prd/r2-current-baseline/END-TO-END-ISSUER-FLOW-AND-FIELD-COMPLETENESS-AUDIT-2026-11-11.md) | 20 节点正向流程与 27 类异常逻辑审计；产品文档层面通过，外部生产准入仍 Open |
 | [当前文档状态索引](docs/Document-Status-Index.md) | 当前专项文档、决策与状态的索引入口 |
 | [R2 当前产品基线目录](docs/03-product-prd/r2-current-baseline/README.md) | 企业 SaaS 各模块 UI-Ready 专项规格与当前工作衔接入口 |
 
@@ -42,16 +43,16 @@
 | 数据与共享能力八个页面组 | 已按 DEC-082 完成 UI-Ready |
 | 投资者门户管理 I-13 | 已 UI-Ready；Free 内部只读预览，Standard 基础配置/发布受独立准入约束；不包含投资者前台 |
 | Issuer 正式功能 ID ↔ 现行页面双向映射 | 已完成 157 项逐 ID 映射 |
-| 企业 SaaS 模块级跨页面一致性审计 | 已完成；端到端字段/数据传递审计仍在进行，未包含源码、Browser、UAT 或生产验收 |
+| 企业 SaaS 产品文档阶段 | 模块 UI-Ready、逐功能映射、跨页面一致性与端到端字段/业务逻辑审计均完成；跨端钱包、Provider、法律/资金/Token 生产仍待独立验证 |
 
 ## 后续执行顺序
 
 1. 九个一级导航、23 个二级入口及 157 项正式功能逐 ID 映射已完成。
 2. 模块级页面责任、唯一主账、Free/Standard 与状态/异常一致性审计已完成；不等同于端到端字段验收。
-3. 当前进行端到端字段与数据传递审计；已修正/补齐：单投资者累计认购额度及整份 Token 计算、M10 个人额度与 M12 Token 容量双预留、付款来源与付款主体关联、投资者接收钱包订单快照、债权实际未偿本金、收益参与比例只应用一次。
+3. 端到端产品文档审计已完成（有外部依赖）；已修正/补齐：单投资者累计认购额度及整份 Token 计算、M10 个人额度与 M12 Token 容量双预留、付款来源与付款主体关联、投资者接收钱包订单快照、债权实际未偿本金、收益参与比例只应用一次。
 4. 已建立跨模块字段交接矩阵和纸面成功/异常场景；房地产四个开放模板符合 DEC-070，数据与共享能力的 Offering 额度规则边界已澄清。V1 不做持有人转让流程已由 DEC-011 明确。
-5. 仍待重大决策/跨端契约收口：投资者付款目标主路径、M24 InvestorRef 与 M08/M07 钱包验证结果的映射、Standard 降级后的存续义务受控履约通道。
-6. 端到端审计通过后，再进入统一视觉与交互规范、页面原型及开发交接准备；本轮不自动授权源码开发或生产执行。
+5. DEC-083 已批准合约默认收款及受限存续服务；待外部核验 M24 InvestorRef 与 M08/M07 钱包验证结果映射及法律资金/Token 生产准入，非缺少 Issuer 页面。
+6. 下一阶段可启动统一视觉与交互规范、可点击 Web Mock 原型规划；正式源码开发及生产执行仍需单独授权。
 
 > **历史记录说明：** 以下章节保留此前阶段的审批、审计和工作记录，用于追溯当时的决策背景。历史章节中出现的“下一步”“待审核”“页面未完成”等表述，仅代表其记录日期的状态；如与上方当前状态冲突，以本节权威入口、最新专项规格、DEC 和文档状态索引为准。
 

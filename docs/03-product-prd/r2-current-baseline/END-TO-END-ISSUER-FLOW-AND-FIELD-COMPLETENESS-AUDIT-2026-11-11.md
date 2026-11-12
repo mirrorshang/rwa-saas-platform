@@ -52,7 +52,7 @@
 - [V1 产品完整性与 UI 设计现状审计](RWA-SaaS-V1-PRODUCT-COMPLETENESS-AND-UI-DESIGN-STATUS-2026-11-09.md)
 - [Issuer 企业 SaaS 全局一致性审计](ISSUER-SAAS-V1-GLOBAL-CONSISTENCY-AUDIT-2026-11-11.md)
 
-## 4. 端到端流程覆盖初判
+## 4. 端到端流程覆盖基线（最终判定见第 9 节）
 
 | 阶段 | 当前权威页面/模块 | 初步判断 | 尚需核验 |
 |---|---|---|---|
@@ -76,7 +76,7 @@
 | 到期/赎回/清退 | I-58 | UI-Ready | 法律依据、登记变更、资金清偿和 Token 处置分别确认 |
 | 降级/退租/责任交接 | U01、I-54、I-58 | DEC-083 已批准受限存续服务 | 仅可就既有 Offering/义务提交资料；不恢复普通资金/Token/新增发行权限 |
 
-## 5. 跨端数据契约初步核对（不设计投资者端页面）
+## 5. 跨端字段契约核对（不设计投资者端页面）
 
 以下只核验 Issuer 发布/管理的数据能否被投资者端消费，以及投资者端/外部服务产生的权威事实能否返回 Issuer；不在本轮绘制投资者端页面。
 
@@ -93,7 +93,7 @@
 
 **初步结论：** Issuer 侧已具备主要权威来源页面；跨端页面本身不属于当前范围。后续仍须逐项核对字段是否有稳定引用、快照版本、状态更新时间和来源证据，不能仅凭上述对象名称存在就判定数据契约完整。
 
-### 5.1 业务对象与唯一引用链（待逐字段核验）
+### 5.1 业务对象与唯一引用链（已纳入本轮字段核验）
 
 `Tenant → Asset/AssetVersion → Instrument/InstrumentVersion → Offering/OfferingVersion → InvestorRef/KYCDecision → QuoteSnapshot → Order → PaymentIntent/ChainEvent/FinalMatched → AllocationDecision → LegalRegisterRecord → TokenContractVersion/MintIntent/TokenEvent → LockupRecord → RecordDateSnapshot/YieldEvent → DistributionBatch/PayoutResult → ExitPlan`
 
@@ -252,7 +252,7 @@
 
 文件：[收益与分配](YIELD-AND-DISTRIBUTION-UI-READY-CLOSEOUT-2026-11-11.md)。
 
-## 7. 已确认的 V1 边界与待用户决策的重大事项
+## 7. V1 已批准产品边界与未验证跨端依赖
 
 ### E2E-C01｜持有人转让未纳入 V1 是已批准边界，不属于缺项
 

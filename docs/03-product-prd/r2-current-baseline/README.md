@@ -49,6 +49,9 @@
 | 数据与共享能力 | [八页面组 UI-Ready](DATA-AND-SHARED-CAPABILITIES-UI-READY-CLOSEOUT-2026-11-11.md) |
 | Issuer 投资者门户管理 | [I-13 门户管理 UI-Ready](I13-ISSUER-INVESTOR-PORTAL-MANAGEMENT-UI-READY-CLOSEOUT-2026-11-11.md) |
 
+
+- **[2026-11-13｜Figma 验收与现行 PRD 交叉审计及整改规格](ISSUER-V1-FIGMA-ACCEPTANCE-PRD-CROSS-AUDIT-2026-11-13.md)**：对照 Figma 双资产验收报告与现行房地产、债权资产、Instrument、Offering、认购、持有人及收益 UI-Ready 规格；区分 Figma 实现缺陷与真实产品规格补充，作为下一轮分批原型整改依据。状态：交叉审计完成，待用户审核后实施。
+
 ## 四、关键跨模块审计与治理
 
 - [资产与发行跨模块一致性审计](ASSET-AND-ISSUANCE-CROSS-MODULE-CONSISTENCY-AUDIT-2026-11-11.md)

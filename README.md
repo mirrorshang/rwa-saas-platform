@@ -1,31 +1,49 @@
-# RWA SaaS Platform
+# RWA SaaS V1 工程交付
 
-从零建设多资产 RWA Tokenization SaaS 平台。本仓库是独立新项目，目前用于研究、规划与设计。
+工程交付分支 `release/v1-engineering-handover-20261116` 基于前端固定提交 `05bda87a32de34e0324f480901b9024ab676f3d7`。当前正式交付为 Web 官网、邮箱验证码登录入口和 Issuer 企业 SaaS 九模块前端；生产后端尚未开发。源码中的 Mock 数据、验证码、钱包、资金、登记、Token 和收益状态不得当作真实业务事实。
 
-## 产品定位
+## 目录与文档入口
 
-- 核心竞品：Brickken
-- 目标市场：日本、中东；中东优先研究阿联酋
-- 产品形态：Issuer SaaS、Investor Portal、White-label、Open API、平台管理系统
+| 路径 | 用途 |
+|---|---|
+| `apps/website` | React 19、TanStack Router、Vite 6 官网和演示邮箱登录；正式路由见 `src/main.tsx` |
+| `apps/issuer` | React 19、Vite 8、Tailwind 4 独立 Issuer 后台；九模块、详情和本地状态见 `src/App.tsx` / `src/data.ts` |
+| [V1.0 实际产品基线](docs/V1.0/V1.0-PRODUCT-BASELINE.md) | 页面、交互、Mock 与限制 |
+| [Backend Developer PRD](docs/V1.0/V1.0-BACKEND-DEVELOPER-PRD.md) | 架构、实体、接口、状态机、外部服务和验收 |
+| [193 项及专项功能追溯矩阵](docs/V1.0/V1.0-FEATURE-TRACEABILITY-MATRIX.csv) | 历史版号与当前归属；193 原项 + 11 后续批准项 |
+| [V1.5 需求与验收](docs/V1.5/V1.5-REQUIREMENTS-AND-ACCEPTANCE.md) | 原 V1 前端未证实完整的功能及范围冲突 |
+| [V2 统一需求池](docs/V2/V2-UNIFIED-REQUIREMENTS-POOL.md) | 原 V2/V3/TBD 47 项，保留原版号 |
 
-## 当前阶段
+历史批准文档在远端 `archive/docs-before-final-handover-20261116`（源于 `docs/r2-current-product-baseline` @ `ae9762cf48f5130846f57edc6b64e3e4416ad271`）；源分支 `codex/v1-final-frontend-integration-20261116` 保留原始前端及旧说明。Frozen、DEC、SCOPE 原文未修改。先读本 README、V1.0 产品基线和 Backend Developer PRD，再按追溯矩阵查历史决策。旧 R2 文档的 W/I/V/M/P 范围、目录和模板与本轮三部分交付有冲突，已在 PRD 第 16 节列为待产品确认。
 
-竞品研究、产品规划和 UI/UX 设计。当前暂不开发正式业务代码；具体范围、流程及实现依据后续经确认的产品需求和冻结文档确定。
+## 本地运行
 
-## 目录
+要求 Node.js 与 pnpm；两个应用独立安装、启动、构建，不能把 `apps/website` 的旧 Issuer 原型页面当作正式后台。安装前按本机下载/依赖缓存策略选择路径。
 
-- `docs/01-competitor-research/`：竞品研究
-- `docs/02-product-strategy/`：产品战略
-- `docs/03-product-prd/`：产品需求
-- `docs/04-business-workflows/`：业务流程
-- `docs/05-compliance/`：合规研究
-- `docs/06-ui-ux/`：界面与体验设计
-- `docs/07-architecture/`：架构设计
-- `docs/08-legal/`：法律研究
-- `docs/09-commercial/`：商业规划
-- `docs/10-delivery/`：交付资料
-- `tasks/`：任务
-- `decisions/`：决策记录
-- `prototypes/`：原型
+```powershell
+cd apps/issuer
+pnpm install --frozen-lockfile
+pnpm dev -- --host 127.0.0.1 --port 5174
+# 另一个终端：
+cd apps/website
+pnpm install --frozen-lockfile
+pnpm dev -- --host 127.0.0.1 --port 5175
+```
 
-当前仅建立目录和协作约定，尚无产品需求定稿或业务代码。
+官网构建时可按 `apps/website/.env.example` 设置 `VITE_ISSUER_ORIGIN=http://127.0.0.1:5174`。本地演示验证码 `123456` 只在演示模式使用；网站登录后只是导航到 Issuer，**没有安全会话交换**。Issuer 状态写入当前浏览器源的 localStorage；清除存储会丢失 Mock 资料。独立部署需配置 SPA 路由回退和两个应用的可信源。
+
+```powershell
+cd apps/issuer
+pnpm build
+cd ../website
+pnpm build
+node --test src/*.test.mjs
+```
+
+Issuer 没有独立自动化测试脚本；website 测试包含旧 Issuer 原型逻辑，不能替代最终 `apps/issuer` 的手工业务验收。请以实际构建和测试输出为准，不能把未运行项标为 PASS。
+
+## 后端开发起点与生产前置
+
+先实现安全邮箱 OTP、一次性跨应用会话交换、单账号单企业与租户隔离，再建 KYB/订阅/Entitlement、Asset/Instrument/Project/Offering 和版本主账。随后接投资者 KYC、订单、OP Mainnet USDT 付款与最终性、配售/法定名册、Token、收益与资金结算。所有外部接入采用可替换 Adapter；未选定 Provider、法域/法律责任、托管与合约审计、钱包/Signer、真实密钥、环境及生产准入均须确认。未经独立授权不得运行真实支付、法定登记或链上写操作。
+
+本分支是工程资料交付，不代表业务代码、生产环境或整体产品 Frozen。变更须在独立分支和 PR 审查；不得直接修改 main、历史批准原文或现有 PR 状态。

@@ -1,0 +1,8 @@
+.issuer-shared-summary { display: flex; gap: 16px; margin: 16px 0; }
+.issuer-shared-summary > .issuer-card { min-width: 170px; display: flex; flex-direction: column; gap: 8px; }
+.issuer-shared-summary span { font-size: 24px; font-weight: 700; color: #0a3350; }
+.issuer-shared-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: 16px; align-items: start; }
+.issuer-shared-layout > .issuer-card { min-width: 0; }
+.issuer-shared-detail-head { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+.issuer-shared-detail-head h2 { margin-top: 0; }
+@media (max-width: 900px) { .issuer-shared-layout { grid-template-columns: 1fr; } .issuer-shared-summary { flex-wrap: wrap; } }

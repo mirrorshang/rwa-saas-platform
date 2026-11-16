@@ -1,0 +1,65 @@
+.c08-fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.c08-fieldset h2 { margin: 28px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--i-line); font-size: 17px; }
+.c08-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+.c08-field { display: grid; align-content: start; gap: 6px; color: #29495e; font-size: 12px; font-weight: 700; }
+.c08-field input, .c08-field select, .c08-field textarea { width: 100%; min-width: 0; border: 1px solid #a9c0cd; border-radius: 7px; padding: 10px 11px; background: #fff; color: var(--i-ink); font: inherit; }
+.c08-field input::placeholder, .c08-field textarea::placeholder { color: #667d8c; opacity: 1; }
+.c08-field textarea { min-height: 86px; resize: vertical; }
+.c08-field small { color: var(--i-muted); font-weight: 400; }
+.c08-field input[readonly] { background: #edf3f6; color: #405d70; }
+.c08-success { border-color: #7bbeb4; background: #edf8f5; }
+.c08-success strong { color: #17695d; font-size: 17px; }
+.c08-success p, .c08-next p { margin-bottom: 0; }
+.c08-next { border-color: #b4ced9; }
+.c08-next .c08-actions { margin-top: 14px; }
+.c08-required-note { padding: 10px 13px; border-left: 3px solid #438dab; background: #f0f6f9; color: #35556a; }
+.c08-more-actions, .c08-file-advanced, .c08-file-detail { margin-top: 14px; }
+.c08-more-actions summary, .c08-file-advanced summary, .c08-file-detail summary { cursor: pointer; color: #126a90; font-weight: 700; }
+.c08-file-primary { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; }
+.c08-file-primary label { min-width: min(100%, 210px); flex: 1; }
+.c08-file-primary button { margin-bottom: 1px; }
+.c08-file-metadata { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+.c08-file-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.c08-file-row > div:last-child { display: flex; flex-wrap: wrap; gap: 8px; }
+.c08-file-row span, .c08-file-detail small { display: block; color: var(--i-muted); }
+.c08-file-detail small { margin-top: 7px; }
+.c08-file-detail ol { margin-bottom: 0; }
+.c08-wide { grid-column: 1 / -1; }
+.c08-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.c08-actions h2, .c08-actions p { flex-basis: 100%; }
+.c08-link-button { display: block; border: 0; background: transparent; color: #116e94; padding: 0; margin: 5px 0; font: inherit; font-weight: 700; cursor: pointer; }
+.c08-facts { display: grid; margin: 0; }
+.c08-facts > div { display: grid; grid-template-columns: minmax(145px, 26%) 1fr; padding: 11px 0; border-bottom: 1px solid var(--i-line); gap: 12px; }
+.c08-facts dt { color: var(--i-muted); }
+.c08-facts dd { margin: 0; overflow-wrap: anywhere; }
+.c08-hint { color: var(--i-muted); font-size: 12px; line-height: 1.6; }
+.c08-summary { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.c08-summary > div { padding: 14px; border: 1px solid var(--i-line); border-radius: 8px; }
+.c08-summary span, .c08-summary strong { display: block; }
+.c08-summary span { color: var(--i-muted); font-size: 12px; }
+.c08-summary strong { margin-top: 7px; font-size: 19px; }
+.c08-asset-name { display: flex; align-items: center; gap: 10px; }
+.c08-cover { display: block; width: 58px; height: 48px; flex: none; border-radius: 7px; object-fit: cover; }
+.c08-cover-empty { display: grid; place-items: center; background: #eaf2f6; color: #597689; font-size: 10px; }
+.asset-detail > .c08-cover { width: min(100%, 360px); height: 180px; }
+@media (max-width: 700px) { .c08-grid { grid-template-columns: 1fr; } .c08-wide { grid-column: auto; } .c08-facts > div { grid-template-columns: 1fr; gap: 3px; } .c08-summary { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 700px) { .c08-file-metadata { grid-template-columns: 1fr; } .c08-file-primary { display: grid; } }
+@media (max-width: 560px) {
+  .c08-asset-list td:nth-child(1)::before { content: '资产名称'; }
+  .c08-asset-list td:nth-child(2)::before { content: '类型与位置'; }
+  .c08-asset-list td:nth-child(3)::before { content: '主要面积'; }
+  .c08-asset-list td:nth-child(4)::before { content: '状态'; }
+  .c08-asset-list td:nth-child(5)::before { content: '关联记录'; }
+  .c08-asset-list td:nth-child(6)::before { content: '更新时间'; }
+  .c08-asset-list td:nth-child(7)::before { content: '操作'; }
+  .c08-rights-list td:nth-child(1)::before { content: '权益结构'; }
+  .c08-rights-list td:nth-child(2)::before { content: '关联资产'; }
+  .c08-rights-list td:nth-child(3)::before { content: '权益类型'; }
+  .c08-rights-list td:nth-child(4)::before { content: '权益总额度'; }
+  .c08-rights-list td:nth-child(5)::before { content: '已确认分配'; }
+  .c08-rights-list td:nth-child(6)::before { content: '发行中预留'; }
+  .c08-rights-list td:nth-child(7)::before { content: '剩余可发行'; }
+  .c08-rights-list td:nth-child(8)::before { content: '状态'; }
+  .c08-rights-list td:nth-child(9)::before { content: '更新时间'; }
+  .c08-rights-list td:nth-child(10)::before { content: '操作'; }
+}

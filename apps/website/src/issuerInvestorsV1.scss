@@ -1,0 +1,31 @@
+.issuer-investors { max-width: 1320px; }
+.issuer-investors .investor-fixture { padding: 10px 14px; border: 1px solid #d7c692; border-radius: 8px; background: #fff8e7; color: #765318; font-size: 13px; }
+.issuer-investors .investor-summary { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; padding: 22px; }
+.issuer-investors .investor-summary > div, .issuer-investors .investor-summary > a { display: grid; gap: 6px; min-width: 0; padding: 12px 15px; border-left: 3px solid var(--ds-brand); background: #f5fafb; text-decoration: none; }
+.issuer-investors .investor-summary span { color: var(--ds-muted); font-size: 13px; }
+.issuer-investors .investor-summary strong { color: var(--ds-ink); font-size: 23px; }
+.issuer-investors .investor-filters { display: flex; gap: 12px; align-items: end; flex-wrap: wrap; padding: 20px; }
+.issuer-investors .investor-filters label { display: grid; gap: 5px; min-width: 150px; color: var(--ds-muted); font-size: 13px; }
+.issuer-investors .investor-filters input, .issuer-investors .investor-filters select { min-height: var(--ds-control-height); max-width: 220px; padding: 8px 10px; border: 1px solid var(--ds-border); border-radius: var(--ds-control-radius); color: var(--ds-ink); background: #fff; }
+.issuer-investors .investor-table-wrap { overflow-x: auto; padding: 0 20px 18px; }
+.issuer-investors table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.issuer-investors th, .issuer-investors td { padding: 13px 11px; border-bottom: 1px solid var(--ds-border); text-align: left; vertical-align: top; }
+.issuer-investors th { color: #22465a; background: #f1f7f9; font-size: 13px; }
+.issuer-investors td small { display: block; color: var(--ds-muted); }
+.issuer-investors a { color: var(--ds-brand); }
+.issuer-investors .investor-copy { display: block; margin-top: 5px; border: 0; background: transparent; color: var(--ds-brand); cursor: pointer; padding: 0; }
+.issuer-investors .investor-panel { display: grid; gap: 17px; padding: 24px; }
+.issuer-investors .investor-panel h2 { margin: 0; font-size: 20px; }
+.issuer-investors .investor-facts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; margin: 0; }
+.issuer-investors .investor-facts > div { padding-top: 10px; border-top: 1px solid var(--ds-border); }
+.issuer-investors .investor-facts dt { color: var(--ds-muted); font-size: 12px; }
+.issuer-investors .investor-facts dd { margin: 5px 0 0; font-weight: 600; overflow-wrap: anywhere; }
+.issuer-investors .investor-status { display: flex; gap: 15px; align-items: center; }
+.issuer-investors .investor-status p { margin: 0; }
+.issuer-investors .investor-relations { display: grid; gap: 10px; }
+.issuer-investors .investor-relations > div { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 15px; padding: 12px; border: 1px solid var(--ds-border); border-radius: 8px; }
+.issuer-investors .investor-relations small { color: var(--ds-muted); }
+.issuer-investors .investor-timeline { margin: 12px 0; padding-left: 22px; }
+.issuer-investors .investor-empty { padding: 28px; }
+.issuer-investors :is(button,a,input,select,summary):focus-visible { outline: 3px solid #66cce0; outline-offset: 2px; }
+@media (max-width: 760px) { .issuer-investors .investor-summary,.issuer-investors .investor-facts { grid-template-columns: 1fr; }.issuer-investors .investor-status { display: block; } }

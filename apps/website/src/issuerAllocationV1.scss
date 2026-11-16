@@ -1,0 +1,23 @@
+.issuer-allocation-tabs { display: flex; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid var(--ds-border); padding-bottom: 8px; }
+.issuer-allocation-tabs button { min-height: 42px; padding: 9px 17px; border: 1px solid transparent; border-radius: 8px; color: var(--ds-ink); background: transparent; cursor: pointer; }
+.issuer-allocation-tabs button[aria-pressed="true"] { background: #e6f6fa; border-color: var(--ds-brand); color: var(--ds-brand); font-weight: 700; }
+.issuer-allocation-list { display: grid; gap: 2px; }
+.issuer-allocation-list article { display: grid; grid-template-columns: minmax(170px,1.5fr) repeat(4,minmax(110px,1fr)) 100px; align-items: center; gap: 12px; border-bottom: 1px solid var(--ds-border); padding: 14px 8px; font-size: 14px; }
+.issuer-allocation-list article span, .issuer-allocation-list article strong { min-width: 0; overflow-wrap: anywhere; }
+.issuer-allocation-checks { margin: 0; padding-left: 22px; }
+.issuer-restriction-panel { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--ds-border); }
+.issuer-restriction-panel h3 { margin: 0 0 8px; font-size: 17px; }
+.issuer-restriction-panel ul { padding-left: 22px; }
+.issuer-restriction-review { display: inline-flex; gap: 8px; align-items: center; margin-left: 12px; font-size: 13px; }
+.issuer-restriction-review select { min-height: 34px; border: 1px solid var(--ds-border); border-radius: 7px; background: #fff; color: var(--ds-ink); }
+.issuer-restriction-drawer { position: fixed; inset: 0; z-index: 80; display: flex; justify-content: flex-end; background: rgb(6 31 51 / 42%); }
+.issuer-restriction-drawer-card { width: min(560px, 100%); height: 100%; overflow: auto; padding: 28px; background: #fff; box-shadow: var(--ds-shadow-lg, -8px 0 28px rgb(6 31 51 / 15%)); display: grid; align-content: start; gap: 13px; }
+.issuer-restriction-drawer-card h3 { margin: 0; font-size: 20px; }
+.issuer-restriction-drawer-card label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
+.issuer-restriction-drawer-card input:not([type="checkbox"]), .issuer-restriction-drawer-card select, .issuer-restriction-drawer-card textarea { width: 100%; min-height: 42px; padding: 9px 11px; border: 1px solid var(--ds-border); border-radius: 8px; font: inherit; background: #fff; color: var(--ds-ink); }
+.issuer-restriction-drawer-card textarea { min-height: 92px; resize: vertical; }
+.issuer-restriction-drawer-card .issuer-restriction-confirm { display: flex; align-items: flex-start; font-weight: 400; }
+.issuer-restriction-drawer-card .issuer-restriction-confirm input { margin-top: 4px; }
+.issuer-allocation :is(button,a,input,select,textarea,summary):focus-visible { outline: 3px solid #66cce0; outline-offset: 2px; }
+@media (max-width: 900px) { .issuer-allocation-list article { grid-template-columns: repeat(2,minmax(0,1fr)); border: 1px solid var(--ds-border); border-radius: 8px; padding: 15px; margin: 5px 0; } .issuer-allocation-list article strong { grid-column: 1 / -1; } }
+@media (max-width: 540px) { .issuer-allocation-list article { grid-template-columns: 1fr; } }

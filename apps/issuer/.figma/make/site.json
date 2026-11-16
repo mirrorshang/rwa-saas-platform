@@ -1,0 +1,10 @@
+{
+  "description": "A mock RWA tokenization workspace for issuers to manage KYB onboarding, assets, offerings, investor orders, token holders, and distributions.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

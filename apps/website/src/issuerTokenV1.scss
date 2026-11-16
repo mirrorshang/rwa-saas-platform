@@ -1,0 +1,6 @@
+.issuer-token { max-width: 1320px; }
+.issuer-token .issuer-allocation-checks { padding-left: 23px; color: var(--ds-ink); }
+.issuer-token .funds-list article:has(details) { grid-template-columns: minmax(145px,1.5fr) repeat(4,minmax(90px,1fr)) 90px; }
+.issuer-token .funds-list article details { grid-column: 1 / -1; color: var(--ds-muted); }
+.issuer-token .funds-list article details ul { padding-left: 22px; }
+@media (max-width: 900px) { .issuer-token .funds-list article:has(details) { grid-template-columns: repeat(2,minmax(0,1fr)); } }

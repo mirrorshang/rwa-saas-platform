@@ -12,7 +12,7 @@
 | `apps/issuer` | React 19、Vite 8、Tailwind 4 独立 Issuer 后台；九模块、详情和本地状态见 `src/App.tsx` / `src/data.ts` |
 | [V1.0 实际产品基线](docs/V1.0/V1.0-PRODUCT-BASELINE.md) | 页面、交互、Mock 与限制 |
 | [Backend Developer PRD](docs/V1.0/V1.0-BACKEND-DEVELOPER-PRD.md) | 架构、实体、接口、状态机、外部服务和验收 |
-| [OpenAPI 3.1 草案](docs/V1.0/openapi.yaml) | 与 Developer PRD 同步的 79 个接口和请求/响应 Schema |
+| [OpenAPI 3.1 草案](docs/V1.0/openapi.yaml) | 与 Developer PRD 同步的 81 个接口和请求/响应 Schema |
 | [SaaS 当前版本归属决策](docs/V1.0/SAAS-VERSION-ALIGNMENT-DECISIONS-2026-11-18.md) | 2026-11-18 已确认的 V1.0/V1.5/V2.0 边界及待决事项 |
 | [193 项及专项功能追溯矩阵](docs/V1.0/V1.0-FEATURE-TRACEABILITY-MATRIX.csv) | 历史版号与当前交付归属；历史原版号不改写 |
 | [V1.5 需求与验收](docs/V1.5/V1.5-REQUIREMENTS-AND-ACCEPTANCE.md) | 前端缺口审计候选与当前版本决策覆盖 |

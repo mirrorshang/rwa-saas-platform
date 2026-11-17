@@ -9,7 +9,7 @@
 ## 0. 本批结论
 
 1. **渠道申请对象是单个 Offering。** 不把 Asset 作为独立申请对象，也不建立第二套 Asset、Instrument 或 Offering。
-2. Asset、Instrument、Project、Issuer 主体资料和披露文件作为该 Offering 的关联资料及版本快照。
+2. Asset、Instrument、Issuer 主体资料和披露文件作为该 Offering 的关联资料；申请记录固定提交时实际展示的必要字段与文件引用快照。Issuer V1.0 不建立独立 Project，也不依赖 Asset/Instrument 通用业务版本历史。
 3. 同一 Asset 下有多个 Offering 时，每个 Offering 独立申请、独立审核、独立展示和独立暂停/下架。
 4. I-67/I-68 融入 Issuer 现有「资产与发行 → 发行管理」，不新增一级导航或二级导航。
 5. P-15/P-16/P-17 归入 P 端「统一投资渠道管理」一级导航，分别承担申请审核（审核通过即触发自动上架）、已上架渠道管理、渠道监控。
@@ -39,7 +39,6 @@
 | 对象 | 在渠道流程中的责任 | 是否为独立申请对象 |
 |---|---|---|
 | Issuer 企业主体 | 申请主体；提供企业身份、商业准入状态和渠道授权 | 否 |
-| Project | 关联项目背景及发行轮次归属 | 否 |
 | Asset | 底层资产资料、权属/估值/运营信息和相关文件来源 | 否 |
 | Instrument | 投资者权益结构、法律权利定义及版本来源 | 否 |
 | Offering | 单轮发行的经济条款、发行窗口、披露和发行发布状态 | **是，唯一渠道申请对象** |
@@ -108,7 +107,7 @@ V 企业自有门户 I-13 保持独立。I-13 不出现 M 渠道申请按钮；V
 |---|---|---|
 | Offering 名称/编号/轮次 | 只读 | 来自原 Offering |
 | Issuer 企业名称 | 只读 | 来自当前 Tenant |
-| Project 编号/名称 | 只读 | 引用原 Project |
+| Issuer 发行项目背景 | 不作为独立业务对象；如有必要仅展示 Offering 已有的发行说明 |
 | Asset 名称/类型/所在地 | 只读 | 引用原 Asset |
 | Instrument 名称/类型/版本 | 只读 | 引用原 Instrument |
 | Offering 发布状态 | 只读 | 引用原 Offering |
@@ -150,6 +149,8 @@ V 企业自有门户 I-13 保持独立。I-13 不出现 M 渠道申请按钮；V
 - 提交结果 Unknown：显示「提交结果待确认」，只允许查询原申请，不允许重复创建申请。
 
 ### 4.5 I-67 提交后状态
+
+申请审核状态与 M 渠道 Listing 状态分别显示。审核通过后系统自动创建 Listing 并上架，不再进入「待发布」。
 
 | 状态 | Issuer 可见信息 | 允许操作 |
 |---|---|---|
@@ -200,7 +201,7 @@ I-68 作为 Issuer「发行管理」内的渠道视图，不新增导航。
 ### 5.3 渠道详情
 
 - 申请基本信息：申请编号、申请版本、提交时间、当前状态。
-- 发行对象：Offering、Project、Asset、Instrument 及引用版本。
+- 发行对象：Offering、Asset、Instrument 及提交时固定的资料引用；不要求独立 Project。
 - 审核记录：审核时间、处理结果、补件意见、拒绝原因、平台操作人/角色摘要。
 - 展示范围：申请地区、平台批准地区、受众范围、当前有效规则版本引用。
 - 渠道状态：上架处理中/展示中/已暂停/已下架/待复核/上架异常及原因；审核通过后系统自动上架，无人工发布环节。
@@ -285,7 +286,7 @@ P-15 采用「审核队列列表 + 申请详情审核工作区」结构。复杂
 
 **C. Offering 与底层资料**
 - Offering 名称、编号、轮次、原发行状态、认购窗口。
-- Project、Asset、Instrument 名称/编号/版本。
+- Asset、Instrument 名称/编号及提交时固定的展示资料快照；不读取独立 Project 或通用业务版本历史。
 - 发行数量、单价、目标募集额及关键权益摘要（只读）。
 - Offering 发布快照与当前版本是否一致。
 - 跳转 Issuer 原 Offering 详情（只读授权范围内）。
@@ -577,7 +578,7 @@ P-17 为渠道运营只读监控与异常入口，不是第二套订单/资金�
 
 | 来源 | 操作 | 目标 | 传递上下文 |
 |---|---|---|---|
-| I Offering 详情 | 申请上架 M | I-67 | 当前 Offering ID、Asset/Instrument/Project 引用和版本 |
+| I Offering 详情 | 申请上架 M | I-67 | 当前 Offering ID、Asset/Instrument 引用及提交快照 |
 | I Offering 列表 | 查看 M 渠道状态 | I-68 | Offering ID |
 | I-67 | 提交申请 | P-15 | Application ID、申请版本、Offering ID |
 | P-15 | 要求补件 | I-67 | 原 Application ID、补件项、原快照版本 |

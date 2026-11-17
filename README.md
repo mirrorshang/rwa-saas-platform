@@ -4,18 +4,21 @@
 
 ## 目录与文档入口
 
+本仓库当前审计范围为官网 Website + 企业 SaaS（Issuer）。SaaS V1.0/V1.5 为企业 SaaS 自身版本；V2.0 是跨产品端统一需求池。企业投资者平台、总投资者平台、平台总管理后台不在本轮版本决策范围，各自独立规划 V1.0。
+
 | 路径 | 用途 |
 |---|---|
 | `apps/website` | React 19、TanStack Router、Vite 6 官网和演示邮箱登录；正式路由见 `src/main.tsx` |
 | `apps/issuer` | React 19、Vite 8、Tailwind 4 独立 Issuer 后台；九模块、详情和本地状态见 `src/App.tsx` / `src/data.ts` |
 | [V1.0 实际产品基线](docs/V1.0/V1.0-PRODUCT-BASELINE.md) | 页面、交互、Mock 与限制 |
 | [Backend Developer PRD](docs/V1.0/V1.0-BACKEND-DEVELOPER-PRD.md) | 架构、实体、接口、状态机、外部服务和验收 |
-| [OpenAPI 3.1 草案](docs/V1.0/openapi.yaml) | 与 Developer PRD 同步的 85 个接口和请求/响应 Schema |
-| [193 项及专项功能追溯矩阵](docs/V1.0/V1.0-FEATURE-TRACEABILITY-MATRIX.csv) | 历史版号与当前归属；193 原项 + 11 后续批准项 |
-| [V1.5 需求与验收](docs/V1.5/V1.5-REQUIREMENTS-AND-ACCEPTANCE.md) | 原 V1 前端未证实完整的功能及范围冲突 |
-| [V2 统一需求池](docs/V2/V2-UNIFIED-REQUIREMENTS-POOL.md) | 原 V2/V3/TBD 47 项，保留原版号 |
+| [OpenAPI 3.1 草案](docs/V1.0/openapi.yaml) | 与 Developer PRD 同步的 81 个接口和请求/响应 Schema |
+| [SaaS 当前版本归属决策](docs/V1.0/SAAS-VERSION-ALIGNMENT-DECISIONS-2026-11-18.md) | 2026-11-18 已确认的 V1.0/V1.5/V2.0 边界；七项增强需求已统一后置 V2.0 |
+| [193 项及专项功能追溯矩阵](docs/V1.0/V1.0-FEATURE-TRACEABILITY-MATRIX.csv) | 历史版号与当前交付归属；历史原版号不改写 |
+| [V1.5 需求与验收](docs/V1.5/V1.5-REQUIREMENTS-AND-ACCEPTANCE.md) | 资产/权益/Offering、官网联系、门户 Logo、**Issuer 统一投资平台上架申请**等当前批准范围 |
+| [V2 统一需求池](docs/V2/V2-UNIFIED-REQUIREMENTS-POOL.md) | 原 47 项历史追溯及已确认的 19 项补充需求 |
 
-历史批准文档在远端 `archive/docs-before-final-handover-20261116`（源于 `docs/r2-current-product-baseline` @ `ae9762cf48f5130846f57edc6b64e3e4416ad271`）；源分支 `codex/v1-final-frontend-integration-20261116` 保留原始前端及旧说明。Frozen、DEC、SCOPE 原文未修改。先读本 README、V1.0 产品基线和 Backend Developer PRD，再按追溯矩阵查历史决策。旧 R2 文档的 W/I/V/M/P 范围、目录和模板与本轮三部分交付有冲突，已在 PRD 第 16 节列为待产品确认。
+历史批准文档在远端 `archive/docs-before-final-handover-20261116`（源于 `docs/r2-current-product-baseline` @ `ae9762cf48f5130846f57edc6b64e3e4416ad271`）；源分支 `codex/v1-final-frontend-integration-20261116` 保留原始前端及旧说明。Frozen、DEC、SCOPE 原文未修改。先读本 README、V1.0 产品基线和 Backend Developer PRD，再按追溯矩阵查历史决策。旧 R2 文件的五端范围及资产目录与当前 Website + Issuer 交付口径不同，现已在 V1.0 基线与功能矩阵按端拆分：Issuer 自愿申请统一投资平台上架属于 SaaS V1.5；平台总后台独立 V1.0 审核通过即自动上架 M，P-16 仅管理上架后的渠道状态；统一平台展示/投资者功能属于总投资者平台独立 V1.0；原历史 DEC 保留不改。不再将这些范围差异标记为本轮未决。
 
 ## 本地运行
 
@@ -45,6 +48,6 @@ Issuer 没有独立自动化测试脚本；website 测试包含旧 Issuer 原型
 
 ## 后端开发起点与生产前置
 
-先实现安全邮箱 OTP、一次性跨应用会话交换、单账号单企业与租户隔离，再建 KYB/订阅/Entitlement、Asset/Instrument/Project/Offering 和版本主账。随后接投资者 KYC、订单、OP Mainnet USDT 付款与最终性、配售/法定名册、Token、收益与资金结算。所有外部接入采用可替换 Adapter；未选定 Provider、法域/法律责任、托管与合约审计、钱包/Signer、真实密钥、环境及生产准入均须确认。未经独立授权不得运行真实支付、法定登记或链上写操作。
+先实现安全邮箱 OTP、一次性跨应用会话交换、单账号单企业与租户隔离，再建 KYB/订阅/Entitlement、Asset/Instrument/Offering 基础主账（V1.0 不设独立 Project/业务版本历史）。随后接投资者强制 KYC、订单、OP Mainnet USDT 付款与最终性、配售/法定名册、Token、收益与资金结算；Project、版本历史和通用历史快照进入 V2.0 统一需求池。所有外部接入采用可替换 Adapter；未选定 Provider、法域/法律责任、托管与合约审计、钱包/Signer、真实密钥、环境及生产准入均须确认。未经独立授权不得运行真实支付、法定登记或链上写操作。
 
 本分支是工程资料交付，不代表业务代码、生产环境或整体产品 Frozen。变更须在独立分支和 PR 审查；不得直接修改 main、历史批准原文或现有 PR 状态。

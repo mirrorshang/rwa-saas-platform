@@ -12,7 +12,7 @@
 | [Backend Developer PRD](docs/V1.0/V1.0-BACKEND-DEVELOPER-PRD.md) | 架构、实体、接口、状态机、外部服务和验收 |
 | [OpenAPI 3.1 草案](docs/V1.0/openapi.yaml) | 与 Developer PRD 同步的 85 个接口和请求/响应 Schema |
 | [193 项及专项功能追溯矩阵](docs/V1.0/V1.0-FEATURE-TRACEABILITY-MATRIX.csv) | 历史版号与当前归属；193 原项 + 11 后续批准项 |
-| [V1.5 需求与验收](docs/V1.5/V1.5-REQUIREMENTS-AND-ACCEPTANCE.md) | 原 V1 前端未证实完整的功能及范围冲突 |
+| [V1.5 Issuer 前端 PRD](docs/V1.5/V1.5-ISSUER-FRONTEND-PRD.md) | 九模块源码审查、八资产模板、三权益结构与历史 42 项归属 |
 | [V2 统一需求池](docs/V2/V2-UNIFIED-REQUIREMENTS-POOL.md) | 原 V2/V3/TBD 47 项，保留原版号 |
 
 历史批准文档在远端 `archive/docs-before-final-handover-20261116`（源于 `docs/r2-current-product-baseline` @ `ae9762cf48f5130846f57edc6b64e3e4416ad271`）；源分支 `codex/v1-final-frontend-integration-20261116` 保留原始前端及旧说明。Frozen、DEC、SCOPE 原文未修改。先读本 README、V1.0 产品基线和 Backend Developer PRD，再按追溯矩阵查历史决策。旧 R2 文档的 W/I/V/M/P 范围、目录和模板与本轮三部分交付有冲突，已在 PRD 第 16 节列为待产品确认。

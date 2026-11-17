@@ -246,6 +246,8 @@ Issuer 的 Offering 发布状态、P 的渠道审核状态、M 的展示状态�
 
 ## 12. 下一阶段详细设计顺序
 
+**当前推进状态（2026-11-17）：**第一批 P-01～P-06 已形成 UI-Ready 产品规格 Draft v0.1，详见[平台工作台与发行机构管理 UI-Ready PRD](PLATFORM-ADMIN-P01-P06-ISSUER-CUSTOMER-TENANT-UI-READY-PRD-DRAFT-v0.1.md)。该文档尚未批准、未进入前端开发。
+
 平台总后台总体架构确认后，按依赖和业务优先级推进 UI-Ready 逐页 PRD：
 
 | 顺序 | 模块 | 设计范围 | 原因 |

@@ -6682,7 +6682,7 @@
                 },
                 "example": {
                   "correlation_id": "req-001",
-                  "status": "Draft",
+                  "status": "Confirmed",
                   "gate_results": {},
                   "offering_id": "00000000-0000-4000-8000-000000000001"
                 }
@@ -6851,7 +6851,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "成功",
             "content": {
               "application/json": {
@@ -6882,7 +6882,7 @@
                 "example": {
                   "correlation_id": "req-001",
                   "offering_id": "00000000-0000-4000-8000-000000000001",
-                  "status": "Draft"
+                  "status": "Paused"
                 }
               }
             }
@@ -7042,7 +7042,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "成功",
             "content": {
               "application/json": {
@@ -7073,7 +7073,7 @@
                 "example": {
                   "correlation_id": "req-001",
                   "offering_id": "00000000-0000-4000-8000-000000000001",
-                  "status": "Draft"
+                  "status": "Closed"
                 }
               }
             }

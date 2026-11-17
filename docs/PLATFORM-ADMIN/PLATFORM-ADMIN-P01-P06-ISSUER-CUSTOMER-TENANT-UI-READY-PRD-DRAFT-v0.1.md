@@ -34,8 +34,8 @@
 | DEC-026 / M03-F001 | P可审核SaaS买方商业KYB、补件和复核；KYB通过不等于Issuer的资产/证券/Offering获准发行 |
 | DEC-026 / M03-F002 | P可在授权范围管理Tenant开通、暂停、恢复和服务异常；M01是Tenant/商业授权唯一事实，P不建立第二套Tenant主账 |
 | DEC-026 / M03-F005 | 默认只见最小必要资料；敏感原件必须走独立受控访问申请、审批、限时授权、撤销与审计，不在普通列表或详情中直接下载 |
-| DEC-018 / DEC-019 | 邮箱验证即可创建受限Trial Tenant；14个自然日，无需预绑付款方式，不自动扣费；Trial到期后只读及30天恢复窗口；正式Standard商业付款前必须完成适用KYB；首期只有一个Standard付费套餐 |
-| DEC-019 | Trial与Paid共用同一个Tenant身份；转正不得新建Tenant；Free为独立的长期免费层，不受14天Trial倒计时影响 |
+| DEC-037（覆盖旧Trial时限） | 当前商业版本仅永久Free与付费Standard；Free无14天到期或30天恢复窗口；Standard按月/年付，商业KYB、合同、商业付款和生产启用分别校验 |
+| DEC-037 | Free升级Standard沿用同一Tenant；Free永久有效；Sandbox模拟事实不能通过改状态转为真实生产事实 |
 | DEC-034 R01 | 平台只管理SaaS商业权限与受控服务，不控制Issuer资金、法定登记、Token、收益或Signer |
 | DEC-034 R02 | 页面按钮/前端隐藏不等于授权；所有敏感访问与跨Tenant访问均需服务端守卫（本批仅设计产品行为） |
 | DEC-034 R03 | 商业付款/订阅状态Unknown时先查原Intent，不盲目重扣；任务完成不等于商业付款或Tenant权益已完成 |
@@ -47,8 +47,8 @@
 |---|---|---|
 | SaaS客户 | 购买或申请使用RWA SaaS的企业客户，是平台商业关系主体 | 不自动等于每个Offering的法定发行主体 |
 | 商业KYB | 平台对SaaS买方及其代表的商业准入核验 | 不等于证券发行许可、资产权属审查、投资者KYC或Offering合法性审批 |
-| Tenant | 一个企业在SaaS中的唯一隔离工作空间 | Trial转Standard不新建Tenant；同企业多个账号也不默认多Tenant |
-| 套餐/商业权益 | Free、Trial、Standard及其有效期、能力、配额 | 不等于发行准入、资金授权或链上权限 |
+| Tenant | 一个企业在SaaS中的唯一隔离工作空间 | Free升级Standard不新建Tenant；同企业多个账号也不默认多Tenant |
+| 套餐/商业权益 | 永久Free、付费Standard及其有效期、能力、配额 | 不等于发行准入、资金授权或链上权限 |
 | Tenant服务状态 | Tenant当前能否使用SaaS服务，以及受限/暂停/恢复状态 | 不等于底层链合约暂停或真实金融义务终止 |
 | 商业账单/付款 | 企业向SaaS平台支付的订阅费用 | 与投资者向Offering支付的认购款、退款、收益/本金完全分离 |
 
@@ -116,8 +116,8 @@
 |---|---|---|
 | SaaS客户总数 | 当前平台可见的已创建客户记录去重数；不包含M/V投资者账户 | 跳转P-02全部客户 |
 | 待商业KYB审核 | 已提交且尚未得到最终商业KYB结论的申请数；补件待客户提交与外部核验Unknown单独标识 | 跳转P-02并筛选待审核/待补件/待核实 |
-| Trial试用中 | 当前14天试用期内且服务可用的Tenant数；Free不计入Trial | 跳转P-04筛选Trial有效 |
-| Trial恢复窗口 | Trial已到期且仍处于30天恢复窗口的Tenant数 | 跳转P-04筛选试用到期/恢复窗口 |
+| Free有效 | 当前处于永久Free且服务可用的Tenant数 | 跳转P-04筛选Free有效 |
+| Standard有效 | 当前Standard商业权益有效的Tenant数 | 跳转P-04筛选Standard有效 |
 | Standard服务受限 | Standard因商业欠费、异常或受权暂停而受限的Tenant数；不含已终止但依法保留查询/交接能力的历史记录 | 跳转P-04筛选Standard受限 |
 | 商业收费待核实 | 商业付款状态Unknown或付款确认与权益同步不一致的账单数 | 跳转P-06筛选待核实 |
 
@@ -131,7 +131,7 @@
 
 | 字段 | 展示 |
 |---|---|
-| 事项类型 | 商业KYB待审核／客户补件待复核／Tenant开通异常／Trial恢复申请／商业收费Unknown／权益同步异常 |
+| 事项类型 | 商业KYB待审核／客户补件待复核／Tenant开通异常／Free升级Standard申请／商业收费Unknown／权益同步异常 |
 | 关联客户 | SaaS客户名称 |
 | 关联对象 | 客户申请ID、Tenant ID或商业账单ID |
 | 当前状态 | 对应领域状态中文标签 |
@@ -195,7 +195,7 @@
 |---|---|---|
 | 搜索 | 输入框 | 支持客户名称、客户编号、企业商务邮箱；不支持身份证件号等高敏字段搜索 |
 | KYB状态 | 单选下拉 | 全部、未提交、待审核、审核中、待补件、已通过、已拒绝、待核实 |
-| Tenant状态 | 单选下拉 | 全部、Trial试用中、Trial只读恢复期、Free有效、Standard有效、Standard受限、人工暂停、状态待核实 |
+| Tenant状态 | 单选下拉 | 全部、Free有效、Standard有效、Standard受限、人工暂停、状态待核实 |
 | 套餐 | 单选下拉 | 全部、Trial、Free、Standard |
 | 所在国家/地区 | 下拉/搜索选择 | 取客户已提交的注册国家/地区；未填写显示「未提供」 |
 | 注册时间 | 日期范围 | 按客户首次创建时间筛选 |
@@ -275,7 +275,7 @@
 | 当前KYB状态 | 待审核、审核中、待补件、已通过、已拒绝、待核实、已失效 |
 | 提交时间 | 最近一次完整提交时间 |
 | 当前审核人 | 已分配审核员；未分配显示「待分配」 |
-| 申请套餐 | Trial/Standard意向；只作为商业申请信息，不代表已开通 |
+| 申请套餐 | Standard升级意向（如适用）；只作为商业申请信息，不代表已开通 |
 | 最近更新时间 | 资料或审核状态最近变化时间 |
 
 ### 5.4 企业主体资料字段
@@ -384,13 +384,13 @@
 
 ### 5.12 页面验收场景
 
-1. Trial客户未提交KYB：P-02可见客户与Trial Tenant；P-03显示未提交，不阻断其试用登录。
+1. Free客户未提交KYB：P-02可见客户与Free Tenant；P-03显示未提交，不阻断其Sandbox体验。
 2. 客户提交KYB：P-03显示待审核，材料目录与提交时间正确。
 3. 审核员要求补件：状态变待补件，原因可见，客户收到通知；原申请和文件版本保留。
 4. 客户补件后重提：原版本保留，新版本成为当前审核版本。
 5. 外部核验Unknown：页面保持待核实，不出现通过按钮或成功状态。
 6. KYB通过：仅商业KYB状态变已通过；Tenant仍按商业合同/付款Gate决定是否Standard。
-7. 商业KYB拒绝：保留Trial与审核证据，不直接删除Tenant。
+7. 商业KYB拒绝：保留原Free Tenant与审核证据，不直接删除Tenant。
 8. 无权限访问原件：P-03仅见材料元数据；必须跳转P-11申请受控访问。
 9. 不同Tenant用户访问申请详情：服务端拒绝，页面不泄露客户名称、附件或历史。
 10. 审核期间资料版本更新：旧页面提交被阻断，提示刷新后重新核验。
@@ -405,7 +405,7 @@
 
 - 标题：发行机构管理；二级页签：企业客户、Tenant服务、商业收费异常。
 - 当前页标题：Tenant服务。
-- 顶部轻量统计：Trial有效、Trial恢复窗口、Free有效、Standard有效、受限/暂停、状态待核实。
+- 顶部轻量统计：Free有效、Standard有效、Standard受限、KYB待审核、商业收费待核实、状态待核实。
 - 搜索与筛选区。
 - Tenant列表。
 - 点击行进入P-05详情。
@@ -416,7 +416,7 @@
 |---|---|---|
 | 搜索 | 输入框 | Tenant编号、SaaS企业名称、客户编号 |
 | 套餐 | 下拉 | 全部、Trial、Free、Standard |
-| 服务状态 | 下拉 | 全部、开通中、Trial有效、Trial只读恢复期、Free有效、Standard有效、Standard受限、人工暂停、状态待核实 |
+| 服务状态 | 下拉 | 全部、开通中、Free有效、Standard有效、Standard受限、人工暂停、状态待核实 |
 | KYB状态 | 下拉 | 全部、未提交、待审核、待补件、已通过、已拒绝、待核实 |
 | 商业付款状态 | 下拉 | 全部、未开始、处理中、已确认、失败、Unknown |
 | 订阅周期 | 下拉 | 全部、月付、年付、不适用 |
@@ -429,12 +429,12 @@
 | 1 | Tenant编号 | 唯一Tenant标识 |
 | 2 | 企业名称 | SaaS客户当前名称 |
 | 3 | 套餐 | Trial／Free／Standard |
-| 4 | 商业权益状态 | 试用中、试用到期恢复期、Free有效、Standard有效、待转正、逾期/争议 |
+| 4 | 商业权益状态 | Free永久有效、Standard有效、待转正、逾期/争议 |
 | 5 | Tenant服务状态 | 开通中、正常、受限、人工暂停、只读恢复期、状态待核实 |
 | 6 | KYB状态 | 商业KYB独立状态 |
 | 7 | 商业付款状态 | 只显示SaaS商业账单状态，不显示投资者认购款 |
-| 8 | 订阅周期 | 月付/年付；Free/Trial显示不适用 |
-| 9 | 有效期/恢复截止 | Trial到期时间或恢复窗口截止；Free显示「长期有效」；Standard显示当前订阅周期 |
+| 8 | 订阅周期 | 月付/年付；Free显示不适用 |
+| 9 | 有效期/恢复截止 | Free显示「长期有效」；Standard显示当前订阅周期 |
 | 10 | 最近更新时间 | M01最近状态更新时间 |
 | 11 | 风险/待办 | 受限原因类别、Unknown或待处理事项摘要 |
 | 12 | 操作 | 查看详情 |
@@ -443,11 +443,11 @@
 
 | 套餐 | 商业规则 | 列表表达 |
 |---|---|---|
-| Trial | 14个自然日，自首次激活起算；无需预绑支付方式，不自动扣费；到期后30天恢复窗口 | 显示起止时间与剩余/已过天数；到期后显示只读恢复期 |
-| Free | 0费用的长期免费层，不按14天Trial到期 | 显示「Free有效／长期有效」；不得自动转TrialExpired |
-| Standard | 首期唯一正式付费套餐，月付/年付；正式商业付款前需KYB通过 | 显示套餐、账单周期、当前订阅期间及商业付款状态 |
+| Free | 永久免费，不设置14天到期或恢复窗口；可使用绝大部分SaaS Sandbox配置与模拟能力，真实生产动作不可用 | 显示「Free有效／长期有效」；不显示倒计时或到期日 |
+| Standard | 付费套餐，月付/年付；商业KYB、合同与付款满足后获得商业权益，真实生产动作仍需独立Gate | 显示套餐、账单周期、订阅期间及商业付款状态 |
+| Standard | V1唯一付费套餐，月付/年付；正式商业付款前需KYB通过，真实生产动作仍需独立Gate | 显示套餐、账单周期、当前订阅期间及商业付款状态 |
 
-服务状态是另一维度：即使套餐为Standard，也可能因欠费、商业争议或安全原因受限；即使Trial到期，也不得与Paid有真实金融义务的保护状态混为一谈。
+服务状态是另一维度：即使套餐为Standard，也可能因欠费、商业争议或安全原因受限；Free永久有效，但仍可因安全、滥用或依法依据受限。Standard失效或降级不得抹除既有真实金融义务。
 
 ### 6.6 列表行为
 
@@ -459,11 +459,10 @@
 
 ### 6.7 页面验收场景
 
-1. Free Tenant长期存在：显示Free有效，不出现Trial倒计时和到期日期。
-2. Trial有效：显示14天期限及剩余时间。
-3. Trial到期：显示只读恢复窗口及截止时间，不显示Paid逾期。
-4. Standard有效：显示月付/年付和有效周期。
-5. Standard付款Unknown：商业付款列待核实，不能显示Standard已生效（除非M01已有独立有效授权状态）。
+1. Free Tenant永久有效：显示Free有效，不出现到期倒计时、恢复窗口或自动只读。
+2. Free升级Standard：沿用原Tenant，不新建Tenant；Sandbox模拟数据不得转为真实生产记录。
+3. Standard有效：显示月付/年付和有效周期。
+4. Standard付款Unknown：商业付款列待核实，不能显示Standard已生效（除非M01已有独立有效授权状态）。
 6. Tenant被人工暂停：服务状态与套餐状态分别显示。
 7. Tenant有未结真实义务：列表仅显示「需保留服务/交接」提示，不泄露具体投资者或金融数据。
 8. 列表数据延迟：显示最后更新时间和部分数据不可用提示。
@@ -490,7 +489,7 @@
 - Tenant编号
 - SaaS客户名称
 - 创建时间
-- 当前套餐（Trial/Free/Standard）
+- 当前套餐（Free/Standard）
 - 商业权益状态
 - Tenant服务状态
 - 商业KYB状态
@@ -514,7 +513,7 @@
 
 | 字段 | 说明 |
 |---|---|
-| 套餐 | Trial/Free/Standard |
+| 套餐 | Free/Standard |
 | 套餐版本 | 关联M19当前生效能力版本 |
 | 订阅周期 | 月付/年付/不适用 |
 | 商业合同状态 | 未签署、待生效、有效、到期、争议；按M01来源显示 |
@@ -522,7 +521,6 @@
 | 账单金额 | 按平台统一金额单位U展示；不在此编辑价格 |
 | 商业付款状态 | 未开始、处理中、已确认、失败、Unknown |
 | 订阅开始/结束 | 按M01权威时间显示 |
-| Trial恢复截止 | Trial过期后30天恢复窗口的截止时间；仅适用Trial |
 | 能力摘要 | 只读显示当前套餐实际授权能力与来源版本 |
 
 ### 7.6 Tenant服务能力摘要
@@ -534,7 +532,7 @@
 - 资产/Offering准备能力状态。
 - 投资者门户配置/预览/发布授权状态（仅摘要）。
 - 真实发行/真实认购/资金/Token能力状态（只显示是否具备独立Gate，不展示执行密钥）。
-- 受限原因及来源（商业欠费、Trial到期、平台安全暂停、状态Unknown）。
+- 受限原因及来源（商业欠费、Standard到期/降级、平台安全暂停、状态Unknown）。
 
 能力实际生效以M01/M19及相关业务Gate为准；P-05不能用手工开关替代M19或发行合法Gate。
 
@@ -558,7 +556,6 @@
 |---|---|---|---|
 | 查看Tenant服务详情 | 有Tenant只读权限 | 无 | 只读 |
 | 重新核对状态 | 原状态或Provider同步存在Unknown，且查询能力可用 | 展示原Tenant/账单/Intent引用，不生成新对象 | 查询原权威状态；不得新建Tenant或重复收费 |
-| 恢复Trial | 仍在30天恢复窗口且KYB/合同/付款等适用条件满足；M01确认原Tenant可恢复 | 显示恢复依据、原Tenant ID、恢复后能力 | 受权恢复原Tenant；不得重建新Tenant |
 | 开通/恢复Standard服务 | M01已确认KYB通过、合同有效、商业付款已确认及其他必要Gate | 显示套餐、订阅周期、账单引用、服务影响 | 同一Tenant开启对应商业权益；若任何状态Unknown则阻断 |
 | 暂停Tenant商业服务 | 具备暂停权限；原因明确；影响范围确认；必要审批已完成 | 选择原因、范围、开始时间（立即/指定时间仅在支持时）、通知对象及保护性义务检查 | 限制新增SaaS业务；保留历史业务与依法必须履行的服务 |
 | 恢复人工暂停 | 原暂停原因已解除，且操作者有权 | 显示原暂停原因、解除依据、受影响能力 | 恢复受限SaaS服务；保留原暂停记录 |
@@ -592,12 +589,11 @@
 
 ### 7.12 页面验收场景
 
-1. Trial到期：显示只读恢复窗口，不能套用Paid欠费处理。
-2. Trial恢复窗口内KYB/合同/付款条件满足：恢复同一Tenant，Tenant ID不变。
-3. Trial恢复窗口过期：恢复按钮不可用；只提供政策允许的查询/导出/支持路径。
-4. Free Tenant：不显示订阅到期、逾期或自动暂停提示。
-5. Standard付款Unknown：阻断开通/恢复Standard；显示原账单核查入口。
-6. Standard商业付款已确认但能力未同步：P-05提示转P-06核查，不允许人工直接改套餐状态。
+1. Free Tenant：长期有效，不显示订阅到期、逾期或自动暂停提示。
+2. Free升级Standard：沿用同一Tenant，不新建Tenant或迁移Sandbox事实为生产事实。
+3. Standard付款Unknown：阻断开通/恢复Standard；显示原账单核查入口。
+4. Standard商业付款已确认但能力未同步：P-05提示转P-06核查，不允许人工直接改套餐状态。
+5. Standard到期/降级：按商业规则限制新增能力，但保留既有真实业务义务、必要查询和交接。
 7. 人工暂停：必须有原因、影响范围和审计记录；暂停不删除资产、订单、资金、Token、持有人或收益历史。
 8. 保护性义务待核实：阻断永久关闭/删除；允许按规则限制新增非必要业务。
 9. 恢复人工暂停：保留暂停和恢复两条独立事件。
@@ -780,13 +776,13 @@ KYB未通过、合同无效或状态Unknown时，不允许将付款状态转换�
 
 | 演示对象 | 关键状态 | 验收用途 |
 |---|---|---|
-| Northstar Property Holdings | Trial有效、KYB未提交 | 验证注册与KYB分离、Trial可正常使用 |
-| Meridian Industrial Assets | KYB待审核、Trial有效 | 验证P-02/P-03审核队列 |
+| Northstar Property Holdings | Free有效、KYB未提交 | 验证Free Sandbox与KYB分离 |
+| Meridian Industrial Assets | KYB待审核、Free有效 | 验证P-02/P-03审核队列 |
 | Cedar Bridge Capital | KYB待补件 | 验证补件、版本历史与通知 |
 | Atlas Receivables Ltd. | KYB已通过、Standard付款已确认、权益同步失败 | 验证P-06权益恢复但不重复扣款 |
-| Harbor Living Group | Free长期有效 | 验证Free不被Trial倒计时误处理 |
+| Harbor Living Group | Free长期有效 | 验证Free永久有效、不出现到期处理 |
 | Summit Logistics Holdings | Standard有效 | 验证正常付费Tenant |
-| Blue Ridge Holdings | Trial已到期、处于30天恢复窗口 | 验证Trial只读与恢复 |
+| Blue Ridge Holdings | Free有效、Standard升级申请待处理 | 验证Free升级Standard沿用原Tenant |
 | Silverline Infrastructure | Standard商业服务受限、存在需保护义务 | 验证商业服务限制不抹除真实义务 |
 | Pinecrest Renewables | 商业付款Unknown | 验证原Intent查询与防重复扣款 |
 
@@ -817,8 +813,8 @@ KYB未通过、合同无效或状态Unknown时，不允许将付款状态转换�
 - [ ] KYB通过不自动激活Standard。
 
 ### P-04 Tenant列表
-- [ ] Trial 14天与Free长期有效分开。
-- [ ] Trial到期30天恢复窗口清楚。
+- [ ] Free永久有效，不出现Trial倒计时/到期或恢复窗口。
+- [ ] Free升级Standard沿用原Tenant，Sandbox模拟事实不转生产。
 - [ ] Standard套餐、付款状态和服务状态分开。
 - [ ] Tenant ID唯一，不因转正重建。
 - [ ] 列表不提供高风险快捷操作。
@@ -827,7 +823,7 @@ KYB未通过、合同无效或状态Unknown时，不允许将付款状态转换�
 - [ ] 展示套餐、合同、KYB、商业付款和服务状态。
 - [ ] 开通/恢复必须满足KYB、合同、付款等Gate。
 - [ ] 暂停必须有原因、范围、审批和审计。
-- [ ] Trial到期与Paid逾期采用不同保护规则。
+- [ ] Standard到期/降级与Free永久有效规则分开；既有真实义务不受影响。
 - [ ] 真实存续义务和证据不得因商业暂停/退租消失。
 - [ ] Unknown阻断不可逆操作。
 - [ ] 退出交接未完成时不得最终关闭/删除。
@@ -846,9 +842,8 @@ KYB未通过、合同无效或状态Unknown时，不允许将付款状态转换�
 
 1. KYB不同国家/地区的具体材料清单、法定代表/授权代表核验标准及有效期。
 2. 商业KYB拒绝后的申诉/重新提交次数和期限。
-3. 14天试用计时精度、时区、试用反滥用策略与重复企业识别。
+3. Free资源额度、Sandbox使用限制、滥用控制与Standard套餐能力配额的具体数值。
 4. Standard套餐价格、税费、发票、支付Provider、商业支付渠道及失败/争议的正式处理合同。
-5. Trial恢复窗口到期后的具体数据留存、导出与删除期限；30天不是所有金融数据的法定删除期限。
 6. Paid欠费宽限期、自动续费失败、暂停时间与恢复条件的精确数值。
 7. 高风险暂停/恢复是否双人审批及具体阈值。
 8. P端实际角色码、服务端RBAC、跨Tenant授权策略、敏感资料存储与导出机制。
@@ -861,7 +856,7 @@ KYB未通过、合同无效或状态Unknown时，不允许将付款状态转换�
 
 - P-01～P-06六组页面的UI-Ready产品规格已形成Draft。
 - 正式功能ID仍为M03-F001、M03-F002、M01-F004/F005/F006/F007/F008及M17/M19/M20等既有依赖；不新增ID、不调整版本。
-- 14天Trial、30天恢复窗口、Free长期有效、单一Standard月/年订阅、KYB先于正式商业付款、商业收费与投资者认购款分离均按历史批准规则执行。
+- 现行商业模式为永久Free与付费Standard；旧14天Trial和30天恢复窗口已由DEC-037明确废止。Free/Standard能力隔离、KYB/合同/商业付款、Standard订阅和生产Gate分离、商业收费与投资者认购款分离按现行批准规则执行。
 - 真实业务事实仍由M01及各原领域负责；P只提供受权运营入口。
 - 本批尚未获用户逐项批准，PR保持Draft/Open/Unmerged；不进入前端开发、后端/API/数据库或生产服务接入。
 
@@ -870,7 +865,8 @@ KYB未通过、合同无效或状态Unknown时，不允许将付款状态转换�
 - [S04-08 平台运营完整设计 Approved v0.1](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/docs/03-product-prd/RWA-SaaS-Step-04-S04-08-Platform-Operations-Approved-v0.1.md)
 - [DEC-026｜M03-F001/F002/F005批准](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-026-step04-s0408-platform-operations-approved.md)
 - [DEC-018｜Issuer基础工作台批准](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)
-- [DEC-019｜14天Trial、KYB与订阅批准](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-019-step04-s0401-trial-kyb-subscription-supplement-approved.md)
+- [DEC-019｜旧14天Trial历史规则（已由DEC-037覆盖）](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-019-step04-s0401-trial-kyb-subscription-supplement-approved.md)
+- [DEC-037｜永久Free/Standard双版本，明确废止Trial时限](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)
 - [S04-01 Issuer基础、试用及订阅完整设计 Approved v0.2](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/docs/03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Trial-Subscription-Approved-v0.2.md)
 - [DEC-034｜平台后台R01～R06批准](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-034-step05-05-r01-06-platform-global-controls-product-rules-approved.md)
 - [Step05-05平台后台产品级PRD Approved v0.2](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/docs/03-product-prd/RWA-SaaS-Step-05-05-Platform-Operations-Global-Controls-Product-PRD-Approved-v0.2.md)

@@ -15,7 +15,7 @@
 | P-01 | 平台运营工作台 | M03-F001、M03-F002、M17-F001 | 聚合客户/KYB/Tenant/收费异常与待办，只读总览和导航 |
 | P-02 | SaaS企业客户列表／申请队列 | M03-F001；M01客户/KYB事实 | 平台SaaS买方列表、筛选、查看客户及申请 |
 | P-03 | 商业KYB申请详情／补件／复核 | M03-F001；M01、M22-F001、M17-F002 | 商业客户KYB审核、补件、复核、审核历史 |
-| P-04 | Tenant列表／服务状态 | M03-F002；M01-F004 | 查看Trial、Free、Standard及服务状态，不复制Tenant主账 |
+| P-04 | Tenant列表／服务状态 | M03-F002；M01-F004 | 查看Free、Standard及服务状态，不复制Tenant主账 |
 | P-05 | Tenant详情／订阅授权／暂停恢复与移交 | M03-F002；M01-F005/F006/F007、M17、M19、M20 | 查看商业权益和服务状态，受权执行开通、暂停、恢复与退出交接 |
 | P-06 | SaaS商业收费异常／权益恢复 | M01-F008、M17-F003 | 只处理SaaS订阅商业账单异常，不触碰投资者认购款 |
 
@@ -170,7 +170,7 @@
 | 无待处理事项 | 显示「当前没有待处理事项」 |
 | 单个数据源不可用 | 对应卡片显示「暂不可用」，其他卡片正常展示；提示数据不完整 |
 | 当前账号无KYB权限 | 不显示KYB待办和详情入口 |
-| 点击Trial卡片 | P-04自动筛选Trial有效Tenant |
+| 点击Free有效卡片 | P-04自动筛选Free Tenant |
 | 点击商业收费待核实 | P-06自动筛选Unknown/权益同步异常 |
 | 任意卡片数据过期 | 明确显示最后更新时间，不标记实时 |
 
@@ -196,7 +196,7 @@
 | 搜索 | 输入框 | 支持客户名称、客户编号、企业商务邮箱；不支持身份证件号等高敏字段搜索 |
 | KYB状态 | 单选下拉 | 全部、未提交、待审核、审核中、待补件、已通过、已拒绝、待核实 |
 | Tenant状态 | 单选下拉 | 全部、Free有效、Standard有效、Standard受限、人工暂停、状态待核实 |
-| 套餐 | 单选下拉 | 全部、Trial、Free、Standard |
+| 套餐 | 单选下拉 | 全部、Free、Standard |
 | 所在国家/地区 | 下拉/搜索选择 | 取客户已提交的注册国家/地区；未填写显示「未提供」 |
 | 注册时间 | 日期范围 | 按客户首次创建时间筛选 |
 | 更多筛选 | 折叠区 | 最近更新时间、是否有待处理事项 |
@@ -213,7 +213,7 @@
 | 4 | 商务联系人 | 姓名；无资料显示「未填写」 |
 | 5 | 商务邮箱 | 企业联系邮箱；列表中可部分遮蔽 |
 | 6 | KYB状态 | 商业KYB独立状态 |
-| 7 | 套餐 | Trial／Free／Standard |
+| 7 | 套餐 | Free／Standard |
 | 8 | Tenant服务状态 | 独立显示服务可用/受限/暂停/Unknown |
 | 9 | 注册时间 | 首次创建时间 |
 | 10 | 最近更新时间 | 最近一次客户资料或业务状态变化 |
@@ -345,7 +345,7 @@
 | 开始审核 | 当前为待审核/已重新提交，且当前用户具备审核权限 | 显示审核任务及当前资料版本；确认接手 | 状态转审核中，记录审核人和时间 |
 | 要求补件 | 审核中，存在明确缺失/不清晰材料 | 选择缺失材料类别、填写补充说明、可选补件期限（不预设统一SLA） | 状态转待补件；向客户发起M17补件任务并通过M18通知 |
 | 商业KYB通过 | 资料完整、适用核验结论有效、审核人有权 | 展示本次通过范围、核验依据、备注；再次确认「仅通过SaaS商业KYB」 | KYB状态已通过；不自动收款、不自动开通Standard、不批准任何Offering |
-| 商业KYB拒绝 | 有明确拒绝依据且审核人有权 | 必须选择拒绝原因并填写说明；提示客户可按规则申诉/重新提交（如适用） | 状态已拒绝，记录理由和审核人；不删除Trial Tenant |
+| 商业KYB拒绝 | 有明确拒绝依据且审核人有权 | 必须选择拒绝原因并填写说明；提示客户可按规则申诉/重新提交（如适用） | 状态已拒绝，记录理由和审核人；不删除原Free Tenant |
 | 提交复核 | 结果存在冲突、高风险或需要第二人判断 | 选择复核原因、证据和目标复核人 | 状态待复核，转入M17任务；原审核记录保留 |
 | 核查Unknown | 外部核验或材料结果不确定 | 展示原请求编号、当前证据和异常原因 | 保持待核实/审核中；创建M17异常，不允许直接通过 |
 
@@ -415,7 +415,7 @@
 | 字段 | 控件/选项 | 说明 |
 |---|---|---|
 | 搜索 | 输入框 | Tenant编号、SaaS企业名称、客户编号 |
-| 套餐 | 下拉 | 全部、Trial、Free、Standard |
+| 套餐 | 下拉 | 全部、Free、Standard |
 | 服务状态 | 下拉 | 全部、开通中、Free有效、Standard有效、Standard受限、人工暂停、状态待核实 |
 | KYB状态 | 下拉 | 全部、未提交、待审核、待补件、已通过、已拒绝、待核实 |
 | 商业付款状态 | 下拉 | 全部、未开始、处理中、已确认、失败、Unknown |
@@ -428,7 +428,7 @@
 |---|---|---|
 | 1 | Tenant编号 | 唯一Tenant标识 |
 | 2 | 企业名称 | SaaS客户当前名称 |
-| 3 | 套餐 | Trial／Free／Standard |
+| 3 | 套餐 | Free／Standard |
 | 4 | 商业权益状态 | Free永久有效、Standard有效、待转正、逾期/争议 |
 | 5 | Tenant服务状态 | 开通中、正常、受限、人工暂停、只读恢复期、状态待核实 |
 | 6 | KYB状态 | 商业KYB独立状态 |
@@ -445,7 +445,6 @@
 |---|---|---|
 | Free | 永久免费，不设置14天到期或恢复窗口；可使用绝大部分SaaS Sandbox配置与模拟能力，真实生产动作不可用 | 显示「Free有效／长期有效」；不显示倒计时或到期日 |
 | Standard | 付费套餐，月付/年付；商业KYB、合同与付款满足后获得商业权益，真实生产动作仍需独立Gate | 显示套餐、账单周期、订阅期间及商业付款状态 |
-| Standard | V1唯一付费套餐，月付/年付；正式商业付款前需KYB通过，真实生产动作仍需独立Gate | 显示套餐、账单周期、当前订阅期间及商业付款状态 |
 
 服务状态是另一维度：即使套餐为Standard，也可能因欠费、商业争议或安全原因受限；Free永久有效，但仍可因安全、滥用或依法依据受限。Standard失效或降级不得抹除既有真实金融义务。
 
@@ -736,7 +735,7 @@ KYB未通过、合同无效或状态Unknown时，不允许将付款状态转换�
 |---|---|---|---|
 | P-01 | 待商业KYB审核卡片 | P-02 | KYB待审核筛选 |
 | P-01 | 某客户待审核事项 | P-03 | 客户编号、KYB申请编号 |
-| P-01 | Trial恢复窗口卡片 | P-04 | Trial只读恢复期筛选 |
+| P-01 | Free有效卡片 | P-04 | Free有效筛选 |
 | P-01 | Standard受限卡片 | P-04 | Standard受限筛选 |
 | P-01 | 商业收费待核实卡片 | P-06 | Unknown/权益同步异常筛选 |
 | P-02 | 客户行 | P-03 | 当前KYB申请及客户编号 |
@@ -844,11 +843,11 @@ KYB未通过、合同无效或状态Unknown时，不允许将付款状态转换�
 2. 商业KYB拒绝后的申诉/重新提交次数和期限。
 3. Free资源额度、Sandbox使用限制、滥用控制与Standard套餐能力配额的具体数值。
 4. Standard套餐价格、税费、发票、支付Provider、商业支付渠道及失败/争议的正式处理合同。
-6. Paid欠费宽限期、自动续费失败、暂停时间与恢复条件的精确数值。
-7. 高风险暂停/恢复是否双人审批及具体阈值。
-8. P端实际角色码、服务端RBAC、跨Tenant授权策略、敏感资料存储与导出机制。
-9. Provider事件幂等、回调签名、状态查询频率、重试与商业付款对账接口。
-10. 已有真实金融义务在Tenant暂停、退出、破产或法律争议时的法域责任和交接时限。
+5. Standard欠费宽限期、自动续费失败、暂停时间与恢复条件的精确数值。
+6. 高风险暂停/恢复是否双人审批及具体阈值。
+7. P端实际角色码、服务端RBAC、跨Tenant授权策略、敏感资料存储与导出机制。
+8. Provider事件幂等、回调签名、状态查询频率、重试与商业付款对账接口。
+9. 已有真实金融义务在Tenant暂停、退出、破产或法律争议时的法域责任和交接时限。
 
 这些是后续技术/法律决策门，不阻碍本批前端产品信息结构、字段展示、交互与Mock原型设计；但在对应决策未批准前，不可把UI操作描述成真实生产能力。
 
@@ -867,7 +866,7 @@ KYB未通过、合同无效或状态Unknown时，不允许将付款状态转换�
 - [DEC-018｜Issuer基础工作台批准](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-018-step04-s0401-issuer-foundation-approved.md)
 - [DEC-019｜旧14天Trial历史规则（已由DEC-037覆盖）](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-019-step04-s0401-trial-kyb-subscription-supplement-approved.md)
 - [DEC-037｜永久Free/Standard双版本，明确废止Trial时限](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-037-step06-r05-a-free-standard-permanent-sandbox-supersedes-trial-approved.md)
-- [S04-01 Issuer基础、试用及订阅完整设计 Approved v0.2](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/docs/03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Trial-Subscription-Approved-v0.2.md)
+- [S04-01 Issuer基础、试用及订阅完整设计 Approved v0.2（历史版本，Trial时限已由DEC-037覆盖）](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/docs/03-product-prd/RWA-SaaS-Step-04-S04-01-Issuer-Foundation-Trial-Subscription-Approved-v0.2.md)
 - [DEC-034｜平台后台R01～R06批准](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-034-step05-05-r01-06-platform-global-controls-product-rules-approved.md)
 - [Step05-05平台后台产品级PRD Approved v0.2](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/docs/03-product-prd/RWA-SaaS-Step-05-05-Platform-Operations-Global-Controls-Product-PRD-Approved-v0.2.md)
 - [P-01～P-17五端页面组清单 Draft v0.1](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/docs/03-product-prd/RWA-SaaS-Step-06-Five-Surface-125-Page-Inventory-Draft-v0.1.md)

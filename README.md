@@ -15,10 +15,10 @@
 | [OpenAPI 3.1 草案](docs/V1.0/openapi.yaml) | 与 Developer PRD 同步的 81 个接口和请求/响应 Schema |
 | [SaaS 当前版本归属决策](docs/V1.0/SAAS-VERSION-ALIGNMENT-DECISIONS-2026-11-18.md) | 2026-11-18 已确认的 V1.0/V1.5/V2.0 边界；七项增强需求已统一后置 V2.0 |
 | [193 项及专项功能追溯矩阵](docs/V1.0/V1.0-FEATURE-TRACEABILITY-MATRIX.csv) | 历史版号与当前交付归属；历史原版号不改写 |
-| [V1.5 需求与验收](docs/V1.5/V1.5-REQUIREMENTS-AND-ACCEPTANCE.md) | 前端缺口审计候选与当前版本决策覆盖 |
+| [V1.5 需求与验收](docs/V1.5/V1.5-REQUIREMENTS-AND-ACCEPTANCE.md) | 资产/权益/Offering、官网联系、门户 Logo、**Issuer 统一投资平台上架申请**等当前批准范围 |
 | [V2 统一需求池](docs/V2/V2-UNIFIED-REQUIREMENTS-POOL.md) | 原 47 项历史追溯及已确认的 19 项补充需求 |
 
-历史批准文档在远端 `archive/docs-before-final-handover-20261116`（源于 `docs/r2-current-product-baseline` @ `ae9762cf48f5130846f57edc6b64e3e4416ad271`）；源分支 `codex/v1-final-frontend-integration-20261116` 保留原始前端及旧说明。Frozen、DEC、SCOPE 原文未修改。先读本 README、V1.0 产品基线和 Backend Developer PRD，再按追溯矩阵查历史决策。旧 R2 文档的 W/I/V/M/P 范围、目录和模板与本轮三部分交付有冲突，已在 PRD 第 16 节列为待产品确认。
+历史批准文档在远端 `archive/docs-before-final-handover-20261116`（源于 `docs/r2-current-product-baseline` @ `ae9762cf48f5130846f57edc6b64e3e4416ad271`）；源分支 `codex/v1-final-frontend-integration-20261116` 保留原始前端及旧说明。Frozen、DEC、SCOPE 原文未修改。先读本 README、V1.0 产品基线和 Backend Developer PRD，再按追溯矩阵查历史决策。旧 R2 文件的五端范围及资产目录与当前 Website + Issuer 交付口径不同，现已在 V1.0 基线与功能矩阵按端拆分：Issuer 自愿申请统一投资平台上架属于 SaaS V1.5，平台审核属于平台总后台独立 V1.0，统一平台展示/投资者功能属于总投资者平台独立 V1.0；原历史 DEC 保留不改。不再将这些范围差异标记为本轮未决。
 
 ## 本地运行
 

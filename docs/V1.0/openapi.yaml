@@ -3,7 +3,7 @@
   "info": {
     "title": "RWA SaaS V1.0 Backend API",
     "version": "1.0.0",
-    "description": "工程接口草案；外部 Provider 可替换，真实资金与链上操作须生产准入"
+    "description": "工程接口草案；外部 Provider 可替换，真实资金与链上操作须生产准入；2026-11-18 已批准范围：V1.0 Asset→Instrument→Offering 直接关联，不提供独立 Project/业务版本历史/独立投资者资格 API；KYC 强制，V1.5 将完善基础发行生命周期 UI。"
   },
   "servers": [
     {
@@ -4373,7 +4373,7 @@
       },
       "patch": {
         "operationId": "AST_04",
-        "summary": "编辑资产新版本",
+        "summary": "编辑未被已确认发行引用的当前资产记录",
         "tags": [
           "Asset/Template"
         ],
@@ -4766,19 +4766,19 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "asset_version": {
+                  "record_version": {
                     "type": "integer",
-                    "description": "asset_version：int!",
+                    "description": "record_version：integer!",
                     "minimum": 0
                   }
                 },
                 "required": [
-                  "asset_version"
+                  "record_version"
                 ],
                 "additionalProperties": false
               },
               "example": {
-                "asset_version": 1
+                "record_version": 1
               }
             }
           }
@@ -4970,167 +4970,6 @@
               },
               "example": {
                 "reason": "example"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/assets/{id}/versions": {
-      "get": {
-        "operationId": "AST_07",
-        "summary": "资产版本列表",
-        "tags": [
-          "Asset/Template"
-        ],
-        "security": [
-          {
-            "SessionCookie": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "X-Request-Id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "correlation_id": {
-                      "type": "string",
-                      "description": "correlation_id：string!"
-                    },
-                    "items": {
-                      "type": "array",
-                      "description": "items：object[]!",
-                      "items": {
-                        "type": "object"
-                      }
-                    },
-                    "next_cursor": {
-                      "type": "string",
-                      "description": "next_cursor：string?"
-                    }
-                  },
-                  "required": [
-                    "correlation_id",
-                    "items"
-                  ],
-                  "additionalProperties": false
-                },
-                "example": {
-                  "correlation_id": "req-001",
-                  "items": [],
-                  "next_cursor": "example"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "504": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           }
@@ -5550,7 +5389,7 @@
       },
       "patch": {
         "operationId": "INS_03",
-        "summary": "编辑条款新版本",
+        "summary": "编辑未被已确认发行引用的当前权益条款",
         "tags": [
           "Instrument"
         ],
@@ -5949,702 +5788,19 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "revision": {
+                  "record_version": {
                     "type": "integer",
-                    "description": "revision：int!",
+                    "description": "record_version：integer!",
                     "minimum": 0
                   }
                 },
                 "required": [
-                  "revision"
+                  "record_version"
                 ],
                 "additionalProperties": false
               },
               "example": {
-                "revision": 1
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/instruments/{id}/versions": {
-      "get": {
-        "operationId": "INS_05",
-        "summary": "权益版本列表",
-        "tags": [
-          "Instrument"
-        ],
-        "security": [
-          {
-            "SessionCookie": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "X-Request-Id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "correlation_id": {
-                      "type": "string",
-                      "description": "correlation_id：string!"
-                    },
-                    "items": {
-                      "type": "array",
-                      "description": "items：object[]!",
-                      "items": {
-                        "type": "object"
-                      }
-                    },
-                    "next_cursor": {
-                      "type": "string",
-                      "description": "next_cursor：string?"
-                    }
-                  },
-                  "required": [
-                    "correlation_id",
-                    "items"
-                  ],
-                  "additionalProperties": false
-                },
-                "example": {
-                  "correlation_id": "req-001",
-                  "items": [],
-                  "next_cursor": "example"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "504": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/projects": {
-      "get": {
-        "operationId": "PRJ_01",
-        "summary": "发行项目列表",
-        "tags": [
-          "Project"
-        ],
-        "security": [
-          {
-            "SessionCookie": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "X-Request-Id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "correlation_id": {
-                      "type": "string",
-                      "description": "correlation_id：string!"
-                    },
-                    "items": {
-                      "type": "array",
-                      "description": "items：object[]!",
-                      "items": {
-                        "type": "object"
-                      }
-                    },
-                    "next_cursor": {
-                      "type": "string",
-                      "description": "next_cursor：string?"
-                    }
-                  },
-                  "required": [
-                    "correlation_id",
-                    "items"
-                  ],
-                  "additionalProperties": false
-                },
-                "example": {
-                  "correlation_id": "req-001",
-                  "items": [],
-                  "next_cursor": "example"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "504": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "operationId": "PRJ_02",
-        "summary": "创建独立发行项目",
-        "tags": [
-          "Project"
-        ],
-        "security": [
-          {
-            "SessionCookie": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "X-Request-Id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Idempotency-Key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "correlation_id": {
-                      "type": "string",
-                      "description": "correlation_id：string!"
-                    },
-                    "project_id": {
-                      "type": "string",
-                      "description": "project_id：uuid!",
-                      "format": "uuid"
-                    },
-                    "status": {
-                      "type": "string",
-                      "description": "status：enum!"
-                    }
-                  },
-                  "required": [
-                    "correlation_id",
-                    "project_id",
-                    "status"
-                  ],
-                  "additionalProperties": false
-                },
-                "example": {
-                  "correlation_id": "req-001",
-                  "project_id": "00000000-0000-4000-8000-000000000001",
-                  "status": "Draft"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "504": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "name：string!"
-                  },
-                  "asset_id": {
-                    "type": "string",
-                    "description": "asset_id：uuid!",
-                    "format": "uuid"
-                  },
-                  "instrument_version_id": {
-                    "type": "string",
-                    "description": "instrument_version_id：uuid!",
-                    "format": "uuid"
-                  }
-                },
-                "required": [
-                  "name",
-                  "asset_id",
-                  "instrument_version_id"
-                ],
-                "additionalProperties": false
-              },
-              "example": {
-                "name": "example",
-                "asset_id": "00000000-0000-4000-8000-000000000001",
-                "instrument_version_id": "00000000-0000-4000-8000-000000000001"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/projects/{id}": {
-      "get": {
-        "operationId": "PRJ_03",
-        "summary": "项目详情",
-        "tags": [
-          "Project"
-        ],
-        "security": [
-          {
-            "SessionCookie": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "X-Request-Id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "correlation_id": {
-                      "type": "string",
-                      "description": "correlation_id：string!"
-                    },
-                    "project_id": {
-                      "type": "string",
-                      "description": "project_id：uuid!",
-                      "format": "uuid"
-                    },
-                    "asset_id": {
-                      "type": "string",
-                      "description": "asset_id：uuid!",
-                      "format": "uuid"
-                    },
-                    "instrument_version_id": {
-                      "type": "string",
-                      "description": "instrument_version_id：uuid!",
-                      "format": "uuid"
-                    },
-                    "status": {
-                      "type": "string",
-                      "description": "status：enum!"
-                    }
-                  },
-                  "required": [
-                    "correlation_id",
-                    "project_id",
-                    "asset_id",
-                    "instrument_version_id",
-                    "status"
-                  ],
-                  "additionalProperties": false
-                },
-                "example": {
-                  "correlation_id": "req-001",
-                  "project_id": "00000000-0000-4000-8000-000000000001",
-                  "asset_id": "00000000-0000-4000-8000-000000000001",
-                  "instrument_version_id": "00000000-0000-4000-8000-000000000001",
-                  "status": "Draft"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "504": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
+                "record_version": 1
               }
             }
           }
@@ -6974,11 +6130,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "project_id": {
-                    "type": "string",
-                    "description": "project_id：uuid!",
-                    "format": "uuid"
-                  },
                   "round": {
                     "type": "integer",
                     "description": "round：int!",
@@ -7008,10 +6159,21 @@
                     "type": "string",
                     "description": "end_at：datetime!",
                     "format": "date-time"
+                  },
+                  "asset_id": {
+                    "type": "string",
+                    "description": "asset_id：string!",
+                    "format": "uuid"
+                  },
+                  "instrument_id": {
+                    "type": "string",
+                    "description": "instrument_id：string!",
+                    "format": "uuid"
                   }
                 },
                 "required": [
-                  "project_id",
+                  "asset_id",
+                  "instrument_id",
                   "round",
                   "quantity",
                   "unit_price_minor",
@@ -7022,13 +6184,14 @@
                 "additionalProperties": false
               },
               "example": {
-                "project_id": "00000000-0000-4000-8000-000000000001",
                 "round": 1,
                 "quantity": 1,
                 "unit_price_minor": 1,
                 "wallet_id": "00000000-0000-4000-8000-000000000001",
                 "start_at": "2026-11-16T00:00:00Z",
-                "end_at": "2026-11-16T00:00:00Z"
+                "end_at": "2026-11-16T00:00:00Z",
+                "asset_id": "00000000-0000-4000-8000-000000000001",
+                "instrument_id": "00000000-0000-4000-8000-000000000001"
               }
             }
           }
@@ -7038,7 +6201,7 @@
     "/api/v1/offerings/{id}": {
       "get": {
         "operationId": "OFR_03",
-        "summary": "发行详情与快照",
+        "summary": "发行详情（V1.0 直接关联资产和权益结构）",
         "tags": [
           "Offering"
         ],
@@ -7082,10 +6245,6 @@
                       "description": "offering_id：uuid!",
                       "format": "uuid"
                     },
-                    "snapshot": {
-                      "type": "object",
-                      "description": "snapshot：object?"
-                    },
                     "status": {
                       "type": "string",
                       "description": "status：enum!"
@@ -7094,22 +6253,35 @@
                       "type": "integer",
                       "description": "version：int!",
                       "minimum": 0
+                    },
+                    "asset_id": {
+                      "type": "string",
+                      "description": "asset_id：string!",
+                      "format": "uuid"
+                    },
+                    "instrument_id": {
+                      "type": "string",
+                      "description": "instrument_id：string!",
+                      "format": "uuid"
                     }
                   },
                   "required": [
                     "correlation_id",
                     "offering_id",
                     "status",
-                    "version"
+                    "version",
+                    "asset_id",
+                    "instrument_id"
                   ],
                   "additionalProperties": false
                 },
                 "example": {
                   "correlation_id": "req-001",
                   "offering_id": "00000000-0000-4000-8000-000000000001",
-                  "snapshot": {},
                   "status": "Draft",
-                  "version": 1
+                  "version": 1,
+                  "asset_id": "00000000-0000-4000-8000-000000000001",
+                  "instrument_id": "00000000-0000-4000-8000-000000000001"
                 }
               }
             }
@@ -7486,11 +6658,6 @@
                       "type": "string",
                       "description": "correlation_id：string!"
                     },
-                    "snapshot_id": {
-                      "type": "string",
-                      "description": "snapshot_id：uuid!",
-                      "format": "uuid"
-                    },
                     "status": {
                       "type": "string",
                       "description": "status：enum!"
@@ -7498,21 +6665,26 @@
                     "gate_results": {
                       "type": "object",
                       "description": "gate_results：object!"
+                    },
+                    "offering_id": {
+                      "type": "string",
+                      "description": "offering_id：string!",
+                      "format": "uuid"
                     }
                   },
                   "required": [
                     "correlation_id",
-                    "snapshot_id",
                     "status",
-                    "gate_results"
+                    "gate_results",
+                    "offering_id"
                   ],
                   "additionalProperties": false
                 },
                 "example": {
                   "correlation_id": "req-001",
-                  "snapshot_id": "00000000-0000-4000-8000-000000000001",
                   "status": "Draft",
-                  "gate_results": {}
+                  "gate_results": {},
+                  "offering_id": "00000000-0000-4000-8000-000000000001"
                 }
               }
             }
@@ -7615,25 +6787,25 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "revision": {
-                    "type": "integer",
-                    "description": "revision：int!",
-                    "minimum": 0
-                  },
                   "terms_ack": {
                     "type": "boolean",
                     "description": "terms_ack：boolean!"
+                  },
+                  "record_version": {
+                    "type": "integer",
+                    "description": "record_version：integer!",
+                    "minimum": 0
                   }
                 },
                 "required": [
-                  "revision",
+                  "record_version",
                   "terms_ack"
                 ],
                 "additionalProperties": false
               },
               "example": {
-                "revision": 1,
-                "terms_ack": true
+                "terms_ack": true,
+                "record_version": 1
               }
             }
           }
@@ -8250,185 +7422,6 @@
                   "masked_identity": {},
                   "kyc_status": "Draft",
                   "valid_until": "2026-11-16T00:00:00Z"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "504": {
-            "description": "业务或基础错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/investors/{ref}/eligibility": {
-      "get": {
-        "operationId": "INV_03",
-        "summary": "查询 Offering 资格",
-        "tags": [
-          "Investor/KYC"
-        ],
-        "security": [
-          {
-            "SessionCookie": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "ref",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "X-Request-Id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "offering_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "offering_id：uuid!",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "correlation_id": {
-                      "type": "string",
-                      "description": "correlation_id：string!"
-                    },
-                    "eligible": {
-                      "type": "boolean",
-                      "description": "eligible：boolean!"
-                    },
-                    "rule_version": {
-                      "type": "integer",
-                      "description": "rule_version：int!",
-                      "minimum": 0
-                    },
-                    "reason_codes": {
-                      "type": "array",
-                      "description": "reason_codes：string[]!",
-                      "items": {
-                        "type": "object"
-                      }
-                    }
-                  },
-                  "required": [
-                    "correlation_id",
-                    "eligible",
-                    "rule_version",
-                    "reason_codes"
-                  ],
-                  "additionalProperties": false
-                },
-                "example": {
-                  "correlation_id": "req-001",
-                  "eligible": true,
-                  "rule_version": 1,
-                  "reason_codes": []
                 }
               }
             }
@@ -15511,6 +14504,365 @@
           }
         }
       }
+    },
+    "/api/v1/offerings/{id}/publish": {
+      "post": {
+        "operationId": "OFR_08",
+        "summary": "正式发布已确认 Offering（KYB/Standard/法律/文件/合约准入 Gate）",
+        "tags": [
+          "Offering"
+        ],
+        "security": [
+          {
+            "SessionCookie": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "受理完成；状态取决于服务端实际 Gate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "correlation_id": {
+                      "type": "string",
+                      "description": "correlation_id：string!"
+                    },
+                    "offering_id": {
+                      "type": "string",
+                      "description": "offering_id：string!",
+                      "format": "uuid"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "status：string!"
+                    }
+                  },
+                  "required": [
+                    "correlation_id",
+                    "offering_id",
+                    "status"
+                  ],
+                  "additionalProperties": false
+                },
+                "example": {
+                  "correlation_id": "req-001",
+                  "offering_id": "00000000-0000-4000-8000-000000000001",
+                  "status": "Published"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offerings/{id}/resume": {
+      "post": {
+        "operationId": "OFR_09",
+        "summary": "恢复已暂停 Offering（重新校验窗口和所有必要 Gate）",
+        "tags": [
+          "Offering"
+        ],
+        "security": [
+          {
+            "SessionCookie": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "受理完成；状态取决于服务端实际 Gate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "correlation_id": {
+                      "type": "string",
+                      "description": "correlation_id：string!"
+                    },
+                    "offering_id": {
+                      "type": "string",
+                      "description": "offering_id：string!",
+                      "format": "uuid"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "status：string!"
+                    }
+                  },
+                  "required": [
+                    "correlation_id",
+                    "offering_id",
+                    "status"
+                  ],
+                  "additionalProperties": false
+                },
+                "example": {
+                  "correlation_id": "req-001",
+                  "offering_id": "00000000-0000-4000-8000-000000000001",
+                  "status": "Published"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "业务或基础错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "description": "reason：string!"
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "example": {
+                "reason": "example"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -15550,5 +14902,6 @@
         }
       }
     }
-  }
+  },
+  "x-product-scope-decision": "docs/V1.0/SAAS-VERSION-ALIGNMENT-DECISIONS-2026-11-18.md"
 }

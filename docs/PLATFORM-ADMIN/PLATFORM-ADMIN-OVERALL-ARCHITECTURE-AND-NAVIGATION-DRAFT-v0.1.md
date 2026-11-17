@@ -12,7 +12,7 @@ RWA SaaS 由五个产品端组成：官网 W、发行企业 SaaS I、企业专�
 
 P 不是 Issuer 的超级管理员，也不是资金、法定名册、Token 或收益的控制台。平台总后台可以管理“谁能使用 SaaS、哪些 Offering 能在平台 M 渠道展示、平台统一投资者账户的必要服务状态、平台运营异常”，但不能代替 Issuer 或依法有权 X 决定资产发行、投资者权利、真实资金和链上执行。
 
-**本轮总体导航建议：9 个一级模块。** 历史 P-01～P-17 页面组尽量复用；新增的投资者账户管理建议作为 P-18 候选页面组，需单独确认范围与版本，不伪装成历史已批准功能。
+**本轮总体导航建议：9 个一级模块。** P-01～P-17 沿用历史页面组；P-15～P-17 对应的 M23 V1 范围已由 DEC-057 批准。P-18 是为满足 M24 平台运营管理而提出的 P 端页面组扩展，不改变历史 125 页面组统计或新增 M 功能 ID。
 
 ## 1. 审查依据与证据等级
 
@@ -31,11 +31,11 @@ P 不是 Issuer 的超级管理员，也不是资金、法定名册、Token 或�
 | 来源 | 已确认内容 | 边界 |
 |---|---|---|
 | [DEC-044｜统一投资端战略](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-044-rwa-saas-unified-investor-platform-strategy-approved.md) | W/I/M/V/P 五端产品形态；M 是跨发行企业统一投资入口，V 是 Issuer 自有门户；Issuer 逐 Offering 自愿申请 M 渠道展示；P 审核平台渠道 | 不批准集中二级市场、订单簿、AMM 或平台自动持款/签名 |
-| [DEC-045｜M23/M24 候选功能与版本管理](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-045-rwa-saas-marketplace-function-scope-approved.md) | M23（平台 Offering 上架/渠道运营）7 项、M24（统一投资者身份与跨 Issuer 关系）4 项作为新增候选 | **11 项尚未加入 193 项正式功能主表，版本归属未批准**；不得称为已批准 V1 功能 |
+| [DEC-045｜M23/M24 功能拆分与版本管理](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-045-rwa-saas-marketplace-function-scope-approved.md) | 2026-10-28 定义 M23 七项、M24 四项的功能边界、去重和共享主账原则；当时尚未批准版本归属 | 业务拆分继续有效；版本状态由后续 DEC-057 更新 |
 | [DEC-046｜五端信息架构方向](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-046-rwa-saas-five-surface-information-architecture-approved.md) | 五端 125 组候选页面方向；P 原 14 组加 P-15～P-17 投资端运营组 | 只批准菜单/页面组方向，不代表 125 组已冻结或逐页 UI-Ready |
-| [五端 125 页面组清单 Draft](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/docs/03-product-prd/RWA-SaaS-Step-06-Five-Surface-125-Page-Inventory-Draft-v0.1.md) | P-01～P-14 原有页面组、P-15～P-17 投资端运营页面组及跨端路径 | 页面清单仍是候选；P-15～P-17 对应的 M23 功能仍需版本归属决策 |
+| [五端 125 页面组清单 Draft](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/docs/03-product-prd/RWA-SaaS-Step-06-Five-Surface-125-Page-Inventory-Draft-v0.1.md) | P-01～P-14 原有页面组、P-15～P-17 投资端运营页面组及跨端路径 | DEC-046 批准页面组方向；DEC-057 后续批准 M23 V1 范围。逐页 UI-Ready 仍需设计 |
 
-### 1.3 投资者身份与 KYC 边界依据
+| [DEC-057｜V1 五端范围及 M23/M24 纳入](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-057-v1-five-surface-scope-and-unified-marketplace-approved.md) | 2026-11-09 后续批准 M23/M24 共 11 项全部进入 V1；原 193 项历史台账不改，当前有效追踪总数 204、V1 统计 157 | **版本状态以 DEC-057 为准**；其明确覆盖 DEC-045 关于候选状态和版本归属未定的旧结论 |\n\n### 1.3 投资者身份与 KYC 边界依据
 
 - [DEC-069｜投资者统一 KYC 与 Issuer 脱敏管理](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md)：投资者在投资者端提交 KYC，第三方服务商实际核验，平台接收并维护权威核验状态；Issuer 只查看本企业授权范围内的脱敏资料与 KYC 状态。M 与 V 账户仍独立，KYC 结果复用不等于合并账户、钱包、订单历史或持仓。
 - [DEC-074｜Issuer 投资者管理 UI-Ready 收口](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-074-investor-management-ui-ready-v1-closeout-approved.md)：范围是 **Issuer 企业 SaaS 的本企业投资者关系只读视图**，不是平台全局投资者库或平台 KYC 工作台。不得把该决策直接当作 P 端投资者管理 UI 已完成的证据。
@@ -53,7 +53,7 @@ P 不是 Issuer 的超级管理员，也不是资金、法定名册、Token 或�
 
 ### 2.1 关键业务关系
 
-W 官网引导企业进入 I；Issuer 在 I 建立资产与 Offering。若企业自愿申请统一投资渠道，业务路径为 I-35 → I-67 → P-15 → P-16 → M-02/M-04。Issuer 同时可以独立配置 V 门户，V 只服务该 Issuer。M 与 V 可在合法依据和授权下引用平台 KYC 结果，但账户、钱包、订单、持仓不自动合并。P 通过 M17/M18/M19/M20/M21/M22 提供运营协作，不取得各业务领域的资金、法定登记或 Token 权威。
+W 官网引导企业进入 I；Issuer 在 I 建立 Asset、Instrument 和 Offering。企业针对单个已正式发布且当前可用的 Offering 自愿申请 M 渠道：I-35 → I-67 → P-15 → P-16 → M-02/M-04；I-68 查询渠道状态。P-17 负责持续监控与异常协作。Issuer 同时可以独立配置 V 门户，V 只服务该 Issuer。M 与 V 可在合法依据和授权下引用平台 KYC 结果，但账户、钱包、订单、持仓不自动合并。P 通过 M17/M18/M19/M20/M21/M22 提供运营协作，不取得各业务领域的资金、法定登记或 Token 权威。
 
 ## 3. 必须明确的两类投资者入口
 
@@ -88,14 +88,14 @@ P 是平台运营方的管理与控制中心，管理四类对象：
 
 ## 5. 平台总后台建议导航（9 个一级模块）
 
-以下为本轮建议的最终导航结构。历史 P-01～P-17 页面组按职责映射；P-18 是本轮提出的新增候选页面组，不是已批准正式功能 ID。
+以下为 P 平台总后台的 9 个一级导航。P-01～P-17 是 DEC-046/057 的历史页面组；P-15～P-17 对应的 M23 业务范围已由 DEC-057 批准进入 V1，逐页规格见本目录下的 M23 UI-Ready Draft。P-18 是本轮为满足 M24 平台运营管理而提出的 P 端页面组扩展，不改变历史 125 页面组数量或新增 M 功能 ID。
 
 | 一级导航 | 二级页面/页面组 | 历史页面组/功能映射 | 核心责任 |
 |---|---|---|---|
 | **01 平台工作台** | 平台运营总览、待办摘要、异常预警、关键业务指标 | P-01；M03/M17/M21 只读聚合 | 让平台运营人员一眼看到企业、渠道、投资者服务与异常情况；所有指标注明数据来源/更新时间 |
 | **02 发行机构管理** | SaaS 企业客户列表、商业 KYB 审核、Tenant 列表与详情、订阅/商业收费异常、暂停/恢复与交接 | P-02～P-06；M03-F001/F002、M01、M17 | 管理 SaaS 买方及商业服务关系；企业商业 KYB 不等于 Issuer 资产或证券发行获批 |
-| **03 统一投资渠道管理** | Offering 上架审核与补件、展示范围/法域/受众规则、发布/暂停/恢复、渠道监控/投诉异常/统计 | P-15～P-17；M23 候选 | 管理单个 Offering 在 M 渠道的展示授权；不修改 Issuer 原 Offering，不代替真实认购与金融资格判断 |
-| **04 投资者管理** | M 统一投资者账户列表、账户详情、KYC 状态与有效期、身份/授权引用记录、投资者服务异常 | **建议新增 P-18 候选页面组**；依赖 M24-F001/F002 候选、M09、M20 | 仅管理 M 统一账户的必要平台状态与 KYC 结果引用；不创建跨所有 V 门户的投资者总库，不手工覆盖第三方 KYC 结论 |
+| **03 统一投资渠道管理** | 上架审核与补件、展示范围/法域/受众规则、发布/暂停/恢复、渠道监控/投诉异常/统计 | P-15～P-17；M23-F001～F007（V1 Approved） | 管理单个 Offering 在 M 渠道的展示授权；不修改 Issuer 原 Offering，不代替真实认购与金融资格判断 |
+| **04 投资者管理** | M 统一投资者账户列表、账户详情、KYC 状态与有效期、身份/授权引用记录、投资者服务异常 | **P-18（本轮 P 端页面组扩展建议）**；依赖 M24-F001/F002（V1 Approved）、M09、M20 | 仅管理 M 统一账户的必要平台状态与 KYC 结果引用；不创建跨所有 V 门户的投资者总库，不手工覆盖第三方 KYC 结论 |
 | **05 运营中心** | 平台待办/审批/补件、异常工单与恢复跟踪、通知模板/发送历史/投递失败 | P-07、P-08；M17、M18 | 集中运营任务与通知；工单关闭不代表原业务付款、登记、Mint 或收益已经完成 |
 | **06 平台规则与套餐** | Free/Standard 能力与配额、平台通用规则、规则版本/审批/停用 | P-09、P-10；M19、M01 | 管理平台商业能力与强制规则；不提供可视化低代码规则引擎，不替 Issuer 修改既有发行条款 |
 | **07 安全与审计** | 敏感资料访问申请/授权记录、安全事件、凭证撤权、操作审计、受控导出 | P-11、P-12；M03-F005、M20 | 最小权限、限时访问、撤权、追加审计；不开放平台超级管理员任意读取 KYC 原件或客户私钥 |
@@ -114,8 +114,8 @@ P 是平台运营方的管理与控制中心，管理四类对象：
 | P-11～P-12 | 敏感访问、安全事件与审计 | 合并到一级「安全与审计」，保留不同页面组 |
 | P-13 | 外部服务连接/健康/凭证 | 保留，纳入一级导航 08 |
 | P-14 | 平台报表 | 保留，纳入一级导航 09 |
-| P-15～P-17 | M 渠道上架、展示发布、渠道监控 | 保留候选方向，纳入一级导航 03；依赖 M23 版本决策 |
-| **P-18（建议）** | **M 统一投资者账户与身份管理** | **本轮新增建议；需独立批准页面范围及版本，不计入历史 125 页面组和 193 正式功能总表** |
+| P-15～P-17 | M 渠道上架、展示发布、渠道监控 | DEC-046/057 已批准页面组方向与 M23 V1 范围；本轮补齐逐页 UI-Ready 规格 |
+| **P-18（本轮扩展）** | **M 统一投资者账户与身份管理** | **新增 P 端运营页面组建议，映射已批准的 M24-F001/F002；不新增 M 功能 ID，不计入历史 125 页面组** |
 
 合并一级导航只是降低菜单复杂度，不代表把不同领域真值合并。P-07 与 P-08、P-09 与 P-10、P-11 与 P-12 仍保留各自的产品责任。
 
@@ -139,7 +139,7 @@ P 是平台运营方的管理与控制中心，管理四类对象：
 - 不提供人工覆盖第三方 KYC 结论、代替投资者补件、手工修改法定投资者资格的按钮。
 - 不复制跨 Issuer 的订单、付款、配售、法定登记、Token 或收益主账；确有运营查询需求时只引用 M 渠道本人业务的受权只读状态。
 
-**版本边界：**P-18 是页面组建议，M24-F001/F002 是 DEC-045 的候选功能，不是 193 项正式功能。P-18 是否进入 V1、V1.5 或后续版本，必须另行做版本决策；本文件不自行分配版本。
+**版本边界：**M24-F001/F002 已由 DEC-057 批准纳入 V1。P-18 是 P 端运营管理 UI 的页面组扩展建议，不是新增 M24 功能，也不改变历史 125 页面组统计；其页面字段和交互将在后续 P-18 模块单独形成 UI-Ready PRD。
 
 ## 7. 六条跨端关键业务流程
 
@@ -159,7 +159,7 @@ Issuer 的 Offering 发布状态、P 的渠道审核状态、M 的展示状态�
 
 - P 审核的是 WDEX 自身渠道展示条件，不替 Issuer 批准资产或金融工具合法性。
 - 渠道暂停/下架不等于 Issuer Offering 整体关闭，不删除历史订单、实收、配售、法定登记或 Token 事实。
-- P-15～P-17 的页面组织方向已在 DEC-046 批准；对应 M23 功能的版本归属仍待独立决策。
+- P-15～P-17 页面组方向由 DEC-046 批准，M23 七项 V1 范围由 DEC-057 批准；逐页 UI-Ready 规格见《统一投资渠道业务闭环与 I-67/I-68、P-15～P-17 UI-Ready 产品规格》。
 
 ### 7.3 M 统一投资者注册与 KYC
 
@@ -174,7 +174,7 @@ Issuer 的 Offering 发布状态、P 的渠道审核状态、M 的展示状态�
 - M 投资端提供跨 Issuer 的投资机会发现和本人投资体验。
 - 认购/付款/配售/法定登记/Token/收益仍复用 M10/M11/M12/M07/M13 等唯一业务权威。
 - P 只在异常、投诉或平台运营需要时通过 M17/M20/M22 查看最小必要状态；不得手动修改交易事实。
-- M24-F003/F004 跨 Issuer 订单、持仓与收益汇总仍是候选功能，不能视为已正式纳入 193 项。
+- M24-F003/F004 跨 Issuer 订单、持仓与收益汇总已由 DEC-057 批准纳入 V1；底层事实仍复用 M10/M11/M12/M07/M13，不建立第二套主账。
 
 ### 7.5 V 企业专属门户
 
@@ -227,12 +227,12 @@ Issuer 的 Offering 发布状态、P 的渠道审核状态、M 的展示状态�
 |---|---|---|
 | W 官网 | apps/website/src/main.tsx 路由包含首页、产品、解决方案、套餐、帮助、联系、政策、注册/验证/登录、升级及 /investor-platform | 官网前端存在；演示邮箱验证码不是生产认证 |
 | M 统一投资者平台 | apps/website/src/pages/InvestorPlatform.tsx 文案明确标记「规划中的渠道/筹备中」，没有投资者注册、KYC、Offering 列表、认购或付款页面 | 当前只有官网介绍页，不是实际 M 投资者平台 |
-| I 发行企业 SaaS | apps/issuer/src/App.tsx 有 9 个一级模块：工作台首页、资产与发行、投资者门户、投资者与认购、资金与结算、Token 管理、收益与分配、数据与报表、企业管理 | Issuer 前端主应用已存在；本轮不重审 V1.5 功能或执行开发 |
+| I 发行企业 SaaS | apps/website/src/issuerNavigation.ts 与 apps/website/src/pages/IssuerIssuance.tsx 可见现有 Issuer 导航、Project/Offering/发行准备页面；导航源码仍保留旧认购记录/锁仓记录二级入口 | Issuer 前端已存在，但当前可审计源码未发现 I-67/I-68 入口、渠道申请页或渠道状态；须按 2026-11-13 精简导航在既有发行管理中补充，不重复 Offering 功能 |
 | V 企业专属投资者门户 | I 内的「投资者门户」是 Issuer 配置与内部预览；源码显示真实门户服务/实例未连接、无对外地址、预览不可执行真实登录/KYC/认购/付款 | 不能把 Issuer 内部门户配置页当成已完成的独立 V 前台 |
 | P 平台总后台 | 当前仓库 apps/ 只有 apps/website 与 apps/issuer 两个前端应用；没有独立 apps/admin、P 路由或 P-01～P-17 页面实现 | 平台总后台前端尚未建立 |
-| 平台统一投资者管理 | 历史 DEC-069/074 定义 KYC 中心化和 Issuer 脱敏视图；现有 P 页面组无 M 统一投资者账户管理页面 | P-18 是本轮新增建议，不是已有页面 |
+| 平台统一投资者管理 | DEC-057 已批准 M24-F001/F002；DEC-069 定义平台 KYC 权威结果，DEC-074 只覆盖 Issuer 本企业脱敏视图 | 现有 P 页面组未包含独立 M 账户运营页；P-18 是本轮 P 端 UI 扩展建议，不代表既有页面已完成 |
 
-**当前实际端侧状态总结：**W 官网前端存在；I Issuer SaaS 前端存在且 V1.5 PRD 单独保存；V 独立投资者前台尚未完成；M 统一投资者平台尚未完成（仅有官网介绍页）；P 平台总后台尚未完成。本文只完成 P 的总体产品架构与导航，不把产品设计进度等同源码完成度。
+**当前实际端侧状态总结：**W 官网前端存在；I Issuer SaaS 前端存在，但当前可审计源码未发现 I-67/I-68；V 独立投资者前台尚未完成；M 统一投资者平台当前仅有官网介绍/筹备页面，完整投资者流程尚未建立；P 平台总后台尚未建立独立前端应用。本文与配套 PRD 均为产品设计，不把文档完成等同源码完成。
 
 ## 11. 版本、功能 ID 与文档治理边界
 
@@ -270,7 +270,7 @@ Issuer 的 Offering 发布状态、P 的渠道审核状态、M 的展示状态�
 - 不执行 V1.5 Issuer 前端开发。
 - 不开发 M 统一投资者前台或 V 企业独立门户。
 - 不开发服务端、数据库、API、真实 KYC、真实资金、钱包签名、法定登记或区块链服务。
-- 不把 M23/M24 候选功能写成已批准正式 V1 功能。
+- 不修改 DEC-057 已批准的 M23/M24 V1 范围及 204 项有效追踪统计。
 - 不修改任何已批准历史文件、Frozen、DEC/SCOPE 或 193 项版本归属。
 - 不进行真实业务操作或生产准入判断。
 
@@ -283,6 +283,6 @@ Issuer 的 Offering 发布状态、P 的渠道审核状态、M 的展示状态�
 - [DEC-034 平台后台六项规则批准](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-034-step05-05-r01-06-platform-global-controls-product-rules-approved.md)
 - [DEC-044 统一投资端战略](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-044-rwa-saas-unified-investor-platform-strategy-approved.md)
 - [DEC-045 M23/M24 候选功能](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-045-rwa-saas-marketplace-function-scope-approved.md)
-- [DEC-046 五端信息架构](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-046-rwa-saas-five-surface-information-architecture-approved.md)
+- [DEC-046 五端信息架构](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-046-rwa-saas-five-surface-information-architecture-approved.md)\n- [DEC-057 V1 五端范围及 M23/M24 纳入](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-057-v1-five-surface-scope-and-unified-marketplace-approved.md)\n- [I-67/I-68、P-15～P-17 统一投资渠道 UI-Ready PRD Draft](PLATFORM-ADMIN-I67-I68-P15-P17-UNIFIED-INVESTOR-CHANNEL-UI-READY-PRD-DRAFT-v0.1.md)
 - [DEC-069 投资者统一 KYC 与 Issuer 脱敏视图](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md)
 - [DEC-074 Issuer 投资者管理 UI-Ready 收口](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-074-investor-management-ui-ready-v1-closeout-approved.md)

@@ -290,3 +290,28 @@ Issuer 的 Offering 发布状态、P 的渠道审核状态、M 的展示状态�
 - [DEC-046 五端信息架构](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-046-rwa-saas-five-surface-information-architecture-approved.md)\n- [DEC-057 V1 五端范围及 M23/M24 纳入](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-057-v1-five-surface-scope-and-unified-marketplace-approved.md)\n- [I-67/I-68、P-15～P-17 统一投资渠道 UI-Ready PRD Draft](PLATFORM-ADMIN-I67-I68-P15-P17-UNIFIED-INVESTOR-CHANNEL-UI-READY-PRD-DRAFT-v0.1.md)
 - [DEC-069 投资者统一 KYC 与 Issuer 脱敏视图](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-069-investor-kyc-centralization-and-issuer-masked-view-v1-approved.md)
 - [DEC-074 Issuer 投资者管理 UI-Ready 收口](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-074-investor-management-ui-ready-v1-closeout-approved.md)
+
+
+## 14. 第一批集中产品审核记录（2026-11-19）
+
+第一批 R01～R08 审核结果：
+
+| 审核项 | 结果 | 记录 |
+|---|---|---|
+| R01 五端架构与责任边界 | 同意 A | 保留 |
+| R02 九个一级导航 | 同意 A | 保留 |
+| R03 P 端核心管理范围 | 同意 A | 保留 |
+| R04 P-01 平台工作台 | 同意 A | 保留 |
+| R05 P-02/P-03 企业客户与商业 KYB | 修改后确认 | P-03 仅审核 SaaS 商业客户 KYB，不审核 Issuer 发行资产 |
+| R06 P-04/P-05 Tenant 管理 | 同意 A | 保留 |
+| R07 P-06 SaaS 商业收费异常 | 同意 A | 保留 |
+| R08 敏感资料访问边界 | 同意 A | 保留 |
+
+### R05 的明确边界
+
+1. P-03 只负责 SaaS 企业商业 KYB，即确认 SaaS 客户主体及商业准入资料。
+2. Issuer 在企业 SaaS 中创建 Asset、Instrument、Offering、完成发行准备及满足发行 Gate 后进行资产发行，不需要平台总后台逐项审核。
+3. P-15 只审核企业自愿提交到 M 统一投资者平台的 Offering 渠道展示申请；审核通过即自动创建 Listing 并上架 M。
+4. 商业 KYB、Issuer 自身发行准入、M 渠道展示审核为三种不同状态，不得互相替代。
+
+**审核结论：**第一批除 R05 的职责表述需要按以上边界修正外，其余七项全部按推荐方案 A 确认。此记录不改变历史 DEC/Frozen/功能版本归属，不批准前端开发。

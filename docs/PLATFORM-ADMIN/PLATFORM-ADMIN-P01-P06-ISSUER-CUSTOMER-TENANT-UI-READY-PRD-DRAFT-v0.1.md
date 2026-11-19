@@ -870,3 +870,17 @@ KYB未通过、合同无效或状态Unknown时，不允许将付款状态转换�
 - [DEC-034｜平台后台R01～R06批准](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/decisions/DEC-034-step05-05-r01-06-platform-global-controls-product-rules-approved.md)
 - [Step05-05平台后台产品级PRD Approved v0.2](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/docs/03-product-prd/RWA-SaaS-Step-05-05-Platform-Operations-Global-Controls-Product-PRD-Approved-v0.2.md)
 - [P-01～P-17五端页面组清单 Draft v0.1](https://github.com/mirrorshang/rwa-saas-platform/blob/archive/docs-before-final-handover-20261116/docs/03-product-prd/RWA-SaaS-Step-06-Five-Surface-125-Page-Inventory-Draft-v0.1.md)
+
+
+## 15. 集中审核修正：P-03 商业 KYB 不审核 Issuer 发行资产
+
+根据 2026-11-19 Platform Admin 第一批集中审核，明确并强化以下边界：
+
+- P-03 只审核 SaaS 企业作为平台商业客户的主体真实性、企业登记/营业资料、法定代表/授权代表及商业准入所需资料。
+- P-03 的审核对象是「谁在购买和使用 Issuer SaaS」，不是该企业在 SaaS 中创建、准备或发行的 Asset、Instrument、Offering。
+- 企业在 Issuer SaaS 中创建资产、配置权益结构、创建 Offering、完成发行准备及满足自身发行 Gate 后进行发行，不需要提交 P-03 或平台总后台进行逐项审批。
+- P-03 商业 KYB 通过只代表商业客户 KYB 通过，不代表任何资产、证券、发行结构或 Offering 获得平台批准。
+- 企业如自愿申请将某个已正式发布的 Offering 展示到 M 统一投资者平台，才进入独立的 I-67/I-68 → P-15 渠道审核流程。P-15 审核的是平台 M 渠道展示授权，不是企业资产发行许可。
+- P-03、Issuer 自身发行准入、P-15 M 渠道审核是三个独立事实，不得合并为统一的「平台审核」。
+
+本条为对既有 P-03 商业 KYB 页面职责的明确化，不新增资产审核流程，不扩大 P 端权限，不改变 P-15 的渠道审核职责。

@@ -71,12 +71,16 @@ test("所有月息和本金独立支付；本金不计收益，名册与 Token �
   assert.equal(state.investorIncomes.length, incomesBefore);
   assert.equal(state.distributionPayments.filter(row => row.batchId === principal.id).length, 2);
   assert.equal(completeDebt(state, "OFF-3002", "2028-12-01").changed, false);
+  const legacyUnpaid = { ...state.distributions[0], id: "DST-LEGACY-UNPAID", period: "legacy", debtScheduleId: undefined, interestEventId: undefined, status: "已确认" };
+  assert.equal(settleDebtRegistry({ ...state, distributions: [...state.distributions, legacyUnpaid] }, "OFF-3002").changed, false);
   state = settleDebtRegistry(state, "OFF-3002").state;
   assert.deepEqual(state.holders.map(row => row.rights), [0, 0]);
+  assert.match(createHolderSnapshot(state, "OFF-3002", "2026-11-30", "2028-12-01").error, /不能事后补建历史 Record Date/);
   assert.equal(completeDebt(state, "OFF-3002", "2028-12-01").changed, false);
   state = disposeDebtTokens(state, "OFF-3002", "2028-12-01").state;
   assert.equal(state.tokens.filter(row => row.operation === "到期模拟处置").length, 2);
   assert.deepEqual(state.holders.map(row => row.lock), ["已结束", "已结束"]);
+  assert.equal(completeDebt({ ...state, distributions: [...state.distributions, legacyUnpaid] }, "OFF-3002", "2028-12-01").changed, false);
   state = completeDebt(state, "OFF-3002", "2028-12-01").state;
   assert.equal(state.debtCompletions.length, 1);
   assert.equal(completeDebt(state, "OFF-3002", "2028-12-01").changed, false);

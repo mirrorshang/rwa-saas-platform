@@ -141,6 +141,8 @@ export function createHolderSnapshot(state: AppState, offeringId: string, record
   if (!offering?.confirmationSnapshot) return unchanged(state, "Offering 未确认");
   if (!/^\d{4}-\d{2}-\d{2}$/.test(recordDate)) return unchanged(state, "Record Date 日期格式无效");
   if (state.holderSnapshots.some(row => row.offeringId === offeringId && row.recordDate === recordDate)) return unchanged(state);
+  if (state.holders.some(row => row.offeringId === offeringId && row.registration === "模拟已清偿"))
+    return unchanged(state, "债权名册已模拟清偿；请查询先前固定的快照，不能事后补建历史 Record Date");
   const lines = state.holders.filter(row => row.offeringId === offeringId && row.registration === "登记有效"
     && row.environment === "Sandbox" && Boolean(row.effectiveAt) && row.effectiveAt!.slice(0, 10) <= recordDate)
     .map(row => ({ holderId: row.id, investorId: row.investorId, orderId: row.orderId, rights: row.rights, tokens: row.tokens }));

@@ -152,7 +152,7 @@ export function confirmDebtBatch(state: AppState, batchId: string): MockResult {
 export function settleDebtRegistry(state: AppState, offeringId: string): MockResult {
   const schedule = state.debtSchedules.find(row => row.offeringId === offeringId);
   const principal = state.distributions.find(row => row.offeringId === offeringId && row.eventType === "债权本金" && row.debtScheduleId === schedule?.id);
-  if (!schedule || !completeSchedule(state, schedule) || principal?.status !== "支付完成" || !state.debtInterestEvents.filter(row => row.scheduleId === schedule.id)
+  if (!schedule || !completeSchedule(state, schedule) || principal?.status !== "支付完成" || hasUnsettledDebtObligation(state, offeringId) || !state.debtInterestEvents.filter(row => row.scheduleId === schedule.id)
     .every(event => state.distributions.some(batch => batch.interestEventId === event.id && batch.status === "支付完成")))
     return noChange(state, "尚有未结清的利息或本金模拟付款");
   const holders = state.holders.filter(row => row.offeringId === offeringId && row.environment === "Sandbox");
@@ -189,9 +189,15 @@ export function completeDebt(state: AppState, offeringId: string, at: string): M
   if (!holders.length || holders.some(row => row.registration !== "模拟已清偿" || row.rights !== 0 || row.tokens !== 0
     || !state.tokens.some(token => token.orderId === row.orderId && token.operation === "到期模拟处置" && token.status === "模拟完成")))
     return noChange(state, "模拟持有人登记或 Token 后续处置未完成");
-  if (state.distributions.some(row => row.offeringId === offeringId && row.debtScheduleId === schedule.id && row.status !== "支付完成"))
+  if (hasUnsettledDebtObligation(state, offeringId))
     return noChange(state, "仍有未结分配批次");
   return yesChange({ ...state, debtCompletions: [...state.debtCompletions, {
     id: `DCO-${offeringId}`, offeringId, scheduleId: schedule.id, principalBatchId: principal.id,
     environment: "Sandbox", completedAt: at }] });
+}
+
+function hasUnsettledDebtObligation(state: AppState, offeringId: string): boolean {
+  return state.distributions.some(row => row.offeringId === offeringId
+    && (row.eventType === "债权利息" || row.eventType === "债权本金")
+    && row.status !== "支付完成" && row.status !== "已作废");
 }

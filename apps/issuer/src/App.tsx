@@ -2170,7 +2170,7 @@ function InvestorsPage({
         </div>
       </div>
       <div className="info-bar"><ShieldCheck size={17} /><span>Record Date 快照：{state.holderSnapshots.length} 份；仅纳入登记生效且日期不晚于 Record Date 的 Sandbox 持有人。快照一经固定不随当前名单变化。</span></div>
-      {state.holderSnapshots.length > 0 && <div className="card" style={{ padding: 20 }}><h3>已固定的持有人快照</h3>{state.holderSnapshots.map(snapshot => <p key={snapshot.id} className="body-copy">{snapshot.id} · {snapshot.offeringId} · Record Date {snapshot.recordDate} · {snapshot.lines.length} 人 · 权益合计 {snapshot.lines.reduce((sum, line) => sum + line.rights, 0).toLocaleString()} · Sandbox Mock</p>)}</div>}
+      {state.holderSnapshots.length > 0 && <div className="card p-5"><h3>已固定的持有人快照</h3>{state.holderSnapshots.map(snapshot => <p key={snapshot.id} className="body-copy">{snapshot.id} · {snapshot.offeringId} · Record Date {snapshot.recordDate} · {snapshot.lines.length} 人 · 权益合计 {snapshot.lines.reduce((sum, line) => sum + line.rights, 0).toLocaleString()} · Sandbox Mock</p>)}</div>}
     </div>
   );
 }
@@ -2689,7 +2689,7 @@ function RevenuePage({
             />
           )}
         </div>
-        <div className="card table-card"><h3 style={{ padding: 20 }}>住宅租金上报</h3><div className="table-wrap"><table><thead><tr><th>上报编号</th><th>Offering／周期</th><th>Record Date</th><th>可分配净额</th><th>证明</th><th>状态／下一步</th></tr></thead><tbody>{state.rentReports.map(report => <tr key={report.id}><td>{report.id}</td><td>{report.offeringId} · {report.period}</td><td>{report.recordDate}</td><td>{formatU(report.netU)}</td><td>{report.proofFile.name} · {report.proofFile.status}</td><td><Status value={report.status} /> {report.status === "待确认" && <Button variant="secondary" onClick={() => setState(current => { const result = confirmRentReport(current, report.id, new Date().toISOString()); queueMicrotask(() => toast(result.error || (result.changed ? "租金上报已确认；可创建分配批次" : "该上报已确认"))); return result.state; })}>确认租金上报</Button>}{report.status === "资料待扫描" && <small>下一步：测试控制区扫描证明文件</small>}</td></tr>)}</tbody></table>{!state.rentReports.length && <Empty title="暂无住宅租金上报" text="先上传实际租金收入证明并上报本期可分配净额。" />}</div></div>
+        <div className="card table-card"><h3 className="p-5">住宅租金上报</h3><div className="table-wrap"><table><thead><tr><th>上报编号</th><th>Offering／周期</th><th>Record Date</th><th>可分配净额</th><th>证明</th><th>状态／下一步</th></tr></thead><tbody>{state.rentReports.map(report => <tr key={report.id}><td>{report.id}</td><td>{report.offeringId} · {report.period}</td><td>{report.recordDate}</td><td>{formatU(report.netU)}</td><td>{report.proofFile.name} · {report.proofFile.status}</td><td><Status value={report.status} /> {report.status === "待确认" && <Button variant="secondary" onClick={() => setState(current => { const result = confirmRentReport(current, report.id, new Date().toISOString()); queueMicrotask(() => toast(result.error || (result.changed ? "租金上报已确认；可创建分配批次" : "该上报已确认"))); return result.state; })}>确认租金上报</Button>}{report.status === "资料待扫描" && <small>下一步：测试控制区扫描证明文件</small>}</td></tr>)}</tbody></table>{!state.rentReports.length && <Empty title="暂无住宅租金上报" text="先上传实际租金收入证明并上报本期可分配净额。" />}</div></div>
         <DebtLifecyclePanel state={state} setState={setState} setDrawer={setDrawer} toast={toast} />
       </div>
     );
@@ -2852,12 +2852,12 @@ function DebtLifecyclePanel({ state, setState, setDrawer, toast }: {
   const debts = state.offerings.filter(offering => state.instruments.some(instrument =>
     instrument.id === offering.instrumentId && instrument.type === "债权"));
   if (!debts.length) return null;
-  return <div className="card table-card" style={{ marginTop: 20 }}>
-    <h3 style={{ padding: 20 }}>债权月度付息计划 · Actual/365 Fixed</h3>
+  return <div className="card table-card mt-5">
+    <h3 className="p-5">债权月度付息计划 · Actual/365 Fixed</h3>
     {debts.map(offering => {
       const schedule = state.debtSchedules.find(row => row.offeringId === offering.id);
       const events = state.debtInterestEvents.filter(row => row.offeringId === offering.id);
-      return <div key={offering.id} style={{ padding: 20 }}>
+      return <div key={offering.id} className="p-5">
         <p className="body-copy"><b>{offering.id} · {offering.name}</b> · 当前：{schedule ? `固定计划 ${schedule.id}，${events.length} 期` : "未生成付息计划"}；下一步：{schedule ? "按应付日固定快照并创建月息批次" : "生成固定计划"}</p>
         {!schedule && <Button variant="secondary" onClick={() => setState(current => {
           const result = createDebtSchedule(current, offering.id, new Date().toISOString());
@@ -2882,14 +2882,14 @@ function DebtLifecyclePanel({ state, setState, setDrawer, toast }: {
 function DebtMaturityPanel({ state, setDrawer, toast }: { state: AppState; setDrawer: (d: Drawer) => void; toast: (s: string) => void }) {
   const debts = state.debtSchedules;
   if (!debts.length) return null;
-  return <div className="card table-card" style={{ marginTop: 20, padding: 20 }}>
+  return <div className="card table-card mt-5 p-5">
     <h3>独立本金偿还与模拟清偿</h3>
     {debts.map(schedule => {
       const batch = state.distributions.find(row => row.offeringId === schedule.offeringId && row.eventType === "债权本金" && row.debtScheduleId === schedule.id);
       const completion = state.debtCompletions.find(row => row.offeringId === schedule.offeringId);
       const settled = state.holders.filter(row => row.offeringId === schedule.offeringId && row.registration === "模拟已清偿");
       const disposed = state.tokens.filter(row => row.offeringId === schedule.offeringId && row.operation === "到期模拟处置");
-      return <div key={schedule.id} className="body-copy" style={{ marginTop: 16 }}>
+      return <div key={schedule.id} className="body-copy mt-4">
         <b>{schedule.offeringId}</b> · 到期 {schedule.maturityDate} · 本金 {formatU6(schedule.principal)} · 本金批次 {batch ? `${batch.id}／${batch.status}／${batch.paymentStatus || "未发起"}` : "未创建"} · 名册已更新 {settled.length} 人 · Token 已处置 {disposed.length} 笔 · {completion ? "Sandbox 模拟清偿完成" : "尚有未结事项"}
         <div className="control-row">{!batch ? <Button variant="secondary" onClick={() => setDrawer({ type: "debt-principal-create", id: schedule.offeringId })}>创建到期本金偿还批次</Button>
           : <Button variant="secondary" onClick={() => setDrawer({ type: "distribution-detail", id: batch.id })}>查看本金批次</Button>}</div>

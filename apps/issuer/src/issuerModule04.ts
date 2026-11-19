@@ -126,7 +126,7 @@ export function payMockDistributionLine(state: AppState, batchId: string, holder
   const paymentStatus = paidCount === updatedLines.length ? "支付完成" : paidCount > 0 ? "部分成功"
     : updatedLines.some(row => row.status === "Unknown") ? "Unknown"
       : updatedLines.some(row => row.status === "失败") ? "失败" : "未发起";
-  const incomes = outcome === "success"
+  const incomes = outcome === "success" && batch.eventType !== "债权本金"
     ? [...state.investorIncomes, { id: nextNumericId("INC", state.investorIncomes, 3000), batchId,
       holderId, investorId: line.investorId, paymentId, amount: line.amount,
       status: "Sandbox 模拟到账" as const, at }] : state.investorIncomes;

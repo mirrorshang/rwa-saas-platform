@@ -69,6 +69,7 @@ import { ACTUAL_365_FIXED, actual365MonthlyInterest } from "./actual365";
 import { advanceSandboxIssuance, checkIssuanceReadiness, readinessFingerprint, refreshSandboxSale, resolveSandboxIssuance, retryFailedSandboxIssuance, sandboxBusinessDate, submitSandboxIssuance } from "./issuerModule02";
 import { allocateMockOrder, approveMockInvestorKyc, createHolderSnapshot, createMockInvestor, createMockOrder, deliverMockTokens, recordMockPayment, registerMockHolder } from "./issuerModule03";
 import { confirmRentBatch, confirmRentReport, createRentBatch, createRentReport, payMockDistributionLine, splitBySnapshot } from "./issuerModule04";
+import { completeDebt, confirmDebtBatch, createDebtInterestBatch, createDebtPrincipalBatch, createDebtSchedule, disposeDebtTokens, settleDebtRegistry } from "./issuerModule05";
 
 type ModuleId =
   | "dashboard"
@@ -80,11 +81,21 @@ type ModuleId =
   | "revenue"
   | "reports"
   | "company";
-type Drawer = null | { type: string; id?: string };
+type Drawer = null | { type: string; id?: string; eventId?: string };
 
 const nowLabel = () =>
   new Date().toLocaleString("zh-CN", { hour12: false }).replace(/\//g, "-").replace(/\s/g, " ");
 const formatU6 = (amount: number) => `${new Intl.NumberFormat("zh-CN", { maximumFractionDigits: 6 }).format(amount)} U`;
+const paidDebtPrincipal = (state: AppState, offeringId: string, holderId?: string) => {
+  const batches = state.distributions.filter(row => row.offeringId === offeringId && row.eventType === "债权本金");
+  const paidMock = state.distributionPayments.filter(payment => payment.status === "已支付"
+    && (!holderId || payment.holderId === holderId) && batches.some(batch => batch.id === payment.batchId && batch.calculationStatus))
+    .reduce((sum, payment) => sum + payment.amount, 0);
+  const legacy = batches.filter(batch => !batch.calculationStatus && batch.status === "支付完成")
+    .flatMap(batch => batch.items || []).filter(line => line.status === "支付完成" && (!holderId || line.holderId === holderId))
+    .reduce((sum, line) => sum + line.amount, 0);
+  return paidMock + legacy;
+};
 
 const newActivity = (
   module: string,
@@ -934,7 +945,7 @@ function WorkspaceRouter({
     "instrument-create": ["配置权益结构", "定义投资者取得的法律权利、现金流与 Token 映射"],
     "offering-create": ["创建发行方案", "配置本期发行参数、认购规则、钱包与披露资料"],
     "offering-edit": ["编辑发行方案", "保留 Asset 与 Instrument 固定引用，仅修改未确认草稿参数"],
-    "distribution-create": ["创建收益批次", "选择收益类型、权益快照并完成候选应付试算"],
+    "distribution-create": ["创建债权应付批次", "按固定付息计划或到期本金分别建立批次"],
   };
   const meta = titles[workspace.type];
   const returnToList = () => {
@@ -1003,7 +1014,7 @@ function WorkspaceRouter({
           />
         )}
         {workspace.type === "distribution-create" && (
-          <CreateDistribution state={state} setState={setState} close={close} toast={toast} />
+          <CreateDebtBatch state={state} setState={setState} close={close} toast={toast} kind="interest" />
         )}
       </div>
     </div>
@@ -2093,7 +2104,7 @@ function InvestorsPage({
           setSearch={setSearch}
           filter={filter}
           setFilter={setFilter}
-          filters={["登记有效", "登记处理中"]}
+          filters={["登记有效", "登记处理中", "模拟已清偿"]}
         />
         <div className="table-wrap">
           <table>
@@ -2679,6 +2690,7 @@ function RevenuePage({
           )}
         </div>
         <div className="card table-card"><h3 style={{ padding: 20 }}>住宅租金上报</h3><div className="table-wrap"><table><thead><tr><th>上报编号</th><th>Offering／周期</th><th>Record Date</th><th>可分配净额</th><th>证明</th><th>状态／下一步</th></tr></thead><tbody>{state.rentReports.map(report => <tr key={report.id}><td>{report.id}</td><td>{report.offeringId} · {report.period}</td><td>{report.recordDate}</td><td>{formatU(report.netU)}</td><td>{report.proofFile.name} · {report.proofFile.status}</td><td><Status value={report.status} /> {report.status === "待确认" && <Button variant="secondary" onClick={() => setState(current => { const result = confirmRentReport(current, report.id, new Date().toISOString()); queueMicrotask(() => toast(result.error || (result.changed ? "租金上报已确认；可创建分配批次" : "该上报已确认"))); return result.state; })}>确认租金上报</Button>}{report.status === "资料待扫描" && <small>下一步：测试控制区扫描证明文件</small>}</td></tr>)}</tbody></table>{!state.rentReports.length && <Empty title="暂无住宅租金上报" text="先上传实际租金收入证明并上报本期可分配净额。" />}</div></div>
+        <DebtLifecyclePanel state={state} setState={setState} setDrawer={setDrawer} toast={toast} />
       </div>
     );
   if (tab === "收益分配")
@@ -2780,14 +2792,7 @@ function RevenuePage({
                     : 0;
                 const paidPrincipal =
                   ins?.type === "债权"
-                    ? state.distributions
-                        .filter(
-                          (distribution) =>
-                            distribution.offeringId === o.id &&
-                            distribution.eventType === "债权本金" &&
-                            distribution.status === "支付完成",
-                        )
-                        .reduce((sum, distribution) => sum + distribution.gross, 0)
+                    ? paidDebtPrincipal(state, o.id)
                     : 0;
                 const outstandingPrincipal = Math.max(0, originalPrincipal - paidPrincipal);
                 const principalStatus =
@@ -2825,7 +2830,9 @@ function RevenuePage({
                     <td>
                       {ins?.type === "债权" ? principalStatus : "未开始"}
                     </td>
-                    <td>未开始</td>
+                    <td>{ins?.type === "债权" ? state.debtCompletions.some(row => row.offeringId === o.id)
+                      ? "Sandbox 清偿完成" : state.tokens.some(row => row.offeringId === o.id && row.operation === "到期模拟处置")
+                        ? "Sandbox 已处置" : "待模拟处置" : "未开始"}</td>
                   </tr>
                 );
               })}
@@ -2833,8 +2840,64 @@ function RevenuePage({
           </table>
         </div>
       </div>
+      <DebtMaturityPanel state={state} setDrawer={setDrawer} toast={toast} />
     </div>
   );
+}
+
+function DebtLifecyclePanel({ state, setState, setDrawer, toast }: {
+  state: AppState; setState: React.Dispatch<React.SetStateAction<AppState>>;
+  setDrawer: (d: Drawer) => void; toast: (s: string) => void;
+}) {
+  const debts = state.offerings.filter(offering => state.instruments.some(instrument =>
+    instrument.id === offering.instrumentId && instrument.type === "债权"));
+  if (!debts.length) return null;
+  return <div className="card table-card" style={{ marginTop: 20 }}>
+    <h3 style={{ padding: 20 }}>债权月度付息计划 · Actual/365 Fixed</h3>
+    {debts.map(offering => {
+      const schedule = state.debtSchedules.find(row => row.offeringId === offering.id);
+      const events = state.debtInterestEvents.filter(row => row.offeringId === offering.id);
+      return <div key={offering.id} style={{ padding: 20 }}>
+        <p className="body-copy"><b>{offering.id} · {offering.name}</b> · 当前：{schedule ? `固定计划 ${schedule.id}，${events.length} 期` : "未生成付息计划"}；下一步：{schedule ? "按应付日固定快照并创建月息批次" : "生成固定计划"}</p>
+        {!schedule && <Button variant="secondary" onClick={() => setState(current => {
+          const result = createDebtSchedule(current, offering.id, new Date().toISOString());
+          queueMicrotask(() => toast(result.error || (result.changed ? "债权付息计划已生成；每期应付事件可查询" : "计划已有记录")));
+          return result.state;
+        })}>生成债权付息计划</Button>}
+        {schedule && <div className="table-wrap"><table><thead><tr><th>周期／计息天数</th><th>应付日／Record Date</th><th>应付利息</th><th>快照</th><th>批次／支付</th><th>下一步</th></tr></thead><tbody>
+          {events.map(event => {
+            const batch = state.distributions.find(row => row.interestEventId === event.id);
+            const snapshot = state.holderSnapshots.find(row => row.offeringId === offering.id && row.recordDate === event.recordDate);
+            return <tr key={event.id}><td>{event.period} · {event.days} 天</td><td>{event.dueDate}<small>Record Date {event.recordDate}</small></td>
+              <td>{formatU6(event.amount)}</td><td>{snapshot?.id || "未固定"}</td><td>{batch ? `${batch.id} · ${batch.status} · ${batch.paymentStatus || "未发起"}` : "尚无批次"}</td>
+              <td>{batch ? <Button variant="secondary" onClick={() => setDrawer({ type: "distribution-detail", id: batch.id })}>查看批次</Button>
+                : <Button variant="secondary" onClick={() => setDrawer({ type: "debt-interest-create", id: offering.id, eventId: event.id })}>创建月息批次</Button>}</td></tr>;
+          })}
+        </tbody></table></div>}
+      </div>;
+    })}
+  </div>;
+}
+
+function DebtMaturityPanel({ state, setDrawer, toast }: { state: AppState; setDrawer: (d: Drawer) => void; toast: (s: string) => void }) {
+  const debts = state.debtSchedules;
+  if (!debts.length) return null;
+  return <div className="card table-card" style={{ marginTop: 20, padding: 20 }}>
+    <h3>独立本金偿还与模拟清偿</h3>
+    {debts.map(schedule => {
+      const batch = state.distributions.find(row => row.offeringId === schedule.offeringId && row.eventType === "债权本金" && row.debtScheduleId === schedule.id);
+      const completion = state.debtCompletions.find(row => row.offeringId === schedule.offeringId);
+      const settled = state.holders.filter(row => row.offeringId === schedule.offeringId && row.registration === "模拟已清偿");
+      const disposed = state.tokens.filter(row => row.offeringId === schedule.offeringId && row.operation === "到期模拟处置");
+      return <div key={schedule.id} className="body-copy" style={{ marginTop: 16 }}>
+        <b>{schedule.offeringId}</b> · 到期 {schedule.maturityDate} · 本金 {formatU6(schedule.principal)} · 本金批次 {batch ? `${batch.id}／${batch.status}／${batch.paymentStatus || "未发起"}` : "未创建"} · 名册已更新 {settled.length} 人 · Token 已处置 {disposed.length} 笔 · {completion ? "Sandbox 模拟清偿完成" : "尚有未结事项"}
+        <div className="control-row">{!batch ? <Button variant="secondary" onClick={() => setDrawer({ type: "debt-principal-create", id: schedule.offeringId })}>创建到期本金偿还批次</Button>
+          : <Button variant="secondary" onClick={() => setDrawer({ type: "distribution-detail", id: batch.id })}>查看本金批次</Button>}</div>
+        {!completion && <small>下一步：付清全部月息与本金；在演示控制台更新名册、处置 Token、确认模拟清偿。{state.sandboxClock < schedule.maturityDate ? `当前测试日期 ${state.sandboxClock} 早于到期日。` : ""}</small>}
+      </div>;
+    })}
+    <p className="body-copy">本金偿还不计入投资者累计收益；Sandbox 结果不代表真实资金清偿。</p>
+  </div>;
 }
 
 function ReportsPage({ state, tab }: { state: AppState; tab: string }) {
@@ -4311,18 +4374,54 @@ function DemoConsole({
   });
   const recordHolderSnapshot = () => runScenarioStep("固定持有人快照", current => createHolderSnapshot(current,
     selectedOfferingId, snapshotDate, new Date().toISOString()));
+  const simulateRemainingDebtCoupons = () => runScenarioStep("逐期模拟剩余债权月息", current => {
+    const schedule = current.debtSchedules.find(row => row.offeringId === selectedOfferingId);
+    if (!schedule) return { state: current, changed: false, error: "请先在存续管理生成债权付息计划" };
+    if (current.sandboxClock < schedule.maturityDate) return { state: current, changed: false, error: `请先将 Sandbox 测试日期推进至 ${schedule.maturityDate}` };
+    let next = current;
+    let changed = false;
+    for (const event of current.debtInterestEvents.filter(row => row.scheduleId === schedule.id)) {
+      let batch = next.distributions.find(row => row.interestEventId === event.id);
+      if (batch?.status === "支付完成") continue;
+      if (!next.holderSnapshots.some(row => row.offeringId === selectedOfferingId && row.recordDate === event.recordDate)) {
+        const result = createHolderSnapshot(next, selectedOfferingId, event.recordDate, `${next.sandboxClock}T12:00:00+08:00`);
+        if (result.error) return { state: current, changed: false, error: result.error };
+        next = result.state; changed ||= result.changed;
+      }
+      if (!batch) {
+        const result = createDebtInterestBatch(next, event.id);
+        if (result.error) return { state: current, changed: false, error: result.error };
+        next = result.state; changed ||= result.changed;
+        batch = next.distributions.find(row => row.interestEventId === event.id);
+      }
+      if (!batch) return { state: current, changed: false, error: "利息批次未生成" };
+      if (batch.status === "待复核") {
+        const result = confirmDebtBatch(next, batch.id);
+        if (result.error) return { state: current, changed: false, error: result.error };
+        next = result.state; changed ||= result.changed;
+      }
+      for (const line of batch.items || []) {
+        if (next.distributions.find(row => row.id === batch!.id)?.items?.find(row => row.holderId === line.holderId)?.status === "支付完成") continue;
+        const result = payMockDistributionLine(next, batch.id, line.holderId,
+          `debt-coupon:${batch.id}:${line.holderId}:1`, "success", `${next.sandboxClock}T12:00:00+08:00`);
+        if (result.error) return { state: current, changed: false, error: result.error };
+        next = result.state; changed ||= result.changed;
+      }
+    }
+    return { state: next, changed };
+  });
   const payConfirmedDistribution = () => {
     if (!requireStandard()) return;
     const selectedBatch = state.distributions.find(item => item.id === selectedPayoutBatchId && item.offeringId === selectedOfferingId)
-      || state.distributions.find(item => item.offeringId === selectedOfferingId && item.status === "已确认" && item.reportId);
-    if (selectedBatch?.reportId) {
+      || state.distributions.find(item => item.offeringId === selectedOfferingId && item.status === "已确认" && item.calculationStatus);
+    if (selectedBatch?.calculationStatus) {
       const line = selectedBatch.items?.find(item => item.holderId === selectedPayoutHolderId)
         || selectedBatch.items?.find(item => item.status !== "支付完成");
       if (!line) return toast("当前批次没有待支付明细");
       if (!/^\d+$/.test(distributionAttempt)) return toast("请输入有效的支付意图尝试编号");
       setState(current => {
         const result = payMockDistributionLine(current, selectedBatch.id, line.holderId,
-          `distribution:${selectedBatch.id}:${line.holderId}:${distributionAttempt}`, distributionOutcome, new Date().toISOString());
+          `distribution:${selectedBatch.id}:${line.holderId}:${distributionAttempt}`, distributionOutcome, `${current.sandboxClock}T12:00:00+08:00`);
         queueMicrotask(() => toast(result.error || (result.changed ? `已记录 ${line.holderId} 的 Sandbox 支付结果；请核对批次与投资者收益` : "已有原支付结果，未重复生成")));
         return result.state;
       });
@@ -4598,6 +4697,10 @@ function DemoConsole({
                   <small>仅处理已确认批次；逐笔模拟支付、查询 Unknown 和失败重试</small>
                 </div>
               </button>
+              <button onClick={simulateRemainingDebtCoupons}><span>11</span><div><b>逐期模拟剩余债权月息</b><small>仅 Sandbox：逐期固定快照、创建并确认独立批次、逐笔记录模拟到账；已有 Unknown 需先手工查询</small></div></button>
+              <button onClick={() => runScenarioStep("更新债权模拟名册", current => settleDebtRegistry(current, selectedOfferingId))}><span>12</span><div><b>更新清偿后模拟持有人登记</b><small>全部月息和本金支付完成后，法律权益数量归零</small></div></button>
+              <button onClick={() => runScenarioStep("处置债权模拟 Token", current => disposeDebtTokens(current, selectedOfferingId, `${current.sandboxClock}T12:00:00+08:00`))}><span>13</span><div><b>模拟到期 Token 处置</b><small>与名册清偿分开，逐持有人留存模拟处置记录</small></div></button>
+              <button onClick={() => runScenarioStep("确认债权模拟清偿", current => completeDebt(current, selectedOfferingId, `${current.sandboxClock}T12:00:00+08:00`))}><span>14</span><div><b>确认 Sandbox 债权清偿完成</b><small>仅在本息、名册、Token 和所有义务均结清后产生唯一完成记录</small></div></button>
             </div>
           </section>
           <section>
@@ -4714,6 +4817,8 @@ function DrawerPanel({
     "distribution-create": "创建分配批次",
     "rent-report-create": "上报住宅净租金",
     "rent-batch-create": "创建住宅租金分配批次",
+    "debt-interest-create": "创建债权月息批次",
+    "debt-principal-create": "创建到期本金偿还批次",
     catalog: "资产分类目录",
   };
   if (drawer.type === "portal-preview") return <PortalPreview state={state} close={close} />;
@@ -4772,21 +4877,17 @@ function DrawerPanel({
       + holderDistributions
         .filter(
           (distribution) =>
-            !distribution.reportId && distribution.status === "支付完成" && distribution.eventType !== "债权本金",
+            !distribution.calculationStatus && distribution.status === "支付完成" && distribution.eventType !== "债权本金",
         )
         .flatMap((distribution) => distribution.items || [])
         .filter((item) => item.holderId === holder.id && item.status === "支付完成")
         .reduce((sum, item) => sum + item.amount, 0)
     : 0;
-  const holderPaidPrincipal = holder
-    ? holderDistributions
-        .filter(
-          (distribution) =>
-            distribution.status === "支付完成" && distribution.eventType === "债权本金",
-        )
-        .flatMap((distribution) => distribution.items || [])
-        .filter((item) => item.holderId === holder.id && item.status === "支付完成")
-        .reduce((sum, item) => sum + item.amount, 0)
+  const holderPaidPrincipal = holder ? paidDebtPrincipal(state, holder.offeringId, holder.id) : 0;
+  const holderOriginalPrincipal = holder && holderInstrument?.type === "债权"
+    ? state.allocations.find(row => row.orderId === holder.orderId)?.rights
+      || state.holderSnapshots.find(row => row.offeringId === holder.offeringId && row.lines.some(line => line.holderId === holder.id))
+        ?.lines.find(line => line.holderId === holder.id)?.rights || holder.rights
     : 0;
   const invalidCoreDetail =
     (drawer.type === "asset-detail" && !asset) ||
@@ -4861,6 +4962,14 @@ function DrawerPanel({
       setState(latest => {
         const result = confirmRentBatch(latest, current.id);
         queueMicrotask(() => toast(result.error || (result.changed ? "住宅租金批次已确认；下一步在测试控制区逐笔 Mock 支付" : "该批次已确认，未重复操作")));
+        return result.state;
+      });
+      return;
+    }
+    if (current.debtScheduleId) {
+      setState(latest => {
+        const result = confirmDebtBatch(latest, current.id);
+        queueMicrotask(() => toast(result.error || (result.changed ? "债权批次已确认；下一步在测试控制区逐笔 Mock 支付" : "该批次已确认")));
         return result.state;
       });
       return;
@@ -4985,10 +5094,12 @@ function DrawerPanel({
             <CreateWallet setState={setState} close={close} toast={toast} />
           )}
           {drawer.type === "distribution-create" && (
-            <CreateDistribution state={state} setState={setState} close={close} toast={toast} />
+            <CreateDebtBatch state={state} setState={setState} close={close} toast={toast} kind="interest" />
           )}
           {drawer.type === "rent-report-create" && <CreateRentReport state={state} setState={setState} close={close} toast={toast} />}
           {drawer.type === "rent-batch-create" && <CreateRentBatch state={state} setState={setState} close={close} toast={toast} />}
+          {drawer.type === "debt-interest-create" && <CreateDebtBatch state={state} setState={setState} close={close} toast={toast} kind="interest" preferredOfferingId={drawer.id} preferredEventId={drawer.eventId} />}
+          {drawer.type === "debt-principal-create" && <CreateDebtBatch state={state} setState={setState} close={close} toast={toast} kind="principal" preferredOfferingId={drawer.id} />}
           {asset && drawer.type === "asset-detail" && (
             <>
               <DetailHero title={asset.name} id={asset.code} status={asset.status} />
@@ -5610,7 +5721,7 @@ function DrawerPanel({
               <Section title="历史变动与收益">
                 <div className="detail-grid">
                   <D
-                    label="Token 交付记录"
+                    label="Token 操作记录"
                     value={`${state.tokens.filter((record) => record.orderId === holder.orderId).length} 笔`}
                   />
                   <D
@@ -5626,16 +5737,16 @@ function DrawerPanel({
                   <D label="当前对账" value={holder.reconciliation} />
                   {holderInstrument?.type === "债权" && (
                     <>
-                      <D label="原始本金" value={formatU(holder.rights)} />
+                      <D label="原始本金" value={formatU(holderOriginalPrincipal)} />
                       <D label="已偿还本金" value={formatU(holderPaidPrincipal)} />
                       <D
                         label="剩余未偿本金"
-                        value={formatU(Math.max(0, holder.rights - holderPaidPrincipal))}
+                        value={formatU(Math.max(0, holderOriginalPrincipal - holderPaidPrincipal))}
                       />
                       <D
                         label="本金状态"
                         value={
-                          Math.max(0, holder.rights - holderPaidPrincipal) === 0
+                          Math.max(0, holderOriginalPrincipal - holderPaidPrincipal) === 0
                             ? "已结清"
                             : holderPaidPrincipal > 0
                               ? "部分偿还"
@@ -5646,6 +5757,9 @@ function DrawerPanel({
                   )}
                 </div>
                 {state.investorIncomes.filter(income => income.holderId === holder.id).map(income => <p className="body-copy" key={income.id}>{income.id} · {income.batchId} · {formatU6(income.amount)} · {income.status} · {income.at}</p>)}
+                {state.distributionPayments.filter(payment => payment.holderId === holder.id && payment.status === "已支付"
+                  && state.distributions.some(batch => batch.id === payment.batchId && batch.eventType === "债权本金"))
+                  .map(payment => <p className="body-copy" key={payment.id}>{payment.id} · {payment.batchId} · {formatU6(payment.amount)} · Sandbox 模拟本金到账 · {payment.at}</p>)}
                 <p className="body-copy">
                   累计收益仅包含实际支付的利息和租金，不包含已偿还本金。历史仅来自当前订单、Token
                   操作和收益批次。
@@ -5750,10 +5864,10 @@ function DrawerPanel({
               <DetailHero title={dist.id} id={dist.period} status={dist.status} />
               <div className="quote">
                 <span>{dist.eventType || "收益分配"}候选总额</span>
-                <strong>{formatU(dist.gross)}</strong>
+                <strong>{formatU6(dist.gross)}</strong>
                 <small>Record Date · {dist.recordDate}</small>
               </div>
-              {dist.reportId && <div className="detail-grid"><D label="租金上报" value={dist.reportId} /><D label="固定持有人快照" value={dist.holderSnapshotId || "缺失"} /><D label="计算状态" value={dist.calculationStatus || "待计算"} /><D label="支付状态" value={dist.paymentStatus || "未发起"} /></div>}
+              {dist.calculationStatus && <div className="detail-grid"><D label={dist.reportId ? "租金上报" : "债权计划"} value={dist.reportId || dist.debtScheduleId || "—"} /><D label="固定持有人快照" value={dist.holderSnapshotId || "缺失"} /><D label="计算状态" value={dist.calculationStatus} /><D label="支付状态" value={dist.paymentStatus || "未发起"} /></div>}
               {dist.eventType === "债权利息" && dist.dayCountBasis && (
                 <div className="detail-grid">
                   <D label="计息口径" value={dist.dayCountBasis} />
@@ -7202,6 +7316,48 @@ function CreateRentBatch({ state, setState, close, toast }: {
     <p className="body-copy">Record Date：{report?.recordDate || "—"}；固定快照：{snapshot?.id || "缺失，请在测试控制区固定快照"}。金额保留六位小数，尾差分配给权益最多的持有人。</p>
     {preview.map(line => <div className="split-row" key={line.holderId}><span>{state.investors.find(row => row.id === line.investorId)?.name || line.investorId}<small>{line.basis.toLocaleString()} 权益单位</small></span><b>{formatU6(line.amount)}</b></div>)}
     <Button onClick={save}>创建分配批次</Button>
+  </div>;
+}
+
+function CreateDebtBatch({ state, setState, close, toast, kind, preferredOfferingId, preferredEventId }: {
+  state: AppState; setState: React.Dispatch<React.SetStateAction<AppState>>;
+  close: () => void; toast: (s: string) => void; kind: "interest" | "principal"; preferredOfferingId?: string; preferredEventId?: string;
+}) {
+  const debtOfferings = state.offerings.filter(offering => state.instruments.some(instrument =>
+    instrument.id === offering.instrumentId && instrument.type === "债权"));
+  const [offeringId, setOfferingId] = useState(preferredOfferingId || debtOfferings[0]?.id || "");
+  const events = state.debtInterestEvents.filter(event => event.offeringId === offeringId);
+  const [selectedEventId, setSelectedEventId] = useState(preferredEventId || "");
+  const event = events.find(row => row.id === selectedEventId) || events.find(row =>
+    !state.distributions.some(batch => batch.interestEventId === row.id)) || events[0];
+  const schedule = state.debtSchedules.find(row => row.offeringId === offeringId);
+  const recordDate = kind === "interest" ? event?.recordDate : schedule?.maturityDate;
+  const snapshot = state.holderSnapshots.find(row => row.offeringId === offeringId && row.recordDate === recordDate);
+  const preview = snapshot && (kind === "interest" ? event?.amount : schedule?.principal)
+    ? splitBySnapshot(kind === "interest" ? event!.amount : schedule!.principal, snapshot.lines) : [];
+  const save = () => {
+    const result = kind === "interest"
+      ? createDebtInterestBatch(state, event?.id || "") : createDebtPrincipalBatch(state, offeringId);
+    if (result.error) return toast(result.error);
+    setState(current => (kind === "interest"
+      ? createDebtInterestBatch(current, event!.id) : createDebtPrincipalBatch(current, offeringId)).state);
+    toast(kind === "interest" ? "债权月息批次待复核；请进入详情确认" : "到期本金偿还批次待复核；请进入详情确认");
+    close();
+  };
+  return <div className="create-form">
+    <label className="field"><span>债权 Offering *</span><select value={offeringId} onChange={e => { setOfferingId(e.target.value); setSelectedEventId(""); }}>
+      {debtOfferings.map(offering => <option key={offering.id} value={offering.id}>{offering.id} · {offering.name}</option>)}
+    </select></label>
+    {kind === "interest" && <label className="field"><span>应付利息事件 *</span><select value={event?.id || ""} onChange={e => setSelectedEventId(e.target.value)}>
+      {events.map(row => <option key={row.id} value={row.id}>{row.period} · {row.days} 天 · {formatU6(row.amount)} · 应付 {row.dueDate}</option>)}
+    </select></label>}
+    <div className="detail-grid"><D label="固定付息计划" value={schedule?.id || "缺失，请到存续管理生成"} />
+      <D label="Record Date" value={recordDate || "—"} /><D label="持有人快照" value={snapshot?.id || "缺失，请在演示控制台固定"} />
+      <D label="Sandbox 测试日期" value={state.sandboxClock || "未设置"} /></div>
+    {kind === "interest" && event && <p className="body-copy">Actual/365 Fixed：{schedule?.principal.toLocaleString()} U × {schedule?.annualRate}% × {event.days} 天 ÷ 365；{event.accrualFrom} 至 {event.accrualTo}。到期后不生成正常利息。</p>}
+    <div className="target"><span>{kind === "interest" ? "本期应付利息" : "到期应偿本金"}</span><strong>{formatU6(kind === "interest" ? event?.amount || 0 : schedule?.principal || 0)}</strong></div>
+    <h3>固定快照分配预览</h3>{preview.map(line => <div className="split-row" key={line.holderId}><span>{state.investors.find(row => row.id === line.investorId)?.name || line.investorId}<small>{line.basis.toLocaleString()} 权益单位</small></span><b>{formatU6(line.amount)}</b></div>)}
+    <Button onClick={save}>创建{kind === "interest" ? "月息" : "本金偿还"}批次</Button>
   </div>;
 }
 

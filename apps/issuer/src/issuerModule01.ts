@@ -95,6 +95,26 @@ export function validateIssuerState(state: AppState): string[] {
   uniqueIds("distributionPayments", state.distributionPayments, reasons);
   uniqueIds("investorIncomes", state.investorIncomes, reasons);
   uniqueIds("mockEvidenceFiles", state.mockEvidenceFiles, reasons);
+  uniqueIds("debtSchedules", state.debtSchedules, reasons);
+  uniqueIds("debtInterestEvents", state.debtInterestEvents, reasons);
+  uniqueIds("debtCompletions", state.debtCompletions, reasons);
+  const debtOfferings = new Set<string>();
+  for (const schedule of state.debtSchedules) {
+    if (debtOfferings.has(schedule.offeringId)) reasons.push(`${schedule.offeringId} 重复债权计划`);
+    debtOfferings.add(schedule.offeringId);
+    if (!state.offerings.some(row => row.id === schedule.offeringId && row.instrumentId === schedule.instrumentId)) reasons.push(`${schedule.id} 的 Offering 或权益引用无效`);
+  }
+  const debtPeriods = new Set<string>();
+  for (const event of state.debtInterestEvents) {
+    const key = `${event.offeringId}:${event.period}`;
+    if (debtPeriods.has(key)) reasons.push(`${key} 重复债权应付利息事件`);
+    debtPeriods.add(key);
+    if (!state.debtSchedules.some(row => row.id === event.scheduleId && row.offeringId === event.offeringId)) reasons.push(`${event.id} 的债权计划引用无效`);
+  }
+  for (const completion of state.debtCompletions) {
+    if (!state.debtSchedules.some(row => row.id === completion.scheduleId && row.offeringId === completion.offeringId)
+      || !state.distributions.some(row => row.id === completion.principalBatchId && row.eventType === "债权本金" && row.status === "支付完成")) reasons.push(`${completion.id} 的清偿引用无效`);
+  }
   const rentPeriods = new Set<string>();
   for (const report of state.rentReports) {
     const key = `${report.offeringId}:${report.period}`;
@@ -235,10 +255,10 @@ export function parseIssuerState(raw: string, source: "v3" | "v4", defaults: App
     ...defaults, ...value,
     portal: { ...defaults.portal, ...(isObject(value.portal) ? value.portal : {}) },
   } as unknown as AppState;
-  for (const name of ["readinessReports", "issuanceTasks", "publications", "allocations", "holderSnapshots", "rentReports", "distributionPayments", "investorIncomes", "mockEvidenceFiles"] as const) {
+  for (const name of ["readinessReports", "issuanceTasks", "publications", "allocations", "holderSnapshots", "rentReports", "distributionPayments", "investorIncomes", "mockEvidenceFiles", "debtSchedules", "debtInterestEvents", "debtCompletions"] as const) {
     if (value[name] === undefined) hydrated[name] = [];
     else if (!Array.isArray(value[name])) reasons.push(`${name} 格式损坏`);
-    else if (value[name].some((row: unknown) => !isObject(row) || (name !== "readinessReports" && (typeof row.id !== "string" || !row.id)) || (["allocations", "holderSnapshots", "rentReports", "issuanceTasks", "publications"].includes(name) && typeof row.offeringId !== "string"))) reasons.push(`${name} 包含损坏记录`);
+    else if (value[name].some((row: unknown) => !isObject(row) || (name !== "readinessReports" && (typeof row.id !== "string" || !row.id)) || (["allocations", "holderSnapshots", "rentReports", "issuanceTasks", "publications", "debtSchedules", "debtInterestEvents", "debtCompletions"].includes(name) && typeof row.offeringId !== "string"))) reasons.push(`${name} 包含损坏记录`);
   }
   if (reasons.length) return { state: defaults, source: "blocked", issue: { source, raw, reasons } };
   for (const report of hydrated.readinessReports) {
@@ -267,6 +287,21 @@ export function parseIssuerState(raw: string, source: "v3" | "v4", defaults: App
   }
   for (const file of hydrated.mockEvidenceFiles) {
     if (typeof file.name !== "string" || file.category !== "收益依据" || !["待扫描", "可引用"].includes(file.status)) reasons.push(`${file.id} 的 Mock 收益证明损坏`);
+  }
+  for (const schedule of hydrated.debtSchedules) {
+    if (typeof schedule.instrumentId !== "string" || typeof schedule.instrumentVersion !== "string"
+      || typeof schedule.startDate !== "string" || typeof schedule.maturityDate !== "string"
+      || !Number.isFinite(schedule.principal) || !Number.isFinite(schedule.annualRate)
+      || schedule.dayCountBasis !== "Actual/365 Fixed" || schedule.environment !== "Sandbox") reasons.push(`${schedule.id} 的债权计划损坏`);
+  }
+  for (const event of hydrated.debtInterestEvents) {
+    if (typeof event.scheduleId !== "string" || typeof event.period !== "string" || typeof event.recordDate !== "string"
+      || typeof event.dueDate !== "string" || !Number.isSafeInteger(event.days) || !Number.isFinite(event.amount)
+      || event.environment !== "Sandbox") reasons.push(`${event.id} 的利息事件损坏`);
+  }
+  for (const completion of hydrated.debtCompletions) {
+    if (typeof completion.scheduleId !== "string" || typeof completion.principalBatchId !== "string"
+      || typeof completion.completedAt !== "string" || completion.environment !== "Sandbox") reasons.push(`${completion.id} 的清偿记录损坏`);
   }
   if (value.sandboxClock !== undefined && typeof value.sandboxClock !== "string") reasons.push("sandboxClock 格式损坏");
   if (reasons.length) return { state: defaults, source: "blocked", issue: { source, raw, reasons } };

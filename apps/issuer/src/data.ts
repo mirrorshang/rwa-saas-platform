@@ -263,6 +263,8 @@ export interface Distribution {
   dayCountBasis?: "Actual/365 Fixed";
   reportId?: string;
   holderSnapshotId?: string;
+  debtScheduleId?: string;
+  interestEventId?: string;
   calculationStatus?: "已计算";
   paymentStatus?: "未发起" | "部分成功" | "Unknown" | "失败" | "支付完成";
 }
@@ -303,6 +305,43 @@ export interface InvestorIncome {
   amount: number;
   status: "Sandbox 模拟到账";
   at: string;
+}
+
+export interface DebtSchedule {
+  id: string;
+  offeringId: string;
+  instrumentId: string;
+  instrumentVersion: string;
+  startDate: string;
+  maturityDate: string;
+  principal: number;
+  annualRate: number;
+  dayCountBasis: "Actual/365 Fixed";
+  environment: "Sandbox";
+  createdAt: string;
+}
+
+export interface DebtInterestEvent {
+  id: string;
+  scheduleId: string;
+  offeringId: string;
+  period: string;
+  accrualFrom: string;
+  accrualTo: string;
+  recordDate: string;
+  dueDate: string;
+  days: number;
+  amount: number;
+  environment: "Sandbox";
+}
+
+export interface DebtCompletion {
+  id: string;
+  offeringId: string;
+  scheduleId: string;
+  principalBatchId: string;
+  environment: "Sandbox";
+  completedAt: string;
 }
 
 export interface MockEvent {
@@ -365,6 +404,9 @@ export interface AppState {
   rentReports: RentReport[];
   distributionPayments: DistributionPayment[];
   investorIncomes: InvestorIncome[];
+  debtSchedules: DebtSchedule[];
+  debtInterestEvents: DebtInterestEvent[];
+  debtCompletions: DebtCompletion[];
   mockEvidenceFiles: BusinessFile[];
   mockEvents: MockEvent[];
   portal: { name: string; slug: string; saved: boolean; logo: string };
@@ -403,6 +445,9 @@ export const emptyState: AppState = {
   rentReports: [],
   distributionPayments: [],
   investorIncomes: [],
+  debtSchedules: [],
+  debtInterestEvents: [],
+  debtCompletions: [],
   mockEvidenceFiles: [],
   mockEvents: [],
   portal: { name: "", slug: "", saved: false, logo: "" },

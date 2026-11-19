@@ -6,6 +6,7 @@ export interface BusinessFile {
   name: string;
   category: string;
   status: "待扫描" | "可引用" | "失败";
+  version?: number;
 }
 
 export interface Asset {
@@ -22,6 +23,7 @@ export interface Asset {
   details?: Record<string, string | number>;
   files?: BusinessFile[];
   missing?: string[];
+  version?: number;
 }
 
 export interface Instrument {
@@ -39,6 +41,36 @@ export interface Instrument {
   terms?: Record<string, string | number>;
   files?: BusinessFile[];
   missing?: string[];
+}
+
+export interface Project {
+  id: string;
+  assetId: string;
+  instrumentId: string;
+  instrumentVersion: string;
+  name: string;
+  status: "Draft" | "Ready";
+}
+
+export interface OfferingSnapshot {
+  confirmedAt: string;
+  asset: Asset;
+  instrument: Instrument;
+  project: Project;
+  walletId: string;
+  walletAddress: string;
+  disclosureFiles: BusinessFile[];
+  reservedTokens: number;
+  offeringTerms: {
+    name: string;
+    round: string;
+    tokens: number;
+    price: number;
+    start: string;
+    end: string;
+    summary?: string;
+    minimum?: number;
+  };
 }
 
 export interface Offering {
@@ -59,6 +91,11 @@ export interface Offering {
   disclosureFiles?: BusinessFile[];
   confirmed?: boolean;
   contractStatus?: "未申请" | "部署处理中" | "模拟已部署" | "部署失败";
+  projectId?: string;
+  assetVersion?: number;
+  instrumentVersion?: string;
+  revision?: number;
+  confirmationSnapshot?: OfferingSnapshot;
 }
 
 export interface Investor {
@@ -143,6 +180,10 @@ export interface Distribution {
   items?: { holderId: string; investorId: string; basis: number; amount: number; status: string }[];
   paidAt?: string;
   blockedReason?: string;
+  accrualFrom?: string;
+  accrualTo?: string;
+  interestDays?: number;
+  dayCountBasis?: "Actual/365 Fixed";
 }
 
 export interface MockEvent {
@@ -187,6 +228,7 @@ export interface AppState {
   autoRenew: boolean;
   assets: Asset[];
   instruments: Instrument[];
+  projects: Project[];
   offerings: Offering[];
   investors: Investor[];
   orders: Order[];
@@ -214,6 +256,7 @@ export const emptyState: AppState = {
   autoRenew: false,
   assets: [],
   instruments: [],
+  projects: [],
   offerings: [],
   investors: [],
   orders: [],
@@ -729,6 +772,7 @@ export function demoState(
     autoRenew: mode !== "exception",
     assets: assets.map((x) => ({ ...x })),
     instruments: instruments.map((x) => ({ ...x })),
+    projects: [],
     offerings: offerings.map((x) => ({ ...x })),
     investors: operational ? investors.map((x) => ({ ...x })) : [],
     orders: operational ? orders.map((x) => ({ ...x })) : [],

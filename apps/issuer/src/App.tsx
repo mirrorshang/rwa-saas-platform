@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Activity,
   AlertCircle,
@@ -54,6 +54,18 @@ import {
   emptyState,
   formatU,
 } from "./data";
+import {
+  ISSUER_STORAGE_KEY,
+  confirmIssuerOffering,
+  ensureProjects,
+  loadIssuerState,
+  nextNumericId,
+  parseIssuerState,
+  persistIssuerState,
+  serializeIssuerState,
+  type StorageIssue,
+} from "./issuerModule01";
+import { ACTUAL_365_FIXED, actual365MonthlyInterest } from "./actual365";
 
 type ModuleId =
   | "dashboard"
@@ -66,8 +78,6 @@ type ModuleId =
   | "reports"
   | "company";
 type Drawer = null | { type: string; id?: string };
-
-const LEGACY_DEMO_ENTITY = "北京朝阳城市资产管理有限公司";
 
 const nowLabel = () =>
   new Date().toLocaleString("zh-CN", { hour12: false }).replace(/\//g, "-").replace(/\s/g, " ");
@@ -135,6 +145,7 @@ function parseRoute(): InitialRoute {
     assets: { module: "assets", tab: "资产管理", type: "asset-detail" },
     instruments: { module: "assets", tab: "权益结构", type: "instrument-detail" },
     offerings: { module: "assets", tab: "发行管理", type: "offering-detail" },
+    "issuance-readiness": { module: "assets", tab: "发行管理", type: "issuance-readiness" },
   };
   const detail = detailRoutes[parts[0]];
   if (detail && parts[1]) {
@@ -177,68 +188,10 @@ function detailRoute(surface: NonNullable<Drawer>) {
         ? "instruments"
         : surface.type === "offering-detail"
           ? "offerings"
+          : surface.type === "issuance-readiness"
+            ? "issuance-readiness"
           : "";
   return base && surface.id ? `/${base}/${encodeURIComponent(surface.id)}` : "";
-}
-
-const persistedCollections: (keyof AppState)[] = [
-  "assets",
-  "instruments",
-  "offerings",
-  "investors",
-  "orders",
-  "payments",
-  "holders",
-  "wallets",
-  "tokens",
-  "distributions",
-  "mockEvents",
-  "activities",
-  "messages",
-];
-
-function loadPersistedState(): AppState {
-  try {
-    const raw = localStorage.getItem("rwa-issuer-state-v3");
-    if (!raw)
-      return { ...emptyState, messages: emptyState.messages.map((message) => ({ ...message })) };
-
-    const saved = JSON.parse(raw) as Partial<AppState>;
-    const hydrated = {
-      ...emptyState,
-      ...saved,
-      portal: { ...emptyState.portal, ...(saved.portal || {}) },
-    } as AppState;
-
-    for (const key of persistedCollections) {
-      if (!Array.isArray(saved[key])) {
-        (hydrated as unknown as Record<string, unknown>)[key] = emptyState[key];
-      }
-    }
-    const currentEntity = hydrated.company?.name;
-    if (currentEntity && currentEntity !== LEGACY_DEMO_ENTITY) {
-      hydrated.assets = hydrated.assets.map((asset) => {
-        const details = { ...(asset.details || {}) };
-        for (const key of ["owner", "operator", "creditor"]) {
-          if (details[key] === LEGACY_DEMO_ENTITY) details[key] = currentEntity;
-        }
-        return { ...asset, details };
-      });
-      hydrated.instruments = hydrated.instruments.map((instrument) => ({
-        ...instrument,
-        terms: {
-          ...(instrument.terms || {}),
-          ...(instrument.terms?.responsibleParty === LEGACY_DEMO_ENTITY
-            ? { responsibleParty: currentEntity }
-            : {}),
-        },
-      }));
-    }
-    return hydrated;
-  } catch {
-    localStorage.removeItem("rwa-issuer-state-v3");
-    return { ...emptyState, messages: emptyState.messages.map((message) => ({ ...message })) };
-  }
 }
 
 const requiredFileReady = (files: BusinessFile[] | undefined, categories: string[]) =>
@@ -367,6 +320,8 @@ function instrumentMissing(instrument: Instrument, asset?: Asset): string[] {
     if (Number(terms.annualRate) <= 0) missing.push("投资者利率必须大于 0");
     if (Number(terms.principal) !== instrument.totalRights)
       missing.push("投资者本金总额必须与授权债权权益总量一致");
+    if (terms.interestMethod !== ACTUAL_365_FIXED)
+      missing.push("计息方式必须为 Actual/365 Fixed");
   } else if (Number(terms.participationRate) <= 0 || Number(terms.participationRate) > 100) {
     missing.push("收益参与比例必须大于 0 且不超过 100%");
   }
@@ -582,7 +537,11 @@ function Restricted({ state, goKyb }: { state: AppState; goKyb: () => void }) {
 
 function App() {
   const initialRoute = parseRoute();
-  const [state, setState] = useState<AppState>(loadPersistedState);
+  const [initialLoad] = useState(() => loadIssuerState(localStorage, emptyState));
+  const lastStoredRaw = useRef<string | null>(initialLoad.source === "v4" ? initialLoad.readRaw || null : null);
+  const [state, setState] = useState<AppState>(initialLoad.state);
+  const [storageIssue, setStorageIssue] = useState<StorageIssue | undefined>(initialLoad.issue);
+  const [importError, setImportError] = useState("");
   const [module, setModule] = useState<ModuleId>(initialRoute.module);
   const [tab, setTab] = useState(initialRoute.tab);
   const [drawer, setDrawer] = useState<Drawer>(null);
@@ -593,7 +552,17 @@ function App() {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileNav, setMobileNav] = useState(false);
 
-  useEffect(() => localStorage.setItem("rwa-issuer-state-v3", JSON.stringify(state)), [state]);
+  useEffect(() => {
+    if (storageIssue) return;
+    const result = persistIssuerState(localStorage, state, lastStoredRaw.current);
+    if (result.error) {
+      let raw = "";
+      try { raw = localStorage.getItem(ISSUER_STORAGE_KEY) || localStorage.getItem("rwa-issuer-state-v3") || ""; } catch { /* 读取也不可用 */ }
+      setStorageIssue({ source: "write", raw, reasons: [result.error] });
+    } else {
+      lastStoredRaw.current = result.raw || serializeIssuerState(state);
+    }
+  }, [state, storageIssue]);
   useEffect(() => {
     if (!tab) setTab(tabDefaults[module]);
   }, [module, tab]);
@@ -645,7 +614,7 @@ function App() {
       "offering-edit",
       "distribution-create",
     ];
-    if (pageTypes.includes(surface.type) || surface.type.endsWith("-detail")) {
+    if (pageTypes.includes(surface.type) || surface.type.endsWith("-detail") || surface.type === "issuance-readiness") {
       setWorkspace(surface);
       setDrawer(null);
       const url = detailRoute(surface);
@@ -655,6 +624,10 @@ function App() {
     }
   };
   const closeWorkspace = () => {
+    if (workspace?.type === "issuance-readiness" && workspace.id) {
+      openSurface({ type: "offering-detail", id: workspace.id });
+      return;
+    }
     if (workspace?.type === "asset-detail" || workspace?.type === "asset-edit") {
       go("assets", "资产管理");
       return;
@@ -680,6 +653,55 @@ function App() {
   const unread = visibleMessages(state).filter((m) => !m.read).length;
   const restricted = state.kybStatus !== "已通过";
   const activeMeta = nav.find((n) => n.id === module)!;
+
+  if (storageIssue) {
+    const exportOriginal = () => {
+      const blob = new Blob([storageIssue.raw], { type: "application/json;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `issuer-original-${storageIssue.source}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+    };
+    return (
+      <main className="business-workspace" style={{ maxWidth: 780, margin: "64px auto" }}>
+        <PageHeader eyebrow="DATA RECOVERY" title="本地数据需要核对" description="原始记录已保留，当前页面停止业务写入。请导出原始数据，修复冲突后导入有效 JSON。" />
+        <div className="card" style={{ padding: 24 }}>
+          <p>来源：{storageIssue.source}</p>
+          {storageIssue.reasons.map((reason, index) => <p key={index}>· {reason}</p>)}
+          {importError && <p className="banner danger">导入失败：{importError}</p>}
+          <div className="control-row">
+            <Button onClick={exportOriginal} disabled={!storageIssue.raw}>下载原始数据</Button>
+            <Button variant="secondary" onClick={() => window.location.reload()}>重新读取本地数据</Button>
+            <label className="field">
+              <span>导入修复后的数据</span>
+              <input type="file" accept=".json,application/json" onChange={async (event) => {
+                const file = event.target.files?.[0];
+                if (!file) return;
+                try {
+                  const raw = await file.text();
+                  let source: "v3" | "v4" = "v3";
+                  try { source = JSON.parse(raw)?.schemaVersion === 4 ? "v4" : "v3"; } catch { /* 交由统一解析器报告 */ }
+                  const result = parseIssuerState(raw, source, emptyState);
+                  if (result.issue) { setImportError(result.issue.reasons.join("；")); return; }
+                  if (storageIssue.raw) {
+                    const backupKey = `rwa-issuer-recovery-backup-${Date.now()}-${crypto.randomUUID()}`;
+                    localStorage.setItem(backupKey, storageIssue.raw);
+                  }
+                  setImportError("");
+                  try { lastStoredRaw.current = localStorage.getItem(ISSUER_STORAGE_KEY); } catch { lastStoredRaw.current = null; }
+                  setState(result.state);
+                  setStorageIssue(undefined);
+                } catch (error) { setImportError(String(error)); }
+              }} />
+            </label>
+          </div>
+          <p className="body-copy">旧存储不会自动删除；若原始文件无法修复，请保留导出文件并交由工程师核对。</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <div className={`app ${collapsed ? "collapsed" : ""}`}>
@@ -962,10 +984,10 @@ function WorkspaceRouter({
           />
         )}
         {workspace.type === "instrument-create" && (
-          <CreateInstrument state={state} setState={setState} close={close} toast={toast} />
+          <CreateInstrument state={state} setState={setState} close={close} toast={toast} preferredAssetId={workspace.id} />
         )}
         {workspace.type === "offering-create" && (
-          <CreateOffering state={state} setState={setState} close={close} toast={toast} />
+          <CreateOffering state={state} setState={setState} close={close} toast={toast} preferredAssetId={workspace.id} />
         )}
         {workspace.type === "offering-edit" && (
           <CreateOffering
@@ -1584,9 +1606,13 @@ function AssetsPage({
         description="创建独立发行期次，绑定确定的资产、权益版本、容量与收款钱包。"
         actions={
           <>
-            <Button variant="secondary" onClick={() => toast("已刷新发行前检查结果")}>
+            <Button variant="secondary" onClick={() => {
+              const first = state.offerings.find((item) => item.confirmed);
+              if (first) setDrawer({ type: "issuance-readiness", id: first.id });
+              else toast("请先打开 Offering 详情并确认发行方案");
+            }}>
               <ClipboardCheck size={16} />
-              发行前检查
+              查看发行准备资料
             </Button>
             <Button onClick={() => setDrawer({ type: "offering-create" })}>
               <Plus size={16} />
@@ -3819,7 +3845,7 @@ function DemoConsole({
     state.offerings.find((offering) => offering.confirmed)?.id || state.offerings[0]?.id || "",
   );
   const load = (mode: "free" | "standard" | "operations" | "exception") => {
-    setState(demoState(mode));
+    setState(ensureProjects(demoState(mode)));
     toast("演示场景已载入并保存到本地");
   };
   const setKyb = (status: AppState["kybStatus"]) => {
@@ -3911,8 +3937,8 @@ function DemoConsole({
           principal: 400000,
           outstanding: 400000,
           annualRate: 12,
-          interestStart: "2026-10-01",
-          maturity: "2027-10-01",
+          interestStart: "2026-12-01",
+          maturity: "2028-12-01",
           repayment: "到期一次还本",
           performance: "正常履约",
           guarantee: "无",
@@ -3982,10 +4008,10 @@ function DemoConsole({
           rightsDescription: "发行企业对投资者承担独立的固定利率债权偿付义务",
           principal: 400000,
           annualRate: 12,
-          interestMethod: "完整自然月按年利率 ÷ 12",
+          interestMethod: ACTUAL_365_FIXED,
           frequency: "每月付息",
-          startDate: "2026-10-01",
-          maturityDate: "2027-10-01",
+          startDate: "2026-12-01",
+          maturityDate: "2028-12-01",
           repayment: "到期一次还本金",
         },
         files: [
@@ -4060,7 +4086,7 @@ function DemoConsole({
         ...(includeResidential ? [residentialOffering] : []),
         ...(includeDebt ? [debtOffering] : []),
       ].filter((item) => !s.offerings.some((existing) => existing.id === item.id));
-      return {
+      return ensureProjects({
         ...s,
         company: s.company || { ...companyDemo },
         kybStatus: "已通过",
@@ -4076,7 +4102,7 @@ function DemoConsole({
             : kind === "debt"
               ? "债权案例资料模板"
               : "住宅案例资料模板",
-      };
+      });
     });
     toast("案例资料模板已幂等导入；未生成投资者、付款、登记、合约、Token 或收益");
   };
@@ -4103,7 +4129,7 @@ function DemoConsole({
         );
         return { ...next, missing, status: hadPending ? ("Draft" as const) : instrument.status };
       });
-      return {
+      return ensureProjects({
         ...s,
         assets,
         instruments,
@@ -4134,7 +4160,7 @@ function DemoConsole({
           },
           ...s.mockEvents,
         ],
-      };
+      });
     });
     toast("Mock 文件扫描已完成；请回到详情运行 Asset / Instrument 资料检查");
   };
@@ -4705,11 +4731,10 @@ function DemoConsole({
             variant="danger"
             onClick={() => {
               if (confirm("确认清除全部本地演示数据并恢复首次进入状态？")) {
-                localStorage.removeItem("rwa-issuer-state-v3");
                 setState({ ...emptyState, messages: emptyState.messages.map((x) => ({ ...x })) });
                 go("dashboard");
                 close();
-                toast("已恢复首次进入状态");
+                toast("已重置当前演示副本；旧版原始记录仍保留");
               }
             }}
           >
@@ -4754,6 +4779,7 @@ function DrawerPanel({
     "instrument-detail": "权益结构详情",
     "instrument-create": "配置权益结构",
     "offering-detail": "Offering 详情",
+    "issuance-readiness": "发行准备资料",
     "offering-create": "新建 Offering",
     "investor-detail": "投资者详情",
     "order-detail": "订单详情",
@@ -4822,10 +4848,10 @@ function DrawerPanel({
   const invalidCoreDetail =
     (drawer.type === "asset-detail" && !asset) ||
     (drawer.type === "instrument-detail" && !ins) ||
-    (drawer.type === "offering-detail" && !off);
+    ((drawer.type === "offering-detail" || drawer.type === "issuance-readiness") && !off);
   const runAssetCheck = (current: Asset) => {
     const missing = assetMissing(current);
-    setState((s) => ({
+    setState((s) => ensureProjects({
       ...s,
       assets: s.assets.map((item) =>
         item.id === current.id
@@ -4851,7 +4877,7 @@ function DrawerPanel({
   const runInstrumentCheck = (current: Instrument) => {
     const parent = state.assets.find((item) => item.id === current.assetId);
     const missing = instrumentMissing(current, parent);
-    setState((s) => ({
+    setState((s) => ensureProjects({
       ...s,
       instruments: s.instruments.map((item) =>
         item.id === current.id
@@ -4875,38 +4901,17 @@ function DrawerPanel({
     );
   };
   const confirmOffering = (current: Offering) => {
-    if (current.confirmed) return toast("该 Offering 已完成内部发行确认，不会重复占用容量");
-    const parentAsset = state.assets.find((item) => item.id === current.assetId);
-    const parentInstrument = state.instruments.find((item) => item.id === current.instrumentId);
-    const wallet = state.wallets.find((item) => item.id === current.walletId);
-    const blockers = [
-      state.kybStatus !== "已通过" ? "KYB 未通过" : "",
-      state.plan !== "Standard" ? "Standard 未生效" : "",
-      parentAsset?.status !== "Ready" ? "Asset 未 Ready" : "",
-      parentInstrument?.status !== "Ready" ? "Instrument 未 Ready" : "",
-      !wallet?.status.includes("已验证") ? "收款钱包未验证" : "",
-      !requiredFileReady(current.disclosureFiles, ["发行披露"]) ? "发行披露文件不可引用" : "",
-      parentInstrument && current.tokens > parentInstrument.tokenCap - parentInstrument.used
-        ? "授权容量不足"
-        : "",
-    ].filter(Boolean);
-    if (blockers.length) return toast(`无法确认发行：${blockers.join("、")}`);
-    setState((s) => ({
-      ...s,
-      offerings: s.offerings.map((item) =>
-        item.id === current.id
-          ? { ...item, confirmed: true, status: "准备就绪", contractStatus: "未申请" }
-          : item,
-      ),
-      instruments: s.instruments.map((item) =>
-        item.id === current.instrumentId ? { ...item, used: item.used + current.tokens } : item,
-      ),
-      activities: [
-        newActivity("资产与发行", current.id, "确认 Offering 并预留容量"),
-        ...s.activities,
-      ],
-    }));
-    toast("已完成内部发行确认并预留容量；未部署合约、未产生订单或资金事实");
+    setState((latest) => {
+      const result = confirmIssuerOffering(latest, current.id, current.revision || 1, new Date().toISOString());
+      queueMicrotask(() => toast(result.error
+        ? `无法确认发行：${result.error}`
+        : result.changed
+          ? "已完成内部发行确认并预留容量；请进入发行准备"
+          : "该 Offering 已确认，未重复预留容量"));
+      return result.changed
+        ? { ...result.state, activities: [newActivity("资产与发行", current.id, "确认 Offering 并预留容量"), ...latest.activities] }
+        : latest;
+    });
   };
   const confirmDistribution = (current: NonNullable<typeof dist>) => {
     const duplicate = state.distributions.find(
@@ -5023,7 +5028,7 @@ function DrawerPanel({
             <CreateInstrument state={state} setState={setState} close={close} toast={toast} />
           )}
           {drawer.type === "offering-create" && (
-            <CreateOffering state={state} setState={setState} close={close} toast={toast} />
+            <CreateOffering state={state} setState={setState} close={close} toast={toast} preferredAssetId={drawer.id} />
           )}
           {drawer.type === "wallet-create" && (
             <CreateWallet setState={setState} close={close} toast={toast} />
@@ -5163,6 +5168,12 @@ function DrawerPanel({
                     go("assets", "发行管理");
                   }}
                 />
+                {!state.instruments.some((item) => item.assetId === asset.id) && asset.status === "Ready" && (
+                  <Button onClick={() => setDrawer({ type: "instrument-create", id: asset.id })}>配置该资产的权益结构</Button>
+                )}
+                {state.instruments.some((item) => item.assetId === asset.id && item.status === "Ready") && (
+                  <Button onClick={() => setDrawer({ type: "offering-create", id: asset.id })}>新建该资产的 Offering</Button>
+                )}
               </Section>
               <Button
                 variant="secondary"
@@ -5262,7 +5273,35 @@ function DrawerPanel({
               </Section>
             </>
           )}
-          {off && (
+          {off && drawer.type === "issuance-readiness" && (
+            <>
+              <DetailHero title={off.name} id={`${off.id} · 发行准备`} status={off.confirmed ? "方案已确认" : "方案未确认"} />
+              <div className="info-note"><FileText size={17} /><p>此页核对模块 01 的固定引用与资料。七组发行准备检查、责任声明和 Sandbox 执行属于模块 02，当前尚未执行。</p></div>
+              {!off.confirmed && <div className="banner warning">请先在 Offering 详情完成内部发行确认。</div>}
+              {off.confirmed && !off.confirmationSnapshot && <div className="banner warning">旧版已确认记录缺少历史确认快照；已保留原记录，需核对版本证据后才能继续执行。</div>}
+              <Section title="发行对象与固定引用">
+                <div className="detail-grid">
+                  <D label="Offering" value={`${off.id} · ${off.round}`} />
+                  <D label="Project" value={state.projects.find((item) => item.id === off.projectId)?.name || "关联待核对"} />
+                  <D label="Asset" value={`${off.confirmationSnapshot?.asset.name || state.assets.find((item) => item.id === off.assetId)?.name || "缺失"} · ${off.confirmationSnapshot?.asset.version ? `v${off.confirmationSnapshot.asset.version}` : "旧记录未版本化"}`} />
+                  <D label="Instrument" value={`${off.confirmationSnapshot?.instrument.name || state.instruments.find((item) => item.id === off.instrumentId)?.name || "缺失"} · ${off.instrumentVersion || "版本待核对"}`} />
+                  <D label="容量预留" value={`${off.confirmationSnapshot?.reservedTokens ?? off.tokens} Token`} />
+                  <D label="确认时间" value={off.confirmationSnapshot?.confirmedAt || "旧版未记录"} />
+                  <D label="收款钱包" value={off.confirmationSnapshot?.walletAddress || state.wallets.find((item) => item.id === off.walletId)?.address || "缺失"} />
+                </div>
+              </Section>
+              <Section title="固定文件引用">
+                {[...(off.confirmationSnapshot?.asset.files || state.assets.find((item) => item.id === off.assetId)?.files || []), ...(off.confirmationSnapshot?.instrument.files || state.instruments.find((item) => item.id === off.instrumentId)?.files || []), ...(off.confirmationSnapshot?.disclosureFiles || off.disclosureFiles || [])].map((file) => (
+                  <div className="file-box" key={file.id}><FileText size={18} /><span><b>{file.name}</b><small>{file.category} · {file.id} · {file.version ? `v${file.version}` : "旧记录未版本化"}</small></span><Status value={file.status} /></div>
+                ))}
+              </Section>
+              <Section title="下一步：七组发行准备检查">
+                <p className="body-copy">模块 02 将在此核对资产、权益、发行方案、文件、钱包、容量和责任声明，并记录执行任务。当前不得把资料展示视为检查通过或发行成功。</p>
+                <Button variant="secondary" onClick={() => setDrawer({ type: "offering-detail", id: off.id })}>返回 Offering 详情</Button>
+              </Section>
+            </>
+          )}
+          {off && drawer.type === "offering-detail" && (
             <>
               {(() => {
                 const orderIds = state.orders
@@ -5314,6 +5353,8 @@ function DrawerPanel({
                       </div>
                     </Section>
                     <Section title="关联与守卫">
+                      <D label="内部 Project" value={state.projects.find((item) => item.id === off.projectId)?.name || "待核对"} />
+                      <D label="引用版本" value={`Asset v${off.assetVersion || 1} · Instrument ${off.instrumentVersion || "待核对"} · Offering r${off.revision || 1}`} />
                       <LinkRow
                         label="资产档案"
                         value={state.assets.find((a) => a.id === off.assetId)?.name || ""}
@@ -5375,6 +5416,9 @@ function DrawerPanel({
                       <Button onClick={() => setConfirmAction("offering")} disabled={off.confirmed}>
                         {off.confirmed ? "已完成内部发行确认" : "确认发行并运行准入检查"}
                       </Button>
+                      {off.confirmed && (
+                        <Button onClick={() => setDrawer({ type: "issuance-readiness", id: off.id })}>进入发行准备</Button>
+                      )}
                     </Section>
                     {!off.confirmed && off.status === "草稿" && (
                       <Button
@@ -5719,6 +5763,13 @@ function DrawerPanel({
                 <strong>{formatU(dist.gross)}</strong>
                 <small>Record Date · {dist.recordDate}</small>
               </div>
+              {dist.eventType === "债权利息" && dist.dayCountBasis && (
+                <div className="detail-grid">
+                  <D label="计息口径" value={dist.dayCountBasis} />
+                  <D label="实际天数" value={`${dist.interestDays || 0} 天`} />
+                  <D label="计息日期" value={`${dist.accrualFrom || "—"} 至 ${dist.accrualTo || "—"}`} />
+                </div>
+              )}
               {dist.blockedReason && (
                 <div className="banner warning">
                   <AlertCircle size={17} />
@@ -5862,6 +5913,7 @@ function CreateAsset({
   toast: (s: string) => void;
   existing?: Asset;
 }) {
+  const [newAssetId] = useState(() => nextNumericId("AST", state.assets, 1000));
   const [form, setForm] = useState({
     name: existing?.name || "",
     category: existing?.category || "房地产",
@@ -5881,6 +5933,7 @@ function CreateAsset({
       name: file.name,
       category,
       status: "待扫描" as const,
+      version: 1,
     }));
     setForm((current) => ({
       ...current,
@@ -5894,11 +5947,11 @@ function CreateAsset({
       state.offerings.some((offering) => offering.assetId === existing.id && offering.confirmed)
     )
       return toast("该 Asset 已被确认发行的 Offering 引用，不能静默覆盖；请保留历史版本");
-    const id = existing?.id || `AST-${1001 + state.assets.length}`;
+    const id = existing?.id || newAssetId;
     const a: Asset = {
       id,
       name: form.name,
-      code: existing?.code || `AST-DEMO-${String(state.assets.length + 1).padStart(3, "0")}`,
+      code: existing?.code || `AST-DEMO-${id.slice(4)}`,
       category: form.category,
       subtype: form.subtype,
       value:
@@ -5911,37 +5964,33 @@ function CreateAsset({
       address: form.details.address,
       details: { ...form.details },
       files: form.files,
+      version: existing ? (existing.version || 1) + 1 : 1,
     };
     a.missing = assetMissing(a);
-    setState((s) => ({
-      ...s,
-      assets: existing
-        ? s.assets.map((asset) => (asset.id === existing.id ? a : asset))
-        : [a, ...s.assets],
-      instruments: existing
-        ? s.instruments.map((instrument) =>
-            instrument.assetId === existing.id
-              ? {
-                  ...instrument,
-                  status: "Draft",
-                  missing: [
-                    ...new Set([...(instrument.missing || []), "上游 Asset 修改后需重新检查"]),
-                  ],
-                }
-              : instrument,
-          )
-        : s.instruments,
-      activities: [
-        newActivity("资产与发行", a.id, existing ? "编辑资产草稿" : "创建资产草稿"),
-        ...s.activities,
-      ],
-    }));
-    toast(
-      a.missing.length
-        ? `资产${existing ? "修改" : ""}草稿已保存，尚缺 ${a.missing.length} 项；请按缺项补充`
-        : "资产资料已保存，请重新运行资料检查",
-    );
-    close();
+    setState((s) => {
+      const latest = existing && s.assets.find((item) => item.id === existing.id);
+      if ((!existing && s.assets.some((item) => item.id === id)) ||
+          (existing && (!latest || latest.version !== existing.version || s.offerings.some((item) => item.assetId === existing.id && item.confirmed)))) {
+        queueMicrotask(() => toast("资产已保存或版本已变化，请返回列表核对；未重复创建或覆盖"));
+        return s;
+      }
+      queueMicrotask(() => {
+        toast(a.missing?.length
+          ? `资产${existing ? "修改" : ""}草稿已保存，尚缺 ${a.missing?.length || 0} 项；请按缺项补充`
+          : "资产资料已保存，请重新运行资料检查");
+        close();
+      });
+      return ensureProjects({
+        ...s,
+        assets: existing ? s.assets.map((asset) => asset.id === existing.id ? a : asset) : [a, ...s.assets],
+        instruments: existing
+          ? s.instruments.map((instrument) => instrument.assetId === existing.id
+              ? { ...instrument, status: "Draft", missing: [...new Set([...(instrument.missing || []), "上游 Asset 修改后需重新检查"])] }
+              : instrument)
+          : s.instruments,
+        activities: [newActivity("资产与发行", a.id, existing ? "编辑资产草稿" : "创建资产草稿"), ...s.activities],
+      });
+    });
   };
   const fillCase = () => {
     if (form.name && !confirm("当前已有输入。仅填充空字段并保留现有内容？")) return;
@@ -5956,8 +6005,8 @@ function CreateAsset({
           principal: "400000",
           outstanding: "400000",
           annualRate: "12",
-          interestStart: "2026-10-01",
-          maturity: "2027-10-01",
+          interestStart: "2026-12-01",
+          maturity: "2028-12-01",
           repayment: "到期一次还本",
           performance: "正常履约",
           guarantee: "无",
@@ -6015,6 +6064,7 @@ function CreateAsset({
           name: mockFileNames[category] || `DEMO_${category}.pdf`,
           category,
           status: "待扫描",
+          version: 1,
         },
       ],
     }));
@@ -6425,14 +6475,17 @@ function CreateInstrument({
   setState,
   close,
   toast,
+  preferredAssetId,
 }: {
   state: AppState;
   setState: React.Dispatch<React.SetStateAction<AppState>>;
   close: () => void;
   toast: (s: string) => void;
+  preferredAssetId?: string;
 }) {
   const available = state.assets.filter((a) => !state.instruments.some((i) => i.assetId === a.id));
-  const [assetId, setAssetId] = useState(available[0]?.id || "");
+  const [newInstrumentId] = useState(() => `INS-${crypto.randomUUID()}-V1`);
+  const [assetId, setAssetId] = useState(available.find((item) => item.id === preferredAssetId)?.id || available[0]?.id || "");
   const selectedAsset = available.find((asset) => asset.id === assetId);
   const suggestedType: Instrument["type"] =
     selectedAsset?.subtype === "单笔企业借款债权" ? "债权" : "收益参与权";
@@ -6453,6 +6506,7 @@ function CreateInstrument({
         name: file.name,
         category: "核心协议",
         status: "待扫描",
+        version: 1,
       },
     ]);
   };
@@ -6468,10 +6522,10 @@ function CreateInstrument({
           rightsDescription: "发行企业对投资者承担独立的固定利率债权偿付义务",
           principal: "400000",
           annualRate: "12",
-          interestMethod: "完整自然月按年利率 ÷ 12",
+          interestMethod: ACTUAL_365_FIXED,
           frequency: "每月付息",
-          startDate: "2026-10-01",
-          maturityDate: "2027-10-01",
+          startDate: "2026-12-01",
+          maturityDate: "2028-12-01",
           repayment: "到期一次还本金",
         }
       : {
@@ -6502,7 +6556,7 @@ function CreateInstrument({
       return toast("权益总量必须能被 Token 份数精确整除");
     const a = state.assets.find((x) => x.id === assetId)!;
     const i: Instrument = {
-      id: `INS-${Date.now().toString().slice(-5)}-V1`,
+      id: newInstrumentId,
       assetId,
       name: name || `${a.name}${type}`,
       type,
@@ -6517,17 +6571,19 @@ function CreateInstrument({
       files,
     };
     i.missing = instrumentMissing(i, a);
-    setState((s) => ({
-      ...s,
-      instruments: [i, ...s.instruments],
-      activities: [newActivity("资产与发行", i.id, "创建权益结构草稿"), ...s.activities],
-    }));
-    toast(
-      i.missing.length
-        ? `权益草稿已保存，尚缺 ${i.missing.length} 项；核心协议需完成 Mock 扫描`
-        : "权益结构已保存",
-    );
-    close();
+    setState((s) => {
+      if (s.instruments.some((item) => item.id === i.id || item.assetId === assetId)) {
+        queueMicrotask(() => toast("该资产已有权益结构草稿，未重复创建"));
+        return s;
+      }
+      queueMicrotask(() => {
+        toast(i.missing?.length
+          ? `权益草稿已保存，尚缺 ${i.missing.length} 项；核心协议需完成 Mock 扫描`
+          : "权益结构已保存");
+        close();
+      });
+      return { ...s, instruments: [i, ...s.instruments], activities: [newActivity("资产与发行", i.id, "创建权益结构草稿"), ...s.activities] };
+    });
   };
   return (
     <div className="create-form">
@@ -6621,7 +6677,7 @@ function CreateInstrument({
                   onChange={(e) => setTerm("interestMethod", e.target.value)}
                 >
                   <option value="">请选择</option>
-                  <option>完整自然月按年利率 ÷ 12</option>
+                  <option>{ACTUAL_365_FIXED}</option>
                 </select>
               </label>
               <label className="field">
@@ -6738,6 +6794,7 @@ function CreateInstrument({
                           : "DEMO_Rental_Revenue_Participation_Agreement.pdf",
                       category: "核心协议",
                       status: "待扫描",
+                      version: 1,
                     },
                   ])
                 }
@@ -6768,19 +6825,22 @@ function CreateOffering({
   close,
   toast,
   existing,
+  preferredAssetId,
 }: {
   state: AppState;
   setState: React.Dispatch<React.SetStateAction<AppState>>;
   close: () => void;
   toast: (s: string) => void;
   existing?: Offering;
+  preferredAssetId?: string;
 }) {
   const ready = state.instruments.filter(
     (i) =>
       (i.status === "Ready" || i.id === existing?.instrumentId) &&
       state.assets.find((asset) => asset.id === i.assetId)?.status === "Ready",
   );
-  const [instrumentId, setInstrumentId] = useState(existing?.instrumentId || ready[0]?.id || "");
+  const [instrumentId, setInstrumentId] = useState(existing?.instrumentId || ready.find((item) => item.assetId === preferredAssetId)?.id || ready[0]?.id || "");
+  const [newOfferingId] = useState(() => nextNumericId("OFF", state.offerings, 3000));
   const ins = ready.find((i) => i.id === instrumentId);
   const [name, setName] = useState(existing?.name || "");
   const [tokens, setTokens] = useState(String(existing?.tokens || 1000));
@@ -6829,13 +6889,11 @@ function CreateOffering({
     if (Number(tokens) > remaining)
       return toast(`发行份数超过剩余授权容量 ${remaining.toLocaleString()}`);
     const o: Offering = {
-      id: existing?.id || `OFF-${3001 + state.offerings.length}`,
+      id: existing?.id || "",
       assetId: existing?.assetId || ins.assetId,
       instrumentId: existing?.instrumentId || ins.id,
       name,
-      round:
-        existing?.round ||
-        `第 ${state.offerings.filter((o) => o.assetId === ins.assetId).length + 1} 期`,
+      round: existing?.round || "",
       tokens: Number(tokens),
       price: Number(price),
       start,
@@ -6847,23 +6905,45 @@ function CreateOffering({
       disclosureFiles,
       confirmed: false,
       contractStatus: "未申请",
+      projectId: existing?.projectId,
+      assetVersion: existing?.assetVersion || state.assets.find((asset) => asset.id === ins.assetId)?.version || 1,
+      instrumentVersion: existing?.instrumentVersion || ins.version,
+      revision: existing?.revision || 1,
     };
-    setState((s) => ({
-      ...s,
-      offerings: existing
-        ? s.offerings.map((offering) => (offering.id === existing.id ? o : offering))
-        : [o, ...s.offerings],
-      activities: [
-        newActivity("资产与发行", o.id, existing ? "编辑 Offering 草稿" : "创建 Offering 草稿"),
-        ...s.activities,
-      ],
-    }));
-    toast(
-      existing
-        ? "Offering 草稿已保存；Asset、Instrument、容量和版本引用保持不变"
-        : "Offering 草稿已创建；尚未占用容量、发布或部署合约",
-    );
-    close();
+    setState((s) => {
+      if (!existing && s.offerings.some((item) => item.id === newOfferingId)) {
+        queueMicrotask(() => { toast("同一创建请求已保存，未重复创建 Offering"); close(); });
+        return s;
+      }
+      const latestInstrument = s.instruments.find((item) => item.id === ins.id);
+      const latestAsset = s.assets.find((item) => item.id === ins.assetId);
+      const current = existing && s.offerings.find((item) => item.id === existing.id);
+      if (!latestInstrument || !latestAsset || latestInstrument.status !== "Ready" || latestAsset.status !== "Ready" || Number(tokens) > latestInstrument.tokenCap - latestInstrument.used ||
+          (existing && (!current || current.confirmed || current.revision !== (existing.revision || 1)))) {
+        queueMicrotask(() => toast("草稿已变化或剩余容量不足，请刷新后重试"));
+        return s;
+      }
+      const previousRounds = s.offerings.filter((item) => item.assetId === ins.assetId && item.instrumentId === ins.id)
+        .map((item) => Number(/^第 (\d+) 期$/.exec(item.round)?.[1] || 0));
+      const saved: Offering = {
+        ...o,
+        id: existing?.id || newOfferingId,
+        round: existing?.round || `第 ${Math.max(0, ...previousRounds) + 1} 期`,
+        assetVersion: latestAsset.version || 1,
+        instrumentVersion: latestInstrument.version,
+        projectId: existing?.instrumentVersion && existing.instrumentVersion !== latestInstrument.version ? undefined : existing?.projectId,
+        revision: existing ? (existing.revision || 1) + 1 : 1,
+      };
+      const next = ensureProjects({
+        ...s,
+        offerings: existing
+          ? s.offerings.map((item) => item.id === existing.id ? saved : item)
+          : [saved, ...s.offerings],
+        activities: [newActivity("资产与发行", saved.id, existing ? "编辑 Offering 草稿" : "创建 Offering 草稿"), ...s.activities],
+      });
+      queueMicrotask(() => { toast(existing ? "Offering 草稿已保存；Project 与版本引用保持不变" : "Offering 草稿已创建并自动关联 Project；尚未预留容量"); close(); });
+      return next;
+    });
   };
   return (
     <div className="create-form">
@@ -6959,6 +7039,7 @@ function CreateOffering({
                     name: file.name,
                     category: "发行披露",
                     status: "待扫描",
+                    version: 1,
                   },
                 ]);
             }}
@@ -6972,6 +7053,7 @@ function CreateOffering({
                   name: "DEMO_Offering_Risk_Disclosure.pdf",
                   category: "发行披露",
                   status: "待扫描",
+                  version: 1,
                 },
               ])
             }
@@ -7096,8 +7178,8 @@ function CreateDistribution({
   const [eventType, setEventType] = useState<"租金收益" | "债权利息" | "债权本金">(
     debt ? "债权利息" : "租金收益",
   );
-  const [period, setPeriod] = useState("2026-11");
-  const [recordDate, setRecordDate] = useState("2026-11-30");
+  const [period, setPeriod] = useState(debt ? "2026-12" : "2026-11");
+  const [recordDate, setRecordDate] = useState(debt ? "2027-01-01" : "2026-11-30");
   const [sourceAmount, setSourceAmount] = useState("8000");
   const [exchangeRate, setExchangeRate] = useState("8");
   const [deductions, setDeductions] = useState("0");
@@ -7115,21 +7197,34 @@ function CreateDistribution({
     )
     .reduce((sum, distribution) => sum + distribution.gross, 0);
   const outstandingPrincipal = Math.max(0, contractualPrincipal - paidPrincipal);
-  const maturityMonth = String(instrument?.terms?.maturityDate || "").slice(0, 7);
-  const periodMonth = period.slice(0, 7);
+  let interest: ReturnType<typeof actual365MonthlyInterest> | undefined;
+  let interestError = "";
+  if (eventType === "债权利息" && instrument?.terms?.interestMethod === ACTUAL_365_FIXED) {
+    try {
+      interest = actual365MonthlyInterest({
+        principal: outstandingPrincipal,
+        annualRate: Number(instrument.terms.annualRate || 0),
+        period,
+        startDate: String(instrument.terms.startDate || ""),
+        maturityDate: String(instrument.terms.maturityDate || ""),
+      });
+    } catch (error) {
+      interestError = String(error);
+    }
+  }
   const interestBlockedReason =
     eventType !== "债权利息"
       ? ""
       : outstandingPrincipal <= 0
         ? "投资者债权本金已全部清偿，实际未偿本金为 0 U，不能继续产生正常利息"
-        : maturityMonth && periodMonth > maturityMonth
-          ? `投资者债权已于 ${instrument?.terms?.maturityDate} 到期，不支持自动生成逾期利息`
-          : "";
+        : instrument?.terms?.interestMethod !== ACTUAL_365_FIXED
+          ? "权益条款未采用 Actual/365 Fixed，请核对历史版本"
+          : interestError || (!interest?.days ? "所选月份没有有效计息天数；到期后不生成正常利息" : "");
   const gross =
     eventType === "租金收益"
       ? Math.max(0, Number(sourceAmount) / Number(exchangeRate || 1) - Number(deductions))
       : eventType === "债权利息"
-        ? (outstandingPrincipal * Number(instrument?.terms?.annualRate || 0)) / 100 / 12
+        ? interest?.amount || 0
         : outstandingPrincipal;
   const save = () => {
     if (interestBlockedReason) return toast(`无法创建正常利息批次：${interestBlockedReason}`);
@@ -7184,6 +7279,12 @@ function CreateDistribution({
             proofFile,
             items,
             blockedReason: blockers.join("；") || undefined,
+            ...(eventType === "债权利息" && interest ? {
+              accrualFrom: interest.from,
+              accrualTo: interest.to,
+              interestDays: interest.days,
+              dayCountBasis: ACTUAL_365_FIXED as "Actual/365 Fixed",
+            } : {}),
           },
           ...s.distributions,
         ],
@@ -7317,7 +7418,7 @@ function CreateDistribution({
           <ShieldCheck size={17} />
           <p>
             {eventType === "债权利息"
-              ? `按实际未偿本金 ${formatU(outstandingPrincipal)} × 年利率 ${instrument?.terms?.annualRate || 0}% ÷ 12 自动计算完整自然月利息。`
+              ? `Actual/365 Fixed：实际未偿本金 ${formatU(outstandingPrincipal)} × 年利率 ${instrument?.terms?.annualRate || 0}% × ${interest?.days || 0} 天 ÷ 365；计息日期 ${interest?.from || "—"} 至 ${interest?.to || "—"}。计息边界以正式合同为准。`
               : `本金按 Instrument 条款单独处理；当前实际未偿本金 ${formatU(outstandingPrincipal)}，不与当期利息合并。`}
           </p>
         </div>

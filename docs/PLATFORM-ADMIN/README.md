@@ -1,0 +1,54 @@
+# RWA SaaS｜Platform Admin V1.0 文档索引
+
+> **状态：产品设计 Draft｜2026-11-19**
+>
+> 本目录用于平台总管理后台（P 端）V1.0 产品架构、UI-Ready 逐页规格和跨模块审计。当前仅完成产品规格，不代表原型、前端代码、后端服务或生产能力已开发/上线。
+
+## 1. 总体架构
+
+- [平台总管理后台总体架构与九个一级导航](PLATFORM-ADMIN-OVERALL-ARCHITECTURE-AND-NAVIGATION-DRAFT-v0.1.md)
+- [P-01～P-18 跨模块一致性审计](PLATFORM-ADMIN-CROSS-MODULE-CONSISTENCY-AUDIT-DRAFT-v0.1.md)
+
+## 2. 页面规格清单
+
+| 一级导航 | 页面组 | 规格文档 | 状态 |
+|---|---|---|---|
+| 01 平台工作台 | P-01 | [P-01～P-06](PLATFORM-ADMIN-P01-P06-ISSUER-CUSTOMER-TENANT-UI-READY-PRD-DRAFT-v0.1.md) | UI-Ready Draft |
+| 02 发行机构管理 | P-02～P-06 | [P-01～P-06](PLATFORM-ADMIN-P01-P06-ISSUER-CUSTOMER-TENANT-UI-READY-PRD-DRAFT-v0.1.md) | UI-Ready Draft |
+| 03 统一投资渠道管理 | I-67/I-68、P-15～P-17 | [Issuer 申请与渠道运营](PLATFORM-ADMIN-I67-I68-P15-P17-UNIFIED-INVESTOR-CHANNEL-UI-READY-PRD-DRAFT-v0.1.md) | UI-Ready Draft |
+| 04 投资者管理 | P-18 | [M 统一投资者账户管理](PLATFORM-ADMIN-P18-UNIFIED-INVESTOR-ACCOUNT-MANAGEMENT-UI-READY-PRD-DRAFT-v0.1.md) | UI-Ready Draft |
+| 05 运营中心 | P-07～P-08 | [任务、异常、通知](PLATFORM-ADMIN-P07-P08-OPERATIONS-CENTER-UI-READY-PRD-DRAFT-v0.1.md) | UI-Ready Draft |
+| 06 平台规则与套餐 | P-09～P-10 | [平台权益与全局规则](PLATFORM-ADMIN-P09-P10-PLATFORM-ENTITLEMENTS-AND-GLOBAL-RULES-UI-READY-PRD-DRAFT-v0.1.md) | UI-Ready Draft |
+| 07 安全与审计 | P-11～P-12 | [敏感访问、安全与审计](PLATFORM-ADMIN-P11-P12-SECURITY-AND-AUDIT-UI-READY-PRD-DRAFT-v0.1.md) | UI-Ready Draft |
+| 08 外部服务管理 | P-13 | [外部服务管理](PLATFORM-ADMIN-P13-EXTERNAL-SERVICE-MANAGEMENT-UI-READY-PRD-DRAFT-v0.1.md) | UI-Ready Draft |
+| 09 数据与报表 | P-14 | [平台数据与报表](PLATFORM-ADMIN-P14-PLATFORM-REPORTING-AND-ANALYTICS-UI-READY-PRD-DRAFT-v0.1.md) | UI-Ready Draft |
+
+## 3. 已确认的关键产品规则
+
+1. **总投资平台上架：**Issuer 对单个已正式发布且符合条件的 Offering 自愿提交申请；P-15 审核通过即由系统自动创建唯一 Listing 并上架 M。自动上架成功后 M 才展示；P-16 只管理已上架 Listing，不设首次人工发布。
+2. **商业套餐：**现行为永久 Free + 付费 Standard；旧 14 天 Trial/30 天恢复窗口已由 DEC-037 覆盖。Free→Standard 沿用同一 Tenant。
+3. **五端边界：**W 官网、I Issuer SaaS、V 企业专属投资者门户、M 统一投资者平台、P 平台总后台各有独立责任；P 不代 Issuer 批准合法发行或操作资金/Token/收益。
+4. **投资者管理：**P-18 只管理 M 统一投资者账户与 KYC 服务状态，不建立所有 V 门户投资者的全局库。
+5. **运营任务/通知：**M17/M18 是协作能力；任务关闭、消息发送或 Provider 接收不等于原业务完成或法律有效送达。
+6. **安全与 Provider：**敏感资料最小化、限时授权、撤权、追加审计；P-13 不展示密钥或 Secret。
+7. **报表：**P-01 当前快照；P-14 平台运营历史分析；Issuer M21 金融业务报表仍由 Issuer 授权用户使用。平台报表不建立第二本资金/权益账。
+8. **金额：**平台金额展示遵循 U（USDT）基线；未经批准换算的其他币种不得混合汇总。
+
+## 4. 当前未完成事项
+
+- 用户对 P-01～P-18 与 I-67/I-68 的集中产品审核/收口。
+- 平台实际角色码、RBAC、职责分离和敏感访问审批层级。
+- M 渠道可申请地区/受众枚举及法务依据。
+- Free/Standard 价格、资源配额、商业收费/税务细节。
+- Provider 选型、生产连接、密钥托管、健康探测周期。
+- P-14 指标字典、数据更新频率、小样本抑制阈值、导出保留期限。
+- API、读模型、服务端鉴权、幂等和撤权实现规格。
+
+上述未完成项属于后续法务/安全/商业/技术决策门，不应由 UI Mock 自行填入生产值。
+
+## 5. GitHub 状态
+
+- PR：[#10 Platform Admin V1.0 architecture and UI-ready specifications](https://github.com/mirrorshang/rwa-saas-platform/pull/10)
+- 分支：`docs/platform-admin-architecture-20261117`
+- 状态：**Draft / Open / Unmerged**
+- 本 PR 仅文档，不修改前端源码，不合并，不修改 Frozen、历史 DEC/SCOPE 或 DEC-017 原 193 项首次版本归属。

@@ -261,6 +261,48 @@ export interface Distribution {
   accrualTo?: string;
   interestDays?: number;
   dayCountBasis?: "Actual/365 Fixed";
+  reportId?: string;
+  holderSnapshotId?: string;
+  calculationStatus?: "已计算";
+  paymentStatus?: "未发起" | "部分成功" | "Unknown" | "失败" | "支付完成";
+}
+
+export interface RentReport {
+  id: string;
+  offeringId: string;
+  period: string;
+  recordDate: string;
+  sourceAmountCny: number;
+  exchangeRate: number;
+  deductionsU: number;
+  netU: number;
+  proofFile: BusinessFile;
+  status: "资料待扫描" | "待确认" | "已确认";
+  environment: "Sandbox";
+  createdAt: string;
+  confirmedAt?: string;
+}
+
+export interface DistributionPayment {
+  id: string;
+  batchId: string;
+  holderId: string;
+  intentId: string;
+  amount: number;
+  status: "失败" | "Unknown" | "已支付";
+  environment: "Sandbox";
+  at: string;
+}
+
+export interface InvestorIncome {
+  id: string;
+  batchId: string;
+  holderId: string;
+  investorId: string;
+  paymentId: string;
+  amount: number;
+  status: "Sandbox 模拟到账";
+  at: string;
 }
 
 export interface MockEvent {
@@ -320,6 +362,10 @@ export interface AppState {
   wallets: Wallet[];
   tokens: TokenRecord[];
   distributions: Distribution[];
+  rentReports: RentReport[];
+  distributionPayments: DistributionPayment[];
+  investorIncomes: InvestorIncome[];
+  mockEvidenceFiles: BusinessFile[];
   mockEvents: MockEvent[];
   portal: { name: string; slug: string; saved: boolean; logo: string };
   activities: Activity[];
@@ -354,6 +400,10 @@ export const emptyState: AppState = {
   wallets: [],
   tokens: [],
   distributions: [],
+  rentReports: [],
+  distributionPayments: [],
+  investorIncomes: [],
+  mockEvidenceFiles: [],
   mockEvents: [],
   portal: { name: "", slug: "", saved: false, logo: "" },
   activities: [],

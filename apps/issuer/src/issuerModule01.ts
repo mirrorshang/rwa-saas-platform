@@ -91,6 +91,31 @@ export function validateIssuerState(state: AppState): string[] {
   uniqueIds("publications", state.publications, reasons);
   uniqueIds("allocations", state.allocations, reasons);
   uniqueIds("holderSnapshots", state.holderSnapshots, reasons);
+  uniqueIds("rentReports", state.rentReports, reasons);
+  uniqueIds("distributionPayments", state.distributionPayments, reasons);
+  uniqueIds("investorIncomes", state.investorIncomes, reasons);
+  uniqueIds("mockEvidenceFiles", state.mockEvidenceFiles, reasons);
+  const rentPeriods = new Set<string>();
+  for (const report of state.rentReports) {
+    const key = `${report.offeringId}:${report.period}`;
+    if (rentPeriods.has(key)) reasons.push(`${key} 重复租金上报`);
+    rentPeriods.add(key);
+    if (!state.offerings.some(row => row.id === report.offeringId)) reasons.push(`${report.id} 的 Offering 不存在`);
+  }
+  const rentBatches = new Set<string>();
+  for (const batch of state.distributions.filter(row => row.eventType === "租金收益" && row.reportId && row.status !== "已作废")) {
+    const key = `${batch.offeringId}:${batch.period}`;
+    if (rentBatches.has(key)) reasons.push(`${key} 重复租金批次`);
+    rentBatches.add(key);
+    if (!state.rentReports.some(row => row.id === batch.reportId) || !state.holderSnapshots.some(row => row.id === batch.holderSnapshotId)) reasons.push(`${batch.id} 缺少收益上报或持有人快照`);
+  }
+  const incomeLines = new Set<string>();
+  for (const income of state.investorIncomes) {
+    const key = `${income.batchId}:${income.holderId}`;
+    if (incomeLines.has(key)) reasons.push(`${key} 重复到账记录`);
+    incomeLines.add(key);
+    if (!state.distributionPayments.some(row => row.id === income.paymentId && row.status === "已支付")) reasons.push(`${income.id} 缺少成功的模拟支付`);
+  }
   const allocatedOrders = new Set<string>();
   const allocatedCapacity = new Map<string, number>();
   for (const allocation of state.allocations) {
@@ -210,10 +235,10 @@ export function parseIssuerState(raw: string, source: "v3" | "v4", defaults: App
     ...defaults, ...value,
     portal: { ...defaults.portal, ...(isObject(value.portal) ? value.portal : {}) },
   } as unknown as AppState;
-  for (const name of ["readinessReports", "issuanceTasks", "publications", "allocations", "holderSnapshots"] as const) {
+  for (const name of ["readinessReports", "issuanceTasks", "publications", "allocations", "holderSnapshots", "rentReports", "distributionPayments", "investorIncomes", "mockEvidenceFiles"] as const) {
     if (value[name] === undefined) hydrated[name] = [];
     else if (!Array.isArray(value[name])) reasons.push(`${name} 格式损坏`);
-    else if (value[name].some((row: unknown) => !isObject(row) || (name !== "readinessReports" && (typeof row.id !== "string" || !row.id)) || typeof row.offeringId !== "string")) reasons.push(`${name} 包含损坏记录`);
+    else if (value[name].some((row: unknown) => !isObject(row) || (name !== "readinessReports" && (typeof row.id !== "string" || !row.id)) || (["allocations", "holderSnapshots", "rentReports", "issuanceTasks", "publications"].includes(name) && typeof row.offeringId !== "string"))) reasons.push(`${name} 包含损坏记录`);
   }
   if (reasons.length) return { state: defaults, source: "blocked", issue: { source, raw, reasons } };
   for (const report of hydrated.readinessReports) {
@@ -230,6 +255,18 @@ export function parseIssuerState(raw: string, source: "v3" | "v4", defaults: App
   }
   for (const snapshot of hydrated.holderSnapshots) {
     if (typeof snapshot.recordDate !== "string" || typeof snapshot.instrumentVersion !== "string" || snapshot.environment !== "Sandbox" || !Array.isArray(snapshot.lines) || snapshot.lines.some(line => !isObject(line) || typeof line.holderId !== "string" || !Number.isFinite(line.rights))) reasons.push(`${snapshot.id} 的持有人快照损坏`);
+  }
+  for (const report of hydrated.rentReports) {
+    if (typeof report.period !== "string" || typeof report.recordDate !== "string" || !Number.isFinite(report.netU) || !isObject(report.proofFile) || report.environment !== "Sandbox") reasons.push(`${report.id} 的租金上报损坏`);
+  }
+  for (const payment of hydrated.distributionPayments) {
+    if (typeof payment.batchId !== "string" || typeof payment.holderId !== "string" || typeof payment.intentId !== "string" || !Number.isFinite(payment.amount) || payment.environment !== "Sandbox") reasons.push(`${payment.id} 的分配支付记录损坏`);
+  }
+  for (const income of hydrated.investorIncomes) {
+    if (typeof income.batchId !== "string" || typeof income.holderId !== "string" || typeof income.paymentId !== "string" || !Number.isFinite(income.amount)) reasons.push(`${income.id} 的投资者收益记录损坏`);
+  }
+  for (const file of hydrated.mockEvidenceFiles) {
+    if (typeof file.name !== "string" || file.category !== "收益依据" || !["待扫描", "可引用"].includes(file.status)) reasons.push(`${file.id} 的 Mock 收益证明损坏`);
   }
   if (value.sandboxClock !== undefined && typeof value.sandboxClock !== "string") reasons.push("sandboxClock 格式损坏");
   if (reasons.length) return { state: defaults, source: "blocked", issue: { source, raw, reasons } };

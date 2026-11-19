@@ -68,6 +68,7 @@ import {
 import { ACTUAL_365_FIXED, actual365MonthlyInterest } from "./actual365";
 import { advanceSandboxIssuance, checkIssuanceReadiness, readinessFingerprint, refreshSandboxSale, resolveSandboxIssuance, retryFailedSandboxIssuance, sandboxBusinessDate, submitSandboxIssuance } from "./issuerModule02";
 import { allocateMockOrder, approveMockInvestorKyc, createHolderSnapshot, createMockInvestor, createMockOrder, deliverMockTokens, recordMockPayment, registerMockHolder } from "./issuerModule03";
+import { confirmRentBatch, confirmRentReport, createRentBatch, createRentReport, payMockDistributionLine, splitBySnapshot } from "./issuerModule04";
 
 type ModuleId =
   | "dashboard"
@@ -83,6 +84,7 @@ type Drawer = null | { type: string; id?: string };
 
 const nowLabel = () =>
   new Date().toLocaleString("zh-CN", { hour12: false }).replace(/\//g, "-").replace(/\s/g, " ");
+const formatU6 = (amount: number) => `${new Intl.NumberFormat("zh-CN", { maximumFractionDigits: 6 }).format(amount)} U`;
 
 const newActivity = (
   module: string,
@@ -2621,7 +2623,7 @@ function RevenuePage({
       return toast(
         `当前套餐为 ${state.plan}：Free 可准备 Asset / Instrument / Offering，但不能进行收益运营`,
       );
-    setDrawer({ type: "distribution-create" });
+    setDrawer({ type: tab === "存续管理" ? "rent-report-create" : "rent-batch-create" });
   };
   if (tab === "存续管理")
     return (
@@ -2633,7 +2635,7 @@ function RevenuePage({
           actions={
             <Button onClick={startDistribution}>
               <Plus size={16} />
-              上报收益事件
+              上报住宅净租金
             </Button>
           }
         />
@@ -2676,6 +2678,7 @@ function RevenuePage({
             />
           )}
         </div>
+        <div className="card table-card"><h3 style={{ padding: 20 }}>住宅租金上报</h3><div className="table-wrap"><table><thead><tr><th>上报编号</th><th>Offering／周期</th><th>Record Date</th><th>可分配净额</th><th>证明</th><th>状态／下一步</th></tr></thead><tbody>{state.rentReports.map(report => <tr key={report.id}><td>{report.id}</td><td>{report.offeringId} · {report.period}</td><td>{report.recordDate}</td><td>{formatU(report.netU)}</td><td>{report.proofFile.name} · {report.proofFile.status}</td><td><Status value={report.status} /> {report.status === "待确认" && <Button variant="secondary" onClick={() => setState(current => { const result = confirmRentReport(current, report.id, new Date().toISOString()); queueMicrotask(() => toast(result.error || (result.changed ? "租金上报已确认；可创建分配批次" : "该上报已确认"))); return result.state; })}>确认租金上报</Button>}{report.status === "资料待扫描" && <small>下一步：测试控制区扫描证明文件</small>}</td></tr>)}</tbody></table>{!state.rentReports.length && <Empty title="暂无住宅租金上报" text="先上传实际租金收入证明并上报本期可分配净额。" />}</div></div>
       </div>
     );
   if (tab === "收益分配")
@@ -2688,7 +2691,7 @@ function RevenuePage({
           actions={
             <Button onClick={startDistribution}>
               <Plus size={16} />
-              创建分配批次
+              创建住宅租金批次
             </Button>
           }
         />
@@ -2722,11 +2725,11 @@ function RevenuePage({
                     </td>
                     <td>{d.recordDate}</td>
                     <td>
-                      <b>{formatU(d.gross)}</b>
+                      <b>{formatU6(d.gross)}</b>
                     </td>
                     <td>{d.recipients} 名</td>
                     <td>
-                      <Status value={d.status} />
+                      <Status value={d.status} />{d.paymentStatus && <small>支付：{d.paymentStatus}</small>}
                     </td>
                     <td>
                       <ChevronRight size={15} />
@@ -3857,6 +3860,10 @@ function DemoConsole({
   const [paymentOutcome, setPaymentOutcome] = useState<"success" | "failed" | "unknown">("success");
   const [paymentAttempt, setPaymentAttempt] = useState("1");
   const [snapshotDate, setSnapshotDate] = useState("2026-12-31");
+  const [selectedPayoutBatchId, setSelectedPayoutBatchId] = useState("");
+  const [selectedPayoutHolderId, setSelectedPayoutHolderId] = useState("");
+  const [distributionOutcome, setDistributionOutcome] = useState<"success" | "failed" | "unknown">("success");
+  const [distributionAttempt, setDistributionAttempt] = useState("1");
   const executeSandboxTask = () => {
     setState((current) => {
       const result = advanceSandboxIssuance(current, selectedOfferingId, new Date().toISOString());
@@ -4176,6 +4183,9 @@ function DemoConsole({
               }
             : distribution,
         ),
+        rentReports: s.rentReports.map(report => report.proofFile.status === "待扫描"
+          ? { ...report, proofFile: { ...report.proofFile, status: "可引用" as const }, status: "待确认" as const } : report),
+        mockEvidenceFiles: s.mockEvidenceFiles.map(file => file.status === "待扫描" ? { ...file, status: "可引用" as const } : file),
         mockEvents: [
           {
             id: `EVT-${Date.now()}`,
@@ -4214,6 +4224,19 @@ function DemoConsole({
       ],
     }));
     toast("待处理钱包已模拟验证，可供 Offering 选择");
+  };
+  const createMockRentEvidence = () => {
+    setState(current => {
+      if (current.mockEvidenceFiles.some(file => file.id === "FILE-MOCK-RENT-202612")) {
+        queueMicrotask(() => toast("Sandbox 收益证明引用已存在，未重复创建"));
+        return current;
+      }
+      queueMicrotask(() => toast("Sandbox 收益证明引用已创建；请在上报表单选择并执行 Mock 扫描"));
+      return { ...current, mockEvidenceFiles: [...current.mockEvidenceFiles, {
+        id: "FILE-MOCK-RENT-202612", name: "DEMO_Rental_Income_Statement.pdf",
+        category: "收益依据", status: "待扫描" as const, version: 1,
+      }] };
+    });
   };
   const requireStandard = () => {
     if (state.plan === "Standard") return true;
@@ -4290,6 +4313,21 @@ function DemoConsole({
     selectedOfferingId, snapshotDate, new Date().toISOString()));
   const payConfirmedDistribution = () => {
     if (!requireStandard()) return;
+    const selectedBatch = state.distributions.find(item => item.id === selectedPayoutBatchId && item.offeringId === selectedOfferingId)
+      || state.distributions.find(item => item.offeringId === selectedOfferingId && item.status === "已确认" && item.reportId);
+    if (selectedBatch?.reportId) {
+      const line = selectedBatch.items?.find(item => item.holderId === selectedPayoutHolderId)
+        || selectedBatch.items?.find(item => item.status !== "支付完成");
+      if (!line) return toast("当前批次没有待支付明细");
+      if (!/^\d+$/.test(distributionAttempt)) return toast("请输入有效的支付意图尝试编号");
+      setState(current => {
+        const result = payMockDistributionLine(current, selectedBatch.id, line.holderId,
+          `distribution:${selectedBatch.id}:${line.holderId}:${distributionAttempt}`, distributionOutcome, new Date().toISOString());
+        queueMicrotask(() => toast(result.error || (result.changed ? `已记录 ${line.holderId} 的 Sandbox 支付结果；请核对批次与投资者收益` : "已有原支付结果，未重复生成")));
+        return result.state;
+      });
+      return;
+    }
     const distribution = state.distributions.find(
       (item) => item.offeringId === selectedOfferingId && item.status === "待注资",
     );
@@ -4501,6 +4539,7 @@ function DemoConsole({
                   <small>更新 Asset / Instrument / 披露文件可引用状态</small>
                 </div>
               </button>
+              <button onClick={createMockRentEvidence}><span>01A</span><div><b>创建 Sandbox 租金证明引用</b><small>仅文件元数据，无真实租金收款；上报时从列表选择</small></div></button>
               <button onClick={createCaseInvestors}>
                 <span>02</span>
                 <div>
@@ -4548,11 +4587,15 @@ function DemoConsole({
               <button onClick={deliverTokens}><span>08</span><div><b>模拟 Token 交付</b><small>与登记分开，按订单逐笔记录并防重复</small></div></button>
               <label className="field"><span>持有人快照 Record Date</span><input type="date" value={snapshotDate} onChange={event => setSnapshotDate(event.target.value)} /></label>
               <button onClick={recordHolderSnapshot}><span>09</span><div><b>固定持有人快照</b><small>按登记生效时间读取有效持有人，固定本期权益</small></div></button>
+              <label className="field"><span>待处理分配批次</span><select value={selectedPayoutBatchId} onChange={event => { setSelectedPayoutBatchId(event.target.value); setSelectedPayoutHolderId(""); }}><option value="">选择当前 Offering 最新待支付批次</option>{state.distributions.filter(item => item.offeringId === selectedOfferingId && item.status === "已确认").map(item => <option key={item.id} value={item.id}>{item.id} · {item.eventType} · {item.paymentStatus || "未发起"}</option>)}</select></label>
+              <label className="field"><span>逐笔支付对象</span><select value={selectedPayoutHolderId} onChange={event => setSelectedPayoutHolderId(event.target.value)}><option value="">自动选择下一笔待支付明细</option>{(state.distributions.find(item => item.id === selectedPayoutBatchId) || state.distributions.find(item => item.offeringId === selectedOfferingId && item.status === "已确认"))?.items?.map(item => <option key={item.holderId} value={item.holderId}>{item.holderId} · {formatU6(item.amount)} · {item.status}</option>)}</select></label>
+              <label className="field"><span>Mock 分配支付结果</span><select value={distributionOutcome} onChange={event => setDistributionOutcome(event.target.value as typeof distributionOutcome)}><option value="success">模拟已支付</option><option value="failed">失败</option><option value="unknown">Unknown（查询原意图）</option></select></label>
+              <label className="field"><span>分配支付尝试编号</span><input type="number" min="1" value={distributionAttempt} onChange={event => setDistributionAttempt(event.target.value)} /></label>
               <button onClick={payConfirmedDistribution}>
                 <span>10</span>
                 <div>
                   <b>模拟收益 / 本金支付</b>
-                  <small>仅处理已确认待注资批次，逐笔更新状态</small>
+                  <small>仅处理已确认批次；逐笔模拟支付、查询 Unknown 和失败重试</small>
                 </div>
               </button>
             </div>
@@ -4669,6 +4712,8 @@ function DrawerPanel({
     "wallet-create": "绑定钱包",
     "distribution-detail": "分配批次详情",
     "distribution-create": "创建分配批次",
+    "rent-report-create": "上报住宅净租金",
+    "rent-batch-create": "创建住宅租金分配批次",
     catalog: "资产分类目录",
   };
   if (drawer.type === "portal-preview") return <PortalPreview state={state} close={close} />;
@@ -4723,10 +4768,11 @@ function DrawerPanel({
       )
     : [];
   const holderPaidIncome = holder
-    ? holderDistributions
+    ? state.investorIncomes.filter(income => income.holderId === holder.id).reduce((sum, income) => sum + income.amount, 0)
+      + holderDistributions
         .filter(
           (distribution) =>
-            distribution.status === "支付完成" && distribution.eventType !== "债权本金",
+            !distribution.reportId && distribution.status === "支付完成" && distribution.eventType !== "债权本金",
         )
         .flatMap((distribution) => distribution.items || [])
         .filter((item) => item.holderId === holder.id && item.status === "支付完成")
@@ -4811,6 +4857,14 @@ function DrawerPanel({
     });
   };
   const confirmDistribution = (current: NonNullable<typeof dist>) => {
+    if (current.eventType === "租金收益" && current.reportId) {
+      setState(latest => {
+        const result = confirmRentBatch(latest, current.id);
+        queueMicrotask(() => toast(result.error || (result.changed ? "住宅租金批次已确认；下一步在测试控制区逐笔 Mock 支付" : "该批次已确认，未重复操作")));
+        return result.state;
+      });
+      return;
+    }
     const duplicate = state.distributions.find(
       (distribution) =>
         distribution.id !== current.id &&
@@ -4933,6 +4987,8 @@ function DrawerPanel({
           {drawer.type === "distribution-create" && (
             <CreateDistribution state={state} setState={setState} close={close} toast={toast} />
           )}
+          {drawer.type === "rent-report-create" && <CreateRentReport state={state} setState={setState} close={close} toast={toast} />}
+          {drawer.type === "rent-batch-create" && <CreateRentBatch state={state} setState={setState} close={close} toast={toast} />}
           {asset && drawer.type === "asset-detail" && (
             <>
               <DetailHero title={asset.name} id={asset.code} status={asset.status} />
@@ -5589,6 +5645,7 @@ function DrawerPanel({
                     </>
                   )}
                 </div>
+                {state.investorIncomes.filter(income => income.holderId === holder.id).map(income => <p className="body-copy" key={income.id}>{income.id} · {income.batchId} · {formatU6(income.amount)} · {income.status} · {income.at}</p>)}
                 <p className="body-copy">
                   累计收益仅包含实际支付的利息和租金，不包含已偿还本金。历史仅来自当前订单、Token
                   操作和收益批次。
@@ -5696,6 +5753,7 @@ function DrawerPanel({
                 <strong>{formatU(dist.gross)}</strong>
                 <small>Record Date · {dist.recordDate}</small>
               </div>
+              {dist.reportId && <div className="detail-grid"><D label="租金上报" value={dist.reportId} /><D label="固定持有人快照" value={dist.holderSnapshotId || "缺失"} /><D label="计算状态" value={dist.calculationStatus || "待计算"} /><D label="支付状态" value={dist.paymentStatus || "未发起"} /></div>}
               {dist.eventType === "债权利息" && dist.dayCountBasis && (
                 <div className="detail-grid">
                   <D label="计息口径" value={dist.dayCountBasis} />
@@ -5723,7 +5781,7 @@ function DrawerPanel({
                           {h?.id} · {line.basis.toLocaleString()} 权益单位 · {line.status}
                         </small>
                       </span>
-                      <b>{formatU(line.amount)}</b>
+                      <b>{formatU6(line.amount)}</b>
                     </div>
                   );
                 })}
@@ -5734,7 +5792,7 @@ function DrawerPanel({
                   版本只允许一个有效批次。确认与支付是两个独立动作。
                 </p>
                 <div className="control-row">
-                  <Button variant="secondary" onClick={() => setConfirmAction("distribution")}>
+                  <Button variant="secondary" onClick={() => setConfirmAction("distribution")} disabled={dist.status === "已确认" || dist.status === "支付完成"}>
                     确认合法批次
                   </Button>
                   <Button disabled>付款由 Mock 控制台执行</Button>
@@ -7088,6 +7146,65 @@ function CreateWallet({
   );
 }
 
+function CreateRentReport({ state, setState, close, toast }: {
+  state: AppState; setState: React.Dispatch<React.SetStateAction<AppState>>; close: () => void; toast: (message: string) => void;
+}) {
+  const offerings = state.offerings.filter(offering => offering.publicationStatus === "Sandbox 已发布" && state.instruments.find(row => row.id === offering.instrumentId)?.type === "收益参与权");
+  const [offeringId, setOfferingId] = useState(offerings[0]?.id || "");
+  const [period, setPeriod] = useState("2026-12");
+  const [recordDate, setRecordDate] = useState("2026-12-31");
+  const [sourceAmount, setSourceAmount] = useState("8000");
+  const [exchangeRate, setExchangeRate] = useState("8");
+  const [deductions, setDeductions] = useState("0");
+  const [proofFile, setProofFile] = useState<BusinessFile>();
+  const net = Number(sourceAmount) / Number(exchangeRate) - Number(deductions);
+  const save = () => {
+    if (!proofFile) return toast("请上传实际租金收入证明 PDF");
+    const input = { offeringId, period, recordDate, sourceAmountCny: Number(sourceAmount), exchangeRate: Number(exchangeRate), deductionsU: Number(deductions), proofFile, at: new Date().toISOString() };
+    const preview = createRentReport(state, input);
+    if (preview.error) return toast(preview.error);
+    setState(current => createRentReport(current, input).state);
+    toast("住宅租金已上报；下一步在测试控制区扫描证明，再确认上报");
+    close();
+  };
+  return <div className="create-form">
+    <label className="field"><span>住宅 Offering *</span><select value={offeringId} onChange={event => setOfferingId(event.target.value)}>{offerings.map(offering => <option key={offering.id} value={offering.id}>{offering.name} · {offering.id}</option>)}</select></label>
+    {!offerings.length && <div className="banner warning">请先完成住宅 Offering 的 Sandbox 发布。</div>}
+    <div className="fields two"><label className="field"><span>收益周期 *</span><input value={period} onChange={event => setPeriod(event.target.value)} placeholder="YYYY-MM" /></label><label className="field"><span>Record Date *</span><input type="date" value={recordDate} onChange={event => setRecordDate(event.target.value)} /></label></div>
+    <div className="fields two"><label className="field"><span>本期实际净租金（人民币）*</span><input type="number" min="0" value={sourceAmount} onChange={event => setSourceAmount(event.target.value)} /></label><label className="field"><span>演示换算：1 U = 人民币 *</span><input type="number" min="0" value={exchangeRate} onChange={event => setExchangeRate(event.target.value)} /></label><label className="field"><span>费用／扣除 U</span><input type="number" min="0" value={deductions} onChange={event => setDeductions(event.target.value)} /></label></div>
+    <p className="body-copy">1 U = 8 元仅为本住宅案例的手工测试换算，不是生产汇率。</p>
+    <label className="field"><span>Sandbox 测试证明引用</span><select value={proofFile?.id || ""} onChange={event => setProofFile(state.mockEvidenceFiles.find(file => file.id === event.target.value))}><option value="">不使用测试证明；从本地上传 PDF</option>{state.mockEvidenceFiles.map(file => <option key={file.id} value={file.id}>{file.name} · {file.status} · Sandbox Mock</option>)}</select><small>测试证明由独立测试控制区创建，不代表真实租金收款。</small></label>
+    <label className="field"><span>实际租金收入证明 PDF *</span><input type="file" accept=".pdf" onChange={event => { const file = event.target.files?.[0]; if (file) setProofFile({ id: `FILE-${Date.now()}`, name: file.name, category: "收益依据", status: "待扫描" }); }} /><small>{proofFile?.name || "未选择文件"} · 上传后在测试控制区执行 Mock 扫描</small></label>
+    <div className="target"><span>本期可分配净额</span><strong>{Number.isFinite(net) && net > 0 ? formatU(net) : "—"}</strong></div>
+    <Button onClick={save}>保存租金上报</Button>
+  </div>;
+}
+
+function CreateRentBatch({ state, setState, close, toast }: {
+  state: AppState; setState: React.Dispatch<React.SetStateAction<AppState>>; close: () => void; toast: (message: string) => void;
+}) {
+  const reports = state.rentReports.filter(report => report.status === "已确认");
+  const [reportId, setReportId] = useState(reports[0]?.id || "");
+  const report = reports.find(row => row.id === reportId);
+  const snapshot = state.holderSnapshots.find(row => row.offeringId === report?.offeringId && row.recordDate === report?.recordDate);
+  let preview: ReturnType<typeof splitBySnapshot> = [];
+  try { if (report && snapshot) preview = splitBySnapshot(report.netU, snapshot.lines); } catch { /* 显示缺失快照 */ }
+  const save = () => {
+    const result = createRentBatch(state, reportId, new Date().toISOString());
+    if (result.error) return toast(result.error);
+    setState(current => createRentBatch(current, reportId, new Date().toISOString()).state);
+    toast("住宅租金分配批次已计算；请核对明细并确认批次");
+    close();
+  };
+  return <div className="create-form">
+    <label className="field"><span>已确认的租金上报 *</span><select value={reportId} onChange={event => setReportId(event.target.value)}>{reports.map(row => <option key={row.id} value={row.id}>{row.id} · {row.offeringId} · {row.period} · {formatU(row.netU)}</option>)}</select></label>
+    {!reports.length && <div className="banner warning">尚无已确认的住宅租金上报，请先到「存续管理」完成上报和证明扫描。</div>}
+    <p className="body-copy">Record Date：{report?.recordDate || "—"}；固定快照：{snapshot?.id || "缺失，请在测试控制区固定快照"}。金额保留六位小数，尾差分配给权益最多的持有人。</p>
+    {preview.map(line => <div className="split-row" key={line.holderId}><span>{state.investors.find(row => row.id === line.investorId)?.name || line.investorId}<small>{line.basis.toLocaleString()} 权益单位</small></span><b>{formatU6(line.amount)}</b></div>)}
+    <Button onClick={save}>创建分配批次</Button>
+  </div>;
+}
+
 function CreateDistribution({
   state,
   setState,
@@ -7100,6 +7217,7 @@ function CreateDistribution({
   toast: (s: string) => void;
 }) {
   const eligible = state.offerings.filter((offering) =>
+    state.instruments.find(instrument => instrument.id === offering.instrumentId)?.type === "债权" &&
     state.holders.some(
       (holder) => holder.offeringId === offering.id && holder.registration === "登记有效",
     ),
@@ -7250,7 +7368,7 @@ function CreateDistribution({
             setEventType(nextInstrument?.type === "债权" ? "债权利息" : "租金收益");
           }}
         >
-          {state.offerings.map((o) => (
+          {state.offerings.filter(o => state.instruments.find(instrument => instrument.id === o.instrumentId)?.type === "债权").map((o) => (
             <option value={o.id} key={o.id}>
               {o.name}
             </option>

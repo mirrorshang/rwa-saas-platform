@@ -66,6 +66,7 @@ import {
   type StorageIssue,
 } from "./issuerModule01";
 import { ACTUAL_365_FIXED, actual365MonthlyInterest } from "./actual365";
+import { advanceSandboxIssuance, checkIssuanceReadiness, readinessFingerprint, refreshSandboxSale, resolveSandboxIssuance, retryFailedSandboxIssuance, sandboxBusinessDate, submitSandboxIssuance } from "./issuerModule02";
 
 type ModuleId =
   | "dashboard"
@@ -539,7 +540,7 @@ function App() {
   const initialRoute = parseRoute();
   const [initialLoad] = useState(() => loadIssuerState(localStorage, emptyState));
   const lastStoredRaw = useRef<string | null>(initialLoad.source === "v4" ? initialLoad.readRaw || null : null);
-  const [state, setState] = useState<AppState>(initialLoad.state);
+  const [state, setState] = useState<AppState>(() => refreshSandboxSale(initialLoad.state, initialLoad.state.sandboxClock || sandboxBusinessDate(new Date().toISOString())));
   const [storageIssue, setStorageIssue] = useState<StorageIssue | undefined>(initialLoad.issue);
   const [importError, setImportError] = useState("");
   const [module, setModule] = useState<ModuleId>(initialRoute.module);
@@ -1688,7 +1689,7 @@ function AssetsPage({
                       <small>至 {o.end} · UTC+8</small>
                     </td>
                     <td>
-                      <Status value={o.status} />
+                      <Status value={o.subscriptionStatus || o.status} />
                     </td>
                     <td>
                       <ChevronRight size={15} />
@@ -3844,6 +3845,23 @@ function DemoConsole({
   const [selectedOfferingId, setSelectedOfferingId] = useState(
     state.offerings.find((offering) => offering.confirmed)?.id || state.offerings[0]?.id || "",
   );
+  const [sandboxResult, setSandboxResult] = useState<"success" | "failed" | "unknown">("success");
+  const [sandboxDate, setSandboxDate] = useState(state.sandboxClock || sandboxBusinessDate(new Date().toISOString()));
+  const [sandboxFailureReason, setSandboxFailureReason] = useState("Sandbox 模拟合约部署返回失败（测试注入）");
+  const executeSandboxTask = () => {
+    setState((current) => {
+      const result = advanceSandboxIssuance(current, selectedOfferingId, new Date().toISOString());
+      queueMicrotask(() => toast(result.error || "原 Sandbox 发行任务进入执行中"));
+      return result.state;
+    });
+  };
+  const settleSandboxTask = () => {
+    setState((current) => {
+      const result = resolveSandboxIssuance(current, selectedOfferingId, sandboxResult, new Date().toISOString(), sandboxFailureReason);
+      queueMicrotask(() => toast(result.error || (sandboxResult === "success" ? "Sandbox 模拟发行已核验并生成唯一发布快照" : sandboxResult === "unknown" ? "原任务结果 Unknown；请查询原任务" : "原任务模拟执行失败，未发布")));
+      return result.state;
+    });
+  };
   const load = (mode: "free" | "standard" | "operations" | "exception") => {
     setState(ensureProjects(demoState(mode)));
     toast("演示场景已载入并保存到本地");
@@ -4199,6 +4217,8 @@ function DemoConsole({
     if (!requireStandard()) return;
     const offering = state.offerings.find((item) => item.id === selectedOfferingId);
     if (!offering?.confirmed) return toast("请先在 Offering 详情完成内部发行确认");
+    if (offering.confirmationSnapshot && offering.subscriptionStatus !== "Sandbox 认购中")
+      return toast("Sandbox 认购尚未开放或已结束；请先完成发行并核对认购窗口");
     const instrument = state.instruments.find((item) => item.id === offering.instrumentId);
     const debt = instrument?.type === "债权";
     const allocations = debt
@@ -4241,9 +4261,7 @@ function DemoConsole({
         ...s,
         investors: [...s.investors, ...investors],
         orders: [...s.orders, ...orders],
-        offerings: s.offerings.map((item) =>
-          item.id === offering.id ? { ...item, status: "认购中" as const } : item,
-        ),
+        offerings: s.offerings,
         mockEvents: [
           {
             id: `EVT-${Date.now()}`,
@@ -4374,6 +4392,7 @@ function DemoConsole({
     if (!requireStandard()) return;
     const offering = state.offerings.find((item) => item.id === selectedOfferingId);
     if (!offering?.confirmed) return toast("Offering 尚未完成内部发行确认");
+    if (offering.confirmationSnapshot) return toast("已确认的新发行必须通过唯一 Sandbox 发行任务取得模拟合约结果；请查看原任务");
     if (offering.contractStatus === "模拟已部署") return toast("模拟合约已部署，未重复执行");
     setState((s) => ({
       ...s,
@@ -4398,6 +4417,7 @@ function DemoConsole({
     if (!requireStandard()) return;
     const offering = state.offerings.find((item) => item.id === selectedOfferingId);
     const holders = state.holders.filter((holder) => holder.offeringId === selectedOfferingId);
+    if (offering?.confirmationSnapshot && offering.publicationStatus !== "Sandbox 已发布") return toast("Sandbox 发行尚未核验发布，不能模拟 Token 交付");
     if (offering?.contractStatus !== "模拟已部署") return toast("请先显式执行模拟合约部署");
     if (!holders.length || holders.some((holder) => holder.registration !== "登记有效"))
       return toast("所有配售必须先取得模拟法定登记结果");
@@ -4613,6 +4633,37 @@ function DemoConsole({
                 ))}
               </select>
             </label>
+            <div className="info-note"><ShieldCheck size={17} /><p>Sandbox 发行测试控制区：只处理当前 Offering 的原发行任务；不会连接生产合约、钱包私钥或资金。</p></div>
+            <label className="field">
+              <span>Sandbox 测试日期</span>
+              <input type="date" value={sandboxDate} onChange={(event) => setSandboxDate(event.target.value)} />
+            </label>
+            <Button variant="secondary" onClick={() => {
+              if (!sandboxDate) return toast("请选择 Sandbox 测试日期");
+              setState((current) => refreshSandboxSale(current, sandboxDate));
+              toast("Sandbox 认购状态已按测试日期刷新");
+            }}>刷新 Sandbox 认购窗口</Button>
+            <div className="mock-step-list">
+              <button onClick={executeSandboxTask}>
+                <span>发</span><div><b>执行已提交的 Sandbox 任务</b><small>仅将原任务从已提交推进至执行中</small></div>
+              </button>
+            </div>
+            <label className="field">
+              <span>原任务模拟结果／Unknown 查询结果</span>
+              <select value={sandboxResult} onChange={(event) => setSandboxResult(event.target.value as typeof sandboxResult)}>
+                <option value="success">Sandbox 成功并核验</option>
+                <option value="failed">执行失败</option>
+                <option value="unknown">Unknown：仍无法核验</option>
+              </select>
+            </label>
+            {sandboxResult === "failed" && <label className="field"><span>模拟失败原因</span><input value={sandboxFailureReason} onChange={(event) => setSandboxFailureReason(event.target.value)} /></label>}
+            <Button variant="secondary" onClick={settleSandboxTask}>记录或查询原任务结果</Button>
+            {state.issuanceTasks.find((item) => item.offeringId === selectedOfferingId)?.status === "失败" && <Button variant="secondary" onClick={() => setState((current) => {
+              const result = retryFailedSandboxIssuance(current, selectedOfferingId, new Date().toISOString());
+              queueMicrotask(() => toast(result.error || "原失败任务已重新提交，未创建第二任务"));
+              return result.state;
+            })}>重试原失败任务</Button>}
+            <p className="body-copy">当前任务：{state.issuanceTasks.find((item) => item.offeringId === selectedOfferingId)?.status || "未发起"}；发布快照：{state.publications.find((item) => item.offeringId === selectedOfferingId)?.id || "无"}</p>
             <div className="mock-step-list">
               <button onClick={verifyPendingWallets}>
                 <span>00</span>
@@ -4767,6 +4818,7 @@ function DrawerPanel({
   inline?: boolean;
 }) {
   const [confirmAction, setConfirmAction] = useState<"offering" | "distribution" | null>(null);
+  const [declarationFor, setDeclarationFor] = useState("");
   const requestClose = () => {
     if (drawer.type === "wallet-create" && !confirm("关闭将放弃尚未保存的钱包信息，确认继续？"))
       return;
@@ -4796,6 +4848,24 @@ function DrawerPanel({
   const asset = state.assets.find((x) => x.id === drawer.id);
   const ins = state.instruments.find((x) => x.id === drawer.id);
   const off = state.offerings.find((x) => x.id === drawer.id);
+  const readinessReport = state.readinessReports.find((item) => item.offeringId === off?.id);
+  const readinessStale = !!off && !!readinessReport && readinessReport.fingerprint !== readinessFingerprint(state, off.id);
+  const issuanceTask = state.issuanceTasks.find((item) => item.offeringId === off?.id);
+  const publication = state.publications.find((item) => item.offeringId === off?.id);
+  const runReadiness = (current: Offering) => {
+    setState((latest) => {
+      const report = checkIssuanceReadiness(latest, current.id, new Date().toISOString());
+      queueMicrotask(() => toast(report.groups.every((item) => item.passed) ? "七组发行准备检查全部通过" : "发行准备仍有未完成事项；请按每组原因返回修改"));
+      return { ...latest, readinessReports: [...latest.readinessReports.filter((item) => item.offeringId !== current.id), report] };
+    });
+  };
+  const submitReadiness = (current: Offering) => {
+    setState((latest) => {
+      const result = submitSandboxIssuance(latest, current.id, declarationFor === current.id, new Date().toISOString());
+      queueMicrotask(() => toast(result.error || "Sandbox 发行任务已提交；请在独立测试控制区执行并查询结果"));
+      return result.state;
+    });
+  };
   const investor = state.investors.find((x) => x.id === drawer.id);
   const order = state.orders.find((x) => x.id === drawer.id);
   const holder = state.holders.find((x) => x.id === drawer.id);
@@ -5275,8 +5345,8 @@ function DrawerPanel({
           )}
           {off && drawer.type === "issuance-readiness" && (
             <>
-              <DetailHero title={off.name} id={`${off.id} · 发行准备`} status={off.confirmed ? "方案已确认" : "方案未确认"} />
-              <div className="info-note"><FileText size={17} /><p>此页核对模块 01 的固定引用与资料。七组发行准备检查、责任声明和 Sandbox 执行属于模块 02，当前尚未执行。</p></div>
+              <DetailHero title={off.name} id={`${off.id} · 发行准备`} status={off.publicationStatus || issuanceTask?.status || (off.confirmed ? "方案已确认" : "方案未确认")} />
+              <div className="info-note"><FileText size={17} /><p>当前为 Sandbox 模拟发行。确认快照固定 Asset、Instrument、Project、钱包和文件引用；此处的合约、发布和认购状态均不代表真实链上或真实收款。</p></div>
               {!off.confirmed && <div className="banner warning">请先在 Offering 详情完成内部发行确认。</div>}
               {off.confirmed && !off.confirmationSnapshot && <div className="banner warning">旧版已确认记录缺少历史确认快照；已保留原记录，需核对版本证据后才能继续执行。</div>}
               <Section title="发行对象与固定引用">
@@ -5295,8 +5365,41 @@ function DrawerPanel({
                   <div className="file-box" key={file.id}><FileText size={18} /><span><b>{file.name}</b><small>{file.category} · {file.id} · {file.version ? `v${file.version}` : "旧记录未版本化"}</small></span><Status value={file.status} /></div>
                 ))}
               </Section>
-              <Section title="下一步：七组发行准备检查">
-                <p className="body-copy">模块 02 将在此核对资产、权益、发行方案、文件、钱包、容量和责任声明，并记录执行任务。当前不得把资料展示视为检查通过或发行成功。</p>
+              <Section title="七组发行准备检查">
+                <p className="body-copy">逐组核对当前业务数据。资料或版本变化后，原检查结果作废，需重新检查。</p>
+                <Button variant="secondary" onClick={() => runReadiness(off)}><RefreshCcw size={15} />重新检查七组条件</Button>
+                {!readinessReport && <div className="banner warning">尚未执行检查；下一步：点击“重新检查七组条件”。</div>}
+                {readinessStale && <div className="banner warning">资料或状态已变化，检查结果过期；请重新检查。</div>}
+                {readinessReport?.groups.map((item) => (
+                  <div className="file-box" key={item.key}>
+                    <ClipboardCheck size={18} />
+                    <span><b>{item.key}. {item.title}</b><small>{item.passed ? "已通过" : item.reasons.join("；")}</small></span>
+                    <Status value={readinessStale ? "需重检" : item.passed ? "通过" : "未通过"} />
+                    {!item.passed && <Button variant="ghost" onClick={() => {
+                      if (item.key === 1) { close(); go("company", "企业资料与 KYB"); }
+                      else if (item.key === 2) setDrawer({ type: "asset-detail", id: off.assetId });
+                      else if (item.key === 3) setDrawer({ type: "instrument-detail", id: off.instrumentId });
+                      else if (item.key === 5) { close(); go("company", "钱包管理"); }
+                      else setDrawer({ type: "offering-detail", id: off.id });
+                    }}>返回修改</Button>}
+                  </div>
+                ))}
+              </Section>
+              <Section title="责任确认与 Sandbox 发行">
+                <p className="body-copy">当前企业账号须确认发行资料、风险披露和模拟执行责任。发行任务提交后，在“内部 Mock 控制台”执行并核验原任务；Unknown 不得重新提交。</p>
+                <label className="field"><span><input type="checkbox" checked={declarationFor === off.id} onChange={(event) => setDeclarationFor(event.target.checked ? off.id : "")} /> 我已阅读并确认本期发行资料、风险披露及 Sandbox 模拟执行责任</span></label>
+                <Button onClick={() => submitReadiness(off)} disabled={!!issuanceTask || !!publication || !readinessReport || readinessStale || !readinessReport.groups.every((item) => item.passed) || declarationFor !== off.id}>确认并发起发行</Button>
+                <div className="detail-grid">
+                  <D label="执行任务" value={issuanceTask ? `${issuanceTask.id} · ${issuanceTask.status}` : "未发起"} />
+                  <D label="Sandbox 发布" value={off.publicationStatus || "未发布"} />
+                  <D label="Contract" value={off.contractStatus || "未申请"} />
+                  <D label="Token" value={off.tokenIssuanceStatus || "未发行"} />
+                  <D label="认购销售" value={off.subscriptionStatus || "未开放"} />
+                  <D label="Sandbox 测试日期" value={state.sandboxClock || "未设置"} />
+                  <D label="发布快照" value={publication?.id || "无"} />
+                </div>
+                {issuanceTask?.reason && <div className="banner warning">{issuanceTask.reason}</div>}
+                <p className="body-copy">{!issuanceTask ? "下一步：完成七组检查并由本人确认责任声明。" : issuanceTask.status === "已提交" ? "下一步：打开内部 Mock 控制台，执行该已提交任务。" : issuanceTask.status === "执行中" || issuanceTask.status === "Unknown" ? "下一步：在内部 Mock 控制台记录或查询原任务结果。" : issuanceTask.status === "失败" ? "执行失败；保留原任务和原因，待人工核对。" : off.subscriptionStatus === "Sandbox 认购中" ? "Sandbox 认购窗口已开放。" : "模拟发布已完成；请在测试控制区核对认购时间窗口。"}</p>
                 <Button variant="secondary" onClick={() => setDrawer({ type: "offering-detail", id: off.id })}>返回 Offering 详情</Button>
               </Section>
             </>
@@ -5319,7 +5422,7 @@ function DrawerPanel({
                     <DetailHero
                       title={off.name}
                       id={`${off.id} · ${off.round}`}
-                      status={off.status}
+                      status={off.subscriptionStatus || off.status}
                     />
                     <div className="detail-grid">
                       <D label="Token 发行份数" value={off.tokens.toLocaleString()} />
@@ -5330,6 +5433,9 @@ function DrawerPanel({
                       <D label="最低认购" value={formatU(off.minimum || 0)} />
                       <D label="时区" value="UTC+8" />
                       <D label="模拟合约" value={off.contractStatus || "未申请"} />
+                      <D label="Sandbox 发布" value={off.publicationStatus || "未发布"} />
+                      <D label="Token" value={off.tokenIssuanceStatus || "未发行"} />
+                      {off.publicationStatus === "Sandbox 已发布" && <D label="Sandbox 测试日期" value={state.sandboxClock || "未设置"} />}
                     </div>
                     {off.summary && (
                       <div className="info-note">

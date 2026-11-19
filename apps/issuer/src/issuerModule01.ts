@@ -87,6 +87,20 @@ export function ensureProjects(state: AppState): AppState {
 export function validateIssuerState(state: AppState): string[] {
   const reasons: string[] = [];
   for (const name of collections) uniqueIds(name, state[name] as { id: string }[], reasons);
+  uniqueIds("issuanceTasks", state.issuanceTasks, reasons);
+  uniqueIds("publications", state.publications, reasons);
+  const taskOfferings = new Set<string>();
+  for (const task of state.issuanceTasks) {
+    if (taskOfferings.has(task.offeringId)) reasons.push(`${task.offeringId} 存在重复发行任务`);
+    taskOfferings.add(task.offeringId);
+    if (!state.offerings.some(item => item.id === task.offeringId) || task.environment !== "Sandbox") reasons.push(`${task.id} 的 Offering 或环境无效`);
+  }
+  const publishedOfferings = new Set<string>();
+  for (const publication of state.publications) {
+    if (publishedOfferings.has(publication.offeringId)) reasons.push(`${publication.offeringId} 存在重复发布快照`);
+    publishedOfferings.add(publication.offeringId);
+    if (!state.issuanceTasks.some(task => task.id === publication.taskId && task.offeringId === publication.offeringId && task.status === "已核验")) reasons.push(`${publication.id} 缺少已核验的原发行任务`);
+  }
   const owners = new Map<string, string>();
   for (const [name, rows] of [["Asset", state.assets], ["Instrument", state.instruments], ["Project", state.projects], ["Offering", state.offerings]] as const) {
     for (const row of rows) {
@@ -162,6 +176,23 @@ export function parseIssuerState(raw: string, source: "v3" | "v4", defaults: App
     ...defaults, ...value,
     portal: { ...defaults.portal, ...(isObject(value.portal) ? value.portal : {}) },
   } as unknown as AppState;
+  for (const name of ["readinessReports", "issuanceTasks", "publications"] as const) {
+    if (value[name] === undefined) hydrated[name] = [];
+    else if (!Array.isArray(value[name])) reasons.push(`${name} 格式损坏`);
+    else if (value[name].some((row: unknown) => !isObject(row) || (name !== "readinessReports" && (typeof row.id !== "string" || !row.id)) || typeof row.offeringId !== "string")) reasons.push(`${name} 包含损坏记录`);
+  }
+  if (reasons.length) return { state: defaults, source: "blocked", issue: { source, raw, reasons } };
+  for (const report of hydrated.readinessReports) {
+    if (typeof report.fingerprint !== "string" || typeof report.checkedAt !== "string" || !Array.isArray(report.groups) || report.groups.some(group => !isObject(group) || typeof group.title !== "string" || typeof group.passed !== "boolean" || !Array.isArray(group.reasons))) reasons.push(`${report.offeringId} 的发行准备检查记录损坏`);
+  }
+  for (const task of hydrated.issuanceTasks) {
+    if (!isObject(task) || !["已提交", "执行中", "已核验", "失败", "Unknown"].includes(task.status as string) || typeof task.readinessFingerprint !== "string" || task.environment !== "Sandbox") reasons.push(`${task?.id || "未知任务"} 的发行任务记录损坏`);
+  }
+  for (const publication of hydrated.publications) {
+    if (!isObject(publication) || publication.environment !== "Sandbox" || typeof publication.taskId !== "string" || typeof publication.mockContractReference !== "string" || !isObject(publication.confirmedOffering)) reasons.push(`${publication?.id || "未知发布"} 的发布快照损坏`);
+  }
+  if (value.sandboxClock !== undefined && typeof value.sandboxClock !== "string") reasons.push("sandboxClock 格式损坏");
+  if (reasons.length) return { state: defaults, source: "blocked", issue: { source, raw, reasons } };
   for (const name of collections) {
     if (!Array.isArray(value[name])) (hydrated as unknown as Record<string, unknown>)[name] = defaults[name];
   }

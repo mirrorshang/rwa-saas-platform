@@ -96,6 +96,48 @@ export interface Offering {
   instrumentVersion?: string;
   revision?: number;
   confirmationSnapshot?: OfferingSnapshot;
+  publicationStatus?: "未发布" | "Sandbox 已发布";
+  subscriptionStatus?: "未开放" | "Sandbox 认购中" | "已结束";
+  tokenIssuanceStatus?: "未发行" | "模拟已发行";
+}
+
+export interface ReadinessGroup {
+  key: number;
+  title: string;
+  passed: boolean;
+  reasons: string[];
+  route: string;
+}
+
+export interface ReadinessReport {
+  offeringId: string;
+  checkedAt: string;
+  fingerprint: string;
+  groups: ReadinessGroup[];
+}
+
+export interface IssuanceTask {
+  id: string;
+  offeringId: string;
+  environment: "Sandbox";
+  status: "已提交" | "执行中" | "已核验" | "失败" | "Unknown";
+  submittedAt: string;
+  updatedAt: string;
+  readinessFingerprint: string;
+  declaration: string;
+  attempts?: number;
+  reason?: string;
+  mockContractReference?: string;
+}
+
+export interface PublicationSnapshot {
+  id: string;
+  offeringId: string;
+  taskId: string;
+  environment: "Sandbox";
+  publishedAt: string;
+  confirmedOffering: OfferingSnapshot;
+  mockContractReference: string;
 }
 
 export interface Investor {
@@ -230,6 +272,10 @@ export interface AppState {
   instruments: Instrument[];
   projects: Project[];
   offerings: Offering[];
+  readinessReports: ReadinessReport[];
+  issuanceTasks: IssuanceTask[];
+  publications: PublicationSnapshot[];
+  sandboxClock: string;
   investors: Investor[];
   orders: Order[];
   payments: Payment[];
@@ -258,6 +304,10 @@ export const emptyState: AppState = {
   instruments: [],
   projects: [],
   offerings: [],
+  readinessReports: [],
+  issuanceTasks: [],
+  publications: [],
+  sandboxClock: "",
   investors: [],
   orders: [],
   payments: [],

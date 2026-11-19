@@ -67,6 +67,7 @@ import {
 } from "./issuerModule01";
 import { ACTUAL_365_FIXED, actual365MonthlyInterest } from "./actual365";
 import { advanceSandboxIssuance, checkIssuanceReadiness, readinessFingerprint, refreshSandboxSale, resolveSandboxIssuance, retryFailedSandboxIssuance, sandboxBusinessDate, submitSandboxIssuance } from "./issuerModule02";
+import { allocateMockOrder, approveMockInvestorKyc, createHolderSnapshot, createMockInvestor, createMockOrder, deliverMockTokens, recordMockPayment, registerMockHolder } from "./issuerModule03";
 
 type ModuleId =
   | "dashboard"
@@ -1941,6 +1942,7 @@ function InvestorsPage({
                     <td>
                       <b>{i.name}</b>
                       <small>{i.id}</small>
+                      {i.environment === "Sandbox" && <small>Sandbox Mock · {i.source}</small>}
                     </td>
                     <td>{i.type}</td>
                     <td>
@@ -1994,7 +1996,7 @@ function InvestorsPage({
             setSearch={setSearch}
             filter={filter}
             setFilter={setFilter}
-            filters={["待付款", "处理中", "待交付", "已完成", "异常"]}
+            filters={["待付款", "待配售", "待登记", "待交付", "已完成", "异常"]}
           />
           <div className="table-wrap">
             <table>
@@ -2021,6 +2023,7 @@ function InvestorsPage({
                         <small>
                           {inv?.name} · {inv?.id}
                         </small>
+                        {o.environment === "Sandbox" && <small>Sandbox Mock · {state.allocations.some(row => row.orderId === o.id) ? "已配售" : "未配售"} · {state.holders.some(row => row.orderId === o.id) ? "已登记" : "未登记"}</small>}
                       </td>
                       <td>
                         {off?.name}
@@ -2113,6 +2116,7 @@ function InvestorsPage({
                     <td>
                       <b>{inv?.name}</b>
                       <small>{h.id}</small>
+                      {h.environment === "Sandbox" && <small>Sandbox Mock · {h.source}</small>}
                     </td>
                     <td>
                       {off?.name}
@@ -2152,6 +2156,8 @@ function InvestorsPage({
           )}
         </div>
       </div>
+      <div className="info-bar"><ShieldCheck size={17} /><span>Record Date 快照：{state.holderSnapshots.length} 份；仅纳入登记生效且日期不晚于 Record Date 的 Sandbox 持有人。快照一经固定不随当前名单变化。</span></div>
+      {state.holderSnapshots.length > 0 && <div className="card" style={{ padding: 20 }}><h3>已固定的持有人快照</h3>{state.holderSnapshots.map(snapshot => <p key={snapshot.id} className="body-copy">{snapshot.id} · {snapshot.offeringId} · Record Date {snapshot.recordDate} · {snapshot.lines.length} 人 · 权益合计 {snapshot.lines.reduce((sum, line) => sum + line.rights, 0).toLocaleString()} · Sandbox Mock</p>)}</div>}
     </div>
   );
 }
@@ -3848,6 +3854,9 @@ function DemoConsole({
   const [sandboxResult, setSandboxResult] = useState<"success" | "failed" | "unknown">("success");
   const [sandboxDate, setSandboxDate] = useState(state.sandboxClock || sandboxBusinessDate(new Date().toISOString()));
   const [sandboxFailureReason, setSandboxFailureReason] = useState("Sandbox 模拟合约部署返回失败（测试注入）");
+  const [paymentOutcome, setPaymentOutcome] = useState<"success" | "failed" | "unknown">("success");
+  const [paymentAttempt, setPaymentAttempt] = useState("1");
+  const [snapshotDate, setSnapshotDate] = useState("2026-12-31");
   const executeSandboxTask = () => {
     setState((current) => {
       const result = advanceSandboxIssuance(current, selectedOfferingId, new Date().toISOString());
@@ -4213,259 +4222,72 @@ function DemoConsole({
     );
     return false;
   };
-  const createCaseOrders = () => {
+  const scenarioPeople = (current: AppState) => {
+    const offering = current.offerings.find(row => row.id === selectedOfferingId);
+    const instrument = current.instruments.find(row => row.id === offering?.instrumentId);
+    return instrument?.type === "债权"
+      ? [{ name: "投资者甲（虚构）", ratio: 0.625, type: "自然人" as const }, { name: "投资者丙（虚构）", ratio: 0.375, type: "自然人" as const }]
+      : [{ name: "张先生（虚构）", ratio: 0.5, type: "自然人" as const }, { name: "李女士（虚构）", ratio: 0.3, type: "自然人" as const }, { name: "某投资机构（虚构）", ratio: 0.2, type: "机构" as const }];
+  };
+  const runScenarioStep = (title: string, step: (current: AppState) => { state: AppState; changed: boolean; error?: string }) => {
     if (!requireStandard()) return;
-    const offering = state.offerings.find((item) => item.id === selectedOfferingId);
-    if (!offering?.confirmed) return toast("请先在 Offering 详情完成内部发行确认");
-    if (offering.confirmationSnapshot && offering.subscriptionStatus !== "Sandbox 认购中")
-      return toast("Sandbox 认购尚未开放或已结束；请先完成发行并核对认购窗口");
-    const instrument = state.instruments.find((item) => item.id === offering.instrumentId);
-    const debt = instrument?.type === "债权";
-    const allocations = debt
-      ? [
-          ["投资者甲（虚构）", 0.625],
-          ["投资者乙（虚构）", 0.375],
-        ]
-      : [
-          ["张先生（虚构）", 0.5],
-          ["李女士（虚构）", 0.3],
-          ["某投资机构（虚构）", 0.2],
-        ];
-    if (state.orders.some((order) => order.offeringId === offering.id))
-      return toast("该 Offering 已存在订单，未重复创建");
-    setState((s) => {
-      const investors = allocations.map(([name], index) => ({
-        id: `INV-${offering.id}-${index + 1}`,
-        name: String(name),
-        type: String(name).includes("机构") ? ("机构" as const) : ("自然人" as const),
-        kyc: "有效通过",
-        offeringIds: [offering.id],
-        last: "Mock KYC 已通过",
-      }));
-      const orders = allocations.map(([, ratio], index) => {
-        const requested = Math.round(offering.tokens * Number(ratio));
-        return {
-          id: `ORD-${offering.id}-${index + 1}`,
-          investorId: investors[index].id,
-          offeringId: offering.id,
-          requested,
-          confirmed: 0,
-          amount: requested * offering.price,
-          status: "待付款",
-          payment: "未付款",
-          delivery: "未开始",
-          created: new Date().toISOString().slice(0, 10),
-        };
-      });
-      return {
-        ...s,
-        investors: [...s.investors, ...investors],
-        orders: [...s.orders, ...orders],
-        offerings: s.offerings,
-        mockEvents: [
-          {
-            id: `EVT-${Date.now()}`,
-            offeringId: offering.id,
-            type: "投资者与订单",
-            result: "已创建",
-            time: "刚刚",
-            detail: `${investors.length} 名虚构投资者完成 Mock KYC 并提交认购`,
-          },
-          ...s.mockEvents,
-        ],
-      };
+    setState(current => {
+      const result = step(current);
+      queueMicrotask(() => toast(result.error || (result.changed ? `${title}完成（仅 Sandbox Mock）` : `${title}已有记录，未重复生成`)));
+      if (!result.changed) return current;
+      return { ...result.state, mockEvents: [{ id: `EVT-M03-${Date.now()}-${Math.random()}`, offeringId: selectedOfferingId,
+        type: title, result: "Sandbox Mock", time: "刚刚", detail: title }, ...result.state.mockEvents] };
     });
-    toast(`已创建 ${allocations.length} 名虚构投资者和认购订单；尚未付款`);
   };
-  const finalMatchPayments = () => {
-    if (!requireStandard()) return;
-    const orders = state.orders.filter((order) => order.offeringId === selectedOfferingId);
-    if (!orders.length) return toast("请先创建认购订单");
-    if (orders.every((order) => order.payment === "最终匹配"))
-      return toast("这些订单已最终匹配，未重复生成付款");
-    setState((s) => ({
-      ...s,
-      payments: [
-        ...s.payments,
-        ...orders
-          .filter((order) => !s.payments.some((payment) => payment.orderId === order.id))
-          .map((order, index) => ({
-            id: `PAY-${selectedOfferingId}-${index + 1}`,
-            orderId: order.id,
-            expected: order.amount,
-            received: order.amount,
-            status: "最终匹配",
-            time: "刚刚",
-          })),
-      ],
-      orders: s.orders.map((order) =>
-        order.offeringId === selectedOfferingId
-          ? { ...order, payment: "最终匹配", status: "处理中" }
-          : order,
-      ),
-      mockEvents: [
-        {
-          id: `EVT-${Date.now()}`,
-          offeringId: selectedOfferingId,
-          type: "资金匹配",
-          result: "FinalMatched",
-          time: "刚刚",
-          detail: "OP Mainnet USDT 模拟付款已逐笔最终匹配",
-        },
-        ...s.mockEvents,
-      ],
-    }));
-    toast("付款已逐笔 FinalMatched；尚未配售");
+  const applyAll = (current: AppState, action: (next: AppState, index: number) => { state: AppState; changed: boolean; error?: string }, count: number) => {
+    let next = current;
+    let changed = false;
+    for (let index = 0; index < count; index++) {
+      const result = action(next, index);
+      if (result.error) return { state: current, changed: false, error: result.error };
+      changed ||= result.changed;
+      next = result.state;
+    }
+    return { state: next, changed };
   };
-  const allocate = () => {
-    if (!requireStandard()) return;
-    const offering = state.offerings.find((item) => item.id === selectedOfferingId);
-    const instrument = state.instruments.find((item) => item.id === offering?.instrumentId);
-    const orders = state.orders.filter((order) => order.offeringId === selectedOfferingId);
-    if (!orders.length || orders.some((order) => order.payment !== "最终匹配"))
-      return toast("所有订单必须先完成最终付款匹配");
-    if (state.holders.some((holder) => holder.offeringId === selectedOfferingId))
-      return toast("唯一配售决定已存在，未重复生成");
-    const rightsPerToken = instrument ? instrument.totalRights / instrument.tokenCap : 0;
-    setState((s) => ({
-      ...s,
-      holders: [
-        ...s.holders,
-        ...orders.map((order, index) => ({
-          id: `HOL-${selectedOfferingId}-${index + 1}`,
-          investorId: order.investorId,
-          orderId: order.id,
-          offeringId: selectedOfferingId,
-          rights: order.requested * rightsPerToken,
-          tokens: 0,
-          registration: "待登记",
-          lock: "未起算",
-          lockUntil: "—",
-          reconciliation: "待 Token 交付",
-        })),
-      ],
-      orders: s.orders.map((order) =>
-        order.offeringId === selectedOfferingId
-          ? { ...order, confirmed: order.requested, status: "待交付" }
-          : order,
-      ),
-      mockEvents: [
-        {
-          id: `EVT-${Date.now()}`,
-          offeringId: selectedOfferingId,
-          type: "基础配售",
-          result: "唯一决定已生成",
-          time: "刚刚",
-          detail: "按最终匹配订单和授权容量生成配售，尚未法定登记",
-        },
-        ...s.mockEvents,
-      ],
-    }));
-    toast("基础配售已生成；法定登记仍为待处理");
-  };
-  const registerHolders = () => {
-    if (!requireStandard()) return;
-    const holders = state.holders.filter((holder) => holder.offeringId === selectedOfferingId);
-    if (!holders.length) return toast("请先生成唯一配售决定");
-    if (holders.every((holder) => holder.registration === "登记有效"))
-      return toast("法定登记模拟结果已存在");
-    setState((s) => ({
-      ...s,
-      holders: s.holders.map((holder) =>
-        holder.offeringId === selectedOfferingId ? { ...holder, registration: "登记有效" } : holder,
-      ),
-      mockEvents: [
-        {
-          id: `EVT-${Date.now()}`,
-          offeringId: selectedOfferingId,
-          type: "法定登记",
-          result: "模拟登记有效",
-          time: "刚刚",
-          detail: "由内部 Mock 有权主体返回登记结果",
-        },
-        ...s.mockEvents,
-      ],
-    }));
-    toast("法定登记已模拟完成；尚未部署或交付 Token");
-  };
-  const deployContract = () => {
-    if (!requireStandard()) return;
-    const offering = state.offerings.find((item) => item.id === selectedOfferingId);
-    if (!offering?.confirmed) return toast("Offering 尚未完成内部发行确认");
-    if (offering.confirmationSnapshot) return toast("已确认的新发行必须通过唯一 Sandbox 发行任务取得模拟合约结果；请查看原任务");
-    if (offering.contractStatus === "模拟已部署") return toast("模拟合约已部署，未重复执行");
-    setState((s) => ({
-      ...s,
-      offerings: s.offerings.map((item) =>
-        item.id === selectedOfferingId ? { ...item, contractStatus: "模拟已部署" } : item,
-      ),
-      mockEvents: [
-        {
-          id: `EVT-${Date.now()}`,
-          offeringId: selectedOfferingId,
-          type: "合约部署",
-          result: "模拟已部署",
-          time: "刚刚",
-          detail: "生成模拟合约状态，不代表真实链上地址",
-        },
-        ...s.mockEvents,
-      ],
-    }));
-    toast("模拟合约部署事件已完成；尚未 Mint / 交付");
-  };
-  const deliverTokens = () => {
-    if (!requireStandard()) return;
-    const offering = state.offerings.find((item) => item.id === selectedOfferingId);
-    const holders = state.holders.filter((holder) => holder.offeringId === selectedOfferingId);
-    if (offering?.confirmationSnapshot && offering.publicationStatus !== "Sandbox 已发布") return toast("Sandbox 发行尚未核验发布，不能模拟 Token 交付");
-    if (offering?.contractStatus !== "模拟已部署") return toast("请先显式执行模拟合约部署");
-    if (!holders.length || holders.some((holder) => holder.registration !== "登记有效"))
-      return toast("所有配售必须先取得模拟法定登记结果");
-    if (state.tokens.some((token) => token.offeringId === selectedOfferingId))
-      return toast("Token 交付记录已存在，未重复 Mint");
-    setState((s) => ({
-      ...s,
-      tokens: [
-        ...s.tokens,
-        ...holders.map((holder, index) => {
-          const order = s.orders.find((item) => item.id === holder.orderId)!;
-          return {
-            id: `TOK-${selectedOfferingId}-${index + 1}`,
-            offeringId: selectedOfferingId,
-            orderId: holder.orderId,
-            operation: "Mint / 交付",
-            amount: order.confirmed,
-            status: "最终确认",
-            time: "刚刚",
-            tx: `DEMO-TX-${selectedOfferingId}-${index + 1}`,
-          };
-        }),
-      ],
-      holders: s.holders.map((holder) => {
-        const order = s.orders.find((item) => item.id === holder.orderId);
-        return holder.offeringId === selectedOfferingId
-          ? { ...holder, tokens: order?.confirmed || 0, reconciliation: "一致", lock: "不锁仓" }
-          : holder;
-      }),
-      orders: s.orders.map((order) =>
-        order.offeringId === selectedOfferingId
-          ? { ...order, delivery: "最终交付", status: "已完成" }
-          : order,
-      ),
-      mockEvents: [
-        {
-          id: `EVT-${Date.now()}`,
-          offeringId: selectedOfferingId,
-          type: "Token 交付",
-          result: "模拟最终确认",
-          time: "刚刚",
-          detail: "按配售订单逐笔 Mint / 交付，记录为虚构链事件",
-        },
-        ...s.mockEvents,
-      ],
-    }));
-    toast("Token 已按配售逐笔模拟交付，订单状态已同步");
-  };
+  const createCaseInvestors = () => runScenarioStep("创建模拟投资者", current => applyAll(current, (next, index) => {
+    const person = scenarioPeople(next)[index];
+    return createMockInvestor(next, selectedOfferingId, person.name, person.type, `case:${selectedOfferingId}:${index}`);
+  }, scenarioPeople(current).length));
+  const approveCaseKyc = () => runScenarioStep("Mock KYC 审核", current => applyAll(current, (next, index) => {
+    const investor = next.investors.find(row => row.requestKey === `case:${selectedOfferingId}:${index}`);
+    return approveMockInvestorKyc(next, investor?.id || "");
+  }, scenarioPeople(current).length));
+  const createCaseOrders = () => runScenarioStep("提交模拟认购订单", current => applyAll(current, (next, index) => {
+    const investor = next.investors.find(row => row.requestKey === `case:${selectedOfferingId}:${index}`);
+    const offering = next.offerings.find(row => row.id === selectedOfferingId);
+    if (!investor || !offering) return { state: next, changed: false, error: "请先创建模拟投资者" };
+    const quantity = Math.round(offering.tokens * scenarioPeople(next)[index].ratio);
+    return createMockOrder(next, selectedOfferingId, investor.id, quantity, `case-order:${selectedOfferingId}:${index}`, next.sandboxClock);
+  }, scenarioPeople(current).length));
+  const finalMatchPayments = () => runScenarioStep("模拟支付结果", current => {
+    const orders = current.orders.filter(row => row.offeringId === selectedOfferingId && row.environment === "Sandbox");
+    if (!orders.length) return { state: current, changed: false, error: "请先提交模拟订单" };
+    return applyAll(current, (next, index) => recordMockPayment(next, orders[index].id,
+      `case-payment:${orders[index].id}:${paymentAttempt}`, paymentOutcome, new Date().toISOString()), orders.length);
+  });
+  const allocate = () => runScenarioStep("逐笔配售", current => {
+    const orders = current.orders.filter(row => row.offeringId === selectedOfferingId && row.environment === "Sandbox");
+    if (!orders.length) return { state: current, changed: false, error: "请先提交模拟订单" };
+    return applyAll(current, (next, index) => allocateMockOrder(next, orders[index].id, `${next.sandboxClock}T12:00:00+08:00`), orders.length);
+  });
+  const registerHolders = () => runScenarioStep("模拟法定登记", current => {
+    const orders = current.orders.filter(row => row.offeringId === selectedOfferingId && row.environment === "Sandbox");
+    if (!orders.length) return { state: current, changed: false, error: "请先完成配售" };
+    return applyAll(current, (next, index) => registerMockHolder(next, orders[index].id, `${next.sandboxClock}T12:00:00+08:00`), orders.length);
+  });
+  const deliverTokens = () => runScenarioStep("模拟 Token 交付", current => {
+    const orders = current.orders.filter(row => row.offeringId === selectedOfferingId && row.environment === "Sandbox");
+    if (!orders.length) return { state: current, changed: false, error: "请先完成模拟登记" };
+    return applyAll(current, (next, index) => deliverMockTokens(next, orders[index].id, new Date().toISOString()), orders.length);
+  });
+  const recordHolderSnapshot = () => runScenarioStep("固定持有人快照", current => createHolderSnapshot(current,
+    selectedOfferingId, snapshotDate, new Date().toISOString()));
   const payConfirmedDistribution = () => {
     if (!requireStandard()) return;
     const distribution = state.distributions.find(
@@ -4679,50 +4501,55 @@ function DemoConsole({
                   <small>更新 Asset / Instrument / 披露文件可引用状态</small>
                 </div>
               </button>
-              <button onClick={createCaseOrders}>
+              <button onClick={createCaseInvestors}>
                 <span>02</span>
                 <div>
-                  <b>创建案例投资者与订单</b>
-                  <small>住宅 3 人；债权 2 人，仅生成待付款订单</small>
+                  <b>创建模拟投资者</b>
+                  <small>住宅 3 人，债权 2 人；新建后 KYC 待审核</small>
                 </div>
               </button>
-              <button onClick={finalMatchPayments}>
+              <button onClick={approveCaseKyc}>
                 <span>03</span>
                 <div>
-                  <b>模拟付款 FinalMatched</b>
-                  <small>逐笔生成独立资金记录</small>
+                  <b>Mock KYC 审核通过</b>
+                  <small>仅适用于 Sandbox 模拟投资者</small>
+                </div>
+              </button>
+              <button onClick={createCaseOrders}>
+                <span>04</span>
+                <div>
+                  <b>提交模拟认购订单</b>
+                  <small>按已确认价格与当前认购窗口生成固定报价订单</small>
+                </div>
+              </button>
+              <label className="field"><span>Mock 支付结果</span><select value={paymentOutcome} onChange={event => setPaymentOutcome(event.target.value as typeof paymentOutcome)}><option value="success">最终匹配</option><option value="failed">失败</option><option value="unknown">Unknown（查询原支付意图）</option></select></label>
+              <label className="field"><span>支付意图尝试编号（失败后可递增；Unknown 保持原编号）</span><input type="number" min="1" value={paymentAttempt} onChange={event => setPaymentAttempt(event.target.value)} /></label>
+              <button onClick={finalMatchPayments}>
+                <span>05</span>
+                <div>
+                  <b>记录或查询 Mock 支付</b>
+                  <small>付款结果独立记录；Unknown 不创建第二个支付意图</small>
                 </div>
               </button>
               <button onClick={allocate}>
-                <span>04</span>
+                <span>06</span>
                 <div>
-                  <b>触发基础配售</b>
-                  <small>检查 KYC、付款与容量，生成唯一配售</small>
+                  <b>执行逐笔配售</b>
+                  <small>最终匹配后生成配售记录；此时尚无持有人</small>
                 </div>
               </button>
               <button onClick={registerHolders}>
-                <span>05</span>
-                <div>
-                  <b>模拟法定登记结果</b>
-                  <small>登记状态与 Token 交付保持独立</small>
-                </div>
-              </button>
-              <button onClick={deployContract}>
-                <span>06</span>
-                <div>
-                  <b>部署模拟 Token 合约</b>
-                  <small>显式事件，不生成真实地址</small>
-                </div>
-              </button>
-              <button onClick={deliverTokens}>
                 <span>07</span>
                 <div>
-                  <b>模拟 Mint / Token 交付</b>
-                  <small>按配售逐笔生成，不可重复执行</small>
+                  <b>模拟持有人登记</b>
+                  <small>按配售结果建立明确标识的 Sandbox 持有人记录</small>
                 </div>
               </button>
+              <button onClick={deliverTokens}><span>08</span><div><b>模拟 Token 交付</b><small>与登记分开，按订单逐笔记录并防重复</small></div></button>
+              <label className="field"><span>持有人快照 Record Date</span><input type="date" value={snapshotDate} onChange={event => setSnapshotDate(event.target.value)} /></label>
+              <button onClick={recordHolderSnapshot}><span>09</span><div><b>固定持有人快照</b><small>按登记生效时间读取有效持有人，固定本期权益</small></div></button>
               <button onClick={payConfirmedDistribution}>
-                <span>08</span>
+                <span>10</span>
                 <div>
                   <b>模拟收益 / 本金支付</b>
                   <small>仅处理已确认待注资批次，逐笔更新状态</small>

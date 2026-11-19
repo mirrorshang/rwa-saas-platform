@@ -89,6 +89,40 @@ export function validateIssuerState(state: AppState): string[] {
   for (const name of collections) uniqueIds(name, state[name] as { id: string }[], reasons);
   uniqueIds("issuanceTasks", state.issuanceTasks, reasons);
   uniqueIds("publications", state.publications, reasons);
+  uniqueIds("allocations", state.allocations, reasons);
+  uniqueIds("holderSnapshots", state.holderSnapshots, reasons);
+  const allocatedOrders = new Set<string>();
+  const allocatedCapacity = new Map<string, number>();
+  for (const allocation of state.allocations) {
+    const order = state.orders.find(row => row.id === allocation.orderId);
+    if (allocatedOrders.has(allocation.orderId)) reasons.push(`${allocation.orderId} 重复配售`);
+    allocatedOrders.add(allocation.orderId);
+    if (!order || order.offeringId !== allocation.offeringId || order.investorId !== allocation.investorId || allocation.environment !== "Sandbox") reasons.push(`${allocation.id} 的订单关联或环境无效`);
+    if (order && (order.confirmed !== allocation.quantity || !state.payments.some(row => row.orderId === order.id && row.status === "最终匹配"))) reasons.push(`${allocation.id} 缺少已匹配付款或确认数量不一致`);
+    allocatedCapacity.set(allocation.offeringId, (allocatedCapacity.get(allocation.offeringId) || 0) + allocation.quantity);
+  }
+  for (const [offeringId, quantity] of allocatedCapacity) {
+    const offering = state.offerings.find(row => row.id === offeringId);
+    if (!offering || quantity > offering.tokens) reasons.push(`${offeringId} 配售容量超额`);
+  }
+  const holderOrders = new Set<string>();
+  for (const holder of state.holders) {
+    if (holderOrders.has(holder.orderId)) reasons.push(`${holder.orderId} 重复持有人登记`);
+    holderOrders.add(holder.orderId);
+    if (holder.environment === "Sandbox" && !state.allocations.some(row => row.id === holder.allocationId && row.orderId === holder.orderId)) reasons.push(`${holder.id} 缺少配售来源`);
+  }
+  const deliveredOrders = new Set<string>();
+  for (const token of state.tokens.filter(row => row.operation === "Mint / 交付")) {
+    if (deliveredOrders.has(token.orderId)) reasons.push(`${token.orderId} 重复 Token 模拟交付`);
+    deliveredOrders.add(token.orderId);
+  }
+  const snapshotDates = new Set<string>();
+  for (const snapshot of state.holderSnapshots) {
+    const key = `${snapshot.offeringId}:${snapshot.recordDate}`;
+    if (snapshotDates.has(key)) reasons.push(`${key} 重复持有人快照`);
+    snapshotDates.add(key);
+    if (!state.offerings.some(row => row.id === snapshot.offeringId) || snapshot.environment !== "Sandbox" || !Array.isArray(snapshot.lines)) reasons.push(`${snapshot.id} 的 Offering 或持有人明细无效`);
+  }
   const taskOfferings = new Set<string>();
   for (const task of state.issuanceTasks) {
     if (taskOfferings.has(task.offeringId)) reasons.push(`${task.offeringId} 存在重复发行任务`);
@@ -176,7 +210,7 @@ export function parseIssuerState(raw: string, source: "v3" | "v4", defaults: App
     ...defaults, ...value,
     portal: { ...defaults.portal, ...(isObject(value.portal) ? value.portal : {}) },
   } as unknown as AppState;
-  for (const name of ["readinessReports", "issuanceTasks", "publications"] as const) {
+  for (const name of ["readinessReports", "issuanceTasks", "publications", "allocations", "holderSnapshots"] as const) {
     if (value[name] === undefined) hydrated[name] = [];
     else if (!Array.isArray(value[name])) reasons.push(`${name} 格式损坏`);
     else if (value[name].some((row: unknown) => !isObject(row) || (name !== "readinessReports" && (typeof row.id !== "string" || !row.id)) || typeof row.offeringId !== "string")) reasons.push(`${name} 包含损坏记录`);
@@ -190,6 +224,12 @@ export function parseIssuerState(raw: string, source: "v3" | "v4", defaults: App
   }
   for (const publication of hydrated.publications) {
     if (!isObject(publication) || publication.environment !== "Sandbox" || typeof publication.taskId !== "string" || typeof publication.mockContractReference !== "string" || !isObject(publication.confirmedOffering)) reasons.push(`${publication?.id || "未知发布"} 的发布快照损坏`);
+  }
+  for (const allocation of hydrated.allocations) {
+    if (typeof allocation.orderId !== "string" || typeof allocation.investorId !== "string" || !Number.isSafeInteger(allocation.quantity) || !Number.isFinite(allocation.rights) || allocation.environment !== "Sandbox") reasons.push(`${allocation.id} 的配售记录损坏`);
+  }
+  for (const snapshot of hydrated.holderSnapshots) {
+    if (typeof snapshot.recordDate !== "string" || typeof snapshot.instrumentVersion !== "string" || snapshot.environment !== "Sandbox" || !Array.isArray(snapshot.lines) || snapshot.lines.some(line => !isObject(line) || typeof line.holderId !== "string" || !Number.isFinite(line.rights))) reasons.push(`${snapshot.id} 的持有人快照损坏`);
   }
   if (value.sandboxClock !== undefined && typeof value.sandboxClock !== "string") reasons.push("sandboxClock 格式损坏");
   if (reasons.length) return { state: defaults, source: "blocked", issue: { source, raw, reasons } };

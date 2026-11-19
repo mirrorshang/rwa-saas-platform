@@ -147,6 +147,9 @@ export interface Investor {
   kyc: string;
   offeringIds: string[];
   last: string;
+  environment?: "Sandbox";
+  source?: string;
+  requestKey?: string;
 }
 
 export interface Order {
@@ -160,6 +163,10 @@ export interface Order {
   payment: string;
   delivery: string;
   created: string;
+  environment?: "Sandbox";
+  requestKey?: string;
+  termsRevision?: number;
+  quotedPrice?: number;
 }
 
 export interface Payment {
@@ -169,6 +176,20 @@ export interface Payment {
   received: number;
   status: string;
   time: string;
+  environment?: "Sandbox";
+  intentId?: string;
+}
+
+export interface Allocation {
+  id: string;
+  orderId: string;
+  offeringId: string;
+  investorId: string;
+  quantity: number;
+  rights: number;
+  status: "已配售";
+  environment: "Sandbox";
+  createdAt: string;
 }
 
 export interface Holder {
@@ -182,6 +203,20 @@ export interface Holder {
   lock: string;
   lockUntil: string;
   reconciliation: string;
+  environment?: "Sandbox";
+  source?: string;
+  effectiveAt?: string;
+  allocationId?: string;
+}
+
+export interface HolderSnapshot {
+  id: string;
+  offeringId: string;
+  recordDate: string;
+  environment: "Sandbox";
+  createdAt: string;
+  instrumentVersion: string;
+  lines: { holderId: string; investorId: string; orderId: string; rights: number; tokens: number }[];
 }
 
 export interface Wallet {
@@ -279,7 +314,9 @@ export interface AppState {
   investors: Investor[];
   orders: Order[];
   payments: Payment[];
+  allocations: Allocation[];
   holders: Holder[];
+  holderSnapshots: HolderSnapshot[];
   wallets: Wallet[];
   tokens: TokenRecord[];
   distributions: Distribution[];
@@ -311,7 +348,9 @@ export const emptyState: AppState = {
   investors: [],
   orders: [],
   payments: [],
+  allocations: [],
   holders: [],
+  holderSnapshots: [],
   wallets: [],
   tokens: [],
   distributions: [],

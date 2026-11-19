@@ -111,9 +111,22 @@ export function validateIssuerState(state: AppState): string[] {
     debtPeriods.add(key);
     if (!state.debtSchedules.some(row => row.id === event.scheduleId && row.offeringId === event.offeringId)) reasons.push(`${event.id} 的债权计划引用无效`);
   }
+  const completedDebts = new Set<string>();
   for (const completion of state.debtCompletions) {
+    if (completedDebts.has(completion.offeringId)) reasons.push(`${completion.offeringId} 重复债权清偿记录`);
+    completedDebts.add(completion.offeringId);
     if (!state.debtSchedules.some(row => row.id === completion.scheduleId && row.offeringId === completion.offeringId)
       || !state.distributions.some(row => row.id === completion.principalBatchId && row.eventType === "债权本金" && row.status === "支付完成")) reasons.push(`${completion.id} 的清偿引用无效`);
+  }
+  const debtBatches = new Set<string>();
+  for (const batch of state.distributions.filter(row => row.debtScheduleId && row.status !== "已作废")) {
+    const key = `${batch.offeringId}:${batch.eventType}:${batch.period}`;
+    if (debtBatches.has(key)) reasons.push(`${key} 重复债权批次`);
+    debtBatches.add(key);
+    if (!state.debtSchedules.some(row => row.id === batch.debtScheduleId && row.offeringId === batch.offeringId)
+      || !state.holderSnapshots.some(row => row.id === batch.holderSnapshotId && row.offeringId === batch.offeringId)
+      || (batch.eventType === "债权利息" && !state.debtInterestEvents.some(row => row.id === batch.interestEventId && row.scheduleId === batch.debtScheduleId)))
+      reasons.push(`${batch.id} 的债权计划、事件或快照引用无效`);
   }
   const rentPeriods = new Set<string>();
   for (const report of state.rentReports) {

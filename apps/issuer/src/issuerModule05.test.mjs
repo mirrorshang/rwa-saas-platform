@@ -4,7 +4,7 @@ import { emptyState } from "./data.ts";
 import { createHolderSnapshot } from "./issuerModule03.ts";
 import { payMockDistributionLine } from "./issuerModule04.ts";
 import { completeDebt, confirmDebtBatch, createDebtInterestBatch, createDebtPrincipalBatch, createDebtSchedule, disposeDebtTokens, settleDebtRegistry } from "./issuerModule05.ts";
-import { parseIssuerState, serializeIssuerState } from "./issuerModule01.ts";
+import { parseIssuerState, serializeIssuerState, validateIssuerState } from "./issuerModule01.ts";
 
 function fixture() {
   const state = structuredClone(emptyState);
@@ -109,4 +109,12 @@ test("旧状态安全补齐债权集合，损坏计划保留原始字节", () =>
   const bad = parseIssuerState(raw, "v4", emptyState);
   assert.equal(bad.source, "blocked");
   assert.equal(bad.issue.raw, raw);
+});
+
+test("债权重复事件、批次和清偿引用在装载前隔离", () => {
+  let state = createDebtSchedule(fixture(), "OFF-3002", "2026-11-19").state;
+  state.debtInterestEvents.push({ ...state.debtInterestEvents[0], id: "DIE-DUP" });
+  assert.ok(validateIssuerState(state).some(reason => reason.includes("重复债权应付利息事件")));
+  const raw = serializeIssuerState(state);
+  assert.equal(parseIssuerState(raw, "v4", emptyState).source, "blocked");
 });

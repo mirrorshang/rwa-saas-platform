@@ -2147,8 +2147,8 @@ function InvestorsPage({
                       <Status value={h.registration} />
                     </td>
                     <td>
-                      <Status value={h.lock} />
-                      <small>至 {h.lockUntil}</small>
+                      <Status value={h.registration === "模拟已清偿" && h.tokens === 0 ? "已结束" : h.lock} />
+                      {h.registration !== "模拟已清偿" && <small>至 {h.lockUntil || "—"}</small>}
                     </td>
                     <td>
                       <Status value={h.reconciliation} />
@@ -3726,15 +3726,12 @@ function Subscription({
   setState: React.Dispatch<React.SetStateAction<AppState>>;
   toast: (s: string) => void;
 }) {
-  const [billing, setBilling] = useState<"月付" | "年付">(state.billing);
-  const [pay, setPay] = useState("USDT");
   const upgrade = () => {
     setState((s) => ({
       ...s,
       plan: "Standard",
-      billing,
-      planEnd: billing === "年付" ? "2027-11-13" : "2026-12-13",
-      autoRenew: true,
+      planEnd: "2027-11-13",
+      autoRenew: false,
       activities: [
         {
           id: `ACT-${Date.now()}`,
@@ -3754,7 +3751,7 @@ function Subscription({
       <PageHeader
         eyebrow="PLANS & BILLING"
         title="套餐订阅"
-        description="升级、续期、到期与恢复均为本地模拟，不会产生真实扣款。"
+        description="Standard 升级仅用于本地 Sandbox 演示，不会产生真实扣款。"
       />
       <div className="current-plan">
         <div>
@@ -3763,26 +3760,15 @@ function Subscription({
           <p>
             {state.plan === "Free"
               ? "资产与发行资料准备 · 内部只读预览"
-              : `服务期至 ${state.planEnd || "—"} · ${state.autoRenew ? "自动续费已开启" : "自动续费已关闭"}`}
+              : `Mock 演示有效期至 ${state.planEnd || "—"} · 不会自动扣款`}
           </p>
         </div>
         <Status value={state.plan} />
-      </div>
-      <div className="billing-toggle">
-        <button className={billing === "月付" ? "active" : ""} onClick={() => setBilling("月付")}>
-          月付
-        </button>
-        <button className={billing === "年付" ? "active" : ""} onClick={() => setBilling("年付")}>
-          年付 <em>节省 20%</em>
-        </button>
       </div>
       <div className="plan-grid">
         <div className="card plan">
           <span>FREE</span>
           <h3>免费开始</h3>
-          <div className="price">
-            0 <small>U / 永久</small>
-          </div>
           <p>完成企业认证，建立可审阅的发行准备资料。</p>
           {["资产 / 权益 / Offering 草稿", "内部只读 Sandbox 预览", "本地文件与版本记录"].map(
             (x) => (
@@ -3800,11 +3786,7 @@ function Subscription({
           <div className="popular">推荐</div>
           <span>STANDARD</span>
           <h3>完整业务演示</h3>
-          <div className="price">
-            {billing === "年付" ? "399" : "49"}{" "}
-            <small>U / {billing === "年付" ? "年" : "月"}</small>
-          </div>
-          <p>进入门户、认购、资金、Token 与存续运营流程。</p>
+          <p>Mock Standard 演示准入；不会扣款或创建真实订阅。</p>
           {["企业门户配置与演示预览", "投资者 / 订单 / 资金联动", "Token 与收益受控模拟"].map(
             (x) => (
               <div className="feature" key={x}>
@@ -3813,13 +3795,6 @@ function Subscription({
               </div>
             ),
           )}
-          <label className="field">
-            <span>模拟支付方式</span>
-            <select value={pay} onChange={(e) => setPay(e.target.value)}>
-              <option>USDT · OP Mainnet</option>
-              <option>法币支付（模拟）</option>
-            </select>
-          </label>
           <Button onClick={upgrade} disabled={state.plan === "Standard"}>
             {state.plan === "Standard" ? "已激活 Standard" : "确认模拟升级"}
             <ArrowRight size={15} />
@@ -3838,7 +3813,7 @@ function Subscription({
             <b>{state.plan === "Standard" ? "Standard 模拟订阅已激活" : "Free 套餐已激活"}</b>
             <small>
               {state.plan === "Standard"
-                ? `${state.billing} · 服务期至 ${state.planEnd}`
+                ? `Sandbox Mock · 演示有效期至 ${state.planEnd}`
                 : "KYB 通过后自动启用"}
             </small>
           </div>
@@ -5711,7 +5686,7 @@ function DrawerPanel({
               </div>
               <Section title="业务锁仓">
                 <div className="detail-grid">
-                  <D label="锁仓状态" value={holder.lock} />
+                  <D label="锁仓状态" value={holder.registration === "模拟已清偿" && holder.tokens === 0 ? "已结束" : holder.lock} />
                   <D label="锁仓到期" value={holder.lockUntil} />
                   <D label="起算依据" value="Token 实际最终交付" />
                   <D label="法律 / 管理冻结" value="无记录" />

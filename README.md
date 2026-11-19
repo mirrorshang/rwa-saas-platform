@@ -48,3 +48,18 @@ Issuer 没有独立自动化测试脚本；website 测试包含旧 Issuer 原型
 先实现安全邮箱 OTP、一次性跨应用会话交换、单账号单企业与租户隔离，再建 KYB/订阅/Entitlement、Asset/Instrument/Project/Offering 和版本主账。随后接投资者 KYC、订单、OP Mainnet USDT 付款与最终性、配售/法定名册、Token、收益与资金结算。所有外部接入采用可替换 Adapter；未选定 Provider、法域/法律责任、托管与合约审计、钱包/Signer、真实密钥、环境及生产准入均须确认。未经独立授权不得运行真实支付、法定登记或链上写操作。
 
 本分支是工程资料交付，不代表业务代码、生产环境或整体产品 Frozen。变更须在独立分支和 PR 审查；不得直接修改 main、历史批准原文或现有 PR 状态。
+
+## 2026-11-19 Issuer 内部 Sandbox Mock 闭环（开发 PR 候选）
+
+上文为 `release/v1-engineering-handover-20261116` 的历史交付说明；其中“Issuer 没有独立测试”和“Project 尚无独立对象”等只适用于旧固定前端。当前开发分支 `codex/issuer-v1-module01` 的正式 `apps/issuer` 已完成五模块内部演示：Asset/Instrument/自动 Project/Offering、七组发行准备、唯一 Sandbox 发布、Mock 投资者至持有人、住宅租金与债权 Actual/365 Fixed 本息。当前 `apps/issuer/src/*.test.mjs` 45 项通过；TypeScript 和 Vite Build 通过。V/M/Platform、生产支付与链上服务尚未接入。
+
+| 当前文档 | 用途 |
+| --- | --- |
+| [Issuer SaaS V1.0 全流程操作手册](docs/Issuer%20SaaS%20V1.0%20全流程操作手册.md) | 双案例逐页按钮和结果 |
+| [RWA 四端业务流程泳道图](docs/RWA%20四端业务流程泳道图.md) | Issuer 当前 Mock 与 V/M/Platform 待接入边界 |
+| [功能完整性与交付验收报告](docs/RWA%20SaaS%20V1.0%20功能完整性与交付验收报告.md) | 浏览器、测试和未完成项 |
+| [现行 Mock 状态](docs/V1.0/V1.0-ISSUER-MOCK-BUSINESS-FLOW-AND-STATES.md) | 对象分态、守卫和生产边界 |
+| [增量功能追溯](docs/V1.0/V1.0-ISSUER-MOCK-TRACEABILITY.md) | 历史矩阵 ID 到新页面及证据 |
+| [工程交接](docs/V1.0/V1.0-ISSUER-MOCK-HANDOVER.md) | 运行、测试、恢复及代码位置 |
+
+本地验证在 `apps/issuer` 下运行：`node --test src/*.test.mjs`、`node node_modules/typescript/bin/tsc --noEmit -p tsconfig.json`、`node node_modules/vite/bin/vite.js build`。Mock 案例仅通过页面和独立演示控制台操作，不能直接改浏览器存储来伪造验收。

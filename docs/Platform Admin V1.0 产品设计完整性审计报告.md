@@ -1,12 +1,12 @@
 # Platform Admin V1.0 产品设计完整性审计报告
 
-> 版本：2026-11-20 复审稿，待产品负责人审核。范围：产品设计与文档，不涉及 Platform Admin 源码开发或生产上线。
+> 版本：2026-11-20 复审，产品负责人已确认。范围：产品设计与文档，不涉及 Platform Admin 源码开发或生产上线。
 
 ## 1. 审计依据与结论
 
-- 文档基线：GitHub mirrorshang/rwa-saas-platform 的 docs/platform-admin-architecture-20261117 分支，起点 5c742cf；原 [Platform Admin 文档索引](PLATFORM-ADMIN/README.md)及 P-01～P-18 逐页规格。原 PR #10 仍为 Draft/Open。
+- 文档基线：GitHub mirrorshang/rwa-saas-platform 的 docs/platform-admin-architecture-20261117 分支，起点 5c742cf；原 [Platform Admin 文档索引](PLATFORM-ADMIN/README.md)及 P-01～P-18 逐页规格。原产品设计经 PR #10 汇总，本报告由 PR #13 提交复审。
 - 已批准规则：DEC-037/044/050/057/069/074；五批集中审核 R01～R40 已确认，其中 R05 按企业商业 KYB 与资产发行边界修正。历史 DEC、Frozen 和审核记录未修改。
-- 实现对照：release/v1-engineering-handover-20261116 @ 8785e8e 是原发行基线；Issuer [PR #12](https://github.com/mirrorshang/rwa-saas-platform/pull/12) 在 apps/issuer 完成五模块 Sandbox Mock 闭环，当前仍 Open，尚非 release 的生产权威实现。仓库没有独立 Platform Admin、V、M 交易前台可供真实端到端操作验收。
+- 实现对照：release/v1-engineering-handover-20261116 @ 8785e8e 是原发行基线；Issuer [PR #12](https://github.com/mirrorshang/rwa-saas-platform/pull/12) 已合并至 release @ 5ab3067，在 apps/issuer 完成五模块 Sandbox Mock 闭环，但仍非生产权威业务服务。仓库没有独立 Platform Admin、V、M 交易前台可供真实端到端操作验收。
 - 结论：九个一级导航、P-01～P-18 页面组与主要操作已有可供桌面 Web UI 开发的 Draft 规格。此次补正 P-15～P-17 的 Project/版本、Listing/复核状态和统计来源，并补齐少量页面入口与返回路径。**UI-Ready 仅指文档级前端/Mock 实现依据；真实跨端上架、资金、KYC、Token、生产权限仍未验收。**
 
 ## 2. 完整文档索引与逐页检查
@@ -70,9 +70,9 @@
 
 | 层次 | 本次判定 | 开发时处理 |
 |---|---|---|
-| 页面/交互产品规格 | P-01～P-18 文档级 UI-Ready Draft；本次修正均待产品负责人确认 | 可按现有字段、按钮、弹窗、状态、异常和导航做桌面 Web UI；Mock 明示环境 |
+| 页面/交互产品规格 | P-01～P-18 文档级 UI-Ready Draft；本次修正已获产品负责人确认 | 可按现有字段、按钮、弹窗、状态、异常和导航做桌面 Web UI；Mock 明示环境 |
 | 真实 Platform/V/M 前端 | 本仓库未见独立可运行实现 | 不能宣称页面实际点击或跨端 E2E 通过 |
-| Issuer 对接 | PR #12 为未合并 Sandbox Mock；正式发行、I-67/I-68 未接通 | 正式渠道申请按钮保持阻断；只读关联从权威接口取值 |
+| Issuer 对接 | PR #12 已合并 release，仍仅为 Sandbox Mock；正式发行、I-67/I-68 未接通 | 正式渠道申请按钮保持阻断；只读关联从权威接口取值 |
 | 生产参数 | 实际角色码/RBAC与职责分离、法域/地区/受众法律依据、Free/Standard 价格/配额、Provider/密钥/健康阈值、P-14 指标字典和隐私阈值待批准 | 显示「待配置/无权/待接入」，不得填假值或自行放宽 Gate |
 | 技术契约 | Channel Application/Listing 唯一键、自动上架幂等与 Unknown 对账、授权聚合 API、审计/撤权仍需实现方案 | UI 保留原 ID、结果待核实与重试查询；不可用前不展示生产成功 |
 
@@ -83,4 +83,4 @@
 - 更新现有 P-09/P-10、P-13、I-67/I-68/P-15～P-17、P-18 规格，以及总体架构、跨模块一致性审计和 PLATFORM-ADMIN/README 索引。
 - 新增本报告；P-01～P-08、P-11/P-12、P-14 和四端总览经核对无需重复改写。历史 R01～R40、DEC、Frozen 均保持原文。
 - 验证方法：逐页核对规格章节、按钮/字段/状态与跨模块口径；对修改后的链接、编号、旧术语和文档差异进行静态检查。本轮没有 Platform 页面浏览器验收或真实 M 上架。
-- 版本记录：2026-11-20 首次完整性复审；结论待产品负责人审核。提交分支和 PR 见交付汇报；未经审核不合并原 PR #10 或 release。
+- 版本记录：2026-11-20 首次完整性复审；产品负责人已确认审计结论。审计增量按 PR #13 → PR #10 并入 release；具体合并提交以 GitHub 记录为准。

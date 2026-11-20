@@ -1,6 +1,6 @@
 # RWA SaaS｜Platform Admin V1.0 文档索引
 
-> **状态：产品设计 Draft｜2026-11-20 复审增量待审核**
+> **当前状态：V1.0 UI-Ready 产品设计已确认｜2026-11-20；生产接入仍待独立验收**
 >
 > 本目录用于平台总管理后台（P 端）V1.0 产品架构、UI-Ready 逐页规格和跨模块审计。当前仅完成产品规格，不代表原型、前端代码、后端服务或生产能力已开发/上线。
 
@@ -10,7 +10,7 @@
 
 ## 1. 总体架构
 
-- [Platform Admin V1.0 产品设计完整性审计报告](../Platform%20Admin%20V1.0%20产品设计完整性审计报告.md)：逐页 UI-Ready 复核、P-15～P-17 跨端修正、缺口和生产决策门；2026-11-20 增量待产品负责人审核。
+- [Platform Admin V1.0 产品设计完整性审计报告](../Platform%20Admin%20V1.0%20产品设计完整性审计报告.md)：逐页 UI-Ready 复核、P-15～P-17 跨端修正、缺口和生产决策门；2026-11-20 增量已获产品负责人确认。
 - [平台总管理后台总体架构与九个一级导航](PLATFORM-ADMIN-OVERALL-ARCHITECTURE-AND-NAVIGATION-DRAFT-v0.1.md)
 - [P-01～P-18 跨模块一致性审计](PLATFORM-ADMIN-CROSS-MODULE-CONSISTENCY-AUDIT-DRAFT-v0.1.md)
 
@@ -41,7 +41,7 @@
 
 ## 4. 当前完成状态与未完成事项
 
-- **P-01～P-18 与 I-67/I-68：**全部已有逐页 UI-Ready 产品规格 Draft；五批集中审核 R01～R40 已全部完成。2026-11-20 再次复审后，补正 Issuer 内部 Project/版本引用、Sandbox 与正式发布 Gate、P-15～P-17 状态及 P-17 数据源，并补明部分页面入口/按钮；本轮增量待产品负责人审核。Platform Admin 仍未进入工程开发。
+- **P-01～P-18 与 I-67/I-68：**全部已有逐页 UI-Ready 产品规格 Draft；五批集中审核 R01～R40 已全部完成。2026-11-20 再次复审后，补正 Issuer 内部 Project/版本引用、Sandbox 与正式发布 Gate、P-15～P-17 状态及 P-17 数据源，并补明部分页面入口/按钮；本轮增量已获产品负责人确认。Platform Admin 仍未进入工程开发。
 - **产品审核：**P-01～P-18 五批集中审核 R01～R40 已全部完成；最终一致性审计已记录。
 - 平台实际角色码、RBAC、职责分离和敏感访问审批层级。
 - M 渠道可申请地区/受众枚举及法务依据。
@@ -55,15 +55,15 @@
 ## 5. 产品设计状态说明
 
 - UI-Ready = 页面结构、字段、交互、状态、异常和桌面 Web 验收规格足以作为工程实现依据；实际后端/Provider/生产能力仍以技术契约及独立准入为准。
-- Draft = 产品规格尚未被用户正式批准；不代表生产规则、角色权限、真实 Provider、法务地区清单或后端实现已获批准。
+- 历史文件名保留 Draft v0.1 以维持引用；R01～R40 及 2026-11-20 完整性复审已获产品负责人确认，作为当前 UI-Ready 设计基线。生产规则、角色权限、真实 Provider、法务地区清单和后端实现仍须独立批准。
 - P-15 审核通过自动上架是已确认产品规则；P-16 只管理已存在 Listing，展示状态与内容复核标记分列；P-17 只看渠道授权聚合数据，不读取 Issuer M21。
 
 ## 6. GitHub 状态
 
 - PR：[#10 Platform Admin V1.0 architecture and UI-ready specifications](https://github.com/mirrorshang/rwa-saas-platform/pull/10)
 - 分支：`docs/platform-admin-architecture-20261117`
-- 状态：**Draft / Open / Unmerged**
-- 本 PR 仅文档，不修改前端源码，不合并，不修改 Frozen、历史 DEC/SCOPE 或 DEC-017 原 193 项首次版本归属。
+- 增量审计：[PR #13](https://github.com/mirrorshang/rwa-saas-platform/pull/13)。两条 PR 的实时合并状态以 GitHub 为准；正式 V1.0 文档以 release/v1-engineering-handover-20261116 为准。
+- 这两条 PR 仅修改产品文档，不修改前端源码、Frozen、历史 DEC/SCOPE 或 DEC-017 原 193 项首次版本归属。
 
 
 ## 7. 集中审核记录
@@ -144,4 +144,4 @@ R33～R40 全部同意推荐方案 A，补充意见无。
 
 ## 8. 2026-11-20 复审版本记录
 
-本轮只修正本目录现有产品规格、架构与索引，并新增上方完整性审计报告；P-01～P-08、P-11/P-12、P-14 和四端总览经复核无需重复改写。Issuer PR #12 是未合并的 Sandbox Mock 候选实现，不能作为生产 M 上架已接通的证据。原 PR #10 仍保持 Draft/Open；本轮增量以独立审查分支提交，产品负责人审核后再决定并入原文档分支。历史 DEC、Frozen、R01～R40 原文不变。
+本轮只修正本目录现有产品规格、架构与索引，并新增上方完整性审计报告；P-01～P-08、P-11/P-12、P-14 和四端总览经复核无需重复改写。Issuer PR #12 已合并至 release（5ab3067），其中发行、认购及存续仍是 Sandbox Mock，不能作为生产 M 上架已接通的证据。Platform 审计增量已获确认，沿 PR #13 → PR #10 并入同一 release 分支。历史 DEC、Frozen、R01～R40 原文不变。

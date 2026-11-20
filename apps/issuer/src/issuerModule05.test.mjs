@@ -102,6 +102,27 @@ test("未付款、Unknown、引用篡改不能推进债权批次和清偿", () =
   assert.equal(settleDebtRegistry(state, "OFF-3002").changed, false);
 });
 
+
+test("部分认购的债权不得按完整合同本金生成利息或本金批次", () => {
+  let state = fixture();
+  state.holders = [state.holders[0]];
+  state = createDebtSchedule(state, "OFF-3002", "2026-11-19").state;
+
+  state.sandboxClock = "2027-01-01";
+  state = createHolderSnapshot(state, "OFF-3002", "2026-12-31", "2027-01-01").state;
+  const interest = createDebtInterestBatch(state, state.debtInterestEvents[0].id);
+  assert.equal(interest.changed, false);
+  assert.match(interest.error, /未完成全额认购/);
+  assert.equal(interest.state.distributions.length, 0);
+
+  state.sandboxClock = "2028-12-01";
+  state = createHolderSnapshot(state, "OFF-3002", "2028-12-01", "2028-12-01").state;
+  const principal = createDebtPrincipalBatch(state, "OFF-3002");
+  assert.equal(principal.changed, false);
+  assert.match(principal.error, /未完成全额认购/);
+  assert.equal(principal.state.distributions.length, 0);
+});
+
 test("旧状态安全补齐债权集合，损坏计划保留原始字节", () => {
   const old = fixture();
   old.holders = [];

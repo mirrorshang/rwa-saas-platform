@@ -1,6 +1,6 @@
-# RWA SaaS V1 工程交付
+# RWA SaaS V1.0 工程交付与产品文档
 
-工程交付分支 `release/v1-engineering-handover-20261116` 基于前端固定提交 `05bda87a32de34e0324f480901b9024ab676f3d7`。当前正式交付为 Web 官网、邮箱验证码登录入口和 Issuer 企业 SaaS 九模块前端；生产后端尚未开发。源码中的 Mock 数据、验证码、钱包、资金、登记、Token 和收益状态不得当作真实业务事实。
+工程交付分支 `release/v1-engineering-handover-20261116` 最初基于前端固定提交 `05bda87a32de34e0324f480901b9024ab676f3d7`。2026-11-20 已合并 Issuer V1.0 五模块 Sandbox Mock 闭环（PR #12）及 Platform Admin V1.0 UI-Ready 产品设计与审计（PR #13 → PR #10）。当前正式交付包括 Web 官网演示入口、`apps/issuer` 的 Mock 业务闭环及 Platform Admin 文档；生产后端、独立 V/M/P 前台尚未开发。源码中的 Mock 数据、验证码、钱包、资金、登记、Token 和收益状态不得当作真实业务事实。
 
 ## 目录与文档入口
 
@@ -9,6 +9,12 @@
 | `apps/website` | React 19、TanStack Router、Vite 6 官网和演示邮箱登录；正式路由见 `src/main.tsx` |
 | `apps/issuer` | React 19、Vite 8、Tailwind 4 独立 Issuer 后台；九模块、详情和本地状态见 `src/App.tsx` / `src/data.ts` |
 | [V1.0 实际产品基线](docs/V1.0/V1.0-PRODUCT-BASELINE.md) | 页面、交互、Mock 与限制 |
+| [Issuer 完整操作手册](docs/Issuer%20SaaS%20V1.0%20全流程操作手册.md) | 住宅与债权双案例逐页操作 |
+| [四端业务流程泳道图](docs/RWA%20四端业务流程泳道图.md) | Issuer Mock 与 V/M/Platform 待接入边界 |
+| [Issuer 闭环历史实施方案](docs/Issuer%20SaaS%20V1.0%20核心业务闭环修复实施方案.md) | 2026-11-19 批准的规划记录；现行参数以实施记录和验收报告为准 |
+| [Issuer 交付验收报告](docs/RWA%20SaaS%20V1.0%20功能完整性与交付验收报告.md) | 页面、测试、风险和未完成项 |
+| [Platform Admin 文档索引](docs/PLATFORM-ADMIN/README.md) | P-01～P-18 UI-Ready 产品设计与历史审核 |
+| [Platform Admin 完整性审计报告](docs/Platform%20Admin%20V1.0%20产品设计完整性审计报告.md) | 逐页审计、跨端边界与生产决策门 |
 | [Backend Developer PRD](docs/V1.0/V1.0-BACKEND-DEVELOPER-PRD.md) | 架构、实体、接口、状态机、外部服务和验收 |
 | [OpenAPI 3.1 草案](docs/V1.0/openapi.yaml) | 与 Developer PRD 同步的 85 个接口和请求/响应 Schema |
 | [193 项及专项功能追溯矩阵](docs/V1.0/V1.0-FEATURE-TRACEABILITY-MATRIX.csv) | 历史版号与当前归属；193 原项 + 11 后续批准项 |
@@ -41,7 +47,7 @@ pnpm build
 node --test src/*.test.mjs
 ```
 
-Issuer 没有独立自动化测试脚本；website 测试包含旧 Issuer 原型逻辑，不能替代最终 `apps/issuer` 的手工业务验收。请以实际构建和测试输出为准，不能把未运行项标为 PASS。
+Issuer 现有 45 项 Node 自动化测试（`node --test src/*.test.mjs`）；website 测试包含旧 Issuer 原型逻辑，不能替代正式 `apps/issuer` 的业务验收。请以实际构建和测试输出为准，不能把未运行项标为 PASS。
 
 ## 后端开发起点与生产前置
 
@@ -49,9 +55,9 @@ Issuer 没有独立自动化测试脚本；website 测试包含旧 Issuer 原型
 
 本分支是工程资料交付，不代表业务代码、生产环境或整体产品 Frozen。变更须在独立分支和 PR 审查；不得直接修改 main、历史批准原文或现有 PR 状态。
 
-## 2026-11-19 Issuer 内部 Sandbox Mock 闭环（开发 PR 候选）
+## 2026-11-20 Issuer 内部 Sandbox Mock 闭环（已并入 release）
 
-上文为 `release/v1-engineering-handover-20261116` 的历史交付说明；其中“Issuer 没有独立测试”和“Project 尚无独立对象”等只适用于旧固定前端。当前开发分支 `codex/issuer-v1-module01` 的正式 `apps/issuer` 已完成五模块内部演示：Asset/Instrument/自动 Project/Offering、七组发行准备、唯一 Sandbox 发布、Mock 投资者至持有人、住宅租金与债权 Actual/365 Fixed 本息。当前 `apps/issuer/src/*.test.mjs` 45 项通过；TypeScript 和 Vite Build 通过。V/M/Platform、生产支付与链上服务尚未接入。
+上文为 `release/v1-engineering-handover-20261116` 的历史交付说明；其中“Issuer 没有独立测试”和“Project 尚无独立对象”等只适用于旧固定前端。[PR #12](https://github.com/mirrorshang/rwa-saas-platform/pull/12) 已并入本 release；正式 `apps/issuer` 已完成五模块内部演示：Asset/Instrument/自动 Project/Offering、七组发行准备、唯一 Sandbox 发布、Mock 投资者至持有人、住宅租金与债权 Actual/365 Fixed 本息。当前 `apps/issuer/src/*.test.mjs` 45 项通过；TypeScript 和 Vite Build 通过。V/M/Platform、生产支付与链上服务尚未接入。
 
 | 当前文档 | 用途 |
 | --- | --- |
@@ -63,3 +69,9 @@ Issuer 没有独立自动化测试脚本；website 测试包含旧 Issuer 原型
 | [工程交接](docs/V1.0/V1.0-ISSUER-MOCK-HANDOVER.md) | 运行、测试、恢复及代码位置 |
 
 本地验证在 `apps/issuer` 下运行：`node --test src/*.test.mjs`、`node node_modules/typescript/bin/tsc --noEmit -p tsconfig.json`、`node node_modules/vite/bin/vite.js build`。Mock 案例仅通过页面和独立演示控制台操作，不能直接改浏览器存储来伪造验收。
+
+## 当前合并与范围记录（2026-11-20）
+
+- Issuer PR #12 已合并；Platform 审计 PR #13 已并入产品设计 PR #10，PR #10 已并入同一 release。合并提交与当前分支 HEAD 以 GitHub 记录为准。
+- Platform Admin 本轮只交付 P-01～P-18 设计和审计文档，不代表独立后台、V/M 交易前台或真实跨端上架已开发。
+- 原型工作区的未提交页面改动和早期操作手册副本未并入正式代码；正式 Issuer 主实现只在 `apps/issuer`。V1.5/V2 及历史研究 PR 保持各自版本和审查流程，不作为本次 V1.0 release 的已完成业务代码。

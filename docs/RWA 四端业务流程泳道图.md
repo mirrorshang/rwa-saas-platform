@@ -17,7 +17,7 @@ flowchart LR
     S9[住宅租金上报／债权月息与本金事件]
     S10[计算、确认批次；逐笔 Mock 支付；收益或本金收据]
     S11[配置并预览企业门户]
-    S12[选择已正式发布 Offering；提交 M 上架申请（待接入）]
+    S12[企业选择已正式发布 Offering；核对渠道资料并提交 M 上架申请（待接入）]
   end
   subgraph V[企业投资者平台 V]
     direction TB
@@ -28,7 +28,7 @@ flowchart LR
   end
   subgraph M[总投资者平台 M]
     direction TB
-    M1[自动 Listing 后展示 Offering（待接入）]
+    M1[仅展示 P-15 Approved 后自动创建且状态可展示的 Listing（待接入）]
     M2[投资者注册、KYC（待接入）]
     M3[认购与真实支付（待接入）]
     M4[持仓与收益查看（待接入）]
@@ -36,9 +36,9 @@ flowchart LR
   subgraph P[Platform Admin（平台总管理后台）]
     direction TB
     P1[审核企业 KYB（待接入）]
-    P2[P-15 审核 M 渠道上架申请（待接入）]
-    P3[审核通过后自动创建唯一 Listing（待接入）]
-    P4[P-16 管理已有 Listing（待接入）]
+    P2[P-15 接收申请；Submitted → Reviewing → NeedsInfo／Rejected／Approved（待接入）]
+    P3[Approved 后系统自动创建唯一 Listing；绑定 Offering 版本与审核快照（待接入）]
+    P4[P-16 管理已创建 Listing：展示状态、暂停／恢复、下架与变更复核（待接入）]
   end
   S1 --> S2
   S2 -. KYB 资料／审核申请 .-> P1
@@ -50,9 +50,10 @@ flowchart LR
   V3 -. 订单／支付结果回传待接入 .-> S8
   S10 -. 权威收益结果回传待接入 .-> V4
   S5 -. 正式发布后申请待接入 .-> S12
-  S12 -. 上架资料／申请 .-> P2
-  P2 -. 审核通过 .-> P3
+  S12 -. 上架资料／申请及固定 Offering 版本 .-> P2
+  P2 -. 仅 Approved 结果触发自动上架；NeedsInfo 返回补件，Rejected 不创建 Listing .-> P3
   P3 -. 自动 Listing／上架 .-> M1
+  P3 -. 新建 Listing ID／初始展示状态 .-> P4
   P3 --> P4
   M1 --> M2 --> M3 --> M4
   M3 -. 订单／支付结果回传待接入 .-> S8
@@ -64,3 +65,12 @@ flowchart LR
 - 当前可演示的是 Issuer 内部 Sandbox：企业资料、资产、权益、Offering、七组检查、唯一模拟发行、Mock 投资者认购与登记、住宅收益和债权本息。发行任务、Contract、Token、销售状态各自独立；Mock 支付不等于真实收款。
 - 企业 KYB 的真实 Platform 审核、V/M 投资者动作、M 渠道申请和 P-15/P-16 全部待接入。图中审核通过路径是计划业务流，不得用当前企业本地 Mock KYB 冒充 Platform 审核。
 - 未来权威服务负责订单、资金、名册、Token 和收益主账。Platform Admin 不直接操作企业资金、订单、Token 或收益。V/M 查看收益需等待权威数据回传。
+
+
+## M 渠道上架申请与自动发布的边界补充
+
+1. Issuer 只有在 Offering 已完成企业端正式发行发布后，才可主动选择提交至总投资者平台 M；Sandbox Mock 发布、模拟 Contract/Token 状态不得作为正式申请资格。
+2. P-15 是申请审核入口。Submitted 后进入 Reviewing；需要补件进入 NeedsInfo 并退回企业补充；Rejected 结束本次申请且不生成 Listing；只有 Approved 才触发系统自动创建唯一 Listing。
+3. 自动创建 Listing 必须绑定申请、Issuer Offering、Offering 不可变版本及审核快照，保证同一申请重复回调不会重复创建。
+4. P-16 只管理已经存在的 Listing，不代替 P-15 审核，也不直接修改 Issuer Offering、认购、资金、Token 或收益主账。暂停、恢复、下架和规则变更复核只改变 M 渠道展示/运营状态。
+5. 当前上述跨端动作均为待接入业务设计，不代表 Issuer、Platform Admin 与 M 已完成 API 联调。

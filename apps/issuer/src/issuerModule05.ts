@@ -63,6 +63,13 @@ function fixedSnapshot(state: AppState, offeringId: string, recordDate: string, 
     ? snapshot : undefined;
 }
 
+function completeFundedSnapshot(snapshot: NonNullable<ReturnType<typeof fixedSnapshot>>, schedule: DebtSchedule, offeringTokens: number) {
+  const totalRights = snapshot.lines.reduce((sum, line) => sum + line.rights, 0);
+  const totalTokens = snapshot.lines.reduce((sum, line) => sum + line.tokens, 0);
+  return Number.isSafeInteger(totalRights) && Number.isSafeInteger(totalTokens)
+    && totalRights === schedule.principal && totalTokens === offeringTokens;
+}
+
 function completeSchedule(state: AppState, schedule: DebtSchedule) {
   const events = state.debtInterestEvents.filter(row => row.scheduleId === schedule.id)
     .sort((a, b) => a.accrualFrom.localeCompare(b.accrualFrom));
@@ -94,6 +101,8 @@ export function createDebtInterestBatch(state: AppState, eventId: string): MockR
     && row.period === event.period && row.status !== "已作废")) return noChange(state, "本期债权利息批次已存在");
   const snapshot = fixedSnapshot(state, event.offeringId, event.recordDate, schedule.instrumentVersion);
   if (!snapshot) return noChange(state, `请先固定 ${event.recordDate} 的持有人快照`);
+  if (!completeFundedSnapshot(snapshot, schedule, debt.offering.tokens))
+    return noChange(state, "债权尚未完成全额认购、配售、登记及 Token 交付；不得按完整合同本金计息");
   let items: NonNullable<Distribution["items"]>;
   try { items = splitBySnapshot(event.amount, snapshot.lines); }
   catch (error) { return noChange(state, String(error)); }
@@ -117,6 +126,8 @@ export function createDebtPrincipalBatch(state: AppState, offeringId: string): M
     return noChange(state, "本债权已有有效本金偿还批次");
   const snapshot = fixedSnapshot(state, offeringId, schedule.maturityDate, schedule.instrumentVersion);
   if (!snapshot) return noChange(state, `请先固定到期日 ${schedule.maturityDate} 的持有人快照`);
+  if (!completeFundedSnapshot(snapshot, schedule, debt.offering.tokens))
+    return noChange(state, "债权尚未完成全额认购、配售、登记及 Token 交付；不得按完整合同本金偿还");
   let items: NonNullable<Distribution["items"]>;
   try { items = splitBySnapshot(schedule.principal, snapshot.lines); }
   catch (error) { return noChange(state, String(error)); }
@@ -135,7 +146,9 @@ export function confirmDebtBatch(state: AppState, batchId: string): MockResult {
   const schedule = state.debtSchedules.find(row => row.id === batch.debtScheduleId);
   const snapshot = state.holderSnapshots.find(row => row.id === batch.holderSnapshotId);
   const event = batch.eventType === "债权利息" ? state.debtInterestEvents.find(row => row.id === batch.interestEventId) : undefined;
-  if (!schedule || !snapshot || snapshot.offeringId !== batch.offeringId || snapshot.recordDate !== batch.recordDate
+  const offering = state.offerings.find(row => row.id === batch.offeringId);
+  if (!schedule || !snapshot || !offering || !completeFundedSnapshot(snapshot, schedule, offering.tokens)
+    || snapshot.offeringId !== batch.offeringId || snapshot.recordDate !== batch.recordDate
     || snapshot.instrumentVersion !== schedule.instrumentVersion || schedule.offeringId !== batch.offeringId
     || (event && (event.amount !== batch.gross || event.period !== batch.period || event.recordDate !== batch.recordDate))
     || (batch.eventType === "债权利息" && !event)

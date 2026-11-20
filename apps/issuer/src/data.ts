@@ -6,6 +6,7 @@ export interface BusinessFile {
   name: string;
   category: string;
   status: "待扫描" | "可引用" | "失败";
+  version?: number;
 }
 
 export interface Asset {
@@ -22,6 +23,7 @@ export interface Asset {
   details?: Record<string, string | number>;
   files?: BusinessFile[];
   missing?: string[];
+  version?: number;
 }
 
 export interface Instrument {
@@ -39,6 +41,36 @@ export interface Instrument {
   terms?: Record<string, string | number>;
   files?: BusinessFile[];
   missing?: string[];
+}
+
+export interface Project {
+  id: string;
+  assetId: string;
+  instrumentId: string;
+  instrumentVersion: string;
+  name: string;
+  status: "Draft" | "Ready";
+}
+
+export interface OfferingSnapshot {
+  confirmedAt: string;
+  asset: Asset;
+  instrument: Instrument;
+  project: Project;
+  walletId: string;
+  walletAddress: string;
+  disclosureFiles: BusinessFile[];
+  reservedTokens: number;
+  offeringTerms: {
+    name: string;
+    round: string;
+    tokens: number;
+    price: number;
+    start: string;
+    end: string;
+    summary?: string;
+    minimum?: number;
+  };
 }
 
 export interface Offering {
@@ -59,6 +91,53 @@ export interface Offering {
   disclosureFiles?: BusinessFile[];
   confirmed?: boolean;
   contractStatus?: "未申请" | "部署处理中" | "模拟已部署" | "部署失败";
+  projectId?: string;
+  assetVersion?: number;
+  instrumentVersion?: string;
+  revision?: number;
+  confirmationSnapshot?: OfferingSnapshot;
+  publicationStatus?: "未发布" | "Sandbox 已发布";
+  subscriptionStatus?: "未开放" | "Sandbox 认购中" | "已结束";
+  tokenIssuanceStatus?: "未发行" | "模拟已发行";
+}
+
+export interface ReadinessGroup {
+  key: number;
+  title: string;
+  passed: boolean;
+  reasons: string[];
+  route: string;
+}
+
+export interface ReadinessReport {
+  offeringId: string;
+  checkedAt: string;
+  fingerprint: string;
+  groups: ReadinessGroup[];
+}
+
+export interface IssuanceTask {
+  id: string;
+  offeringId: string;
+  environment: "Sandbox";
+  status: "已提交" | "执行中" | "已核验" | "失败" | "Unknown";
+  submittedAt: string;
+  updatedAt: string;
+  readinessFingerprint: string;
+  declaration: string;
+  attempts?: number;
+  reason?: string;
+  mockContractReference?: string;
+}
+
+export interface PublicationSnapshot {
+  id: string;
+  offeringId: string;
+  taskId: string;
+  environment: "Sandbox";
+  publishedAt: string;
+  confirmedOffering: OfferingSnapshot;
+  mockContractReference: string;
 }
 
 export interface Investor {
@@ -68,6 +147,9 @@ export interface Investor {
   kyc: string;
   offeringIds: string[];
   last: string;
+  environment?: "Sandbox";
+  source?: string;
+  requestKey?: string;
 }
 
 export interface Order {
@@ -81,6 +163,10 @@ export interface Order {
   payment: string;
   delivery: string;
   created: string;
+  environment?: "Sandbox";
+  requestKey?: string;
+  termsRevision?: number;
+  quotedPrice?: number;
 }
 
 export interface Payment {
@@ -90,6 +176,20 @@ export interface Payment {
   received: number;
   status: string;
   time: string;
+  environment?: "Sandbox";
+  intentId?: string;
+}
+
+export interface Allocation {
+  id: string;
+  orderId: string;
+  offeringId: string;
+  investorId: string;
+  quantity: number;
+  rights: number;
+  status: "已配售";
+  environment: "Sandbox";
+  createdAt: string;
 }
 
 export interface Holder {
@@ -103,6 +203,20 @@ export interface Holder {
   lock: string;
   lockUntil: string;
   reconciliation: string;
+  environment?: "Sandbox";
+  source?: string;
+  effectiveAt?: string;
+  allocationId?: string;
+}
+
+export interface HolderSnapshot {
+  id: string;
+  offeringId: string;
+  recordDate: string;
+  environment: "Sandbox";
+  createdAt: string;
+  instrumentVersion: string;
+  lines: { holderId: string; investorId: string; orderId: string; rights: number; tokens: number }[];
 }
 
 export interface Wallet {
@@ -143,6 +257,91 @@ export interface Distribution {
   items?: { holderId: string; investorId: string; basis: number; amount: number; status: string }[];
   paidAt?: string;
   blockedReason?: string;
+  accrualFrom?: string;
+  accrualTo?: string;
+  interestDays?: number;
+  dayCountBasis?: "Actual/365 Fixed";
+  reportId?: string;
+  holderSnapshotId?: string;
+  debtScheduleId?: string;
+  interestEventId?: string;
+  calculationStatus?: "已计算";
+  paymentStatus?: "未发起" | "部分成功" | "Unknown" | "失败" | "支付完成";
+}
+
+export interface RentReport {
+  id: string;
+  offeringId: string;
+  period: string;
+  recordDate: string;
+  sourceAmountCny: number;
+  exchangeRate: number;
+  deductionsU: number;
+  netU: number;
+  proofFile: BusinessFile;
+  status: "资料待扫描" | "待确认" | "已确认";
+  environment: "Sandbox";
+  createdAt: string;
+  confirmedAt?: string;
+}
+
+export interface DistributionPayment {
+  id: string;
+  batchId: string;
+  holderId: string;
+  intentId: string;
+  amount: number;
+  status: "失败" | "Unknown" | "已支付";
+  environment: "Sandbox";
+  at: string;
+}
+
+export interface InvestorIncome {
+  id: string;
+  batchId: string;
+  holderId: string;
+  investorId: string;
+  paymentId: string;
+  amount: number;
+  status: "Sandbox 模拟到账";
+  at: string;
+}
+
+export interface DebtSchedule {
+  id: string;
+  offeringId: string;
+  instrumentId: string;
+  instrumentVersion: string;
+  startDate: string;
+  maturityDate: string;
+  principal: number;
+  annualRate: number;
+  dayCountBasis: "Actual/365 Fixed";
+  environment: "Sandbox";
+  createdAt: string;
+}
+
+export interface DebtInterestEvent {
+  id: string;
+  scheduleId: string;
+  offeringId: string;
+  period: string;
+  accrualFrom: string;
+  accrualTo: string;
+  recordDate: string;
+  dueDate: string;
+  days: number;
+  amount: number;
+  environment: "Sandbox";
+}
+
+export interface DebtCompletion {
+  id: string;
+  offeringId: string;
+  scheduleId: string;
+  principalBatchId: string;
+  environment: "Sandbox";
+  completedAt: string;
 }
 
 export interface MockEvent {
@@ -187,14 +386,28 @@ export interface AppState {
   autoRenew: boolean;
   assets: Asset[];
   instruments: Instrument[];
+  projects: Project[];
   offerings: Offering[];
+  readinessReports: ReadinessReport[];
+  issuanceTasks: IssuanceTask[];
+  publications: PublicationSnapshot[];
+  sandboxClock: string;
   investors: Investor[];
   orders: Order[];
   payments: Payment[];
+  allocations: Allocation[];
   holders: Holder[];
+  holderSnapshots: HolderSnapshot[];
   wallets: Wallet[];
   tokens: TokenRecord[];
   distributions: Distribution[];
+  rentReports: RentReport[];
+  distributionPayments: DistributionPayment[];
+  investorIncomes: InvestorIncome[];
+  debtSchedules: DebtSchedule[];
+  debtInterestEvents: DebtInterestEvent[];
+  debtCompletions: DebtCompletion[];
+  mockEvidenceFiles: BusinessFile[];
   mockEvents: MockEvent[];
   portal: { name: string; slug: string; saved: boolean; logo: string };
   activities: Activity[];
@@ -214,14 +427,28 @@ export const emptyState: AppState = {
   autoRenew: false,
   assets: [],
   instruments: [],
+  projects: [],
   offerings: [],
+  readinessReports: [],
+  issuanceTasks: [],
+  publications: [],
+  sandboxClock: "",
   investors: [],
   orders: [],
   payments: [],
+  allocations: [],
   holders: [],
+  holderSnapshots: [],
   wallets: [],
   tokens: [],
   distributions: [],
+  rentReports: [],
+  distributionPayments: [],
+  investorIncomes: [],
+  debtSchedules: [],
+  debtInterestEvents: [],
+  debtCompletions: [],
+  mockEvidenceFiles: [],
   mockEvents: [],
   portal: { name: "", slug: "", saved: false, logo: "" },
   activities: [],
@@ -729,6 +956,7 @@ export function demoState(
     autoRenew: mode !== "exception",
     assets: assets.map((x) => ({ ...x })),
     instruments: instruments.map((x) => ({ ...x })),
+    projects: [],
     offerings: offerings.map((x) => ({ ...x })),
     investors: operational ? investors.map((x) => ({ ...x })) : [],
     orders: operational ? orders.map((x) => ({ ...x })) : [],

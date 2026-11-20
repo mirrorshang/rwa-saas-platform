@@ -391,9 +391,9 @@ R33～R40 全部同意推荐方案 A，补充意见无。
 - **产品设计阶段结论：可进入独立的 Platform Admin 桌面 Web 原型/前端开发规划。** 开发应按本目录页面规格实施，并对开放决策门保留 Mock/Disabled/Not Configured 状态；不得把未批准的生产能力伪装为已接通。
 
 
-## 15. 2026-11-20 UI-Ready 复审增量（待产品负责人审核）
+## 15. 2026-11-20 UI-Ready 复审增量（产品负责人已确认）
 
-1. **版本来源：**旧 release 8785e8e 与未合并 Issuer PR #12 分开标注。Issuer 候选实现的 Project 是自动关联的内部容器，不另设企业操作；I-67/P-15 只读引用 Project、Asset、Instrument、Offering 及固定申请快照，不复刻一套发行主账。
+1. **版本来源：**旧 release 8785e8e 与已合并 Issuer PR #12（release 5ab3067）分开标注。当前 Sandbox 实现的 Project 是自动关联的内部容器，不另设企业操作；I-67/P-15 只读引用 Project、Asset、Instrument、Offering 及固定申请快照，不复刻一套发行主账。
 2. **生产 Gate：**当前 Issuer Sandbox 已发布/认购中不可当作正式发布。I-67 真实 M 渠道提交、P-15 生产审核/自动上架与 M 展示仍待正式跨端服务及准入，Mock 页面须清楚显示待接入。
 3. **渠道状态：**P-15 审核决定、Listing 创建/M 同步、P-16 展示状态、已批准内容复核标记、Offering 认购销售状态分别显示。自动上架失败/Unknown 保留原 Application/操作/幂等引用；Listing 尚未创建时不虚构 Listing ID，P-16 只管理已创建记录。
 4. **版本复核：**已展示内容重大变化沿 I-67 更新申请、P-15 复核、原有效 Listing 受控更新与核验；旧批准快照及历史交易留存。已下架仍按既定规则重走申请审核。

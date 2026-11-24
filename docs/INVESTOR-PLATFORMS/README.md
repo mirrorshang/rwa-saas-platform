@@ -15,6 +15,10 @@
 - [P-07/08 运营任务/通知](../PLATFORM-ADMIN/PLATFORM-ADMIN-P07-P08-OPERATIONS-CENTER-UI-READY-PRD-DRAFT-v0.1.md)
 - [V1.0 实际前端交付基线](../V1.0/V1.0-PRODUCT-BASELINE.md)：仅 W/I 真实 Mock 交付事实；V/M/P 独立前台仍未开发。
 
+## 1.1 开发准备
+
+- [V/M PC Web 开发总流程与工程交接](V-M-PC-WEB-DEVELOPMENT-PLAN-v0.1.md)：DEV-00～DEV-08 独立阶段、代码架构、Mock 数据与浏览器验收、范围和生产准入分界。
+
 ## 2. 已审批决定摘要
 
 | 主题 | V1.0 正式产品决定 |

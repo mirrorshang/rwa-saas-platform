@@ -14,6 +14,7 @@
 | [Issuer 闭环历史实施方案](docs/Issuer%20SaaS%20V1.0%20核心业务闭环修复实施方案.md) | 2026-11-19 批准的规划记录；现行参数以实施记录和验收报告为准 |
 | [Issuer 交付验收报告](docs/RWA%20SaaS%20V1.0%20功能完整性与交付验收报告.md) | 页面、测试、风险和未完成项 |
 | [Platform Admin 文档索引](docs/PLATFORM-ADMIN/README.md) | P-01～P-18 UI-Ready 产品设计与历史审核 |
+| [V/M 投资者平台 UI-Ready 产品设计索引](docs/INVESTOR-PLATFORMS/README.md) | 2026-11-24 通过六批产品审核：V/M 共用 PC Web UI、M 独有页面、合约支付与工单及五端审计（仅文档，非代码） |
 | [Platform Admin 完整性审计报告](docs/Platform%20Admin%20V1.0%20产品设计完整性审计报告.md) | 逐页审计、跨端边界与生产决策门 |
 | [Backend Developer PRD](docs/V1.0/V1.0-BACKEND-DEVELOPER-PRD.md) | 架构、实体、接口、状态机、外部服务和验收 |
 | [OpenAPI 3.1 草案](docs/V1.0/openapi.yaml) | 与 Developer PRD 同步的 85 个接口和请求/响应 Schema |
@@ -75,3 +76,8 @@ Issuer 现有 45 项 Node 自动化测试（`node --test src/*.test.mjs`）；we
 - Issuer PR #12 已合并；Platform 审计 PR #13 已并入产品设计 PR #10，PR #10 已并入同一 release。合并提交与当前分支 HEAD 以 GitHub 记录为准。
 - Platform Admin 本轮只交付 P-01～P-18 设计和审计文档，不代表独立后台、V/M 交易前台或真实跨端上架已开发。
 - 原型工作区的未提交页面改动和早期操作手册副本未并入正式代码；正式 Issuer 主实现只在 `apps/issuer`。V1.5/V2 及历史研究 PR 保持各自版本和审查流程，不作为本次 V1.0 release 的已完成业务代码。
+
+
+## 2026-11-24 V/M 投资者平台新一轮产品规格（文档 PR 候选）
+
+已获用户批准的六批 V/M 产品决定，拟通过 [V/M 投资者平台产品索引](docs/INVESTOR-PLATFORMS/README.md) 形成 PC Web UI-Ready 规格。共同流程含六底层资产/三类法律权益、自动 MPC 默认钱包、认购前 KYC、仅 OP Mainnet USDT Offering 合约认购、无投资者自助取消/退款、人工客服工单以及持仓/收益/本金分列；P-07/M17 与 Issuer 原资金域保持责任边界。**此文档增量不代表 V/M 前端代码、P 后台、合约/退款/MPC Provider 或真实生产业务已交付**，不修改 2026-11-16 冻结实际代码结论。审核 PR 保持 Draft，未经明确批准不合并。

@@ -1,0 +1,5 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.qa-edge-profile/
+.qa-chrome-profile/

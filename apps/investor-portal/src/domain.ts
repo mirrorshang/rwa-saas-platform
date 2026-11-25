@@ -15,6 +15,11 @@ export const parseChannel = (path: string): Channel | null => {
 export const basePath = (channel: Channel) => channel.kind === 'm' ? '/m' : '/v/' + channel.issuerSlug;
 export const visibleOfferings = (all: Offering[], channel: Channel, noListings = false) =>
   all.filter(o => channel.kind === 'v' ? o.issuerSlug === channel.issuerSlug : !noListings && o.listing === 'active');
+export const canShowCompany = (all: Offering[], channel: Channel, issuerId: string, noListings = false) =>
+  channel.kind === 'v' ? channel.issuerSlug === issuerId :
+    visibleOfferings(all, channel, noListings).some(o => o.issuerId === issuerId);
+export const draftStorageKey = (channel: Channel, offering: Pick<Offering, 'issuerId' | 'id'>, field: 'quantity' | 'read') =>
+  ['rwa-dev01-draft', encodeURIComponent(basePath(channel)), encodeURIComponent(offering.issuerId), encodeURIComponent(offering.id), field].join(':');
 export const visibleCategories = (all: Offering[], channel: Channel, noListings = false) =>
   Array.from(new Set(visibleOfferings(all, channel, noListings).map(o => o.category === '住宅物业' ? '房地产' : o.category)));
 export const minimumUnits = (offering: Offering) => Math.ceil(offering.minimumCents / offering.priceCents);

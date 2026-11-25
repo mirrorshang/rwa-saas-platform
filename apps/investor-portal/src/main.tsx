@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { basePath, minimumUnits, parseChannel, priceU, quantityError, totalCents, visibleCategories, visibleOfferings, type Channel, type Offering } from './domain';
+import { basePath, canShowCompany, draftStorageKey, minimumUnits, parseChannel, priceU, quantityError, totalCents, visibleCategories, visibleOfferings, type Channel, type Offering } from './domain';
 import { issuers, offerings } from './data';
 import './styles.css';
 
@@ -27,7 +27,7 @@ function Header({ c }: { c: Channel }) {
   return <header className="site-header"><div className="header-inner"><a className="brand" href={root(c)} aria-label={brand(c) + ' 首页'}><span className="brand-mark">◈</span><span>{brand(c)}<small>{c.kind === 'm' ? 'INVESTOR MARKET' : 'INVESTOR PORTAL'}</small></span></a><nav aria-label="主导航"><a href={root(c)} className={path === root(c) ? 'active' : ''}>首页</a><a href={url(c, '/opportunities')} className={path.includes('/opportunities') ? 'active' : ''}>投资机会</a><a href={url(c, '/investments')}>我的投资</a></nav><div className="header-actions"><a href={url(c, '/support')}>帮助与客服</a><a href={url(c, '/messages')}>消息</a><a className="login-link" href={url(c, '/account')}>登录 / 我的账户</a></div></div></header>;
 }
 function Footer({ c }: { c: Channel }) {
-  return <footer className="footer"><div className="container footer-grid"><div><strong>{brand(c)}</strong><p>现实世界资产投资信息演示原型</p></div><div><a href={url(c, '/support')}>帮助与客服</a><a href={url(c, '/disclosures')}>风险与披露</a><a href="/demo">Mock 控制台</a></div></div><p className="container footer-note">本网站全部企业、资产、价格和交易信息均为 Mock 演示，不构成投资建议、收益承诺或真实认购入口。</p></footer>;
+  return <footer className="footer"><div className="container footer-grid"><div><strong>{brand(c)}</strong><p>现实世界资产投资信息演示原型</p></div><div><a href={url(c, '/support')}>帮助与客服</a><a href={url(c, '/disclosures')}>风险与披露</a></div></div><p className="container footer-note">本网站全部企业、资产、价格和交易信息均为 Mock 演示，不构成投资建议、收益承诺或真实认购入口。</p></footer>;
 }
 function Notice({ children }: { children: React.ReactNode }) { return <div className="notice" role="note"><span>i</span>{children}</div>; }
 function AssetVisual({ o }: { o: Offering }) { return <div className="asset-visual"><img src={o.image} alt={o.category + '示意插画，非真实资产照片'} /><span>示意图 · 非真实资产</span></div>; }
@@ -54,16 +54,16 @@ function Detail({ c, o }: { c: Channel; o: Offering }) {
 }
 function Company({ c, issuerId }: { c: Channel; issuerId: string }) {
   const company = issuers[issuerId as keyof typeof issuers];
-  if (!company || (c.kind === 'v' && c.issuerSlug !== issuerId)) return <NotFound c={c} />;
+  if (!company || !canShowCompany(offerings, c, issuerId, noListings)) return <NotFound c={c} />;
   const list = visibleOfferings(offerings, c, noListings).filter(o => o.issuerId === issuerId);
   return <main className="container inner-page"><div className="breadcrumb"><a href={safeReturn(c)}>返回来源页面</a><span>/</span>企业信息</div><div className="company-hero"><div className="company-avatar large">{company.name.slice(0,1)}</div><div><div className="eyebrow">ISSUER PROFILE · MOCK</div><h1>{company.name}</h1><p>{company.legal}</p></div></div><div className="content-panel"><h2>企业介绍</h2><p>{company.intro}</p><p className="muted">注册地区及认证材料：演示资料待核实。企业认证不代表资产安全或收益担保。</p></div><div className="section-head"><div><h2>当前渠道可见项目</h2><p>只展示此渠道已获准公开的 Mock 项目。</p></div></div>{list.length ? <div className="card-grid">{list.map(o => <Card c={c} o={o} key={o.id} />)}</div> : <Empty title="当前渠道暂无可展示项目" detail="历史资产和未获上架的项目不会在此公开。" c={c} />}</main>;
 }
 const stepNames = ['确认认购', '协议与风险', '钱包付款', '交易进度'] as const;
 const stepSlugs = ['quote', 'documents', 'payment', 'progress'] as const;
 function Subscribe({ c, o, step }: { c: Channel; o: Offering; step: number }) {
-  const key = 'rwa-dev01-qty-' + o.id;
-  const [quantity, setQuantity] = useState(() => sessionStorage.getItem(key) || String(minimumUnits(o)));
-  const readKey = 'rwa-dev01-read-' + o.id;
+  const key = draftStorageKey(c, o, 'quantity');
+  const [quantity, setQuantity] = useState(() => sessionStorage.getItem(key) ?? String(minimumUnits(o)));
+  const readKey = draftStorageKey(c, o, 'read');
   const [read, setRead] = useState(() => sessionStorage.getItem(readKey) === 'yes');
   const error = quantityError(quantity, o);
   const total = error ? 0 : totalCents(quantity, o);

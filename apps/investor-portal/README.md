@@ -10,6 +10,8 @@
 - `/v/harbor/subscribe/residence-01/quote`：四步认购视觉样板，可前后切换、修改整数份数、查看演示金额与分态进度。
 - `/demo`：独立 Mock 场景控制台，可加载两案例、模拟 M 无有效 Listing、重置。
 
+`/demo` 仅供开发验收直接输入访问，不出现在 V/M 投资页面的导航和页脚。M 企业信息页只有在该企业存在当前 M 渠道可公开的有效 Listing 时才展示。认购演示草稿保存在当前标签页的 `sessionStorage`，按渠道、企业和 Offering 区分；不代表真实账户草稿。
+
 账户、KYC、钱包、真实签署、付款、订单、持仓和收益功能均未在 DEV-01 实现；相关入口显示后续阶段说明。Step 3 的付款按钮不可执行。
 
 ## 运行
@@ -33,4 +35,5 @@ pnpm dev
 - `src/main.tsx`：共用页面、路由、认购样板和场景控制台。
 - `src/styles.css` 与 `src/assets/`：E 风格 token 与本地示意插画。
 - `src/domain.test.mjs`：关键展示规则自动测试。
-- `qa/DEV-01-ACCEPTANCE-20261125.md`：本轮实际测试和剩余限制。
+- `qa/DEV-01-ACCEPTANCE-20261125.md`：首批实际测试和剩余限制。
+- `qa/DEV-01-FIX-ACCEPTANCE-20261125.md`：PR #17 审核后的定向修复、浏览器截图与补验结果。

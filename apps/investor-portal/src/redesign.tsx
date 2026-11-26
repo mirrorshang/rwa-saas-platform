@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { actionState, assetGroup, basePath, canShowCompany, documentListState, draftStorageKey, filterOfferings, investmentFacts, investmentPeriod, minimumUnits, parseChannel, priceU, quantityError, stepDisplayState, totalCents, visibleOfferings, type Channel, type Offering, type OpportunityFilters } from './domain';
 import { offerings, issuers } from './data';
+import { activeAccount, saveAccount, withMpcResult, type KycStatus, type MpcStatus } from './account';
+import { AccountPage } from './AccountPage';
 import heroImage from './assets/dev01r-hero.png';
 import residenceImage from './assets/dev01r-residence.png';
 import debtImage from './assets/dev01r-debt.png';
@@ -12,7 +14,11 @@ const channel = parseChannel(path);
 const scenarioKey = 'rwa-investor-dev01-scenario';
 const scenario = sessionStorage.getItem(scenarioKey) || 'normal';
 const noListings = scenario === 'no-listings';
-const identity: 'guest' | 'kyc' | 'ready' = scenario === 'ready' ? 'ready' : scenario === 'kyc-required' ? 'kyc' : 'guest';
+const identityFor = (c: Channel): 'guest' | 'kyc' | 'ready' => {
+  const account = activeAccount(c);
+  if (account) return account.kyc === 'approved' ? 'ready' : 'kyc';
+  return scenario === 'ready' ? 'ready' : scenario === 'kyc-required' ? 'kyc' : 'guest';
+};
 const root = (c: Channel) => basePath(c);
 const url = (c: Channel, suffix = '') => root(c) + suffix;
 const assetUrl = (c: Channel, o: Offering) => url(c, '/opportunities/' + o.id);
@@ -30,7 +36,7 @@ function Button({ href, children, secondary = false, disabled = false }: { href?
   return href && !disabled ? <a className={'button' + (secondary ? ' button-secondary' : '')} href={href}>{children}</a> : <button className={'button' + (secondary ? ' button-secondary' : '')} type="button" disabled={disabled}>{children}</button>;
 }
 function Header({ c }: { c: Channel }) {
-  return <header className="site-header"><div className="header-inner"><a className="brand" href={root(c)} aria-label={brand(c) + ' 首页'}>{c.kind === 'm' ? <span className="brand-mark" aria-hidden="true"><i /><i /><i /></span> : <span className="issuer-mark" aria-hidden="true">{brand(c).slice(0,1)}</span>}<strong>{brand(c)}</strong></a><nav aria-label="主导航"><a className={path === root(c) ? 'active' : ''} href={root(c)}>首页</a><a className={path.includes('/opportunities') ? 'active' : ''} href={url(c, '/opportunities')}>投资机会</a><a href={url(c, '/investments')}>我的投资</a></nav><div className="header-actions"><a href={url(c, '/support')}>帮助</a><a href={url(c, '/messages')}>消息</a><a className="login-link" href={url(c, '/account')}>{identity === 'guest' ? '登录' : '我的账户'}</a></div></div></header>;
+  return <header className="site-header"><div className="header-inner"><a className="brand" href={root(c)} aria-label={brand(c) + ' 首页'}>{c.kind === 'm' ? <span className="brand-mark" aria-hidden="true"><i /><i /><i /></span> : <span className="issuer-mark" aria-hidden="true">{brand(c).slice(0,1)}</span>}<strong>{brand(c)}</strong></a><nav aria-label="主导航"><a className={path === root(c) ? 'active' : ''} href={root(c)}>首页</a><a className={path.includes('/opportunities') ? 'active' : ''} href={url(c, '/opportunities')}>投资机会</a><a href={url(c, '/investments')}>我的投资</a></nav><div className="header-actions"><a href={url(c, '/support')}>帮助</a><a href={url(c, '/messages')}>消息</a><a className="login-link" href={url(c, '/account')}>{activeAccount(c) ? '我的账户' : '登录'}</a></div></div></header>;
 }
 function Footer({ c }: { c: Channel }) {
   return <footer className="footer"><div className="container footer-main"><div><strong>{brand(c)}</strong><p>真实世界资产投资信息 · 前端 Mock 演示</p></div><nav aria-label="页脚"><a href={url(c, '/disclosures')}>风险提示</a><a href={url(c, '/support')}>帮助中心</a><a href={url(c, '/terms')}>使用条款</a><a href={url(c, '/privacy')}>隐私政策</a></nav></div><p className="container footer-note">项目、企业、图片及交易状态均为演示资料，不构成真实发行、投资建议或收益承诺。</p></footer>;
@@ -107,8 +113,8 @@ function List({ c }: { c: Channel }) {
 }
 function Detail({ c, o }: { c: Channel; o: Offering }) {
   const facts = investmentFacts(o);
-  const action = actionState(o.status, identity);
-  const actionUrl = identity === 'guest' ? url(c,'/account?from=' + encodeURIComponent(assetUrl(c,o))) : url(c,'/subscribe/' + o.id + '/quote');
+  const action = actionState(o.status, identityFor(c));
+  const actionUrl = identityFor(c) === 'guest' ? url(c,'/account?from=' + encodeURIComponent(assetUrl(c,o))) : url(c,'/subscribe/' + o.id + '/quote');
   const previewOnly = o.listing === 'pending';
   return <main className="container inner-page">
     <Breadcrumb c={c} tail={o.title} />
@@ -154,11 +160,11 @@ function Subscribe({ c, o, step }: { c: Channel; o: Offering; step: number }) {
   const total = error ? 0 : totalCents(quantity,o);
   const stepUrl = (index: number) => url(c,'/subscribe/' + o.id + '/' + stepSlugs[index]);
   const updateQuantity = (value: string) => { setQuantity(value); sessionStorage.setItem(quantityKey,value); };
-  const kycBlocked = identity !== 'ready';
+  const kycBlocked = identityFor(c) !== 'ready';
   const progress = scenario === 'payment-pending' ? ['付款状态待确认','待付款核实','待付款核实','待付款核实'] : scenario === 'registration-pending' ? ['Mock 已核实','Mock 已配售','法定登记待核实','待登记核实'] : scenario === 'delivery-pending' ? ['Mock 已核实','Mock 已配售','Mock 已登记','Token 交付待核实'] : ['未发起 · Mock','未开始 · Mock','未开始 · Mock','未开始 · Mock'];
   return <main className="container inner-page"><Breadcrumb c={c} tail="认购演示" from={assetUrl(c,o)} /><div className="subscribe-head"><p className="eyebrow">SUBSCRIPTION · MOCK</p><h1>{o.title}</h1><p>四步认购演示 · 不生成真实订单、不连接钱包或付款</p></div><nav className="stepper" aria-label="认购步骤">{stepNames.map((name,index) => { const state = stepDisplayState(index,step,visited); const label = `${name}，${state === 'current' ? '当前预览' : state === 'viewed' ? '已查看' : '未查看'}`; return index <= step || state === 'viewed' ? <a key={name} href={stepUrl(index)} className={state} aria-label={label} aria-current={state === 'current' ? 'step' : undefined}><span>{index+1}</span>{name}</a> : <span key={name} className="locked" aria-label={label}><span>{index+1}</span>{name}</span>; })}</nav><p className="stepper-note">步骤条仅显示页面查看记录；不代表文件签署、付款、配售或登记完成。</p><div className="subscribe-grid"><section className="content-panel step-content"><p className="step-overline">STEP {step+1} / 04</p><h2>{stepNames[step]}</h2>
     {step === 0 && <><p>填写整数 Token 份数，核对本次演示金额。草稿不占用发行容量。</p><label className="field-label" htmlFor="quantity">认购 Token 份数</label><div className="quantity-control"><input id="quantity" inputMode="numeric" value={quantity} onChange={event => updateQuantity(event.target.value)} aria-invalid={!!error} aria-describedby="quantity-help" /><span>Token</span></div><small id="quantity-help" className={error ? 'error' : 'hint'}>{error || `最低 ${minimumUnits(o)} 份 · 演示上限 ${o.maxUnits} 份`}</small><div className="calculation"><div><span>Token 单价</span><strong>{priceU(o.priceCents)}</strong></div><div><span>认购份数</span><strong>{error ? '待修正' : quantity + ' Token'}</strong></div><div><span>认购金额</span><strong>{error ? '—' : priceU(total)}</strong></div></div><Notice>正式报价、可售容量与投资资格需由后续真实系统核验。</Notice></>}
-    {step === 1 && <><p>以下仅为 Mock 文件名称与版本清单，当前没有可阅读正文。此页只演示认购流程中的文件检查位置。</p><div className="document-list">{o.documents.map(d => <div key={d.name}><span>{d.name}</span><small>{d.version}</small></div>)}</div><label className="check-row"><input type="checkbox" checked={listAcknowledged} onChange={event => { setListAcknowledged(event.target.checked); sessionStorage.setItem(listAckKey,event.target.checked ? 'yes' : 'no'); }} />我已了解上述文件清单仅供 Mock 演示，尚无正文供阅读</label><Notice>此勾选不是文件阅读确认、电子签署或有效法律同意；本阶段无法创建真实待付款订单。</Notice>{kycBlocked && <div className="blocked-note">需完成身份认证后继续；当前身份认证尚未接入，<a href={url(c,'/account?from=' + encodeURIComponent(stepUrl(step)))}>查看账户说明</a>。</div>}</>}
+    {step === 1 && <><p>以下仅为 Mock 文件名称与版本清单，当前没有可阅读正文。此页只演示认购流程中的文件检查位置。</p><div className="document-list">{o.documents.map(d => <div key={d.name}><span>{d.name}</span><small>{d.version}</small></div>)}</div><label className="check-row"><input type="checkbox" checked={listAcknowledged} onChange={event => { setListAcknowledged(event.target.checked); sessionStorage.setItem(listAckKey,event.target.checked ? 'yes' : 'no'); }} />我已了解上述文件清单仅供 Mock 演示，尚无正文供阅读</label><Notice>此勾选不是文件阅读确认、电子签署或有效法律同意；本阶段无法创建真实待付款订单。</Notice>{kycBlocked && <div className="blocked-note">需完成身份认证后继续；当前为 Mock 身份流程，<a href={url(c,'/account/kyc?from=' + encodeURIComponent(stepUrl(step)))}>查看认证状态</a>。</div>}</>}
     {step === 2 && <><p>付款条件与收款对象仅作视觉演示，当前不能真实签名或付款。</p><div className="payment-card"><div><small>演示网络</small><strong>OP Mainnet</strong></div><div><small>计价与付款币种</small><strong>USDT · U</strong></div><div><small>付款钱包</small><strong>Mock 钱包 · 未连接</strong></div><div><small>Token 接收地址</small><strong>Mock 地址 · 未验证</strong></div><div><small>Offering 收款合约</small><strong>Mock 合约 · 未核实</strong></div></div><button type="button" className="button" disabled>付款不可执行</button><Notice>授权不等于付款，演示页面不会发送交易。可查看独立的交易进度样板。</Notice></>}
     {step === 3 && <><p className="progress-preview">Mock 交易进度预览 · 可直接查看。页面访问与清单勾选均不代表付款、签署或后续业务完成。</p><p>付款、配售、法定登记和 Token 交付分别核实；前一步完成不代表后续环节完成。</p><div className="timeline">{['付款','配售','法定登记','Token 交付'].map((name,index) => <div key={name}><span className="timeline-dot" /><strong>{name}</strong><small>{progress[index]}</small></div>)}</div><Notice>所有状态仅为独立 Mock 场景展示，不代表真实链上或法定事实。</Notice></>}
     <div className="step-actions"><Button href={step === 0 ? assetUrl(c,o) : stepUrl(step-1)} secondary>{step === 0 ? '返回项目详情' : '上一步'}</Button>{step < 3 && <Button href={stepUrl(step+1)} disabled={(step === 0 && !!error) || (step === 1 && (!checklist.canPreviewNext || kycBlocked))}>{['确认认购信息并查看清单','了解清单并查看付款演示','查看交易进度预览'][step]} →</Button>}</div></section><aside className="summary-card"><p className="eyebrow">ORDER SUMMARY · MOCK</p><h2>认购摘要</h2><div className="summary-row"><span>项目</span><strong>{o.title}</strong></div><div className="summary-row"><span>权益类型</span><strong>{o.right}</strong></div><div className="summary-row"><span>Token 单价</span><strong>{priceU(o.priceCents)}</strong></div><div className="summary-row"><span>份数</span><strong>{quantity || '—'}</strong></div><div className="summary-total"><span>演示总额</span><strong>{error ? '—' : priceU(total)}</strong></div><p className="summary-foot">不是有效报价或支付指令。</p></aside></div></main>;
@@ -166,13 +172,24 @@ function Subscribe({ c, o, step }: { c: Channel; o: Offering; step: number }) {
 function Placeholder({ c, name }: { c: Channel; name: string }) {
   const from = new URLSearchParams(location.search).get('from');
   const back = from?.startsWith(root(c) + '/') && !from.includes('//') ? from : url(c,'/opportunities');
-  return <main className="container inner-page"><Breadcrumb c={c} tail={name} /><div className="empty"><h1>{name}</h1><p>{name === '我的账户' && identity === 'guest' ? '登录功能将在后续阶段接入。当前可公开浏览项目；认购上下文已保留在返回链接中。' : '此功能将在后续阶段实现。当前页面不展示虚构账户或业务数据。'}</p><Button href={back} secondary>返回原项目或投资机会</Button></div></main>;
+  return <main className="container inner-page"><Breadcrumb c={c} tail={name} /><div className="empty"><h1>{name}</h1><p>此功能将在后续阶段实现。当前页面不展示虚构账户或业务数据。</p><Button href={back} secondary>返回原项目或投资机会</Button></div></main>;
 }
 function NotFound({ c }: { c: Channel }) { return <main className="container inner-page"><Empty c={c} title="页面或资产不可访问" detail="链接无效，或当前渠道未获准公开此内容。" /></main>; }
 function Demo() {
   const set = (value: string, dest = '/m') => { sessionStorage.setItem(scenarioKey,value); location.href = dest; };
+  const [scope,setScope] = useState('/m');
+  const [kyc,setKyc] = useState<KycStatus>('approved');
+  const [mpc,setMpc] = useState<MpcStatus>('ready');
+  const selected: Channel = scope === '/m' ? { kind:'m' } : { kind:'v', issuerSlug:scope === '/v/harbor' ? 'harbor' : 'cedar' };
+  const demoAccount = activeAccount(selected);
+  const applyAccount = () => {
+    if (!demoAccount) return;
+    const next = mpc === 'ready' ? withMpcResult(demoAccount,'ready') : { ...demoAccount, mpc, defaultWallet:demoAccount.defaultWallet === 'mpc' ? (demoAccount.ownVerified ? 'own' as const : undefined) : demoAccount.defaultWallet, walletVersion:demoAccount.walletVersion + (demoAccount.defaultWallet === 'mpc' ? 1 : 0) };
+    saveAccount(selected,{ ...next, kyc, kycUpdatedAt:new Date().toISOString() });
+    location.href = scope + '/account';
+  };
   const items: [string,string,string][] = [['normal','未登录 · 正常项目','/m/opportunities/residence-01'],['ready','已登录且 KYC 已通过 · Mock','/m/opportunities/residence-01'],['kyc-required','已登录但需 KYC · Mock','/m/subscribe/residence-01/documents'],['upcoming','即将开放','/m/opportunities/residence-01'],['paused','暂停认购','/m/opportunities/residence-01'],['ended','认购已结束','/m/opportunities/residence-01'],['unknown','状态待核实','/m/opportunities/residence-01'],['no-listings','M 无有效 Listing','/m'],['mock-loading','加载状态预览','/m/opportunities'],['mock-error','异常状态预览','/m/opportunities'],['v-asset-harbor','V 海岚 · 四类房地产模板','/v/harbor/opportunities'],['v-asset-cedar','V 杉衡 · 债权及股权模板','/v/cedar/opportunities'],['payment-pending','付款待核实','/m/subscribe/residence-01/progress'],['registration-pending','法定登记待核实','/m/subscribe/residence-01/progress'],['delivery-pending','Token 交付待核实','/m/subscribe/residence-01/progress']];
-  return <main className="container inner-page"><p className="eyebrow">DEV-01R · MOCK CONTROL</p><h1>独立演示控制台</h1><p>只改变本标签页的前端场景；不会产生真实登录、KYC、付款或登记事实。</p><div className="demo-controls">{items.map(([value,label,dest]) => <button key={value} onClick={() => set(value,dest)}>{label}</button>)}</div><p>当前场景：{scenario}</p><a className="text-link" href="/m">进入 M 首页 →</a></main>;
+  return <main className="container inner-page"><p className="eyebrow">MOCK CONTROL</p><h1>独立演示控制台</h1><p>只改变本机前端 Mock 场景；不会产生真实登录、KYC、付款或登记事实。</p><div className="demo-controls">{items.map(([value,label,dest]) => <button key={value} onClick={() => set(value,dest)}>{label}</button>)}</div><p>当前页面场景：{scenario}</p><section className="content-panel demo-account"><h2>账户 / KYC / MPC 状态模拟</h2><p>先在对应 V/M 渠道完成 Mock 邮箱登录，再在此切换 Provider 结果。状态变化仅影响该渠道账户。</p><div className="demo-account-controls"><label>账户渠道<select value={scope} onChange={event => setScope(event.target.value)}><option value="/m">M 平台</option><option value="/v/harbor">V 海岚</option><option value="/v/cedar">V 杉衡</option></select></label><label>KYC 结果<select value={kyc} onChange={event => setKyc(event.target.value as KycStatus)}>{(['not-started','processing','supplement','approved','failed','expired','unknown'] as KycStatus[]).map(value => <option key={value} value={value}>{value}</option>)}</select></label><label>MPC 结果<select value={mpc} onChange={event => setMpc(event.target.value as MpcStatus)}>{(['creating','ready','failed','unknown','service-gated'] as MpcStatus[]).map(value => <option key={value} value={value}>{value}</option>)}</select></label><button className="button" type="button" disabled={!demoAccount} onClick={applyAccount}>应用 Mock 结果</button></div><p>{demoAccount ? '当前账户：'+demoAccount.email : '该渠道当前标签未登录；请先打开对应渠道的 /account。'}</p></section><a className="text-link" href="/m">进入 M 首页 →</a></main>;
 }
 function App() {
   if (path === '/demo') return <Demo />;
@@ -182,6 +199,7 @@ function App() {
   const detailMatch = /^\/opportunities\/([^/]+)$/.exec(tail);
   const companyMatch = /^\/issuers\/([^/]+)$/.exec(tail);
   const stepMatch = /^\/subscribe\/([^/]+)\/(quote|documents|payment|progress)$/.exec(tail);
+  const accountMatch = /^\/account(\/profile|\/kyc|\/wallets|\/security|\/tickets)?$/.exec(tail);
   const visible = publicOfferings(c);
   let content: React.ReactNode;
   if (scenario === 'mock-loading' && (tail === '/opportunities' || detailMatch)) content = <main className="container inner-page"><div className="empty" role="status"><h1>正在加载投资机会</h1><p>Mock 加载状态预览；请在演示控制台切换场景。</p><Button href="/demo" secondary>返回演示控制台</Button></div></main>;
@@ -191,7 +209,8 @@ function App() {
   else if (detailMatch) { const o = visible.find(item => item.id === detailMatch[1]); content = o ? <Detail c={c} o={o} /> : <NotFound c={c} />; }
   else if (companyMatch) content = <Company c={c} issuerId={companyMatch[1]} />;
   else if (stepMatch) { const o = visible.find(item => item.id === stepMatch[1]); content = o && o.status === '认购中' ? <Subscribe c={c} o={o} step={stepSlugs.indexOf(stepMatch[2] as typeof stepSlugs[number])} /> : <NotFound c={c} />; }
-  else if (['/investments','/support','/messages','/account','/disclosures','/terms','/privacy'].includes(tail)) content = <Placeholder c={c} name={{ '/investments':'我的投资','/support':'帮助中心','/messages':'消息','/account':'我的账户','/disclosures':'风险提示','/terms':'使用条款','/privacy':'隐私政策' }[tail]!} />;
+  else if (accountMatch) content = <AccountPage channel={c} section={accountMatch[1] || ''} />;
+  else if (['/investments','/support','/messages','/disclosures','/terms','/privacy'].includes(tail)) content = <Placeholder c={c} name={{ '/investments':'我的投资','/support':'帮助中心','/messages':'消息','/disclosures':'风险提示','/terms':'使用条款','/privacy':'隐私政策' }[tail]!} />;
   else content = <NotFound c={c} />;
   return <><Header c={c} />{content}<Footer c={c} /></>;
 }

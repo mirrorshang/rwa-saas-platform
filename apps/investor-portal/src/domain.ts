@@ -21,7 +21,7 @@ export const visibleOfferings = (all: Offering[], channel: Channel, noListings =
 export const canShowCompany = (all: Offering[], channel: Channel, issuerId: string, noListings = false) =>
   channel.kind === 'v' ? channel.issuerSlug === issuerId :
     visibleOfferings(all, channel, noListings).some(o => o.issuerId === issuerId);
-export const draftStorageKey = (channel: Channel, offering: Pick<Offering, 'issuerId' | 'id'>, field: 'quantity' | 'read' | 'list-ack' | 'visited') =>
+export const draftStorageKey = (channel: Channel, offering: Pick<Offering, 'issuerId' | 'id'>, field: 'quantity' | 'read' | 'list-ack' | 'visited' | 'documents-read' | 'request-id' | 'order-id') =>
   ['rwa-dev01-draft', encodeURIComponent(basePath(channel)), encodeURIComponent(offering.issuerId), encodeURIComponent(offering.id), field].join(':');
 export const stepDisplayState = (index: number, current: number, visited: readonly number[]): 'current' | 'viewed' | 'not-viewed' =>
   index === current ? 'current' : visited.includes(index) ? 'viewed' : 'not-viewed';

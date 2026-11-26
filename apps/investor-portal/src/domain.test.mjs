@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { actionState, assetGroup, canShowCompany, documentListState, draftStorageKey, filterOfferings, investmentFacts, parseChannel, stepDisplayState, visibleOfferings, visibleCategories, minimumUnits, quantityError, totalCents } from './domain.ts';
+import { actionState, assetGroup, canShowCompany, documentListState, draftStorageKey, filterOfferings, investmentFacts, investmentPeriod, parseChannel, stepDisplayState, visibleOfferings, visibleCategories, minimumUnits, quantityError, totalCents } from './domain.ts';
 const offerings = [
   { id: 'residence-01', issuerId: 'harbor', issuerSlug: 'harbor', listing: 'active', category: '住宅物业', priceCents: 10000, minimumCents: 100000, maxUnits: 500 },
   { id: 'debt-01', issuerId: 'cedar', issuerSlug: 'cedar', listing: 'active', category: '企业借款债权' },
@@ -25,6 +25,31 @@ test('asset categories and investor rights remain separate filters', () => {
   assert.deepEqual(filterOfferings(sample, { category: '企业借款', right: '债权', place: '深圳', status: '认购中', issuer: '杉衡资本' }).map(o => o.id), ['debt-01']);
   assert.deepEqual(filterOfferings(sample, { search: '住宅' }).map(o => o.id), ['residence-01']);
   assert.equal(filterOfferings(sample, { category: '房地产', right: '债权' }).length, 0);
+  assert.equal(filterOfferings(sample, { search: '杉衡' }).length, 0);
+});
+test('all six asset templates map to the approved public groups', () => {
+  const expected = [
+    ['住宅物业','房地产'],['写字楼','房地产'],['商铺','房地产'],
+    ['工业园/仓储物流','房地产'],['非上市普通股权','企业股权'],['企业借款债权','企业借款']
+  ];
+  for (const [category,group] of expected) assert.equal(assetGroup({ category }),group);
+});
+test('subcategory and sorting operate only on the already visible catalog', () => {
+  const sample = [
+    { ...offerings[0], category:'住宅物业', title:'住宅甲', right:'收益参与权', issuerName:'海岚', listedAt:'2026-11-23', closesAt:'2027-04-01' },
+    { ...offerings[0], id:'office-01', category:'写字楼', title:'办公乙', right:'收益参与权', issuerName:'海岚', listedAt:'2026-11-25', closesAt:'2027-01-01' },
+    { ...offerings[2], title:'股权丙', right:'股权', issuerName:'杉衡', listedAt:'2026-11-26' }
+  ];
+  const publicM = visibleOfferings(sample,{ kind:'m' });
+  assert.deepEqual(filterOfferings(publicM,{ category:'房地产', subcategory:'写字楼' }).map(o=>o.id),['office-01']);
+  assert.deepEqual(filterOfferings(publicM,{ sort:'latest' }).map(o=>o.id),['office-01','residence-01']);
+  assert.deepEqual(filterOfferings(publicM,{ sort:'closing' }).map(o=>o.id),['office-01','residence-01']);
+  assert.equal(filterOfferings(publicM,{ search:'股权' }).length,0);
+});
+test('rights show their own period or distribution basis', () => {
+  assert.equal(investmentPeriod({ right:'债权', terms:[['合同期限','12 个月'],['付息方式','按月付息']] }), '12 个月 · 按月付息');
+  assert.equal(investmentPeriod({ right:'收益参与权', terms:[['分配频率','按合同约定']] }), '按合同约定');
+  assert.equal(investmentPeriod({ right:'股权', terms:[['退出与锁仓','无固定期限']] }), '无固定期限');
 });
 test('rights-specific facts and action states', () => {
   assert.deepEqual(investmentFacts({ right: '债权', yieldLine: '', terms: [['合同固定年利率','12%（非保证兑付）'],['付息方式','按月付息'],['本金偿还','到期一次还本']] }).map(([key]) => key), ['合同固定年利率','付息频率','到期安排']);

@@ -36,6 +36,20 @@
 | UX-08 P2 | `/m`、`/m/opportunities`；实操 | “合规、透明、可追溯”像已验证的产品承诺；债权示意图片呈仓库外观，可能被误读成抵押资产。 | 未经验证的资质词改为可证实的信息描述；图片旁清楚说“非项目资产实拍，不能证明担保”，债权卡主视觉优先中性而非厂房。验收：没有未经证实的安全、合规或抵押暗示。 |
 | UX-09 P2 | `/m/disclosures`、消息/工单/账户页；源码 [InvestorContentPage.tsx](../../../apps/investor-portal/src/InvestorContentPage.tsx)、[OrdersPage.tsx](../../../apps/investor-portal/src/OrdersPage.tsx) | 每行都显示 Mock/ID/版本/权限术语，真实重要状态被测试说明淹没。 | 统一演示环境条 + 关键动作就地风险提示；版本与追踪 ID 放“记录详情”。验收：用户主任务可扫读，仍不会误认为真实付款、签署或登记。 |
 
+逐项复现与定位（“未新增截图”表示本次浏览器已观察但没有可提交的 PNG；既有截图的完整相对路径在 H）：
+
+| ID | 复现操作 | 截图 | 源码定位 | 产品规则判断 |
+| --- | --- | --- | --- | --- |
+| UX-01 | 直达 `/v/harbor`，比较第一张可认购卡与后两张待开放模板卡；`/v/cedar` 同类。 | `dev07-v-harbor-home-1440.png` | `src/redesign.tsx` 首页卡片、`src/data.ts` 模板资料 | 保留 V 模板展示，但不应让预览与可执行认购混同。 |
+| UX-02 | 从住宅详情点击开始认购，首次登录，再从文件页点击认证状态。 | 未新增截图 | `src/AccountPage.tsx:56-62`、`src/SubscriptionPage.tsx` 文件步骤 | 认证门槛保留，改变呈现语言与返回体验。 |
+| UX-03 | 打开住宅详情、金额及文件步骤，读取右栏和正文中的对象 ID/内部名。 | `dev07-m-detail-1920.png`；认购未新增截图 | `src/redesign.tsx` 详情、`src/SubscriptionPage.tsx` | Asset/Instrument/Offering/Token 的法律含义保留；用户主层按权益组织。 |
+| UX-04 | 完成四阶段 Mock 推进后停留 `/progress`，寻找订单和持仓入口。 | 未新增截图 | `src/SubscriptionPage.tsx` 进度步骤 | 不改变阶段定义，只补结果后的明确去向。 |
+| UX-05 | 分别直达 `/m`、`/v/harbor`、`/v/cedar`，遮住 Logo 比较 Hero。 | `dev07-m-home-1280.png`、`dev07-v-harbor-home-1440.png` | `src/redesign.tsx` 首页 | V 单企业、M 多企业定位已冻结；改文案与视觉表达即可。 |
+| UX-06 | 对照 `/m` 的 1280 与 1920 截图，观察机会标题与首卡左边缘。 | `dev07-m-home-1280.png`、`dev07-m-home-1920.png` | `src/redesign.css` 首页/卡片网格 | 两项 Listing 的真实数量不得通过造卡补齐。 |
+| UX-07 | 打开住宅详情，比较右栏“期限/分配”和“分配周期”，向下查权益说明。 | `dev07-m-detail-1920.png` | `src/redesign.tsx` 详情、`src/domain.ts` 权益摘要 | 缺披露不能推算收益；重复字段可重排。 |
+| UX-08 | 直达 M 首页，读 Hero 资质词；对照债权卡片图片与底层“企业借款”。 | `dev07-m-home-1280.png` | `src/redesign.tsx` 首页、`src/assets/dev01r-debt.png` | 不新增担保或合规承诺；图片只能作示意。 |
+| UX-09 | 打开 `/m/messages`、一条消息详情、`/m/disclosures`、工单详情，记录 Mock/ID 密度。 | 未新增截图 | `src/InvestorContentPage.tsx`、`src/OrdersPage.tsx` | 演示与金融风险提示必须保留，位置和层级可优化。 |
+
 **首页具体重排**：页头与 Hero 共同用同一内容网格；Hero 高度按 1280 首屏能露出类别与机会区标题控制。类别区采用统一宽高的 3 个入口，左端与下方卡片轴线相同。机会卡保留“状态→项目名→权益类型→最低额→回报机制/期限→发行企业→查看详情”，单价及地区降为次级；1/2/3 张卡分别限宽排 1/2/3 列。V 的“待开放模板”另设资料预览区，卡面不呈可执行报价。底部风险教育与页脚保持一段有节奏的间隔。具体像素值需下一阶段设计稿和新版截图决定，本审计不冻结设计令牌。
 
 ## C. 三类用户旅程

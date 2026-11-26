@@ -1,44 +1,45 @@
-# V/M 投资者平台 DEV-01R PC Web 原型
+# V/M 投资者平台 PC Web Mock 原型
 
-基于产品分支 `docs/vm-investor-ui-ready-20261124` 与产品负责人选定的橙黑极简参考图完成 DEV-01R 视觉及认购体验重设计。V/M 共用一套 React 页面；`/v/:issuerSlug` 显示单企业范围，`/m` 只显示有效 Mock Listing。所有企业、资产、地址、合同与交易信息均为演示数据，不执行真实投资业务。
+基于已批准的 V/M UI-Ready PRD 和 DEV-01R 橙黑极简视觉，在一个 React 前端中演示 V 单 Issuer 平台与 M 多 Issuer 市场。所有身份、钱包、认购、付款、登记、Token、收益和客服结果均为本机 Mock；不会连接真实后端、钱包、KYC、链上交易或资金服务。
 
-## 本批入口
+## 快速运行
 
-- `/v/harbor`：V 海岚资产首页；`/v/cedar`：V 杉衡资本首页。
-- `/m`：M 投资平台首页。
-- `/v/harbor/opportunities/residence-01`、`/m/opportunities/debt-01`：同一详情页面模板的住宅与债权案例。
-- `/v/harbor/subscribe/residence-01/quote`：四步认购视觉样板，可前后切换、校验整数份数、查看演示金额与独立履约状态。
-- `/demo`：独立 Mock 场景控制台，可切换登录/KYC、认购状态、M 无有效 Listing，以及付款、登记、交付待核实状态。
+需要 Node.js 20 或更新版本以及 pnpm 10.34.9。依赖版本由 pnpm-lock.yaml 锁定。在本目录执行：
 
-`/demo` 仅供开发验收直接输入访问，不出现在 V/M 投资页面的导航和页脚。M 企业信息页只有在该企业存在当前 M 渠道可公开的有效 Listing 时才展示。认购演示草稿及步骤查看记录保存在当前标签页的 `sessionStorage`，按渠道、企业和 Offering 区分；步骤“已查看”不代表业务完成。
-
-首页分类以**底层资产**为维度（房地产、企业股权、企业借款）；列表页另设**权益类型**、地区、状态及 M 发行企业筛选。项目卡与详情按债权、收益参与权、股权分别展示相关指标。当前 M 仅有住宅与债权两项有效 Mock Listing，首页用两列卡片，不为凑三列虚构有效项目。
-
-Step 2 仅展示无正文的 Mock 文件清单，清单勾选不是文件阅读确认、电子签署或法律同意；Step 4 可直接查看 Mock 进度预览。账户、KYC、钱包、真实签署、付款、订单、持仓和收益功能未在 DEV-01R 实现；Step 3 的付款按钮不可执行。演示身份状态仅通过 `/demo` 切换，不代表认证结果。
-
-## 运行
-
-项目采用 React 19、TypeScript 5.8、Vite 6。正常开发环境安装依赖后执行：
-
-```powershell
-pnpm install
+~~~powershell
+pnpm install --frozen-lockfile
 pnpm run typecheck
 pnpm test
 pnpm build
 pnpm dev
-```
+~~~
 
-本机本轮未下载依赖：`npm` 命令不可用，`pnpm` 安装器损坏，E 盘不存在。验证使用已有的 `prototypes/website-ui-preview/node_modules` 目录链接，并以 `node node_modules/typescript/bin/tsc --noEmit`、`node --test src/domain.test.mjs`、`node node_modules/vite/bin/vite.js build` 实际运行。该链接与构建产物被 `.gitignore` 排除。尚无锁文件，全新环境安装可复现性 **NOT EXECUTED**。
+默认本地入口是 http://127.0.0.1:5173；若端口占用，以 Vite 输出为准。生产构建可用 pnpm exec vite preview --host 127.0.0.1 预览。本仓库不提交 node_modules 或 dist。
 
-## 文件说明
+2026-11-26 DEV-07 已在 D 盘全新目录用 pnpm 10.34.9 和独立下载的 21 个依赖完成 --frozen-lockfile --ignore-scripts 安装、类型检查、27 项测试和生产构建。该目录没有复用原型项目的 node_modules 链接。安装方式、浏览器结果与限制见 qa/DEV-07-ACCEPTANCE.md。
 
-- `src/domain.ts`：渠道、可见性、资产分类、权益指标、筛选、行动状态、份数与 U 金额规则。
-- `src/data.ts`：两个 Issuer、住宅/债权及未上架股权 Mock fixture。
-- `src/redesign.tsx`：DEV-01R 当前入口，V/M 共用页面、路由、筛选、认购样板与独立 Mock 控制台。
-- `src/redesign.css` 与 `src/assets/dev01r-*.png`：橙黑视觉系统与内置图像生成的无文字资产示意配图。
-- `src/main.tsx`、`src/styles.css`：保留的 DEV-01 历史实现，当前 HTML 不加载。
-- `src/domain.test.mjs`：渠道权限、分类与权益区分、金额、行动状态及草稿隔离测试。
-- `qa/DEV-01-ACCEPTANCE-20261125.md`：首批实际测试和剩余限制。
-- `qa/DEV-01-FIX-ACCEPTANCE-20261125.md`：PR #17 审核后的定向修复、浏览器截图与补验结果。
-- `qa/DEV-01R-ACCEPTANCE.md`：本次视觉、交互、测试及截图验收结果。
-- `qa/DEV-01R-FIX-ACCEPTANCE.md`：步骤状态、文件清单语义与卡片密度的定向修复验收及新截图。
+## 入口与页面
+
+- /m：M 平台首页；仅公开有效 Listing。
+- /v/harbor、/v/cedar：V 海岚、杉衡企业入口；各自仅显示对应 Issuer 的项目或展示模板。
+- 各渠道的 /opportunities、/opportunities/:offeringId、/issuers/:issuerSlug：投资机会、详情和企业信息。
+- /account 及 /profile、/kyc、/wallets、/security、/tickets：账户 Mock。
+- /subscribe/:offeringId/quote|documents|payment|progress：四步认购。文件含可阅读的最小 Mock 正文；确认不构成电子签署。付款、配售、法定登记和 Token 交付分别推进。
+- /investments?tab=orders|holdings|returns：本人订单、法定持仓、收益与债权本金；详情从列表进入。
+- /support、/messages、/disclosures：客服工单、通知、公告与披露 Mock。/terms、/privacy 目前为演示占位页。
+- /demo：独立 Mock 控制台，只供开发验收直接访问，V/M 正常导航与页脚不提供入口。
+
+所有账户、订单、工单和收益事件按账户及 V/M 渠道隔离；同一 Offering 的 V/M Mock 容量共用。M 直接访问无有效公开 Listing 的项目或企业时显示受控空态。展示模板不等于可投资 Offering。
+
+## 演示路径
+
+1. 从 M 或 V 首页进入有效项目，打开详情并检查权益、最低认购额、状态和风险。
+2. 在对应渠道 /account 使用页面给出的 Mock 验证码登录；首次建号后 MPC 显示创建中，KYC 显示未开始。KYC 申请不会自动通过。
+3. 到 /demo 选择当前账户渠道，模拟 KYC 已通过及 MPC 就绪，或在钱包页查询原 MPC 操作；返回项目进入认购。
+4. 确认份数、展开并逐份阅读 Mock 文件、创建待付款订单；选择付款钱包与 Token 接收地址，模拟 OP Mainnet USDT 付款并分别推进配售、登记和交付。
+5. 在“我的投资”查看本人订单和持仓。收益事件仅能由 /demo 对已登记且无未决异常的本人持仓创建；Claim、Push 与外部付款仅为分开的 Mock 场景，不能视为已批准的统一支付规则。
+6. 在 /demo 切换付款失败、未知、异常、退款及客服状态，返回订单和工单核对。可切回“未登录 · 正常项目”复原页面场景；这不会清除本机账户或订单数据。若要重置全部演示记录，使用浏览器开发工具清除本站 localStorage 与 sessionStorage。
+
+## 验收与限制
+
+各阶段实测记录、截图和脚本位于 qa/；DEV-07 汇总见 qa/DEV-07-ACCEPTANCE.md。持仓登记与 Token 余额独立；本金偿还不计入收益。所有金额、文件、账户及业务状态均为演示资料，不构成真实发行、投资建议、法律签署、付款或收益承诺。真实服务接入与待决产品规则详见最终交接 PRD。

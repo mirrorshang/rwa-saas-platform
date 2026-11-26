@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { actionState, assetGroup, canShowCompany, draftStorageKey, filterOfferings, investmentFacts, parseChannel, visibleOfferings, visibleCategories, minimumUnits, quantityError, totalCents } from './domain.ts';
+import { actionState, assetGroup, canShowCompany, documentListState, draftStorageKey, filterOfferings, investmentFacts, parseChannel, stepDisplayState, visibleOfferings, visibleCategories, minimumUnits, quantityError, totalCents } from './domain.ts';
 const offerings = [
   { id: 'residence-01', issuerId: 'harbor', issuerSlug: 'harbor', listing: 'active', category: '住宅物业', priceCents: 10000, minimumCents: 100000, maxUnits: 500 },
   { id: 'debt-01', issuerId: 'cedar', issuerSlug: 'cedar', listing: 'active', category: '企业借款债权' },
@@ -68,4 +68,17 @@ test('draft fields are isolated by channel, issuer and offering', () => {
   ];
   assert.equal(new Set(keys).size, keys.length);
   assert.equal(draftStorageKey(v, residence, 'quantity'), keys[0]);
+  assert.notEqual(draftStorageKey(v, residence, 'read'), draftStorageKey(v, residence, 'list-ack'));
+  assert.notEqual(draftStorageKey(v, residence, 'visited'), draftStorageKey(m, residence, 'visited'));
+});
+
+test('direct Step 4 preview never infers prior business completion', () => {
+  assert.deepEqual([0,1,2,3].map(index => stepDisplayState(index, 3, [3])), ['not-viewed','not-viewed','not-viewed','current']);
+  assert.deepEqual([0,1,2,3].map(index => stepDisplayState(index, 3, [0,1,2,3])), ['viewed','viewed','viewed','current']);
+  assert.equal(stepDisplayState(0, 0, [0]), 'current');
+});
+
+test('Mock file list acknowledgement is optional preview state, never legal signing', () => {
+  assert.deepEqual(documentListState(false), { canPreviewNext: false, legallySigned: false });
+  assert.deepEqual(documentListState(true), { canPreviewNext: true, legallySigned: false });
 });

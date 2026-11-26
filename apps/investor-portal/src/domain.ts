@@ -21,7 +21,32 @@ export const canShowCompany = (all: Offering[], channel: Channel, issuerId: stri
 export const draftStorageKey = (channel: Channel, offering: Pick<Offering, 'issuerId' | 'id'>, field: 'quantity' | 'read') =>
   ['rwa-dev01-draft', encodeURIComponent(basePath(channel)), encodeURIComponent(offering.issuerId), encodeURIComponent(offering.id), field].join(':');
 export const visibleCategories = (all: Offering[], channel: Channel, noListings = false) =>
-  Array.from(new Set(visibleOfferings(all, channel, noListings).map(o => o.category === '住宅物业' ? '房地产' : o.category)));
+  Array.from(new Set(visibleOfferings(all, channel, noListings).map(o => assetGroup(o))));
+export const assetGroup = (o: Pick<Offering, 'category'>) =>
+  o.category === '住宅物业' ? '房地产' : o.category === '企业借款债权' ? '企业借款' : o.category === '非上市普通股权' ? '企业股权' : '其他资产';
+export type OpportunityFilters = { search?: string; category?: string; right?: string; place?: string; status?: string; issuer?: string };
+export const filterOfferings = <T extends Offering>(all: T[], filters: OpportunityFilters): T[] => {
+  const q = (filters.search || '').trim().toLocaleLowerCase('zh-CN');
+  return all.filter(o =>
+    (!q || [o.title, o.category].some(value => value.toLocaleLowerCase('zh-CN').includes(q))) &&
+    (!filters.category || assetGroup(o) === filters.category) &&
+    (!filters.right || o.right === filters.right) &&
+    (!filters.place || o.place === filters.place) &&
+    (!filters.status || o.status === filters.status) &&
+    (!filters.issuer || o.issuerName === filters.issuer));
+};
+export const investmentFacts = (o: Pick<Offering, 'right' | 'terms' | 'yieldLine'>): [string, string][] => {
+  const term = (name: string) => o.terms.find(([key]) => key === name)?.[1] || '以项目文件为准';
+  if (o.right === '债权') return [['合同固定年利率', term('合同固定年利率')], ['付息频率', term('付息方式')], ['到期安排', term('本金偿还')]];
+  if (o.right === '收益参与权') return [['收益来源', term('收益来源')], ['分配周期', term('分配频率')], ['参与比例', term('参与比例')]];
+  return [['法律权益', term('权益类型')], ['股息安排', term('股息安排')], ['退出与锁仓', term('退出与锁仓')]];
+};
+export const actionState = (status: string, identity: 'guest' | 'kyc' | 'ready' = 'guest') => {
+  if (status === '即将开放') return { label: '当前未开放认购', reason: '开放时间以正式披露为准', enabled: false };
+  if (status === '已结束' || status === '暂停') return { label: '当前不可认购', reason: status === '暂停' ? '项目认购已暂停' : '本期认购已结束', enabled: false };
+  if (status !== '认购中') return { label: '状态待核实', reason: '认购状态待核实，请稍后查看', enabled: false };
+  return { label: '开始认购', reason: identity === 'guest' ? '继续时将引导登录' : identity === 'kyc' ? '提交前需完成身份认证' : '可进入认购演示', enabled: true };
+};
 export const minimumUnits = (offering: Offering) => Math.ceil(offering.minimumCents / offering.priceCents);
 export const quantityError = (value: string, offering: Offering) => {
   if (!/^[1-9]\d*$/.test(value)) return '请输入正整数 Token 份数';

@@ -1,5 +1,7 @@
 # RWA SaaS｜V/M 投资者平台 V1.0 产品/UI-Ready 设计索引
 
+> 2026-11-27 DEV-08 当前交接增补：V/M PC Web Mock 原型已在 PR #17 Draft 分支完成 DEV-02～07 实施与浏览器验收。请先阅读[最终产品 PRD 与工程交接](V-M-DEV-08-FINAL-PRODUCT-PRD-20261127.md)、[原型运行与操作手册](../../apps/investor-portal/README.md)和[DEV-07 综合验收](../../apps/investor-portal/qa/DEV-07-ACCEPTANCE.md)。下方 2026-11-24 的设计/开发状态是当时历史记录，不代表目前源码状态；真实资金、KYC、钱包、法律签署和登记仍未接入。
+
 > 2026-11-24｜仅 PC Web 原型｜六批设计审核已获用户批准；本目录是正式化候选规格，需随独立 GitHub Draft PR 完成一致性复核。仅为产品/UI 交付，**并非 V/M 前端已开发或生产支付、KYC、合约、钱包和法定登记已接入**。
 
 ## 1. 最短阅读路径

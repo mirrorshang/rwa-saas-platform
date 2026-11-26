@@ -1,0 +1,27 @@
+.holding-card,.distribution-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 24px;align-items:center}
+.holding-card h2,.distribution-card h2{margin-bottom:6px}
+.holding-card p:not(.eyebrow),.distribution-card p:not(.eyebrow){font-size:12px;color:#666;margin:0}
+.holding-card>.text-link,.distribution-card>.text-link{grid-column:1/-1;border-top:1px solid #eee;padding-top:13px}
+.holding-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;min-width:360px}
+.holding-metrics small,.return-summary small{display:block;color:#777;font-size:11px;margin-bottom:5px}
+.holding-metrics strong{font-size:12px}
+.return-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:900px;margin-bottom:30px}
+.return-summary>div{background:#fff;border:1px solid #e8e6e3;border-radius:8px;padding:22px}
+.return-summary strong{font-size:26px}
+.return-summary p{font-size:11px;color:#777;margin:8px 0 0}
+.return-summary+section{margin-bottom:30px}
+.message-list article{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.message-list p:not(.eyebrow){font-size:13px;color:#555;margin:0 0 10px}
+.message-list small{font-size:11px;color:#777}
+.message-detail,.disclosure-detail{max-width:1000px}
+.message-detail h1,.disclosure-detail h1{font-size:30px;margin:0 0 16px}
+.message-detail>p:not(.eyebrow),.disclosure-detail>p:not(.eyebrow){font-size:14px;line-height:1.75;color:#555}
+.message-actions{display:flex;gap:12px;margin-top:24px}
+.disclosure-list{border-top:1px solid #eee}
+.disclosure-list>div{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid #eee;padding:15px 0}
+.disclosure-list strong,.disclosure-list small{display:block}
+.disclosure-list strong{font-size:13px}
+.disclosure-list small{font-size:11px;color:#777;margin-top:5px}
+.disclosure-detail .notice{margin:25px 0}
+.disclosure-detail .button{margin-top:10px}
+@media(max-width:900px){.holding-card,.distribution-card{grid-template-columns:1fr}.holding-metrics{min-width:0}.record-layout{grid-template-columns:1fr}.record-layout .summary-card{position:static}}

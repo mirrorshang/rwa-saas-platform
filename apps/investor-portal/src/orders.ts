@@ -36,8 +36,8 @@ export const orderDetailUrl = (channel: Channel, orderId: string) =>
 export type DemoOrderScenario = 'normal' | 'rollback' | 'reorg' | 'fulfillment-failed' | 'refund-review' | 'refund-processing' | 'refund-confirmed';
 export const applyDemoOrderScenario = (order: MockOrder, scenario: DemoOrderScenario, now: string): MockOrder => {
   if (scenario === 'normal') return { ...order, exception:'none', refund:'none', refundReference:undefined, updatedAt:now };
-  if (scenario === 'rollback') return { ...order, payment:'failed', allocation:'pending', registration:'pending', delivery:'pending', exception:'rollback', refund:'none', refundReference:undefined, updatedAt:now };
-  if (scenario === 'reorg') return { ...order, payment:'unknown', allocation:'pending', registration:'pending', delivery:'pending', exception:'reorg', refund:'none', refundReference:undefined, updatedAt:now };
+  if (scenario === 'rollback') return { ...order, payment:'failed', allocation:'pending', registration:'pending', delivery:'pending', allocatedAt:undefined, registeredAt:undefined, registrationEvidence:undefined, deliveredAt:undefined, deliveryReference:undefined, exception:'rollback', refund:'none', refundReference:undefined, updatedAt:now };
+  if (scenario === 'reorg') return { ...order, payment:'unknown', allocation:'pending', registration:'pending', delivery:'pending', allocatedAt:undefined, registeredAt:undefined, registrationEvidence:undefined, deliveredAt:undefined, deliveryReference:undefined, exception:'reorg', refund:'none', refundReference:undefined, updatedAt:now };
   if (order.payment !== 'matched') return order;
   const refund: MockRefund = scenario === 'refund-review' ? 'under-review' : scenario === 'refund-processing' ? 'processing' : scenario === 'refund-confirmed' ? 'confirmed' : 'none';
   const exception: MockException = 'fulfillment-failed';

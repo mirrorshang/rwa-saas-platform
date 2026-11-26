@@ -11,6 +11,7 @@ export type MockOrder = {
   documents: {name:string;version:string}[]; mockConfirmedAt: string; legalSignatureValid: false;
   payment: MockPayment; paymentWallet?: string; tokenReceiver?: string; paymentReference?: string;
   allocation: MockStage; registration: MockStage; delivery: MockStage;
+  allocatedAt?: string; registeredAt?: string; registrationEvidence?: string; deliveredAt?: string; deliveryReference?: string;
   exception?: MockException; refund?: MockRefund; refundReference?: string;
 };
 export type OrderResult = { order: MockOrder; error?: never } | { order?: never; error: string };
@@ -52,9 +53,9 @@ export const resolvePayment = (order: MockOrder, result: 'matched' | 'failed' | 
   order.payment === 'broadcast' ? { ...order, payment:result, updatedAt:now } : order;
 export const advanceFulfillment = (order: MockOrder, now: string): MockOrder => {
   if (order.payment !== 'matched' || (order.exception && order.exception !== 'none')) return order;
-  if (order.allocation !== 'confirmed') return { ...order, allocation:'confirmed', updatedAt:now };
-  if (order.registration !== 'confirmed') return { ...order, registration:'confirmed', updatedAt:now };
-  if (order.delivery !== 'confirmed') return { ...order, delivery:'confirmed', updatedAt:now };
+  if (order.allocation !== 'confirmed') return { ...order, allocation:'confirmed', allocatedAt:now, updatedAt:now };
+  if (order.registration !== 'confirmed') return { ...order, registration:'confirmed', registeredAt:now, registrationEvidence:'Mock-REG-'+order.requestId, updatedAt:now };
+  if (order.delivery !== 'confirmed') return { ...order, delivery:'confirmed', deliveredAt:now, deliveryReference:'Mock-DEL-'+order.requestId, updatedAt:now };
   return order;
 };
 export const orderComplete = (order: MockOrder) => (!order.exception || order.exception === 'none') && order.payment === 'matched' && order.allocation === 'confirmed' && order.registration === 'confirmed' && order.delivery === 'confirmed';

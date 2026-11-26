@@ -3,12 +3,15 @@ import type { AccountRecord } from './account.ts';
 
 export type MockPayment = 'not-started' | 'broadcast' | 'matched' | 'failed' | 'unknown';
 export type MockStage = 'pending' | 'confirmed' | 'unknown';
+export type MockException = 'none' | 'rollback' | 'fulfillment-failed' | 'reorg';
+export type MockRefund = 'none' | 'under-review' | 'processing' | 'confirmed';
 export type MockOrder = {
   id: string; requestId: string; accountId: string; channelPath: string; issuerId: string; offeringId: string;
   units: number; priceCents: number; amountCents: number; createdAt: string; updatedAt: string; expiresAt: string;
   documents: {name:string;version:string}[]; mockConfirmedAt: string; legalSignatureValid: false;
   payment: MockPayment; paymentWallet?: string; tokenReceiver?: string; paymentReference?: string;
   allocation: MockStage; registration: MockStage; delivery: MockStage;
+  exception?: MockException; refund?: MockRefund; refundReference?: string;
 };
 export type OrderResult = { order: MockOrder; error?: never } | { order?: never; error: string };
 export const orderKey = (id: string) => 'rwa-mock-order:' + encodeURIComponent(id);
@@ -36,7 +39,7 @@ export const createOrder = (offering: Offering, account: AccountRecord | null, c
     id:'mock-'+requestId, requestId, accountId:account.id, channelPath:basePath(channel), issuerId:offering.issuerId, offeringId:offering.id,
     units, priceCents:offering.priceCents, amountCents:totalCents(String(units),offering), createdAt, updatedAt:createdAt,
     expiresAt:new Date(now+15*60_000).toISOString(), documents:offering.documents.map(document => ({...document})), mockConfirmedAt:createdAt, legalSignatureValid:false,
-    payment:'not-started', allocation:'pending', registration:'pending', delivery:'pending'
+    payment:'not-started', allocation:'pending', registration:'pending', delivery:'pending', exception:'none', refund:'none'
   } };
 };
 export const beginPayment = (order: MockOrder, wallet: string, receiver: string, now: string): OrderResult => {
@@ -48,13 +51,13 @@ export const beginPayment = (order: MockOrder, wallet: string, receiver: string,
 export const resolvePayment = (order: MockOrder, result: 'matched' | 'failed' | 'unknown', now: string): MockOrder =>
   order.payment === 'broadcast' ? { ...order, payment:result, updatedAt:now } : order;
 export const advanceFulfillment = (order: MockOrder, now: string): MockOrder => {
-  if (order.payment !== 'matched') return order;
+  if (order.payment !== 'matched' || (order.exception && order.exception !== 'none')) return order;
   if (order.allocation !== 'confirmed') return { ...order, allocation:'confirmed', updatedAt:now };
   if (order.registration !== 'confirmed') return { ...order, registration:'confirmed', updatedAt:now };
   if (order.delivery !== 'confirmed') return { ...order, delivery:'confirmed', updatedAt:now };
   return order;
 };
-export const orderComplete = (order: MockOrder) => order.payment === 'matched' && order.allocation === 'confirmed' && order.registration === 'confirmed' && order.delivery === 'confirmed';
+export const orderComplete = (order: MockOrder) => (!order.exception || order.exception === 'none') && order.payment === 'matched' && order.allocation === 'confirmed' && order.registration === 'confirmed' && order.delivery === 'confirmed';
 export const readAllOrders = (): MockOrder[] => {
   const result: MockOrder[] = [];
   for (let index=0; index<localStorage.length; index++) {

@@ -6,6 +6,7 @@ import { activeAccount, saveAccount, withMpcResult, type KycStatus, type MpcStat
 import { AccountPage } from './AccountPage';
 import { SubscriptionPage } from './SubscriptionPage';
 import { readAllOrders, remainingUnits } from './subscription.ts';
+import { DemoBusinessControls, InvestmentsPage, OrderDetailPage, SupportPage, TicketDetailPage } from './OrdersPage';
 import heroImage from './assets/dev01r-hero.png';
 import residenceImage from './assets/dev01r-residence.png';
 import debtImage from './assets/dev01r-debt.png';
@@ -173,7 +174,7 @@ function Demo() {
     location.href = scope + '/account';
   };
   const items: [string,string,string][] = [['normal','未登录 · 正常项目','/m/opportunities/residence-01'],['ready','已登录且 KYC 已通过 · Mock','/m/opportunities/residence-01'],['kyc-required','已登录但需 KYC · Mock','/m/subscribe/residence-01/documents'],['upcoming','即将开放','/m/opportunities/residence-01'],['paused','暂停认购','/m/opportunities/residence-01'],['ended','认购已结束','/m/opportunities/residence-01'],['unknown','状态待核实','/m/opportunities/residence-01'],['no-listings','M 无有效 Listing','/m'],['mock-loading','加载状态预览','/m/opportunities'],['mock-error','异常状态预览','/m/opportunities'],['v-asset-harbor','V 海岚 · 四类房地产模板','/v/harbor/opportunities'],['v-asset-cedar','V 杉衡 · 债权及股权模板','/v/cedar/opportunities'],['payment-pending','付款待核实','/m/subscribe/residence-01/progress'],['payment-failed','付款失败','/m/subscribe/residence-01/progress'],['payment-unknown','付款状态未知','/m/subscribe/residence-01/progress'],['registration-pending','法定登记待核实','/m/subscribe/residence-01/progress'],['delivery-pending','Token 交付待核实','/m/subscribe/residence-01/progress']];
-  return <main className="container inner-page"><p className="eyebrow">MOCK CONTROL</p><h1>独立演示控制台</h1><p>只改变本机前端 Mock 场景；不会产生真实登录、KYC、付款或登记事实。</p><div className="demo-controls">{items.map(([value,label,dest]) => <button key={value} onClick={() => set(value,dest)}>{label}</button>)}</div><p>当前页面场景：{scenario}</p><section className="content-panel demo-account"><h2>账户 / KYC / MPC 状态模拟</h2><p>先在对应 V/M 渠道完成 Mock 邮箱登录，再在此切换 Provider 结果。状态变化仅影响该渠道账户。</p><div className="demo-account-controls"><label>账户渠道<select value={scope} onChange={event => setScope(event.target.value)}><option value="/m">M 平台</option><option value="/v/harbor">V 海岚</option><option value="/v/cedar">V 杉衡</option></select></label><label>KYC 结果<select value={kyc} onChange={event => setKyc(event.target.value as KycStatus)}>{(['not-started','processing','supplement','approved','failed','expired','unknown'] as KycStatus[]).map(value => <option key={value} value={value}>{value}</option>)}</select></label><label>MPC 结果<select value={mpc} onChange={event => setMpc(event.target.value as MpcStatus)}>{(['creating','ready','failed','unknown','service-gated'] as MpcStatus[]).map(value => <option key={value} value={value}>{value}</option>)}</select></label><button className="button" type="button" disabled={!demoAccount} onClick={applyAccount}>应用 Mock 结果</button></div><p>{demoAccount ? '当前账户：'+demoAccount.email : '该渠道当前标签未登录；请先打开对应渠道的 /account。'}</p></section><a className="text-link" href="/m">进入 M 首页 →</a></main>;
+  return <main className="container inner-page"><p className="eyebrow">MOCK CONTROL</p><h1>独立演示控制台</h1><p>只改变本机前端 Mock 场景；不会产生真实登录、KYC、付款或登记事实。</p><div className="demo-controls">{items.map(([value,label,dest]) => <button key={value} onClick={() => set(value,dest)}>{label}</button>)}</div><p>当前页面场景：{scenario}</p><section className="content-panel demo-account"><h2>账户 / KYC / MPC 状态模拟</h2><p>先在对应 V/M 渠道完成 Mock 邮箱登录，再在此切换 Provider 结果。状态变化仅影响该渠道账户。</p><div className="demo-account-controls"><label>账户渠道<select value={scope} onChange={event => setScope(event.target.value)}><option value="/m">M 平台</option><option value="/v/harbor">V 海岚</option><option value="/v/cedar">V 杉衡</option></select></label><label>KYC 结果<select value={kyc} onChange={event => setKyc(event.target.value as KycStatus)}>{(['not-started','processing','supplement','approved','failed','expired','unknown'] as KycStatus[]).map(value => <option key={value} value={value}>{value}</option>)}</select></label><label>MPC 结果<select value={mpc} onChange={event => setMpc(event.target.value as MpcStatus)}>{(['creating','ready','failed','unknown','service-gated'] as MpcStatus[]).map(value => <option key={value} value={value}>{value}</option>)}</select></label><button className="button" type="button" disabled={!demoAccount} onClick={applyAccount}>应用 Mock 结果</button></div><p>{demoAccount ? '当前账户：'+demoAccount.email : '该渠道当前标签未登录；请先打开对应渠道的 /account。'}</p></section><DemoBusinessControls channel={selected} /><a className="text-link" href="/m">进入 M 首页 →</a></main>;
 }
 function App() {
   if (path === '/demo') return <Demo />;
@@ -183,6 +184,8 @@ function App() {
   const detailMatch = /^\/opportunities\/([^/]+)$/.exec(tail);
   const companyMatch = /^\/issuers\/([^/]+)$/.exec(tail);
   const stepMatch = /^\/subscribe\/([^/]+)\/(quote|documents|payment|progress)$/.exec(tail);
+  const orderMatch = /^\/investments\/orders\/([^/]+)$/.exec(tail);
+  const ticketMatch = /^\/account\/tickets\/([^/]+)$/.exec(tail);
   const accountMatch = /^\/account(\/profile|\/kyc|\/wallets|\/security|\/tickets)?$/.exec(tail);
   const visible = publicOfferings(c);
   let content: React.ReactNode;
@@ -193,8 +196,12 @@ function App() {
   else if (detailMatch) { const o = visible.find(item => item.id === detailMatch[1]); content = o ? <Detail c={c} o={o} /> : <NotFound c={c} />; }
   else if (companyMatch) content = <Company c={c} issuerId={companyMatch[1]} />;
   else if (stepMatch) { const o = visible.find(item => item.id === stepMatch[1]); content = o && o.status === '认购中' ? <Subscribe c={c} o={o} step={stepSlugs.indexOf(stepMatch[2] as typeof stepSlugs[number])} /> : <NotFound c={c} />; }
+  else if (orderMatch) content = <OrderDetailPage channel={c} id={orderMatch[1]} />;
+  else if (ticketMatch) content = <TicketDetailPage channel={c} id={ticketMatch[1]} />;
   else if (accountMatch) content = <AccountPage channel={c} section={accountMatch[1] || ''} />;
-  else if (['/investments','/support','/messages','/disclosures','/terms','/privacy'].includes(tail)) content = <Placeholder c={c} name={{ '/investments':'我的投资','/support':'帮助中心','/messages':'消息','/disclosures':'风险提示','/terms':'使用条款','/privacy':'隐私政策' }[tail]!} />;
+  else if (tail === '/investments') content = <InvestmentsPage channel={c} />;
+  else if (tail === '/support') content = <SupportPage channel={c} />;
+  else if (['/messages','/disclosures','/terms','/privacy'].includes(tail)) content = <Placeholder c={c} name={{ '/messages':'消息','/disclosures':'风险提示','/terms':'使用条款','/privacy':'隐私政策' }[tail]!} />;
   else content = <NotFound c={c} />;
   return <><Header c={c} />{content}<Footer c={c} /></>;
 }

@@ -2,6 +2,7 @@
 
 状态：待产品负责人审核。分支与 PR 均为 Draft，未合并。
 验收日期：2026-11-27
+补充实测：2026-11-28（§9.2 七项交互、公开页内部编号缺陷复测）
 验收方式：源码核对 + 自动化测试 + 真实浏览器逐页采集与真实点击。
 
 | 项目 | 值 |
@@ -11,14 +12,16 @@
 | 工作分支 | `feat/vm-investor-platform-productization` |
 | 工作树 | `.worktrees/vm-investor-platform-productization` |
 | 前置安全修复 | DEV-09 分支 `fix/vm-post-investment-safety-dev09` / PR #19 |
-| 本报告截图 | 62 张，全部为本轮同一浏览器会话采集 |
+| 本报告截图 | 76 张，全部为本轮真实浏览器采集（52 页基础采集 + 14 个补充交互页） |
 
 ## 0. 结论
 
 - 三项 FAIL（连点重复请求、异常持仓仍可领取、本金无依据可标记已付）已修复，业务函数内复核，页面按钮只是第二道提示。
 - 自动化测试 64 项全部通过，0 失败、0 跳过；`tsc --noEmit` 与 `vite build` 均成功。
-- 浏览器覆盖 52 个页面与 20 个交互场景，横向溢出 0、控制台错误 0、公开页面开发术语泄漏 0。
-- 未验证项 9 条，集中在生产服务接入、移动端、跨浏览器、无障碍与两项产品尚未批准的业务规则。未验证不等于通过。
+- 浏览器覆盖 66 个页面（52 页基础采集 + 14 页补充交互），横向溢出 0、控制台错误 0、公开页面开发术语与内部编号泄漏 0。
+- 审计 §9 列为“未充分验证”的七项交互（钱包绑定、退出登录、消息已读、披露下载、Claim 失败、KYC 往返、订单异常与工单关联）已补测：六项 PASS，下载动作与真实服务部分标 NOT VERIFIED。
+- 补充实测发现并修复一处产品化缺陷：公开订单、工单页直接显示 `mock-…` 内部编号与含 Mock 的下载文件名，现统一为 6 位参考号与净化文件名。
+- 未验证项 10 条，集中在生产服务接入、文件实际落盘、移动端、跨浏览器、无障碍与尚未批准的业务规则。未验证不等于通过。
 - 页面渲染层面 0 FAIL。真实资金、真实认证、真实登记一律没有接入，页面统一显示“待核实/尚未开放”。
 
 ## 1. 范围与边界
@@ -33,7 +36,7 @@
 
 ## 2. 变更文件
 
-修改 12 个文件（+390 / −175 行），新增 3 个路径。
+源码改动集中在 `apps/investor-portal`（14 个文件），浏览器证据为 76 张 PNG 与两份运行日志，采集脚本 2 个。下表含 2026-11-28 补充实测的改动。
 
 | 文件 | 改动 |
 | --- | --- |
@@ -50,8 +53,13 @@
 | `apps/investor-portal/src/legalDocs.ts` | 文件正文去除 Token/Offering，改为“份额/项目” |
 | `apps/investor-portal/src/data.ts` | 企业简介去除 Mock 字样 |
 | `apps/investor-portal/package.json` | `test` 脚本纳入 `postInvestmentSafety.test.mjs` |
-| `docs/INVESTOR-PLATFORMS/audits/` | 本报告、62 张截图、`run-log.json` |
+| `apps/investor-portal/src/OrdersPage.tsx` | 订单、工单公开页改显示 6 位参考号；退款引用去掉 Mock 前缀 |
+| `apps/investor-portal/src/InvestorContentPage.tsx` | 下载文件名与正文去除 Mock；`前端 Mock 演示内容`等措辞按公开文案替换 |
+| `apps/investor-portal/README.md` | 按现行事实重写：测试数量、演示隔离、本金独立账本、复现命令 |
+| `docs/INVESTOR-PLATFORMS/README.md` | 交接索引增加产品化验收与 PR #20 说明，修正源码状态描述 |
+| `docs/INVESTOR-PLATFORMS/audits/` | 本报告、76 张截图、`run-log.json`、`run-log-supplement.json` |
 | `.audit-prod/drive.mjs` | 浏览器采集脚本（可复现证据） |
+| `.audit-prod/drive2.mjs` | 补充交互采集脚本：钱包、退出、消息、下载、Claim 失败、KYC 往返、订单工单 |
 
 ## 3. 三项缺陷（另含 F04、F05）
 
@@ -65,7 +73,7 @@
 - `postInvestment.ts:108` 事件已有 `requestId` 时直接拒绝，不覆盖也不新建。
 - 资格检查失败时返回原记录，状态保持 claimable，不写任何新请求。
 现行规则：一个事件同时最多存在一个有效领取请求；processing 不能重复发起；已有请求只能查询原记录；失败或未知状态不自动重试（重试规则未获产品批准，本轮不设计）。
-证据：自动化 10 项（正常领取、连点、重入、processing、刷新恢复、ID 不被覆盖、4 种状态不重试）；截图 `44-claim-rapid-double-click`、`45-claim-processing-after-reload`、`62-claim-processing-1440`；本轮 request ID `685fe669-9abb-442d-9aa0-794f47268588`，两次点击后仍为同一个。
+证据：自动化 10 项（正常领取、连点、重入、processing、刷新恢复、ID 不被覆盖、4 种状态不重试）；截图 `44-claim-rapid-double-click`、`45-claim-processing-after-reload`、`62-claim-processing-1440`；本轮 request ID `94551b60-0f42-4d3d-bc1a-547e3cb7a0ca`，两次点击后仍为同一个。
 
 ### F02 异常持仓仍可领取已有可领取事件
 
@@ -77,7 +85,7 @@
 - `PostInvestmentPage.tsx:93` 事件详情页显示具体拒绝原因。
 - 客服工单状态不参与金融资格判断，工单关闭不会恢复领取资格。
 现行规则：任何未决履约异常、退款审核、退款处理、退款已确认、付款失败或未知、登记未确认、他人账户或他人渠道，均禁止领取；异常解除后按当时的订单状态重新判断，不改写历史事件。
-证据：自动化 13 项（10 种持仓变更、工单关闭、他人账户、无效金额）；截图 `46-claim-blocked-exception`、`47-distribution-blocked-detail`、`48-claim-restored-after-clear`；异常期间事件保持 claimable 且无 request ID，解除后生成新 ID `73c6a4e9-52d6-40b1-9b29-4572212be7dc`。
+证据：自动化 13 项（10 种持仓变更、工单关闭、他人账户、无效金额）；截图 `46-claim-blocked-exception`、`47-distribution-blocked-detail`、`48-claim-restored-after-clear`；异常期间事件保持 claimable 且无 request ID，解除后生成新 ID `edd85cd5-2677-48a9-8b35-0da83049159e`。
 
 ### F03 债权本金缺少依据仍可标记已支付
 
@@ -99,6 +107,19 @@
 
 本金详情页按依据展示关联债权、原始债权来源、示例本金、已偿还、剩余本金、本次偿还、核对时点与依据状态；无依据时全部为待核实，并明确“非法定确认”。截图 `61`。
 
+### F06 公开页显示内部编号与 Mock 文件名（2026-11-28 补充发现）
+
+原始表现：订单列表与详情显示 `mock-prod-debt-order`，工单列表与详情显示 `mock-ticket-<uuid>`，退款引用显示 `Mock-REF-…`，披露文件下载名为 `…-Mockv1.0.txt`。普通投资者可直接看到 Mock 前缀与内部记录 ID。
+此前未发现的原因：泄漏检查只匹配大小写敏感的 `Mock`、`MOCK`、`requestId`，小写 `mock-` 没有被计入，所以首轮结论“开发术语泄漏 0”覆盖不全。
+修复：
+
+- `OrdersPage.tsx:13-17` 新增 `publicRef`：对记录 ID 做 FNV-1a 摘要，取 6 位 base36 参考号，只用于展示；订单列表、订单详情、工单列表、工单详情与关联订单均改用它。
+- `OrdersPage.tsx` 退款引用展示去掉 `Mock-` 前缀。
+- `InvestorContentPage.tsx:50-52` 下载文件名去除 `Mock`，下载正文与页面一致地使用公开措辞。
+- 采集脚本把 `mock-` 加入泄漏词，检查强度高于首轮。
+现行规则：公开页不显示内部记录 ID 或 Mock 前缀；6 位参考号仅为展示，不参与业务关联，完整 ID 仍保留在本机记录与 URL 中。
+证据：截图 `27`、`28`、`40`、`75`、`76`；两轮采集 `mockLeaks` 均为 0。
+
 ## 4. UX 整改对照
 
 | 编号 | 要求 | 结果 | 证据 |
@@ -109,9 +130,9 @@
 | UX-04 | 认购结果页给出后续动作 | 已完成 | Step 4 增加“接下来可以做什么”，含订单、持仓、支持三个入口（`22`、`26`） |
 | UX-05 | M/V 首页定位区分 | 已完成 | M“浏览不同企业的资产项目”；V“探索本企业的资产项目”（`02`、`08`、`09`） |
 | UX-06 | 桌面 1280/1440/1920 网格无溢出 | 已完成 | 三档首页与列表全部 `overflow=0`（`01`、`02`、`03`、`11`、`12`、`54`、`55`） |
-| UX-07 | 经济信息按权益类型展示 | 部分完成 | 债权显示利率与分配依据，股权显示决议与利润口径；未知字段显示待核实，未推算 |
+| UX-07 | 经济信息按权益类型展示 | 已完成 | 债权：`data.ts:28` 合同固定年利率、计息规则、付息方式、本金偿还，`data.ts:27` 有效未偿本金与核对时点标“待核实”；收益参与：`data.ts:15` 参与比例、收益来源、分配频率；股权：`data.ts:80` 法律权利、权益映射、表决、股息条件、退出与锁仓。未披露项一律显示待披露/待核实，未推算（`05`、`06`） |
 | UX-08 | 去未经证实的宣传与图片误导 | 已完成 | 首页删除“合规、透明、可追溯”类表述；配图统一标注“仅作示意” |
-| UX-09 | 全站产品语言 | 已完成（公开路径） | 公开页无 Token、Offering、Mock、DEV、枚举值、request ID；文件正文改为“份额/项目”（`37`）；4 个 `/demo` 页保留 `SUBSCRIPTION · MOCK` 隔离标识，属设计内 |
+| UX-09 | 全站产品语言 | 已完成（公开路径） | 公开页无 Token、Offering、Mock、DEV、枚举值、request ID、内部编号（F06）；文件正文改为“份额/项目”，下载名与正文同步净化（`37`、`70`）；4 个 `/demo` 页保留 `SUBSCRIPTION · MOCK` 隔离标识，属设计内 |
 
 ## 5. 页面逐页判定（28 类 / 52 个页面）
 
@@ -164,6 +185,7 @@
 - 已登录但非演示模式：只显示当前记录、说明与“当前暂无可提交的认证申请”，没有提交按钮（截图 `15`）。
 - 演示模式下才出现“模拟认证申请”，且按钮文案不承诺通过；提交后状态为认证中，不会自动变为已通过。
 - 认购前置条件仍是 KYC 已通过，未通过时第 2 步按钮禁用并给出原因。
+- 往返上下文：第 2 步“查看认证状态”带 `from` 进入 `/account/kyc`，KYC 页“返回原项目”回到同一认购步骤（`73`、`74`）。为触发该状态，本次把已通过账户的 kyc 注入为认证中；产品没有“已通过→认证中”的界面入口，这一步属于构造条件，点击与跳转是真实操作。
 - 真实 KYC Provider、证件上传、结果回跳均未接入，标为 NOT VERIFIED。
 
 ## 8. 自动化测试
@@ -227,7 +249,9 @@ node --test src/domain.test.mjs src/account.test.mjs src/subscription.test.mjs \
 
 环境：真实 Chrome（headless，独立用户目录），CDP 驱动，桌面视口 1280×900、1440×1000、1920×1080，设备像素比 1；本地 Vite `127.0.0.1:5189`。
 
-采集结果：52 个页面，横向溢出 0，控制台错误 0，公开路径开发术语泄漏 0。4 个 `/demo` 演示页保留 `SUBSCRIPTION · MOCK` 标识，属于隔离设计，不计为泄漏。
+采集结果：两轮共 66 个页面，横向溢出 0，控制台错误 0，公开路径开发术语与内部编号泄漏 0。泄漏词在 2026-11-28 增加了小写 `mock-`。4 个 `/demo` 演示页保留 `SUBSCRIPTION · MOCK` 标识，属于隔离设计，不计为泄漏。
+
+### 9.1 逐页与核心业务场景（2026-11-28 最终代码重跑）
 
 | # | 场景 | 预期 | 实际 | 判定 |
 | --- | --- | --- | --- | --- |
@@ -243,10 +267,10 @@ node --test src/domain.test.mjs src/account.test.mjs src/subscription.test.mjs \
 | 10 | 认购四步（演示） | 隔离标识、四阶段独立 | 显示 MOCK 标识，进度不互相推断 | PASS |
 | 11 | 认购完成页 | 给出订单、持仓、支持入口 | 三个入口均在 | PASS |
 | 12 | 订单、持仓、收益 | 归属当前账户与渠道 | 列表与详情一致 | PASS |
-| 13 | 连点 Claim | 只产生一个请求 | 单一 ID `685fe669-9abb-442d-9aa0-794f47268588`，提示查询原请求 | PASS |
+| 13 | 连点 Claim | 只产生一个请求 | 单一 ID `94551b60-0f42-4d3d-bc1a-547e3cb7a0ca`，提示查询原请求 | PASS |
 | 14 | 领取后刷新 | 保持 processing 与原 ID | 状态与 ID 均不变 | PASS |
 | 15 | 异常持仓后领取 | 拒绝且不产生请求 | 事件仍 claimable、无 ID，提示“分配资格待核实” | PASS |
-| 16 | 异常解除后领取 | 重新按当时状态判断 | 可领取，生成新 ID `73c6a4e9-52d6-40b1-9b29-4572212be7dc` | PASS |
+| 16 | 异常解除后领取 | 重新按当时状态判断 | 可领取，生成新 ID `edd85cd5-2677-48a9-8b35-0da83049159e` | PASS |
 | 17 | 本金部分偿还 | 300.00 → 已偿 50.00 → 剩余 250.00 | 一致 | PASS |
 | 18 | 同一事件重复标记 | 不重复累计 | 数值保持 50.00 / 250.00 | PASS |
 | 19 | 超过剩余本金 | 拒绝 | 提示超过剩余本金，状态不变 | PASS |
@@ -254,11 +278,28 @@ node --test src/domain.test.mjs src/account.test.mjs src/subscription.test.mjs \
 | 21 | 利息与本金独立 | 利息状态不影响本金账 | 利息 processing，本金账不变 | PASS |
 | 22 | 空、加载、错误、404、权限态 | 有明确文案与返回入口 | 全部符合 | PASS |
 
-浏览器实测中未出现 FAIL。
+9.1 未出现 FAIL。
+
+### 9.2 补测交互（2026-11-28）
+
+环境与 9.1 相同：真实 Chrome（headless，独立用户目录），CDP 驱动，1440×1000，本地 Vite `127.0.0.1:5189`，脚本 `.audit-prod/drive2.mjs`，日志 `run-log-supplement.json`。14 个页面横向溢出 0、控制台错误 0、公开路径泄漏 0。
+
+| # | 场景 | 操作步骤 | 预期 | 实际 | 判定 | 证据 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 钱包绑定（演示路径） | `/m/account/wallets?demo=1` 先输入 `0x123` 点“创建演示挑战”；再输入 `0x8f3a4c2b1d9e7f6a5b4c3d2e1f0a9b8c7d6e5f40`，建挑战 → 模拟签名验证 → 设为示例默认钱包 | 非法地址被拒；合法地址生成挑战并标记示例验证；可切默认；不声称真实签名 | 提示“请输入 0x 开头的 40 位十六进制演示地址”；`ownVerified=true`、`defaultWallet=own`、`walletVersion` 0→1；账户概览显示“已验证自有钱包”；页面仍写明真实钱包服务未开放 | PASS（演示链路）；真实钱包连接 NOT VERIFIED | `63`、`64`；`AccountPage.tsx:66`、`account.ts:27-37` |
+| 2 | 退出登录 | `/m/account/security`（无演示参数）点击“退出当前渠道账户”，再访问 `/m/investments` | 清除当前渠道会话，回到未登录说明，受保护页拦截 | 活动账户键变为 null；`/m/account` 显示“服务暂不可用”；`/m/investments` 显示请登录并跳转 `/m/account?from=%2Fm%2Finvestments` | PASS | `65`、`66`；`AccountPage.tsx:67`、`account.ts:60` |
+| 3 | 消息已读 | `/m/messages` 打开未读“订单 · 未读”→ 标为已读 → 刷新 → 返回列表 | 详情变已读；刷新保持；列表同步；不改业务状态 | 详情“订单 · 未读”→“订单 · 已读”；本机键 `rwa-mock-message-read:…=yes`；刷新后仍已读；列表显示已读 | PASS（仅本机阅读状态，不构成法定送达） | `67`、`68`、`69`；`InvestorContentPage.tsx:29-33` |
+| 4 | 披露文件详情与下载 | `/m/disclosures` → 文件详情 → 点击“下载示例文本” | 文件可读可下载；文件名与正文不出现 Mock | 文件名 `城市住宅收益参与计划-认购协议-v1.0.txt`；链接为 `data:text/plain`；正文 226 字符，开头为项目名与“前端示例内容…不构成真实发行文件、法律意见、有效电子签署或付款指令”；无头 Chrome 未把文件写到磁盘 | PASS（详情、链接与内容）；文件保存动作 NOT VERIFIED（无头浏览器限制） | `70`；`InvestorContentPage.tsx:50-52` |
+| 5 | Claim 失败处理 | `/demo` 选 `prod-interest-1` → 执行 Mock Claim → 结果改 unknown → 再次 Claim → 打开投资者事件页 | 保留原请求；不生成新请求；页面显示待核实；不提供重试 | 首次进入 processing，请求 `c8bad658-89d4-483d-bc96-acbc9efa86c8`；改 unknown 后该 ID 不变；再次领取返回“原领取请求已存在，请查询原请求，不能覆盖或重复发起”；事件页显示“结果尚未核实，请查询原申请”，无重试按钮 | PASS（不重复发起、保留原请求）；失败后的重试规则 BLOCKED（产品未批准） | `71`、`72`；`postInvestment.ts:103-131`、`PostInvestmentPage.tsx:97` |
+| 6 | KYC 往返认购上下文 | 账户 kyc 置为认证中（构造条件）；`/m/subscribe/debt-01/documents?demo=1` 点“查看认证状态”→“返回原项目” | 进入 KYC 后能回到同一认购步骤，不丢上下文 | 跳转 `/m/account/kyc?from=%2Fm%2Fsubscribe%2Fdebt-01%2Fdocuments%3Fdemo%3D1&demo=1`；返回链接指回 `/m/subscribe/debt-01/documents?demo=1`，点击后 URL 一致 | PASS（上下文保留）；真实 KYC Provider NOT VERIFIED | `73`、`74`；`SubscriptionPage.tsx:89-90`、`AccountPage.tsx:22-23,65` |
+| 7 | 订单异常与工单关联 | `/demo` 设 `refund-review` → 订单详情“联系支持” → 填写保存 → 打开工单 | 订单显示退款待核实；工单预填并锁定关联订单；工单不改变金融状态 | `refund=under-review`、`exception=fulfillment-failed`；订单详情显示退款状态待核实；`/m/support?order=…` 预填“订单付款”且订单选择禁用；工单详情显示关联订单；工单创建后订单仍为 `under-review` | PASS | `75`、`76`；`OrdersPage.tsx:35,44-56,74` |
+| 8 | 公开页内部编号复测 | 两轮采集，泄漏词加入 `mock-` | 订单、工单、下载不再出现内部编号或 Mock | 66 页 `mockLeaks=0`；订单与工单显示 6 位参考号；退款引用与下载名已净化 | PASS（F06） | `27`、`28`、`40`、`75`、`76` |
+
+未通过项只有表中明确标注的 NOT VERIFIED 与 BLOCKED，没有把未复现内容写成 PASS。
 
 ## 10. 未验证事项
 
-以下 9 条在本轮无法证明，标为 NOT VERIFIED，不计入通过：
+审计 §9 的七项“未充分验证”交互已在 9.2 补测（六项 PASS，一项文件落盘未验证），不再列入本节。以下 10 条在本轮无法证明，标为 NOT VERIFIED，不计入通过：
 
 1. 真实支付与链上交易：未接入，页面只做说明。
 2. 真实钱包连接与签名：未接入，示例地址不代表持有权。
@@ -269,12 +310,13 @@ node --test src/domain.test.mjs src/account.test.mjs src/subscription.test.mjs \
 7. Firefox、Safari 跨浏览器：本轮只测 Chrome。
 8. 键盘操作与读屏专项：做了语义标签检查，未做完整无障碍走查。
 9. 领取失败后的重试规则：产品未批准，本轮只保证不自动生成新请求，重试流程无法验证。
+10. 披露文件的实际磁盘保存：无头 Chrome 未把 `data:` 文件写入下载目录；文件名、链接与正文已验证，真实浏览器落盘未验证。
 
 另有两项属于明确禁止范围，不实现也不验证：法定本金映射、跨事件本金去重。
 
 ## 11. 截图索引
 
-目录：`docs/INVESTOR-PLATFORMS/audits/productization/`，共 62 张，均来自本轮同一会话。
+目录：`docs/INVESTOR-PLATFORMS/audits/productization/`，共 76 张，均来自本轮真实浏览器采集：`01`～`62` 为 2026-11-28 按最终代码重跑，`63`～`76` 为同日补充交互会话，无历史轮次截图。
 
 首页与列表
 
@@ -353,6 +395,23 @@ node --test src/domain.test.mjs src/account.test.mjs src/subscription.test.mjs \
 - `54-residence-detail-1280.png` 住宅详情 1280
 - `55-residence-detail-1920.png` 住宅详情 1920
 
+补充交互（2026-11-28）
+
+- `63-wallet-binding-form-1440.png` 钱包绑定表单与真实服务说明
+- `64-wallet-verified-default-1440.png` 自有钱包示例验证并设为默认
+- `65-security-before-signout-1440.png` 退出登录前
+- `66-signout-result-1440.png` 退出后的账户入口
+- `67-messages-unread-1440.png` 消息列表（未读）
+- `68-message-marked-read-1440.png` 标为已读
+- `69-messages-read-after-reload-1440.png` 刷新后列表仍为已读
+- `70-disclosure-download-1440.png` 披露文件详情与下载按钮
+- `71-claim-refused-unknown-1440.png` 未知状态下再次领取被拒
+- `72-distribution-unknown-detail-1440.png` 投资者事件页显示待核实
+- `73-kyc-return-context-1440.png` KYC 页带返回认购上下文
+- `74-kyc-returned-to-subscribe-1440.png` 返回原认购步骤
+- `75-order-refund-review-1440.png` 订单退款待核实
+- `76-ticket-linked-order-1440.png` 工单关联原订单
+
 ## 12. 复现方式
 
 ```
@@ -368,13 +427,16 @@ node --test src/domain.test.mjs src/account.test.mjs src/subscription.test.mjs \
 # 本地启动与截图采集
 node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 5189 --strictPort
 node .audit-prod/drive.mjs
+node .audit-prod/drive2.mjs
 ```
 
-采集脚本会清空本地存储后写入种子数据（账号 `product.audit@rwa.test`、订单 `mock-prod-debt-order`、事件 `prod-interest-1` 与 `prod-principal-1`），再逐页加载并截图；`run-log.json` 记录每页路径、标题、溢出、术语检查与控制台错误。
+两个脚本都先清空本地存储并写入相同种子（账号 `product.audit@rwa.test`、订单 `mock-prod-debt-order`、事件 `prod-interest-1` 与 `prod-principal-1`）。`drive.mjs` 逐页加载并截图，`drive2.mjs` 补测钱包、退出、消息、下载、Claim 失败、KYC 往返与订单工单七项。`run-log.json` 与 `run-log-supplement.json` 分别记录路径、标题、溢出、泄漏词检查与控制台错误。
 
 ## 13. 交付状态
 
 - 分支：`feat/vm-investor-platform-productization`
 - PR：[#20](https://github.com/mirrorshang/rwa-saas-platform/pull/20) `Improve: V/M Investor Platform Productization and Audit Remediation`，Draft / Open / Unmerged
 - PR #17、PR #18、PR #19 均未修改、未合并。
+- 补充提交：`ec149f1` 公开页编号与下载净化；`a751047` 补充交互脚本、日志与 76 张截图；本报告、Investor Portal README 与交接索引在随后的文档提交中更新。PR 最新提交以 PR 页面为准。
+- 本轮复核：`tsc --noEmit` 通过；`node --test` 64/64 通过；`vite build` 48 modules、1.11 s；`git diff --check` 无空白错误。
 - 等待产品负责人审核，不进入下一阶段。

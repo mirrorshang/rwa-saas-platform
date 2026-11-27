@@ -1,5 +1,7 @@
 # RWA SaaS｜V/M 投资者平台 V1.0 产品/UI-Ready 设计索引
 
+> 2026-11-27 产品化整改增补：V/M 投资者端已在 PR #20 Draft 分支完成 F01～F05 投后安全修复与 UX-01～UX-09 全站产品化，64 项自动化测试与 52 页真实浏览器验收通过。请先阅读[产品化验收报告](audits/V-M-INVESTOR-PLATFORM-PRODUCTIZATION-ACCEPTANCE.md)、[原型运行与操作手册](../../apps/investor-portal/README.md)和[最终产品 PRD](V-M-DEV-08-FINAL-PRODUCT-PRD-20261127.md)。PR #20 未合并；真实支付、KYC、钱包、登记与收益支付仍未接入。
+
 > 2026-11-27 DEV-08 当前交接增补：V/M PC Web Mock 原型已在 PR #17 Draft 分支完成 DEV-02～07 实施与浏览器验收。请先阅读[最终产品 PRD 与工程交接](V-M-DEV-08-FINAL-PRODUCT-PRD-20261127.md)、[原型运行与操作手册](../../apps/investor-portal/README.md)和[DEV-07 综合验收](../../apps/investor-portal/qa/DEV-07-ACCEPTANCE.md)。下方 2026-11-24 的设计/开发状态是当时历史记录，不代表目前源码状态；真实资金、KYC、钱包、法律签署和登记仍未接入。
 
 > 2026-11-24｜仅 PC Web 原型｜六批设计审核已获用户批准；本目录是正式化候选规格，需随独立 GitHub Draft PR 完成一致性复核。仅为产品/UI 交付，**并非 V/M 前端已开发或生产支付、KYC、合约、钱包和法定登记已接入**。
@@ -23,6 +25,8 @@
 
 - [DEV-01 E 风格 PC Web 视觉与关键页面规格](V-M-DEV-01-E-STYLE-PC-VISUAL-SPEC-20261125.md)：用户已选择机构金融 × 资产投资商城，规定色彩/排版、V/M 首页、共用资产详情、四步认购样板和 PC 视觉验收。
 
+- [产品化整改验收](audits/V-M-INVESTOR-PLATFORM-PRODUCTIZATION-ACCEPTANCE.md)：F01～F05 修复、UX-01～UX-09 结果、28 类页面判定、自动化与浏览器证据、待决策事项。
+
 ## 2. 已审批决定摘要
 
 | 主题 | V1.0 正式产品决定 |
@@ -45,7 +49,7 @@
 
 - 产品设计：六批已确认；归档为本次 PR 审核稿。
 - UI-Ready：已编写页面/字段/交互/状态/异常与共用映射；待 PR 合并审核。
-- 源码/UI：未开发 V/M/P 独立应用；不得将组件名当成现有源码。
+- 源码/UI：V/M 投资者端已有可运行 Mock 原型（PR #17、#19、#20 均为 Draft），Issuer SaaS、官网、Platform Admin 与其他端未在本轮范围内改动。
 - 真实业务：Provider 账户和 KYC、合约/退款、USDT/Gas/Signer、法定登记、收益支付和授权工单仍需独立准入。
 - 历史代码/DEC：保持冻结与追溯；不将 2026-11-16 交付事实编辑成 V/M 已交付。
 - 设计 QA：`VM-01～VM-22` 为**待执行**验收用例，不能写 PASS。

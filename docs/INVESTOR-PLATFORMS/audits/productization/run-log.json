@@ -194,11 +194,11 @@
     },
     {
       "step": "rapid double claim",
-      "claimRecord": "当前事件：prod-interest-1 · processing · 原请求：685fe669-9abb-442d-9aa0-794f47268588 · 本次金额 8.00 U\n查看投资者页面",
+      "claimRecord": "当前事件：prod-interest-1 · processing · 原请求：94551b60-0f42-4d3d-bc1a-547e3cb7a0ca · 本次金额 8.00 U\n查看投资者页面",
       "claimNote": "原领取请求已存在，请查询原请求，不能覆盖或重复发起",
       "claimState": {
         "state": "processing",
-        "requestId": "685fe669-9abb-442d-9aa0-794f47268588"
+        "requestId": "94551b60-0f42-4d3d-bc1a-547e3cb7a0ca"
       }
     },
     {
@@ -207,7 +207,7 @@
     },
     {
       "step": "after refresh",
-      "record": "当前事件：prod-interest-1 · processing · 原请求：685fe669-9abb-442d-9aa0-794f47268588 · 本次金额 8.00 U\n查看投资者页面"
+      "record": "当前事件：prod-interest-1 · processing · 原请求：94551b60-0f42-4d3d-bc1a-547e3cb7a0ca · 本次金额 8.00 U\n查看投资者页面"
     },
     {
       "shot": "45-claim-processing-after-reload",
@@ -215,12 +215,12 @@
     },
     {
       "step": "claimable prepared before exception",
-      "record": "当前事件：mock-dist-883ad3ca-3ca5-4ded-a04d-c8b07ff16e92 · claimable · 原请求：无 · 本次金额 12.00 U\n查看投资者页面"
+      "record": "当前事件：mock-dist-39394dd1-6534-4c76-8caa-cd62d727f412 · claimable · 原请求：无 · 本次金额 12.00 U\n查看投资者页面"
     },
     {
       "step": "claim blocked on abnormal holding",
       "blockedNote": "原订单存在异常或退款待核状态，分配资格待核实，不能领取",
-      "record": "当前事件：mock-dist-883ad3ca-3ca5-4ded-a04d-c8b07ff16e92 · claimable · 原请求：无 · 本次金额 12.00 U\n查看投资者页面"
+      "record": "当前事件：mock-dist-39394dd1-6534-4c76-8caa-cd62d727f412 · claimable · 原请求：无 · 本次金额 12.00 U\n查看投资者页面"
     },
     {
       "shot": "46-claim-blocked-exception",
@@ -236,8 +236,8 @@
     },
     {
       "step": "claim after exception cleared",
-      "note": "Mock 领取已进入 processing；原请求：73c6a4e9-52d6-40b1-9b29-4572212be7dc",
-      "record": "当前事件：mock-dist-883ad3ca-3ca5-4ded-a04d-c8b07ff16e92 · processing · 原请求：73c6a4e9-52d6-40b1-9b29-4572212be7dc · 本次金额 12.00 U\n查看投资者页面"
+      "note": "Mock 领取已进入 processing；原请求：edd85cd5-2677-48a9-8b35-0da83049159e",
+      "record": "当前事件：mock-dist-39394dd1-6534-4c76-8caa-cd62d727f412 · processing · 原请求：edd85cd5-2677-48a9-8b35-0da83049159e · 本次金额 12.00 U\n查看投资者页面"
     },
     {
       "shot": "48-claim-restored-after-clear",
@@ -299,7 +299,7 @@
     },
     {
       "step": "principal over remaining",
-      "event": "mock-dist-23f8d144-0ccb-4a79-84e1-85ebc116f592",
+      "event": "mock-dist-f2c6252c-bcc4-4441-961d-916ca579dd47",
       "note": "本次偿还金额超过 Mock 剩余本金，拒绝标记已支付",
       "basis": {
         "test": 30000,
@@ -313,7 +313,7 @@
     },
     {
       "step": "principal without basis",
-      "event": "mock-dist-2882a47b-87b4-4739-b7a4-5321db7f10fe",
+      "event": "mock-dist-04638037-96ce-48d1-8caa-2e9907ac5623",
       "note": "缺少有效 Mock 本金依据；本金待核实，不能标记已支付"
     },
     {
@@ -324,7 +324,7 @@
       "step": "interest and principal independent",
       "interestState": {
         "state": "processing",
-        "requestId": "685fe669-9abb-442d-9aa0-794f47268588"
+        "requestId": "94551b60-0f42-4d3d-bc1a-547e3cb7a0ca"
       },
       "principalBasis": {
         "test": 30000,
@@ -574,7 +574,7 @@
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
-      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nACCOUNT\n\n我的账户\n\nproduct.audit@rwa.test · 总投资者平台\n\n浏览投资机会 →\n账户概览\n基本资料\n身份认证\n钱包管理\n账户安全\n我的工单\n基本资料\n邮箱\nproduct.audit@rwa.test\n账户范围\n总投资者平台\n创建时间\n2026/11/27 23:32:29\n个人 / 机构资料\n尚未提交\n\n身份资料服务尚未开放，请勿在此输入真实证件或机构材料。\n\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚",
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nACCOUNT\n\n我的账户\n\nproduct.audit@rwa.test · 总投资者平台\n\n浏览投资机会 →\n账户概览\n基本资料\n身份认证\n钱包管理\n账户安全\n我的工单\n基本资料\n邮箱\nproduct.audit@rwa.test\n账户范围\n总投资者平台\n创建时间\n2026/11/28 00:13:11\n个人 / 机构资料\n尚未提交\n\n身份资料服务尚未开放，请勿在此输入真实证件或机构材料。\n\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\17-profile-1440.png"
     },
@@ -686,7 +686,7 @@
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
-      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nMY INVESTMENTS\n\n我的投资\n\nproduct.audit@rwa.test · 当前渠道独立记录\n\n认购订单\n我的持仓\n收益与本金\n\n海岚资产\n\n城市住宅收益参与计划\n\n订单 mock-prod-equity-order · 创建于 2026/11/27 23:32:29\n\n10 份\n1,000.00 U\n履约处理中 · 本地示例\n查看订单详情 →\n\n杉衡资本\n\n企业借款债权投资计划\n\n订单 mock-prod-debt-order-2 · 创建于 2026/11/27 23:32:29\n\n10 份\n500.",
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nMY INVESTMENTS\n\n我的投资\n\nproduct.audit@rwa.test · 当前渠道独立记录\n\n认购订单\n我的持仓\n收益与本金\n\n杉衡资本\n\n企业借款债权投资计划\n\n订单编号 Z9VYRQ · 创建于 2026/11/28 00:13:11\n\n10 份\n500.00 U\n已完成 · 本地示例\n查看订单详情 →\n\n海岚资产\n\n城市住宅收益参与计划\n\n订单编号 PD1O30 · 创建于 2026/11/28 00:13:11\n\n10 份\n1,000.00 U\n履约处理中 · 本地示例\n查看订单详情 →\n\n杉衡",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\27-orders-1440.png"
     },
@@ -696,7 +696,7 @@
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
-      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的投资\n/\n订单详情\n\nORDER DETAIL\n\n企业借款债权投资计划\n\n杉衡资本 · 已完成 · 本地示例\n\n联系支持 →\n订单快照\n订单编号\nmock-prod-debt-order\n关联项目\n企业借款债权投资计划\n投资份额\n10\n认购金额\n500.00 U\n单价\n50.00 U\n创建时间\n2026/11/27 23:32:29\n待付款有效期\n2026/11/27 23:47:29\n文件确认\n仅阅读了示例文件；尚无有效法律签署\n业务进度\n\n以下为本地示例记录，不代表真实付款、配售、法定登记或权益凭证交付。\n\n付款\n实",
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的投资\n/\n订单详情\n\nORDER DETAIL\n\n企业借款债权投资计划\n\n杉衡资本 · 已完成 · 本地示例\n\n联系支持 →\n订单快照\n订单编号\nZ9VYRQ\n关联项目\n企业借款债权投资计划\n投资份额\n10\n认购金额\n500.00 U\n单价\n50.00 U\n创建时间\n2026/11/28 00:13:11\n待付款有效期\n2026/11/28 00:28:11\n文件确认\n仅阅读了示例文件；尚无有效法律签署\n业务进度\n\n以下为本地示例记录，不代表真实付款、配售、法定登记或权益凭证交付。\n\n付款\n实收已匹配\n配售\n已确认\n法定",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\28-order-detail-1440.png"
     },
@@ -716,7 +716,7 @@
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
-      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的持仓\n/\n持仓详情\n\n杉衡资本 · 债权\n\n企业借款债权投资计划\n\n以下为示例记录，仅供了解页面流程，不代表真实投资、法定登记或资金到账。\n\n法定权益\n持有人\npr***@rwa.test\n登记状态\n示例登记记录已确认；真实登记待核实\n登记份额（示例）\n10\n记录日期\n2026/11/27 23:32:31\n\n利息依据有效合同与实际未偿本金核算；本金偿还单独记录，不计入收益。\n\n权益凭证与对账\n\nToken 是权益凭证的技术交付形式，不自动等于完整法律权益。登记与凭证交付分别核对。\n\n凭证交付\n示例交付记录已确认\n当前可",
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的持仓\n/\n持仓详情\n\n杉衡资本 · 债权\n\n企业借款债权投资计划\n\n以下为示例记录，仅供了解页面流程，不代表真实投资、法定登记或资金到账。\n\n法定权益\n持有人\npr***@rwa.test\n登记状态\n示例登记记录已确认；真实登记待核实\n登记份额（示例）\n10\n记录日期\n2026/11/28 00:13:13\n\n利息依据有效合同与实际未偿本金核算；本金偿还单独记录，不计入收益。\n\n权益凭证与对账\n\nToken 是权益凭证的技术交付形式，不自动等于完整法律权益。登记与凭证交付分别核对。\n\n凭证交付\n示例交付记录已确认\n当前可",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\30-holding-detail-1440.png"
     },
@@ -786,7 +786,7 @@
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
-      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n公告与披露\n/\n文件详情\n\nDOCUMENT\n\n认购协议\n\n城市住宅收益参与计划 · 示例 v1.0\n\n本文件仅为 城市住宅收益参与计划 的前端 示例 演示内容，不构成真实发行文件、法律意见、有效电子签署或付款指令。\n\n发行企业：海岚资产；项目：城市住宅收益参与计划；权益类型：收益参与权。\n\n示例单价：100.00 U / 份额；示例最低认购额：1000.00 U。实际报价、容量和资格须由正式系统重新核验。\n\n模拟确认仅用于展示文件阅读与订单步骤，不产生法律约束力；真实签署必须由获准服务生成可核验证据。\n\n!\n查看或下载仅供",
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n公告与披露\n/\n文件详情\n\nDOCUMENT\n\n认购协议\n\n城市住宅收益参与计划 · 示例 v1.0\n\n本文件仅为 城市住宅收益参与计划 的前端示例内容，不构成真实发行文件、法律意见、有效电子签署或付款指令。\n\n发行企业：海岚资产；项目：城市住宅收益参与计划；权益类型：收益参与权。\n\n示例单价：100.00 U / 份额；示例最低认购额：1000.00 U。实际报价、容量和资格须由正式系统重新核验。\n\n模拟确认仅用于展示文件阅读与订单步骤，不产生法律约束力；真实签署必须由获准服务生成可核验证据。\n\n!\n查看或下载仅供演示；阅",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\37-disclosure-document-1440.png"
     },
@@ -806,17 +806,17 @@
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
-      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nSUPPORT\n\n帮助与客服\n\n订单、付款、钱包及持仓问题可关联当前账户记录保存本地咨询记录；尚无真实客服服务。\n\n提交工单\n\n联系邮箱：product.audit@rwa.test。请勿填写私钥、助记词、验证码或真实敏感身份资料。\n\n问题类型\n订单付款\n钱包\nKYC\n收益持仓\n披露\n其他\n关联订单\n不关联订单\n城市住宅收益参与计划 · mock-prod-equity-order\n企业借款债权投资计划 · mock-prod-debt-order-2\n企业借款债权投资计划 · mock-prod-debt-order\n问",
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nSUPPORT\n\n帮助与客服\n\n订单、付款、钱包及持仓问题可关联当前账户记录保存本地咨询记录；尚无真实客服服务。\n\n提交工单\n\n联系邮箱：product.audit@rwa.test。请勿填写私钥、助记词、验证码或真实敏感身份资料。\n\n问题类型\n订单付款\n钱包\nKYC\n收益持仓\n披露\n其他\n关联订单\n不关联订单\n企业借款债权投资计划 · mock-prod-debt-order\n城市住宅收益参与计划 · mock-prod-equity-order\n企业借款债权投资计划 · mock-prod-debt-order-2\n问",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\39-support-1440.png"
     },
     {
       "name": "40-ticket-detail-1440",
-      "url": "/m/account/tickets/mock-ticket-80312896-db16-41b7-b4ad-90ed33c7aee3",
+      "url": "/m/account/tickets/mock-ticket-774d3983-e267-4f39-9d82-e99e611f8dbc",
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
-      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的工单\n/\n工单详情\n\nSUPPORT TICKET\n\n其他\n\nmock-ticket-80312896-db16-41b7-b4ad-90ed33c7aee3 · 待处理\n\n问题与回复\n\n需要核对订单付款状态与后续登记进度，请协助查询原记录。\n\n联系邮箱\nproduct.audit@rwa.test\n关联订单\n无\n关联项目\n无\n交易哈希\n未提供\n截图文件名\n未提供\n更新时间\n2026/11/27 23:32:53\n回复或补件说明\n保存本地回复\n原业务状态\n\n工单关闭不代表退款、付款、登记或权益凭证交付完成。\n\n!\n请以订",
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的工单\n/\n工单详情\n\nSUPPORT TICKET\n\n其他\n\n编号 9BAL9K · 待处理\n\n问题与回复\n\n需要核对订单付款状态与后续登记进度，请协助查询原记录。\n\n联系邮箱\nproduct.audit@rwa.test\n关联订单\n无\n关联项目\n无\n交易哈希\n未提供\n截图文件名\n未提供\n更新时间\n2026/11/28 00:13:35\n回复或补件说明\n保存本地回复\n原业务状态\n\n工单关闭不代表退款、付款、登记或权益凭证交付完成。\n\n!\n请以订单详情中的独立业务状态为准；当前记录仅为本地示例。\nRWA Invest\n\n真",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\40-ticket-detail-1440.png"
     },

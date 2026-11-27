@@ -139,3 +139,47 @@ PR #17 早期评审所提 `/demo` 公共入口、M 企业直达守卫、跨渠�
 当前 HEAD 的既有真实截图：[M 首页 1280](../../../apps/investor-portal/qa/screenshots/dev07-m-home-1280.png)、[M 列表 1280](../../../apps/investor-portal/qa/screenshots/dev07-m-list-1280.png)、[V 海岚首页 1440](../../../apps/investor-portal/qa/screenshots/dev07-v-harbor-home-1440.png)、[V 杉衡列表 1440](../../../apps/investor-portal/qa/screenshots/dev07-v-cedar-list-1440.png)、[M 详情 1920](../../../apps/investor-portal/qa/screenshots/dev07-m-detail-1920.png)、[M 首页 1920](../../../apps/investor-portal/qa/screenshots/dev07-m-home-1920.png)。这些截图为 DEV-07 留存，**非本次新采集**。本次浏览器实操观察了 M 首页、列表、住宅详情及认购各阶段，但当前浏览器截图工具未提供可提交的本地文件路径；故不伪称已交付新截图。待具备截图持久化后补本次路径截图，至少包括首页 3 宽度、V/M 首页、列表、住宅/债权详情、登录/KYC、认购四步、订单/持仓/收益及异常态。
 
 复现命令（使用已有依赖）：在 PR #17 原工作树 `apps/investor-portal` 运行 `node_modules/.bin/vite.cmd --host 127.0.0.1 --port 5186 --strictPort`；访问上述 URL。首次登录用任意演示邮箱和页面显示的固定演示码；`/demo` 仅供测试资格与状态。该流程不会连接真实服务。当前审计分支没有更改运行依赖、源代码或业务数据。
+
+## I. PR #18 补充验收（2026-11-27，本轮新证据）
+
+本节补足 H 节当时缺少的截图和 F 节列为“未复测”的投后场景；**H 节对原审计阶段的描述仍保留，不能把 DEV-07 截图算成本轮证据**。运行源为干净的 PR #17 工作树，HEAD `b4fc70db4d76dfa3559884b58e35ecb7d3fd1f6d`；本轮在独立 Chrome 浏览器配置中访问 `http://127.0.0.1:5186`，通过页面完成 M 渠道 Mock 邮箱登录、`/demo` 设置 KYC/MPC、债权 `debt-01` 四步认购、订单付款/配售/法定登记/交付，得到 10 Token、认购金额 500.00 U 的独立演示订单 `mock-c6e7eb08-1532-40db-9c0c-9bf3c3cdba78`。该金额是**认购金额，不是已核准的投资者名义本金**。测试账户为 `vm-audit-20261127@example.test`；没有触碰用户原浏览器账户或真实服务。
+
+判断依据：[最终 PRD P11](../V-M-DEV-08-FINAL-PRODUCT-PRD-20261127.md#p11-收益与债权本金事件详情)要求本金与收益独立汇总、异常/退款待核持仓不形成可支付资格、Claim 仅对本批 Claim 且可领取事件开放、处理中不重复领取；[共用 PRD 第 8 节](../V-M-SHARED-UI-READY-PRD-v0.1.md#8-收益本金和领取v-14m-15)要求债权本金单列应偿/已偿/未偿、按实际未偿本金计息，并处理原 Claim Unknown。每 Token 名义本金映射与生产 Claim/重试条件仍待正式确认，以下不据认购金额自行推定法定本金上限或生产重试规则。**PASS 只表示下表所述 Mock 行为本轮实际复现。**
+
+### I.1 本金偿还专项
+
+截图均在本轮运行的 Chrome 中采集，路径位于下表；源码定位均指向上述 PR #17 HEAD。
+
+| 场景与操作步骤 | 预期结果（现行 PRD） | 实际结果 | 判定 | 截图证据 | 关联源码 | 对原审计结论的影响 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 正常还本：在 `/demo` 对已登记债权持仓创建 `principal`/Push/100 U 事件，应用 `paid`，打开收益页。 | 本金单列，不计入收益。 | “已偿债权本金”100.00 U，“已支付收益”0.00 U；事件详情列明已实付。 | **PASS**（仅 Mock 分账） | [100 U 还本](screenshots/20261127-supplement/m-principal-paid-100-1440.png) | [postInvestment.ts：创建、汇总](../../../apps/investor-portal/src/postInvestment.ts)、[PostInvestmentPage.tsx：收益页](../../../apps/investor-portal/src/PostInvestmentPage.tsx) | 原“本金/收益独立汇总”的静态判断得到实操支持。 |
+| 同一事件重复执行：对同一事件 ID `mock-dist-b58e36f3-4a9e-45f8-b74f-df96d329e589` 再应用一次 `paid`，刷新收益页。 | 同一事件不重复累计。 | 汇总仍为 100.00 U，仅一条事件；按同一 ID 覆写保存。 | **PASS**（仅相同事件 ID） | [重复后汇总仍为 100 U](screenshots/20261127-supplement/m-principal-paid-100-1440.png) | [postInvestment.ts：distributionKey、saveDistribution、paidPrincipalCents](../../../apps/investor-portal/src/postInvestment.ts) | 补实同 ID 幂等表象；不同 ID 但同一真实还本指令的去重 **NOT VERIFIED**，源码无业务事件键。 |
+| 多次还本与利息：再创建 150 U 本金和 5 U 债息，均应用 `paid`，打开收益页。 | 多笔已偿本金可累计；债息独立。按共用 PRD 还应有应偿、未偿及部分偿还口径。 | 已偿本金 250.00 U、已支付收益 5.00 U，页面无本债权的应偿/未偿本金或部分偿还字段。 | **PASS**（累计分账）；**FAIL**（剩余本金展示） | [两次还本与利息](screenshots/20261127-supplement/m-principal-two-interest-1440.png) | [postInvestment.ts：两类汇总](../../../apps/investor-portal/src/postInvestment.ts)、[PostInvestmentPage.tsx：ReturnsPanel](../../../apps/investor-portal/src/PostInvestmentPage.tsx) | 原“本金事件未创建”已补测；新增明确的本金余额信息缺口。真实剩余本金数值因法定本金映射缺失为 **NOT VERIFIED**。 |
+| 超额试探：在上述 250 U 已偿后，再创建单笔 600 U 本金并应用 `paid`；比较 500 U 认购金额及页面汇总。 | 应以获核实的应偿/未偿本金判断可付金额，不能无依据宣告合法余额；缺权威值应待核实。 | 控件接受 600 U 并标“已支付”，累计已偿 850 U；无本金上限、未偿余额或权威本金核对。**500 U 仅是认购金额，不能据此证明法定超偿。** | **FAIL**（缺余额校验与依据仍可标已支付）；**NOT VERIFIED**（是否超过法定剩余本金） | [850 U 汇总](screenshots/20261127-supplement/m-principal-over-order-1440.png)、[600 U 事件详情](screenshots/20261127-supplement/m-principal-over-event-1440.png)、[500 U 订单](screenshots/20261127-supplement/m-orders-1440.png) | [postInvestment.ts：createDemoDistribution、applyDemoDistributionState](../../../apps/investor-portal/src/postInvestment.ts)、[SubscriptionPage.tsx：认购金额](../../../apps/investor-portal/src/SubscriptionPage.tsx) | 补充原审计未覆盖的本金校验风险；不将演示金额误写为法定债权本金。 |
+
+### I.2 收益 Claim 专项
+
+| 场景与操作步骤 | 预期结果（现行 PRD） | 实际结果 | 判定 | 截图证据 | 关联源码 | 对原审计结论的影响 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 可领取与普通领取：创建 10 U 债息 Claim 事件，设为 `claimable`，从详情点击“模拟发起领取”。 | 本批为 Claim 且可领取时允许发起，随后为处理中。 | 初始可领取 10 U、已实付 0；点击后为 `processing`，可领取 0，显示原请求。 | **PASS**（单次 Mock 状态转换） | [领取前](screenshots/20261127-supplement/m-claim-ready-1440.png)、[处理中](screenshots/20261127-supplement/m-claim-processing-1440.png) | [PostInvestmentPage.tsx：DistributionDetailPage](../../../apps/investor-portal/src/PostInvestmentPage.tsx)、[postInvestment.ts：beginMockClaim](../../../apps/investor-portal/src/postInvestment.ts) | 将原“领取未复测”改为已实操；不推断真实支付成功。 |
+| 连续点击同一按钮：在一次浏览器任务中对可领取按钮快速连续触发两次，并记录本轮页面存储写入。 | 同一收益事件处理中不得形成第二个领取请求。 | 同一事件先后写入请求 ID `a97bfef9-10a0-4e7b-86e3-afd974b0d14c` 与 `febccdfa-3a09-4cdf-9bca-f915cdd092eb`；后者覆盖前者，界面只留后者。该操作用浏览器 DOM 连点并临时观测 `Storage.setItem` 写入，未修改源码。 | **FAIL** | [连点后处理态与最终请求](screenshots/20261127-supplement/m-claim-processing-1440.png)；两次写入 ID 见本行实测记录 | [PostInvestmentPage.tsx：claim 回调](../../../apps/investor-portal/src/PostInvestmentPage.tsx)、[postInvestment.ts：beginMockClaim、saveDistribution](../../../apps/investor-portal/src/postInvestment.ts) | 新增可复现的重复请求 P1 风险；原“未复测”结论被实测失败替代。 |
+| 处理中再次进入、刷新：连点后刷新详情，再找领取入口并比对请求 ID。 | 处理中只查询原请求，不再展示领取入口。 | 仍为 `processing`，原请求保持第二个 ID；领取按钮已消失。 | **PASS**（刷新后的界面守卫）；不抵消上一行连点失败 | [刷新后处理态](screenshots/20261127-supplement/m-claim-processing-refresh-1440.png) | [PostInvestmentPage.tsx：按钮条件](../../../apps/investor-portal/src/PostInvestmentPage.tsx)、[postInvestment.ts：状态持久化](../../../apps/investor-portal/src/postInvestment.ts) | 确认持久化后的守卫有效，但事件处理函数的瞬时竞态仍在。 |
+| 已领取金额重入：通过 `/demo` 把 10 U 事件应用为 `paid`，刷新详情。 | 已支付金额不再计入可领取，不可再发 Claim。 | 已实付 10 U、可领取 0、未支付 0；无领取按钮。 | **PASS**（当前 `paid` 状态的 UI） | [已支付事件](screenshots/20261127-supplement/m-claim-paid-1440.png) | [postInvestment.ts：distributionAmounts](../../../apps/investor-portal/src/postInvestment.ts)、[PostInvestmentPage.tsx：按钮条件](../../../apps/investor-portal/src/PostInvestmentPage.tsx) | 支持原“已付与可领分离”判断；真实到账未验证。 |
+| 领取失败后重试：将另一个 7 U Claim 事件设为 `unknown`，查看详情是否提供重试；查找 `/demo` 结果枚举。 | 原 Claim Unknown 应先核原请求；失败及重试条件需按批准规则判定。 | Unknown 时可领取 0、已实付待核实、无领取按钮；当前演示无 `failed` 事件结果及可执行的失败后重试路径。 | **NOT VERIFIED**（失败重试）；Unknown 阻止盲点符合当前页面表现 | [Unknown 事件](screenshots/20261127-supplement/m-claim-unknown-1440.png) | [postInvestment.ts：DistributionState、distributionAmounts](../../../apps/investor-portal/src/postInvestment.ts)、[PostInvestmentPage.tsx：演示状态控件](../../../apps/investor-portal/src/PostInvestmentPage.tsx) | 原审计仍不得给“失败后重试”PASS；需产品确认失败定义与原请求查询规则。 |
+| 异常持仓与已有事件：先创建 9 U 可领取债息；再在 `/demo` 把来源订单设“履约异常，退款未核实”，回到事件详情点击领取。 | 最终 PRD P11：异常/退款待核持仓不应形成可支付资格。 | 持仓页明确提示“分配资格待核实”，但已有事件仍显示可领取 9 U，按钮可点，状态转为 `processing` 并生成请求 ID。 | **FAIL** | [异常持仓](screenshots/20261127-supplement/m-holding-exception-1440.png)、[仍可领取](screenshots/20261127-supplement/m-claim-abnormal-holding-ready-1440.png)、[领取已发起](screenshots/20261127-supplement/m-claim-abnormal-holding-processing-1440.png) | [postInvestment.ts：holdingNeedsReview、ownDistributions、beginMockClaim](../../../apps/investor-portal/src/postInvestment.ts)、[PostInvestmentPage.tsx：详情领取](../../../apps/investor-portal/src/PostInvestmentPage.tsx) | 原“异常持仓不能**创建**收益”仍成立，但不能延伸为已有 Claim 被阻断；新增 P1 缺口。 |
+| 异常持仓新建事件：保持同一订单异常，从 `/demo` 再点“创建 Mock 事件”。 | 异常/退款待核持仓不得形成新分配事件。 | 事件数 7→7，提示“原订单权益状态待核实，不能创建分配演示”。 | **PASS** | [新建被阻止](screenshots/20261127-supplement/m-demo-abnormal-event-blocked-1440.png) | [postInvestment.ts：createDemoDistribution](../../../apps/investor-portal/src/postInvestment.ts) | 证实原报告既有结论仅在创建路径成立。 |
+
+### I.3 本轮浏览器视觉证据索引
+
+所有下列 PNG 均由本轮在实际运行的独立 Chrome 中以页面视口捕获，非 DEV-07 留存图；PC 视口高度为 1000/1100 px。截图记录页面当时状态，金融状态均为本机 Mock。
+
+| 页面/状态 | 本轮截图 |
+| --- | --- |
+| M 首页 1280 / 1440 / 1920 | [1280](screenshots/20261127-supplement/m-home-1280.png) · [1440](screenshots/20261127-supplement/m-home-1440.png) · [1920](screenshots/20261127-supplement/m-home-1920.png) |
+| V 首页两企业 | [海岚](screenshots/20261127-supplement/v-harbor-home-1440.png) · [杉衡](screenshots/20261127-supplement/v-cedar-home-1440.png) |
+| M 投资机会与详情 | [机会列表](screenshots/20261127-supplement/m-opportunities-1440.png) · [住宅详情](screenshots/20261127-supplement/m-residence-detail-1440.png) · [债权详情](screenshots/20261127-supplement/m-debt-detail-1440.png) |
+| 登录与 KYC | [登录](screenshots/20261127-supplement/m-login-1440.png) · [KYC 未开始](screenshots/20261127-supplement/m-kyc-1440.png) · [KYC Mock 通过](screenshots/20261127-supplement/m-kyc-approved-1440.png) |
+| 债权认购四步、完成 | [Step 1](screenshots/20261127-supplement/m-debt-subscribe-step1-1440.png) · [Step 2](screenshots/20261127-supplement/m-debt-subscribe-step2-1440.png) · [Step 3](screenshots/20261127-supplement/m-debt-subscribe-step3-1440.png) · [Step 4](screenshots/20261127-supplement/m-debt-subscribe-step4-1440.png) · [完成](screenshots/20261127-supplement/m-debt-subscribe-complete-1440.png) |
+| 投后及主要异常 | [订单](screenshots/20261127-supplement/m-orders-1440.png) · [持仓](screenshots/20261127-supplement/m-holdings-1440.png) · [收益空态](screenshots/20261127-supplement/m-returns-empty-1440.png) · [本金及利息](screenshots/20261127-supplement/m-principal-two-interest-1440.png) · [异常持仓](screenshots/20261127-supplement/m-holding-exception-1440.png) · [Claim Unknown](screenshots/20261127-supplement/m-claim-unknown-1440.png) |
+
+**补充结论：**A 节“尚未达到正式展示标准”不变。本轮证明部分 Mock 分账和刷新守卫有效，也复现了快速连点覆盖原 Claim 请求、异常持仓仍可领取已有事件、本金偿还缺权威余额与校验。它们是审计发现，**不是本 PR 的 UI 修复授权或生产规则变更**。PR #18 保持 Draft/Open/Unmerged，交产品负责人审核。

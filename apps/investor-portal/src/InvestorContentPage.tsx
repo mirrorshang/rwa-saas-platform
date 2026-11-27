@@ -9,7 +9,7 @@ import { readAllOrders } from './subscription.ts';
 import { readAllTickets } from './tickets.ts';
 
 const date = (value:string) => value.slice(0,10);
-const publicText = (value:string) => value.replaceAll('Mock', '示例').replaceAll('Offering', '项目');
+const publicText = (value:string) => value.replaceAll('前端 Mock 演示内容', '前端示例内容').replaceAll('Mock 文本', '示例文本').replaceAll('Mock', '示例').replaceAll('Offering', '项目');
 const offeringTitle = (id?:string) => id ? offerings.find(item => item.id === id)?.title || '项目信息待核实' : '账户通知';
 const docUrl = (channel:Channel,offeringId:string,index:number) => basePath(channel)+'/disclosures/'+offeringId+'/'+index;
 const noticeUrl = (channel:Channel,id:string) => basePath(channel)+'/disclosures/announcements/'+id;
@@ -47,8 +47,8 @@ export function DisclosureDocumentPage({channel,offeringId,index,noListings=fals
   const document=offering?.documents[index];
   if(!offering||!document) return <main className="container inner-page"><div className="empty"><h1>文件不可访问</h1><p>文件不存在，或当前渠道及账户无权查看。</p><a className="button button-secondary" href={root+'/disclosures'}>返回公告与披露</a></div></main>;
   const lines=mockDocumentText(offering,document.name);
-  const filename=offering.title+'-'+document.name+'-'+document.version.replace(/[^a-zA-Z0-9.-]/g,'')+'.txt';
-  const download='data:text/plain;charset=utf-8,'+encodeURIComponent([offering.title,document.name+' · '+document.version,...lines].join('\n\n'));
+  const filename=offering.title+'-'+document.name+'-'+document.version.replace(/Mock\s*/gi,'').replace(/[^a-zA-Z0-9.-]/g,'')+'.txt';
+  const download='data:text/plain;charset=utf-8,'+encodeURIComponent([publicText(offering.title),publicText(document.name+' · '+document.version),...lines.map(publicText)].join('\n\n'));
   return <main className="container inner-page"><div className="breadcrumb"><a href={root+'/disclosures'}>公告与披露</a><span>/</span><span>文件详情</span></div><section className="content-panel disclosure-detail"><p className="eyebrow">DOCUMENT</p><h1>{document.name}</h1><p>{offering.title} · {publicText(document.version)}</p>{lines.map((line,i)=><p key={i}>{publicText(line)}</p>)}<div className="notice"><span>!</span>查看或下载仅供演示；阅读不代表有效签署或法定送达。</div><a className="button button-secondary" href={download} download={filename}>下载示例文本</a></section></main>;
 }
 

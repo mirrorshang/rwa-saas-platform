@@ -83,6 +83,6 @@ export const offerings: Offering[] = [
   }
 ];
 export const issuers = {
-  harbor: { name: '海岚资产', legal: '海岚资产管理有限公司（演示）', region: '中国 · 上海（演示）', business: '不动产资产管理与运营（演示）', disclosure: '登记与 KYB 材料尚未授权公开', intro: '专注于住宅物业资产管理与长期运营。本页企业信息为虚构 Mock 示例。' },
-  cedar: { name: '杉衡资本', legal: '杉衡资本管理有限公司（演示）', region: '中国 · 深圳（演示）', business: '企业融资与权益投资（演示）', disclosure: '登记与 KYB 材料尚未授权公开', intro: '关注企业融资与资产权益项目。本页企业信息为虚构 Mock 示例。' }
+  harbor: { name: '海岚资产', legal: '海岚资产管理有限公司（演示）', region: '中国 · 上海（演示）', business: '不动产资产管理与运营（演示）', disclosure: '登记与 KYB 材料尚未授权公开', intro: '专注于住宅物业资产管理与长期运营。本页企业信息为示例内容。' },
+  cedar: { name: '杉衡资本', legal: '杉衡资本管理有限公司（演示）', region: '中国 · 深圳（演示）', business: '企业融资与权益投资（演示）', disclosure: '登记与 KYB 材料尚未授权公开', intro: '关注企业融资与资产权益项目。本页企业信息为示例内容。' }
 };

@@ -1,0 +1,944 @@
+{
+  "log": [
+    {
+      "seeded": {
+        "account": "product.audit@rwa.test",
+        "debtOrder": "mock-prod-debt-order",
+        "debtOrder2": "mock-prod-debt-order-2",
+        "equityOrder": "mock-prod-equity-order",
+        "basis": 30000
+      }
+    },
+    {
+      "shot": "01-m-home-1280",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\01-m-home-1280.png"
+    },
+    {
+      "shot": "02-m-home-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\02-m-home-1440.png"
+    },
+    {
+      "shot": "03-m-home-1920",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\03-m-home-1920.png"
+    },
+    {
+      "shot": "04-m-opportunities-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\04-m-opportunities-1440.png"
+    },
+    {
+      "shot": "05-residence-detail-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\05-residence-detail-1440.png"
+    },
+    {
+      "rightsChain": true,
+      "rightsPreview": "投资者权益与收益安排\n\n下面四项分别说明：投资什么项目、取得多少份额、支付多少示例金额、获得什么合同权益。\n\n项目\n城市住宅收益参与计划\n发行企业 海岚资产\n投资份额\n10 份起\n每份 100.00 U · 示例\n认购金额\n1,000.00 U 起\n示例金额，不含后续费用\n取得的合同权益\n收益参与权\n以有效合同、法定登记与披露文件为准\n\n份额凭证与链上记录是权益的技术形式，不自动等于企业股东身份或"
+    },
+    {
+      "shot": "06-debt-detail-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\06-debt-detail-1440.png"
+    },
+    {
+      "shot": "07-issuer-company-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\07-issuer-company-1440.png"
+    },
+    {
+      "shot": "08-v-harbor-home-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\08-v-harbor-home-1440.png"
+    },
+    {
+      "shot": "09-v-cedar-home-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\09-v-cedar-home-1440.png"
+    },
+    {
+      "shot": "10-v-harbor-opportunities-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\10-v-harbor-opportunities-1440.png"
+    },
+    {
+      "shot": "11-m-opportunities-1280",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\11-m-opportunities-1280.png"
+    },
+    {
+      "shot": "12-m-opportunities-1920",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\12-m-opportunities-1920.png"
+    },
+    {
+      "shot": "13-login-service-closed-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\13-login-service-closed-1440.png"
+    },
+    {
+      "shot": "14-account-overview-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\14-account-overview-1440.png"
+    },
+    {
+      "shot": "15-kyc-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\15-kyc-1440.png"
+    },
+    {
+      "shot": "16-wallets-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\16-wallets-1440.png"
+    },
+    {
+      "shot": "17-profile-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\17-profile-1440.png"
+    },
+    {
+      "shot": "18-security-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\18-security-1440.png"
+    },
+    {
+      "shot": "19-subscribe-quote-public-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\19-subscribe-quote-public-1440.png"
+    },
+    {
+      "shot": "20-subscribe-documents-public-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\20-subscribe-documents-public-1440.png"
+    },
+    {
+      "shot": "21-subscribe-payment-public-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\21-subscribe-payment-public-1440.png"
+    },
+    {
+      "shot": "22-subscribe-progress-public-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\22-subscribe-progress-public-1440.png"
+    },
+    {
+      "shot": "23-subscribe-quote-demo-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\23-subscribe-quote-demo-1440.png"
+    },
+    {
+      "shot": "24-subscribe-documents-demo-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\24-subscribe-documents-demo-1440.png"
+    },
+    {
+      "shot": "25-subscribe-payment-demo-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\25-subscribe-payment-demo-1440.png"
+    },
+    {
+      "shot": "26-subscribe-progress-demo-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\26-subscribe-progress-demo-1440.png"
+    },
+    {
+      "progressComplete": true,
+      "entries": true
+    },
+    {
+      "shot": "27-orders-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\27-orders-1440.png"
+    },
+    {
+      "shot": "28-order-detail-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\28-order-detail-1440.png"
+    },
+    {
+      "shot": "29-holdings-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\29-holdings-1440.png"
+    },
+    {
+      "shot": "30-holding-detail-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\30-holding-detail-1440.png"
+    },
+    {
+      "shot": "31-returns-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\31-returns-1440.png"
+    },
+    {
+      "shot": "32-distribution-interest-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\32-distribution-interest-1440.png"
+    },
+    {
+      "shot": "33-distribution-principal-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\33-distribution-principal-1440.png"
+    },
+    {
+      "shot": "34-messages-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\34-messages-1440.png"
+    },
+    {
+      "shot": "35-message-detail-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\35-message-detail-1440.png"
+    },
+    {
+      "shot": "36-disclosures-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\36-disclosures-1440.png"
+    },
+    {
+      "shot": "37-disclosure-document-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\37-disclosure-document-1440.png"
+    },
+    {
+      "shot": "38-announcement-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\38-announcement-1440.png"
+    },
+    {
+      "shot": "39-support-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\39-support-1440.png"
+    },
+    {
+      "ticketCreated": true
+    },
+    {
+      "shot": "40-ticket-detail-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\40-ticket-detail-1440.png"
+    },
+    {
+      "shot": "41-terms-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\41-terms-1440.png"
+    },
+    {
+      "shot": "42-privacy-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\42-privacy-1440.png"
+    },
+    {
+      "shot": "43-not-found-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\43-not-found-1440.png"
+    },
+    {
+      "step": "rapid double claim",
+      "claimRecord": "当前事件：prod-interest-1 · processing · 原请求：94551b60-0f42-4d3d-bc1a-547e3cb7a0ca · 本次金额 8.00 U\n查看投资者页面",
+      "claimNote": "原领取请求已存在，请查询原请求，不能覆盖或重复发起",
+      "claimState": {
+        "state": "processing",
+        "requestId": "94551b60-0f42-4d3d-bc1a-547e3cb7a0ca"
+      }
+    },
+    {
+      "shot": "44-claim-rapid-double-click",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\44-claim-rapid-double-click.png"
+    },
+    {
+      "step": "after refresh",
+      "record": "当前事件：prod-interest-1 · processing · 原请求：94551b60-0f42-4d3d-bc1a-547e3cb7a0ca · 本次金额 8.00 U\n查看投资者页面"
+    },
+    {
+      "shot": "45-claim-processing-after-reload",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\45-claim-processing-after-reload.png"
+    },
+    {
+      "step": "claimable prepared before exception",
+      "record": "当前事件：mock-dist-39394dd1-6534-4c76-8caa-cd62d727f412 · claimable · 原请求：无 · 本次金额 12.00 U\n查看投资者页面"
+    },
+    {
+      "step": "claim blocked on abnormal holding",
+      "blockedNote": "原订单存在异常或退款待核状态，分配资格待核实，不能领取",
+      "record": "当前事件：mock-dist-39394dd1-6534-4c76-8caa-cd62d727f412 · claimable · 原请求：无 · 本次金额 12.00 U\n查看投资者页面"
+    },
+    {
+      "shot": "46-claim-blocked-exception",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\46-claim-blocked-exception.png"
+    },
+    {
+      "step": "blocked detail page",
+      "hasReason": true
+    },
+    {
+      "shot": "47-distribution-blocked-detail",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\47-distribution-blocked-detail.png"
+    },
+    {
+      "step": "claim after exception cleared",
+      "note": "Mock 领取已进入 processing；原请求：edd85cd5-2677-48a9-8b35-0da83049159e",
+      "record": "当前事件：mock-dist-39394dd1-6534-4c76-8caa-cd62d727f412 · processing · 原请求：edd85cd5-2677-48a9-8b35-0da83049159e · 本次金额 12.00 U\n查看投资者页面"
+    },
+    {
+      "shot": "48-claim-restored-after-clear",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\48-claim-restored-after-clear.png"
+    },
+    {
+      "shot": "49-state-upcoming-detailed-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\49-state-upcoming-detailed-1440.png"
+    },
+    {
+      "shot": "50-state-no-listings-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\50-state-no-listings-1440.png"
+    },
+    {
+      "shot": "51-state-loading-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\51-state-loading-1440.png"
+    },
+    {
+      "shot": "52-state-error-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\52-state-error-1440.png"
+    },
+    {
+      "shot": "53-state-guest-protected-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\53-state-guest-protected-1440.png"
+    },
+    {
+      "shot": "54-residence-detail-1280",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\54-residence-detail-1280.png"
+    },
+    {
+      "shot": "55-residence-detail-1920",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\55-residence-detail-1920.png"
+    },
+    {
+      "step": "principal partial repayment",
+      "note": "本金支付已核对：已偿 50.00 U，剩余 250.00 U",
+      "basis": {
+        "test": 30000,
+        "repaid": 5000,
+        "remaining": 25000
+      }
+    },
+    {
+      "shot": "56-principal-partial-repayment",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\56-principal-partial-repayment.png"
+    },
+    {
+      "step": "principal repeat same event",
+      "note": "本金支付已核对：已偿 50.00 U，剩余 250.00 U",
+      "basis": {
+        "test": 30000,
+        "repaid": 5000,
+        "remaining": 25000
+      }
+    },
+    {
+      "shot": "57-principal-repeat-same-event",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\57-principal-repeat-same-event.png"
+    },
+    {
+      "step": "principal over remaining",
+      "event": "mock-dist-f2c6252c-bcc4-4441-961d-916ca579dd47",
+      "note": "本次偿还金额超过 Mock 剩余本金，拒绝标记已支付",
+      "basis": {
+        "test": 30000,
+        "repaid": 5000,
+        "remaining": 25000
+      }
+    },
+    {
+      "shot": "58-principal-over-repayment-rejected",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\58-principal-over-repayment-rejected.png"
+    },
+    {
+      "step": "principal without basis",
+      "event": "mock-dist-04638037-96ce-48d1-8caa-2e9907ac5623",
+      "note": "缺少有效 Mock 本金依据；本金待核实，不能标记已支付"
+    },
+    {
+      "shot": "59-principal-without-basis-rejected",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\59-principal-without-basis-rejected.png"
+    },
+    {
+      "step": "interest and principal independent",
+      "interestState": {
+        "state": "processing",
+        "requestId": "94551b60-0f42-4d3d-bc1a-547e3cb7a0ca"
+      },
+      "principalBasis": {
+        "test": 30000,
+        "repaid": 5000,
+        "remaining": 25000
+      }
+    },
+    {
+      "shot": "60-interest-principal-independent",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\60-interest-principal-independent.png"
+    },
+    {
+      "shot": "61-principal-detail-after-repayment",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\61-principal-detail-after-repayment.png"
+    },
+    {
+      "shot": "62-claim-processing-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\62-claim-processing-1440.png"
+    },
+    {
+      "summary": {
+        "pages": 52,
+        "overflow": [],
+        "mockLeaks": [],
+        "console": [],
+        "pageList": [
+          "01-m-home-1280",
+          "02-m-home-1440",
+          "03-m-home-1920",
+          "04-m-opportunities-1440",
+          "05-residence-detail-1440",
+          "06-debt-detail-1440",
+          "07-issuer-company-1440",
+          "08-v-harbor-home-1440",
+          "09-v-cedar-home-1440",
+          "10-v-harbor-opportunities-1440",
+          "11-m-opportunities-1280",
+          "12-m-opportunities-1920",
+          "13-login-service-closed-1440",
+          "14-account-overview-1440",
+          "15-kyc-1440",
+          "16-wallets-1440",
+          "17-profile-1440",
+          "18-security-1440",
+          "19-subscribe-quote-public-1440",
+          "20-subscribe-documents-public-1440",
+          "21-subscribe-payment-public-1440",
+          "22-subscribe-progress-public-1440",
+          "23-subscribe-quote-demo-1440",
+          "24-subscribe-documents-demo-1440",
+          "25-subscribe-payment-demo-1440",
+          "26-subscribe-progress-demo-1440",
+          "27-orders-1440",
+          "28-order-detail-1440",
+          "29-holdings-1440",
+          "30-holding-detail-1440",
+          "31-returns-1440",
+          "32-distribution-interest-1440",
+          "33-distribution-principal-1440",
+          "34-messages-1440",
+          "35-message-detail-1440",
+          "36-disclosures-1440",
+          "37-disclosure-document-1440",
+          "38-announcement-1440",
+          "39-support-1440",
+          "40-ticket-detail-1440",
+          "41-terms-1440",
+          "42-privacy-1440",
+          "43-not-found-1440",
+          "49-state-upcoming-detailed-1440",
+          "50-state-no-listings-1440",
+          "51-state-loading-1440",
+          "52-state-error-1440",
+          "53-state-guest-protected-1440",
+          "54-residence-detail-1280",
+          "55-residence-detail-1920",
+          "61-principal-detail-after-repayment",
+          "62-claim-processing-1440"
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "01-m-home-1280",
+      "url": "/m",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nREAL WORLD ASSETS\n\n浏览不同企业的资产项目\n\n按发行企业、资产类型与投资者权益比较公开项目。\n\n浏览项目\n→\n当前项目及企业为示例资料；配图仅作示意，真实交易服务尚未开放。\n按底层资产浏览\n全部资产\n房地产\n企业借款\n\nPROJECTS\n\n不同企业的公开项目\n\n比较发行企业、底层资产与权益安排。\n\n查看全部 →\n配图仅作示意\n认购中\n城市住宅收益参与计划\n\n发行企业 · 海岚资产\n\n房地产 / 住宅物业 · 收益参与权 · 中国 · 上海\n\n示例最低认购额\n1,000.00 U\n单价 100.00 U /",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\01-m-home-1280.png"
+    },
+    {
+      "name": "02-m-home-1440",
+      "url": "/m",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nREAL WORLD ASSETS\n\n浏览不同企业的资产项目\n\n按发行企业、资产类型与投资者权益比较公开项目。\n\n浏览项目\n→\n当前项目及企业为示例资料；配图仅作示意，真实交易服务尚未开放。\n按底层资产浏览\n全部资产\n房地产\n企业借款\n\nPROJECTS\n\n不同企业的公开项目\n\n比较发行企业、底层资产与权益安排。\n\n查看全部 →\n配图仅作示意\n认购中\n城市住宅收益参与计划\n\n发行企业 · 海岚资产\n\n房地产 / 住宅物业 · 收益参与权 · 中国 · 上海\n\n示例最低认购额\n1,000.00 U\n单价 100.00 U /",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\02-m-home-1440.png"
+    },
+    {
+      "name": "03-m-home-1920",
+      "url": "/m",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nREAL WORLD ASSETS\n\n浏览不同企业的资产项目\n\n按发行企业、资产类型与投资者权益比较公开项目。\n\n浏览项目\n→\n当前项目及企业为示例资料；配图仅作示意，真实交易服务尚未开放。\n按底层资产浏览\n全部资产\n房地产\n企业借款\n\nPROJECTS\n\n不同企业的公开项目\n\n比较发行企业、底层资产与权益安排。\n\n查看全部 →\n配图仅作示意\n认购中\n城市住宅收益参与计划\n\n发行企业 · 海岚资产\n\n房地产 / 住宅物业 · 收益参与权 · 中国 · 上海\n\n示例最低认购额\n1,000.00 U\n单价 100.00 U /",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\03-m-home-1920.png"
+    },
+    {
+      "name": "04-m-opportunities-1440",
+      "url": "/m/opportunities",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n首页\n/\n投资机会\n/\n投资机会\n\nPROJECTS\n\n公开项目\n\n按底层资产、权益类型与发行企业浏览当前渠道的示例项目。真实认购服务尚未开放。\n\n2 个项目\n搜索项目或资产\n资产大类\n全部\n房地产\n企业借款\n资产子类\n全部\n住宅物业\n企业借款债权\n权益类型\n全部\n收益参与权\n债权\n地区\n全部\n中国 · 上海\n中国 · 深圳\n认购状态\n全部\n认购中\n发行企业\n全部\n海岚资产\n杉衡资本\n排序\n最新上架\n认购截止时间\n清空筛选\n配图仅作示意\n认购中\n城市住宅收益参与计划\n\n发行企业 · 海岚资产\n\n房地产 / 住宅物业 · 收益",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\04-m-opportunities-1440.png"
+    },
+    {
+      "name": "05-residence-detail-1440",
+      "url": "/m/opportunities/residence-01",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n首页\n/\n投资机会\n/\n城市住宅收益参与计划\n\nPROJECT DETAILS\n\n城市住宅收益参与计划\n\n发行企业 · 海岚资产 ↗\n\n认购中\n配图仅作示意\n底层资产\n房地产 · 住宅物业\n投资者取得的权益\n收益参与权\n示例最低认购额\n1,000.00 U\n资产概览\n权益与收益\n发行与认购\n发行企业\n法律文件与风险\n资产概览\n\n以城市住宅物业为底层资产的收益参与演示案例。资产经营结果和投资者实际分配均以有效文件及核实结果为准。\n\n住宅形态\n单栋（演示）\n住宅套数\n待披露\n所在地区\n中国 · 上海\n建筑面积\n约 2,400 ㎡",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\05-residence-detail-1440.png"
+    },
+    {
+      "name": "06-debt-detail-1440",
+      "url": "/m/opportunities/debt-01",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n首页\n/\n投资机会\n/\n企业借款债权投资计划\n\nPROJECT DETAILS\n\n企业借款债权投资计划\n\n发行企业 · 杉衡资本 ↗\n\n认购中\n配图仅作示意\n底层资产\n企业借款 · 企业借款债权\n投资者取得的权益\n债权\n示例最低认购额\n500.00 U\n资产概览\n权益与收益\n发行与认购\n发行企业\n法律文件与风险\n资产概览\n\n单笔企业借款债权的合同权益演示案例。利息按合同条款计算，本金到期偿还；借款人存在信用和延期风险。\n\n底层类型\n单笔企业借款债权\n债务人\n演示企业 A\n原合同金额\n500,000 U（演示）\n有效未偿本金及",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\06-debt-detail-1440.png"
+    },
+    {
+      "name": "07-issuer-company-1440",
+      "url": "/m/issuers/cedar",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n返回来源页面\n/\n企业信息\n杉\n\nISSUER PROFILE\n\n杉衡资本\n\n杉衡资本管理有限公司（演示）\n\n企业介绍\n\n关注企业融资与资产权益项目。本页企业信息为示例内容。\n\n注册国家 / 地区\n中国 · 深圳（演示）\n业务方向\n企业融资与权益投资（演示）\n经授权公开资料\n登记与 KYB 材料尚未授权公开\n企业与底层资产权利人\n可能不同；以各项目资产文件为准\n!\n企业认证不代表资产安全或收益担保。\n当前公开项目\n配图仅作示意\n认购中\n企业借款债权投资计划\n\n发行企业 · 杉衡资本\n\n企业借款 / 企业借款债权 · 债权 ·",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\07-issuer-company-1440.png"
+    },
+    {
+      "name": "08-v-harbor-home-1440",
+      "url": "/v/harbor",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "海\n海岚资产\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n\nREAL WORLD ASSETS\n\n探索本企业的资产项目\n\n查看本企业公开项目及待开放的资产类型。\n\n浏览项目\n→\n当前项目及企业为示例资料；配图仅作示意，真实交易服务尚未开放。\n按底层资产浏览\n全部资产\n房地产\n\nPROJECTS\n\n当前公开项目\n\n以下项目属于当前企业渠道。\n\n查看全部 →\n配图仅作示意\n认购中\n城市住宅收益参与计划\n\n房地产 / 住宅物业 · 收益参与权 · 中国 · 上海\n\n示例最低认购额\n1,000.00 U\n单价 100.00 U / 投资份额\n收益来源\n核实后的资产净收益\n\n期限 / 分配\n按合同约定；",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\08-v-harbor-home-1440.png"
+    },
+    {
+      "name": "09-v-cedar-home-1440",
+      "url": "/v/cedar",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "杉\n杉衡资本\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n\nREAL WORLD ASSETS\n\n探索本企业的资产项目\n\n查看本企业公开项目及待开放的资产类型。\n\n浏览项目\n→\n当前项目及企业为示例资料；配图仅作示意，真实交易服务尚未开放。\n按底层资产浏览\n全部资产\n企业借款\n企业股权\n\nPROJECTS\n\n当前公开项目\n\n以下项目属于当前企业渠道。\n\n查看全部 →\n配图仅作示意\n认购中\n企业借款债权投资计划\n\n企业借款 / 企业借款债权 · 债权 · 中国 · 深圳\n\n示例最低认购额\n500.00 U\n单价 50.00 U / 投资份额\n合同固定年利率\n12%（非保证兑付）\n\n期限 / 分配",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\09-v-cedar-home-1440.png"
+    },
+    {
+      "name": "10-v-harbor-opportunities-1440",
+      "url": "/v/harbor/opportunities",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "海\n海岚资产\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n首页\n/\n投资机会\n/\n投资机会\n\nPROJECTS\n\n公开项目\n\n按底层资产、权益类型与发行企业浏览当前渠道的示例项目。真实认购服务尚未开放。\n\n1 个项目\n搜索项目或资产\n资产大类\n全部\n房地产\n资产子类\n全部\n住宅物业\n权益类型\n全部\n收益参与权\n地区\n全部\n中国 · 上海\n认购状态\n全部\n认购中\n排序\n最新上架\n认购截止时间\n清空筛选\n配图仅作示意\n认购中\n城市住宅收益参与计划\n\n房地产 / 住宅物业 · 收益参与权 · 中国 · 上海\n\n示例最低认购额\n1,000.00 U\n单价 100.00 U / 投资份额\n收益来源\n核实",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\10-v-harbor-opportunities-1440.png"
+    },
+    {
+      "name": "11-m-opportunities-1280",
+      "url": "/m/opportunities",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n首页\n/\n投资机会\n/\n投资机会\n\nPROJECTS\n\n公开项目\n\n按底层资产、权益类型与发行企业浏览当前渠道的示例项目。真实认购服务尚未开放。\n\n2 个项目\n搜索项目或资产\n资产大类\n全部\n房地产\n企业借款\n资产子类\n全部\n住宅物业\n企业借款债权\n权益类型\n全部\n收益参与权\n债权\n地区\n全部\n中国 · 上海\n中国 · 深圳\n认购状态\n全部\n认购中\n发行企业\n全部\n海岚资产\n杉衡资本\n排序\n最新上架\n认购截止时间\n清空筛选\n配图仅作示意\n认购中\n城市住宅收益参与计划\n\n发行企业 · 海岚资产\n\n房地产 / 住宅物业 · 收益",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\11-m-opportunities-1280.png"
+    },
+    {
+      "name": "12-m-opportunities-1920",
+      "url": "/m/opportunities",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n首页\n/\n投资机会\n/\n投资机会\n\nPROJECTS\n\n公开项目\n\n按底层资产、权益类型与发行企业浏览当前渠道的示例项目。真实认购服务尚未开放。\n\n2 个项目\n搜索项目或资产\n资产大类\n全部\n房地产\n企业借款\n资产子类\n全部\n住宅物业\n企业借款债权\n权益类型\n全部\n收益参与权\n债权\n地区\n全部\n中国 · 上海\n中国 · 深圳\n认购状态\n全部\n认购中\n发行企业\n全部\n海岚资产\n杉衡资本\n排序\n最新上架\n认购截止时间\n清空筛选\n配图仅作示意\n认购中\n城市住宅收益参与计划\n\n发行企业 · 海岚资产\n\n房地产 / 住宅物业 · 收益",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\12-m-opportunities-1920.png"
+    },
+    {
+      "name": "13-login-service-closed-1440",
+      "url": "/m/account",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n\nACCOUNT\n\n邮箱登录\n\n总投资者平台的账户服务尚未开放。当前无法发送真实验证码或创建正式账户。\n\n服务暂不可用\n\n您可以继续浏览公开的示例项目。认证和交易服务开放后，登录将在此处提供。\n\n返回项目浏览\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\13-login-service-closed-1440.png"
+    },
+    {
+      "name": "14-account-overview-1440",
+      "url": "/m/account?demo=1",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nACCOUNT\n\n我的账户\n\nproduct.audit@rwa.test · 总投资者平台\n\n浏览投资机会 →\n账户概览\n基本资料\n身份认证\n钱包管理\n账户安全\n我的工单\n账户概览\n登录邮箱\nproduct.audit@rwa.test\n身份认证\n已通过\n平台钱包\n已就绪\n默认钱包\n平台钱包\n\n浏览项目无需身份认证；提交真实认购前须完成身份与投资资格核验。当前记录只在此浏览器中保存，不代表正式账户或认证结果。\n\n查看认证状态 →\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\14-account-overview-1440.png"
+    },
+    {
+      "name": "15-kyc-1440",
+      "url": "/m/account/kyc",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nACCOUNT\n\n我的账户\n\nproduct.audit@rwa.test · 总投资者平台\n\n浏览投资机会 →\n账户概览\n基本资料\n身份认证\n钱包管理\n账户安全\n我的工单\n身份认证\n当前记录\n已通过\n\n认购前需要核验身份与投资资格。认证服务尚未接入，当前浏览器记录不能证明真实认证已通过。\n\n当前暂无可提交的认证申请。请等待认证服务开放。\n\n返回原项目 →\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\15-kyc-1440.png"
+    },
+    {
+      "name": "16-wallets-1440",
+      "url": "/m/account/wallets",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nACCOUNT\n\n我的账户\n\nproduct.audit@rwa.test · 总投资者平台\n\n浏览投资机会 →\n账户概览\n基本资料\n身份认证\n钱包管理\n账户安全\n我的工单\n平台钱包\n分配状态\n已就绪\n\n地址：示例 MPC · 0xA1…E4\n\n真实钱包服务尚未开放。当前地址及状态为本地示例记录，不能用于收付款或保管资产。\n\n自有钱包\n\n真实钱包连接和签名验证尚未开放。输入地址本身不能证明持有权。\n\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\16-wallets-1440.png"
+    },
+    {
+      "name": "17-profile-1440",
+      "url": "/m/account/profile",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nACCOUNT\n\n我的账户\n\nproduct.audit@rwa.test · 总投资者平台\n\n浏览投资机会 →\n账户概览\n基本资料\n身份认证\n钱包管理\n账户安全\n我的工单\n基本资料\n邮箱\nproduct.audit@rwa.test\n账户范围\n总投资者平台\n创建时间\n2026/11/28 00:13:11\n个人 / 机构资料\n尚未提交\n\n身份资料服务尚未开放，请勿在此输入真实证件或机构材料。\n\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\17-profile-1440.png"
+    },
+    {
+      "name": "18-security-1440",
+      "url": "/m/account/security",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nACCOUNT\n\n我的账户\n\nproduct.audit@rwa.test · 总投资者平台\n\n浏览投资机会 →\n账户概览\n基本资料\n身份认证\n钱包管理\n账户安全\n我的工单\n账户安全\n\n当前账户记录仅保存在此浏览器中。请勿输入真实密码、私钥、助记词或验证码。\n\n退出当前渠道账户\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\18-security-1440.png"
+    },
+    {
+      "name": "19-subscribe-quote-public-1440",
+      "url": "/m/subscribe/residence-01/quote",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n项目详情\n/\n认购流程\n\nSUBSCRIPTION\n\n城市住宅收益参与计划\n\n了解认购的四个阶段；真实认证、签署、付款与登记服务尚未开放。\n\n1\n确认认购\n2\n法律文件确认\n3\n钱包付款\n4\n交易进度\n\n步骤 1 / 4\n\n确认认购\n\n先核对项目、权益类型、每份价格和计划认购金额。当前价格仅用于示例展示，尚不能提交认购。\n\n项目\n城市住宅收益参与计划\n海岚资产\n投资份额\n10 份起\n每份 100.00 U · 示例\n认购金额\n1,000.00 U 起\n可售 490 份 · 示例\n取得的合同权益\n收益参与权\n以有效合同与法定登",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\19-subscribe-quote-public-1440.png"
+    },
+    {
+      "name": "20-subscribe-documents-public-1440",
+      "url": "/m/subscribe/residence-01/documents",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n项目详情\n/\n认购流程\n\nSUBSCRIPTION\n\n城市住宅收益参与计划\n\n了解认购的四个阶段；真实认证、签署、付款与登记服务尚未开放。\n\n1\n确认认购\n2\n法律文件确认\n3\n钱包付款\n4\n交易进度\n\n步骤 2 / 4\n\n法律文件确认\n\n认购前需要阅读有效法律文件，并完成正式电子签署。当前文件为示例内容，阅读记录不构成法律同意或有效签署。\n\n认购协议\n正式版本待披露\n权益条款\n正式版本待披露\n风险披露\n正式版本待披露\n\n签署服务未开放，暂不能创建正式待付款订单。\n\n了解付款阶段 →\n当前状态\n\n真实认购服务暂不可用。您可以",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\20-subscribe-documents-public-1440.png"
+    },
+    {
+      "name": "21-subscribe-payment-public-1440",
+      "url": "/m/subscribe/residence-01/payment",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n项目详情\n/\n认购流程\n\nSUBSCRIPTION\n\n城市住宅收益参与计划\n\n了解认购的四个阶段；真实认证、签署、付款与登记服务尚未开放。\n\n1\n确认认购\n2\n法律文件确认\n3\n钱包付款\n4\n交易进度\n\n步骤 3 / 4\n\n钱包付款\n\n正式认购仅支持 OP Mainnet 网络上的 USDT。付款钱包与权益凭证接收地址需要分别确认。\n\n网络\nOP Mainnet\n币种\nUSDT\n收款信息\n待核实\n付款状态\n尚未发起\n\n真实钱包签名与付款服务尚未开放。查看本页不会发送交易或占用资金。\n\n查看交易进度说明 →\n当前状态\n\n真实认",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\21-subscribe-payment-public-1440.png"
+    },
+    {
+      "name": "22-subscribe-progress-public-1440",
+      "url": "/m/subscribe/residence-01/progress",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n项目详情\n/\n认购流程\n\nSUBSCRIPTION\n\n城市住宅收益参与计划\n\n了解认购的四个阶段；真实认证、签署、付款与登记服务尚未开放。\n\n1\n确认认购\n2\n法律文件确认\n3\n钱包付款\n4\n交易进度\n\n步骤 4 / 4\n\n交易进度\n\n付款、配售、法定登记与权益凭证交付分别核对。发起付款不代表收款成功，配售不等于法定登记，登记也不等于凭证交付。\n\n付款\n待核实\n配售\n待核实\n法定登记\n待核实\n权益凭证交付\n待核实\n接下来可以做什么\n\n查看订单确认认购记录，查看有效持仓核对法定登记与凭证交付；如状态异常或待核实，可联系支持查询",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\22-subscribe-progress-public-1440.png"
+    },
+    {
+      "name": "23-subscribe-quote-demo-1440",
+      "url": "/m/subscribe/debt-01/quote?demo=1",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "MOCK"
+      ],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n投资机会\n/\n认购演示\n\nSUBSCRIPTION · MOCK\n\n企业借款债权投资计划\n\n四步认购演示 · 不创建真实订单、不执行签名或资金交易\n\n1\n确认认购\n2\n法律文件确认\n3\n钱包付款\n4\n交易进度\n\n步骤查看记录不代表文件签署、付款、配售、登记或交付完成。\n\nSTEP 1 / 04\n\n确认认购\n\n核对份数与金额。此报价仅为 Mock，不占用容量；创建待付款订单时将重新核验。\n\n认购 Token 份数\nToken\n最低 10 份 · 当前可售 780 份 · Mock\nToken 单价\n50.00 U\n本次份数\n1",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\23-subscribe-quote-demo-1440.png"
+    },
+    {
+      "name": "24-subscribe-documents-demo-1440",
+      "url": "/m/subscribe/debt-01/documents?demo=1",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "MOCK"
+      ],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n投资机会\n/\n认购演示\n\nSUBSCRIPTION · MOCK\n\n企业借款债权投资计划\n\n四步认购演示 · 不创建真实订单、不执行签名或资金交易\n\n1\n确认认购\n2\n法律文件确认\n3\n钱包付款\n4\n交易进度\n\n步骤查看记录不代表文件签署、付款、配售、登记或交付完成。\n\nSTEP 2 / 04\n\n法律文件确认\n\n逐份打开并阅读以下可查看的 Mock 正文。文件版本固定关联本次 Offering；勾选仅确认演示阅读。\n\n认购协议\nMock v1.0\n查看正文\n债权条款\nMock v1.0\n查看正文\n风险披露\nMock v1.0",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\24-subscribe-documents-demo-1440.png"
+    },
+    {
+      "name": "25-subscribe-payment-demo-1440",
+      "url": "/m/subscribe/debt-01/payment?demo=1",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "MOCK"
+      ],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n投资机会\n/\n认购演示\n\nSUBSCRIPTION · MOCK\n\n企业借款债权投资计划\n\n四步认购演示 · 不创建真实订单、不执行签名或资金交易\n\n1\n确认认购\n2\n法律文件确认\n3\n钱包付款\n4\n交易进度\n\n步骤查看记录不代表文件签署、付款、配售、登记或交付完成。\n\nSTEP 3 / 04\n\n钱包付款\n\n固定网络 OP Mainnet、币种 USDT。付款钱包与 Token 接收地址分别确认；本页不会调用真实钱包。\n\n网络\nOP Mainnet · Mock\n币种\nUSDT · U\n目标\nOffering 收款合约 · ",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\25-subscribe-payment-demo-1440.png"
+    },
+    {
+      "name": "26-subscribe-progress-demo-1440",
+      "url": "/m/subscribe/debt-01/progress?demo=1",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "MOCK"
+      ],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n投资机会\n/\n认购演示\n\nSUBSCRIPTION · MOCK\n\n企业借款债权投资计划\n\n四步认购演示 · 不创建真实订单、不执行签名或资金交易\n\n1\n确认认购\n2\n法律文件确认\n3\n钱包付款\n4\n交易进度\n\n步骤查看记录不代表文件签署、付款、配售、登记或交付完成。\n\nSTEP 4 / 04\n\n交易进度\n\nMock 交易进度预览 · 可直接查看。页面访问本身不会改变任何业务状态。\n\n订单 mock-prod-debt-order · 10 Token · 500.00 U；法律签署有效性：否。\n\n付款\n实收已匹配 · Mo",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\26-subscribe-progress-demo-1440.png"
+    },
+    {
+      "name": "27-orders-1440",
+      "url": "/m/investments?tab=orders",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nMY INVESTMENTS\n\n我的投资\n\nproduct.audit@rwa.test · 当前渠道独立记录\n\n认购订单\n我的持仓\n收益与本金\n\n杉衡资本\n\n企业借款债权投资计划\n\n订单编号 Z9VYRQ · 创建于 2026/11/28 00:13:11\n\n10 份\n500.00 U\n已完成 · 本地示例\n查看订单详情 →\n\n海岚资产\n\n城市住宅收益参与计划\n\n订单编号 PD1O30 · 创建于 2026/11/28 00:13:11\n\n10 份\n1,000.00 U\n履约处理中 · 本地示例\n查看订单详情 →\n\n杉衡",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\27-orders-1440.png"
+    },
+    {
+      "name": "28-order-detail-1440",
+      "url": "/m/investments/orders/mock-prod-debt-order",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的投资\n/\n订单详情\n\nORDER DETAIL\n\n企业借款债权投资计划\n\n杉衡资本 · 已完成 · 本地示例\n\n联系支持 →\n订单快照\n订单编号\nZ9VYRQ\n关联项目\n企业借款债权投资计划\n投资份额\n10\n认购金额\n500.00 U\n单价\n50.00 U\n创建时间\n2026/11/28 00:13:11\n待付款有效期\n2026/11/28 00:28:11\n文件确认\n仅阅读了示例文件；尚无有效法律签署\n业务进度\n\n以下为本地示例记录，不代表真实付款、配售、法定登记或权益凭证交付。\n\n付款\n实收已匹配\n配售\n已确认\n法定",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\28-order-detail-1440.png"
+    },
+    {
+      "name": "29-holdings-1440",
+      "url": "/m/investments?tab=holdings",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nMY INVESTMENTS\n\n我的投资\n\nproduct.audit@rwa.test · 当前渠道独立记录\n\n认购订单\n我的持仓\n收益与本金\n我的持仓\n\n以下为示例记录，仅供了解页面流程，不代表真实投资、法定登记或资金到账。\n\n杉衡资本 · 债权\n\n企业借款债权投资计划\n登记份额（示例）\n10\n凭证交付\n示例交付记录已确认\n当前可核余额\n待核实\n法定权益对账\n待核实\n查看持仓详情 →\n\n杉衡资本 · 债权\n\n企业借款债权投资计划\n登记份额（示例）\n10\n凭证交付\n示例交付记录已确认\n当前可核余额\n待核实\n法定权益对账\n",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\29-holdings-1440.png"
+    },
+    {
+      "name": "30-holding-detail-1440",
+      "url": "/m/investments/holdings/mock-prod-debt-order",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的持仓\n/\n持仓详情\n\n杉衡资本 · 债权\n\n企业借款债权投资计划\n\n以下为示例记录，仅供了解页面流程，不代表真实投资、法定登记或资金到账。\n\n法定权益\n持有人\npr***@rwa.test\n登记状态\n示例登记记录已确认；真实登记待核实\n登记份额（示例）\n10\n记录日期\n2026/11/28 00:13:13\n\n利息依据有效合同与实际未偿本金核算；本金偿还单独记录，不计入收益。\n\n权益凭证与对账\n\nToken 是权益凭证的技术交付形式，不自动等于完整法律权益。登记与凭证交付分别核对。\n\n凭证交付\n示例交付记录已确认\n当前可",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\30-holding-detail-1440.png"
+    },
+    {
+      "name": "31-returns-1440",
+      "url": "/m/investments?tab=returns",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nMY INVESTMENTS\n\n我的投资\n\nproduct.audit@rwa.test · 当前渠道独立记录\n\n认购订单\n我的持仓\n收益与本金\n\n以下为示例记录，仅供了解页面流程，不代表真实投资、法定登记或资金到账。\n\n已支付收益（示例）\n0.00 U\n\n不含本金偿还\n\n已偿本金（示例）\n0.00 U\n\n独立于投资收益\n\n收益分配\n\n债权利息\n\n企业借款债权投资计划\n\n投资者领取 · 待核实\n\n8.00 U\n可领取\n查看分配详情 →\n债权本金偿还\n本金核对\n\n当前未接入权威债权本金与付款凭证。认购金额和底层原合同金额均不",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\31-returns-1440.png"
+    },
+    {
+      "name": "32-distribution-interest-1440",
+      "url": "/m/investments/returns/prod-interest-1",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n收益与本金\n/\n分配详情\n\n企业借款债权投资计划\n\n债权利息\n\n可领取\n\n以下为示例记录，仅供了解页面流程，不代表真实投资、法定登记或资金到账。\n\n分配金额\n权益类型\n债权\n收益期间\n待核实\n权益登记基准日\n待核实\n应付日或计划日\n待核实\n毛额（示例）\n8.00 U\n扣项（示例）\n0.00 U\n净应付（示例）\n8.00 U\n已备付（示例）\n8.00 U\n可领取（示例）\n8.00 U\n已支付（示例）\n0.00 U\n未支付（示例）\n8.00 U\n支付方式\n投资者领取\n\n利息依据有效合同与实际未偿本金核算；本金偿还单独记录，不计入",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\32-distribution-interest-1440.png"
+    },
+    {
+      "name": "33-distribution-principal-1440",
+      "url": "/m/investments/returns/prod-principal-1",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n收益与本金\n/\n分配详情\n\n企业借款债权投资计划\n\n债权本金偿还\n\n计划待核实\n\n以下为示例记录，仅供了解页面流程，不代表真实投资、法定登记或资金到账。\n\n分配金额\n权益类型\n债权\n收益期间\n待核实\n权益登记基准日\n待核实\n应付日或计划日\n待核实\n毛额（示例）\n50.00 U\n扣项（示例）\n0.00 U\n净应付（示例）\n待核实\n已备付（示例）\n0.00 U\n可领取（示例）\n0.00 U\n已支付（示例）\n0.00 U\n未支付（示例）\n待核实\n支付方式\n直接支付\n\n利息依据有效合同与实际未偿本金核算；本金偿还单独记录，不计入收益",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\33-distribution-principal-1440.png"
+    },
+    {
+      "name": "34-messages-1440",
+      "url": "/m/messages",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nMESSAGES\n\n消息与通知\n\n订单、客服、收益及项目资料更新均按当前账户和渠道显示。\n\n订单 · 未读\n\n认购订单状态 · 示例\n\n已完成 · 示例\n\n企业借款债权投资计划 · 更新于 2026-11-27\n查看消息 →\n\n订单 · 未读\n\n认购订单状态 · 示例\n\n已完成 · 示例\n\n企业借款债权投资计划 · 更新于 2026-11-27\n查看消息 →\n\n订单 · 未读\n\n认购订单状态 · 示例\n\n履约处理中 · 示例\n\n城市住宅收益参与计划 · 更新于 2026-11-27\n查看消息 →\n\n收益 · 未读\n\n债权利",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\34-messages-1440.png"
+    },
+    {
+      "name": "35-message-detail-1440",
+      "url": "/m/messages/order%3Amock-prod-debt-order-2",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n消息\n/\n消息详情\n\n订单 · 未读\n\n认购订单状态 · 示例\n\n已完成 · 示例\n\n关联项目\n企业借款债权投资计划\n创建 / 更新\n2026-11-27 / 2026-11-27\n!\n本页仅为本地示例通知摘要。请进入关联业务页面查看当前状态；阅读状态不改变原事实。\n标为已读\n查看关联业务 →\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\35-message-detail-1440.png"
+    },
+    {
+      "name": "36-disclosures-1440",
+      "url": "/m/disclosures",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nDISCLOSURES\n\n公告与披露文件\n\n仅展示当前渠道公开或本人历史订单可访问的示例资料；版本单独保留。\n\n项目公告\n城市住宅项目资料索引 · 示例\n城市住宅收益参与计划 · 示例 v1.0 · 发布 2026-11-24\n查看公告 →\n企业债权项目资料索引 · 示例\n企业借款债权投资计划 · 示例 v1.0 · 发布 2026-11-23\n查看公告 →\n法律与风险文件\n城市住宅收益参与计划 · 认购协议\n示例 v1.0 · 当前渠道可查看 · 文件版本单独保留\n查看文件 →\n城市住宅收益参与计划 · 权益条款\n示例 ",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\36-disclosures-1440.png"
+    },
+    {
+      "name": "37-disclosure-document-1440",
+      "url": "/m/disclosures/residence-01/0",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n公告与披露\n/\n文件详情\n\nDOCUMENT\n\n认购协议\n\n城市住宅收益参与计划 · 示例 v1.0\n\n本文件仅为 城市住宅收益参与计划 的前端示例内容，不构成真实发行文件、法律意见、有效电子签署或付款指令。\n\n发行企业：海岚资产；项目：城市住宅收益参与计划；权益类型：收益参与权。\n\n示例单价：100.00 U / 份额；示例最低认购额：1000.00 U。实际报价、容量和资格须由正式系统重新核验。\n\n模拟确认仅用于展示文件阅读与订单步骤，不产生法律约束力；真实签署必须由获准服务生成可核验证据。\n\n!\n查看或下载仅供演示；阅",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\37-disclosure-document-1440.png"
+    },
+    {
+      "name": "38-announcement-1440",
+      "url": "/m/disclosures/announcements/residence-material-index",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n公告与披露\n/\n公告详情\n\nANNOUNCEMENT\n\n城市住宅项目资料索引 · 示例\n\n项目 城市住宅收益参与计划 · 示例 v1.0 · 发布 2026-11-24\n\n本演示公告仅索引认购协议、权益条款及风险披露的 示例 文件版本。不披露新的资产经营事实、收益金额或真实发行决定。\n\n!\n本演示公告不包含实际财务或募集结果；版本更新不会覆盖历史文件。\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\38-announcement-1440.png"
+    },
+    {
+      "name": "39-support-1440",
+      "url": "/m/support",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nSUPPORT\n\n帮助与客服\n\n订单、付款、钱包及持仓问题可关联当前账户记录保存本地咨询记录；尚无真实客服服务。\n\n提交工单\n\n联系邮箱：product.audit@rwa.test。请勿填写私钥、助记词、验证码或真实敏感身份资料。\n\n问题类型\n订单付款\n钱包\nKYC\n收益持仓\n披露\n其他\n关联订单\n不关联订单\n企业借款债权投资计划 · mock-prod-debt-order\n城市住宅收益参与计划 · mock-prod-equity-order\n企业借款债权投资计划 · mock-prod-debt-order-2\n问",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\39-support-1440.png"
+    },
+    {
+      "name": "40-ticket-detail-1440",
+      "url": "/m/account/tickets/mock-ticket-774d3983-e267-4f39-9d82-e99e611f8dbc",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的工单\n/\n工单详情\n\nSUPPORT TICKET\n\n其他\n\n编号 9BAL9K · 待处理\n\n问题与回复\n\n需要核对订单付款状态与后续登记进度，请协助查询原记录。\n\n联系邮箱\nproduct.audit@rwa.test\n关联订单\n无\n关联项目\n无\n交易哈希\n未提供\n截图文件名\n未提供\n更新时间\n2026/11/28 00:13:35\n回复或补件说明\n保存本地回复\n原业务状态\n\n工单关闭不代表退款、付款、登记或权益凭证交付完成。\n\n!\n请以订单详情中的独立业务状态为准；当前记录仅为本地示例。\nRWA Invest\n\n真",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\40-ticket-detail-1440.png"
+    },
+    {
+      "name": "41-terms-1440",
+      "url": "/m/terms",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n首页\n/\n投资机会\n/\n使用条款\n使用条款\n\n此功能将在后续阶段实现。当前页面不展示虚构账户或业务数据。\n\n返回原项目或投资机会\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\41-terms-1440.png"
+    },
+    {
+      "name": "42-privacy-1440",
+      "url": "/m/privacy",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n首页\n/\n投资机会\n/\n隐私政策\n隐私政策\n\n此功能将在后续阶段实现。当前页面不展示虚构账户或业务数据。\n\n返回原项目或投资机会\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\42-privacy-1440.png"
+    },
+    {
+      "name": "43-not-found-1440",
+      "url": "/m/opportunities/not-exist",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n页面或资产不可访问\n\n链接无效，或当前渠道未获准公开此内容。\n\n浏览投资机会\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\43-not-found-1440.png"
+    },
+    {
+      "name": "49-state-upcoming-detailed-1440",
+      "url": "/m/opportunities/residence-01",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n首页\n/\n投资机会\n/\n城市住宅收益参与计划\n\nPROJECT DETAILS\n\n城市住宅收益参与计划\n\n发行企业 · 海岚资产 ↗\n\n即将开放\n配图仅作示意\n底层资产\n房地产 · 住宅物业\n投资者取得的权益\n收益参与权\n示例最低认购额\n1,000.00 U\n资产概览\n权益与收益\n发行与认购\n发行企业\n法律文件与风险\n资产概览\n\n以城市住宅物业为底层资产的收益参与演示案例。资产经营结果和投资者实际分配均以有效文件及核实结果为准。\n\n住宅形态\n单栋（演示）\n住宅套数\n待披露\n所在地区\n中国 · 上海\n建筑面积\n约 2,400 ",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\49-state-upcoming-detailed-1440.png"
+    },
+    {
+      "name": "50-state-no-listings-1440",
+      "url": "/m",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n\nREAL WORLD ASSETS\n\n浏览不同企业的资产项目\n\n按发行企业、资产类型与投资者权益比较公开项目。\n\n浏览项目\n→\n当前项目及企业为示例资料；配图仅作示意，真实交易服务尚未开放。\n按底层资产浏览\n全部资产\n\nPROJECTS\n\n不同企业的公开项目\n\n比较发行企业、底层资产与权益安排。\n\n查看全部 →\n暂无公开项目\n\n当前没有可查看的公开上架项目。待开放资产在下方单独展示。\n\n◇\n底层资产\n\n查看资产信息与披露资料\n\n✓\n权益说明\n\n以有效项目文件为准\n\n◌\n风险提示\n\n投资可能导致本金损失\n\nRWA Inves",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\50-state-no-listings-1440.png"
+    },
+    {
+      "name": "51-state-loading-1440",
+      "url": "/m/opportunities",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n正在加载项目\n\n正在获取当前渠道的公开项目信息。\n\n返回首页\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\51-state-loading-1440.png"
+    },
+    {
+      "name": "52-state-error-1440",
+      "url": "/m/opportunities",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n项目暂时无法显示\n\n当前无法核实项目信息，请稍后重试。\n\n返回首页\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\52-state-error-1440.png"
+    },
+    {
+      "name": "53-state-guest-protected-1440",
+      "url": "/m/account/kyc",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n\nACCOUNT\n\n邮箱登录\n\n总投资者平台的账户服务尚未开放。当前无法发送真实验证码或创建正式账户。\n\n服务暂不可用\n\n您可以继续浏览公开的示例项目。认证和交易服务开放后，登录将在此处提供。\n\n返回项目浏览\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\53-state-guest-protected-1440.png"
+    },
+    {
+      "name": "54-residence-detail-1280",
+      "url": "/m/opportunities/residence-01",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n首页\n/\n投资机会\n/\n城市住宅收益参与计划\n\nPROJECT DETAILS\n\n城市住宅收益参与计划\n\n发行企业 · 海岚资产 ↗\n\n认购中\n配图仅作示意\n底层资产\n房地产 · 住宅物业\n投资者取得的权益\n收益参与权\n示例最低认购额\n1,000.00 U\n资产概览\n权益与收益\n发行与认购\n发行企业\n法律文件与风险\n资产概览\n\n以城市住宅物业为底层资产的收益参与演示案例。资产经营结果和投资者实际分配均以有效文件及核实结果为准。\n\n住宅形态\n单栋（演示）\n住宅套数\n待披露\n所在地区\n中国 · 上海\n建筑面积\n约 2,400 ㎡",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\54-residence-detail-1280.png"
+    },
+    {
+      "name": "55-residence-detail-1920",
+      "url": "/m/opportunities/residence-01",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n首页\n/\n投资机会\n/\n城市住宅收益参与计划\n\nPROJECT DETAILS\n\n城市住宅收益参与计划\n\n发行企业 · 海岚资产 ↗\n\n认购中\n配图仅作示意\n底层资产\n房地产 · 住宅物业\n投资者取得的权益\n收益参与权\n示例最低认购额\n1,000.00 U\n资产概览\n权益与收益\n发行与认购\n发行企业\n法律文件与风险\n资产概览\n\n以城市住宅物业为底层资产的收益参与演示案例。资产经营结果和投资者实际分配均以有效文件及核实结果为准。\n\n住宅形态\n单栋（演示）\n住宅套数\n待披露\n所在地区\n中国 · 上海\n建筑面积\n约 2,400 ㎡",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\55-residence-detail-1920.png"
+    },
+    {
+      "name": "61-principal-detail-after-repayment",
+      "url": "/m/investments/returns/prod-principal-1",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n收益与本金\n/\n分配详情\n\n企业借款债权投资计划\n\n债权本金偿还\n\n已支付\n\n以下为示例记录，仅供了解页面流程，不代表真实投资、法定登记或资金到账。\n\n分配金额\n权益类型\n债权\n收益期间\n待核实\n权益登记基准日\n待核实\n应付日或计划日\n待核实\n毛额（示例）\n50.00 U\n扣项（示例）\n0.00 U\n净应付（示例）\n50.00 U\n已备付（示例）\n50.00 U\n可领取（示例）\n0.00 U\n已支付（示例）\n50.00 U\n未支付（示例）\n0.00 U\n支付方式\n直接支付\n\n利息依据有效合同与实际未偿本金核算；本金偿还单独记",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\61-principal-detail-after-repayment.png"
+    },
+    {
+      "name": "62-claim-processing-1440",
+      "url": "/m/investments/returns/prod-interest-1",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n收益与本金\n/\n分配详情\n\n企业借款债权投资计划\n\n债权利息\n\n待核实 · 分配资格受限\n\n以下为示例记录，仅供了解页面流程，不代表真实投资、法定登记或资金到账。\n\n分配金额\n权益类型\n债权\n收益期间\n待核实\n权益登记基准日\n待核实\n应付日或计划日\n待核实\n毛额（示例）\n8.00 U\n扣项（示例）\n0.00 U\n净应付（示例）\n8.00 U\n已备付（示例）\n8.00 U\n可领取（示例）\n0.00 U\n已支付（示例）\n0.00 U\n未支付（示例）\n8.00 U\n支付方式\n投资者领取\n\n利息依据有效合同与实际未偿本金核算；本金偿",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\62-claim-processing-1440.png"
+    }
+  ]
+}

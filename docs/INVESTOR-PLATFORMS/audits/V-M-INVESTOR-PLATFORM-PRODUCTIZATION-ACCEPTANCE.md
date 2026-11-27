@@ -375,6 +375,6 @@ node .audit-prod/drive.mjs
 ## 13. 交付状态
 
 - 分支：`feat/vm-investor-platform-productization`
-- PR：`Improve: V/M Investor Platform Productization and Audit Remediation`，Draft / Open / Unmerged
+- PR：[#20](https://github.com/mirrorshang/rwa-saas-platform/pull/20) `Improve: V/M Investor Platform Productization and Audit Remediation`，Draft / Open / Unmerged
 - PR #17、PR #18、PR #19 均未修改、未合并。
 - 等待产品负责人审核，不进入下一阶段。

@@ -115,17 +115,17 @@
     },
     {
       "step": "claim prepared for failure check",
-      "firstClaim": "当前事件：prod-interest-1 · processing · 原请求：c8bad658-89d4-483d-bc96-acbc9efa86c8 · 本次金额 8.00 U\n查看投资者页面",
+      "firstClaim": "当前事件：prod-interest-1 · processing · 原请求：ee7a460d-3a3e-4ea6-a561-79435bb358fc · 本次金额 8.00 U\n查看投资者页面",
       "firstState": {
         "state": "processing",
-        "requestId": "c8bad658-89d4-483d-bc96-acbc9efa86c8"
+        "requestId": "ee7a460d-3a3e-4ea6-a561-79435bb358fc"
       }
     },
     {
       "step": "result switched to unknown",
       "unknownState": {
         "state": "unknown",
-        "requestId": "c8bad658-89d4-483d-bc96-acbc9efa86c8"
+        "requestId": "ee7a460d-3a3e-4ea6-a561-79435bb358fc"
       }
     },
     {
@@ -133,7 +133,7 @@
       "refuseNote": "原领取请求已存在，请查询原请求，不能覆盖或重复发起",
       "afterRefuse": {
         "state": "unknown",
-        "requestId": "c8bad658-89d4-483d-bc96-acbc9efa86c8"
+        "requestId": "ee7a460d-3a3e-4ea6-a561-79435bb358fc"
       },
       "preserved": true
     },
@@ -208,7 +208,7 @@
     },
     {
       "step": "ticket created and order unchanged",
-      "ticketUrl": "/m/account/tickets/mock-ticket-5356eb35-9d41-4af1-ac25-359b8cfbed6d",
+      "ticketUrl": "/m/account/tickets/mock-ticket-aff5073e-48f0-4e59-b63d-3c4476a8736d",
       "showsOrder": true,
       "linked": {
         "orderRefundStillReview": "under-review",
@@ -384,17 +384,17 @@
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
-      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的投资\n/\n订单详情\n\nORDER DETAIL\n\n企业借款债权投资计划\n\n杉衡资本 · 退款资格待核实 · 本地示例\n\n联系支持 →\n订单快照\n订单编号\nZ9VYRQ\n关联项目\n企业借款债权投资计划\n投资份额\n10\n认购金额\n500.00 U\n单价\n50.00 U\n创建时间\n2026/11/28 00:12:30\n待付款有效期\n2026/11/28 00:27:30\n文件确认\n仅阅读了示例文件；尚无有效法律签署\n业务进度\n\n以下为本地示例记录，不代表真实付款、配售、法定登记或权益凭证交付。\n\n付款\n实收已匹配\n配售\n已确",
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的投资\n/\n订单详情\n\nORDER DETAIL\n\n企业借款债权投资计划\n\n杉衡资本 · 退款资格待核实 · 本地示例\n\n联系支持 →\n订单快照\n订单编号\nZ9VYRQ\n关联项目\n企业借款债权投资计划\n投资份额\n10\n认购金额\n500.00 U\n单价\n50.00 U\n创建时间\n2026/11/28 00:29:52\n待付款有效期\n2026/11/28 00:44:52\n文件确认\n仅阅读了示例文件；尚无有效法律签署\n业务进度\n\n以下为本地示例记录，不代表真实付款、配售、法定登记或权益凭证交付。\n\n付款\n实收已匹配\n配售\n已确",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\75-order-refund-review-1440.png"
     },
     {
       "name": "76-ticket-linked-order-1440",
-      "url": "/m/account/tickets/mock-ticket-5356eb35-9d41-4af1-ac25-359b8cfbed6d",
+      "url": "/m/account/tickets/mock-ticket-aff5073e-48f0-4e59-b63d-3c4476a8736d",
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
-      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的工单\n/\n工单详情\n\nSUPPORT TICKET\n\n订单付款\n\n编号 QPI833 · 待处理\n\n问题与回复\n\n订单显示退款资格待核实，请核查原付款与退款状态。\n\n联系邮箱\nproduct.audit@rwa.test\n关联订单\nZ9VYRQ\n关联项目\n企业借款债权投资计划\n交易哈希\n未提供\n截图文件名\n未提供\n更新时间\n2026/11/28 00:12:55\n回复或补件说明\n保存本地回复\n原业务状态\n\n工单关闭不代表退款、付款、登记或权益凭证交付完成。\n\n查看关联订单 →\n!\n请以订单详情中的独立业务状态为准；当前记",
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n我的账户\n我的工单\n/\n工单详情\n\nSUPPORT TICKET\n\n订单付款\n\n编号 KW2TYM · 待处理\n\n问题与回复\n\n订单显示退款资格待核实，请核查原付款与退款状态。\n\n联系邮箱\nproduct.audit@rwa.test\n关联订单\nZ9VYRQ\n关联项目\n企业借款债权投资计划\n交易哈希\n未提供\n截图文件名\n未提供\n更新时间\n2026/11/28 00:30:17\n回复或补件说明\n保存本地回复\n原业务状态\n\n工单关闭不代表退款、付款、登记或权益凭证交付完成。\n\n查看关联订单 →\n!\n请以订单详情中的独立业务状态为准；当前记",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\vm-investor-platform-productization\\docs\\INVESTOR-PLATFORMS\\audits\\productization\\76-ticket-linked-order-1440.png"
     }

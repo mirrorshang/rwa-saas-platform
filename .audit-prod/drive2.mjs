@@ -330,7 +330,17 @@ try {
       const link = document.querySelector('a[download]');
       return link ? { download: link.getAttribute('download'), scheme: link.getAttribute('href').slice(0, 24), visible: link.innerText.trim() } : null;
     })()`);
-    await evaluate(`(() => { const link = document.querySelector('a[download]'); if (link) link.click(); return true; })()`);
+    const point = await evaluate(`(() => {
+      const link = document.querySelector('a[download]');
+      if (!link) return null;
+      link.scrollIntoView({block:'center'});
+      const box = link.getBoundingClientRect();
+      return { x: box.left + box.width / 2, y: box.top + box.height / 2 };
+    })()`);
+    if (!point) throw new Error('Missing download link');
+    await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: point.x, y: point.y });
+    await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1 });
+    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1 });
     let files = [];
     for (let attempt = 0; attempt < 40; attempt += 1) {
       files = fs.readdirSync(DOWNLOADS).filter(name => name.endsWith('.txt'));

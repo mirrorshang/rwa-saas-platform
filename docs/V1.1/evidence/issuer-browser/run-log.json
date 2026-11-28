@@ -1,0 +1,602 @@
+{
+  "log": [
+    {
+      "shot": "01-initial-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\01-initial-1440.png"
+    },
+    {
+      "stage": "01-initial-1440",
+      "state": {
+        "assets": [],
+        "instruments": [],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "02-portal-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\02-portal-1440.png"
+    },
+    {
+      "stage": "02-portal-1440",
+      "state": {
+        "assets": [],
+        "instruments": [],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "03-residential-asset-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\03-residential-asset-form-1440.png"
+    },
+    {
+      "stage": "03-residential-asset-form-1440",
+      "state": {
+        "assets": [],
+        "instruments": [],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "04-residential-asset-ready-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\04-residential-asset-ready-1440.png"
+    },
+    {
+      "stage": "04-residential-asset-ready-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "05-income-right-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\05-income-right-form-1440.png"
+    },
+    {
+      "stage": "05-income-right-form-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "06-income-right-ready-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\06-income-right-ready-1440.png"
+    },
+    {
+      "stage": "06-income-right-ready-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "07-offering-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\07-offering-form-1440.png"
+    },
+    {
+      "stage": "07-offering-form-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "08-offering-preview-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\08-offering-preview-1440.png"
+    },
+    {
+      "stage": "08-offering-preview-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3001",
+            "confirmed": false,
+            "status": "草稿",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "stage": "confirm",
+      "confirmed": true,
+      "snapshotVersions": {
+        "asset": 1,
+        "instrument": "v1",
+        "offeringRevision": 2
+      }
+    },
+    {
+      "shot": "09-offering-confirmed-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\09-offering-confirmed-1440.png"
+    },
+    {
+      "stage": "09-offering-confirmed-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "准备就绪",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "10-readiness-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\10-readiness-1440.png"
+    },
+    {
+      "stage": "10-readiness-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "准备就绪",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "11-issuance-submitted-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\11-issuance-submitted-1440.png"
+    },
+    {
+      "stage": "11-issuance-submitted-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "准备就绪",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [
+          {
+            "id": "ISS-OFF-3001",
+            "status": "已提交"
+          }
+        ],
+        "publications": []
+      }
+    },
+    {
+      "shot": "12-published-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\12-published-1440.png"
+    },
+    {
+      "stage": "12-published-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "待开始",
+            "publicationStatus": "Sandbox 已发布",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [
+          {
+            "id": "ISS-OFF-3001",
+            "status": "已核验"
+          }
+        ],
+        "publications": [
+          {
+            "id": "PUB-OFF-3001",
+            "offeringId": "OFF-3001"
+          }
+        ]
+      }
+    },
+    {
+      "shot": "13-final-preview-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\13-final-preview-1440.png"
+    },
+    {
+      "stage": "13-final-preview-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "待开始",
+            "publicationStatus": "Sandbox 已发布",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [
+          {
+            "id": "ISS-OFF-3001",
+            "status": "已核验"
+          }
+        ],
+        "publications": [
+          {
+            "id": "PUB-OFF-3001",
+            "offeringId": "OFF-3001"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "browser-export",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\published-offering-v1.1.json",
+      "schemaVersion": "1.1.0"
+    },
+    {
+      "shot": "14-final-preview-1280",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\14-final-preview-1280.png"
+    },
+    {
+      "shot": "14-final-preview-1920",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\14-final-preview-1920.png"
+    }
+  ],
+  "pages": [
+    {
+      "name": "01-initial-1440",
+      "url": "/",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n尚未创建企业\nRWA Issuer\n工作台首页\n 演示环境 · 非生产\n1\ndemo@rwa.example\n已登录\nRWA ISSUANCE WORKSPACE\n把真实世界资产，转化为\n清晰、可控的发行流程\n\n从企业认证到资产准备、发行、资金对账与存续管理，在一个工作区建立完整业务链路。\n\n创建并认证企业\n载入演示场景\n五步 KYB\n本地持久化\n全链路可追溯\n资",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\01-initial-1440.png"
+    },
+    {
+      "name": "02-portal-1440",
+      "url": "/portal",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n投资者门户\n 演示环境 · 非生产\nINVESTOR PORTAL\n投资者门户\n\n配置企业展示信息与平台域名下的专属站点，并进入只读投资者视角预览。\n\n打开完整预览\n网站配置\n\n品牌信息仅应用于本企业的只读演示站点。\n\n配置已保存\n星\n企业 Logo\nPNG、JPG 或 SVG，建议 1:1\n选择文件\n网站展示名",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\02-portal-1440.png"
+    },
+    {
+      "name": "03-residential-asset-form-1440",
+      "url": "/assets",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n创建资产\n\n选择资产模板并建立权属、估值和业务资料\n\n1 分类\n2 资料\n3 法律/估值\n4 预览\n\nV1 支持住宅、写字楼、商铺、工业仓储、普通股权与单笔借款债权六种模板。“填充示例”只补空字段，法定主体读取当前企",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\03-residential-asset-form-1440.png"
+    },
+    {
+      "name": "04-residential-asset-ready-1440",
+      "url": "/assets/AST-1001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "MOCK",
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n资产详情\n北京朝阳住宅租金收益项目\n\nAST-DEMO-1001\n\nReady\n资产类别\n房地产 / 住宅物业\n约定价格 / 债权规模\n250,000 U\n第三方评估价值\n¥1,900,000\n所在地区",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\04-residential-asset-ready-1440.png"
+    },
+    {
+      "name": "05-income-right-form-1440",
+      "url": "/assets/AST-1001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n配置权益结构\n\n定义投资者取得的法律权利、现金流与 Token 映射\n\n选择已有 Asset *\n北京朝阳住宅租金收益项目 · 住宅物业\n权益模板 *\n股权\n整数股精确映射\n债权\n本金、利率与到期\n收益参与权\n按合法",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\05-income-right-form-1440.png"
+    },
+    {
+      "name": "06-income-right-ready-1440",
+      "url": "/instruments/INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n权益结构\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n权益结构详情\n朝阳住宅租金收益参与权\n\nINS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1\n\nReady\n权益类型\n收益参与权\n当前版本\nv1\n权益总量\n25,000",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\06-income-right-ready-1440.png"
+    },
+    {
+      "name": "07-offering-form-1440",
+      "url": "/assets/AST-1001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n创建发行方案\n\n配置本期发行参数、认购规则、钱包与披露资料\n\nReady Instrument *\n朝阳住宅租金收益参与权 · 剩余 25,000\nOffering 名称 *\n投资者展示摘要 *\n主要发行风险 *\n发",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\07-offering-form-1440.png"
+    },
+    {
+      "name": "08-offering-preview-1440",
+      "url": "/offerings/OFF-3001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\nOffering 详情\n朝阳住宅租金收益参与权首期\n\nOFF-3001 · 第 1 期\n\n草稿\nToken 发行份数\n25,000\n每 Token 价格\n10 U\n募集目标\n250,000 U\n已募集金",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\08-offering-preview-1440.png"
+    },
+    {
+      "name": "09-offering-confirmed-1440",
+      "url": "/offerings/OFF-3001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\nOffering 详情\n朝阳住宅租金收益参与权首期\n\nOFF-3001 · 第 1 期\n\n准备就绪\nToken 发行份数\n25,000\n每 Token 价格\n10 U\n募集目标\n250,000 U\n已募",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\09-offering-confirmed-1440.png"
+    },
+    {
+      "name": "10-readiness-1440",
+      "url": "/issuance-readiness/OFF-3001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "MOCK",
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n发行准备资料\n朝阳住宅租金收益参与权首期\n\nOFF-3001 · 发行准备\n\n方案已确认\n\n当前为 Sandbox 模拟发行。确认快照固定 Asset、Instrument、Project、钱包和文件引",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\10-readiness-1440.png"
+    },
+    {
+      "name": "11-issuance-submitted-1440",
+      "url": "/issuance-readiness/OFF-3001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "MOCK",
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n发行准备资料\n朝阳住宅租金收益参与权首期\n\nOFF-3001 · 发行准备\n\n已提交\n\n当前为 Sandbox 模拟发行。确认快照固定 Asset、Instrument、Project、钱包和文件引用；",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\11-issuance-submitted-1440.png"
+    },
+    {
+      "name": "12-published-1440",
+      "url": "/issuance-readiness/OFF-3001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "MOCK",
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n发行准备资料\n朝阳住宅租金收益参与权首期\n\nOFF-3001 · 发行准备\n\nSandbox 已发布\n\n当前为 Sandbox 模拟发行。确认快照固定 Asset、Instrument、Project、",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\12-published-1440.png"
+    },
+    {
+      "name": "13-final-preview-1440",
+      "url": "/offerings/OFF-3001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\nOffering 详情\n朝阳住宅租金收益参与权首期\n\nOFF-3001 · 第 1 期\n\n未开放\nToken 发行份数\n25,000\n每 Token 价格\n10 U\n募集目标\n250,000 U\n已募集",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\13-final-preview-1440.png"
+    },
+    {
+      "name": "14-final-preview-1280",
+      "url": "/offerings/OFF-3001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\nOffering 详情\n朝阳住宅租金收益参与权首期\n\nOFF-3001 · 第 1 期\n\n未开放\nToken 发行份数\n25,000\n每 Token 价格\n10 U\n募集目标\n250,000 U\n已募集",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\14-final-preview-1280.png"
+    },
+    {
+      "name": "14-final-preview-1920",
+      "url": "/offerings/OFF-3001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\nOffering 详情\n朝阳住宅租金收益参与权首期\n\nOFF-3001 · 第 1 期\n\n未开放\nToken 发行份数\n25,000\n每 Token 价格\n10 U\n募集目标\n250,000 U\n已募集",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\14-final-preview-1920.png"
+    }
+  ]
+}

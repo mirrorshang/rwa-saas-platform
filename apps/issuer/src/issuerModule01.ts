@@ -1,5 +1,8 @@
 import type { AppState, Asset, BusinessFile, Instrument, Offering, Project } from "./data.ts";
 import { ACTUAL_365_FIXED } from "./actual365.ts";
+import { v11DisclosureIssues } from "./v11Disclosure.ts";
+import { v11InstrumentMissing } from "./v11Instrument.ts";
+import { closedLoopSubtype } from "./v11AssetTemplates.ts";
 
 export const ISSUER_STORAGE_KEY = "rwa-issuer-state-v4";
 export const LEGACY_ISSUER_STORAGE_KEY = "rwa-issuer-state-v3";
@@ -410,8 +413,11 @@ export function confirmIssuerOffering(state: AppState, id: string, expectedRevis
   const blockers = [
     state.kybStatus !== "已通过" ? "KYB 未通过" : "",
     state.plan !== "Standard" ? "Mock Standard 未生效" : "",
+    offering.disclosureSchemaVersion === 2 && !state.portal.slug ? "投资者门户标识未配置" : "",
     asset?.status !== "Ready" ? "Asset 未 Ready" : "",
+    asset && !closedLoopSubtype(asset.subtype) ? "该资产模板尚未完成发行及投后闭环" : "",
     instrument?.status !== "Ready" ? "Instrument 未 Ready" : "",
+    instrument?.termsSchemaVersion === 2 && v11InstrumentMissing(instrument, asset).length ? "新版 Instrument 条款或 SPV 证明未通过复核" : "",
     instrument?.type === "债权" && instrument.terms?.interestMethod !== ACTUAL_365_FIXED ? "债权计息方式须为 Actual/365 Fixed" : "",
     !project || project.assetId !== asset?.id || project.instrumentId !== instrument?.id || project.instrumentVersion !== instrument?.version ? "Project 关联或版本冲突" : "",
     project?.status !== "Ready" ? "Project 未 Ready" : "",
@@ -422,16 +428,20 @@ export function confirmIssuerOffering(state: AppState, id: string, expectedRevis
     !Number.isFinite(offering.price) || offering.price <= 0 || !Number.isFinite(offering.minimum) || (offering.minimum || 0) <= 0 ? "价格或最低认购金额无效" : "",
     !offering.start || !offering.end || offering.start >= offering.end ? "认购时间窗口无效" : "",
     instrument && offering.tokens > instrument.tokenCap - instrument.used ? "授权容量不足" : "",
+    ...v11DisclosureIssues(offering, instrument),
   ].filter(Boolean);
   if (blockers.length) return { state, error: blockers.join("、"), changed: false };
   const snapshot = {
     confirmedAt,
+    issuer: state.company ? { legalName: state.company.name, jurisdiction: state.company.country, slug: state.portal.slug || undefined } : undefined,
     asset: structuredClone(asset!), instrument: structuredClone(instrument!), project: structuredClone(project!),
     walletId: wallet!.id, walletAddress: wallet!.address,
     disclosureFiles: structuredClone(offering.disclosureFiles || []), reservedTokens: offering.tokens,
+    returnDisclosure: offering.returnDisclosure ? structuredClone(offering.returnDisclosure) : undefined,
+    disclosureSchemaVersion: offering.disclosureSchemaVersion,
     offeringTerms: {
       name: offering.name, round: offering.round, tokens: offering.tokens, price: offering.price,
-      start: offering.start, end: offering.end, summary: offering.summary, minimum: offering.minimum,
+      start: offering.start, end: offering.end, summary: offering.summary, riskDisclosure: offering.riskDisclosure, minimum: offering.minimum,
     },
   };
   return {

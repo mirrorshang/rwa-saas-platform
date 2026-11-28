@@ -1,0 +1,161 @@
+{
+  "log": [
+    {
+      "shot": "01-spv-income-right-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv\\01-spv-income-right-form-1440.png"
+    },
+    {
+      "stage": "01-spv-income-right-form-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "02-spv-income-right-ready-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv\\02-spv-income-right-ready-1440.png"
+    },
+    {
+      "stage": "02-spv-income-right-ready-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-8f55bb2a-b79c-48a0-935d-a1e529ef0529-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "已有SPV"
+          }
+        ],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "03-spv-income-published-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv\\03-spv-income-published-1440.png"
+    },
+    {
+      "stage": "03-spv-income-published-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-8f55bb2a-b79c-48a0-935d-a1e529ef0529-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "已有SPV"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "待开始",
+            "publicationStatus": "Sandbox 已发布",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [
+          {
+            "id": "ISS-OFF-3001",
+            "status": "已核验"
+          }
+        ],
+        "publications": [
+          {
+            "id": "PUB-OFF-3001",
+            "offeringId": "OFF-3001"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "spv-published-export",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv\\published-spv-income-v1.1.json",
+      "source": {
+        "publicationId": "PUB-OFF-3001",
+        "offeringId": "OFF-3001",
+        "assetId": "AST-1001",
+        "assetVersion": 1,
+        "instrumentId": "INS-8f55bb2a-b79c-48a0-935d-a1e529ef0529-V1",
+        "instrumentVersion": "v1",
+        "confirmedAt": "2026-11-28T06:29:19.335Z",
+        "publishedAt": "2026-11-28T06:29:21.104Z"
+      },
+      "spv": {
+        "legalName": "星河住宅持有有限公司",
+        "jurisdiction": "中国",
+        "role": "收益责任主体",
+        "assetRelationship": "依据资产授权文件运营该住宅租赁收益",
+        "issuerRelationship": "发行企业控制的已有法律主体",
+        "registrationNumber": "DEMO-SPV-RES-001"
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "01-spv-income-right-form-1440",
+      "url": "/assets/AST-1001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n配置权益结构\n\n定义投资者取得的法律权利、现金流与 Token 映射\n\n选择已有 Asset *\n北京朝阳住宅租金收益项目 · 住宅物业\n权益模板 *\n股权\n整数股精确映射\n债权\n本金、利率与到期\n收益参与权\n按合法",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv\\01-spv-income-right-form-1440.png"
+    },
+    {
+      "name": "02-spv-income-right-ready-1440",
+      "url": "/instruments/INS-8f55bb2a-b79c-48a0-935d-a1e529ef0529-V1",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n权益结构\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n权益结构详情\n朝阳住宅租金收益参与权\n\nINS-8f55bb2a-b79c-48a0-935d-a1e529ef0529-V1\n\nReady\n权益类型\n收益参与权\n当前版本\nv1\n权益总量\n25,000",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv\\02-spv-income-right-ready-1440.png"
+    },
+    {
+      "name": "03-spv-income-published-1440",
+      "url": "/offerings/OFF-3001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\nOffering 详情\n朝阳 SPV 租金收益参与权首期\n\nOFF-3001 · 第 1 期\n\n未开放\nToken 发行份数\n25,000\n每 Token 价格\n10 U\n募集目标\n250,000 U\n",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv\\03-spv-income-published-1440.png"
+    }
+  ]
+}

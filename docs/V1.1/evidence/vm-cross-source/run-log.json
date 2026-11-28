@@ -1,0 +1,177 @@
+{
+  "log": [
+    {
+      "stage": "v-home",
+      "width": 1280,
+      "hasProject": true,
+      "hasReturn": true,
+      "overflow": 0
+    },
+    {
+      "shot": "01-v-home-1280",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\01-v-home-1280.png"
+    },
+    {
+      "stage": "v-detail",
+      "width": 1280,
+      "title": true,
+      "fact": true,
+      "issuer": true,
+      "risk": true,
+      "noSpv": true,
+      "overflow": 0
+    },
+    {
+      "shot": "02-v-detail-1280",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-detail-1280.png"
+    },
+    {
+      "stage": "v-home",
+      "width": 1440,
+      "hasProject": true,
+      "hasReturn": true,
+      "overflow": 0
+    },
+    {
+      "shot": "01-v-home-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\01-v-home-1440.png"
+    },
+    {
+      "stage": "v-detail",
+      "width": 1440,
+      "title": true,
+      "fact": true,
+      "issuer": true,
+      "risk": true,
+      "noSpv": true,
+      "overflow": 0
+    },
+    {
+      "shot": "02-v-detail-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-detail-1440.png"
+    },
+    {
+      "stage": "v-home",
+      "width": 1920,
+      "hasProject": true,
+      "hasReturn": true,
+      "overflow": 0
+    },
+    {
+      "shot": "01-v-home-1920",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\01-v-home-1920.png"
+    },
+    {
+      "stage": "v-detail",
+      "width": 1920,
+      "title": true,
+      "fact": true,
+      "issuer": true,
+      "risk": true,
+      "noSpv": true,
+      "overflow": 0
+    },
+    {
+      "shot": "02-v-detail-1920",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-detail-1920.png"
+    },
+    {
+      "stage": "m-listing-gate",
+      "hasUnapprovedListing": false
+    },
+    {
+      "shot": "03-m-listing-gate-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\03-m-listing-gate-1440.png"
+    },
+    {
+      "stage": "m-direct-gate",
+      "exposesProject": false
+    },
+    {
+      "shot": "04-m-direct-gate-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\04-m-direct-gate-1440.png"
+    }
+  ],
+  "pages": [
+    {
+      "name": "01-v-home-1280",
+      "url": "/v/galaxy-assets",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "北\n北京朝阳城市资产管理有限公司\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n\nREAL WORLD ASSETS\n\n探索本企业的资产项目\n\n查看本企业公开项目及待开放的资产类型。\n\n浏览项目\n→\n当前项目及企业为示例资料；配图仅作示意，真实交易服务尚未开放。\n按底层资产浏览\n全部资产\n房地产\n\nPROJECTS\n\n当前公开项目\n\n以下项目属于当前企业渠道。\n\n查看全部 →\n配图仅作示意\n即将开放\n朝阳住宅租金收益参与权首期\n\n房地产 / 住宅物业 · 收益参与权 · 中国北京市朝阳区\n\n披露最低认购额\n1,000.00 U\n单价 10.00 U / 投资份额\n核心回报指标\n未提供预期年化\n\n",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\01-v-home-1280.png"
+    },
+    {
+      "name": "02-v-detail-1280",
+      "url": "/v/galaxy-assets/opportunities/OFF-3001",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "北\n北京朝阳城市资产管理有限公司\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n首页\n/\n投资机会\n/\n朝阳住宅租金收益参与权首期\n\nPROJECT DETAILS\n\n朝阳住宅租金收益参与权首期\n\n发行企业 · 北京朝阳城市资产管理有限公司 ↗\n\n即将开放\n配图仅作示意\n底层资产\n房地产 · 住宅物业\n投资者取得的权益\n收益参与权\n最低认购额\n1,000.00 U\n核心投资回报指标\n未提供预期年化\n\n以已披露权益版本与风险文件为准；预期回报不构成实际应付收益。\n\n资产概览\n权益与收益\n发行与认购\n发行企业\n法律文件与风险\n资产概览\n\n示例住宅租金收益参与权；实际现金流取决于租赁与费用\n\n资产类别",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-detail-1280.png"
+    },
+    {
+      "name": "01-v-home-1440",
+      "url": "/v/galaxy-assets",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "北\n北京朝阳城市资产管理有限公司\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n\nREAL WORLD ASSETS\n\n探索本企业的资产项目\n\n查看本企业公开项目及待开放的资产类型。\n\n浏览项目\n→\n当前项目及企业为示例资料；配图仅作示意，真实交易服务尚未开放。\n按底层资产浏览\n全部资产\n房地产\n\nPROJECTS\n\n当前公开项目\n\n以下项目属于当前企业渠道。\n\n查看全部 →\n配图仅作示意\n即将开放\n朝阳住宅租金收益参与权首期\n\n房地产 / 住宅物业 · 收益参与权 · 中国北京市朝阳区\n\n披露最低认购额\n1,000.00 U\n单价 10.00 U / 投资份额\n核心回报指标\n未提供预期年化\n\n",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\01-v-home-1440.png"
+    },
+    {
+      "name": "02-v-detail-1440",
+      "url": "/v/galaxy-assets/opportunities/OFF-3001",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "北\n北京朝阳城市资产管理有限公司\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n首页\n/\n投资机会\n/\n朝阳住宅租金收益参与权首期\n\nPROJECT DETAILS\n\n朝阳住宅租金收益参与权首期\n\n发行企业 · 北京朝阳城市资产管理有限公司 ↗\n\n即将开放\n配图仅作示意\n底层资产\n房地产 · 住宅物业\n投资者取得的权益\n收益参与权\n最低认购额\n1,000.00 U\n核心投资回报指标\n未提供预期年化\n\n以已披露权益版本与风险文件为准；预期回报不构成实际应付收益。\n\n资产概览\n权益与收益\n发行与认购\n发行企业\n法律文件与风险\n资产概览\n\n示例住宅租金收益参与权；实际现金流取决于租赁与费用\n\n资产类别",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-detail-1440.png"
+    },
+    {
+      "name": "01-v-home-1920",
+      "url": "/v/galaxy-assets",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "北\n北京朝阳城市资产管理有限公司\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n\nREAL WORLD ASSETS\n\n探索本企业的资产项目\n\n查看本企业公开项目及待开放的资产类型。\n\n浏览项目\n→\n当前项目及企业为示例资料；配图仅作示意，真实交易服务尚未开放。\n按底层资产浏览\n全部资产\n房地产\n\nPROJECTS\n\n当前公开项目\n\n以下项目属于当前企业渠道。\n\n查看全部 →\n配图仅作示意\n即将开放\n朝阳住宅租金收益参与权首期\n\n房地产 / 住宅物业 · 收益参与权 · 中国北京市朝阳区\n\n披露最低认购额\n1,000.00 U\n单价 10.00 U / 投资份额\n核心回报指标\n未提供预期年化\n\n",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\01-v-home-1920.png"
+    },
+    {
+      "name": "02-v-detail-1920",
+      "url": "/v/galaxy-assets/opportunities/OFF-3001",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "北\n北京朝阳城市资产管理有限公司\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n首页\n/\n投资机会\n/\n朝阳住宅租金收益参与权首期\n\nPROJECT DETAILS\n\n朝阳住宅租金收益参与权首期\n\n发行企业 · 北京朝阳城市资产管理有限公司 ↗\n\n即将开放\n配图仅作示意\n底层资产\n房地产 · 住宅物业\n投资者取得的权益\n收益参与权\n最低认购额\n1,000.00 U\n核心投资回报指标\n未提供预期年化\n\n以已披露权益版本与风险文件为准；预期回报不构成实际应付收益。\n\n资产概览\n权益与收益\n发行与认购\n发行企业\n法律文件与风险\n资产概览\n\n示例住宅租金收益参与权；实际现金流取决于租赁与费用\n\n资产类别",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-detail-1920.png"
+    },
+    {
+      "name": "03-m-listing-gate-1440",
+      "url": "/m",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n\nREAL WORLD ASSETS\n\n浏览不同企业的资产项目\n\n按发行企业、资产类型与投资者权益比较公开项目。\n\n浏览项目\n→\n当前项目及企业为示例资料；配图仅作示意，真实交易服务尚未开放。\n按底层资产浏览\n全部资产\n房地产\n企业借款\n\nPROJECTS\n\n不同企业的公开项目\n\n比较发行企业、底层资产与权益安排。\n\n查看全部 →\n配图仅作示意\n认购中\n城市住宅收益参与计划\n\n发行企业 · 海岚资产\n\n房地产 / 住宅物业 · 收益参与权 · 中国 · 上海\n\n披露最低认购额\n1,000.00 U\n单价 100.00 U / 投",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\03-m-listing-gate-1440.png"
+    },
+    {
+      "name": "04-m-direct-gate-1440",
+      "url": "/m/opportunities/OFF-3001",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n页面或资产不可访问\n\n链接无效，或当前渠道未获准公开此内容。\n\n浏览投资机会\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\04-m-direct-gate-1440.png"
+    }
+  ]
+}

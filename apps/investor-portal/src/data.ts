@@ -1,8 +1,10 @@
 import type { Offering } from './domain';
 import residence from './assets/residence.svg';
 import debt from './assets/debt.svg';
+import publishedSnapshot from './generated/published-offerings.json';
+import { loadPublishedDisclosures } from './publishedDisclosure.ts';
 
-export const offerings: Offering[] = [
+const legacyOfferings: Offering[] = [
   {
     id: 'residence-01', issuerId: 'harbor', issuerSlug: 'harbor', issuerName: '海岚资产',
     title: '城市住宅收益参与计划', category: '住宅物业', place: '中国 · 上海',
@@ -82,6 +84,12 @@ export const offerings: Offering[] = [
     documents: [{ name: '风险披露', version: 'Mock v1.0' }]
   }
 ];
+const published = (() => {
+  try { return { offerings: loadPublishedDisclosures(publishedSnapshot, { residence, debt }), error: '' }; }
+  catch (error) { return { offerings: [] as Offering[], error: error instanceof Error ? error.message : '披露数据无效' }; }
+})();
+export const publishedDisclosureError = published.error;
+export const offerings: Offering[] = [...legacyOfferings, ...published.offerings];
 export const issuers = {
   harbor: { name: '海岚资产', legal: '海岚资产管理有限公司（演示）', region: '中国 · 上海（演示）', business: '不动产资产管理与运营（演示）', disclosure: '登记与 KYB 材料尚未授权公开', intro: '专注于住宅物业资产管理与长期运营。本页企业信息为示例内容。' },
   cedar: { name: '杉衡资本', legal: '杉衡资本管理有限公司（演示）', region: '中国 · 深圳（演示）', business: '企业融资与权益投资（演示）', disclosure: '登记与 KYB 材料尚未授权公开', intro: '关注企业融资与资产权益项目。本页企业信息为示例内容。' }

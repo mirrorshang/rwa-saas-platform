@@ -4,10 +4,14 @@ export type Offering = {
   category: string; place: string; right: string; status: string; priceCents: number;
   minimumCents: number; maxUnits: number; listing: 'active' | 'pending';
   image: string; yieldLine: string; summary: string; features: [string, string][];
-  terms: [string, string][]; documents: { name: string; version: string }[];
+  terms: [string, string][]; documents: { name: string; version: string; id?: string; category?: string; source?: string }[];
   listedAt?: string; opensAt?: string; closesAt?: string; supplyUnits?: number; availableUnits?: number;
   lockup?: string; assetVersion?: string; instrumentVersion?: string; offeringVersion?: string;
   risk?: string;
+  spv?: { legalName: string; jurisdiction: string; role: string; assetRelationship: string; issuerRelationship: string; registrationNumber?: string } | null;
+  returnMethodology?: { priceAtCalculation: number; calculatedAt: string; period: string; incomeBasis: string; includesAppreciation: boolean; assumptions: string; feesAndTaxes: string; evidence: string; risks: string };
+  sourcePublicationId?: string;
+  sourceSchemaVersion?: string;
 };
 export const priceU = (cents: number) => (cents / 100).toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' U';
 export const parseChannel = (path: string): Channel | null => {

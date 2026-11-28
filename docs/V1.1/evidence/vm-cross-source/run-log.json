@@ -88,6 +88,30 @@
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-debt-detail-1440.png"
     },
     {
+      "stage": "v-spv-detail",
+      "title": true,
+      "legalName": true,
+      "role": true,
+      "relationship": true,
+      "overflow": 0
+    },
+    {
+      "shot": "02-v-spv-detail-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-spv-detail-1440.png"
+    },
+    {
+      "stage": "v-spv-debt-detail",
+      "title": true,
+      "legalName": true,
+      "role": true,
+      "fixedRate": true,
+      "overflow": 0
+    },
+    {
+      "shot": "02-v-spv-debt-detail-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-spv-debt-detail-1440.png"
+    },
+    {
       "stage": "m-listing-gate",
       "hasUnapprovedListing": false
     },
@@ -117,7 +141,7 @@
     },
     {
       "name": "02-v-detail-1280",
-      "url": "/v/galaxy-assets/opportunities/OFF-3001",
+      "url": "/v/galaxy-assets/opportunities/galaxy-assets--OFF-3001",
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
@@ -137,7 +161,7 @@
     },
     {
       "name": "02-v-detail-1440",
-      "url": "/v/galaxy-assets/opportunities/OFF-3001",
+      "url": "/v/galaxy-assets/opportunities/galaxy-assets--OFF-3001",
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
@@ -157,7 +181,7 @@
     },
     {
       "name": "02-v-detail-1920",
-      "url": "/v/galaxy-assets/opportunities/OFF-3001",
+      "url": "/v/galaxy-assets/opportunities/galaxy-assets--OFF-3001",
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
@@ -167,15 +191,33 @@
     },
     {
       "name": "02-v-debt-detail-1440",
-      "url": "/v/galaxy-assets/opportunities/OFF-3002",
+      "url": "/v/galaxy-assets/opportunities/galaxy-assets--OFF-3002",
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],
       "text": "北\n北京朝阳城市资产管理有限公司\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n首页\n/\n投资机会\n/\n华北物流投资者债权首期\n\nPROJECT DETAILS\n\n华北物流投资者债权首期\n\n发行企业 · 北京朝阳城市资产管理有限公司 ↗\n\n即将开放\n配图仅作示意\n底层资产\n企业借款 · 企业借款债权\n投资者取得的权益\n债权\n最低认购额\n1,000.00 U\n核心投资回报指标\n合同固定年利率 12% · 非保证兑付\n\n以已披露权益版本与风险文件为准；预期回报不构成实际应付收益。\n\n资产概览\n权益与收益\n发行与认购\n发行企业\n法律文件与风险\n资产概览\n\n单笔企业借款债权示例，投资者债权条款以对应协议",
-      "consoleErrors": [
-        "Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 本金偿还"
-      ],
+      "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-debt-detail-1440.png"
+    },
+    {
+      "name": "02-v-spv-detail-1440",
+      "url": "/v/galaxy-spv/opportunities/galaxy-spv--OFF-3001",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "北\n北京朝阳城市资产管理有限公司\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n首页\n/\n投资机会\n/\n朝阳 SPV 租金收益参与权首期\n\nPROJECT DETAILS\n\n朝阳 SPV 租金收益参与权首期\n\n发行企业 · 北京朝阳城市资产管理有限公司 ↗\n\n即将开放\n配图仅作示意\n底层资产\n房地产 · 住宅物业\n投资者取得的权益\n收益参与权\n最低认购额\n1,000.00 U\n核心投资回报指标\n未提供预期年化\n\n以已披露权益版本与风险文件为准；预期回报不构成实际应付收益。\n\n资产概览\n权益与收益\n发行与认购\n发行企业\n法律文件与风险\n资产概览\n\n示例 SPV 住宅租金收益参与权；现金流取决于租赁",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-spv-detail-1440.png"
+    },
+    {
+      "name": "02-v-spv-debt-detail-1440",
+      "url": "/v/galaxy-debt-spv/opportunities/galaxy-debt-spv--OFF-3001",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "北\n北京朝阳城市资产管理有限公司\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n首页\n/\n投资机会\n/\n华北物流 SPV 投资者债权首期\n\nPROJECT DETAILS\n\n华北物流 SPV 投资者债权首期\n\n发行企业 · 北京朝阳城市资产管理有限公司 ↗\n\n即将开放\n配图仅作示意\n底层资产\n企业借款 · 企业借款债权\n投资者取得的权益\n债权\n最低认购额\n1,000.00 U\n核心投资回报指标\n合同固定年利率 12% · 非保证兑付\n\n以已披露权益版本与风险文件为准；预期回报不构成实际应付收益。\n\n资产概览\n权益与收益\n发行与认购\n发行企业\n法律文件与风险\n资产概览\n\nSPV 投资者债权示例，合",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-spv-debt-detail-1440.png"
     },
     {
       "name": "03-m-listing-gate-1440",
@@ -189,7 +231,7 @@
     },
     {
       "name": "04-m-direct-gate-1440",
-      "url": "/m/opportunities/OFF-3001",
+      "url": "/m/opportunities/galaxy-assets--OFF-3001",
       "title": "RWA 投资机会 · 演示原型",
       "overflow": 0,
       "mock": [],

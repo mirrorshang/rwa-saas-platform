@@ -21,11 +21,11 @@ export function loadPublishedDisclosures(raw: unknown, images: { residence: stri
   return raw.map((value, index) => {
     const dto = object(value), source = object(dto?.source), asset = object(dto?.asset), issuer = object(dto?.issuer), right = object(dto?.right), returned = object(dto?.return), offering = object(dto?.offering), channels = object(dto?.channels);
     if (!dto || dto.schemaVersion !== '1.1.0' || !source || !asset || !issuer || !right || !returned || !offering || !channels || dto.status !== 'Sandbox 已发布') throw new Error(`第 ${index + 1} 条披露 schema 或状态无效`);
-    const id = requiredText(source, 'offeringId');
-    if (seen.has(id)) throw new Error(`披露数据重复 Offering ${id}`);
-    seen.add(id);
     const slug = requiredText(issuer, 'slug');
     if (!/^[a-z0-9-]+$/.test(slug)) throw new Error('发行企业渠道标识无效');
+    const id = `${slug}--${requiredText(source, 'offeringId')}`;
+    if (seen.has(id)) throw new Error(`披露数据重复 Offering ${id}`);
+    seen.add(id);
     if (channels.v !== true || typeof channels.mListingApproved !== 'boolean') throw new Error('渠道披露权限无效');
     const type = requiredText(right, 'type');
     if (!['股权', '债权', '收益参与权'].includes(type)) throw new Error('权益类型无效');
@@ -41,9 +41,8 @@ export function loadPublishedDisclosures(raw: unknown, images: { residence: stri
     const facts: [string,string][] = asset.facts.map((item: unknown) => { const row = object(item); if (!row) throw new Error('资产公开字段无效'); return [requiredText(row, 'label'), requiredText(row, 'value')]; });
     const terms: [string,string][] = right.terms.map((item: unknown) => { const row = object(item); if (!row) throw new Error('权益条款无效'); const label = requiredText(row, 'label'); const value = requiredText(row, 'value'); return [label, label === '参与比例' && /^\d+(?:\.\d+)?$/.test(value) ? `${value}%` : value]; });
     const normalizedTerms = [pair('投资者法律权利', right.description), pair('每 Token 权益映射', right.tokenMapping), ...terms].filter((item): item is [string,string] => item !== null);
-    const term = (label: string) => terms.find(([key]) => key === label)?.[1];
-    if (type === '债权') normalizedTerms.push(...[pair('合同固定年利率', kind === '合同固定年利率' ? `${returned.minPercent}%（非保证兑付）` : null), pair('付息方式', term('付息周期')), pair('本金偿还', term('本金偿还'))].filter((item): item is [string,string] => item !== null));
-    const documents = dto.documents.map((item: unknown) => { const row = object(item); if (!row || !Number.isSafeInteger(row.version) || (row.version as number) <= 0) throw new Error('公开文件版本无效'); if (row.visibility !== '公开') throw new Error('文件未授权公开'); return { id: requiredText(row, 'id'), name: requiredText(row, 'name'), category: requiredText(row, 'category'), source: requiredText(row, 'source'), version: `v${row.version}` }; });
+    if (type === '债权') normalizedTerms.push(...[pair('合同固定年利率', kind === '合同固定年利率' ? `${returned.minPercent}%（非保证兑付）` : null)].filter((item): item is [string,string] => item !== null));
+    const documents = dto.documents.map((item: unknown) => { const row = object(item); if (!row || !Number.isSafeInteger(row.version) || (row.version as number) <= 0) throw new Error('公开文件版本无效'); if (row.visibility !== '公开') throw new Error('文件未授权公开'); const sourceName = requiredText(row, 'name'); return { id: requiredText(row, 'id'), name: sourceName.startsWith('DEMO_') ? `示例文件：${sourceName.slice(5).replaceAll('_', ' ')}` : sourceName, category: requiredText(row, 'category'), source: requiredText(row, 'source'), version: `v${row.version}` }; });
     if (!documents.some(d => d.source === 'Instrument') || !documents.some(d => d.source === 'Offering')) throw new Error('缺少公开权益或发行文件');
     const returnLine = kind === '未提供' ? '未提供预期年化' : `${kind} ${returned.minPercent}${typeof returned.maxPercent === 'number' ? `–${returned.maxPercent}` : ''}% · ${kind === '合同固定年利率' ? '非保证兑付' : '非承诺'}`;
     const spv = object(dto.spv);

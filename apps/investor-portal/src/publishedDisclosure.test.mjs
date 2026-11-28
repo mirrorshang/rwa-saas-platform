@@ -35,8 +35,17 @@ test('未知 schema、重复 ID、损坏价格及文件版本一律拒绝', () =
 
 test('M 的单独许可仍不能把 Sandbox 项目变成可认购', () => {
   const item = dto(); item.channels.mListingApproved = true;
-  const [offering] = loadPublishedDisclosures([item], images, ['OFF-1']);
+  const [offering] = loadPublishedDisclosures([item], images, ['test-issuer--OFF-1']);
   assert.equal(visibleOfferings([offering], { kind: 'm' }).length, 1);
   assert.equal(offering.status, '即将开放');
   assert.equal(actionState(offering.status).enabled, false);
+});
+
+test('同一 Offering 编号在不同发行企业隔离，M 许可不能跨企业复用', () => {
+  const first = dto(); first.channels.mListingApproved = true;
+  const second = dto(); second.issuer = { ...second.issuer, slug: 'other-issuer', legalName: '另一发行企业' }; second.channels.mListingApproved = true;
+  const rows = loadPublishedDisclosures([first, second], images, ['test-issuer--OFF-1']);
+  assert.deepEqual(rows.map(row => row.id), ['test-issuer--OFF-1', 'other-issuer--OFF-1']);
+  assert.equal(visibleOfferings(rows, { kind: 'm' }).length, 1);
+  assert.equal(visibleOfferings(rows, { kind: 'm' })[0].issuerSlug, 'test-issuer');
 });

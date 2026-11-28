@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.1.0",
+  "source": {
+    "publicationId": "PUB-OFF-3001",
+    "offeringId": "OFF-3001",
+    "assetId": "AST-1001",
+    "assetVersion": 1,
+    "instrumentId": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
+    "instrumentVersion": "v1",
+    "confirmedAt": "2026-11-28T06:11:36.529Z",
+    "publishedAt": "2026-11-28T06:11:38.745Z"
+  },
+  "asset": {
+    "name": "北京朝阳住宅租金收益项目",
+    "category": "房地产",
+    "subtype": "住宅物业",
+    "location": "中国北京市朝阳区",
+    "facts": [
+      {
+        "key": "address",
+        "label": "物业位置",
+        "value": "北京市朝阳区建国路虚构测试小区1号楼1201室"
+      },
+      {
+        "key": "area",
+        "label": "建筑面积",
+        "value": "80"
+      },
+      {
+        "key": "occupancy",
+        "label": "使用状态",
+        "value": "已出租"
+      }
+    ]
+  },
+  "issuer": {
+    "legalName": "北京朝阳城市资产管理有限公司",
+    "jurisdiction": "中国北京市朝阳区",
+    "slug": "galaxy-assets"
+  },
+  "right": {
+    "type": "收益参与权",
+    "description": "住宅租赁合同下实际收到的可分配租金收益参与权，不转移房产产权",
+    "legalIssuer": "北京朝阳城市资产管理有限公司",
+    "tokenMapping": "每 Token 对应 1 份合同收益参与单位；以正式权益文件核对",
+    "terms": [
+      {
+        "label": "收益来源",
+        "value": "该住宅租赁合同下实际收到的可分配租金"
+      },
+      {
+        "label": "可分配收益口径",
+        "value": "实际收到的收入扣除合同约定成本和税费后核实"
+      },
+      {
+        "label": "参与比例",
+        "value": "100"
+      },
+      {
+        "label": "分配周期",
+        "value": "每月"
+      },
+      {
+        "label": "退出安排",
+        "value": "权益期限终止，待合法清算；不承诺返还本金"
+      }
+    ]
+  },
+  "spv": null,
+  "return": {
+    "kind": "未提供",
+    "warning": "未提供预期年化回报"
+  },
+  "offering": {
+    "name": "朝阳住宅租金收益参与权首期",
+    "round": "第 1 期",
+    "unitPriceU": 10,
+    "minimumU": 1000,
+    "totalUnits": 25000,
+    "totalIssueAmountU": 250000,
+    "subscriptionStart": "2026-12-01",
+    "subscriptionEnd": "2027-02-28",
+    "summary": "示例住宅租金收益参与权；实际现金流取决于租赁与费用"
+  },
+  "risks": [
+    "租金可能波动，投资可能损失；不承诺收益。"
+  ],
+  "documents": [
+    {
+      "id": "FILE-MOCK-1795846289965",
+      "name": "DEMO_Rental_Revenue_Participation_Agreement.pdf",
+      "category": "核心协议",
+      "version": 1,
+      "visibility": "公开",
+      "source": "Instrument"
+    },
+    {
+      "id": "FILE-MOCK-1795846294094",
+      "name": "DEMO_Offering_Risk_Disclosure.pdf",
+      "category": "发行披露",
+      "version": 1,
+      "visibility": "公开",
+      "source": "Offering"
+    }
+  ],
+  "channels": {
+    "v": true,
+    "mListingApproved": false
+  },
+  "status": "Sandbox 已发布"
+}

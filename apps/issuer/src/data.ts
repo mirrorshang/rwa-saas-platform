@@ -7,6 +7,20 @@ export interface BusinessFile {
   category: string;
   status: "待扫描" | "可引用" | "失败";
   version?: number;
+  visibility?: "内部" | "公开" | "授权投资者";
+}
+
+export interface ExistingSpv {
+  id: string;
+  legalName: string;
+  jurisdiction: string;
+  registrationNumber: string;
+  role: "权益发行主体" | "底层资产持有人" | "偿付主体" | "收益责任主体";
+  assetRelationship: string;
+  issuerRelationship: string;
+  registrationFile: BusinessFile;
+  assetAuthorityFile: BusinessFile;
+  rightsFile: BusinessFile;
 }
 
 export interface Asset {
@@ -21,6 +35,8 @@ export interface Asset {
   location?: string;
   address?: string;
   details?: Record<string, string | number>;
+  publicFields?: string[];
+  assetSchemaVersion?: 2;
   files?: BusinessFile[];
   missing?: string[];
   version?: number;
@@ -41,6 +57,9 @@ export interface Instrument {
   terms?: Record<string, string | number>;
   files?: BusinessFile[];
   missing?: string[];
+  termsSchemaVersion?: 2;
+  spvMode?: "不涉及" | "已有SPV";
+  spv?: ExistingSpv;
 }
 
 export interface Project {
@@ -54,6 +73,7 @@ export interface Project {
 
 export interface OfferingSnapshot {
   confirmedAt: string;
+  issuer?: { legalName: string; jurisdiction: string; slug?: string };
   asset: Asset;
   instrument: Instrument;
   project: Project;
@@ -61,6 +81,8 @@ export interface OfferingSnapshot {
   walletAddress: string;
   disclosureFiles: BusinessFile[];
   reservedTokens: number;
+  returnDisclosure?: ReturnDisclosure;
+  disclosureSchemaVersion?: 2;
   offeringTerms: {
     name: string;
     round: string;
@@ -69,9 +91,27 @@ export interface OfferingSnapshot {
     start: string;
     end: string;
     summary?: string;
+    riskDisclosure?: string;
     minimum?: number;
   };
 }
+
+export type ReturnDisclosure =
+  | { kind: "未提供" }
+  | {
+      kind: "发行方预期年化收益率" | "发行方预期年化回报率";
+      minPercent: number;
+      maxPercent?: number;
+      priceAtCalculation: number;
+      calculatedAt: string;
+      period: string;
+      incomeBasis: "净收益" | "毛收益";
+      includesAppreciation: boolean;
+      assumptions: string;
+      feesAndTaxes: string;
+      evidence: string;
+      risks: string;
+    };
 
 export interface Offering {
   id: string;
@@ -86,9 +126,12 @@ export interface Offering {
   status: "草稿" | "准备就绪" | "待开始" | "认购中" | "暂停" | "已结束";
   walletId: string;
   summary?: string;
+  riskDisclosure?: string;
   minimum?: number;
   lockDays?: number;
   disclosureFiles?: BusinessFile[];
+  disclosureSchemaVersion?: 2;
+  returnDisclosure?: ReturnDisclosure;
   confirmed?: boolean;
   contractStatus?: "未申请" | "部署处理中" | "模拟已部署" | "部署失败";
   projectId?: string;

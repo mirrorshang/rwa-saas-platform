@@ -1,0 +1,166 @@
+{
+  "log": [
+    {
+      "shot": "01-spv-debt-right-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv-debt\\01-spv-debt-right-form-1440.png"
+    },
+    {
+      "stage": "01-spv-debt-right-form-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "单笔企业借款债权",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "02-spv-debt-right-ready-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv-debt\\02-spv-debt-right-ready-1440.png"
+    },
+    {
+      "stage": "02-spv-debt-right-ready-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "单笔企业借款债权",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-ade85727-572e-40bd-bd43-cfdac39e9d9e-V1",
+            "type": "债权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "已有SPV"
+          }
+        ],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "03-spv-debt-published-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv-debt\\03-spv-debt-published-1440.png"
+    },
+    {
+      "stage": "03-spv-debt-published-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "单笔企业借款债权",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-ade85727-572e-40bd-bd43-cfdac39e9d9e-V1",
+            "type": "债权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "已有SPV"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "待开始",
+            "publicationStatus": "Sandbox 已发布",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [
+          {
+            "id": "ISS-OFF-3001",
+            "status": "已核验"
+          }
+        ],
+        "publications": [
+          {
+            "id": "PUB-OFF-3001",
+            "offeringId": "OFF-3001"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "spv-debt-published-export",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv-debt\\published-spv-debt-v1.1.json",
+      "source": {
+        "publicationId": "PUB-OFF-3001",
+        "offeringId": "OFF-3001",
+        "assetId": "AST-1001",
+        "assetVersion": 1,
+        "instrumentId": "INS-ade85727-572e-40bd-bd43-cfdac39e9d9e-V1",
+        "instrumentVersion": "v1",
+        "confirmedAt": "2026-11-28T06:34:04.790Z",
+        "publishedAt": "2026-11-28T06:34:06.556Z"
+      },
+      "spv": {
+        "legalName": "星河债权偿付有限公司",
+        "jurisdiction": "中国",
+        "role": "偿付主体",
+        "assetRelationship": "依据债权转让及授权文件承担投资者偿付义务",
+        "issuerRelationship": "发行企业控制的已有法律主体",
+        "registrationNumber": "DEMO-SPV-DEBT-001"
+      },
+      "return": {
+        "kind": "合同固定年利率",
+        "minPercent": 12,
+        "warning": "合同利率不构成保证兑付"
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "01-spv-debt-right-form-1440",
+      "url": "/assets/AST-1001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n配置权益结构\n\n定义投资者取得的法律权利、现金流与 Token 映射\n\n选择已有 Asset *\n华北物流企业借款债权 · 单笔企业借款债权\n权益模板 *\n股权\n整数股精确映射\n债权\n本金、利率与到期\n收益参与权\n按",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv-debt\\01-spv-debt-right-form-1440.png"
+    },
+    {
+      "name": "02-spv-debt-right-ready-1440",
+      "url": "/instruments/INS-ade85727-572e-40bd-bd43-cfdac39e9d9e-V1",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n权益结构\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n权益结构详情\n华北物流债权收益发行权益\n\nINS-ade85727-572e-40bd-bd43-cfdac39e9d9e-V1\n\nReady\n权益类型\n债权\n当前版本\nv1\n权益总量\n400,000 ",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv-debt\\02-spv-debt-right-ready-1440.png"
+    },
+    {
+      "name": "03-spv-debt-published-1440",
+      "url": "/offerings/OFF-3001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\nOffering 详情\n华北物流 SPV 投资者债权首期\n\nOFF-3001 · 第 1 期\n\n未开放\nToken 发行份数\n4,000\n每 Token 价格\n100 U\n募集目标\n400,000 U\n",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-spv-debt\\03-spv-debt-published-1440.png"
+    }
+  ]
+}

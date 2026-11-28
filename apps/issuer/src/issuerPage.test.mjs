@@ -48,6 +48,14 @@ test("正式应用按钮可创建住宅和债权并走到各自发行准备", as
         field.dispatchEvent(new dom.window.Event(field.tagName === "SELECT" ? "change" : "input", { bubbles: true }));
       });
     };
+    const setPublicPermission = async (label) => {
+      const field = document.querySelector(`select[aria-label="${label}"]`);
+      assert.ok(field, `找不到公开权限：${label}`);
+      await act(async () => {
+        field.value = "公开";
+        field.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
+      });
+    };
     assert.match(document.body.textContent, /工作台首页/);
     const button = [...document.querySelectorAll("button")].find((item) => item.textContent.includes("演示控制台"));
     assert.ok(button);
@@ -56,6 +64,10 @@ test("正式应用按钮可创建住宅和债权并走到各自发行准备", as
     await clickButton("已通过", document.querySelector(".demo-console"));
     await clickButton("Standard", document.querySelector(".demo-console"));
     await closeDemo();
+    await clickButton("投资者门户");
+    await setField("网站展示名称", "星河资产投资者门户");
+    await setField("企业专属 URL 前缀", "galaxy-assets");
+    await clickButton("保存配置");
     await clickButton("资产与发行");
     await clickButton("创建资产");
     assert.match(document.body.textContent, /创建资产/);
@@ -75,6 +87,7 @@ test("正式应用按钮可创建住宅和债权并走到各自发行准备", as
     await clickButton("配置该资产的权益结构");
     await clickButton("填充示例空条款");
     await click([...document.querySelectorAll(".file-upload-field button")][0]);
+    await setPublicPermission("权益文件公开权限");
     await clickButton("保存权益草稿");
     await openDemo();
     await clickDemoStep("扫描当前待处理文件");
@@ -88,10 +101,12 @@ test("正式应用按钮可创建住宅和债权并走到各自发行准备", as
     await clickButton("新建该资产的 Offering");
     await setField("Offering 名称", "朝阳住宅租金收益参与权首期");
     await setField("投资者展示摘要", "住宅租金收益参与权 Mock 首期");
+    await setField("主要发行风险", "租金可能波动，投资可能损失；不承诺收益。");
     await setField("发行 Token 份数", "25000");
     await setField("每 Token 价格 U", "10");
     await setField("单笔最低认购金额 U", "1000");
     await click([...document.querySelectorAll(".file-upload-field button")][0]);
+    await setPublicPermission("发行文件公开权限");
     await clickButton("保存 Offering 草稿");
     const draft = JSON.parse(localStorage.getItem("rwa-issuer-state-v4"));
     assert.equal(draft.projects.length, 1);
@@ -104,7 +119,8 @@ test("正式应用按钮可创建住宅和债权并走到各自发行准备", as
     await clickButton("确认发行并运行准入检查");
     await clickButton("运行检查并确认");
     const confirmed = JSON.parse(localStorage.getItem("rwa-issuer-state-v4"));
-    assert.equal(confirmed.offerings[0].confirmed, true);
+    const { confirmIssuerOffering } = await vite.ssrLoadModule("/src/issuerModule01.ts");
+    assert.equal(confirmed.offerings[0].confirmed, true, confirmIssuerOffering(confirmed, confirmed.offerings[0].id, confirmed.offerings[0].revision || 1, new Date().toISOString()).error);
     assert.equal(confirmed.instruments[0].used, 25000);
     await clickButton("进入发行准备");
     assert.match(document.body.textContent, /七组发行准备检查/);
@@ -134,6 +150,7 @@ test("正式应用按钮可创建住宅和债权并走到各自发行准备", as
     await clickButton("配置该资产的权益结构");
     await clickButton("填充示例空条款");
     await click([...document.querySelectorAll(".file-upload-field button")][0]);
+    await setPublicPermission("权益文件公开权限");
     await clickButton("保存权益草稿");
     await openDemo();
     await clickDemoStep("扫描当前待处理文件");
@@ -151,10 +168,12 @@ test("正式应用按钮可创建住宅和债权并走到各自发行准备", as
     await clickButton("新建该资产的 Offering");
     await setField("Offering 名称", "华北物流投资者债权首期");
     await setField("投资者展示摘要", "企业借款债权 Mock 发行测试");
+    await setField("主要发行风险", "债务人可能违约，债权本息可能无法按时收回。");
     await setField("发行 Token 份数", "4000");
     await setField("每 Token 价格 U", "100");
     await setField("单笔最低认购金额 U", "1000");
     await click([...document.querySelectorAll(".file-upload-field button")][0]);
+    await setPublicPermission("发行文件公开权限");
     await clickButton("保存 Offering 草稿");
     const debtDraft = JSON.parse(localStorage.getItem("rwa-issuer-state-v4"));
     assert.equal(debtDraft.projects.length, 2);
@@ -169,7 +188,8 @@ test("正式应用按钮可创建住宅和债权并走到各自发行准备", as
     await clickButton("确认发行并运行准入检查");
     await clickButton("运行检查并确认");
     const debtConfirmed = JSON.parse(localStorage.getItem("rwa-issuer-state-v4"));
-    assert.equal(debtConfirmed.offerings.find((offering) => offering.name.includes("华北物流")).confirmed, true);
+    const debtOffering = debtConfirmed.offerings.find((offering) => offering.name.includes("华北物流"));
+    assert.equal(debtOffering.confirmed, true, confirmIssuerOffering(debtConfirmed, debtOffering.id, debtOffering.revision || 1, new Date().toISOString()).error);
     assert.equal(debtConfirmed.instruments.find((instrument) => instrument.type === "债权").used, 4000);
     await clickButton("进入发行准备");
     assert.match(document.body.textContent, /七组发行准备检查/);

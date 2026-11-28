@@ -1,0 +1,503 @@
+{
+  "log": [
+    {
+      "shot": "01-equity-asset-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\01-equity-asset-form-1440.png"
+    },
+    {
+      "stage": "01-equity-asset-form-1440",
+      "state": {
+        "assets": [],
+        "instruments": [],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "02-equity-asset-draft-gate-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\02-equity-asset-draft-gate-1440.png"
+    },
+    {
+      "stage": "02-equity-asset-draft-gate-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          }
+        ],
+        "instruments": [],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "03-equity-right-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\03-equity-right-form-1440.png"
+    },
+    {
+      "stage": "03-equity-right-form-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          }
+        ],
+        "instruments": [],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "04-equity-right-draft-gate-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\04-equity-right-draft-gate-1440.png"
+    },
+    {
+      "stage": "04-equity-right-draft-gate-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-1107e5b7-dd34-48c3-8c36-01ea6ee2c7e2-V1",
+            "type": "股权",
+            "status": "Draft",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "05-spv-equity-asset-draft-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\05-spv-equity-asset-draft-1440.png"
+    },
+    {
+      "stage": "05-spv-equity-asset-draft-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1002",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          },
+          {
+            "id": "AST-1001",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-1107e5b7-dd34-48c3-8c36-01ea6ee2c7e2-V1",
+            "type": "股权",
+            "status": "Draft",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "06-spv-equity-right-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\06-spv-equity-right-form-1440.png"
+    },
+    {
+      "stage": "06-spv-equity-right-form-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1002",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          },
+          {
+            "id": "AST-1001",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-1107e5b7-dd34-48c3-8c36-01ea6ee2c7e2-V1",
+            "type": "股权",
+            "status": "Draft",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "shot": "07-spv-equity-right-draft-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\07-spv-equity-right-draft-1440.png"
+    },
+    {
+      "stage": "07-spv-equity-right-draft-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1002",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          },
+          {
+            "id": "AST-1001",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-ec189438-c5df-4cac-b38e-c10de797b691-V1",
+            "type": "股权",
+            "status": "Draft",
+            "version": "v1",
+            "spvMode": "已有SPV"
+          },
+          {
+            "id": "INS-1107e5b7-dd34-48c3-8c36-01ea6ee2c7e2-V1",
+            "type": "股权",
+            "status": "Draft",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "stage": "spv-configured",
+      "exists": true,
+      "legalName": "星河资产持有有限公司",
+      "type": "股权",
+      "status": "Draft",
+      "proofs": [
+        "可引用",
+        "可引用",
+        "可引用"
+      ]
+    },
+    {
+      "shot": "08-other-template-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\08-other-template-form-1440.png"
+    },
+    {
+      "stage": "08-other-template-form-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1002",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          },
+          {
+            "id": "AST-1001",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-ec189438-c5df-4cac-b38e-c10de797b691-V1",
+            "type": "股权",
+            "status": "Draft",
+            "version": "v1",
+            "spvMode": "已有SPV"
+          },
+          {
+            "id": "INS-1107e5b7-dd34-48c3-8c36-01ea6ee2c7e2-V1",
+            "type": "股权",
+            "status": "Draft",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "stage": "template-saved",
+      "subtype": "写字楼",
+      "assetId": "AST-1003",
+      "status": "Draft"
+    },
+    {
+      "shot": "09-other-template-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\09-other-template-form-1440.png"
+    },
+    {
+      "stage": "09-other-template-form-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1003",
+            "subtype": "写字楼",
+            "status": "Draft",
+            "version": 1
+          },
+          {
+            "id": "AST-1002",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          },
+          {
+            "id": "AST-1001",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-ec189438-c5df-4cac-b38e-c10de797b691-V1",
+            "type": "股权",
+            "status": "Draft",
+            "version": "v1",
+            "spvMode": "已有SPV"
+          },
+          {
+            "id": "INS-1107e5b7-dd34-48c3-8c36-01ea6ee2c7e2-V1",
+            "type": "股权",
+            "status": "Draft",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "stage": "template-saved",
+      "subtype": "商业商铺",
+      "assetId": "AST-1004",
+      "status": "Draft"
+    },
+    {
+      "shot": "010-other-template-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\010-other-template-form-1440.png"
+    },
+    {
+      "stage": "010-other-template-form-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1004",
+            "subtype": "商业商铺",
+            "status": "Draft",
+            "version": 1
+          },
+          {
+            "id": "AST-1003",
+            "subtype": "写字楼",
+            "status": "Draft",
+            "version": 1
+          },
+          {
+            "id": "AST-1002",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          },
+          {
+            "id": "AST-1001",
+            "subtype": "非上市企业普通股权",
+            "status": "Draft",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-ec189438-c5df-4cac-b38e-c10de797b691-V1",
+            "type": "股权",
+            "status": "Draft",
+            "version": "v1",
+            "spvMode": "已有SPV"
+          },
+          {
+            "id": "INS-1107e5b7-dd34-48c3-8c36-01ea6ee2c7e2-V1",
+            "type": "股权",
+            "status": "Draft",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [],
+        "tasks": [],
+        "publications": []
+      }
+    },
+    {
+      "stage": "template-saved",
+      "subtype": "工业园/仓储物流物业",
+      "assetId": "AST-1005",
+      "status": "Draft"
+    }
+  ],
+  "pages": [
+    {
+      "name": "01-equity-asset-form-1440",
+      "url": "/assets",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n创建资产\n\n选择资产模板并建立权属、估值和业务资料\n\n1 分类\n2 资料\n3 法律/估值\n4 预览\n\nV1 支持住宅、写字楼、商铺、工业仓储、普通股权与单笔借款债权六种模板。“填充示例”只补空字段，法定主体读取当前企",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\01-equity-asset-form-1440.png"
+    },
+    {
+      "name": "02-equity-asset-draft-gate-1440",
+      "url": "/assets/AST-1001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "MOCK",
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n资产详情\n示例普通股权资产\n\nAST-DEMO-1001\n\nDraft\n资产类别\n企业股权 / 非上市企业普通股权\n约定价格 / 债权规模\n0 U\n第三方评估价值\n0 U\n所在地区\n中国北京市朝阳区\n评",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\02-equity-asset-draft-gate-1440.png"
+    },
+    {
+      "name": "03-equity-right-form-1440",
+      "url": "/assets/AST-1001",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n配置权益结构\n\n定义投资者取得的法律权利、现金流与 Token 映射\n\n选择已有 Asset *\n示例普通股权资产 · 非上市企业普通股权\n上游 Asset 尚未 Ready\n\n允许保存 Instrument 草稿，",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\03-equity-right-form-1440.png"
+    },
+    {
+      "name": "04-equity-right-draft-gate-1440",
+      "url": "/instruments/INS-1107e5b7-dd34-48c3-8c36-01ea6ee2c7e2-V1",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n权益结构\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n权益结构详情\n普通股权权益草稿\n\nINS-1107e5b7-dd34-48c3-8c36-01ea6ee2c7e2-V1\n\nDraft\n权益类型\n股权\n当前版本\nv1\n权益总量\n10,000 普通股\nT",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\04-equity-right-draft-gate-1440.png"
+    },
+    {
+      "name": "05-spv-equity-asset-draft-1440",
+      "url": "/assets/AST-1002",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "MOCK",
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n资产详情\n示例 SPV 股权资产\n\nAST-DEMO-1002\n\nDraft\n资产类别\n企业股权 / 非上市企业普通股权\n约定价格 / 债权规模\n0 U\n第三方评估价值\n0 U\n所在地区\n中国北京市朝阳",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\05-spv-equity-asset-draft-1440.png"
+    },
+    {
+      "name": "06-spv-equity-right-form-1440",
+      "url": "/assets/AST-1002",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n配置权益结构\n\n定义投资者取得的法律权利、现金流与 Token 映射\n\n选择已有 Asset *\n示例 SPV 股权资产 · 非上市企业普通股权\n上游 Asset 尚未 Ready\n\n允许保存 Instrument ",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\06-spv-equity-right-form-1440.png"
+    },
+    {
+      "name": "07-spv-equity-right-draft-1440",
+      "url": "/instruments/INS-ec189438-c5df-4cac-b38e-c10de797b691-V1",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "Mock",
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n权益结构\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n权益结构详情\n普通股权权益草稿\n\nINS-ec189438-c5df-4cac-b38e-c10de797b691-V1\n\nDraft\n权益类型\n股权\n当前版本\nv1\n权益总量\n10,000 普通股\nT",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\07-spv-equity-right-draft-1440.png"
+    },
+    {
+      "name": "08-other-template-form-1440",
+      "url": "/assets",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n创建资产\n\n选择资产模板并建立权属、估值和业务资料\n\n1 分类\n2 资料\n3 法律/估值\n4 预览\n\nV1 支持住宅、写字楼、商铺、工业仓储、普通股权与单笔借款债权六种模板。“填充示例”只补空字段，法定主体读取当前企",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\08-other-template-form-1440.png"
+    },
+    {
+      "name": "09-other-template-form-1440",
+      "url": "/assets",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n创建资产\n\n选择资产模板并建立权属、估值和业务资料\n\n1 分类\n2 资料\n3 法律/估值\n4 预览\n\nV1 支持住宅、写字楼、商铺、工业仓储、普通股权与单笔借款债权六种模板。“填充示例”只补空字段，法定主体读取当前企",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\09-other-template-form-1440.png"
+    },
+    {
+      "name": "010-other-template-form-1440",
+      "url": "/assets",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n创建资产\n\n选择资产模板并建立权属、估值和业务资料\n\n1 分类\n2 资料\n3 法律/估值\n4 预览\n\nV1 支持住宅、写字楼、商铺、工业仓储、普通股权与单笔借款债权六种模板。“填充示例”只补空字段，法定主体读取当前企",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-equity-spv\\010-other-template-form-1440.png"
+    }
+  ]
+}

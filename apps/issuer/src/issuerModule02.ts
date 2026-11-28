@@ -71,7 +71,7 @@ export function checkIssuanceReadiness(state: AppState, id: string, checkedAt: s
       !off?.confirmed || !snap ? "Offering 尚未确认或缺少确认快照" : "",
       !off || !Number.isInteger(off.tokens) || off.tokens <= 0 || !Number.isFinite(off.price) || off.price <= 0 ? "发行数量或价格无效" : "",
       !off?.start || !off?.end || off.start >= off.end || Number.isNaN(Date.parse(off.start)) || Number.isNaN(Date.parse(off.end)) ? "认购时间窗口无效" : "",
-      !snap || !off || JSON.stringify(snap.offeringTerms) !== JSON.stringify({ name: off.name, round: off.round, tokens: off.tokens, price: off.price, start: off.start, end: off.end, summary: off.summary, minimum: off.minimum }) ? "Offering 条款与固定版本不一致" : "",
+      !snap || !off || JSON.stringify(snap.offeringTerms) !== JSON.stringify({ name: off.name, round: off.round, tokens: off.tokens, price: off.price, start: off.start, end: off.end, summary: off.summary, riskDisclosure: off.riskDisclosure, minimum: off.minimum }) ? "Offering 条款与固定版本不一致" : "",
     ].filter(Boolean), "assets"),
     group(5, "企业钱包、网络与收款配置", [
       !wallet || !wallet.status.includes("已验证") ? "收款钱包未验证" : "",
@@ -85,6 +85,7 @@ export function checkIssuanceReadiness(state: AppState, id: string, checkedAt: s
       !instrument?.terms?.responsibleParty ? "权益条款未列明责任主体" : "",
       !fileReady(instrument?.files, "核心协议") ? "缺少可引用的核心协议签署依据" : "",
       !snap || JSON.stringify(snap.disclosureFiles) !== JSON.stringify(off?.disclosureFiles || []) ? "披露文件与确认快照不一致" : "",
+      off?.disclosureSchemaVersion === 2 && JSON.stringify(snap?.returnDisclosure) !== JSON.stringify(off?.returnDisclosure) ? "回报披露与确认快照不一致" : "",
     ].filter(Boolean), "assets"),
     group(7, "Sandbox 执行与环境安全", [
       !snap ? "缺少可执行的固定确认快照" : "",

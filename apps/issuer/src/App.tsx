@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import {
   Activity,
   AlertCircle,
@@ -46,8 +46,10 @@ import {
   AppState,
   Asset,
   BusinessFile,
+  ExistingSpv,
   Instrument,
   Offering,
+  ReturnDisclosure,
   categories,
   companyDemo,
   demoState,
@@ -70,6 +72,10 @@ import { advanceSandboxIssuance, checkIssuanceReadiness, readinessFingerprint, r
 import { allocateMockOrder, approveMockInvestorKyc, createHolderSnapshot, createMockInvestor, createMockOrder, deliverMockTokens, recordMockPayment, registerMockHolder } from "./issuerModule03";
 import { confirmRentBatch, confirmRentReport, createRentBatch, createRentReport, payMockDistributionLine, splitBySnapshot } from "./issuerModule04";
 import { completeDebt, confirmDebtBatch, createDebtInterestBatch, createDebtPrincipalBatch, createDebtSchedule, disposeDebtTokens, settleDebtRegistry } from "./issuerModule05";
+import { v11InstrumentMissing } from "./v11Instrument";
+import { assetTemplates, closedLoopSubtype, type AssetTemplateName } from "./v11AssetTemplates";
+import { buildPublishedOfferingDisclosure } from "./v11PublishedDisclosure";
+import { authorizedPublicFile } from "./v11Disclosure";
 
 type ModuleId =
   | "dashboard"
@@ -216,6 +222,7 @@ const requiredFileReady = (files: BusinessFile[] | undefined, categories: string
 
 function assetMissing(asset: Asset): string[] {
   const details = asset.details || {};
+  if (asset.assetSchemaVersion === 2 && !closedLoopSubtype(asset.subtype)) return ["该资产模板尚未完成认购、登记与投后闭环，仅可保存资料草稿"];
   if (asset.subtype === "住宅物业") {
     const fields: [string, string][] = [
       ["address", "物业地址"],
@@ -290,57 +297,7 @@ function assetMissing(asset: Asset): string[] {
 }
 
 function instrumentMissing(instrument: Instrument, asset?: Asset): string[] {
-  const terms = instrument.terms || {};
-  const common: [string, string][] = [
-    ["responsibleParty", "法律责任主体"],
-    ["rightsDescription", "权利描述"],
-    ["startDate", "权益起始日"],
-    ["maturityDate", "权益到期日"],
-  ];
-  const typeFields: [string, string][] =
-    instrument.type === "债权"
-      ? [
-          ["principal", "投资者本金总额"],
-          ["annualRate", "投资者固定年利率"],
-          ["interestMethod", "计息方式"],
-          ["frequency", "付息频率"],
-          ["repayment", "本金偿还方式"],
-        ]
-      : [
-          ["revenueSource", "收益来源"],
-          ["participationRate", "收益参与比例"],
-          ["frequency", "分配频率"],
-          ["expiryArrangement", "到期安排"],
-        ];
-  const missing = [...common, ...typeFields]
-    .filter(([key]) => !terms[key])
-    .map(([, label]) => label);
-  if (!asset || asset.status !== "Ready") missing.push("上游 Asset 尚未 Ready");
-  if (!requiredFileReady(instrument.files, ["核心协议"])) missing.push("核心协议须可引用");
-  if (
-    instrument.totalRights <= 0 ||
-    instrument.tokenCap <= 0 ||
-    instrument.totalRights % instrument.tokenCap !== 0
-  ) {
-    missing.push("权益总量必须与 Token 份数精确映射");
-  }
-  if (
-    terms.startDate &&
-    terms.maturityDate &&
-    new Date(String(terms.startDate)) >= new Date(String(terms.maturityDate))
-  )
-    missing.push("投资者权益到期日必须晚于起始日");
-  if (instrument.type === "债权") {
-    if (Number(terms.principal) <= 0) missing.push("投资者本金必须大于 0");
-    if (Number(terms.annualRate) <= 0) missing.push("投资者利率必须大于 0");
-    if (Number(terms.principal) !== instrument.totalRights)
-      missing.push("投资者本金总额必须与授权债权权益总量一致");
-    if (terms.interestMethod !== ACTUAL_365_FIXED)
-      missing.push("计息方式必须为 Actual/365 Fixed");
-  } else if (Number(terms.participationRate) <= 0 || Number(terms.participationRate) > 100) {
-    missing.push("收益参与比例必须大于 0 且不超过 100%");
-  }
-  return missing;
+  return v11InstrumentMissing(instrument, asset);
 }
 
 const nav: { id: ModuleId; label: string; icon: typeof Home; tabs?: string[] }[] = [
@@ -999,7 +956,7 @@ function WorkspaceRouter({
           />
         )}
         {workspace.type === "instrument-create" && (
-          <CreateInstrument state={state} setState={setState} close={close} toast={toast} preferredAssetId={workspace.id} />
+          <CreateInstrument state={state} setState={setState} close={close} toast={toast} preferredAssetId={workspace.id} existing={state.instruments.find(item => item.id === workspace.id)} />
         )}
         {workspace.type === "offering-create" && (
           <CreateOffering state={state} setState={setState} close={close} toast={toast} preferredAssetId={workspace.id} />
@@ -4190,10 +4147,16 @@ function DemoConsole({
         return { ...next, missing, status: hadPending ? ("Draft" as const) : asset.status };
       });
       const instruments = s.instruments.map((instrument) => {
-        const hadPending = instrument.files?.some((file) => file.status === "待扫描");
+        const hadPending = instrument.files?.some((file) => file.status === "待扫描") || (instrument.spv && [instrument.spv.registrationFile, instrument.spv.assetAuthorityFile, instrument.spv.rightsFile].some(file => file.status === "待扫描"));
         const next = {
           ...instrument,
           files: instrument.files?.map((file) => ({ ...file, status: "可引用" as const })),
+          spv: instrument.spv ? {
+            ...instrument.spv,
+            registrationFile: { ...instrument.spv.registrationFile, status: "可引用" as const },
+            assetAuthorityFile: { ...instrument.spv.assetAuthorityFile, status: "可引用" as const },
+            rightsFile: { ...instrument.spv.rightsFile, status: "可引用" as const },
+          } : undefined,
         };
         const missing = instrumentMissing(
           next,
@@ -5060,7 +5023,7 @@ function DrawerPanel({
             />
           )}
           {drawer.type === "instrument-create" && (
-            <CreateInstrument state={state} setState={setState} close={close} toast={toast} />
+            <CreateInstrument state={state} setState={setState} close={close} toast={toast} preferredAssetId={drawer.id} existing={state.instruments.find(item => item.id === drawer.id)} />
           )}
           {drawer.type === "offering-create" && (
             <CreateOffering state={state} setState={setState} close={close} toast={toast} preferredAssetId={drawer.id} />
@@ -5207,7 +5170,7 @@ function DrawerPanel({
                     go("assets", "发行管理");
                   }}
                 />
-                {!state.instruments.some((item) => item.assetId === asset.id) && asset.status === "Ready" && (
+                {!state.instruments.some((item) => item.assetId === asset.id) && (asset.status === "Ready" || (asset.assetSchemaVersion === 2 && asset.status === "Draft" && !closedLoopSubtype(asset.subtype))) && (
                   <Button onClick={() => setDrawer({ type: "instrument-create", id: asset.id })}>配置该资产的权益结构</Button>
                 )}
                 {state.instruments.some((item) => item.assetId === asset.id && item.status === "Ready") && (
@@ -5269,18 +5232,30 @@ function DrawerPanel({
                     value={`${ins.terms?.startDate || "—"} 至 ${ins.terms?.maturityDate || "—"}`}
                   />
                   <D
-                    label={ins.type === "债权" ? "固定年利率" : "收益参与比例"}
+                    label={ins.type === "债权" ? "固定年利率" : ins.type === "股权" ? "股份类别与数量" : "收益参与比例"}
                     value={
                       ins.type === "债权"
                         ? `${ins.terms?.annualRate || "—"}%`
-                        : `${ins.terms?.participationRate || "—"}%`
+                        : ins.type === "股权" ? `${ins.terms?.shareClass || "待核实"} · ${ins.terms?.shareCount || "待核实"} 股`
+                          : `${ins.terms?.participationRate || "—"}%`
                     }
                   />
-                  <D label="分配 / 付息频率" value={String(ins.terms?.frequency || "未填写")} />
+                  {ins.type === "股权" ? <D label="股息安排" value={String(ins.terms?.dividendRights || "以权益文件为准")} /> : <D label="分配 / 付息频率" value={String(ins.terms?.frequency || "未填写")} />}
+                  {ins.type === "股权" && <><D label="表决权" value={String(ins.terms?.votingRights || "待核实")} /><D label="退出与锁定" value={String(ins.terms?.exitArrangement || "待核实")} /></>}
+                  {ins.type === "收益参与权" && <D label="可分配收益口径" value={String(ins.terms?.distributableBasis || "待核实")} />}
+                  <D label="Token 与法律权益映射" value={String(ins.terms?.tokenLegalMapping || "历史版本待核实")} />
                 </div>
                 <p className="body-copy">
                   {String(ins.terms?.rightsDescription || "尚未填写权利描述")}
                 </p>
+              </Section>
+              <Section title="SPV 与法律主体">
+                <p className="body-copy">{ins.spvMode === "不涉及" ? "本权益结构不涉及 SPV。" : ins.spvMode === "已有SPV" ? "引用已有 SPV，以下关系以可引用的法律文件为准。" : "历史权益版本未记录 SPV 关系，状态待核实。"}</p>
+                {ins.spvMode === "已有SPV" && ins.spv && <div className="detail-grid">
+                  <D label="SPV 法定名称" value={ins.spv.legalName} /><D label="注册地区" value={ins.spv.jurisdiction} />
+                  <D label="注册编号" value={ins.spv.registrationNumber} /><D label="发行中角色" value={ins.spv.role} />
+                  <D label="与底层资产关系" value={ins.spv.assetRelationship} /><D label="与发行企业关系" value={ins.spv.issuerRelationship} />
+                </div>}
               </Section>
               <Section title="版本守卫">
                 <p className="body-copy">
@@ -5309,6 +5284,8 @@ function DrawerPanel({
                   <ClipboardCheck size={15} />
                   完成权益检查
                 </Button>
+                {ins.status === "Draft" && !state.offerings.some(item => item.instrumentId === ins.id) && <Button variant="secondary" onClick={() => setDrawer({ type: "instrument-create", id: ins.id })}>继续编辑权益草稿</Button>}
+                {state.offerings.some(item => item.instrumentId === ins.id) && <p className="body-copy">该权益版本已被发行方案引用，不能原地修改法律条款。</p>}
               </Section>
             </>
           )}
@@ -5386,6 +5363,10 @@ function DrawerPanel({
                   )
                   .reduce((sum, payment) => sum + payment.received, 0);
                 const target = off.tokens * off.price;
+                const previewAsset = off.confirmationSnapshot?.asset || state.assets.find(item => item.id === off.assetId);
+                const previewInstrument = off.confirmationSnapshot?.instrument || state.instruments.find(item => item.id === off.instrumentId);
+                const previewReturn = off.confirmationSnapshot?.returnDisclosure || off.returnDisclosure;
+                const previewFiles = [...(previewAsset?.files || []), ...(previewInstrument?.files || []), ...(off.confirmationSnapshot?.disclosureFiles || off.disclosureFiles || [])].filter(authorizedPublicFile);
                 return (
                   <>
                     <DetailHero
@@ -5412,6 +5393,23 @@ function DrawerPanel({
                         <p>{off.summary}</p>
                       </div>
                     )}
+                    <Section title="投资者视角 · 最终发布预览">
+                      <p className="body-copy">{off.confirmed ? "以下使用已确认的固定版本。" : "以下为草稿预览；确认后才会冻结版本。"} 本地 Sandbox 展示不代表真实发行或上架。</p>
+                      <div className="detail-grid">
+                        <D label="项目及资产" value={`${off.name} · ${previewAsset?.name || "待核实"}`} />
+                        <D label="权益类型" value={previewInstrument?.type || "待核实"} />
+                        <D label="核心回报指标" value={previewReturn && previewReturn.kind !== "未提供" ? `${previewReturn.kind} ${previewReturn.minPercent}${previewReturn.maxPercent ? `–${previewReturn.maxPercent}` : ""}% · 非承诺` : previewInstrument?.type === "债权" ? `合同固定年利率 ${previewInstrument.terms?.annualRate || "待核实"}% · 非保证兑付` : "未提供预期年化"} />
+                        <D label="每份价格 / 最低认购" value={`${formatU(off.price)} / ${formatU(off.minimum || 0)}`} />
+                        <D label="权益期限" value={`${previewInstrument?.terms?.startDate || "待核实"} 至 ${previewInstrument?.terms?.maturityDate || previewInstrument?.terms?.termArrangement || "待核实"}`} />
+                        <D label="分配 / 付息周期" value={String(previewInstrument?.terms?.frequency || previewInstrument?.terms?.dividendRights || "以权益文件为准")} />
+                        <D label="SPV" value={previewInstrument?.spvMode === "不涉及" ? "不涉及 SPV" : previewInstrument?.spv?.legalName || "待核实"} />
+                        <D label="法律权利主体" value={String(previewInstrument?.terms?.shareIssuer || previewInstrument?.terms?.responsibleParty || "待核实")} />
+                        <D label="退出 / 偿还" value={String(previewInstrument?.terms?.exitArrangement || previewInstrument?.terms?.repayment || previewInstrument?.terms?.expiryArrangement || "以权益文件为准")} />
+                      </div>
+                      {previewReturn && previewReturn.kind !== "未提供" && <p className="body-copy">测算期间：{previewReturn.period}；价格依据：{formatU(previewReturn.priceAtCalculation)}；风险：{previewReturn.risks}</p>}
+                      <p className="body-copy">已授权公开文件：{previewFiles.length ? previewFiles.map(file => `${file.name} v${file.version}`).join("、") : "暂无；不能确认新版披露"}</p>
+                      {publication && off.disclosureSchemaVersion === 2 && <Button variant="secondary" onClick={() => { try { const dto = buildPublishedOfferingDisclosure(publication); const blob = new Blob([JSON.stringify(dto, null, 2)], { type: "application/json" }); const url = URL.createObjectURL(blob); const anchor = document.createElement("a"); anchor.href = url; anchor.download = `${off.id}-published-disclosure-v1.1.json`; anchor.click(); URL.revokeObjectURL(url); toast("已从本次发布快照导出公开披露文件"); } catch (error) { toast(error instanceof Error ? error.message : "披露导出失败"); } }}>导出已发布披露数据 JSON</Button>}
+                    </Section>
                     <Section title="发行时间">
                       <div className="timeline-simple">
                         <span>
@@ -6003,6 +6001,7 @@ function CreateAsset({
       Object.entries(existing?.details || {}).map(([key, value]) => [key, String(value)]),
     ) as Record<string, string>,
     files: existing?.files?.map((file) => ({ ...file })) || ([] as BusinessFile[]),
+    publicFields: existing?.publicFields || ([] as string[]),
   });
   const setDetail = (key: string, value: string) =>
     setForm((current) => ({ ...current, details: { ...current.details, [key]: value } }));
@@ -6043,6 +6042,8 @@ function CreateAsset({
       location: form.location,
       address: form.details.address,
       details: { ...form.details },
+      publicFields: [...form.publicFields],
+      assetSchemaVersion: 2,
       files: form.files,
       version: existing ? (existing.version || 1) + 1 : 1,
     };
@@ -6073,6 +6074,7 @@ function CreateAsset({
     });
   };
   const fillCase = () => {
+    if (!closedLoopSubtype(form.subtype)) return toast("该模板暂无经核验的完整案例；请按实际资料填写，不自动生成金融事实");
     if (form.name && !confirm("当前已有输入。仅填充空字段并保留现有内容？")) return;
     const debt = form.subtype === "单笔企业借款债权";
     const currentEntity = state.company?.name || "";
@@ -6192,13 +6194,15 @@ function CreateAsset({
             setForm({
               ...form,
               category: e.target.value,
-              subtype: e.target.value === "房地产" ? "住宅物业" : "单笔企业借款债权",
+              subtype: e.target.value === "房地产" ? "住宅物业" : e.target.value === "企业股权" ? "非上市企业普通股权" : "单笔企业借款债权",
               details: {},
               files: [],
+              publicFields: [],
             })
           }
         >
           <option>房地产</option>
+          <option>企业股权</option>
           <option>债权与应收款</option>
         </select>
       </label>
@@ -6215,6 +6219,8 @@ function CreateAsset({
               <option>商业商铺</option>
               <option>工业园/仓储物流物业</option>
             </>
+          ) : form.category === "企业股权" ? (
+            <option>非上市企业普通股权</option>
           ) : (
             <option>单笔企业借款债权</option>
           )}
@@ -6533,12 +6539,14 @@ function CreateAsset({
           {upload("债权估值依据", "估值依据")}
         </>
       )}
-      {!residential && !debt && (
-        <div className="info-note">
-          <AlertCircle size={17} />
-          <p>该开放模板沿用原通用资料草稿能力；本批完整校验重点为住宅与单笔企业借款债权。</p>
-        </div>
-      )}
+      {!residential && !debt && <>
+        <div className="info-note"><AlertCircle size={17} /><p>该模板可配置资料与公开字段，尚未完成认购和投后闭环，不可进入正式发行确认。</p></div>
+        {Object.entries(assetTemplates[form.subtype as AssetTemplateName]?.fields || {}).map(([key, label]) => <label className="field" key={key}><span>{label}</span><input value={form.details[key] || ""} onChange={(e) => setDetail(key, e.target.value)} /></label>)}
+        <label className="field"><span>估值金额 U（仅供资料记录）</span><input type="number" value={form.details.valuation || ""} onChange={(e) => setDetail("valuation", e.target.value)} /></label>
+        {(assetTemplates[form.subtype as AssetTemplateName]?.evidence || []).map(category => <Fragment key={category}>{upload(category, category, false)}</Fragment>)}
+      </>}
+      <div className="form-section-title"><b>获准公开的资产字段</b><small>仅勾选有依据且允许披露的事实；未勾选字段不进入投资者数据</small></div>
+      {Object.entries(assetTemplates[form.subtype as AssetTemplateName]?.fields || {}).map(([key, label]) => <label className="field" key={`public-${key}`}><span><input type="checkbox" checked={form.publicFields.includes(key)} disabled={!form.details[key]} onChange={(e) => setForm(current => ({ ...current, publicFields: e.target.checked ? [...current.publicFields, key] : current.publicFields.filter(field => field !== key) }))} /> {label} · {form.details[key] || "待填写"}</span></label>)}
       <div className="sticky-actions">
         <Button variant="secondary" onClick={fillCase}>
           <Sparkles size={15} />
@@ -6556,25 +6564,37 @@ function CreateInstrument({
   close,
   toast,
   preferredAssetId,
+  existing,
 }: {
   state: AppState;
   setState: React.Dispatch<React.SetStateAction<AppState>>;
   close: () => void;
   toast: (s: string) => void;
   preferredAssetId?: string;
+  existing?: Instrument;
 }) {
-  const available = state.assets.filter((a) => !state.instruments.some((i) => i.assetId === a.id));
-  const [newInstrumentId] = useState(() => `INS-${crypto.randomUUID()}-V1`);
-  const [assetId, setAssetId] = useState(available.find((item) => item.id === preferredAssetId)?.id || available[0]?.id || "");
+  const available = state.assets.filter((a) => a.id === existing?.assetId || !state.instruments.some((i) => i.assetId === a.id));
+  const [newInstrumentId] = useState(() => existing?.id || `INS-${crypto.randomUUID()}-V1`);
+  const [assetId, setAssetId] = useState(existing?.assetId || available.find((item) => item.id === preferredAssetId)?.id || available[0]?.id || "");
   const selectedAsset = available.find((asset) => asset.id === assetId);
   const suggestedType: Instrument["type"] =
-    selectedAsset?.subtype === "单笔企业借款债权" ? "债权" : "收益参与权";
-  const [type, setType] = useState<Instrument["type"]>(suggestedType);
-  const [name, setName] = useState("");
-  const [total, setTotal] = useState("");
-  const [cap, setCap] = useState("");
-  const [terms, setTerms] = useState<Record<string, string>>({});
-  const [files, setFiles] = useState<BusinessFile[]>([]);
+    selectedAsset?.subtype === "单笔企业借款债权" ? "债权" : selectedAsset?.subtype === "非上市企业普通股权" ? "股权" : "收益参与权";
+  const [type, setType] = useState<Instrument["type"]>(existing?.type || suggestedType);
+  const [name, setName] = useState(existing?.name || "");
+  const [total, setTotal] = useState(existing ? String(existing.totalRights) : "");
+  const [cap, setCap] = useState(existing ? String(existing.tokenCap) : "");
+  const [terms, setTerms] = useState<Record<string, string>>(Object.fromEntries(Object.entries(existing?.terms || {}).map(([key,value]) => [key,String(value)])));
+  const [files, setFiles] = useState<BusinessFile[]>(existing?.files?.map(file => ({ ...file })) || []);
+  const [spvMode, setSpvMode] = useState<Instrument["spvMode"]>(existing?.spvMode || "不涉及");
+  const [spv, setSpv] = useState<ExistingSpv>(existing?.spv ? structuredClone(existing.spv) : {
+    id: `SPV-${crypto.randomUUID()}`, legalName: "", jurisdiction: "", registrationNumber: "", role: "权益发行主体",
+    assetRelationship: "", issuerRelationship: "",
+    registrationFile: { id: "", name: "", category: "SPV 注册证明", status: "待扫描", version: 1 },
+    assetAuthorityFile: { id: "", name: "", category: "SPV 资产持有或授权证明", status: "待扫描", version: 1 },
+    rightsFile: { id: "", name: "", category: "SPV 权益法律文件", status: "待扫描", version: 1 },
+  });
+  const setSpvFile = (key: "registrationFile" | "assetAuthorityFile" | "rightsFile", name: string) =>
+    setSpv(current => ({ ...current, [key]: { ...current[key], id: `FILE-MOCK-${crypto.randomUUID()}`, name, status: "待扫描", visibility: "内部" } }));
   const setTerm = (key: string, value: string) =>
     setTerms((current) => ({ ...current, [key]: value }));
   const chooseCoreFile = (list: FileList | null) => {
@@ -6587,15 +6607,17 @@ function CreateInstrument({
         category: "核心协议",
         status: "待扫描",
         version: 1,
+        visibility: "内部",
       },
     ]);
   };
   const fillCase = () => {
     const debt = type === "债权";
+    const equity = type === "股权";
     const currentEntity = state.company?.name || "";
-    setName((current) => current || (debt ? "华北物流债权收益发行权益" : "朝阳住宅租金收益参与权"));
-    setTotal((current) => current || (debt ? "400000" : "25000"));
-    setCap((current) => current || (debt ? "4000" : "25000"));
+    setName((current) => current || (debt ? "华北物流债权收益发行权益" : equity ? "普通股权权益草稿" : "朝阳住宅租金收益参与权"));
+    setTotal((current) => current || (debt ? "400000" : equity ? "10000" : "25000"));
+    setCap((current) => current || (debt ? "4000" : equity ? "10000" : "25000"));
     const sample = debt
       ? {
           responsibleParty: currentEntity,
@@ -6607,8 +6629,23 @@ function CreateInstrument({
           startDate: "2026-12-01",
           maturityDate: "2028-12-01",
           repayment: "到期一次还本金",
+          debtor: String(selectedAsset?.details?.debtor || ""),
+          tokenLegalMapping: "每 Token 对应 100 U 投资者名义债权；以正式权益文件核对",
         }
-      : {
+      : equity ? {
+          responsibleParty: currentEntity,
+          rightsDescription: "投资者取得的普通股权以正式股权文件及法定登记为准",
+          shareIssuer: currentEntity,
+          shareClass: "普通股",
+          shareCount: "10000",
+          votingRights: "以正式股权文件为准",
+          dividendRights: "仅在合法决议及可分配利润成立时适用",
+          liquidationRights: "以正式股权文件为准",
+          exitArrangement: "受限转让，以正式股权文件为准",
+          termArrangement: "无固定期限",
+          tokenLegalMapping: "每 Token 对应 1 股普通股；须经法律文件核对",
+          startDate: "2026-12-01",
+        } : {
           responsibleParty: currentEntity,
           rightsDescription: "住宅租赁合同下实际收到的可分配租金收益参与权，不转移房产产权",
           revenueSource: "该住宅租赁合同下实际收到的可分配租金",
@@ -6617,6 +6654,8 @@ function CreateInstrument({
           startDate: "2026-10-01",
           maturityDate: "2027-09-30",
           expiryArrangement: "权益期限终止，待合法清算；不承诺返还本金",
+          distributableBasis: "实际收到的收入扣除合同约定成本和税费后核实",
+          tokenLegalMapping: "每 Token 对应 1 份合同收益参与单位；以正式权益文件核对",
         };
     setTerms((current) =>
       Object.fromEntries(
@@ -6627,6 +6666,7 @@ function CreateInstrument({
   };
   const save = () => {
     if (!assetId) return toast("每项 Asset 只能有一套当前有效 Instrument");
+    if (existing && (existing.status !== "Draft" || state.offerings.some(item => item.instrumentId === existing.id))) return toast("仅未被发行方案引用的权益草稿可编辑；已引用版本不得覆盖");
     if (
       Number(total) <= 0 ||
       Number(cap) <= 0 ||
@@ -6640,29 +6680,33 @@ function CreateInstrument({
       assetId,
       name: name || `${a.name}${type}`,
       type,
-      version: "v1",
+      version: existing?.version || "v1",
       totalRights: Number(total),
       unit: type === "股权" ? "普通股" : type === "债权" ? "U 本金" : "收益权单位",
       tokenCap: Number(cap),
-      used: 0,
+      used: existing?.used || 0,
       status: "Draft",
+      termsSchemaVersion: 2,
       updated: "刚刚",
       terms,
       files,
+      spvMode,
+      spv: spvMode === "已有SPV" ? spv : undefined,
     };
     i.missing = instrumentMissing(i, a);
     setState((s) => {
-      if (s.instruments.some((item) => item.id === i.id || item.assetId === assetId)) {
-        queueMicrotask(() => toast("该资产已有权益结构草稿，未重复创建"));
+      const current = existing && s.instruments.find(item => item.id === existing.id);
+      if (existing ? (!current || current.status !== "Draft" || current.version !== existing.version || s.offerings.some(item => item.instrumentId === existing.id)) : s.instruments.some((item) => item.id === i.id || item.assetId === assetId)) {
+        queueMicrotask(() => toast(existing ? "权益草稿状态已变化或被发行引用，请刷新后核对" : "该资产已有权益结构草稿，未重复创建"));
         return s;
       }
       queueMicrotask(() => {
         toast(i.missing?.length
           ? `权益草稿已保存，尚缺 ${i.missing.length} 项；核心协议需完成 Mock 扫描`
-          : "权益结构已保存");
+          : "权益草稿已保存，请运行 Ready 检查");
         close();
       });
-      return { ...s, instruments: [i, ...s.instruments], activities: [newActivity("资产与发行", i.id, "创建权益结构草稿"), ...s.activities] };
+      return { ...s, instruments: existing ? s.instruments.map(item => item.id === i.id ? i : item) : [i, ...s.instruments], activities: [newActivity("资产与发行", i.id, existing ? "编辑权益结构草稿" : "创建权益结构草稿"), ...s.activities] };
     });
   };
   return (
@@ -6671,7 +6715,7 @@ function CreateInstrument({
         <>
           <label className="field">
             <span>选择已有 Asset *</span>
-            <select value={assetId} onChange={(e) => setAssetId(e.target.value)}>
+            <select value={assetId} onChange={(e) => setAssetId(e.target.value)} disabled={Boolean(existing)}>
               {available.map((a) => (
                 <option value={a.id} key={a.id}>
                   {a.name} · {a.subtype}
@@ -6692,7 +6736,7 @@ function CreateInstrument({
             <span>权益模板 *</span>
             <div className="choice-cards">
               {(["股权", "债权", "收益参与权"] as const).map((x) => (
-                <button className={type === x ? "active" : ""} onClick={() => setType(x)} key={x}>
+                <button className={type === x ? "active" : ""} onClick={() => { setType(x); setTerms(current => ({ responsibleParty: current.responsibleParty || "", rightsDescription: current.rightsDescription || "", startDate: current.startDate || "", tokenLegalMapping: "" })); }} key={x}>
                   <b>{x}</b>
                   <small>
                     {x === "股权"
@@ -6780,8 +6824,9 @@ function CreateInstrument({
                   <option>到期一次还本金</option>
                 </select>
               </label>
+              <label className="field"><span>债务人 *</span><input value={terms.debtor || ""} onChange={(e) => setTerm("debtor", e.target.value)} /></label>
             </div>
-          ) : (
+          ) : type === "收益参与权" ? (
             <>
               <label className="field">
                 <span>收益来源 *</span>
@@ -6812,6 +6857,10 @@ function CreateInstrument({
                 </label>
               </div>
               <label className="field">
+                <span>可分配收益计算口径 *</span>
+                <textarea rows={2} value={terms.distributableBasis || ""} onChange={(e) => setTerm("distributableBasis", e.target.value)} />
+              </label>
+              <label className="field">
                 <span>到期安排 *</span>
                 <textarea
                   rows={2}
@@ -6820,7 +6869,34 @@ function CreateInstrument({
                 />
               </label>
             </>
+          ) : (
+            <>
+              <div className="fields two">
+                <label className="field"><span>股份发行主体 *</span><input value={terms.shareIssuer || ""} onChange={(e) => setTerm("shareIssuer", e.target.value)} /></label>
+                <label className="field"><span>股份类别 *</span><input value={terms.shareClass || ""} onChange={(e) => setTerm("shareClass", e.target.value)} /></label>
+                <label className="field"><span>股份数量 *</span><input type="number" value={terms.shareCount || ""} onChange={(e) => setTerm("shareCount", e.target.value)} /></label>
+                <label className="field"><span>权益期限 *</span><select value={terms.termArrangement || ""} onChange={(e) => setTerm("termArrangement", e.target.value)}><option value="">请选择</option><option>无固定期限</option><option>固定期限</option></select></label>
+              </div>
+              <label className="field"><span>表决权 *</span><textarea rows={2} value={terms.votingRights || ""} onChange={(e) => setTerm("votingRights", e.target.value)} /></label>
+              <label className="field"><span>股息安排 *</span><textarea rows={2} value={terms.dividendRights || ""} onChange={(e) => setTerm("dividendRights", e.target.value)} /></label>
+              <label className="field"><span>清算安排 *</span><textarea rows={2} value={terms.liquidationRights || ""} onChange={(e) => setTerm("liquidationRights", e.target.value)} /></label>
+              <label className="field"><span>退出与锁定 *</span><textarea rows={2} value={terms.exitArrangement || ""} onChange={(e) => setTerm("exitArrangement", e.target.value)} /></label>
+            </>
           )}
+          <label className="field"><span>Token 与法律权益精准映射 *</span><textarea rows={2} value={terms.tokenLegalMapping || ""} onChange={(e) => setTerm("tokenLegalMapping", e.target.value)} /></label>
+          <div className="form-section-title"><b>法律主体与 SPV</b><small>仅配置已有 SPV；主体关系须有文件依据</small></div>
+          <label className="field"><span>是否涉及已有 SPV *</span><select value={spvMode} onChange={(e) => setSpvMode(e.target.value as Instrument["spvMode"])}><option value="不涉及">不涉及 SPV</option><option value="已有SPV">涉及已有 SPV</option></select></label>
+          {spvMode === "已有SPV" && <>
+            <label className="field"><span>SPV 法定名称 *</span><input value={spv.legalName} onChange={(e) => setSpv(s => ({ ...s, legalName: e.target.value }))} /></label>
+            <div className="fields two">
+              <label className="field"><span>注册国家或地区 *</span><input value={spv.jurisdiction} onChange={(e) => setSpv(s => ({ ...s, jurisdiction: e.target.value }))} /></label>
+              <label className="field"><span>公司注册编号 *</span><input value={spv.registrationNumber} onChange={(e) => setSpv(s => ({ ...s, registrationNumber: e.target.value }))} /></label>
+            </div>
+            <label className="field"><span>SPV 在发行中的角色 *</span><select value={spv.role} onChange={(e) => setSpv(s => ({ ...s, role: e.target.value as ExistingSpv["role"] }))}><option>权益发行主体</option><option>底层资产持有人</option><option>偿付主体</option><option>收益责任主体</option></select></label>
+            <label className="field"><span>与底层资产的关系 *</span><textarea rows={2} value={spv.assetRelationship} onChange={(e) => setSpv(s => ({ ...s, assetRelationship: e.target.value }))} /></label>
+            <label className="field"><span>与发行企业的关系 *</span><textarea rows={2} value={spv.issuerRelationship} onChange={(e) => setSpv(s => ({ ...s, issuerRelationship: e.target.value }))} /></label>
+            {([['registrationFile', 'SPV 注册证明'], ['assetAuthorityFile', '资产持有或授权证明'], ['rightsFile', '对应权益法律文件']] as const).map(([key, label]) => <label className="field file-upload-field" key={key}><span>{label} *</span><input type="file" accept=".pdf" onChange={(e) => { const f=e.target.files?.[0]; if(f) setSpvFile(key, f.name); }} /><Button variant="secondary" onClick={() => setSpvFile(key, `DEMO_${key}.pdf`)}>模拟添加文件</Button><small>{spv[key].name || "未选择"} · {spv[key].status}</small>{spv[key].id && <select aria-label={`${label}公开权限`} value={spv[key].visibility || "内部"} onChange={(e) => setSpv(current => ({ ...current, [key]: { ...current[key], visibility: e.target.value as BusinessFile["visibility"] } }))}><option>内部</option><option>公开</option><option>授权投资者</option></select>}</label>)}
+          </>}
           <div className="fields two">
             <label className="field">
               <span>投资者权益起始日 *</span>
@@ -6836,6 +6912,7 @@ function CreateInstrument({
                 type="date"
                 value={terms.maturityDate || ""}
                 onChange={(e) => setTerm("maturityDate", e.target.value)}
+                disabled={type === "股权" && terms.termArrangement === "无固定期限"}
               />
             </label>
           </div>
@@ -6859,7 +6936,7 @@ function CreateInstrument({
             <Status value={Number(total) % Number(cap) === 0 ? "精确可整除" : "不可整除"} />
           </div>
           <label className="field file-upload-field">
-            <span>{type === "债权" ? "投资者债权核心协议" : "租金收益参与核心协议"} *</span>
+            <span>{type === "债权" ? "投资者债权核心协议" : type === "股权" ? "投资者股权核心协议" : "收益参与核心协议"} *</span>
             <div className="mock-file-actions">
               <input type="file" accept=".pdf" onChange={(e) => chooseCoreFile(e.target.files)} />
               <Button
@@ -6871,10 +6948,11 @@ function CreateInstrument({
                       name:
                         type === "债权"
                           ? "DEMO_Investor_Debt_Agreement.pdf"
-                          : "DEMO_Rental_Revenue_Participation_Agreement.pdf",
+                        : type === "股权" ? "DEMO_Investor_Equity_Agreement.pdf" : "DEMO_Rental_Revenue_Participation_Agreement.pdf",
                       category: "核心协议",
                       status: "待扫描",
                       version: 1,
+                      visibility: "内部",
                     },
                   ])
                 }
@@ -6883,13 +6961,14 @@ function CreateInstrument({
               </Button>
             </div>
             <small>{files[0]?.name || "未选择；选择后需在 Mock 控制台完成扫描"}</small>
+            {files[0] && <select aria-label="权益文件公开权限" value={files[0].visibility || "内部"} onChange={(e) => setFiles(current => current.map(file => ({ ...file, visibility: e.target.value as BusinessFile["visibility"] })))}><option>内部</option><option>公开</option><option>授权投资者</option></select>}
           </label>
           <div className="sticky-actions">
             <Button variant="secondary" onClick={fillCase}>
               <Sparkles size={15} />
               填充示例空条款
             </Button>
-            <Button onClick={save}>保存权益草稿</Button>
+            <Button onClick={save}>{existing ? "保存权益草稿修改" : "保存权益草稿"}</Button>
           </div>
         </>
       ) : (
@@ -6926,12 +7005,31 @@ function CreateOffering({
   const [tokens, setTokens] = useState(String(existing?.tokens || 1000));
   const [price, setPrice] = useState(String(existing?.price || 100));
   const [summary, setSummary] = useState(existing?.summary || "");
+  const [riskDisclosure, setRiskDisclosure] = useState(existing?.riskDisclosure || "");
   const [minimum, setMinimum] = useState(String(existing?.minimum || 1000));
   const [start, setStart] = useState(existing?.start || "2026-12-01");
   const [end, setEnd] = useState(existing?.end || "2027-02-28");
   const [disclosureFiles, setDisclosureFiles] = useState<BusinessFile[]>(
     existing?.disclosureFiles?.map((file) => ({ ...file })) || [],
   );
+  const [returnKind, setReturnKind] = useState<ReturnDisclosure["kind"]>(existing?.returnDisclosure?.kind || "未提供");
+  const previousExpected = existing?.returnDisclosure && existing.returnDisclosure.kind !== "未提供" ? existing.returnDisclosure : undefined;
+  const [calculationPrice, setCalculationPrice] = useState(String(previousExpected?.priceAtCalculation || existing?.price || 100));
+  const [expectedMin, setExpectedMin] = useState(String(previousExpected?.minPercent || ""));
+  const [expectedMax, setExpectedMax] = useState(String(previousExpected?.maxPercent || ""));
+  const [expectedDate, setExpectedDate] = useState(previousExpected?.calculatedAt || "");
+  const [expectedPeriod, setExpectedPeriod] = useState(previousExpected?.period || "");
+  const [incomeBasis, setIncomeBasis] = useState<"净收益" | "毛收益">(previousExpected?.incomeBasis || "净收益");
+  const [appreciation, setAppreciation] = useState(previousExpected?.includesAppreciation || false);
+  const [assumptions, setAssumptions] = useState(previousExpected?.assumptions || "");
+  const [feesAndTaxes, setFeesAndTaxes] = useState(previousExpected?.feesAndTaxes || "");
+  const [evidence, setEvidence] = useState(previousExpected?.evidence || "");
+  const [risks, setRisks] = useState(previousExpected?.risks || "");
+  const returnDisclosure: ReturnDisclosure = returnKind === "未提供" ? { kind: "未提供" } : {
+    kind: returnKind, minPercent: Number(expectedMin), maxPercent: expectedMax ? Number(expectedMax) : undefined,
+    priceAtCalculation: Number(calculationPrice), calculatedAt: expectedDate, period: expectedPeriod,
+    incomeBasis, includesAppreciation: appreciation, assumptions, feesAndTaxes, evidence, risks,
+  };
   const [walletId, setWalletId] = useState(
     existing?.walletId || state.wallets.find((w) => w.isDefault)?.id || "",
   );
@@ -6941,11 +7039,13 @@ function CreateOffering({
     tokens !== String(existing?.tokens || 1000) ||
     price !== String(existing?.price || 100) ||
     summary !== (existing?.summary || "") ||
+    riskDisclosure !== (existing?.riskDisclosure || "") ||
     minimum !== String(existing?.minimum || 1000) ||
     start !== (existing?.start || "2026-12-01") ||
     end !== (existing?.end || "2027-02-28") ||
     walletId !== (existing?.walletId || state.wallets.find((w) => w.isDefault)?.id || "") ||
-    JSON.stringify(disclosureFiles) !== JSON.stringify(existing?.disclosureFiles || []);
+    JSON.stringify(disclosureFiles) !== JSON.stringify(existing?.disclosureFiles || []) ||
+    JSON.stringify(returnDisclosure) !== JSON.stringify(existing?.returnDisclosure || { kind: "未提供" });
   const safeClose = () => {
     if (dirty && !confirm("存在未保存的发行方案修改，确认放弃并返回？")) return;
     close();
@@ -6981,8 +7081,11 @@ function CreateOffering({
       status: existing?.status || "草稿",
       walletId,
       summary,
+      riskDisclosure,
       minimum: Number(minimum),
       disclosureFiles,
+      disclosureSchemaVersion: 2,
+      returnDisclosure,
       confirmed: false,
       contractStatus: "未申请",
       projectId: existing?.projectId,
@@ -7058,6 +7161,7 @@ function CreateOffering({
           placeholder="说明本期权益、主要现金流与风险，不构成收益承诺"
         />
       </label>
+      <label className="field"><span>主要发行风险 *</span><textarea rows={3} value={riskDisclosure} onChange={(e) => setRiskDisclosure(e.target.value)} placeholder="说明本期最相关的风险与可能损失，不承诺收益" /></label>
       <div className="fields two">
         <label className="field">
           <span>发行 Token 份数 *</span>
@@ -7073,6 +7177,20 @@ function CreateOffering({
         <span>计划募资目标</span>
         <strong>{formatU(Number(tokens) * Number(price))}</strong>
       </div>
+      <div className="form-section-title"><b>投资回报披露</b><small>合同债息取自确定权益版本；预期回报不参与实际收益计算</small></div>
+      {ins?.type === "债权" && <div className="info-note"><CircleDollarSign size={17} /><p>投资者合同固定年利率：{String(ins.terms?.annualRate || "待核实")}% · 非保证兑付。底层资产利率不自动转为投资者利率。</p></div>}
+      <label className="field"><span>发行方预期回报</span><select value={returnKind} onChange={(e) => setReturnKind(e.target.value as ReturnDisclosure["kind"])}><option>未提供</option><option>发行方预期年化收益率</option><option>发行方预期年化回报率</option></select></label>
+      {returnKind !== "未提供" && <>
+        <div className="fields two"><label className="field"><span>年化下限 / 单值（%）*</span><input type="number" value={expectedMin} onChange={(e) => setExpectedMin(e.target.value)} /></label><label className="field"><span>年化上限（%），单值可留空</span><input type="number" value={expectedMax} onChange={(e) => setExpectedMax(e.target.value)} /></label></div>
+        <div className="fields two"><label className="field"><span>测算日期 *</span><input type="date" value={expectedDate} onChange={(e) => setExpectedDate(e.target.value)} /></label><label className="field"><span>测算期间 *</span><input value={expectedPeriod} onChange={(e) => setExpectedPeriod(e.target.value)} /></label></div>
+        <div className="fields two"><label className="field"><span>收益口径 *</span><select value={incomeBasis} onChange={(e) => setIncomeBasis(e.target.value as "净收益" | "毛收益")}><option>净收益</option><option>毛收益</option></select></label><label className="field"><span>是否包含资本增值</span><select value={String(appreciation)} onChange={(e) => setAppreciation(e.target.value === "true")}><option value="false">不包含</option><option value="true">包含</option></select></label></div>
+        <label className="field"><span>收益及估值假设 *</span><textarea rows={2} value={assumptions} onChange={(e) => setAssumptions(e.target.value)} /></label>
+        <label className="field"><span>费用及税费处理 *</span><textarea rows={2} value={feesAndTaxes} onChange={(e) => setFeesAndTaxes(e.target.value)} /></label>
+        <label className="field"><span>测算依据与文件引用 *</span><textarea rows={2} value={evidence} onChange={(e) => setEvidence(e.target.value)} /></label>
+        <label className="field"><span>主要风险 *</span><textarea rows={2} value={risks} onChange={(e) => setRisks(e.target.value)} /></label>
+        <p className="body-copy">测算依据价格 {calculationPrice} U；当前发行价格 {price || "待填"} U。草稿中的预期回报不构成实际应付收益。</p>
+        {Number(calculationPrice) !== Number(price) && <Button variant="secondary" onClick={() => setCalculationPrice(price)}>已重新核对测算依据与当前价格</Button>}
+      </>}
       <label className="field">
         <span>单笔最低认购金额 U *</span>
         <input type="number" value={minimum} onChange={(e) => setMinimum(e.target.value)} />
@@ -7120,6 +7238,7 @@ function CreateOffering({
                     category: "发行披露",
                     status: "待扫描",
                     version: 1,
+                    visibility: "内部",
                   },
                 ]);
             }}
@@ -7134,6 +7253,7 @@ function CreateOffering({
                   category: "发行披露",
                   status: "待扫描",
                   version: 1,
+                  visibility: "内部",
                 },
               ])
             }
@@ -7142,6 +7262,7 @@ function CreateOffering({
           </Button>
         </div>
         <small>{disclosureFiles[0]?.name || "未选择；草稿可保存，确认发行前必须可引用"}</small>
+        {disclosureFiles[0] && <select aria-label="发行文件公开权限" value={disclosureFiles[0].visibility || "内部"} onChange={(e) => setDisclosureFiles(current => current.map(file => ({ ...file, visibility: e.target.value as BusinessFile["visibility"] })))}><option>内部</option><option>公开</option><option>授权投资者</option></select>}
       </label>
       <div className="info-note">
         <ShieldCheck size={17} />

@@ -30,3 +30,6 @@
 .rights-note{color:#555;font-size:12px;line-height:1.8;background:#fff0e9;border-left:3px solid #f4511e;padding:12px 14px;margin:14px 0 0}
 @media(max-width:1050px){.rights-chain{grid-template-columns:repeat(2,minmax(0,1fr))}.card-grid-single{max-width:none}}
 @media(max-width:700px){.rights-chain{grid-template-columns:1fr}}
+.return-highlight { border-left: 4px solid #e86b2d; background: #fff8f2; }
+.return-highlight h2 { margin: .4rem 0; font-size: clamp(1.4rem, 2vw, 2rem); line-height: 1.25; }
+.return-highlight p { margin-bottom: 0; }

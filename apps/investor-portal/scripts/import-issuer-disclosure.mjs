@@ -1,0 +1,21 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+import { loadPublishedDisclosures } from '../src/publishedDisclosure.ts';
+
+const sourcePath = process.argv[2];
+if (!sourcePath) throw new Error('用法：node scripts/import-issuer-disclosure.mjs <Issuer 页面导出的 JSON>');
+const source = fs.readFileSync(sourcePath);
+const disclosure = JSON.parse(source.toString('utf8'));
+const candidate = Array.isArray(disclosure) ? disclosure : [disclosure];
+loadPublishedDisclosures(candidate, { residence: 'residence.svg', debt: 'debt.svg' });
+const destination = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../src/generated/published-offerings.json');
+const previous = JSON.parse(fs.readFileSync(destination, 'utf8'));
+const sourceKey = item => `${item.issuer.slug}--${item.source.offeringId}`;
+const ids = new Set(candidate.map(sourceKey));
+const next = [...previous.filter(item => !ids.has(sourceKey(item))), ...candidate];
+loadPublishedDisclosures(next, { residence: 'residence.svg', debt: 'debt.svg' });
+fs.writeFileSync(destination, JSON.stringify(next, null, 2) + '\n');
+const hash = value => crypto.createHash('sha256').update(value).digest('hex');
+console.log(JSON.stringify({ source: path.resolve(sourcePath), sourceSha256: hash(source), destination, destinationSha256: hash(fs.readFileSync(destination)), offeringKeys: candidate.map(sourceKey) }, null, 2));

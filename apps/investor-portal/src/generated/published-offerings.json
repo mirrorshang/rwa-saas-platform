@@ -1,0 +1,476 @@
+[
+  {
+    "schemaVersion": "1.1.0",
+    "source": {
+      "publicationId": "PUB-OFF-3001",
+      "offeringId": "OFF-3001",
+      "assetId": "AST-1001",
+      "assetVersion": 1,
+      "instrumentId": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
+      "instrumentVersion": "v1",
+      "confirmedAt": "2026-11-28T06:11:36.529Z",
+      "publishedAt": "2026-11-28T06:11:38.745Z"
+    },
+    "asset": {
+      "name": "北京朝阳住宅租金收益项目",
+      "category": "房地产",
+      "subtype": "住宅物业",
+      "location": "中国北京市朝阳区",
+      "facts": [
+        {
+          "key": "address",
+          "label": "物业位置",
+          "value": "北京市朝阳区建国路虚构测试小区1号楼1201室"
+        },
+        {
+          "key": "area",
+          "label": "建筑面积",
+          "value": "80"
+        },
+        {
+          "key": "occupancy",
+          "label": "使用状态",
+          "value": "已出租"
+        }
+      ]
+    },
+    "issuer": {
+      "legalName": "北京朝阳城市资产管理有限公司",
+      "jurisdiction": "中国北京市朝阳区",
+      "slug": "galaxy-assets"
+    },
+    "right": {
+      "type": "收益参与权",
+      "description": "住宅租赁合同下实际收到的可分配租金收益参与权，不转移房产产权",
+      "legalIssuer": "北京朝阳城市资产管理有限公司",
+      "tokenMapping": "每 Token 对应 1 份合同收益参与单位；以正式权益文件核对",
+      "terms": [
+        {
+          "label": "收益来源",
+          "value": "该住宅租赁合同下实际收到的可分配租金"
+        },
+        {
+          "label": "可分配收益口径",
+          "value": "实际收到的收入扣除合同约定成本和税费后核实"
+        },
+        {
+          "label": "参与比例",
+          "value": "100"
+        },
+        {
+          "label": "分配周期",
+          "value": "每月"
+        },
+        {
+          "label": "退出安排",
+          "value": "权益期限终止，待合法清算；不承诺返还本金"
+        }
+      ]
+    },
+    "spv": null,
+    "return": {
+      "kind": "未提供",
+      "warning": "未提供预期年化回报"
+    },
+    "offering": {
+      "name": "朝阳住宅租金收益参与权首期",
+      "round": "第 1 期",
+      "unitPriceU": 10,
+      "minimumU": 1000,
+      "totalUnits": 25000,
+      "totalIssueAmountU": 250000,
+      "subscriptionStart": "2026-12-01",
+      "subscriptionEnd": "2027-02-28",
+      "summary": "示例住宅租金收益参与权；实际现金流取决于租赁与费用"
+    },
+    "risks": [
+      "租金可能波动，投资可能损失；不承诺收益。"
+    ],
+    "documents": [
+      {
+        "id": "FILE-MOCK-1795846289965",
+        "name": "DEMO_Rental_Revenue_Participation_Agreement.pdf",
+        "category": "核心协议",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Instrument"
+      },
+      {
+        "id": "FILE-MOCK-1795846294094",
+        "name": "DEMO_Offering_Risk_Disclosure.pdf",
+        "category": "发行披露",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Offering"
+      }
+    ],
+    "channels": {
+      "v": true,
+      "mListingApproved": false
+    },
+    "status": "Sandbox 已发布"
+  },
+  {
+    "schemaVersion": "1.1.0",
+    "source": {
+      "publicationId": "PUB-OFF-3002",
+      "offeringId": "OFF-3002",
+      "assetId": "AST-1002",
+      "assetVersion": 1,
+      "instrumentId": "INS-9d40a105-c78e-4344-acf0-c129aaf97a04-V1",
+      "instrumentVersion": "v1",
+      "confirmedAt": "2026-11-28T06:11:50.223Z",
+      "publishedAt": "2026-11-28T06:11:52.161Z"
+    },
+    "asset": {
+      "name": "华北物流企业借款债权",
+      "category": "债权与应收款",
+      "subtype": "单笔企业借款债权",
+      "location": "中国北京市朝阳区",
+      "facts": []
+    },
+    "issuer": {
+      "legalName": "北京朝阳城市资产管理有限公司",
+      "jurisdiction": "中国北京市朝阳区",
+      "slug": "galaxy-assets"
+    },
+    "right": {
+      "type": "债权",
+      "description": "发行企业对投资者承担独立的固定利率债权偿付义务",
+      "legalIssuer": "北京朝阳城市资产管理有限公司",
+      "tokenMapping": "每 Token 对应 100 U 投资者名义债权；以正式权益文件核对",
+      "terms": [
+        {
+          "label": "投资者名义本金",
+          "value": "400000"
+        },
+        {
+          "label": "债务人",
+          "value": "华北物流科技有限公司（示例）"
+        },
+        {
+          "label": "计息规则",
+          "value": "Actual/365 Fixed"
+        },
+        {
+          "label": "付息周期",
+          "value": "每月付息"
+        },
+        {
+          "label": "本金偿还",
+          "value": "到期一次还本金"
+        },
+        {
+          "label": "权益到期日",
+          "value": "2028-12-01"
+        }
+      ]
+    },
+    "spv": null,
+    "return": {
+      "kind": "合同固定年利率",
+      "minPercent": 12,
+      "warning": "合同利率不构成保证兑付"
+    },
+    "offering": {
+      "name": "华北物流投资者债权首期",
+      "round": "第 1 期",
+      "unitPriceU": 100,
+      "minimumU": 1000,
+      "totalUnits": 4000,
+      "totalIssueAmountU": 400000,
+      "subscriptionStart": "2026-12-01",
+      "subscriptionEnd": "2027-02-28",
+      "summary": "单笔企业借款债权示例，投资者债权条款以对应协议为准"
+    },
+    "risks": [
+      "债务人可能违约，债权本息可能无法按时收回。"
+    ],
+    "documents": [
+      {
+        "id": "FILE-MOCK-1795846303921",
+        "name": "DEMO_Investor_Debt_Agreement.pdf",
+        "category": "核心协议",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Instrument"
+      },
+      {
+        "id": "FILE-MOCK-1795846308042",
+        "name": "DEMO_Offering_Risk_Disclosure.pdf",
+        "category": "发行披露",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Offering"
+      }
+    ],
+    "channels": {
+      "v": true,
+      "mListingApproved": false
+    },
+    "status": "Sandbox 已发布"
+  },
+  {
+    "schemaVersion": "1.1.0",
+    "source": {
+      "publicationId": "PUB-OFF-3001",
+      "offeringId": "OFF-3001",
+      "assetId": "AST-1001",
+      "assetVersion": 1,
+      "instrumentId": "INS-8f55bb2a-b79c-48a0-935d-a1e529ef0529-V1",
+      "instrumentVersion": "v1",
+      "confirmedAt": "2026-11-28T06:29:19.335Z",
+      "publishedAt": "2026-11-28T06:29:21.104Z"
+    },
+    "asset": {
+      "name": "北京朝阳住宅租金收益项目",
+      "category": "房地产",
+      "subtype": "住宅物业",
+      "location": "中国北京市朝阳区",
+      "facts": [
+        {
+          "key": "address",
+          "label": "物业位置",
+          "value": "北京市朝阳区建国路虚构测试小区1号楼1201室"
+        }
+      ]
+    },
+    "issuer": {
+      "legalName": "北京朝阳城市资产管理有限公司",
+      "jurisdiction": "中国北京市朝阳区",
+      "slug": "galaxy-spv"
+    },
+    "right": {
+      "type": "收益参与权",
+      "description": "住宅租赁合同下实际收到的可分配租金收益参与权，不转移房产产权",
+      "legalIssuer": "星河住宅持有有限公司",
+      "tokenMapping": "每 Token 对应 1 份合同收益参与单位；以正式权益文件核对",
+      "terms": [
+        {
+          "label": "收益来源",
+          "value": "该住宅租赁合同下实际收到的可分配租金"
+        },
+        {
+          "label": "可分配收益口径",
+          "value": "实际收到的收入扣除合同约定成本和税费后核实"
+        },
+        {
+          "label": "参与比例",
+          "value": "100"
+        },
+        {
+          "label": "分配周期",
+          "value": "每月"
+        },
+        {
+          "label": "退出安排",
+          "value": "权益期限终止，待合法清算；不承诺返还本金"
+        }
+      ]
+    },
+    "spv": {
+      "legalName": "星河住宅持有有限公司",
+      "jurisdiction": "中国",
+      "role": "收益责任主体",
+      "assetRelationship": "依据资产授权文件运营该住宅租赁收益",
+      "issuerRelationship": "发行企业控制的已有法律主体",
+      "registrationNumber": "DEMO-SPV-RES-001"
+    },
+    "return": {
+      "kind": "未提供",
+      "warning": "未提供预期年化回报"
+    },
+    "offering": {
+      "name": "朝阳 SPV 租金收益参与权首期",
+      "round": "第 1 期",
+      "unitPriceU": 10,
+      "minimumU": 1000,
+      "totalUnits": 25000,
+      "totalIssueAmountU": 250000,
+      "subscriptionStart": "2026-12-01",
+      "subscriptionEnd": "2027-02-28",
+      "summary": "示例 SPV 住宅租金收益参与权；现金流取决于租赁和费用"
+    },
+    "risks": [
+      "租金和 SPV 履约可能波动，投资可能损失。"
+    ],
+    "documents": [
+      {
+        "id": "FILE-MOCK-1795847352514",
+        "name": "DEMO_Rental_Revenue_Participation_Agreement.pdf",
+        "category": "核心协议",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Instrument"
+      },
+      {
+        "id": "FILE-MOCK-1795847357170",
+        "name": "DEMO_Offering_Risk_Disclosure.pdf",
+        "category": "发行披露",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Offering"
+      },
+      {
+        "id": "FILE-MOCK-81c935f0-cf4b-4336-9d84-0112ecc29a5f",
+        "name": "DEMO_registrationFile.pdf",
+        "category": "SPV 注册证明",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Instrument"
+      },
+      {
+        "id": "FILE-MOCK-217e4d0f-034e-4b5c-8eb7-1b4ec6e642be",
+        "name": "DEMO_assetAuthorityFile.pdf",
+        "category": "SPV 资产持有或授权证明",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Instrument"
+      },
+      {
+        "id": "FILE-MOCK-dfe2a651-3f63-4480-a929-5c66df963961",
+        "name": "DEMO_rightsFile.pdf",
+        "category": "SPV 权益法律文件",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Instrument"
+      }
+    ],
+    "channels": {
+      "v": true,
+      "mListingApproved": false
+    },
+    "status": "Sandbox 已发布"
+  },
+  {
+    "schemaVersion": "1.1.0",
+    "source": {
+      "publicationId": "PUB-OFF-3001",
+      "offeringId": "OFF-3001",
+      "assetId": "AST-1001",
+      "assetVersion": 1,
+      "instrumentId": "INS-ade85727-572e-40bd-bd43-cfdac39e9d9e-V1",
+      "instrumentVersion": "v1",
+      "confirmedAt": "2026-11-28T06:34:04.790Z",
+      "publishedAt": "2026-11-28T06:34:06.556Z"
+    },
+    "asset": {
+      "name": "华北物流企业借款债权",
+      "category": "债权与应收款",
+      "subtype": "单笔企业借款债权",
+      "location": "中国北京市朝阳区",
+      "facts": []
+    },
+    "issuer": {
+      "legalName": "北京朝阳城市资产管理有限公司",
+      "jurisdiction": "中国北京市朝阳区",
+      "slug": "galaxy-debt-spv"
+    },
+    "right": {
+      "type": "债权",
+      "description": "发行企业对投资者承担独立的固定利率债权偿付义务",
+      "legalIssuer": "星河债权偿付有限公司",
+      "tokenMapping": "每 Token 对应 100 U 投资者名义债权；以正式权益文件核对",
+      "terms": [
+        {
+          "label": "投资者名义本金",
+          "value": "400000"
+        },
+        {
+          "label": "债务人",
+          "value": "华北物流科技有限公司（示例）"
+        },
+        {
+          "label": "计息规则",
+          "value": "Actual/365 Fixed"
+        },
+        {
+          "label": "付息周期",
+          "value": "每月付息"
+        },
+        {
+          "label": "本金偿还",
+          "value": "到期一次还本金"
+        },
+        {
+          "label": "权益到期日",
+          "value": "2028-12-01"
+        }
+      ]
+    },
+    "spv": {
+      "legalName": "星河债权偿付有限公司",
+      "jurisdiction": "中国",
+      "role": "偿付主体",
+      "assetRelationship": "依据债权转让及授权文件承担投资者偿付义务",
+      "issuerRelationship": "发行企业控制的已有法律主体",
+      "registrationNumber": "DEMO-SPV-DEBT-001"
+    },
+    "return": {
+      "kind": "合同固定年利率",
+      "minPercent": 12,
+      "warning": "合同利率不构成保证兑付"
+    },
+    "offering": {
+      "name": "华北物流 SPV 投资者债权首期",
+      "round": "第 1 期",
+      "unitPriceU": 100,
+      "minimumU": 1000,
+      "totalUnits": 4000,
+      "totalIssueAmountU": 400000,
+      "subscriptionStart": "2026-12-01",
+      "subscriptionEnd": "2027-02-28",
+      "summary": "SPV 投资者债权示例，合同利率不构成保证兑付"
+    },
+    "risks": [
+      "债务人与 SPV 均可能履约异常，债权本息存在损失风险。"
+    ],
+    "documents": [
+      {
+        "id": "FILE-MOCK-1795847637936",
+        "name": "DEMO_Investor_Debt_Agreement.pdf",
+        "category": "核心协议",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Instrument"
+      },
+      {
+        "id": "FILE-MOCK-1795847642609",
+        "name": "DEMO_Offering_Risk_Disclosure.pdf",
+        "category": "发行披露",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Offering"
+      },
+      {
+        "id": "FILE-MOCK-83c9549e-0804-48e1-aa15-d653e3d782b2",
+        "name": "DEMO_registrationFile.pdf",
+        "category": "SPV 注册证明",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Instrument"
+      },
+      {
+        "id": "FILE-MOCK-7fd00136-8cb5-4f3c-807b-3e85a12e751e",
+        "name": "DEMO_assetAuthorityFile.pdf",
+        "category": "SPV 资产持有或授权证明",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Instrument"
+      },
+      {
+        "id": "FILE-MOCK-26158506-bc73-484e-bee7-9cbec68628f3",
+        "name": "DEMO_rightsFile.pdf",
+        "category": "SPV 权益法律文件",
+        "version": 1,
+        "visibility": "公开",
+        "source": "Instrument"
+      }
+    ],
+    "channels": {
+      "v": true,
+      "mListingApproved": false
+    },
+    "status": "Sandbox 已发布"
+  }
+]

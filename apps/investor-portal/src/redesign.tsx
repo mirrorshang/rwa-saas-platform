@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { actionState, assetGroup, basePath, canShowCompany, filterOfferings, investmentFacts, investmentPeriod, minimumUnits, parseChannel, priceU, visibleOfferings, type Channel, type Offering, type OpportunityFilters } from './domain';
-import { offerings, issuers } from './data';
+import { offerings, issuers, publishedDisclosureError } from './data';
 import { activeAccount, saveAccount, withMpcResult, type KycStatus, type MpcStatus } from './account';
 import { AccountPage } from './AccountPage';
 import { SubscriptionPage } from './SubscriptionPage';
@@ -30,8 +30,8 @@ const root = (c: Channel) => basePath(c);
 const url = (c: Channel, suffix = '') => root(c) + suffix;
 const assetUrl = (c: Channel, o: Offering) => url(c, '/opportunities/' + o.id);
 const companyUrl = (c: Channel, o: Offering) => url(c, '/issuers/' + o.issuerId) + '?from=' + encodeURIComponent(assetUrl(c, o));
-const brand = (c: Channel) => c.kind === 'm' ? 'RWA Invest' : (issuers[c.issuerSlug as keyof typeof issuers]?.name || '企业投资平台');
-const visual = (o: Offering) => o.id === 'residence-01' ? residenceImage : debtImage;
+const brand = (c: Channel) => c.kind === 'm' ? 'RWA Invest' : (issuers[c.issuerSlug as keyof typeof issuers]?.name || offerings.find(o => o.issuerSlug === c.issuerSlug)?.issuerName || '企业投资平台');
+const visual = (o: Offering) => o.category === '住宅物业' || o.id === 'residence-01' ? residenceImage : debtImage;
 const publicVersion = (value?: string) => value ? value.replace(/^Mock\s*/i, '示例资料 ') : '待披露';
 const publicTerm = (value: string) => value.replaceAll('每 Token 名义本金', '每份对应名义本金').replaceAll('Token', '份额');
 const present = (o: Offering): Offering => {
@@ -53,18 +53,20 @@ function Footer({ c }: { c: Channel }) {
 function Notice({ children }: { children: React.ReactNode }) { return <div className="notice" role="note"><span aria-hidden="true">!</span>{children}</div>; }
 function Status({ value }: { value: string }) { return <span className={'status status-' + (value === '认购中' ? 'open' : 'closed')}>{value}</span>; }
 function AssetVisual({ o, large = false }: { o: Offering; large?: boolean }) {
-  return <div className={'asset-visual' + (large ? ' asset-visual-large' : '')}>{o.listing === 'pending' ? <div className="template-visual" role="img" aria-label={o.category + '资产类型示意，暂无项目实拍'}><b>{assetGroup(o)}</b><strong>{o.category}</strong><small>ASSET PREVIEW</small></div> : <img src={visual(o)} alt={o.category + '示意配图，非项目实拍'} />}<span>{o.listing === 'pending' ? '资产类型示意' : '配图仅作示意'}</span></div>;
+  const template = o.listing === 'pending' && !o.sourcePublicationId;
+  return <div className={'asset-visual' + (large ? ' asset-visual-large' : '')}>{template ? <div className="template-visual" role="img" aria-label={o.category + '资产类型示意，暂无项目实拍'}><b>{assetGroup(o)}</b><strong>{o.category}</strong><small>ASSET PREVIEW</small></div> : <img src={visual(o)} alt={o.category + '示意配图，非项目实拍'} />}<span>{template ? '资产类型示意' : '配图仅作示意'}</span></div>;
 }
 function Card({ c, o }: { c: Channel; o: Offering }) {
   const facts = investmentFacts(o);
+  const template = o.listing === 'pending' && !o.sourcePublicationId;
   return <article className="offering-card">
     <a className="card-image-link" href={assetUrl(c,o)}><AssetVisual o={o} /><Status value={o.status} /></a>
     <div className="card-content">
       <h3><a href={assetUrl(c,o)}>{o.title}</a></h3>
       {c.kind === 'm' && <p className="issuer-line">发行企业 · {o.issuerName}</p>}
       <p className="card-type">{assetGroup(o)} / {o.category} <span>·</span> {o.right} <span>·</span> {o.place}</p>
-      {o.listing === 'pending' ? <p className="template-note">尚未开放。以下仅介绍资产和可能的权益结构，认购条件以未来正式披露为准。</p> : <><div className="card-finance"><div><small>示例最低认购额</small><strong>{priceU(o.minimumCents)}</strong><small>单价 {priceU(o.priceCents)} / 投资份额</small></div><div><small>{facts[0][0]}</small><strong>{facts[0][1]}</strong></div></div><p className="card-period"><span>期限 / 分配</span>{investmentPeriod(o)}</p></>}
-      <a className="card-action" href={assetUrl(c,o)}>{o.listing === 'pending' ? '了解资产类型' : '查看项目详情'} <span aria-hidden="true">→</span></a>
+      {template ? <p className="template-note">尚未开放。以下仅介绍资产和可能的权益结构，认购条件以未来正式披露为准。</p> : <><div className="card-finance"><div><small>披露最低认购额</small><strong>{priceU(o.minimumCents)}</strong><small>单价 {priceU(o.priceCents)} / 投资份额</small></div><div><small>核心回报指标</small><strong>{o.yieldLine}</strong></div></div><p className="card-period"><span>期限 / 分配</span>{investmentPeriod(o)} · {facts[0]?.[0]} {facts[0]?.[1]}</p></>}
+      <a className="card-action" href={assetUrl(c,o)}>{template ? '了解资产类型' : '查看项目详情'} <span aria-hidden="true">→</span></a>
     </div>
   </article>;
 }
@@ -77,11 +79,12 @@ function Breadcrumb({ c, tail, from }: { c: Channel; tail: string; from?: string
 }
 function Home({ c }: { c: Channel }) {
   const all = publicOfferings(c);
-  const listed = filterOfferings(all.filter(o => o.listing === 'active'), { sort: 'latest' }).slice(0,3);
-  const previews = all.filter(o => o.listing === 'pending');
+  const listed = filterOfferings(all.filter(o => o.listing === 'active' || o.sourcePublicationId), { sort: 'latest' }).slice(0,3);
+  const previews = all.filter(o => o.listing === 'pending' && !o.sourcePublicationId);
   const categories = ['全部资产', ...new Set(all.map(assetGroup))];
   return <main>
     <section className="hero" style={{ backgroundImage: `linear-gradient(90deg,#fff 0%,#fffffff2 26%,#ffffffb0 47%,#ffffff00 72%),url("${heroImage}")` }}><div className="container hero-content"><p className="hero-kicker">REAL WORLD ASSETS</p><h1>{c.kind === 'm' ? '浏览不同企业的资产项目' : '探索本企业的资产项目'}</h1><p>{c.kind === 'm' ? '按发行企业、资产类型与投资者权益比较公开项目。' : '查看本企业公开项目及待开放的资产类型。'}</p><Button href={url(c,'/opportunities')}>浏览项目 <span aria-hidden="true">→</span></Button><small>当前项目及企业为示例资料；配图仅作示意，真实交易服务尚未开放。</small></div></section>
+    {publishedDisclosureError && <div className="container"><Notice>新版发行披露数据无法读取：{publishedDisclosureError}。相关项目已暂时隐藏。</Notice></div>}
     <section className="container home-categories"><h2>按底层资产浏览</h2><div className="category-links">{categories.map(name => <a key={name} href={name === '全部资产' ? url(c,'/opportunities') : url(c,'/opportunities?category=' + encodeURIComponent(name))}>{name}</a>)}</div></section>
     <section className="container home-opportunities"><div className="section-head"><div><p className="eyebrow">PROJECTS</p><h2>{c.kind === 'm' ? '不同企业的公开项目' : '当前公开项目'}</h2><p>{c.kind === 'm' ? '比较发行企业、底层资产与权益安排。' : '以下项目属于当前企业渠道。'}</p></div><a className="text-link" href={url(c,'/opportunities')}>查看全部 →</a></div>{listed.length ? <div className={cardGridClass(listed.length)}>{listed.map(o => <Card key={o.id} c={c} o={o} />)}</div> : <div className="empty"><h3>暂无公开项目</h3><p>当前没有可查看的公开上架项目。待开放资产在下方单独展示。</p></div>}</section>
     {c.kind === 'v' && previews.length > 0 && <section className="container home-opportunities preview-section"><div className="section-head"><div><p className="eyebrow">ASSET PREVIEW</p><h2>待开放资产类型</h2><p>以下为资产方向预览，尚无可认购项目或有效报价。</p></div></div><div className={cardGridClass(previews.length)}>{previews.map(o => <Card key={o.id} c={c} o={o} />)}</div></section>}
@@ -89,8 +92,8 @@ function Home({ c }: { c: Channel }) {
   </main>;
 }
 function List({ c }: { c: Channel }) {
-  const all = publicOfferings(c).filter(o => o.listing === 'active');
-  const previews = c.kind === 'v' ? publicOfferings(c).filter(o => o.listing === 'pending') : [];
+  const all = publicOfferings(c).filter(o => o.listing === 'active' || Boolean(o.sourcePublicationId));
+  const previews = c.kind === 'v' ? publicOfferings(c).filter(o => o.listing === 'pending' && !o.sourcePublicationId) : [];
   const query = new URLSearchParams(location.search);
   const [filters,setFilters] = useState<OpportunityFilters>(() => ({
     search: query.get('search') || '', category: query.get('category') || '', subcategory: query.get('subcategory') || '',
@@ -112,6 +115,7 @@ function List({ c }: { c: Channel }) {
   const select = (label: string, key: keyof OpportunityFilters, options: string[]) => <label><span>{label}</span><select value={filters[key] || ''} onChange={event => update(key,event.target.value)}><option value="">全部</option>{options.map(value => <option key={value} value={value}>{value}</option>)}</select></label>;
   return <main className="container inner-page">
     <Breadcrumb c={c} tail="投资机会" />
+    {publishedDisclosureError && <Notice>新版发行披露数据无法读取：{publishedDisclosureError}。相关项目已暂时隐藏。</Notice>}
     <div className="page-head"><div><p className="eyebrow">PROJECTS</p><h1>公开项目</h1><p>按底层资产、权益类型与发行企业浏览当前渠道的示例项目。真实认购服务尚未开放。</p></div><strong>{list.length} 个项目</strong></div>
     <div className="filters">
       <label className="search-field"><span>搜索项目或资产</span><input value={filters.search || ''} onChange={event => update('search',event.target.value)} placeholder="项目或资产名称" /></label>
@@ -133,18 +137,21 @@ function Detail({ c, o }: { c: Channel; o: Offering }) {
   const currentRemaining = remainingUnits(o,readAllOrders(),Date.now());
   const action = actionState(o.status, identityFor(c));
   const actionUrl = url(c,'/subscribe/' + o.id + '/quote');
-  const previewOnly = o.listing === 'pending';
+  const previewOnly = o.listing === 'pending' && !o.sourcePublicationId;
   const capacityReady = currentRemaining != null && currentRemaining >= minimumUnits(o);
   return <main className="container inner-page">
     <Breadcrumb c={c} tail={o.title} />
     <div className="detail-heading"><div><p className="eyebrow">{previewOnly ? 'ASSET PREVIEW' : 'PROJECT DETAILS'}</p><h1>{o.title}</h1><p>发行企业 · <a href={companyUrl(c,o)}>{o.issuerName} ↗</a></p></div><Status value={o.status} /></div>
     <div className="detail-grid"><div className="detail-main">
       <AssetVisual o={o} large />
-      <div className="detail-facts"><div><small>底层资产</small><strong>{assetGroup(o)} · {o.category}</strong></div><div><small>投资者取得的权益</small><strong>{o.right}</strong></div><div><small>{previewOnly ? '开放状态' : '示例最低认购额'}</small><strong>{previewOnly ? '尚未开放' : priceU(o.minimumCents)}</strong></div></div>
+      <div className="detail-facts"><div><small>底层资产</small><strong>{assetGroup(o)} · {o.category}</strong></div><div><small>投资者取得的权益</small><strong>{o.right}</strong></div><div><small>{previewOnly ? '开放状态' : '最低认购额'}</small><strong>{previewOnly ? '尚未开放' : priceU(o.minimumCents)}</strong></div></div>
+      {!previewOnly && <div className="content-panel return-highlight"><small>核心投资回报指标</small><h2>{o.yieldLine}</h2><p>以已披露权益版本与风险文件为准；预期回报不构成实际应付收益。</p></div>}
       {previewOnly && <Notice>此资产类型尚无公开上架项目。认购条件与法律文件待正式披露，目前不可认购。</Notice>}
       <nav className="detail-tabs" aria-label="详情章节"><a href="#overview">资产概览</a><a href="#rights">权益与收益</a><a href="#offering">发行与认购</a><a href="#issuer">发行企业</a><a href="#documents">法律文件与风险</a></nav>
       <section className="content-panel" id="overview"><h2>资产概览</h2><p>{o.summary}</p><div className="info-grid">{o.features.map(([key,value]) => <div key={key}><small>{publicTerm(key)}</small><strong>{publicTerm(value)}</strong></div>)}</div><div className="version-note">底层资产版本：{previewOnly ? '待披露' : publicVersion(o.assetVersion)}</div></section>
-      <section className="content-panel" id="rights"><h2>投资者权益与收益安排</h2><p>下面四项分别说明：投资什么项目、取得多少份额、支付多少示例金额、获得什么合同权益。</p><div className="rights-chain"><div><small>项目</small><strong>{o.title}</strong><span>发行企业 {o.issuerName}</span></div><div><small>投资份额</small><strong>{previewOnly ? '待披露' : minimumUnits(o) + ' 份起'}</strong><span>{previewOnly ? '认购条件未开放' : '每份 ' + priceU(o.priceCents) + ' · 示例'}</span></div><div><small>认购金额</small><strong>{previewOnly ? '待披露' : priceU(o.minimumCents) + ' 起'}</strong><span>示例金额，不含后续费用</span></div><div><small>取得的合同权益</small><strong>{o.right}</strong><span>以有效合同、法定登记与披露文件为准</span></div></div><p className="rights-note">份额凭证与链上记录是权益的技术形式，不自动等于企业股东身份或完整法律权利；认购金额也不等于债权本金或可分配收益。</p><div className="info-grid">{(previewOnly ? facts : o.terms).map(([key,value]) => <div key={key}><small>{publicTerm(key)}</small><strong>{previewOnly ? '待披露' : publicTerm(value)}</strong></div>)}</div><div className="version-note">权益条款版本：{previewOnly ? '待披露' : publicVersion(o.instrumentVersion)}</div></section>
+       <section className="content-panel" id="rights"><h2>投资者权益与收益安排</h2>{o.sourcePublicationId ? <p>您取得的权益为{o.right}；回报条件、分配方式和退出安排见下方。</p> : <><p>下面四项分别说明：投资什么项目、取得多少份额、支付多少示例金额、获得什么合同权益。</p><div className="rights-chain"><div><small>项目</small><strong>{o.title}</strong><span>发行企业 {o.issuerName}</span></div><div><small>投资份额</small><strong>{previewOnly ? '待披露' : minimumUnits(o) + ' 份起'}</strong><span>{previewOnly ? '认购条件未开放' : '每份 ' + priceU(o.priceCents) + ' · 示例'}</span></div><div><small>认购金额</small><strong>{previewOnly ? '待披露' : priceU(o.minimumCents) + ' 起'}</strong><span>示例金额，不含后续费用</span></div><div><small>取得的合同权益</small><strong>{o.right}</strong><span>以有效合同、法定登记与披露文件为准</span></div></div></>}<p className="rights-note">份额凭证与链上记录是权益的技术形式，不自动等于企业股东身份或完整法律权利；认购金额也不等于债权本金或可分配收益。</p><div className="info-grid">{(previewOnly ? facts : o.terms).map(([key,value]) => <div key={key}><small>{publicTerm(key)}</small><strong>{previewOnly ? '待披露' : publicTerm(value)}</strong></div>)}</div><div className="version-note">权益条款版本：{previewOnly ? '待披露' : publicVersion(o.instrumentVersion)}</div></section>
+      {o.returnMethodology && <section className="content-panel" id="return-basis"><h2>回报测算依据</h2><div className="info-grid"><div><small>测算价格与日期</small><strong>{o.returnMethodology.priceAtCalculation} U · {o.returnMethodology.calculatedAt}</strong></div><div><small>期间与口径</small><strong>{o.returnMethodology.period} · {o.returnMethodology.incomeBasis}</strong></div><div><small>资本增值</small><strong>{o.returnMethodology.includesAppreciation ? '包含' : '不包含'}</strong></div><div><small>费用与税费</small><strong>{o.returnMethodology.feesAndTaxes}</strong></div><div><small>主要假设</small><strong>{o.returnMethodology.assumptions}</strong></div><div><small>测算依据</small><strong>{o.returnMethodology.evidence}</strong></div></div><Notice>{o.returnMethodology.risks}</Notice></section>}
+       {o.sourcePublicationId && o.spv && <section className="content-panel" id="legal-entities"><h2>SPV 与法律主体</h2><div className="info-grid"><div><small>SPV 法定名称</small><strong>{o.spv.legalName}</strong></div><div><small>注册地区</small><strong>{o.spv.jurisdiction}</strong></div>{o.spv.registrationNumber && <div><small>注册编号</small><strong>{o.spv.registrationNumber.startsWith('DEMO-') ? '示例资料，待核实' : o.spv.registrationNumber}</strong></div>}<div><small>发行中角色</small><strong>{o.spv.role}</strong></div><div><small>与底层资产关系</small><strong>{o.spv.assetRelationship}</strong></div><div><small>与发行企业关系</small><strong>{o.spv.issuerRelationship}</strong></div></div><a className="text-link" href="#documents">查看主体与权益文件 →</a></section>}
       <section className="content-panel" id="offering"><h2>发行与认购</h2>{previewOnly ? <p>当前仅展示资产类型，认购价格、容量和时间尚未正式披露。</p> : <div className="info-grid">
         <div><small>项目状态</small><strong>{o.status}</strong></div><div><small>公开上架</small><strong>当前渠道可见</strong></div>
         <div><small>认购开始 · UTC+8</small><strong>{o.opensAt || '待披露'}</strong></div><div><small>认购截止 · UTC+8</small><strong>{o.closesAt || '待披露'}</strong></div>
@@ -152,14 +159,15 @@ function Detail({ c, o }: { c: Channel; o: Offering }) {
         <div><small>每份价格</small><strong>{priceU(o.priceCents)}</strong></div><div><small>最低认购额</small><strong>{priceU(o.minimumCents)}</strong></div>
       </div>}<div className="version-note">项目披露版本：{previewOnly ? '待披露' : publicVersion(o.offeringVersion)} · 资产估值不等于募集额</div></section>
       <section className="content-panel company-panel" id="issuer"><div className="company-avatar">{o.issuerName.slice(0,1)}</div><div><small>发行企业</small><h2>{o.issuerName}</h2><p>企业认证不代表资产安全或收益担保。</p><a className="text-link" href={companyUrl(c,o)}>查看企业信息 →</a></div></section>
-      <section className="content-panel" id="documents"><h2>法律文件与风险</h2><p>{previewOnly ? '正式文件待披露，以下不构成有效法律文件。' : '当前文件为示例内容，阅读或确认不构成有效签署。'}</p><div className="document-list">{o.documents.map(d => <div key={d.name}><span>{d.name}</span><small>{previewOnly ? '待披露' : publicVersion(d.version)}</small></div>)}</div><Notice>{o.risk || '请以完整法律文件和风险披露为准；本金可能损失。'}</Notice></section>
+      <section className="content-panel" id="documents"><h2>法律文件与风险</h2><p>{previewOnly ? '正式文件待披露，以下不构成有效法律文件。' : '当前文件为示例资料；阅读或确认不构成有效签署。'}</p><div className="document-list">{o.documents.map((d,index) => <div key={d.id || d.name}><span>{d.name}</span><small>{previewOnly ? '待披露' : publicVersion(d.version)}</small>{!previewOnly && <a className="text-link" href={url(c, '/disclosures/' + o.id + '/' + index)}>查看文件版本 →</a>}</div>)}</div><Notice>{o.risk || '请以完整法律文件和风险披露为准；本金可能损失。'}</Notice></section>
     </div><aside className="summary-card action-panel"><p className="eyebrow">{previewOnly ? 'PREVIEW' : 'INVESTMENT TERMS'}</p><h2>{previewOnly ? '开放状态' : '认购信息'}</h2><Status value={o.status} />{previewOnly ? <><p>项目尚未开放，价格、容量与认购时间待正式披露。</p><a className="button button-secondary" href={url(c,'/opportunities')}>返回公开项目</a></> : <><div className="summary-price"><small>示例最低认购额</small><strong>{priceU(o.minimumCents)}</strong></div><div className="summary-row"><span>期限 / 分配</span><strong>{investmentPeriod(o)}</strong></div>{facts.map(([key,value]) => <div className="summary-metric" key={key}><small>{key}</small><strong>{value}</strong></div>)}<p className="action-reason">{action.enabled && !capacityReady ? '可售容量不足或待核实，暂不可认购' : '真实认购服务尚未开放；可先了解流程与条件。'}</p><Button href={action.enabled && capacityReady ? actionUrl : undefined} disabled={!action.enabled || !capacityReady}>{action.enabled && !capacityReady ? '暂不可认购' : action.enabled ? '了解认购流程' : action.label} <span aria-hidden="true">→</span></Button><p className="summary-foot">确认金额 → 阅读文件 → 付款状态 → 查看进度<br />真实认购与付款服务尚未开放。</p></>}</aside></div>
   </main>;
 }function Company({ c, issuerId }: { c: Channel; issuerId: string }) {
-  const company = issuers[issuerId as keyof typeof issuers];
+  const publishedIssuer = offerings.find(o => o.issuerId === issuerId && o.sourcePublicationId);
+  const company = issuers[issuerId as keyof typeof issuers] || (publishedIssuer ? { name: publishedIssuer.issuerName, legal: publishedIssuer.issuerName, region: publishedIssuer.place, business: '以获准公开的发行资料为准', disclosure: '仅展示已授权公开的项目资料', intro: '发行企业信息以已发布的披露版本为准。' } : undefined);
   if (!company || !canShowCompany(offerings,c,issuerId,noListings)) return <NotFound c={c} />;
-  const list = publicOfferings(c).filter(o => o.issuerId === issuerId && o.listing === 'active');
-  const previews = c.kind === 'v' ? publicOfferings(c).filter(o => o.issuerId === issuerId && o.listing === 'pending') : [];
+  const list = publicOfferings(c).filter(o => o.issuerId === issuerId && (o.listing === 'active' || o.sourcePublicationId));
+  const previews = c.kind === 'v' ? publicOfferings(c).filter(o => o.issuerId === issuerId && o.listing === 'pending' && !o.sourcePublicationId) : [];
   return <main className="container inner-page"><div className="breadcrumb"><a href={safeReturn(c)}>返回来源页面</a><span>/</span>企业信息</div>
     <div className="company-hero"><div className="company-avatar large">{company.name.slice(0,1)}</div><div><p className="eyebrow">ISSUER PROFILE</p><h1>{company.name}</h1><p>{company.legal}</p></div></div>
     <section className="content-panel"><h2>企业介绍</h2><p>{company.intro}</p><div className="info-grid"><div><small>注册国家 / 地区</small><strong>{company.region}</strong></div><div><small>业务方向</small><strong>{company.business}</strong></div><div><small>经授权公开资料</small><strong>{company.disclosure}</strong></div><div><small>企业与底层资产权利人</small><strong>可能不同；以各项目资产文件为准</strong></div></div><Notice>企业认证不代表资产安全或收益担保。</Notice></section>

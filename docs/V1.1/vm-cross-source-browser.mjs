@@ -200,8 +200,14 @@ try {
     await checkPage(`02-v-detail-${width}`, true);
     if (!detail.title || !detail.fact || !detail.issuer || !detail.risk || !detail.noSpv || detail.overflow > 0) throw new Error('V detail source disclosure mismatch');
   }
+  await setWidth(1440, 1000);
+  await goto(BASE + '/v/galaxy-assets/opportunities/OFF-3002');
+  const debt = await evaluate(`({ title: document.body.innerText.includes('华北物流投资者债权首期'), fixedRate: document.body.innerText.includes('合同固定年利率 12%'), debtor: document.body.innerText.includes('华北物流'), noSpv: !document.body.innerText.includes('SPV 法定名称'), overflow: document.documentElement.scrollWidth-window.innerWidth })`);
+  note({ stage: 'v-debt-detail', ...debt });
+  await checkPage('02-v-debt-detail-1440', true);
+  if (!debt.title || !debt.fixedRate || !debt.debtor || !debt.noSpv || debt.overflow > 0) throw new Error('V debt source disclosure mismatch');
   await goto(BASE + '/m');
-  const m = await evaluate(`({ hasUnapprovedListing: document.body.innerText.includes('朝阳住宅租金收益参与权首期') })`);
+  const m = await evaluate(`({ hasUnapprovedListing: document.body.innerText.includes('朝阳住宅租金收益参与权首期') || document.body.innerText.includes('华北物流投资者债权首期') })`);
   note({ stage: 'm-listing-gate', ...m });
   await checkPage('03-m-listing-gate-1440', true);
   if (m.hasUnapprovedListing) throw new Error('M showed unapproved Listing');

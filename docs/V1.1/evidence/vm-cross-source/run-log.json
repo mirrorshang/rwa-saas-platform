@@ -112,6 +112,19 @@
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-spv-debt-detail-1440.png"
     },
     {
+      "stage": "v-public-file-version",
+      "path": "/v/galaxy-assets/disclosures/galaxy-assets--OFF-3001/0",
+      "hasVersion": true,
+      "hasSource": true,
+      "noDownload": true,
+      "noInternalId": true,
+      "overflow": 0
+    },
+    {
+      "shot": "02-v-public-file-version-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-public-file-version-1440.png"
+    },
+    {
       "stage": "m-listing-gate",
       "hasUnapprovedListing": false
     },
@@ -126,6 +139,16 @@
     {
       "shot": "04-m-direct-gate-1440",
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\04-m-direct-gate-1440.png"
+    },
+    {
+      "stage": "m-file-gate",
+      "denied": true,
+      "noTitle": true,
+      "overflow": 0
+    },
+    {
+      "shot": "05-m-file-gate-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\05-m-file-gate-1440.png"
     }
   ],
   "pages": [
@@ -220,6 +243,16 @@
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-spv-debt-detail-1440.png"
     },
     {
+      "name": "02-v-public-file-version-1440",
+      "url": "/v/galaxy-assets/disclosures/galaxy-assets--OFF-3001/0",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "北\n北京朝阳城市资产管理有限公司\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n公告与披露\n/\n文件详情\n\nDISCLOSURE RECORD\n\n示例文件：Rental Revenue Participation Agreement.pdf\n\n朝阳住宅租金收益参与权首期 · v1\n\n文件来源\n权益文件\n当前可查看内容\n文件名称与版本\n!\n该示例资料尚未提供文件正文或下载。查看文件信息不构成签署；正式文件须由授权文件服务提供。\n北京朝阳城市资产管理有限公司\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\02-v-public-file-version-1440.png"
+    },
+    {
       "name": "03-m-listing-gate-1440",
       "url": "/m",
       "title": "RWA 投资机会 · 演示原型",
@@ -238,6 +271,16 @@
       "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n页面或资产不可访问\n\n链接无效，或当前渠道未获准公开此内容。\n\n浏览投资机会\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\04-m-direct-gate-1440.png"
+    },
+    {
+      "name": "05-m-file-gate-1440",
+      "url": "/m/disclosures/galaxy-assets--OFF-3001/0",
+      "title": "RWA 投资机会 · 演示原型",
+      "overflow": 0,
+      "mock": [],
+      "text": "RWA Invest\n首页\n投资机会\n我的投资\n帮助\n消息\n登录\n文件不可访问\n\n文件不存在，或当前渠道及账户无权查看。\n\n返回公告与披露\nRWA Invest\n\n真实世界资产项目信息\n\n风险提示\n帮助中心\n使用条款\n隐私政策\n\n当前项目、企业与交易记录为示例资料，尚不提供真实发行或交易服务；图片仅作示意，不构成投资建议或收益承诺。",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-vm\\docs\\V1.1\\evidence\\vm-cross-source\\05-m-file-gate-1440.png"
     }
   ]
 }

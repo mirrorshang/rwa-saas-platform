@@ -216,6 +216,12 @@ try {
   note({ stage: 'v-spv-debt-detail', ...spvDebt });
   await checkPage('02-v-spv-debt-detail-1440', true);
   if (!spvDebt.title || !spvDebt.legalName || !spvDebt.role || !spvDebt.fixedRate || spvDebt.overflow > 0) throw new Error('V SPV debt source disclosure mismatch');
+  await goto(BASE + '/v/galaxy-assets/opportunities/galaxy-assets--OFF-3001');
+  await click('#documents a');
+  const file = await evaluate(`({ path: location.pathname, hasVersion: document.body.innerText.includes('v1'), hasSource: document.body.innerText.includes('权益文件'), noDownload: !document.body.innerText.includes('下载示例文本'), noInternalId: !document.body.innerText.includes('公开文件 ID') && !document.body.innerText.includes('对应发布快照'), overflow: document.documentElement.scrollWidth-window.innerWidth })`);
+  note({ stage: 'v-public-file-version', ...file });
+  await checkPage('02-v-public-file-version-1440', true);
+  if (!file.path.includes('/disclosures/galaxy-assets--OFF-3001/0') || !file.hasVersion || !file.hasSource || !file.noDownload || !file.noInternalId || file.overflow > 0) throw new Error('V public file version route mismatch');
   await goto(BASE + '/m');
   const m = await evaluate(`({ hasUnapprovedListing: document.body.innerText.includes('朝阳住宅租金收益参与权首期') || document.body.innerText.includes('华北物流投资者债权首期') || document.body.innerText.includes('朝阳 SPV 租金收益参与权首期') || document.body.innerText.includes('华北物流 SPV 投资者债权首期') })`);
   note({ stage: 'm-listing-gate', ...m });
@@ -226,6 +232,11 @@ try {
   note({ stage: 'm-direct-gate', ...direct });
   await checkPage('04-m-direct-gate-1440', true);
   if (direct.exposesProject) throw new Error('M direct route exposed unapproved Listing');
+  await goto(BASE + '/m/disclosures/galaxy-assets--OFF-3001/0');
+  const deniedFile = await evaluate(`({ denied: document.body.innerText.includes('文件不可访问'), noTitle: !document.body.innerText.includes('Rental Revenue Participation Agreement'), overflow: document.documentElement.scrollWidth-window.innerWidth })`);
+  note({ stage: 'm-file-gate', ...deniedFile });
+  await checkPage('05-m-file-gate-1440', true);
+  if (!deniedFile.denied || !deniedFile.noTitle || deniedFile.overflow > 0) throw new Error('M exposed unapproved file');
 } catch (error) {
   note({ error: String(error), text: await evaluate('document.body.innerText.slice(0,1200)').catch(()=>'') });
   await shot('failure', true).catch(()=>{});

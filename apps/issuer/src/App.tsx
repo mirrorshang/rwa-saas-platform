@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import {
   Activity,
   AlertCircle,
@@ -5170,7 +5170,7 @@ function DrawerPanel({
                     go("assets", "发行管理");
                   }}
                 />
-                {!state.instruments.some((item) => item.assetId === asset.id) && asset.status === "Ready" && (
+                {!state.instruments.some((item) => item.assetId === asset.id) && (asset.status === "Ready" || (asset.assetSchemaVersion === 2 && asset.status === "Draft" && !closedLoopSubtype(asset.subtype))) && (
                   <Button onClick={() => setDrawer({ type: "instrument-create", id: asset.id })}>配置该资产的权益结构</Button>
                 )}
                 {state.instruments.some((item) => item.assetId === asset.id && item.status === "Ready") && (
@@ -6543,7 +6543,7 @@ function CreateAsset({
         <div className="info-note"><AlertCircle size={17} /><p>该模板可配置资料与公开字段，尚未完成认购和投后闭环，不可进入正式发行确认。</p></div>
         {Object.entries(assetTemplates[form.subtype as AssetTemplateName]?.fields || {}).map(([key, label]) => <label className="field" key={key}><span>{label}</span><input value={form.details[key] || ""} onChange={(e) => setDetail(key, e.target.value)} /></label>)}
         <label className="field"><span>估值金额 U（仅供资料记录）</span><input type="number" value={form.details.valuation || ""} onChange={(e) => setDetail("valuation", e.target.value)} /></label>
-        {(assetTemplates[form.subtype as AssetTemplateName]?.evidence || []).map(category => upload(category, category, false))}
+        {(assetTemplates[form.subtype as AssetTemplateName]?.evidence || []).map(category => <Fragment key={category}>{upload(category, category, false)}</Fragment>)}
       </>}
       <div className="form-section-title"><b>获准公开的资产字段</b><small>仅勾选有依据且允许披露的事实；未勾选字段不进入投资者数据</small></div>
       {Object.entries(assetTemplates[form.subtype as AssetTemplateName]?.fields || {}).map(([key, label]) => <label className="field" key={`public-${key}`}><span><input type="checkbox" checked={form.publicFields.includes(key)} disabled={!form.details[key]} onChange={(e) => setForm(current => ({ ...current, publicFields: e.target.checked ? [...current.publicFields, key] : current.publicFields.filter(field => field !== key) }))} /> {label} · {form.details[key] || "待填写"}</span></label>)}

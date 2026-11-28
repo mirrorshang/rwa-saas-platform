@@ -101,7 +101,7 @@
         ],
         "instruments": [
           {
-            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
             "type": "收益参与权",
             "status": "Ready",
             "version": "v1",
@@ -130,7 +130,7 @@
         ],
         "instruments": [
           {
-            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
             "type": "收益参与权",
             "status": "Ready",
             "version": "v1",
@@ -159,7 +159,7 @@
         ],
         "instruments": [
           {
-            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
             "type": "收益参与权",
             "status": "Ready",
             "version": "v1",
@@ -204,7 +204,7 @@
         ],
         "instruments": [
           {
-            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
             "type": "收益参与权",
             "status": "Ready",
             "version": "v1",
@@ -240,7 +240,7 @@
         ],
         "instruments": [
           {
-            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
             "type": "收益参与权",
             "status": "Ready",
             "version": "v1",
@@ -276,7 +276,7 @@
         ],
         "instruments": [
           {
-            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
             "type": "收益参与权",
             "status": "Ready",
             "version": "v1",
@@ -317,7 +317,7 @@
         ],
         "instruments": [
           {
-            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
             "type": "收益参与权",
             "status": "Ready",
             "version": "v1",
@@ -364,7 +364,7 @@
         ],
         "instruments": [
           {
-            "id": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
             "type": "收益参与权",
             "status": "Ready",
             "version": "v1",
@@ -406,6 +406,326 @@
     {
       "shot": "14-final-preview-1920",
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\14-final-preview-1920.png"
+    },
+    {
+      "shot": "15-debt-asset-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\15-debt-asset-form-1440.png"
+    },
+    {
+      "stage": "15-debt-asset-form-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "待开始",
+            "publicationStatus": "Sandbox 已发布",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [
+          {
+            "id": "ISS-OFF-3001",
+            "status": "已核验"
+          }
+        ],
+        "publications": [
+          {
+            "id": "PUB-OFF-3001",
+            "offeringId": "OFF-3001"
+          }
+        ]
+      }
+    },
+    {
+      "shot": "16-debt-right-form-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\16-debt-right-form-1440.png"
+    },
+    {
+      "stage": "16-debt-right-form-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1002",
+            "subtype": "单笔企业借款债权",
+            "status": "Ready",
+            "version": 1
+          },
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "待开始",
+            "publicationStatus": "Sandbox 已发布",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [
+          {
+            "id": "ISS-OFF-3001",
+            "status": "已核验"
+          }
+        ],
+        "publications": [
+          {
+            "id": "PUB-OFF-3001",
+            "offeringId": "OFF-3001"
+          }
+        ]
+      }
+    },
+    {
+      "shot": "17-debt-right-ready-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\17-debt-right-ready-1440.png"
+    },
+    {
+      "stage": "17-debt-right-ready-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1002",
+            "subtype": "单笔企业借款债权",
+            "status": "Ready",
+            "version": 1
+          },
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-9d40a105-c78e-4344-acf0-c129aaf97a04-V1",
+            "type": "债权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          },
+          {
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "待开始",
+            "publicationStatus": "Sandbox 已发布",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [
+          {
+            "id": "ISS-OFF-3001",
+            "status": "已核验"
+          }
+        ],
+        "publications": [
+          {
+            "id": "PUB-OFF-3001",
+            "offeringId": "OFF-3001"
+          }
+        ]
+      }
+    },
+    {
+      "shot": "18-debt-offering-confirmed-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\18-debt-offering-confirmed-1440.png"
+    },
+    {
+      "stage": "18-debt-offering-confirmed-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1002",
+            "subtype": "单笔企业借款债权",
+            "status": "Ready",
+            "version": 1
+          },
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-9d40a105-c78e-4344-acf0-c129aaf97a04-V1",
+            "type": "债权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          },
+          {
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3002",
+            "confirmed": true,
+            "status": "准备就绪",
+            "disclosureSchemaVersion": 2
+          },
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "待开始",
+            "publicationStatus": "Sandbox 已发布",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [
+          {
+            "id": "ISS-OFF-3001",
+            "status": "已核验"
+          }
+        ],
+        "publications": [
+          {
+            "id": "PUB-OFF-3001",
+            "offeringId": "OFF-3001"
+          }
+        ]
+      }
+    },
+    {
+      "shot": "19-debt-published-1440",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\19-debt-published-1440.png"
+    },
+    {
+      "stage": "19-debt-published-1440",
+      "state": {
+        "assets": [
+          {
+            "id": "AST-1002",
+            "subtype": "单笔企业借款债权",
+            "status": "Ready",
+            "version": 1
+          },
+          {
+            "id": "AST-1001",
+            "subtype": "住宅物业",
+            "status": "Ready",
+            "version": 1
+          }
+        ],
+        "instruments": [
+          {
+            "id": "INS-9d40a105-c78e-4344-acf0-c129aaf97a04-V1",
+            "type": "债权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          },
+          {
+            "id": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
+            "type": "收益参与权",
+            "status": "Ready",
+            "version": "v1",
+            "spvMode": "不涉及"
+          }
+        ],
+        "offerings": [
+          {
+            "id": "OFF-3002",
+            "confirmed": true,
+            "status": "待开始",
+            "publicationStatus": "Sandbox 已发布",
+            "disclosureSchemaVersion": 2
+          },
+          {
+            "id": "OFF-3001",
+            "confirmed": true,
+            "status": "待开始",
+            "publicationStatus": "Sandbox 已发布",
+            "disclosureSchemaVersion": 2
+          }
+        ],
+        "tasks": [
+          {
+            "id": "ISS-OFF-3001",
+            "status": "已核验"
+          },
+          {
+            "id": "ISS-OFF-3002",
+            "status": "已核验"
+          }
+        ],
+        "publications": [
+          {
+            "id": "PUB-OFF-3001",
+            "offeringId": "OFF-3001"
+          },
+          {
+            "id": "PUB-OFF-3002",
+            "offeringId": "OFF-3002"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "browser-export-debt",
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\published-debt-v1.1.json",
+      "source": {
+        "publicationId": "PUB-OFF-3002",
+        "offeringId": "OFF-3002",
+        "assetId": "AST-1002",
+        "assetVersion": 1,
+        "instrumentId": "INS-9d40a105-c78e-4344-acf0-c129aaf97a04-V1",
+        "instrumentVersion": "v1",
+        "confirmedAt": "2026-11-28T06:11:50.223Z",
+        "publishedAt": "2026-11-28T06:11:52.161Z"
+      },
+      "return": {
+        "kind": "合同固定年利率",
+        "minPercent": 12,
+        "warning": "合同利率不构成保证兑付"
+      }
     }
   ],
   "pages": [
@@ -473,13 +793,13 @@
     },
     {
       "name": "06-income-right-ready-1440",
-      "url": "/instruments/INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+      "url": "/instruments/INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
       "title": "Figma Make App",
       "overflow": 0,
       "mock": [
         "控制台"
       ],
-      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n权益结构\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n权益结构详情\n朝阳住宅租金收益参与权\n\nINS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1\n\nReady\n权益类型\n收益参与权\n当前版本\nv1\n权益总量\n25,000",
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n权益结构\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n权益结构详情\n朝阳住宅租金收益参与权\n\nINS-c703312d-d554-452d-a67a-b9efff807e99-V1\n\nReady\n权益类型\n收益参与权\n当前版本\nv1\n权益总量\n25,000",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\06-income-right-ready-1440.png"
     },
@@ -597,6 +917,66 @@
       "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\nOffering 详情\n朝阳住宅租金收益参与权首期\n\nOFF-3001 · 第 1 期\n\n未开放\nToken 发行份数\n25,000\n每 Token 价格\n10 U\n募集目标\n250,000 U\n已募集",
       "consoleErrors": [],
       "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\14-final-preview-1920.png"
+    },
+    {
+      "name": "15-debt-asset-form-1440",
+      "url": "/assets",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n创建资产\n\n选择资产模板并建立权属、估值和业务资料\n\n1 分类\n2 资料\n3 法律/估值\n4 预览\n\nV1 支持住宅、写字楼、商铺、工业仓储、普通股权与单笔借款债权六种模板。“填充示例”只补空字段，法定主体读取当前企",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\15-debt-asset-form-1440.png"
+    },
+    {
+      "name": "16-debt-right-form-1440",
+      "url": "/assets/AST-1002",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n资产管理\n 演示环境 · 非生产\n返回列表\n业务工作区\n配置权益结构\n\n定义投资者取得的法律权利、现金流与 Token 映射\n\n选择已有 Asset *\n华北物流企业借款债权 · 单笔企业借款债权\n权益模板 *\n股权\n整数股精确映射\n债权\n本金、利率与到期\n收益参与权\n按",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\16-debt-right-form-1440.png"
+    },
+    {
+      "name": "17-debt-right-ready-1440",
+      "url": "/instruments/INS-9d40a105-c78e-4344-acf0-c129aaf97a04-V1",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n权益结构\n 演示环境 · 非生产\nRWA ISSUER · DEMO\n权益结构详情\n华北物流债权收益发行权益\n\nINS-9d40a105-c78e-4344-acf0-c129aaf97a04-V1\n\nReady\n权益类型\n债权\n当前版本\nv1\n权益总量\n400,000 ",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\17-debt-right-ready-1440.png"
+    },
+    {
+      "name": "18-debt-offering-confirmed-1440",
+      "url": "/offerings/OFF-3002",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\nOffering 详情\n华北物流投资者债权首期\n\nOFF-3002 · 第 1 期\n\n准备就绪\nToken 发行份数\n4,000\n每 Token 价格\n100 U\n募集目标\n400,000 U\n已募集金",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\18-debt-offering-confirmed-1440.png"
+    },
+    {
+      "name": "19-debt-published-1440",
+      "url": "/offerings/OFF-3002",
+      "title": "Figma Make App",
+      "overflow": 0,
+      "mock": [
+        "控制台"
+      ],
+      "text": "RWAOS\nIssuer workspace\n业务工作区\n工作台首页\n资产与发行\n资产管理\n权益结构\n发行管理\n投资者门户\n投资者与认购\n资金与结算\nToken 管理\n收益与分配\n数据与报表\n企业管理\n演示控制台\n初始状态\nDE\ndemo@rwa.example\n北京朝阳城市资产管理有限公司\nRWA Issuer\n资产与发行\n发行管理\n 演示环境 · 非生产\nRWA ISSUER · DEMO\nOffering 详情\n华北物流投资者债权首期\n\nOFF-3002 · 第 1 期\n\n未开放\nToken 发行份数\n4,000\n每 Token 价格\n100 U\n募集目标\n400,000 U\n已募集金额",
+      "consoleErrors": [],
+      "file": "D:\\360MoveData\\Users\\82623\\Documents\\ChatGPT\\RWA SAAS\\.worktrees\\v11-issuer\\docs\\V1.1\\evidence\\issuer-browser\\19-debt-published-1440.png"
     }
   ]
 }

@@ -5,10 +5,10 @@
     "offeringId": "OFF-3001",
     "assetId": "AST-1001",
     "assetVersion": 1,
-    "instrumentId": "INS-f4cbdf43-62e1-41b1-9fd8-97ebed3a0f60-V1",
+    "instrumentId": "INS-c703312d-d554-452d-a67a-b9efff807e99-V1",
     "instrumentVersion": "v1",
-    "confirmedAt": "2026-11-28T06:00:30.121Z",
-    "publishedAt": "2026-11-28T06:00:32.433Z"
+    "confirmedAt": "2026-11-28T06:11:36.529Z",
+    "publishedAt": "2026-11-28T06:11:38.745Z"
   },
   "asset": {
     "name": "北京朝阳住宅租金收益项目",
@@ -87,7 +87,7 @@
   ],
   "documents": [
     {
-      "id": "FILE-MOCK-1795845623532",
+      "id": "FILE-MOCK-1795846289965",
       "name": "DEMO_Rental_Revenue_Participation_Agreement.pdf",
       "category": "核心协议",
       "version": 1,
@@ -95,7 +95,7 @@
       "source": "Instrument"
     },
     {
-      "id": "FILE-MOCK-1795845627648",
+      "id": "FILE-MOCK-1795846294094",
       "name": "DEMO_Offering_Risk_Disclosure.pdf",
       "category": "发行披露",
       "version": 1,
